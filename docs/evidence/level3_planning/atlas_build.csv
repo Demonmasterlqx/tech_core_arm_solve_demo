@@ -1,0 +1,7 @@
+case,split,success,planning_seconds,reason
+"dev_nominal","development",1,0.54038109899999998,"validated"
+"dev_low","development",1,0.57643953800000003,"validated"
+"dev_yaw","development",0,0.025817896,"collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994"
+"dev_roll","development",1,0.71565123399999997,"validated"
+"dev_tilt","development",0,0.002565023,"ik_flip_230_no descending feasible step"
+"dev_qzero","development",1,0.49973060400000002,"validated"

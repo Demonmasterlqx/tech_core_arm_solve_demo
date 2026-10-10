@@ -1,0 +1,17 @@
+plan collision_lift_83_carried_unit_flange_7/core0_pillar_base_outer_d=-0.047000 knots 258
+83 lift s=0.1,0.004,0,0 poserr=9.18255758079e-05 raw=-0.0470002371799 pair=carried_unit_flange_7/core0_pillar_base_outer
+legacyraw 2.72735625669e-07 legacyideal 3.94079461698e-08 ideal -1.25356625014e-09 enableflags=0 disableflags=0
+84 lift s=0.1,0.006,0,0 poserr=9.19955740464e-05 raw=-0.00325669485856 pair=carried_unit_flange_3/core0_pillar_L_light_6
+legacyraw 1.11988568346e-07 legacyideal 4.6874370609e-08 ideal 0 enableflags=0 disableflags=0
+85 lift s=0.1,0.008,0,0 poserr=9.20031275347e-05 raw=-0.0470000615798 pair=carried_unit_flange_4/core0_pillar_base_outer
+legacyraw 1.18153811348e-07 legacyideal 5.87342288815e-08 ideal -0.0470000035965 enableflags=0 disableflags=0
+86 lift s=0.1,0.01,0,0 poserr=9.20035300084e-05 raw=-0.0470000615698 pair=carried_unit_flange_4/core0_pillar_base_outer
+legacyraw 1.15860749997e-07 legacyideal 5.89420005794e-08 ideal -0.0470000037836 enableflags=0 disableflags=0
+87 lift s=0.1,0.012,0,0 poserr=9.20036212179e-05 raw=-0.0470000607963 pair=carried_unit_flange_5/core0_pillar_base_outer
+legacyraw 1.25102919418e-07 legacyideal 6.81626335154e-08 ideal -0.0470000037836 enableflags=0 disableflags=0
+88 lift s=0.1,0.014,0,0 poserr=9.20037021773e-05 raw=-0.0470000607519 pair=carried_unit_flange_7/core0_pillar_base_outer
+legacyraw 9.62848082883e-08 legacyideal 3.93925559017e-08 ideal 0 enableflags=0 disableflags=0
+89 lift s=0.1,0.016,0,0 poserr=9.20037862063e-05 raw=-0.0470000612609 pair=carried_unit_flange_6/core0_pillar_base_outer
+legacyraw 1.80499802482e-07 legacyideal 1.23444968826e-07 ideal 0 enableflags=0 disableflags=0
+90 lift s=0.1,0.018,0,0 poserr=9.20038739697e-05 raw=-0.0470000617717 pair=carried_unit_flange_5/core0_pillar_base_outer
+legacyraw 1.26908908526e-07 legacyideal 6.89964416573e-08 ideal -1.44316754135e-09 enableflags=0 disableflags=0

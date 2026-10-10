@@ -187,6 +187,8 @@ int main() {
 
 ## 三级规划与耗时基准
 
+已完成 HKUST 任务雅可比基线与 **8 种额外方案、621 次请求**的冻结评测，详见 [完整结果与复现](docs/planning_results.md)。成功规划的基线中位耗时 **0.651 s**，推荐 `rigid_cache` 为 **0.309 s**（P95 **0.378 s**，最大 **0.380 s**），配对中位减时 **53.22%**。计时包含在线碰撞检查，不含执行。**正例完成率为 10/20（50%）**，所有方法成功集合相同；这证明已完成轨迹满足 3 s 目标，不代表整个三级工作空间均能规划。
+
 规划扩展需要 Eigen3（如 Ubuntu 的 `libeigen3-dev`）。全程 CPU，无 GPU/渲染器，不模拟抓取动力学。
 
 ```bash
@@ -209,7 +211,7 @@ using namespace tech_core::planning;
 PlanningScene scene;
 Scenario request = scenario_suite().front(); // 可替换核心位姿、当前七关节及安装外参
 PlanOptions options;
-options.method = Method::SparseAdaptive;
+options.method = Method::RigidCache;
 PlanResult result = plan(scene, request, options);
 if (result.success) { /* result.knots 是完整已验证轨迹 */ }
 // 失败时 knots 可能仅为前缀，或是一条被验证器拒绝的候选；不得执行。

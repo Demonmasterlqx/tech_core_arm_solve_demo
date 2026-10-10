@@ -133,7 +133,7 @@ v3 `joint_limits.yaml` 对七臂关节声明 1.5 rad/s、1.5 rad/s²，scale=1.0
 
 | phase | 路径/目标 | 必须保持的区别 |
 | --- | --- | --- |
-| `approach` | 当前 home 到 preinsert，再对准柱入口；preinsert 开口距 E 额外 0.04 m 为本地配置 | 非官方额外行程；自由运动必须碰撞验证 |
+| `approach` | 当前 ready 位形到 preinsert，再对准柱入口；preinsert 开口距 E 额外 0.04 m 为本地配置 | ready 从 development 选定，不含原显示 home 到 ready；自由运动必须碰撞验证 |
 | `insert` | 开口沿柱轴插入 0.1 m | 末端工具位置需通过固定抓取变换换算，不能把 ee 直接当孔口 |
 | `lift` | 机构升降 0.1 m | 使用现有机构局部升降方向；非随意世界 Z 平移 |
 | `flip` | P 上翻 π/2 | 跟随真实建模 P 枢轴产生的圆弧与方向变化 |

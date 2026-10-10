@@ -1,0 +1,623 @@
+cold_model_load_seconds=0.64659806
+atlas_build_seconds=2.3608159 atlas_entries=4
+baseline dev_nominal repeat=0 success=1 seconds=0.55398116 reason=validated
+full_step dev_nominal repeat=0 success=1 seconds=0.54398843 reason=validated
+reduced_5d dev_nominal repeat=0 success=1 seconds=0.54226901 reason=validated
+adaptive_lm dev_nominal repeat=0 success=1 seconds=0.54301606 reason=validated
+predictor dev_nominal repeat=0 success=1 seconds=0.54193121 reason=validated
+sparse_adaptive dev_nominal repeat=0 success=1 seconds=1.1357335 reason=validated
+atlas dev_nominal repeat=0 success=1 seconds=0.54177184 reason=validated
+bounded_qp dev_nominal repeat=0 success=1 seconds=0.54195881 reason=validated
+rigid_cache dev_nominal repeat=0 success=1 seconds=0.24644483 reason=validated
+full_step dev_low repeat=0 success=1 seconds=0.57888163 reason=validated
+reduced_5d dev_low repeat=0 success=1 seconds=0.5795126 reason=validated
+adaptive_lm dev_low repeat=0 success=1 seconds=0.57915328 reason=validated
+predictor dev_low repeat=0 success=1 seconds=0.57904912 reason=validated
+sparse_adaptive dev_low repeat=0 success=1 seconds=1.145288 reason=validated
+atlas dev_low repeat=0 success=1 seconds=0.57854251 reason=validated
+bounded_qp dev_low repeat=0 success=1 seconds=0.57982043 reason=validated
+rigid_cache dev_low repeat=0 success=1 seconds=0.25253997 reason=validated
+baseline dev_low repeat=0 success=1 seconds=0.58766926 reason=validated
+reduced_5d dev_yaw repeat=0 success=0 seconds=0.025912289 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+adaptive_lm dev_yaw repeat=0 success=0 seconds=0.025894372 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+predictor dev_yaw repeat=0 success=0 seconds=0.025564033 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+sparse_adaptive dev_yaw repeat=0 success=0 seconds=0.003351772 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas dev_yaw repeat=0 success=0 seconds=0.025476161 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+bounded_qp dev_yaw repeat=0 success=0 seconds=0.025934532 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+rigid_cache dev_yaw repeat=0 success=0 seconds=0.018258041 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+baseline dev_yaw repeat=0 success=0 seconds=0.040790947 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000959
+full_step dev_yaw repeat=0 success=0 seconds=0.025844887 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+adaptive_lm dev_roll repeat=0 success=1 seconds=0.71654448 reason=validated
+predictor dev_roll repeat=0 success=1 seconds=0.71564698 reason=validated
+sparse_adaptive dev_roll repeat=0 success=1 seconds=1.2994573 reason=validated
+atlas dev_roll repeat=0 success=1 seconds=0.71438122 reason=validated
+bounded_qp dev_roll repeat=0 success=1 seconds=0.71366101 reason=validated
+rigid_cache dev_roll repeat=0 success=1 seconds=0.34390596 reason=validated
+baseline dev_roll repeat=0 success=1 seconds=0.72597227 reason=validated
+full_step dev_roll repeat=0 success=1 seconds=0.71288148 reason=validated
+reduced_5d dev_roll repeat=0 success=1 seconds=0.71235731 reason=validated
+predictor dev_tilt repeat=0 success=0 seconds=0.009123186 reason=ik_flip_230_iteration limit
+sparse_adaptive dev_tilt repeat=0 success=0 seconds=0.008200733 reason=ik_flip_44_iteration limit
+atlas dev_tilt repeat=0 success=0 seconds=0.009180152 reason=ik_flip_230_iteration limit
+bounded_qp dev_tilt repeat=0 success=0 seconds=0.010015864 reason=ik_flip_230_iteration limit
+rigid_cache dev_tilt repeat=0 success=0 seconds=0.008919839 reason=ik_flip_230_iteration limit
+baseline dev_tilt repeat=0 success=0 seconds=0.01311852 reason=ik_flip_230_iteration limit
+full_step dev_tilt repeat=0 success=0 seconds=0.002518824 reason=ik_flip_230_no descending feasible step
+reduced_5d dev_tilt repeat=0 success=0 seconds=0.01031109 reason=ik_flip_230_iteration limit
+adaptive_lm dev_tilt repeat=0 success=0 seconds=0.002610953 reason=ik_flip_230_no descending feasible step
+sparse_adaptive dev_qzero repeat=0 success=1 seconds=0.84814797 reason=validated
+atlas dev_qzero repeat=0 success=1 seconds=0.49968475 reason=validated
+bounded_qp dev_qzero repeat=0 success=1 seconds=0.49908692 reason=validated
+rigid_cache dev_qzero repeat=0 success=1 seconds=0.23564518 reason=validated
+baseline dev_qzero repeat=0 success=1 seconds=0.50614271 reason=validated
+full_step dev_qzero repeat=0 success=1 seconds=0.49936454 reason=validated
+reduced_5d dev_qzero repeat=0 success=1 seconds=0.50010178 reason=validated
+adaptive_lm dev_qzero repeat=0 success=1 seconds=0.50091458 reason=validated
+predictor dev_qzero repeat=0 success=1 seconds=0.49989991 reason=validated
+atlas confirm_qpos repeat=0 success=0 seconds=0.039684035 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+bounded_qp confirm_qpos repeat=0 success=0 seconds=0.039877587 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+rigid_cache confirm_qpos repeat=0 success=0 seconds=0.027816765 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+baseline confirm_qpos repeat=0 success=0 seconds=0.056930528 reason=collision_approach_13_j2_link_visual/collision_arm_j4_link_part_5_d=0.000996
+full_step confirm_qpos repeat=0 success=0 seconds=0.039799769 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+reduced_5d confirm_qpos repeat=0 success=0 seconds=0.039850136 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+adaptive_lm confirm_qpos repeat=0 success=0 seconds=0.03978648 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+predictor confirm_qpos repeat=0 success=0 seconds=0.039818609 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+sparse_adaptive confirm_qpos repeat=0 success=0 seconds=0.005445363 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+bounded_qp confirm_qneg repeat=0 success=1 seconds=0.75056527 reason=validated
+rigid_cache confirm_qneg repeat=0 success=1 seconds=0.32713752 reason=validated
+baseline confirm_qneg repeat=0 success=1 seconds=0.76797566 reason=validated
+full_step confirm_qneg repeat=0 success=1 seconds=0.75511494 reason=validated
+reduced_5d confirm_qneg repeat=0 success=1 seconds=0.7548154 reason=validated
+adaptive_lm confirm_qneg repeat=0 success=1 seconds=0.75453638 reason=validated
+predictor confirm_qneg repeat=0 success=1 seconds=0.75332405 reason=validated
+sparse_adaptive confirm_qneg repeat=0 success=1 seconds=1.2639188 reason=validated
+atlas confirm_qneg repeat=0 success=1 seconds=0.75527569 reason=validated
+rigid_cache confirm_high repeat=0 success=0 seconds=0.023517633 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+baseline confirm_high repeat=0 success=0 seconds=0.045622232 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.001000
+full_step confirm_high repeat=0 success=0 seconds=0.033150519 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+reduced_5d confirm_high repeat=0 success=0 seconds=0.033113854 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+adaptive_lm confirm_high repeat=0 success=0 seconds=0.033124961 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+predictor confirm_high repeat=0 success=0 seconds=0.033037758 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+sparse_adaptive confirm_high repeat=0 success=0 seconds=0.005231851 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_high repeat=0 success=0 seconds=0.032969666 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+bounded_qp confirm_high repeat=0 success=0 seconds=0.033233014 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+baseline confirm_left repeat=0 success=0 seconds=0.040914313 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000984
+full_step confirm_left repeat=0 success=0 seconds=0.027479546 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+reduced_5d confirm_left repeat=0 success=0 seconds=0.027507307 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+adaptive_lm confirm_left repeat=0 success=0 seconds=0.02744257 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+predictor confirm_left repeat=0 success=0 seconds=0.027358623 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+sparse_adaptive confirm_left repeat=0 success=0 seconds=0.00429798 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_left repeat=0 success=0 seconds=0.027338533 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+bounded_qp confirm_left repeat=0 success=0 seconds=0.027544814 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+rigid_cache confirm_left repeat=0 success=0 seconds=0.019439745 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+full_step confirm_right repeat=0 success=1 seconds=0.72634157 reason=validated
+reduced_5d confirm_right repeat=0 success=1 seconds=0.72635285 reason=validated
+adaptive_lm confirm_right repeat=0 success=1 seconds=0.72426581 reason=validated
+predictor confirm_right repeat=0 success=1 seconds=0.72616128 reason=validated
+sparse_adaptive confirm_right repeat=0 success=1 seconds=1.2725159 reason=validated
+atlas confirm_right repeat=0 success=1 seconds=0.74263073 reason=validated
+bounded_qp confirm_right repeat=0 success=1 seconds=0.72612337 reason=validated
+rigid_cache confirm_right repeat=0 success=1 seconds=0.35411943 reason=validated
+baseline confirm_right repeat=0 success=1 seconds=0.73755517 reason=validated
+reduced_5d confirm_tilt repeat=0 success=0 seconds=0.009344561 reason=ik_flip_230_iteration limit
+adaptive_lm confirm_tilt repeat=0 success=0 seconds=0.002698445 reason=ik_flip_230_no descending feasible step
+predictor confirm_tilt repeat=0 success=0 seconds=0.009613567 reason=ik_flip_230_iteration limit
+sparse_adaptive confirm_tilt repeat=0 success=0 seconds=0.008031408 reason=ik_flip_44_iteration limit
+atlas confirm_tilt repeat=0 success=0 seconds=0.009660218 reason=ik_flip_230_iteration limit
+bounded_qp confirm_tilt repeat=0 success=0 seconds=0.009154694 reason=ik_flip_230_iteration limit
+rigid_cache confirm_tilt repeat=0 success=0 seconds=0.009433676 reason=ik_flip_230_iteration limit
+baseline confirm_tilt repeat=0 success=0 seconds=0.01307193 reason=ik_flip_230_iteration limit
+full_step confirm_tilt repeat=0 success=0 seconds=0.002586245 reason=ik_flip_230_no descending feasible step
+adaptive_lm confirm_roll repeat=0 success=1 seconds=0.62239977 reason=validated
+predictor confirm_roll repeat=0 success=1 seconds=0.62251723 reason=validated
+sparse_adaptive confirm_roll repeat=0 success=1 seconds=1.1311507 reason=validated
+atlas confirm_roll repeat=0 success=1 seconds=0.60734598 reason=validated
+bounded_qp confirm_roll repeat=0 success=1 seconds=0.62265864 reason=validated
+rigid_cache confirm_roll repeat=0 success=1 seconds=0.29555861 reason=validated
+baseline confirm_roll repeat=0 success=1 seconds=0.63499067 reason=validated
+full_step confirm_roll repeat=0 success=1 seconds=0.62104539 reason=validated
+reduced_5d confirm_roll repeat=0 success=1 seconds=0.62106375 reason=validated
+predictor confirm_mixed repeat=0 success=1 seconds=0.79202324 reason=validated
+sparse_adaptive confirm_mixed repeat=0 success=1 seconds=1.400568 reason=validated
+atlas confirm_mixed repeat=0 success=1 seconds=0.79815497 reason=validated
+bounded_qp confirm_mixed repeat=0 success=1 seconds=0.79177458 reason=validated
+rigid_cache confirm_mixed repeat=0 success=1 seconds=0.37835263 reason=validated
+baseline confirm_mixed repeat=0 success=1 seconds=0.8028628 reason=validated
+full_step confirm_mixed repeat=0 success=1 seconds=0.79124711 reason=validated
+reduced_5d confirm_mixed repeat=0 success=1 seconds=0.79192522 reason=validated
+adaptive_lm confirm_mixed repeat=0 success=1 seconds=0.79122494 reason=validated
+sparse_adaptive confirm_top repeat=0 success=0 seconds=0.007226202 reason=ik_flip_56_iteration limit
+atlas confirm_top repeat=0 success=0 seconds=0.0094237 reason=ik_flip_304_iteration limit
+bounded_qp confirm_top repeat=0 success=0 seconds=0.009440747 reason=ik_flip_304_iteration limit
+rigid_cache confirm_top repeat=0 success=0 seconds=0.009226262 reason=ik_flip_304_iteration limit
+baseline confirm_top repeat=0 success=0 seconds=0.015160223 reason=ik_flip_304_iteration limit
+full_step confirm_top repeat=0 success=0 seconds=0.00293327 reason=ik_flip_304_no descending feasible step
+reduced_5d confirm_top repeat=0 success=0 seconds=0.009349117 reason=ik_flip_304_iteration limit
+adaptive_lm confirm_top repeat=0 success=0 seconds=0.002941952 reason=ik_flip_304_no descending feasible step
+predictor confirm_top repeat=0 success=0 seconds=0.009335327 reason=ik_flip_304_iteration limit
+atlas confirm_yaw_pos repeat=0 success=0 seconds=0.022455971 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+bounded_qp confirm_yaw_pos repeat=0 success=0 seconds=0.022809584 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+rigid_cache confirm_yaw_pos repeat=0 success=0 seconds=0.016121174 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+baseline confirm_yaw_pos repeat=0 success=0 seconds=0.035909936 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000961
+full_step confirm_yaw_pos repeat=0 success=0 seconds=0.022622222 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+reduced_5d confirm_yaw_pos repeat=0 success=0 seconds=0.022648891 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+adaptive_lm confirm_yaw_pos repeat=0 success=0 seconds=0.022626197 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+predictor confirm_yaw_pos repeat=0 success=0 seconds=0.0223961 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+sparse_adaptive confirm_yaw_pos repeat=0 success=0 seconds=0.003314685 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+bounded_qp confirm_yaw_neg repeat=0 success=0 seconds=0.34342039 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+rigid_cache confirm_yaw_neg repeat=0 success=0 seconds=0.21795643 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+baseline confirm_yaw_neg repeat=0 success=0 seconds=0.35969742 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000725
+full_step confirm_yaw_neg repeat=0 success=0 seconds=0.34408965 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+reduced_5d confirm_yaw_neg repeat=0 success=0 seconds=0.3452222 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+adaptive_lm confirm_yaw_neg repeat=0 success=0 seconds=0.34345523 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000897
+predictor confirm_yaw_neg repeat=0 success=0 seconds=0.34396084 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+sparse_adaptive confirm_yaw_neg repeat=0 success=0 seconds=0.028497944 reason=collision_coarse_insert_j5_link_visual/collision_core_shell
+atlas confirm_yaw_neg repeat=0 success=0 seconds=0.34637985 reason=collision_lift_121_j5_link_visual/collision_core_shell_d=0.001000
+rigid_cache confirm_roll_limit repeat=0 success=1 seconds=0.27587932 reason=validated
+baseline confirm_roll_limit repeat=0 success=1 seconds=0.5719132 reason=validated
+full_step confirm_roll_limit repeat=0 success=1 seconds=0.56145895 reason=validated
+reduced_5d confirm_roll_limit repeat=0 success=1 seconds=0.56151424 reason=validated
+adaptive_lm confirm_roll_limit repeat=0 success=1 seconds=0.56157887 reason=validated
+predictor confirm_roll_limit repeat=0 success=1 seconds=0.56325274 reason=validated
+sparse_adaptive confirm_roll_limit repeat=0 success=1 seconds=0.99790458 reason=validated
+atlas confirm_roll_limit repeat=0 success=1 seconds=0.5339007 reason=validated
+bounded_qp confirm_roll_limit repeat=0 success=1 seconds=0.562429 reason=validated
+baseline confirm_ymin repeat=0 success=1 seconds=0.66437042 reason=validated
+full_step confirm_ymin repeat=0 success=1 seconds=0.65073826 reason=validated
+reduced_5d confirm_ymin repeat=0 success=1 seconds=0.65265626 reason=validated
+adaptive_lm confirm_ymin repeat=0 success=1 seconds=0.65360224 reason=validated
+predictor confirm_ymin repeat=0 success=1 seconds=0.6547634 reason=validated
+sparse_adaptive confirm_ymin repeat=0 success=1 seconds=1.1060042 reason=validated
+atlas confirm_ymin repeat=0 success=1 seconds=0.65938528 reason=validated
+bounded_qp confirm_ymin repeat=0 success=1 seconds=0.65163536 reason=validated
+rigid_cache confirm_ymin repeat=0 success=1 seconds=0.32056202 reason=validated
+full_step confirm_ymax repeat=0 success=0 seconds=0.025279985 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+reduced_5d confirm_ymax repeat=0 success=0 seconds=0.025267916 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+adaptive_lm confirm_ymax repeat=0 success=0 seconds=0.025315148 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+predictor confirm_ymax repeat=0 success=0 seconds=0.025148115 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+sparse_adaptive confirm_ymax repeat=0 success=0 seconds=0.004323268 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_ymax repeat=0 success=0 seconds=0.025019632 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+bounded_qp confirm_ymax repeat=0 success=0 seconds=0.025379996 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+rigid_cache confirm_ymax repeat=0 success=0 seconds=0.018166323 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+baseline confirm_ymax repeat=0 success=0 seconds=0.038540218 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000998
+reduced_5d reject_unreachable repeat=0 success=0 seconds=0.008699657 reason=ik_approach_168_iteration limit
+adaptive_lm reject_unreachable repeat=0 success=0 seconds=0.002214233 reason=ik_approach_168_no descending feasible step
+predictor reject_unreachable repeat=0 success=0 seconds=0.009215015 reason=ik_approach_168_iteration limit
+sparse_adaptive reject_unreachable repeat=0 success=0 seconds=0.008216507 reason=ik_approach_29_iteration limit
+atlas reject_unreachable repeat=0 success=0 seconds=0.008698034 reason=ik_approach_168_iteration limit
+bounded_qp reject_unreachable repeat=0 success=0 seconds=0.008502049 reason=ik_approach_168_iteration limit
+rigid_cache reject_unreachable repeat=0 success=0 seconds=0.009145711 reason=ik_approach_168_iteration limit
+baseline reject_unreachable repeat=0 success=0 seconds=0.008038459 reason=ik_approach_168_iteration limit
+full_step reject_unreachable repeat=0 success=0 seconds=0.00227781 reason=ik_approach_168_no descending feasible step
+adaptive_lm reject_blocked repeat=0 success=0 seconds=0.000979469 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+predictor reject_blocked repeat=0 success=0 seconds=0.000981021 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+sparse_adaptive reject_blocked repeat=0 success=0 seconds=0.000979349 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+atlas reject_blocked repeat=0 success=0 seconds=0.000983135 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+bounded_qp reject_blocked repeat=0 success=0 seconds=0.000978879 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+rigid_cache reject_blocked repeat=0 success=0 seconds=0.000869853 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+baseline reject_blocked repeat=0 success=0 seconds=0.000977747 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+full_step reject_blocked repeat=0 success=0 seconds=0.000976224 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+reduced_5d reject_blocked repeat=0 success=0 seconds=0.000978227 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+predictor reject_front_plane repeat=0 success=0 seconds=9.845e-06 reason=invalid_station_front_plane
+sparse_adaptive reject_front_plane repeat=0 success=0 seconds=9.113e-06 reason=invalid_station_front_plane
+atlas reject_front_plane repeat=0 success=0 seconds=9.124e-06 reason=invalid_station_front_plane
+bounded_qp reject_front_plane repeat=0 success=0 seconds=9.504e-06 reason=invalid_station_front_plane
+rigid_cache reject_front_plane repeat=0 success=0 seconds=9.044e-06 reason=invalid_station_front_plane
+baseline reject_front_plane repeat=0 success=0 seconds=9.094e-06 reason=invalid_station_front_plane
+full_step reject_front_plane repeat=0 success=0 seconds=9.034e-06 reason=invalid_station_front_plane
+reduced_5d reject_front_plane repeat=0 success=0 seconds=9.074e-06 reason=invalid_station_front_plane
+adaptive_lm reject_front_plane repeat=0 success=0 seconds=9.054e-06 reason=invalid_station_front_plane
+full_step dev_nominal repeat=1 success=1 seconds=0.54074344 reason=validated
+reduced_5d dev_nominal repeat=1 success=1 seconds=0.54039917 reason=validated
+adaptive_lm dev_nominal repeat=1 success=1 seconds=0.54181494 reason=validated
+predictor dev_nominal repeat=1 success=1 seconds=0.54274685 reason=validated
+sparse_adaptive dev_nominal repeat=1 success=1 seconds=1.13409 reason=validated
+atlas dev_nominal repeat=1 success=1 seconds=0.54045572 reason=validated
+bounded_qp dev_nominal repeat=1 success=1 seconds=0.54139417 reason=validated
+rigid_cache dev_nominal repeat=1 success=1 seconds=0.24540063 reason=validated
+baseline dev_nominal repeat=1 success=1 seconds=0.55326403 reason=validated
+reduced_5d dev_low repeat=1 success=1 seconds=0.57659049 reason=validated
+adaptive_lm dev_low repeat=1 success=1 seconds=0.57733974 reason=validated
+predictor dev_low repeat=1 success=1 seconds=0.5772964 reason=validated
+sparse_adaptive dev_low repeat=1 success=1 seconds=1.144538 reason=validated
+atlas dev_low repeat=1 success=1 seconds=0.57771211 reason=validated
+bounded_qp dev_low repeat=1 success=1 seconds=0.57755027 reason=validated
+rigid_cache dev_low repeat=1 success=1 seconds=0.25145206 reason=validated
+baseline dev_low repeat=1 success=1 seconds=0.58922741 reason=validated
+full_step dev_low repeat=1 success=1 seconds=0.57646155 reason=validated
+adaptive_lm dev_yaw repeat=1 success=0 seconds=0.025820151 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+predictor dev_yaw repeat=1 success=0 seconds=0.025544845 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+sparse_adaptive dev_yaw repeat=1 success=0 seconds=0.00333775 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas dev_yaw repeat=1 success=0 seconds=0.025458464 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+bounded_qp dev_yaw repeat=1 success=0 seconds=0.025824357 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+rigid_cache dev_yaw repeat=1 success=0 seconds=0.018206613 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+baseline dev_yaw repeat=1 success=0 seconds=0.040129498 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000959
+full_step dev_yaw repeat=1 success=0 seconds=0.025695152 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+reduced_5d dev_yaw repeat=1 success=0 seconds=0.025731166 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+predictor dev_roll repeat=1 success=1 seconds=0.71338062 reason=validated
+sparse_adaptive dev_roll repeat=1 success=1 seconds=1.2964344 reason=validated
+atlas dev_roll repeat=1 success=1 seconds=0.71207657 reason=validated
+bounded_qp dev_roll repeat=1 success=1 seconds=0.71386268 reason=validated
+rigid_cache dev_roll repeat=1 success=1 seconds=0.34337235 reason=validated
+baseline dev_roll repeat=1 success=1 seconds=0.72728219 reason=validated
+full_step dev_roll repeat=1 success=1 seconds=0.71314103 reason=validated
+reduced_5d dev_roll repeat=1 success=1 seconds=0.71460857 reason=validated
+adaptive_lm dev_roll repeat=1 success=1 seconds=0.71366612 reason=validated
+sparse_adaptive dev_tilt repeat=1 success=0 seconds=0.008288356 reason=ik_flip_44_iteration limit
+atlas dev_tilt repeat=1 success=0 seconds=0.009095345 reason=ik_flip_230_iteration limit
+bounded_qp dev_tilt repeat=1 success=0 seconds=0.009914823 reason=ik_flip_230_iteration limit
+rigid_cache dev_tilt repeat=1 success=0 seconds=0.008858677 reason=ik_flip_230_iteration limit
+baseline dev_tilt repeat=1 success=0 seconds=0.012931648 reason=ik_flip_230_iteration limit
+full_step dev_tilt repeat=1 success=0 seconds=0.002500566 reason=ik_flip_230_no descending feasible step
+reduced_5d dev_tilt repeat=1 success=0 seconds=0.010212441 reason=ik_flip_230_iteration limit
+adaptive_lm dev_tilt repeat=1 success=0 seconds=0.002606296 reason=ik_flip_230_no descending feasible step
+predictor dev_tilt repeat=1 success=0 seconds=0.00902629 reason=ik_flip_230_iteration limit
+atlas dev_qzero repeat=1 success=1 seconds=0.49941637 reason=validated
+bounded_qp dev_qzero repeat=1 success=1 seconds=0.50044306 reason=validated
+rigid_cache dev_qzero repeat=1 success=1 seconds=0.23594677 reason=validated
+baseline dev_qzero repeat=1 success=1 seconds=0.50698613 reason=validated
+full_step dev_qzero repeat=1 success=1 seconds=0.49983891 reason=validated
+reduced_5d dev_qzero repeat=1 success=1 seconds=0.49892036 reason=validated
+adaptive_lm dev_qzero repeat=1 success=1 seconds=0.49952858 reason=validated
+predictor dev_qzero repeat=1 success=1 seconds=0.50106419 reason=validated
+sparse_adaptive dev_qzero repeat=1 success=1 seconds=0.8501811 reason=validated
+bounded_qp confirm_qpos repeat=1 success=0 seconds=0.040104921 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+rigid_cache confirm_qpos repeat=1 success=0 seconds=0.028035806 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+baseline confirm_qpos repeat=1 success=0 seconds=0.057098043 reason=collision_approach_13_j2_link_visual/collision_arm_j4_link_part_5_d=0.000996
+full_step confirm_qpos repeat=1 success=0 seconds=0.039981616 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+reduced_5d confirm_qpos repeat=1 success=0 seconds=0.039923077 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+adaptive_lm confirm_qpos repeat=1 success=0 seconds=0.039915465 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+predictor confirm_qpos repeat=1 success=0 seconds=0.039869406 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+sparse_adaptive confirm_qpos repeat=1 success=0 seconds=0.005458954 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_qpos repeat=1 success=0 seconds=0.039749905 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+rigid_cache confirm_qneg repeat=1 success=1 seconds=0.32606638 reason=validated
+baseline confirm_qneg repeat=1 success=1 seconds=0.76409025 reason=validated
+full_step confirm_qneg repeat=1 success=1 seconds=0.7510477 reason=validated
+reduced_5d confirm_qneg repeat=1 success=1 seconds=0.74986802 reason=validated
+adaptive_lm confirm_qneg repeat=1 success=1 seconds=0.75061329 reason=validated
+predictor confirm_qneg repeat=1 success=1 seconds=0.75009897 reason=validated
+sparse_adaptive confirm_qneg repeat=1 success=1 seconds=1.2617666 reason=validated
+atlas confirm_qneg repeat=1 success=1 seconds=0.75419247 reason=validated
+bounded_qp confirm_qneg repeat=1 success=1 seconds=0.75125857 reason=validated
+baseline confirm_high repeat=1 success=0 seconds=0.045550665 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.001000
+full_step confirm_high repeat=1 success=0 seconds=0.033065241 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+reduced_5d confirm_high repeat=1 success=0 seconds=0.033026973 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+adaptive_lm confirm_high repeat=1 success=0 seconds=0.033085351 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+predictor confirm_high repeat=1 success=0 seconds=0.032970207 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+sparse_adaptive confirm_high repeat=1 success=0 seconds=0.005243428 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_high repeat=1 success=0 seconds=0.034681672 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+bounded_qp confirm_high repeat=1 success=0 seconds=0.033079643 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+rigid_cache confirm_high repeat=1 success=0 seconds=0.023527699 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+full_step confirm_left repeat=1 success=0 seconds=0.027365133 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+reduced_5d confirm_left repeat=1 success=0 seconds=0.027348168 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+adaptive_lm confirm_left repeat=1 success=0 seconds=0.027379495 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+predictor confirm_left repeat=1 success=0 seconds=0.02723668 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+sparse_adaptive confirm_left repeat=1 success=0 seconds=0.004268976 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_left repeat=1 success=0 seconds=0.027241046 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+bounded_qp confirm_left repeat=1 success=0 seconds=0.027425445 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+rigid_cache confirm_left repeat=1 success=0 seconds=0.019387937 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+baseline confirm_left repeat=1 success=0 seconds=0.040618127 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000984
+reduced_5d confirm_right repeat=1 success=1 seconds=0.72358314 reason=validated
+adaptive_lm confirm_right repeat=1 success=1 seconds=0.72367656 reason=validated
+predictor confirm_right repeat=1 success=1 seconds=0.72326926 reason=validated
+sparse_adaptive confirm_right repeat=1 success=1 seconds=1.2681072 reason=validated
+atlas confirm_right repeat=1 success=1 seconds=0.74269958 reason=validated
+bounded_qp confirm_right repeat=1 success=1 seconds=0.72535726 reason=validated
+rigid_cache confirm_right repeat=1 success=1 seconds=0.35461934 reason=validated
+baseline confirm_right repeat=1 success=1 seconds=0.73701225 reason=validated
+full_step confirm_right repeat=1 success=1 seconds=0.72424362 reason=validated
+adaptive_lm confirm_tilt repeat=1 success=0 seconds=0.002763784 reason=ik_flip_230_no descending feasible step
+predictor confirm_tilt repeat=1 success=0 seconds=0.009566667 reason=ik_flip_230_iteration limit
+sparse_adaptive confirm_tilt repeat=1 success=0 seconds=0.008048794 reason=ik_flip_44_iteration limit
+atlas confirm_tilt repeat=1 success=0 seconds=0.009669612 reason=ik_flip_230_iteration limit
+bounded_qp confirm_tilt repeat=1 success=0 seconds=0.009127383 reason=ik_flip_230_iteration limit
+rigid_cache confirm_tilt repeat=1 success=0 seconds=0.009408227 reason=ik_flip_230_iteration limit
+baseline confirm_tilt repeat=1 success=0 seconds=0.012918358 reason=ik_flip_230_iteration limit
+full_step confirm_tilt repeat=1 success=0 seconds=0.002562189 reason=ik_flip_230_no descending feasible step
+reduced_5d confirm_tilt repeat=1 success=0 seconds=0.009139441 reason=ik_flip_230_iteration limit
+predictor confirm_roll repeat=1 success=1 seconds=0.62137709 reason=validated
+sparse_adaptive confirm_roll repeat=1 success=1 seconds=1.1312403 reason=validated
+atlas confirm_roll repeat=1 success=1 seconds=0.6075387 reason=validated
+bounded_qp confirm_roll repeat=1 success=1 seconds=0.62249341 reason=validated
+rigid_cache confirm_roll repeat=1 success=1 seconds=0.29617849 reason=validated
+baseline confirm_roll repeat=1 success=1 seconds=0.63506537 reason=validated
+full_step confirm_roll repeat=1 success=1 seconds=0.62358253 reason=validated
+reduced_5d confirm_roll repeat=1 success=1 seconds=0.62274043 reason=validated
+adaptive_lm confirm_roll repeat=1 success=1 seconds=0.62310466 reason=validated
+sparse_adaptive confirm_mixed repeat=1 success=1 seconds=1.400636 reason=validated
+atlas confirm_mixed repeat=1 success=1 seconds=0.79879546 reason=validated
+bounded_qp confirm_mixed repeat=1 success=1 seconds=0.79172874 reason=validated
+rigid_cache confirm_mixed repeat=1 success=1 seconds=0.37849538 reason=validated
+baseline confirm_mixed repeat=1 success=1 seconds=0.80677703 reason=validated
+full_step confirm_mixed repeat=1 success=1 seconds=0.79456415 reason=validated
+reduced_5d confirm_mixed repeat=1 success=1 seconds=0.79472235 reason=validated
+adaptive_lm confirm_mixed repeat=1 success=1 seconds=0.79227152 reason=validated
+predictor confirm_mixed repeat=1 success=1 seconds=0.79759834 reason=validated
+atlas confirm_top repeat=1 success=0 seconds=0.009452343 reason=ik_flip_304_iteration limit
+bounded_qp confirm_top repeat=1 success=0 seconds=0.009391883 reason=ik_flip_304_iteration limit
+rigid_cache confirm_top repeat=1 success=0 seconds=0.009220664 reason=ik_flip_304_iteration limit
+baseline confirm_top repeat=1 success=0 seconds=0.015111179 reason=ik_flip_304_iteration limit
+full_step confirm_top repeat=1 success=0 seconds=0.002947561 reason=ik_flip_304_no descending feasible step
+reduced_5d confirm_top repeat=1 success=0 seconds=0.009318853 reason=ik_flip_304_iteration limit
+adaptive_lm confirm_top repeat=1 success=0 seconds=0.002966439 reason=ik_flip_304_no descending feasible step
+predictor confirm_top repeat=1 success=0 seconds=0.009277479 reason=ik_flip_304_iteration limit
+sparse_adaptive confirm_top repeat=1 success=0 seconds=0.007155485 reason=ik_flip_56_iteration limit
+bounded_qp confirm_yaw_pos repeat=1 success=0 seconds=0.022856896 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+rigid_cache confirm_yaw_pos repeat=1 success=0 seconds=0.016167765 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+baseline confirm_yaw_pos repeat=1 success=0 seconds=0.035908395 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000961
+full_step confirm_yaw_pos repeat=1 success=0 seconds=0.022696624 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+reduced_5d confirm_yaw_pos repeat=1 success=0 seconds=0.022705708 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+adaptive_lm confirm_yaw_pos repeat=1 success=0 seconds=0.022685537 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+predictor confirm_yaw_pos repeat=1 success=0 seconds=0.022472896 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+sparse_adaptive confirm_yaw_pos repeat=1 success=0 seconds=0.003334295 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_yaw_pos repeat=1 success=0 seconds=0.022372043 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+rigid_cache confirm_yaw_neg repeat=1 success=0 seconds=0.21871335 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+baseline confirm_yaw_neg repeat=1 success=0 seconds=0.36140547 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000725
+full_step confirm_yaw_neg repeat=1 success=0 seconds=0.34497843 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+reduced_5d confirm_yaw_neg repeat=1 success=0 seconds=0.34519108 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+adaptive_lm confirm_yaw_neg repeat=1 success=0 seconds=0.34492721 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000897
+predictor confirm_yaw_neg repeat=1 success=0 seconds=0.34460145 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+sparse_adaptive confirm_yaw_neg repeat=1 success=0 seconds=0.028652197 reason=collision_coarse_insert_j5_link_visual/collision_core_shell
+atlas confirm_yaw_neg repeat=1 success=0 seconds=0.34682802 reason=collision_lift_121_j5_link_visual/collision_core_shell_d=0.001000
+bounded_qp confirm_yaw_neg repeat=1 success=0 seconds=0.34484203 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+baseline confirm_roll_limit repeat=1 success=1 seconds=0.5714424 reason=validated
+full_step confirm_roll_limit repeat=1 success=1 seconds=0.56168267 reason=validated
+reduced_5d confirm_roll_limit repeat=1 success=1 seconds=0.56317368 reason=validated
+adaptive_lm confirm_roll_limit repeat=1 success=1 seconds=0.56312842 reason=validated
+predictor confirm_roll_limit repeat=1 success=1 seconds=0.56140512 reason=validated
+sparse_adaptive confirm_roll_limit repeat=1 success=1 seconds=0.99467527 reason=validated
+atlas confirm_roll_limit repeat=1 success=1 seconds=0.53335626 reason=validated
+bounded_qp confirm_roll_limit repeat=1 success=1 seconds=0.56268934 reason=validated
+rigid_cache confirm_roll_limit repeat=1 success=1 seconds=0.27660824 reason=validated
+full_step confirm_ymin repeat=1 success=1 seconds=0.65212251 reason=validated
+reduced_5d confirm_ymin repeat=1 success=1 seconds=0.65216633 reason=validated
+adaptive_lm confirm_ymin repeat=1 success=1 seconds=0.65186567 reason=validated
+predictor confirm_ymin repeat=1 success=1 seconds=0.65093937 reason=validated
+sparse_adaptive confirm_ymin repeat=1 success=1 seconds=1.103689 reason=validated
+atlas confirm_ymin repeat=1 success=1 seconds=0.65854423 reason=validated
+bounded_qp confirm_ymin repeat=1 success=1 seconds=0.65189345 reason=validated
+rigid_cache confirm_ymin repeat=1 success=1 seconds=0.32087619 reason=validated
+baseline confirm_ymin repeat=1 success=1 seconds=0.66631694 reason=validated
+reduced_5d confirm_ymax repeat=1 success=0 seconds=0.025233875 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+adaptive_lm confirm_ymax repeat=1 success=0 seconds=0.025272915 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+predictor confirm_ymax repeat=1 success=0 seconds=0.025154225 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+sparse_adaptive confirm_ymax repeat=1 success=0 seconds=0.004323499 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_ymax repeat=1 success=0 seconds=0.025080043 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+bounded_qp confirm_ymax repeat=1 success=0 seconds=0.025306145 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+rigid_cache confirm_ymax repeat=1 success=0 seconds=0.018149067 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+baseline confirm_ymax repeat=1 success=0 seconds=0.038517084 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000998
+full_step confirm_ymax repeat=1 success=0 seconds=0.025226644 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+adaptive_lm reject_unreachable repeat=1 success=0 seconds=0.002242467 reason=ik_approach_168_no descending feasible step
+predictor reject_unreachable repeat=1 success=0 seconds=0.009156607 reason=ik_approach_168_iteration limit
+sparse_adaptive reject_unreachable repeat=1 success=0 seconds=0.008223798 reason=ik_approach_29_iteration limit
+atlas reject_unreachable repeat=1 success=0 seconds=0.008661049 reason=ik_approach_168_iteration limit
+bounded_qp reject_unreachable repeat=1 success=0 seconds=0.008480416 reason=ik_approach_168_iteration limit
+rigid_cache reject_unreachable repeat=1 success=0 seconds=0.009106612 reason=ik_approach_168_iteration limit
+baseline reject_unreachable repeat=1 success=0 seconds=0.007998448 reason=ik_approach_168_iteration limit
+full_step reject_unreachable repeat=1 success=0 seconds=0.002268486 reason=ik_approach_168_no descending feasible step
+reduced_5d reject_unreachable repeat=1 success=0 seconds=0.008623312 reason=ik_approach_168_iteration limit
+predictor reject_blocked repeat=1 success=0 seconds=0.000984727 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+sparse_adaptive reject_blocked repeat=1 success=0 seconds=0.000977166 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+atlas reject_blocked repeat=1 success=0 seconds=0.00097321 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+bounded_qp reject_blocked repeat=1 success=0 seconds=0.000976013 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+rigid_cache reject_blocked repeat=1 success=0 seconds=0.000864105 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+baseline reject_blocked repeat=1 success=0 seconds=0.000971227 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+full_step reject_blocked repeat=1 success=0 seconds=0.000974812 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+reduced_5d reject_blocked repeat=1 success=0 seconds=0.00098073 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+adaptive_lm reject_blocked repeat=1 success=0 seconds=0.000977036 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+sparse_adaptive reject_front_plane repeat=1 success=0 seconds=1.0586e-05 reason=invalid_station_front_plane
+atlas reject_front_plane repeat=1 success=0 seconds=9.004e-06 reason=invalid_station_front_plane
+bounded_qp reject_front_plane repeat=1 success=0 seconds=9.014e-06 reason=invalid_station_front_plane
+rigid_cache reject_front_plane repeat=1 success=0 seconds=8.983e-06 reason=invalid_station_front_plane
+baseline reject_front_plane repeat=1 success=0 seconds=8.974e-06 reason=invalid_station_front_plane
+full_step reject_front_plane repeat=1 success=0 seconds=8.984e-06 reason=invalid_station_front_plane
+reduced_5d reject_front_plane repeat=1 success=0 seconds=8.954e-06 reason=invalid_station_front_plane
+adaptive_lm reject_front_plane repeat=1 success=0 seconds=9.023e-06 reason=invalid_station_front_plane
+predictor reject_front_plane repeat=1 success=0 seconds=9.054e-06 reason=invalid_station_front_plane
+reduced_5d dev_nominal repeat=2 success=1 seconds=0.54103008 reason=validated
+adaptive_lm dev_nominal repeat=2 success=1 seconds=0.54368741 reason=validated
+predictor dev_nominal repeat=2 success=1 seconds=0.54246824 reason=validated
+sparse_adaptive dev_nominal repeat=2 success=1 seconds=1.1345073 reason=validated
+atlas dev_nominal repeat=2 success=1 seconds=0.54184456 reason=validated
+bounded_qp dev_nominal repeat=2 success=1 seconds=0.54256366 reason=validated
+rigid_cache dev_nominal repeat=2 success=1 seconds=0.247741 reason=validated
+baseline dev_nominal repeat=2 success=1 seconds=0.55296261 reason=validated
+full_step dev_nominal repeat=2 success=1 seconds=0.5410639 reason=validated
+adaptive_lm dev_low repeat=2 success=1 seconds=0.57704578 reason=validated
+predictor dev_low repeat=2 success=1 seconds=0.57737816 reason=validated
+sparse_adaptive dev_low repeat=2 success=1 seconds=1.1408891 reason=validated
+atlas dev_low repeat=2 success=1 seconds=0.57615078 reason=validated
+bounded_qp dev_low repeat=2 success=1 seconds=0.58395606 reason=validated
+rigid_cache dev_low repeat=2 success=1 seconds=0.25339673 reason=validated
+baseline dev_low repeat=2 success=1 seconds=0.59014583 reason=validated
+full_step dev_low repeat=2 success=1 seconds=0.57894513 reason=validated
+reduced_5d dev_low repeat=2 success=1 seconds=0.57961142 reason=validated
+predictor dev_yaw repeat=2 success=0 seconds=0.025782073 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+sparse_adaptive dev_yaw repeat=2 success=0 seconds=0.003355116 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas dev_yaw repeat=2 success=0 seconds=0.02566094 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+bounded_qp dev_yaw repeat=2 success=0 seconds=0.026017479 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+rigid_cache dev_yaw repeat=2 success=0 seconds=0.018295507 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+baseline dev_yaw repeat=2 success=0 seconds=0.04024934 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000959
+full_step dev_yaw repeat=2 success=0 seconds=0.025954934 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+reduced_5d dev_yaw repeat=2 success=0 seconds=0.025890056 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+adaptive_lm dev_yaw repeat=2 success=0 seconds=0.025864848 reason=collision_approach_6_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+sparse_adaptive dev_roll repeat=2 success=1 seconds=1.3041486 reason=validated
+atlas dev_roll repeat=2 success=1 seconds=0.71638502 reason=validated
+bounded_qp dev_roll repeat=2 success=1 seconds=0.71698721 reason=validated
+rigid_cache dev_roll repeat=2 success=1 seconds=0.34476542 reason=validated
+baseline dev_roll repeat=2 success=1 seconds=0.72913431 reason=validated
+full_step dev_roll repeat=2 success=1 seconds=0.71424165 reason=validated
+reduced_5d dev_roll repeat=2 success=1 seconds=0.71467082 reason=validated
+adaptive_lm dev_roll repeat=2 success=1 seconds=0.714658 reason=validated
+predictor dev_roll repeat=2 success=1 seconds=0.71786774 reason=validated
+atlas dev_tilt repeat=2 success=0 seconds=0.009189366 reason=ik_flip_230_iteration limit
+bounded_qp dev_tilt repeat=2 success=0 seconds=0.009999591 reason=ik_flip_230_iteration limit
+rigid_cache dev_tilt repeat=2 success=0 seconds=0.008903495 reason=ik_flip_230_iteration limit
+baseline dev_tilt repeat=2 success=0 seconds=0.013048314 reason=ik_flip_230_iteration limit
+full_step dev_tilt repeat=2 success=0 seconds=0.002495569 reason=ik_flip_230_no descending feasible step
+reduced_5d dev_tilt repeat=2 success=0 seconds=0.010239132 reason=ik_flip_230_iteration limit
+adaptive_lm dev_tilt repeat=2 success=0 seconds=0.00260254 reason=ik_flip_230_no descending feasible step
+predictor dev_tilt repeat=2 success=0 seconds=0.008963185 reason=ik_flip_230_iteration limit
+sparse_adaptive dev_tilt repeat=2 success=0 seconds=0.008109606 reason=ik_flip_44_iteration limit
+bounded_qp dev_qzero repeat=2 success=1 seconds=0.50063433 reason=validated
+rigid_cache dev_qzero repeat=2 success=1 seconds=0.23558462 reason=validated
+baseline dev_qzero repeat=2 success=1 seconds=0.509512 reason=validated
+full_step dev_qzero repeat=2 success=1 seconds=0.50196748 reason=validated
+reduced_5d dev_qzero repeat=2 success=1 seconds=0.50026584 reason=validated
+adaptive_lm dev_qzero repeat=2 success=1 seconds=0.50176436 reason=validated
+predictor dev_qzero repeat=2 success=1 seconds=0.4997886 reason=validated
+sparse_adaptive dev_qzero repeat=2 success=1 seconds=0.8508311 reason=validated
+atlas dev_qzero repeat=2 success=1 seconds=0.50805349 reason=validated
+rigid_cache confirm_qpos repeat=2 success=0 seconds=0.028145152 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+baseline confirm_qpos repeat=2 success=0 seconds=0.057415533 reason=collision_approach_13_j2_link_visual/collision_arm_j4_link_part_5_d=0.000996
+full_step confirm_qpos repeat=2 success=0 seconds=0.04010376 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+reduced_5d confirm_qpos repeat=2 success=0 seconds=0.040174337 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+adaptive_lm confirm_qpos repeat=2 success=0 seconds=0.040270472 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+predictor confirm_qpos repeat=2 success=0 seconds=0.040155509 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+sparse_adaptive confirm_qpos repeat=2 success=0 seconds=0.005476079 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_qpos repeat=2 success=0 seconds=0.040040705 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+bounded_qp confirm_qpos repeat=2 success=0 seconds=0.040133686 reason=collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000999
+baseline confirm_qneg repeat=2 success=1 seconds=0.77143563 reason=validated
+full_step confirm_qneg repeat=2 success=1 seconds=0.75387497 reason=validated
+reduced_5d confirm_qneg repeat=2 success=1 seconds=0.75409343 reason=validated
+adaptive_lm confirm_qneg repeat=2 success=1 seconds=0.76077299 reason=validated
+predictor confirm_qneg repeat=2 success=1 seconds=0.75532919 reason=validated
+sparse_adaptive confirm_qneg repeat=2 success=1 seconds=1.268455 reason=validated
+atlas confirm_qneg repeat=2 success=1 seconds=0.75775929 reason=validated
+bounded_qp confirm_qneg repeat=2 success=1 seconds=0.7577353 reason=validated
+rigid_cache confirm_qneg repeat=2 success=1 seconds=0.32832786 reason=validated
+full_step confirm_high repeat=2 success=0 seconds=0.033207637 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+reduced_5d confirm_high repeat=2 success=0 seconds=0.033325024 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+adaptive_lm confirm_high repeat=2 success=0 seconds=0.033347778 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+predictor confirm_high repeat=2 success=0 seconds=0.033386566 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+sparse_adaptive confirm_high repeat=2 success=0 seconds=0.005267925 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_high repeat=2 success=0 seconds=0.033075217 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+bounded_qp confirm_high repeat=2 success=0 seconds=0.033361529 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+rigid_cache confirm_high repeat=2 success=0 seconds=0.023692077 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.000994
+baseline confirm_high repeat=2 success=0 seconds=0.045680382 reason=collision_approach_15_j2_link_visual/collision_arm_j4_link_part_5_d=0.001000
+reduced_5d confirm_left repeat=2 success=0 seconds=0.02754133 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+adaptive_lm confirm_left repeat=2 success=0 seconds=0.027447949 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+predictor confirm_left repeat=2 success=0 seconds=0.027454659 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+sparse_adaptive confirm_left repeat=2 success=0 seconds=0.00431811 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_left repeat=2 success=0 seconds=0.027315559 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+bounded_qp confirm_left repeat=2 success=0 seconds=0.027652177 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+rigid_cache confirm_left repeat=2 success=0 seconds=0.019441789 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+baseline confirm_left repeat=2 success=0 seconds=0.041047565 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000984
+full_step confirm_left repeat=2 success=0 seconds=0.02763422 reason=collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+adaptive_lm confirm_right repeat=2 success=1 seconds=0.72802122 reason=validated
+predictor confirm_right repeat=2 success=1 seconds=0.72648317 reason=validated
+sparse_adaptive confirm_right repeat=2 success=1 seconds=1.2743078 reason=validated
+atlas confirm_right repeat=2 success=1 seconds=0.74670775 reason=validated
+bounded_qp confirm_right repeat=2 success=1 seconds=0.72511098 reason=validated
+rigid_cache confirm_right repeat=2 success=1 seconds=0.35552518 reason=validated
+baseline confirm_right repeat=2 success=1 seconds=0.73978497 reason=validated
+full_step confirm_right repeat=2 success=1 seconds=0.72829904 reason=validated
+reduced_5d confirm_right repeat=2 success=1 seconds=0.7266357 reason=validated
+predictor confirm_tilt repeat=2 success=0 seconds=0.009663293 reason=ik_flip_230_iteration limit
+sparse_adaptive confirm_tilt repeat=2 success=0 seconds=0.00803267 reason=ik_flip_44_iteration limit
+atlas confirm_tilt repeat=2 success=0 seconds=0.009581008 reason=ik_flip_230_iteration limit
+bounded_qp confirm_tilt repeat=2 success=0 seconds=0.009126682 reason=ik_flip_230_iteration limit
+rigid_cache confirm_tilt repeat=2 success=0 seconds=0.009421417 reason=ik_flip_230_iteration limit
+baseline confirm_tilt repeat=2 success=0 seconds=0.013103667 reason=ik_flip_230_iteration limit
+full_step confirm_tilt repeat=2 success=0 seconds=0.002610022 reason=ik_flip_230_no descending feasible step
+reduced_5d confirm_tilt repeat=2 success=0 seconds=0.009259282 reason=ik_flip_230_iteration limit
+adaptive_lm confirm_tilt repeat=2 success=0 seconds=0.002708811 reason=ik_flip_230_no descending feasible step
+sparse_adaptive confirm_roll repeat=2 success=1 seconds=1.1352195 reason=validated
+atlas confirm_roll repeat=2 success=1 seconds=0.61187912 reason=validated
+bounded_qp confirm_roll repeat=2 success=1 seconds=0.62627576 reason=validated
+rigid_cache confirm_roll repeat=2 success=1 seconds=0.29646936 reason=validated
+baseline confirm_roll repeat=2 success=1 seconds=0.63761385 reason=validated
+full_step confirm_roll repeat=2 success=1 seconds=0.62462095 reason=validated
+reduced_5d confirm_roll repeat=2 success=1 seconds=0.62385533 reason=validated
+adaptive_lm confirm_roll repeat=2 success=1 seconds=0.62407662 reason=validated
+predictor confirm_roll repeat=2 success=1 seconds=0.624332 reason=validated
+atlas confirm_mixed repeat=2 success=1 seconds=0.80360109 reason=validated
+bounded_qp confirm_mixed repeat=2 success=1 seconds=0.79475728 reason=validated
+rigid_cache confirm_mixed repeat=2 success=1 seconds=0.37963119 reason=validated
+baseline confirm_mixed repeat=2 success=1 seconds=0.80631204 reason=validated
+full_step confirm_mixed repeat=2 success=1 seconds=0.79200256 reason=validated
+reduced_5d confirm_mixed repeat=2 success=1 seconds=0.79405044 reason=validated
+adaptive_lm confirm_mixed repeat=2 success=1 seconds=0.79145359 reason=validated
+predictor confirm_mixed repeat=2 success=1 seconds=0.79189897 reason=validated
+sparse_adaptive confirm_mixed repeat=2 success=1 seconds=1.4044834 reason=validated
+bounded_qp confirm_top repeat=2 success=0 seconds=0.009435048 reason=ik_flip_304_iteration limit
+rigid_cache confirm_top repeat=2 success=0 seconds=0.009169056 reason=ik_flip_304_iteration limit
+baseline confirm_top repeat=2 success=0 seconds=0.014994233 reason=ik_flip_304_iteration limit
+full_step confirm_top repeat=2 success=0 seconds=0.002950375 reason=ik_flip_304_no descending feasible step
+reduced_5d confirm_top repeat=2 success=0 seconds=0.00935015 reason=ik_flip_304_iteration limit
+adaptive_lm confirm_top repeat=2 success=0 seconds=0.002946429 reason=ik_flip_304_no descending feasible step
+predictor confirm_top repeat=2 success=0 seconds=0.009323439 reason=ik_flip_304_iteration limit
+sparse_adaptive confirm_top repeat=2 success=0 seconds=0.0071388 reason=ik_flip_56_iteration limit
+atlas confirm_top repeat=2 success=0 seconds=0.009298602 reason=ik_flip_304_iteration limit
+rigid_cache confirm_yaw_pos repeat=2 success=0 seconds=0.016075485 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+baseline confirm_yaw_pos repeat=2 success=0 seconds=0.035959061 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000961
+full_step confirm_yaw_pos repeat=2 success=0 seconds=0.022711837 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+reduced_5d confirm_yaw_pos repeat=2 success=0 seconds=0.022648752 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+adaptive_lm confirm_yaw_pos repeat=2 success=0 seconds=0.022690955 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+predictor confirm_yaw_pos repeat=2 success=0 seconds=0.022390792 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+sparse_adaptive confirm_yaw_pos repeat=2 success=0 seconds=0.003318982 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_yaw_pos repeat=2 success=0 seconds=0.022465835 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+bounded_qp confirm_yaw_pos repeat=2 success=0 seconds=0.022805819 reason=collision_approach_4_j2_link_visual/collision_arm_j4_link_part_5_d=0.000954
+baseline confirm_yaw_neg repeat=2 success=0 seconds=0.36058507 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000725
+full_step confirm_yaw_neg repeat=2 success=0 seconds=0.34526883 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+reduced_5d confirm_yaw_neg repeat=2 success=0 seconds=0.34525385 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+adaptive_lm confirm_yaw_neg repeat=2 success=0 seconds=0.34458849 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000897
+predictor confirm_yaw_neg repeat=2 success=0 seconds=0.34432241 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+sparse_adaptive confirm_yaw_neg repeat=2 success=0 seconds=0.028601701 reason=collision_coarse_insert_j5_link_visual/collision_core_shell
+atlas confirm_yaw_neg repeat=2 success=0 seconds=0.34595002 reason=collision_lift_121_j5_link_visual/collision_core_shell_d=0.001000
+bounded_qp confirm_yaw_neg repeat=2 success=0 seconds=0.3441126 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+rigid_cache confirm_yaw_neg repeat=2 success=0 seconds=0.21829322 reason=collision_lift_116_j5_link_visual/collision_core_shell_d=0.000892
+full_step confirm_roll_limit repeat=2 success=1 seconds=0.56216583 reason=validated
+reduced_5d confirm_roll_limit repeat=2 success=1 seconds=0.56271421 reason=validated
+adaptive_lm confirm_roll_limit repeat=2 success=1 seconds=0.56113014 reason=validated
+predictor confirm_roll_limit repeat=2 success=1 seconds=0.56212277 reason=validated
+sparse_adaptive confirm_roll_limit repeat=2 success=1 seconds=0.99725822 reason=validated
+atlas confirm_roll_limit repeat=2 success=1 seconds=0.53400672 reason=validated
+bounded_qp confirm_roll_limit repeat=2 success=1 seconds=0.56401153 reason=validated
+rigid_cache confirm_roll_limit repeat=2 success=1 seconds=0.27685216 reason=validated
+baseline confirm_roll_limit repeat=2 success=1 seconds=0.57248219 reason=validated
+reduced_5d confirm_ymin repeat=2 success=1 seconds=0.65118666 reason=validated
+adaptive_lm confirm_ymin repeat=2 success=1 seconds=0.65102618 reason=validated
+predictor confirm_ymin repeat=2 success=1 seconds=0.65071256 reason=validated
+sparse_adaptive confirm_ymin repeat=2 success=1 seconds=1.1038599 reason=validated
+atlas confirm_ymin repeat=2 success=1 seconds=0.65818217 reason=validated
+bounded_qp confirm_ymin repeat=2 success=1 seconds=0.65322544 reason=validated
+rigid_cache confirm_ymin repeat=2 success=1 seconds=0.32156594 reason=validated
+baseline confirm_ymin repeat=2 success=1 seconds=0.66596278 reason=validated
+full_step confirm_ymin repeat=2 success=1 seconds=0.65394762 reason=validated
+adaptive_lm confirm_ymax repeat=2 success=0 seconds=0.025420638 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+predictor confirm_ymax repeat=2 success=0 seconds=0.02529617 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+sparse_adaptive confirm_ymax repeat=2 success=0 seconds=0.004318831 reason=collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5
+atlas confirm_ymax repeat=2 success=0 seconds=0.025077159 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+bounded_qp confirm_ymax repeat=2 success=0 seconds=0.025411534 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+rigid_cache confirm_ymax repeat=2 success=0 seconds=0.018280235 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+baseline confirm_ymax repeat=2 success=0 seconds=0.038649434 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000998
+full_step confirm_ymax repeat=2 success=0 seconds=0.025359045 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+reduced_5d confirm_ymax repeat=2 success=0 seconds=0.025327927 reason=collision_approach_11_j2_link_visual/collision_arm_j4_link_part_5_d=0.000992
+predictor reject_unreachable repeat=2 success=0 seconds=0.009247044 reason=ik_approach_168_iteration limit
+sparse_adaptive reject_unreachable repeat=2 success=0 seconds=0.008202166 reason=ik_approach_29_iteration limit
+atlas reject_unreachable repeat=2 success=0 seconds=0.008630954 reason=ik_approach_168_iteration limit
+bounded_qp reject_unreachable repeat=2 success=0 seconds=0.008448698 reason=ik_approach_168_iteration limit
+rigid_cache reject_unreachable repeat=2 success=0 seconds=0.009031478 reason=ik_approach_168_iteration limit
+baseline reject_unreachable repeat=2 success=0 seconds=0.007974853 reason=ik_approach_168_iteration limit
+full_step reject_unreachable repeat=2 success=0 seconds=0.002314125 reason=ik_approach_168_no descending feasible step
+reduced_5d reject_unreachable repeat=2 success=0 seconds=0.008582901 reason=ik_approach_168_iteration limit
+adaptive_lm reject_unreachable repeat=2 success=0 seconds=0.002196126 reason=ik_approach_168_no descending feasible step
+sparse_adaptive reject_blocked repeat=2 success=0 seconds=0.001009144 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+atlas reject_blocked repeat=2 success=0 seconds=0.000987371 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+bounded_qp reject_blocked repeat=2 success=0 seconds=0.000988442 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+rigid_cache reject_blocked repeat=2 success=0 seconds=0.000869703 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+baseline reject_blocked repeat=2 success=0 seconds=0.000980671 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+full_step reject_blocked repeat=2 success=0 seconds=0.00098036 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+reduced_5d reject_blocked repeat=2 success=0 seconds=0.000980951 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+adaptive_lm reject_blocked repeat=2 success=0 seconds=0.000982865 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+predictor reject_blocked repeat=2 success=0 seconds=0.000984667 reason=start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000
+atlas reject_front_plane repeat=2 success=0 seconds=1.0726e-05 reason=invalid_station_front_plane
+bounded_qp reject_front_plane repeat=2 success=0 seconds=9.084e-06 reason=invalid_station_front_plane
+rigid_cache reject_front_plane repeat=2 success=0 seconds=9.023e-06 reason=invalid_station_front_plane
+baseline reject_front_plane repeat=2 success=0 seconds=8.973e-06 reason=invalid_station_front_plane
+full_step reject_front_plane repeat=2 success=0 seconds=9.023e-06 reason=invalid_station_front_plane
+reduced_5d reject_front_plane repeat=2 success=0 seconds=9.444e-06 reason=invalid_station_front_plane
+adaptive_lm reject_front_plane repeat=2 success=0 seconds=9.024e-06 reason=invalid_station_front_plane
+predictor reject_front_plane repeat=2 success=0 seconds=8.984e-06 reason=invalid_station_front_plane
+sparse_adaptive reject_front_plane repeat=2 success=0 seconds=9.034e-06 reason=invalid_station_front_plane

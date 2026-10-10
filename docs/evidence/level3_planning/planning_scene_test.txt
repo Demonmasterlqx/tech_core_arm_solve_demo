@@ -1,0 +1,3 @@
+bore clearance=0.002 stop=7.87913e-34 offset penetration=-0.000999936
+assembly contact nominal=-1.73599e-05 intrusion=carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.001000
+planning scene geometry tests passed
