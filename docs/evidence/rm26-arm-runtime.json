@@ -1,0 +1,220 @@
+{
+  "validation_date": "2026-10-11",
+  "mujoco_version": "3.3.7",
+  "builds": {
+    "viewer": {
+      "tests_passed": 17,
+      "tests_failed": 0
+    },
+    "headless": {
+      "tests_passed": 17,
+      "tests_failed": 0
+    }
+  },
+  "keyboard": {
+    "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+    "directions": [
+      {
+        "key": "w",
+        "delta_m": [
+          0.049985,
+          -5.0000000000050004e-06,
+          -3.599999999992498e-05
+        ],
+        "release_holds": true
+      },
+      {
+        "key": "s",
+        "delta_m": [
+          -0.03999,
+          3.0000000000030003e-06,
+          5.000000000032756e-06
+        ],
+        "release_holds": true
+      },
+      {
+        "key": "a",
+        "delta_m": [
+          2.000000000002e-06,
+          0.039889999999999995,
+          -3.2999999999949736e-05
+        ],
+        "release_holds": true
+      },
+      {
+        "key": "d",
+        "delta_m": [
+          1.7999999999990246e-05,
+          -0.039851,
+          -2.399999999991298e-05
+        ],
+        "release_holds": true
+      },
+      {
+        "key": "q",
+        "delta_m": [
+          -3.800000000001025e-05,
+          -8.999999999995123e-06,
+          0.03991700000000009
+        ],
+        "release_holds": true
+      },
+      {
+        "key": "e",
+        "delta_m": [
+          -1.000000000001e-06,
+          5.0000000000050004e-06,
+          -0.039966999999999975
+        ],
+        "release_holds": true
+      },
+      {
+        "key": "Up",
+        "delta_m": [
+          0.039989,
+          -4.000000000004e-06,
+          -2.799999999991698e-05
+        ],
+        "release_holds": true
+      },
+      {
+        "key": "Down",
+        "delta_m": [
+          -0.03999,
+          3.0000000000030003e-06,
+          5.000000000032756e-06
+        ],
+        "release_holds": true
+      },
+      {
+        "key": "Left",
+        "delta_m": [
+          2.000000000002e-06,
+          0.039889999999999995,
+          -3.2999999999949736e-05
+        ],
+        "release_holds": true
+      },
+      {
+        "key": "Right",
+        "delta_m": [
+          1.7999999999990246e-05,
+          -0.039851,
+          -2.399999999991298e-05
+        ],
+        "release_holds": true
+      }
+    ],
+    "joint_modes": [
+      {
+        "mode": "POSITION",
+        "joint_index": 7,
+        "delta_rad": 0.238987
+      },
+      {
+        "mode": "VELOCITY",
+        "joint_index": 7,
+        "delta_rad": 0.3
+      }
+    ],
+    "checks": [
+      "pause freezes simulation and resume has no latent motion",
+      "reset restores home"
+    ],
+    "result": "PASS"
+  },
+  "cli": {
+    "position": {
+      "final_state": {
+        "time": 2,
+        "tool": [
+          0.132249352845,
+          0.127524691589,
+          0.887989954893
+        ],
+        "q": [
+          0.199999977369,
+          1,
+          1.4,
+          0,
+          0.7,
+          0,
+          0
+        ],
+        "qd": [
+          1.83992987512e-07,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "csv_rows": 101
+    },
+    "velocity": {
+      "final_state": {
+        "time": 0.5,
+        "tool": [
+          0.143415634355,
+          0.0956148534914,
+          0.887989954893
+        ],
+        "q": [
+          0.1,
+          1,
+          1.4,
+          0,
+          0.7,
+          0,
+          0
+        ],
+        "qd": [
+          0.2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "csv_rows": 26
+    },
+    "cartesian": {
+      "final_state": {
+        "time": 0.5,
+        "tool": [
+          0.166336639051,
+          0.0627482088454,
+          0.887982625738
+        ],
+        "q": [
+          -2.21892899918e-05,
+          1.03482053251,
+          1.43303268077,
+          -2.91606798347e-05,
+          0.699531869379,
+          0.00226351968207,
+          4.40866360852e-05
+        ],
+        "qd": [
+          -2.57486400596e-05,
+          0.0703601831775,
+          0.0692332967669,
+          -3.04959592337e-05,
+          -0.00218856355116,
+          0.00332472216923,
+          4.81027717061e-05
+        ]
+      },
+      "csv_rows": 26
+    },
+    "snapshot_preserves_state": true,
+    "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+    "result": "PASS"
+  },
+  "temporary_processes_remaining": [],
+  "source_model_verification": "models/rm26_arm/verification.json"
+}
