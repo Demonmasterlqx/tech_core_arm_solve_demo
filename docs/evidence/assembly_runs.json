@@ -1,0 +1,133 @@
+[
+  {
+    "level": 1,
+    "returncode": 0,
+    "events": [
+      "1.000s core0 ready",
+      "2.330s core0 inserted",
+      "3.202s core0 confirmed"
+    ],
+    "terminal": "Result: SUCCESS at 15.000 s",
+    "final_csv_rows": [
+      {
+        "time_s": "15",
+        "core": "0",
+        "stage": "confirmed",
+        "insertion_m": "0.1",
+        "lift_m": "9.546857096e-20",
+        "P_rad": "2.499364876e-18",
+        "Q_rad": "0",
+        "Q_target_rad": "0.6108652382",
+        "safety_locked": "0",
+        "return_torque_Nm": "-0",
+        "holding_torque_Nm": "0",
+        "contacts": "0"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "returncode": 0,
+    "events": [
+      "1.000s core0 ready",
+      "2.330s core0 inserted",
+      "4.035s core0 lifted",
+      "5.001s core0 confirmed"
+    ],
+    "terminal": "Result: SUCCESS at 15.000 s",
+    "final_csv_rows": [
+      {
+        "time_s": "15",
+        "core": "0",
+        "stage": "confirmed",
+        "insertion_m": "0.1",
+        "lift_m": "0.1",
+        "P_rad": "1.265275974e-08",
+        "Q_rad": "0",
+        "Q_target_rad": "0.6108652382",
+        "safety_locked": "0",
+        "return_torque_Nm": "-0",
+        "holding_torque_Nm": "0",
+        "contacts": "1"
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "returncode": 0,
+    "events": [
+      "1.000s core0 ready",
+      "2.330s core0 inserted",
+      "4.035s core0 lifted",
+      "6.170s core0 flipped",
+      "8.530s core0 aligned",
+      "11.502s core0 confirmed"
+    ],
+    "terminal": "Result: SUCCESS at 15.000 s",
+    "final_csv_rows": [
+      {
+        "time_s": "15",
+        "core": "0",
+        "stage": "confirmed",
+        "insertion_m": "0.1",
+        "lift_m": "0.1",
+        "P_rad": "1.570795936",
+        "Q_rad": "0.5941985715",
+        "Q_target_rad": "0.6108652382",
+        "safety_locked": "1",
+        "return_torque_Nm": "-0.3",
+        "holding_torque_Nm": "-7.389091127e-15",
+        "contacts": "0"
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "returncode": 0,
+    "events": [
+      "1.000s core0 ready",
+      "1.000s core1 ready",
+      "2.330s core0 inserted",
+      "2.510s core1 inserted",
+      "4.035s core0 lifted",
+      "4.215s core1 lifted",
+      "6.170s core0 flipped",
+      "6.350s core1 flipped",
+      "8.530s core0 aligned",
+      "8.735s core1 aligned",
+      "11.502s core0 confirmed",
+      "11.502s core1 confirmed"
+    ],
+    "terminal": "Result: SUCCESS at 15.000 s",
+    "final_csv_rows": [
+      {
+        "time_s": "15",
+        "core": "0",
+        "stage": "confirmed",
+        "insertion_m": "0.1",
+        "lift_m": "0.1",
+        "P_rad": "1.570795936",
+        "Q_rad": "0.5941985715",
+        "Q_target_rad": "0.6108652382",
+        "safety_locked": "1",
+        "return_torque_Nm": "-0.3",
+        "holding_torque_Nm": "-7.389091127e-15",
+        "contacts": "0"
+      },
+      {
+        "time_s": "15",
+        "core": "1",
+        "stage": "confirmed",
+        "insertion_m": "0.1",
+        "lift_m": "0.1",
+        "P_rad": "1.570795869",
+        "Q_rad": "-0.6814650341",
+        "Q_target_rad": "-0.6981317008",
+        "safety_locked": "1",
+        "return_torque_Nm": "0.3",
+        "holding_torque_Nm": "7.38900575e-15",
+        "contacts": "0"
+      }
+    ]
+  }
+]

@@ -1,0 +1,455 @@
+{
+  "schema_version": 1,
+  "audit_date_client": "2026-10-11",
+  "purpose": "Independent rulebook, HKUST OBJ and official STEP surface geometry comparison; not real-hardware metrology",
+  "units": "millimetres unless explicitly suffixed _m",
+  "rulebook": {
+    "file": "reference/RoboMaster_2026_机甲大师超级对抗赛比赛规则手册V2.2.0（20260807）.pdf",
+    "sha256": "88ae3c7d0bbd7312c8095eff2603910437e292a0b53f46c9378f26144c09a6f5",
+    "printed_pages_inspected": [
+      64,
+      80,
+      81,
+      82,
+      85,
+      86,
+      87,
+      88,
+      89
+    ]
+  },
+  "rule_marker": {
+    "frame": "u = screen-right = canonical +Y; v = up = canonical +Z; origin at peg axis",
+    "nominal_envelope_mm": [
+      80,
+      80
+    ],
+    "full_L_outer_side_mm": 30,
+    "full_L_inner_side_mm": 22,
+    "stroke_mm": 8,
+    "central_gap_mm": 20,
+    "small_L_outer_side_mm": 14,
+    "connected_bright_regions": 6,
+    "nominal_full_L_area_mm2": 416,
+    "nominal_small_L_area_mm2": 160,
+    "nominal_square_area_mm2": 64,
+    "nominal_total_area_mm2": 1536,
+    "area_note": "Nominal rectangular construction; any source corner radii require separate area adjustment"
+  },
+  "hkust_actual_obj_measurements": {
+    "hkust_source": "reference/hkust/exchange.blend",
+    "hkust_sha256": "9490131f84030944de45f14fc5dd682fe1ae2cac779d211ac421b9a412093e9a",
+    "source_commit": "cb5ef2f3dea1223c0fedbd358c4129b2c586cb33",
+    "actual_obj_markers": [
+      {
+        "name": "pillar_L_light_1",
+        "front_area_mm2": 415.99988305568434,
+        "bounds_mm": [
+          [
+            -112.0000034570694,
+            9.999999776482582,
+            -39.99999910593033
+          ],
+          [
+            -100.00000149011612,
+            39.99999910593033,
+            -9.999999776482582
+          ]
+        ]
+      },
+      {
+        "name": "pillar_L_light_2",
+        "front_area_mm2": 415.99988305568434,
+        "bounds_mm": [
+          [
+            -112.0000034570694,
+            -39.99999910593033,
+            -39.99999910593033
+          ],
+          [
+            -100.00000149011612,
+            -9.999999776482582,
+            -9.999999776482582
+          ]
+        ]
+      },
+      {
+        "name": "pillar_L_light_3",
+        "front_area_mm2": 415.99988305568434,
+        "bounds_mm": [
+          [
+            -112.0000034570694,
+            -39.99999910593033,
+            9.999999776482582
+          ],
+          [
+            -100.00000149011612,
+            -9.999999776482582,
+            39.99999910593033
+          ]
+        ]
+      },
+      {
+        "name": "pillar_L_light_4",
+        "front_area_mm2": 63.99997627735271,
+        "bounds_mm": [
+          [
+            -112.0000034570694,
+            9.999999776482582,
+            32.00000151991844
+          ],
+          [
+            -100.00000149011612,
+            17.999999225139618,
+            39.99999910593033
+          ]
+        ]
+      },
+      {
+        "name": "pillar_L_light_5",
+        "front_area_mm2": 159.99994814396013,
+        "bounds_mm": [
+          [
+            -112.0000034570694,
+            26.000000536441803,
+            26.000000536441803
+          ],
+          [
+            -100.00000149011612,
+            39.99999910593033,
+            39.99999910593033
+          ]
+        ]
+      },
+      {
+        "name": "pillar_L_light_6",
+        "front_area_mm2": 63.99997627735271,
+        "bounds_mm": [
+          [
+            -112.0000034570694,
+            32.00000151991844,
+            9.999999776482582
+          ],
+          [
+            -100.00000149011612,
+            39.99999910593033,
+            17.999999225139618
+          ]
+        ]
+      }
+    ],
+    "total_marker_area_mm2": 1535.9995498657188,
+    "hkust_shell_bounds_m": {
+      "min": [
+        -0.20100000500679016,
+        -0.2243005782365799,
+        -0.07836751639842987
+      ],
+      "max": [
+        -0.1120000034570694,
+        0.2243005782365799,
+        0.48763248324394226
+      ]
+    },
+    "hkust_fan_object_count": 36
+  },
+  "official_field": {
+    "name": "RMUC2026_V2.0.0.stp",
+    "url": "https://hz-rm-bbs-web-prod.oss-cn-hangzhou.aliyuncs.com/f637e13eadfc4602a76c7a05c54f71271782803452461/RMUC2026_V2.0.0.stp",
+    "size": 1254821405,
+    "sha256": "8dfe9ebd761e44d91361b3e593bc05416329112217b58cb35800b3cde2ffae33",
+    "md5": "cb3da25791d000eca9c0e9bcd259f5b1",
+    "downloaded_utc": "2026-10-10T15:45:11.000923+00:00"
+  },
+  "official_core": {
+    "step_subassembly_name": "00000_国赛科技核心",
+    "extracted_brep_sha256": "922ccc9a670e417dcdc811c0d3a1a576f0d6b378a6adb735a955e22fb65fc961",
+    "direct_components": 418,
+    "faces": 4892,
+    "shells": 1673,
+    "closed_solids": 0,
+    "source_E_mm": [
+      -471.2344207459002,
+      1712.923887582125,
+      -698.1610743500996
+    ],
+    "source_to_core_mm": [
+      [
+        -0.7136479880467312,
+        0.7005044374296521,
+        -0.0002868766625960868,
+        -1536.4065666131717
+      ],
+      [
+        -0.7005044662547877,
+        -0.7136480174127123,
+        0.0,
+        892.3229199663682
+      ],
+      [
+        -0.00020472896150367295,
+        0.0002009583834128266,
+        0.9999999588508894,
+        697.7203438724506
+      ]
+    ],
+    "selected_components": [
+      {
+        "id": 35,
+        "bounds_mm": [
+          -160.86194292815003,
+          -225.61330515098467,
+          -22.99201394501688,
+          -113.75333339315155,
+          225.6123133284155,
+          494.95282369391185
+        ],
+        "size_mm": [
+          47.10860953499848,
+          451.22561847940017,
+          517.9448376389287
+        ],
+        "role": "front shell"
+      },
+      {
+        "id": 307,
+        "bounds_mm": [
+          -244.7740111891581,
+          -226.5030085724409,
+          -73.35901343843166,
+          -117.64788385493361,
+          226.4995455336982,
+          207.82414159246983
+        ],
+        "size_mm": [
+          127.12612733422449,
+          453.0025541061391,
+          281.1831550309015
+        ],
+        "role": "lower outer shell"
+      },
+      {
+        "id": 308,
+        "bounds_mm": [
+          -243.53353975624094,
+          -226.50317178877054,
+          208.31278787537505,
+          -158.4058788278934,
+          226.49938897672857,
+          495.54443609794305
+        ],
+        "size_mm": [
+          85.12766092834755,
+          453.0025607654991,
+          287.23164822256797
+        ],
+        "role": "upper outer shell"
+      },
+      {
+        "id": 318,
+        "bounds_mm": [
+          -113.20000022088082,
+          -50.000048935068435,
+          -60.50003741149078,
+          -100.19999817690268,
+          50.000051112288006,
+          52.50004635963796
+        ],
+        "size_mm": [
+          13.000002043978142,
+          100.00010004735644,
+          113.00008377112874
+        ],
+        "role": "MARK physical frame"
+      },
+      {
+        "id": 319,
+        "bounds_mm": [
+          -106.20000010008599,
+          -22.899999999944573,
+          -22.9000000000074,
+          -5.1999998999989065,
+          22.900000000085274,
+          22.89999999999262
+        ],
+        "size_mm": [
+          101.00000020008709,
+          45.80000000002985,
+          45.80000000000002
+        ],
+        "role": "peg body including root flange"
+      },
+      {
+        "id": 365,
+        "bounds_mm": [
+          -14.20000010006553,
+          -17.99999999999955,
+          -17.999999999945548,
+          1.0000909494701772e-07,
+          18.000000000077083,
+          18.000000000074696
+        ],
+        "size_mm": [
+          14.200000200074625,
+          36.00000000007663,
+          36.00000000002024
+        ],
+        "role": "peg front assembly"
+      },
+      {
+        "id": 369,
+        "bounds_mm": [
+          -100.20000000008804,
+          -47.90004713977307,
+          -50.400075727301164,
+          -100.19999999998981,
+          47.9000489351944,
+          50.4000445643326
+        ],
+        "size_mm": [
+          9.822542779147625e-11,
+          95.80009607496747,
+          100.80012029163376
+        ],
+        "role": "MARK planar black mask"
+      },
+      {
+        "id": 370,
+        "bounds_mm": [
+          -100.20000000008771,
+          -40.000040693351025,
+          -40.100040693404665,
+          -100.19999999998925,
+          40.10004079649844,
+          40.00004079649932
+        ],
+        "size_mm": [
+          9.846701232163468e-11,
+          80.10008148984946,
+          80.10008148990399
+        ],
+        "role": "six MARK light surfaces"
+      }
+    ],
+    "analytic_peg_radius_mm": 18,
+    "marker_front_x_mm": -100.2,
+    "candidate_P_axis": {
+      "component": 309,
+      "face": 23,
+      "radius_mm": 8.5,
+      "approximate_axis_direction_canonical": [
+        0,
+        1,
+        0
+      ],
+      "axis_point_canonical_mm": [
+        -169.198,
+        -35.001,
+        108.5
+      ],
+      "status": "Candidate only; rulebook 208 to 108 mm states not resolved from one static CAD pose"
+    },
+    "marker_minus_mask": [
+      {
+        "id": 0,
+        "visible_area_mm2": 451.01474645560035,
+        "bounds_mm": [
+          -100.20000000008486,
+          8.000033481938432,
+          -40.049991294639085,
+          -100.19999999999953,
+          40.050040744955254,
+          -7.999959203469456
+        ],
+        "boolean_ok": true,
+        "scope": "Component 370 face minus component 369 coplanar black mask; other depth occluders not included."
+      },
+      {
+        "id": 1,
+        "visible_area_mm2": 64.61474645444031,
+        "bounds_mm": [
+          -100.20000000008804,
+          7.9999593066023635,
+          31.950008705296796,
+          -100.19999999999254,
+          16.049966569593835,
+          40.00001607138684
+        ],
+        "boolean_ok": true,
+        "scope": "Component 370 face minus component 369 coplanar black mask; other depth occluders not included."
+      },
+      {
+        "id": 2,
+        "visible_area_mm2": 193.44409474580658,
+        "bounds_mm": [
+          -100.20000000008451,
+          23.99995930657167,
+          23.95003343040503,
+          -100.19999999999709,
+          40.04997481133569,
+          40.00004079649932
+        ],
+        "boolean_ok": true,
+        "scope": "Component 370 face minus component 369 coplanar black mask; other depth occluders not included."
+      },
+      {
+        "id": 3,
+        "visible_area_mm2": 64.61474645599249,
+        "bounds_mm": [
+          -100.2000000000844,
+          31.99998403167467,
+          7.950033430419126,
+          -100.19999999999357,
+          40.04999129476505,
+          16.000040796520693
+        ],
+        "boolean_ok": true,
+        "scope": "Component 370 face minus component 369 coplanar black mask; other depth occluders not included."
+      },
+      {
+        "id": 4,
+        "visible_area_mm2": 451.01474645266245,
+        "bounds_mm": [
+          -100.20000000008031,
+          -40.000040693351025,
+          7.949959255116028,
+          -100.19999999999968,
+          -7.950033430382746,
+          39.999991346203345
+        ],
+        "boolean_ok": true,
+        "scope": "Component 370 face minus component 369 coplanar black mask; other depth occluders not included."
+      },
+      {
+        "id": 5,
+        "visible_area_mm2": 451.04409474830476,
+        "bounds_mm": [
+          -100.20000000008395,
+          -39.99999124316105,
+          -40.050040744915805,
+          -100.19999999999195,
+          -7.949959254998134,
+          -8.000033378861076
+        ],
+        "boolean_ok": true,
+        "scope": "Component 370 face minus component 369 coplanar black mask; other depth occluders not included."
+      }
+    ]
+  },
+  "limits": [
+    "Full-size import means native source scale with rigid axis conversion; it does not imply manufactured-hardware dimensional validation.",
+    "Official CAD and HKUST use different shell component boundaries; their bounds must not be treated as pointwise physical error.",
+    "The MARK Boolean check subtracts the coplanar mask only; it is not whole-scene depth visibility.",
+    "The official core has no closed solids; surface preservation is required.",
+    "P/Q kinematic attachment cannot be proven solely by this static geometry audit."
+  ],
+  "reproduction": {
+    "script": "scripts/cad/inspect_core_brep.py",
+    "arguments": [
+      "<extracted_official_core.brep>",
+      "<audit_output_directory>",
+      "--hkust-manifest",
+      "models/meshes/core/manifest.json"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "source_repository": "https://github.com/hkustenterprize/RM2026-Engineer-Assembly-Algorithm.git",
+  "source_checkout": "/data/home/sim6g/code/tech_core_hkust",
+  "source_commit": "cb5ef2f3dea1223c0fedbd358c4129b2c586cb33",
+  "source_relative_path": "src/blender/exchange.blend",
+  "license": "MIT",
+  "copyright": "Copyright (c) 2026 香港科技大学ENTERPRIZE战队（HKUST ENTERPRIZE Team）",
+  "sha256": "9490131f84030944de45f14fc5dd682fe1ae2cac779d211ac421b9a412093e9a",
+  "size_bytes": 14158883,
+  "license_sha256": "692546eebb4bb3a8d3427c357b8e36eb9f82d0362c93353d1afd58587dee6479",
+  "copied_unmodified": true,
+  "source_role": "User-designated existing visual technology-core model; geometry and visual markers preserved; official field CAD remains the external dimension cross-check."
+}

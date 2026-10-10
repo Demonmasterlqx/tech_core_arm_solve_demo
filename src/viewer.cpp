@@ -3,6 +3,7 @@
 #include <png.h>
 #include <algorithm>
 #include <chrono>
+#include <cmath>
 #include <cstdio>
 #include <iomanip>
 #include <iostream>
@@ -15,7 +16,8 @@ namespace tech_core {
 namespace {
 class Viewer {
 public:
-    Viewer(Simulation& simulation,bool visible):sim(simulation),snapshot(!visible) {
+    Viewer(Simulation& simulation,bool visible,const ViewOptions& options)
+        :sim(simulation),snapshot(!visible),view_options(options) {
         glfwSetErrorCallback([](int code,const char* msg){std::cerr<<"GLFW "<<code<<": "<<msg<<'\n';});
         if(!glfwInit()) throw std::runtime_error("GLFW init failed; use --headless or scripts/run_software_viewer.sh");
         glfwWindowHint(GLFW_VISIBLE,visible?GLFW_TRUE:GLFW_FALSE);
@@ -25,23 +27,28 @@ public:
         glfwMakeContextCurrent(window);glfwSwapInterval(visible?1:0);
         std::cout<<"OpenGL renderer: "<<glGetString(GL_RENDERER)<<'\n';
         mjv_defaultCamera(&camera);mjv_defaultOption(&option);mjv_defaultScene(&scene);mjr_defaultContext(&context);
-        mjv_makeScene(sim.model(),&scene,3000);mjr_makeContext(sim.model(),&context,mjFONTSCALE_150);
-        camera.type=mjCAMERA_FREE;camera.lookat[0]=-.16;camera.lookat[1]=sim.config().level==4?0:.15;
-        camera.lookat[2]=.78;camera.distance=sim.config().level==4?2.25:1.95;
-        camera.azimuth=205;camera.elevation=-17;
+        // The generator reserves group 2 for energy-unit visual meshes only.
+        // Filtering the scene leaves opaque materials and contact physics intact.
+        if(view_options.hide_unit) option.geomgroup[2]=0;
+        mjv_makeScene(sim.model(),&scene,std::max(3000,sim.model()->ngeom+1000));mjr_makeContext(sim.model(),&context,mjFONTSCALE_150);
+        camera.type=mjCAMERA_FREE;
+        configure_camera();
         glfwSetWindowUserPointer(window,this);
         glfwSetKeyCallback(window,key_callback);
         glfwSetCursorPosCallback(window,mouse_callback);
         glfwSetScrollCallback(window,[](GLFWwindow* w,double,double dy){
             auto& v=*static_cast<Viewer*>(glfwGetWindowUserPointer(w));
+            v.manual_camera=true;
             mjv_moveCamera(v.sim.model(),mjMOUSE_ZOOM,0,-.05*dy,&v.scene,&v.camera);
         });
     }
     ~Viewer(){mjr_freeContext(&context);mjv_freeScene(&scene);glfwDestroyWindow(window);glfwTerminate();}
     void render() {
         int width,height;glfwGetFramebufferSize(window,&width,&height);mjrRect rect{0,0,width,height};
+        if(!manual_camera) configure_camera();
         mjv_updateScene(sim.model(),sim.data(),&option,nullptr,&camera,mjCAT_ALL,&scene);
         mjr_render(rect,&scene,&context);
+        if(!view_options.overlay) return;
         std::ostringstream left,right;
         left<<"TECHNOLOGY CORE / RM 2026\nMuJoCo "<<mj_versionString()<<" | CPU physics\n\n"
             <<"Level "<<sim.config().level<<"   "<<(snapshot?"SNAPSHOT":demo?"AUTO":"MANUAL")<<(paused?" / PAUSED":"")
@@ -86,6 +93,35 @@ public:
     }
     Simulation& sim;GLFWwindow* window=nullptr;bool demo=false,paused=false;
 private:
+    void configure_camera() {
+        const auto& preset=view_options.view;
+        camera.azimuth=205;camera.elevation=-17;
+        if(preset=="iso") {
+            camera.lookat[0]=-.16;camera.lookat[1]=sim.config().level==4?0:.15;
+            camera.lookat[2]=.78;camera.distance=sim.config().level==4?2.25:1.95;
+        } else if(preset=="marker" || preset=="unit") {
+            const char* name=preset=="marker"?"core0_marker":"core0_grip";
+            const int site=mj_name2id(sim.model(),mjOBJ_SITE,name);
+            if(site<0) throw std::runtime_error(std::string("Inspection view requires site: ")+name);
+            std::copy_n(sim.data()->site_xpos+3*site,3,camera.lookat);
+            const int body=sim.model()->site_bodyid[site];
+            const auto* rotation=sim.data()->xmat+9*body;
+            // The local +X axis faces out of the inspected part. MuJoCo's
+            // azimuth/elevation describe the viewing direction toward lookat.
+            camera.azimuth=degrees(std::atan2(-rotation[3],-rotation[0]));
+            camera.elevation=degrees(std::asin(std::clamp(-rotation[6],-1.0,1.0)));
+            camera.distance=preset=="marker"?.20:.35;
+            if(preset=="unit") {camera.azimuth+=25;camera.elevation-=17;}
+        } else {
+            const int body=mj_name2id(sim.model(),mjOBJ_BODY,"core0_base");
+            if(body<0) throw std::runtime_error("Inspection view requires body: core0_base");
+            std::copy_n(sim.data()->xpos+3*body,3,camera.lookat);
+            camera.lookat[2]+=.20;camera.distance=1.0;
+            camera.azimuth=preset=="rear"?0:preset=="side"?90:180;
+            camera.elevation=preset=="top"?-90:0;
+        }
+        if(view_options.distance>0) camera.distance=view_options.distance;
+    }
     static void key_callback(GLFWwindow* w,int key,int,int action,int) {
         if(action!=GLFW_PRESS) return;
         auto& v=*static_cast<Viewer*>(glfwGetWindowUserPointer(w));
@@ -93,8 +129,8 @@ private:
             case GLFW_KEY_ESCAPE:glfwSetWindowShouldClose(w,1);break;
             case GLFW_KEY_SPACE:v.paused=!v.paused;break;
             case GLFW_KEY_TAB:v.selected=(v.selected+1)%v.sim.rules().core_count();break;
-            case GLFW_KEY_G:v.demo=!v.demo;if(v.demo) v.sim.reset();break;
-            case GLFW_KEY_R:v.sim.reset();break;
+            case GLFW_KEY_G:v.demo=!v.demo;if(v.demo) {v.sim.reset();v.manual_camera=false;}break;
+            case GLFW_KEY_R:v.sim.reset();v.manual_camera=false;break;
             case GLFW_KEY_C:v.sim.set_card_present(!v.sim.card_present());break;
             case GLFW_KEY_X:v.sim.set_gripper_enabled(!v.sim.gripper_enabled());break;
             case GLFW_KEY_ENTER:v.sim.confirm(v.selected);break;
@@ -107,21 +143,24 @@ private:
         const bool right=glfwGetMouseButton(w,GLFW_MOUSE_BUTTON_RIGHT)==GLFW_PRESS;
         const bool middle=glfwGetMouseButton(w,GLFW_MOUSE_BUTTON_MIDDLE)==GLFW_PRESS;
         if(!left&&!right&&!middle) return;
+        v.manual_camera=true;
         int width,height;glfwGetWindowSize(w,&width,&height);if(height<=0) return;
         const bool shift=glfwGetKey(w,GLFW_KEY_LEFT_SHIFT)==GLFW_PRESS;
         const int action=right?(shift?mjMOUSE_MOVE_H:mjMOUSE_MOVE_V):left?(shift?mjMOUSE_ROTATE_H:mjMOUSE_ROTATE_V):mjMOUSE_ZOOM;
         mjv_moveCamera(v.sim.model(),action,dx/height,dy/height,&v.scene,&v.camera);
     }
     bool snapshot=false;
+    ViewOptions view_options;
+    bool manual_camera=false;
     std::size_t selected=0;double mouse_x=0,mouse_y=0;
     mjvCamera camera{};mjvOption option{};mjvScene scene{};mjrContext context{};
 };
 }
-void save_snapshot(Simulation& sim,const std::string& path) {
-    Viewer viewer(sim,false);viewer.render();viewer.png(path);
+void save_snapshot(Simulation& sim,const std::string& path,const ViewOptions& options) {
+    Viewer viewer(sim,false,options);viewer.render();viewer.png(path);
 }
-void run_viewer(Simulation& sim,bool demo,double duration,const std::string& screenshot) {
-    Viewer viewer(sim,true);viewer.demo=demo;
+void run_viewer(Simulation& sim,bool demo,double duration,const std::string& screenshot,const ViewOptions& options) {
+    Viewer viewer(sim,true,options);viewer.demo=demo;
     while(!glfwWindowShouldClose(viewer.window) && (duration==0 || sim.time()<duration)) {
         const auto frame_start=std::chrono::steady_clock::now();
         glfwPollEvents();

@@ -1,7 +1,5 @@
 #include "tech_core/simulation.hpp"
-#ifdef TECH_CORE_VIEWER
 #include "tech_core/viewer.hpp"
-#endif
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -26,6 +24,10 @@ void usage() {
       "  --duration SEC             finite simulation time (headless default 15)\n"
       "  --csv PATH                 measured trajectory (headless, 50 Hz)\n"
       "  --screenshot PATH.png      capture final state (needs OpenGL context)\n"
+      "  --view PRESET              iso|front|rear|side|top|marker|unit (default iso)\n"
+      "  --distance METRES          positive camera distance; default by preset\n"
+      "  --no-overlay               hide viewer text in windows and screenshots\n"
+      "  --hide-unit                inspection: hide energy-unit visuals only\n"
       "  --model PATH               override MJCF model\n"
       "Keys: Tab select core; I/K insert/withdraw; U/J lift/lower;\n"
       "      O/L flip up/return; A/D twist; Enter confirm; Space pause;\n"
@@ -47,6 +49,7 @@ void prepare_parent(const std::string& p) {
 int main(int argc,char** argv) {
     try {
         tech_core::SimulationConfig config;
+        tech_core::ViewOptions view_options;
         bool headless=false,demo=false;
         double duration=0;
         std::string csv_path,screenshot;
@@ -73,6 +76,18 @@ int main(int argc,char** argv) {
             else if(arg=="--model") config.model_path=value();
             else if(arg=="--csv") csv_path=value();
             else if(arg=="--screenshot") screenshot=value();
+            else if(arg=="--no-overlay") view_options.overlay=false;
+            else if(arg=="--hide-unit") view_options.hide_unit=true;
+            else if(arg=="--view") {
+                view_options.view=value();
+                const std::array<std::string,7> presets{"iso","front","rear","side","top","marker","unit"};
+                if(std::find(presets.begin(),presets.end(),view_options.view)==presets.end())
+                    throw std::invalid_argument("View must be iso, front, rear, side, top, marker, or unit");
+            }
+            else if(arg=="--distance") {
+                view_options.distance=number(value());
+                if(view_options.distance<=0) throw std::invalid_argument("Camera distance must be positive metres");
+            }
             else if(arg=="--seed") {
                 const double seed=number(value());
                 if(seed<0 || seed>4294967295.0 || std::floor(seed)!=seed) throw std::invalid_argument("Seed must be uint32");
@@ -135,7 +150,7 @@ int main(int argc,char** argv) {
             if(csv.is_open()) { csv.flush(); if(!csv) throw std::runtime_error("CSV write failed"); }
             if(!screenshot.empty()) {
 #ifdef TECH_CORE_VIEWER
-                prepare_parent(screenshot);tech_core::save_snapshot(sim,screenshot);
+                prepare_parent(screenshot);tech_core::save_snapshot(sim,screenshot,view_options);
 #else
                 throw std::runtime_error("Screenshot requires -DTECH_CORE_VIEWER=ON");
 #endif
@@ -143,7 +158,7 @@ int main(int argc,char** argv) {
         } else {
 #ifdef TECH_CORE_VIEWER
             if(!screenshot.empty()) prepare_parent(screenshot);
-            tech_core::run_viewer(sim,demo,duration,screenshot);
+            tech_core::run_viewer(sim,demo,duration,screenshot,view_options);
 #else
             throw std::runtime_error("Viewer disabled at build; use --headless");
 #endif

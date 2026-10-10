@@ -117,7 +117,7 @@ void Simulation::update_station() {
         p[1]=.2+s*(config_.pose.y-.2)-i*config_.pair_spacing;
         p[2]=.8+s*(config_.pose.z-.8);
         // The unused second station is parked away in single-core modes.
-        if(i==1 && config_.level<4) p[1]=-1.0;
+        if(i==1 && config_.level<4) p[1]=-10.0;
         std::copy(q.begin(),q.end(),data_->mocap_quat+4*mocap_[i]);
     }
 }
@@ -219,32 +219,46 @@ void Simulation::update_lights() {
         const auto stage=rules_->stage(i);
         const bool fast=std::fmod(time(),1.0/3)<1.0/6, slow=std::fmod(time(),1.0)<.5;
         auto paint=[&](const std::string& name,float r,float g,float b,bool on=true) {
-            int id=mj_name2id(model_.get(),mjOBJ_GEOM,(prefix+name).c_str()); if(id<0) return;
+            const int id=mj_name2id(model_.get(),mjOBJ_GEOM,(prefix+name).c_str());
+            if(id<0) throw std::runtime_error("Missing source-model light: "+prefix+name);
             float* rgba=model_->geom_rgba+4*id;
-            rgba[0]=on?r:.035f; rgba[1]=on?g:.035f; rgba[2]=on?b:.04f; rgba[3]=1;
+            rgba[0]=on?r:.025f;rgba[1]=on?g:.025f;rgba[2]=on?b:.025f;rgba[3]=1;
+            const int mat=model_->geom_matid[id];
+            if(mat>=0) {
+                std::copy(rgba,rgba+4,model_->mat_rgba+4*mat);
+                model_->mat_emission[mat]=on?.7f:0;
+            }
         };
-        const float red=i==0?.95f:.08f, blue=i==0?.09f:1.f;
-        bool side_on=true, mark_on=true;
-        if(stage==Stage::Ready) side_on=mark_on=slow;
-        if(stage==Stage::Inserted) {side_on=slow;mark_on=fast;}
-        if(stage==Stage::Lifted) side_on=mark_on=fast;
-        if(stage==Stage::Confirmed) side_on=mark_on=fast;
-        paint("mark",red,.14f,blue,mark_on);
-        paint("side_left",red,.14f,blue,side_on); paint("side_right",red,.14f,blue,side_on);
-        const int target=std::clamp(static_cast<int>(std::lround((config_.target_degrees[i]+90)/5)),0,36);
-        const int current=std::clamp(static_cast<int>(std::lround((degrees(observation(i).twist)+90)/5)),0,36);
-        for(int k=0;k<37;++k) {
-            bool on=slow;
-            float r=.92f,g=.95f,b=1;
-            if(stage==Stage::Moving) on=k==static_cast<int>(time()*20)%37;
+        const float red=i==0?.95f:.035f, green=i==0?.035f:.18f, blue=i==0?.045f:1.f;
+        bool side_on=true, marker_on=true;
+        if(stage==Stage::Ready) side_on=marker_on=slow;
+        if(stage==Stage::Inserted) {side_on=slow;marker_on=fast;}
+        if(stage==Stage::Lifted || stage==Stage::Confirmed) side_on=marker_on=fast;
+        // Table5-11 group2 is the two side windows. Group3 is the actual MARK
+        // strokes AND the three peg-side strips, never a colored backing square.
+        for(int k=1;k<=2;++k) paint("back_main_light_"+std::to_string(k),red,green,blue,side_on);
+        for(int k=1;k<=6;++k) paint("pillar_L_light_"+std::to_string(k),red,green,blue,marker_on);
+        for(int k=1;k<=3;++k) paint("pillar_side_light_"+std::to_string(k),red,green,blue,marker_on);
+        const double current=degrees(observation(i).twist),target=config_.target_degrees[i];
+        // Preserve all36 original fans and the center gap. Zero is indicated
+        // by the two adjacent5deg bars, not an invented37th center strip.
+        auto nearest=[](double value,int k) {
+            const double angle=k<=18?95.0-5*k:90.0-5*k;
+            const double magnitude=std::max(5.0,std::round(std::abs(value)/5)*5);
+            return std::abs(value)<2.5 ? std::abs(angle)==5 :
+                std::abs(angle-std::copysign(magnitude,value))<1e-6;
+        };
+        for(int k=1;k<=36;++k) {
+            bool on=slow;float r=.96f,g=.97f,b=1;
+            if(stage==Stage::Moving) on=k==static_cast<int>(time()*20)%36+1;
             if(stage==Stage::Flipped || stage==Stage::Aligned) {
-                on=k==current || k==target;
-                if(k==target) {r=red;g=.14f;b=blue;}
-                if(k==target && stage==Stage::Aligned) {r=.1f;g=1;b=.28f;}
+                on=nearest(current,k)||nearest(target,k);
+                if(nearest(target,k)) {r=red;g=green;b=blue;}
+                if(nearest(target,k)&&stage==Stage::Aligned) {r=.04f;g=1;b=.12f;}
             }
             if(stage==Stage::Confirmed) on=fast;
             if(stage==Stage::Failed) {r=1;g=.35f;b=0;on=fast;}
-            paint("led_"+std::to_string(k),r,g,b,on);
+            paint("back_light_bar_"+std::to_string(k),r,g,b,on);
         }
     }
 }

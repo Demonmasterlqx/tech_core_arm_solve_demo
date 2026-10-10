@@ -108,13 +108,20 @@ void geometry_and_contacts() {
             near(m->dof_frictionloss[m->jnt_dofadr[j]],10,1e-12,"10N guide resistance assumption");
         }
     }
-    // Raycast the actual collision mesh from inside the bore: diameter40mm.
+    // Query only the invisible contact proxies; mj_ray deliberately skips
+    // alpha-zero geoms, so make that group ray-visible inside this test fixture.
+    // Source visual surfaces are independently checked by geometry_test.
+    const mjtByte collision_groups[6]={0,0,0,1,0,0};
+    for(int g=0;g<m->ngeom;++g)
+        if(m->geom_group[g]==3) sim.model()->geom_rgba[4*g+3]=1;
     const mjtNum point[3]={.05,0,1}, radial[3]={0,1,0};
     int hit=-1;
-    near(mj_ray(m,d,point,radial,nullptr,1,-1,&hit),.020,2e-7,"Actual bore inner radius");
+    near(mj_ray(m,d,point,radial,collision_groups,1,-1,&hit),.020,2e-7,"Contact bore inner radius");
     require(hit>=0,"Bore ray must hit an energy-unit wall");
     const mjtNum axial_point[3]={.001,0,1}, axial[3]={1,0,0};
-    near(mj_ray(m,d,axial_point,axial,nullptr,1,-1,&hit),.099,2e-7,"100mm blind bore depth");
+    near(mj_ray(m,d,axial_point,axial,collision_groups,1,-1,&hit),.099,2e-7,"100mm contact blind bore depth");
+    for(int g=0;g<m->ngeom;++g)
+        if(m->geom_group[g]==3) sim.model()->geom_rgba[4*g+3]=0;
     joint(sim,"core0_insert",.08);mj_forward(m,d);
     require(d->ncon==0,"Centered80mm insertion should clear the hollow bore");
     const int peg=id(m,mjOBJ_GEOM,"core0_peg");

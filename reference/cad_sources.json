@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "verified_date": "2026-10-10",
+  "source_post": {
+    "url": "https://bbs.robomaster.com/article/814728",
+    "public_api": "https://bbs.robomaster.com/developers-server/rest/posts/info/814728",
+    "api_method": "POST",
+    "api_body": {},
+    "title": "【官方开源】RMU 2026 场地图纸&可移动道具开源",
+    "author_id": 39696,
+    "author_nickname": "RoboMaster 高校赛务",
+    "created_at": "2025-10-22T06:38:56.000+00:00",
+    "updated_at": "2026-06-30T15:15:11.000+00:00",
+    "geometry_version_quote": "以下开源图纸基于 RMUC 2026 比赛规则手册V2.0.0制作。",
+    "scope_quote": "本文件为 RMUC 2026 的场地模型，仅做参考使用，若此模型与规则手册标注或与比赛现场场地有结构出入，以规则手册和现场场地为准。"
+  },
+  "assets": {
+    "energy": {
+      "official_filename": "能量单元.stp",
+      "filename": "energy_unit.stp",
+      "rule_version": "RMUC & RMUL 2026 V1.0.0",
+      "url": "https://hz-rm-bbs-web-prod.oss-cn-hangzhou.aliyuncs.com/21cbbecaaceb47729bc477cd12f8de5b1761107116144/%E8%83%BD%E9%87%8F%E5%8D%95%E5%85%83.stp",
+      "size_bytes": 842155,
+      "official_md5": "07a99a364d64ffe056a6a29f1b6450ce",
+      "sha256": "35d105a221f4527e5c5e84ac607c94c797ec2e19c734974de4c5485c2c2d5ee7"
+    },
+    "field": {
+      "official_filename": "RMUC2026_V2.0.0.stp",
+      "filename": "RMUC2026_V2.0.0.stp",
+      "rule_version": "RMUC 2026 V2.0.0",
+      "url": "https://hz-rm-bbs-web-prod.oss-cn-hangzhou.aliyuncs.com/f637e13eadfc4602a76c7a05c54f71271782803452461/RMUC2026_V2.0.0.stp",
+      "size_bytes": 1254821405,
+      "official_md5": "cb3da25791d000eca9c0e9bcd259f5b1",
+      "sha256": "8dfe9ebd761e44d91361b3e593bc05416329112217b58cb35800b3cde2ffae33"
+    }
+  }
+}
