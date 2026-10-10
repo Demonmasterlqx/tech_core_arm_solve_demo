@@ -51,3 +51,4 @@ if(BUILD_TESTING)
 endif()
 
 include(cmake/rm26_arm.cmake)
+include(cmake/planning.cmake)

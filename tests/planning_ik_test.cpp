@@ -102,7 +102,7 @@ void convergence_test() {
     limits.lower = JointVector::Constant(-4);
     limits.upper = JointVector::Constant(4);
     for (const auto method : {IKMethod::Baseline, IKMethod::FullStep,
-                             IKMethod::Reduced5D, IKMethod::AdaptiveLM}) {
+                             IKMethod::Reduced5D, IKMethod::AdaptiveLM, IKMethod::BoundedQP}) {
         IKOptions options;
         options.method = method;
         int total_iterations = 0;
@@ -132,6 +132,95 @@ void convergence_test() {
     const auto failure = solve_ik(fk, unreachable, JointVector::Zero(), limits);
     require(!failure.success && failure.q.isZero() && failure.position_error == 1,
             "fixed joint limits cannot claim success");
+}
+
+void bounded_qp_test() {
+    // The high-leverage actuator q0 is already at its upper bound. A lower
+    // leverage redundant actuator q6 can reach the target exactly. Post-clamp
+    // DLS allocates 100/101 of the requested displacement to blocked q0 on
+    // every iteration, whereas the constrained optimum reallocates it to q6.
+    const auto redundant_fk = [](const JointVector& q, Eigen::Vector3d& p,
+                                 Eigen::Matrix3d& r, Jacobian* j) {
+        p = Eigen::Vector3d(10 * q[0] + q[6], q[1], q[2]);
+        r.setIdentity();
+        if (j) {
+            j->setZero(); (*j)(0, 0) = 10; (*j)(0, 6) = 1;
+            (*j)(1, 1) = 1; (*j)(2, 2) = 1;
+        }
+    };
+    JointVector initial = JointVector::Zero(); initial[0] = .1;
+    JointLimits limits;
+    limits.lower.setConstant(-1); limits.upper.setConstant(1); limits.upper[0] = .1;
+    TaskTarget target; target.position.x() = 1.3;
+    IKOptions options; options.method = IKMethod::FullStep;
+    const auto clipped = solve_ik(redundant_fk, target, initial, limits, options);
+    options.method = IKMethod::BoundedQP;
+    const auto bounded = solve_ik(redundant_fk, target, initial, limits, options);
+    require(!clipped.success && clipped.iterations == 300 && clipped.position_error > .01,
+            "post-clamp DLS stalls on blocked high-leverage joint");
+    require(bounded.success && bounded.iterations == 1 && bounded.position_error <= 1e-4,
+            "box QP must redistribute to redundant feasible joint");
+    require(std::abs(bounded.q[0] - .1) < 1e-12 && std::abs(bounded.q[6] - .3) < 1e-6,
+            "bounded optimum uses the compensating actuator");
+    std::cout << "bounded redundancy: clipped_error=" << clipped.position_error
+              << " QP_error=" << bounded.position_error << " QP_iterations=" << bounded.iterations << '\n';
+
+    // Independently inspect primal feasibility and gradient KKT conditions on
+    // 80 deterministic correlated linear tasks with asymmetric joint boxes,
+    // fixed joints, and a separate max_joint_step restriction. For a convex
+    // quadratic these conditions certify the globally optimal local step.
+    for (int sample = 0; sample < 80; ++sample) {
+        Eigen::Matrix<double, 3, 7> linear;
+        for (int i = 0; i < 3; ++i)
+            for (int j = 0; j < 7; ++j)
+                linear(i, j) = std::sin(.31 + .7 * sample + .3 * i + .9 * j) +
+                    .4 * std::cos(.6 * sample + 1.3 * i - .2 * j);
+        const auto linear_fk = [&](const JointVector& q, Eigen::Vector3d& p,
+                                   Eigen::Matrix3d& r, Jacobian* jacobian) {
+            p = linear * q; r.setIdentity();
+            if (jacobian) { jacobian->setZero(); jacobian->topRows<3>() = linear; }
+        };
+        target.position = Eigen::Vector3d(.7 * std::sin(sample + .2),
+                                          .5 * std::cos(sample + .4), .4);
+        for (int j = 0; j < 7; ++j) {
+            limits.lower[j] = -.02 - .15 * std::abs(std::sin(sample + j));
+            limits.upper[j] = .01 + .17 * std::abs(std::cos(.4 * sample + j));
+        }
+        if (sample % 3 == 0) limits.lower[2] = limits.upper[2] = 0;
+        options.max_iterations = 1;
+        options.damping = sample % 2 == 0 ? .07 : 1e-4;
+        options.max_joint_step = JointVector::Constant(.08);
+        const auto solved = solve_ik(linear_fk, target, JointVector::Zero(), limits, options);
+        require(solved.reason != "bounded QP failed KKT or pivot limit", "box QP solves correlated task");
+        const JointVector lower = limits.lower.cwiseMax(-.08);
+        const JointVector upper = limits.upper.cwiseMin(.08);
+        const JointVector gradient = linear.transpose() * (linear * solved.q - target.position) +
+            options.damping * options.damping * solved.q;
+        for (int j = 0; j < 7; ++j) {
+            require(solved.q[j] >= lower[j] - 1e-12 && solved.q[j] <= upper[j] + 1e-12,
+                    "QP primal feasibility");
+            if (lower[j] == upper[j]) continue;
+            if (solved.q[j] <= lower[j] + 1e-9)
+                require(gradient[j] >= -1e-8, "QP lower-bound dual sign");
+            else if (solved.q[j] >= upper[j] - 1e-9)
+                require(gradient[j] <= 1e-8, "QP upper-bound dual sign");
+            else require(std::abs(gradient[j]) < 1e-8, "QP free-coordinate stationarity");
+        }
+    }
+    options.should_stop = [] { return true; };
+    require(solve_ik(redundant_fk, target, initial, limits, options).reason == "stopped",
+            "bounded method respects termination");
+    int stop_checks = 0;
+    options.should_stop = [&] { return ++stop_checks > 1; };
+    const auto pivot_stop = solve_ik(redundant_fk, target, JointVector::Zero(), limits, options);
+    require(pivot_stop.reason == "stopped" && pivot_stop.fk_evals == 1,
+            "termination checked inside QP active-set loop");
+    options.should_stop = {};
+    limits.lower.setZero(); limits.upper.setZero();
+    target.position = Eigen::Vector3d::UnitX();
+    const auto fixed = solve_ik(redundant_fk, target, JointVector::Zero(), limits, options);
+    require(!fixed.success && fixed.q.isZero() && fixed.reason == "no descending feasible step",
+            "all-fixed QP terminates without false success");
 }
 
 void invalid_test() {
@@ -176,7 +265,7 @@ void invalid_test() {
 
 int main() {
     try {
-        jacobian_test(); baseline_step_test(); convergence_test(); invalid_test();
+        jacobian_test(); baseline_step_test(); convergence_test(); invalid_test(); bounded_qp_test();
         std::cout << "planning IK tests passed\n";
     } catch (const std::exception& error) {
         std::cerr << error.what() << '\n';

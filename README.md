@@ -171,6 +171,8 @@ int main() {
 
 ## 仿真范围与假设
 
+独立的三级机械臂规划扩展见 [基线来源](docs/planning_reference.md)、[抓取与碰撞场景](docs/planning_scene_audit.md)。它使用原七关节臂、固定夹持的能量单元和单核心联合场景；下面原 `tech_core` / `rm26_arm` 的物理演示范围保持各自定义。
+
 - 核心视觉由用户指定的 HKUST 原模型按比例 1 导入：59 个对象、60 个网格、34,792 个三角面。外壳宽 448.601 mm、高 566 mm；MARK 外轮廓 80×80 mm，保持手册规定的右上角不对称图案。来源、离线复现和官方 CAD 对比见 [几何来源](docs/fidelity_sources.md) 与 [尺寸审计](docs/fidelity_geometry_audit.md)。
 - 能量单元外形来自官方 STEP，质量取规则名义值 0.4 kg、长 150 mm。官方附件的浅孔与规则有出入，因此单独修订为 φ40 mm、深 100 mm 的可见孔接口，保持所有外表面不变；细节见 [能量单元 CAD](docs/energy_cad.md)。碰撞用独立的不可见空心代理，未把凹形外观直接凸包化。
 - 原始 Blender 文件和材质参数保留，但 MuJoCo 材质不等同于 Blender 的程序化纹理、混合 BSDF 和 Cycles 光照；当前重点是几何、标识和装配行为，未标定实物反射率。
@@ -182,3 +184,35 @@ int main() {
 - 外壳与滑块仅用于显示，不参与碰撞；接触筛选包含每个核心自身的能量单元/装配柱及地面。双核心外壳与跨核心物体不做碰撞约束，因此四级演示不构成双机械臂避碰验证。
 - 位姿检查先约束表 5-10，再使用模型包围盒检查**到位、装配前**的核心几何不超过底座正面 `X=0`（不含待操作单元）。这是保守的末端姿态筛选，没有扫描定位途中或后续装配运动的扫掠体，不是路径避碰规划器。
 - 命令行是直接选级的训练环境，不是完整裁判系统。比赛时间解锁、双方抢占仲裁、经济收益、自动实体回收和已用单元库存未接入；成功后保留当前场景以供检查。参考 [规则追溯](docs/rules.md) 中比赛级规则与当前组件的边界。
+
+## 三级规划与耗时基准
+
+规划扩展需要 Eigen3（如 Ubuntu 的 `libeigen3-dev`）。全程 CPU，无 GPU/渲染器，不模拟抓取动力学。
+
+```bash
+cmake -S . -B build-planning -DCMAKE_BUILD_TYPE=Release -DTECH_CORE_VIEWER=OFF
+cmake --build build-planning -j4
+CUDA_VISIBLE_DEVICES='' ctest --test-dir build-planning --output-on-failure
+./build-planning/rm26_plan --list
+python scripts/run_planning_benchmark.py --executable build-planning/rm26_plan \
+  --output artifacts/level3_planning/my_run --method all --repeat 3 --dense-check
+OPENBLAS_NUM_THREADS=1 python scripts/audit_planning_trajectories.py artifacts/level3_planning/my_run
+```
+
+每次使用新的输出目录。`runs.csv` 保留每个方法、场景、重复的成功、失败原因和实际规划耗时；`trajectories/` 保存关节、阶段、目标与时间戳。在线 IK、采样、时间化及碰撞/轨迹验证计入规划；模型加载、离线 atlas 构建和额外密采样复查单独记录。`summary.json` 区分开发、确认与拒绝测试，配对加速仅比较双方成功的相同请求。独立 Python 审计从原 URDF 重新 FK，不代表第二套网格碰撞算法。
+
+链接 `rm26_planning` 可直接在内存中调用：
+
+```cpp
+#include "tech_core/planning.hpp"
+using namespace tech_core::planning;
+PlanningScene scene;
+Scenario request = scenario_suite().front(); // 可替换核心位姿、当前七关节及安装外参
+PlanOptions options;
+options.method = Method::SparseAdaptive;
+PlanResult result = plan(scene, request, options);
+if (result.success) { /* result.knots 是完整已验证轨迹 */ }
+// 失败时 knots 可能仅为前缀，或是一条被验证器拒绝的候选；不得执行。
+```
+
+每个工作线程使用独立 `PlanningScene`；调用者不得修改其碰撞几何来绕过验证。轴自由的 IK 只约束开口中心与单元长轴，携带物实际姿态始终由臂 FK 和固定夹持变换确定。离散碰撞采样不是连续碰撞证明，安装/抓持外参尚须实物标定。

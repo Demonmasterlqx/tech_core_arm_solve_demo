@@ -3,6 +3,7 @@
 #include <Eigen/Cholesky>
 #include <Eigen/Geometry>
 #include <algorithm>
+#include <array>
 #include <cmath>
 #include <stdexcept>
 
@@ -40,6 +41,92 @@ JointVector reduced_dls(const Jacobian& geometric, const Eigen::Vector3d& axis,
     if (factor.info() != Eigen::Success)
         return JointVector::Constant(std::numeric_limits<double>::quiet_NaN());
     return jacobian.transpose() * factor.solve(reduced_error);
+}
+
+struct BoxStep {
+    JointVector step = JointVector::Zero();
+    bool success = false;
+    bool stopped = false;
+};
+
+// Strictly convex bound-constrained quadratic:
+// .5*x'*(J'J + lambda^2 I)*x - (J'e)'*x, lower <= x <= upper.
+// A primal feasible active-set method: solve on the free coordinates, move
+// only as far as the first blocking bound, then release active constraints
+// whose gradient signs violate KKT. Clamping an unconstrained step cannot
+// perform this redistribution and is deliberately not used here.
+BoxStep bounded_step(const Jacobian& jacobian, const Error& error, double damping,
+                     const JointVector& lower, const JointVector& upper,
+                     const std::function<bool()>& should_stop) {
+    using Hessian = Eigen::Matrix<double, 7, 7>;
+    Hessian hessian = jacobian.transpose() * jacobian;
+    hessian.diagonal().array() += damping * damping;
+    const JointVector linear = -jacobian.transpose() * error;
+    BoxStep result;
+    std::array<int, 7> active{}; // -1 lower, +1 upper, 2 fixed, 0 free.
+    for (int i = 0; i < 7; ++i)
+        if (lower[i] == upper[i]) { active[i] = 2; result.step[i] = lower[i]; }
+    // Seven dimensions have only 3^7 bound/free patterns. In normal use a
+    // handful of pivots suffice; finite cap and callback bound degenerate cases.
+    for (int pivot = 0; pivot < 128; ++pivot) {
+        if (should_stop && should_stop()) { result.stopped = true; return result; }
+        JointVector fixed = JointVector::Zero();
+        for (int i = 0; i < 7; ++i) if (active[i]) fixed[i] = result.step[i];
+        Hessian free_hessian = hessian;
+        JointVector rhs = -linear - hessian * fixed;
+        for (int i = 0; i < 7; ++i) if (active[i]) {
+            free_hessian.row(i).setZero();
+            free_hessian.col(i).setZero();
+            free_hessian(i, i) = 1;
+            rhs[i] = fixed[i];
+        }
+        const Eigen::LDLT<Hessian> factor(free_hessian);
+        if (factor.info() != Eigen::Success) return result;
+        const JointVector minimum = factor.solve(rhs);
+        if (!minimum.allFinite()) return result;
+        const JointVector direction = minimum - result.step;
+        double fraction = 1;
+        int blocking = -1, blocking_side = 0;
+        for (int i = 0; i < 7; ++i) if (!active[i]) {
+            double candidate = 1;
+            int side = 0;
+            if (minimum[i] < lower[i] && direction[i] < 0) {
+                candidate = (lower[i] - result.step[i]) / direction[i]; side = -1;
+            } else if (minimum[i] > upper[i] && direction[i] > 0) {
+                candidate = (upper[i] - result.step[i]) / direction[i]; side = 1;
+            }
+            if (side && candidate < fraction) {
+                fraction = std::max(0.0, candidate); blocking = i; blocking_side = side;
+            }
+        }
+        result.step += fraction * direction;
+        if (blocking >= 0) {
+            active[blocking] = blocking_side;
+            result.step[blocking] = blocking_side < 0 ? lower[blocking] : upper[blocking];
+            continue;
+        }
+        const JointVector gradient = hessian * result.step + linear;
+        const double tolerance = 1e-10 * (1 + linear.lpNorm<Eigen::Infinity>() +
+            hessian.cwiseAbs().rowwise().sum().maxCoeff() * result.step.lpNorm<Eigen::Infinity>());
+        int release = -1;
+        double worst = tolerance;
+        for (int i = 0; i < 7; ++i) {
+            const double violation = active[i] == -1 ? -gradient[i] : active[i] == 1 ? gradient[i] : 0;
+            if (violation > worst) { worst = violation; release = i; }
+        }
+        if (release < 0) {
+            // Roundoff alone can place a free solution just outside its box.
+            // Reject significant infeasibility or stationarity loss rather than
+            // returning a non-optimal clipped update as an optimized step.
+            for (int i = 0; i < 7; ++i)
+                if (result.step[i] < lower[i] - 1e-12 || result.step[i] > upper[i] + 1e-12 ||
+                    (!active[i] && std::abs(gradient[i]) > 10 * tolerance)) return result;
+            result.success = true;
+            return result;
+        }
+        active[release] = 0;
+    }
+    return result;
 }
 
 struct State {
@@ -82,7 +169,8 @@ bool valid(const ForwardKinematics& fk, const TaskTarget& target,
             limits.upper[i] == -std::numeric_limits<double>::infinity()) return false;
     const auto positive = [](double x) { return std::isfinite(x) && x > 0; };
     const bool known_method = options.method == IKMethod::Baseline || options.method == IKMethod::FullStep ||
-        options.method == IKMethod::Reduced5D || options.method == IKMethod::AdaptiveLM;
+        options.method == IKMethod::Reduced5D || options.method == IKMethod::AdaptiveLM ||
+        options.method == IKMethod::BoundedQP;
     return known_method && options.max_iterations > 0 && options.max_backtracks >= 0 &&
         positive(options.position_tolerance) && positive(options.axis_tolerance) &&
         positive(options.damping) && positive(options.alpha) && options.alpha <= 1 && positive(options.trust_radius) &&
@@ -182,13 +270,27 @@ IKResult solve_ik(const ForwardKinematics& fk, const TaskTarget& input_target,
 
         const bool adaptive = options.method == IKMethod::AdaptiveLM;
         const double damping = adaptive ? adaptive_damping : options.damping;
-        JointVector step = options.method == IKMethod::Reduced5D
-            ? reduced_dls(geometric, state.axis, state.error, damping)
-            : dls(task, state.error, damping);
+        JointVector step;
+        if (options.method == IKMethod::BoundedQP) {
+            JointVector radius = JointVector::Constant(options.trust_radius);
+            if (options.max_joint_step) radius = radius.cwiseMin(*options.max_joint_step);
+            const JointVector lower = (limits.lower - result.q).cwiseMax(-radius);
+            const JointVector upper = (limits.upper - result.q).cwiseMin(radius);
+            const BoxStep bounded = bounded_step(task, state.error, damping, lower, upper, options.should_stop);
+            if (!bounded.success) {
+                result.reason = bounded.stopped ? "stopped" : "bounded QP failed KKT or pivot limit";
+                return result;
+            }
+            step = bounded.step;
+        } else {
+            step = options.method == IKMethod::Reduced5D
+                ? reduced_dls(geometric, state.axis, state.error, damping)
+                : dls(task, state.error, damping);
+        }
         if (!step.allFinite()) { result.reason = "non-finite step"; return result; }
         if ((adaptive || options.method == IKMethod::Reduced5D) && step.norm() > options.trust_radius)
             step *= options.trust_radius / step.norm();
-        clip_step(step, options);
+        if (options.method != IKMethod::BoundedQP) clip_step(step, options);
         bool accepted = false;
         double fraction = 1;
         for (int backtrack = 0; backtrack <= options.max_backtracks; ++backtrack) {

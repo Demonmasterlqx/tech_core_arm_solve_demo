@@ -1,0 +1,1443 @@
+{
+  "method": "source connected-component XY projection outer silhouette, convex partition, full Z extrusion",
+  "shapely_version": "2.2.0",
+  "buffer_m": 1e-07,
+  "sources": {
+    "end_left_link": {
+      "source_sha256": "f82d78dd505db72b677de09ad766dea6ed8a79891b58be07ec06b73c0a15e209",
+      "parts": [
+        {
+          "file": "end_left_link_grasp_part_0.obj",
+          "component": 0,
+          "vertices": 24,
+          "faces": 44,
+          "sha256": "8e45f0fae5b82ba0fff0b7ed952493e4d12e1205d386345146b677566bf06351",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_1.obj",
+          "component": 0,
+          "vertices": 36,
+          "faces": 68,
+          "sha256": "9af0f2402ea6e1dee6c8fcf4c61042e81575c714a6eddbce421b3708ec0f0605",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_2.obj",
+          "component": 0,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "4a52a879f4f6ca132bab4a77b80cead08010dfbf5b0c572d567303fdde9a5bb2",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_3.obj",
+          "component": 0,
+          "vertices": 10,
+          "faces": 16,
+          "sha256": "cc6e43ecb32b58bf0528bc50258c1b24ee7fb6d9a44f24142151fa80c1dc987f",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_4.obj",
+          "component": 0,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "992772b301ab5aeed7492a7de0564ac07e97e05bc3a9a4696f47dc7c29bb43ff",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_5.obj",
+          "component": 0,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "89e03830ed3946aae128f5bd5d455e2dde0a1afc03c76d8e279e93de61d3bc6a",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_6.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "4a2944436a0cee444027636c5285ef4df1bd942691fca77a6a4c96c35be95db0",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_7.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "99c93b547452824b00ca2cb778c135b317b21c3db2a7d3608e9d665c27bdf362",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_8.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "580ecb6e0fa1c00c11dc0b2f3e6a33aacf8995cd49e7c54ecfecad3242c5a508",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_9.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "04bca00456187b583c27a6a5ac784033cdc56cb920f301a34b77f46835d5e115",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_10.obj",
+          "component": 0,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "09242018b013d5190bf9e47a24e6584d6acfb765cbba6211df3f000834e60827",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_11.obj",
+          "component": 0,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "4cc910ebaf93dc8a2aeffca37b1d7725be8fcc7b33d3fa1aa3a8170a69bef884",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_12.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "607fd783dcd09b0832f377d2c86e4c1365c91138a4bc37b83853502007134636",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.0624999
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_13.obj",
+          "component": 1,
+          "vertices": 24,
+          "faces": 44,
+          "sha256": "819b16f4e975606b670d658f72ef5503a0df29116eb7bf551cc6d2caca53b577",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_14.obj",
+          "component": 1,
+          "vertices": 40,
+          "faces": 76,
+          "sha256": "38723e75dc2e91b49495771f30b6b735f38e6204d4f1c6d82f3a26e3e3f89e63",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_15.obj",
+          "component": 1,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "46c4e1f9734f86b5bff90d1bac774c5919b21a50875d09f9c51c75e7f0a77e52",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_16.obj",
+          "component": 1,
+          "vertices": 10,
+          "faces": 16,
+          "sha256": "53ed2a99fbe80568c84049300ddd3dc18b7cf3e7b7eebcdabc1d404a6ca776b0",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_17.obj",
+          "component": 1,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "2f60dcafa0161b55d7429cdecb7463941a127b6803d1236f2ae0254d0391d143",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_18.obj",
+          "component": 1,
+          "vertices": 10,
+          "faces": 16,
+          "sha256": "a10ff8b148a13e47e66bbc51c2a96f973c15f11cb748e0fbd1c1f748dda2f293",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_19.obj",
+          "component": 1,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "b6bac72b8b3604971a12f2d28f8c0fc3774b5d87e017bc9041c1a30fa2ea48c7",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_20.obj",
+          "component": 1,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "72d7ac5345edda3a9bde0b628d46cdd616a239d7ad8ccdc2c69b209f3e7c4381",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_21.obj",
+          "component": 1,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "7dc7546e9f2bc6b26b4fc3da28b665526f4e4cebc1ebe1c7c2e633db5f26f7ff",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_22.obj",
+          "component": 1,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "f4d2f6884087d33fb462befc22d81f260bc307db2ad4e1754e4f1f70120bc5be",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_23.obj",
+          "component": 1,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "9190df3625e47a82433a0853ffeb0618d92c92abbe9598b33438511682f430b2",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_24.obj",
+          "component": 1,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "4104d07759f32243ccf72d624b3e47784c395c63a5850891bc538469fc00eb97",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.01060009969,
+            -0.004599900102
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_25.obj",
+          "component": 2,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "e8d0da42c6a92dcddb6a761864e8c0c62af989b1e585ccc0dc0eec7d11e8e084",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0625001,
+            -0.001499899315
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_26.obj",
+          "component": 2,
+          "vertices": 26,
+          "faces": 48,
+          "sha256": "e547710da20d683d7bda12c1295a342c6256ed3569e61db73665fad3b9987f7f",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0625001,
+            -0.001499899315
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_27.obj",
+          "component": 2,
+          "vertices": 22,
+          "faces": 40,
+          "sha256": "bd480a427b8d6f2766c6252cbefafbd6c81af946dcb16d2ea20e72f7a9a4ce27",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0625001,
+            -0.001499899315
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_28.obj",
+          "component": 2,
+          "vertices": 10,
+          "faces": 16,
+          "sha256": "d0f1d8b4ac7e59bd8a1ad10cb547a1494e0ba3d23c37fcde0a66932ce294c2c4",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0625001,
+            -0.001499899315
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_29.obj",
+          "component": 2,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "4abc18bfe78cb3fa4abee92b0e75829703dd8c99e75b73f2c364c97039d2231c",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0625001,
+            -0.001499899315
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_30.obj",
+          "component": 2,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "ae4e72b5d6841e2e54244d52369a2101945e11dcf98961a56deae7d29b2ec85f",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0625001,
+            -0.001499899315
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_31.obj",
+          "component": 2,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "da8f5c2ae9dab3bcd9e14cae2acee41055d4fc9d158c81a00114e12c5e47ef30",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0625001,
+            -0.001499899315
+          ]
+        },
+        {
+          "file": "end_left_link_grasp_part_32.obj",
+          "component": 2,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "6db6b301e3e6b52dfe36a6a5e8483a20b920bd6cf2fcf00b89ea5cae5562dccb",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0625001,
+            -0.001499899315
+          ]
+        }
+      ]
+    },
+    "end_right_link": {
+      "source_sha256": "a5a98795f99da21d659abd8da18c23b0ece536ca8701dd8040b934aa07cf8083",
+      "parts": [
+        {
+          "file": "end_right_link_grasp_part_0.obj",
+          "component": 0,
+          "vertices": 30,
+          "faces": 56,
+          "sha256": "bc9981056f845c57099bc7b0e9887606da11471c0d7faf50f196d69b05854722",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_1.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "408beb076caa061f5f9608c0e6228b6655c37240b2439b15234755ee6b957e50",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_2.obj",
+          "component": 0,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "d2fcd7d3a1bae68862ae32a9a0341b1ecc2a5f3ad27e383288db3131f2672e3b",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_3.obj",
+          "component": 0,
+          "vertices": 10,
+          "faces": 16,
+          "sha256": "93c9cfcde4373ebab12298ebdf445e00650745147a93e96fdf5e93bcc5476aed",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_4.obj",
+          "component": 0,
+          "vertices": 42,
+          "faces": 80,
+          "sha256": "66a1210573cd681340d6eb1a7eb42aafac18737ed7f957d3eb8f097778e61439",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_5.obj",
+          "component": 0,
+          "vertices": 10,
+          "faces": 16,
+          "sha256": "ae1b2449c86fbc3bf74d4ded276c2aab844a49974f0315bae289b20c6c6f4adb",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_6.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "953b7e391f348074353da36660a7f2f8277eccbd57f927dd48d82c71bd0f0bbe",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_7.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "bc3ddeadeffa7aafed8027240c02df067a44e66318f086321ac7813cdc5945f8",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_8.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "f65394f5261df9795b61b72bace959d7a88af7971c23259060be0737ca4c1658",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_9.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "d9931798497a966e707d930d00784f466919ce48ba0ea9eea7f0b79f1b740ad5",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_10.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "372f75d1833d1b4894204eda05c92a5a46ecc455b81f9271b4c282e0f1beaed9",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_11.obj",
+          "component": 0,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "69ccea7ac7498b323fef66c32ea0ce6855d42b2b222da27bdbe83f85ddc64351",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_12.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "1fe42eb8e9b793d025edf673324674f74a5c55317ad1b47520a7a678b1e5af8c",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_13.obj",
+          "component": 0,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "1fedd5b54e0d1d8e89e37ae893e76540f47bab9b33c0796e0391c465e4bf9360",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_14.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "81adc3abbe20db9f7f2ec5eb8a8b80da973fa5a0ae36c4ea648ae39d80b08df9",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_15.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "cac2f533dd6942f2bb95f7cd5fea54b75fd35754606cdd344fcfee2890e2a317",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_16.obj",
+          "component": 0,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "24469d041fc857ba4e94e613b831719d79d69293d8d63ada6f98a8cba1a980b5",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_17.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "040060937181d5c05d0561a9cd7cab71a334142aef49042dc32daf824b0d7c85",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_18.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "ce1566297984a7190305adbc81f60cdee4fb38bdb513021ad8af9aff58e41dec",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_19.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "4d4091c895f30c402778ff5de584f5f7477851539c52d862912a5d77cdaa2ddd",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_20.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "9c4091e22e013bc5aa6e6c99c7c70cdea207018d9bd3a1f66a4ea811fd242a6a",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_21.obj",
+          "component": 0,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "d1e3718f844308d90a4193abd9d925b4a7101b2f10185c7c35c03b6378db1ef3",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.0700001003,
+            -0.002999900026
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_22.obj",
+          "component": 1,
+          "vertices": 24,
+          "faces": 44,
+          "sha256": "6cc5c6208db38e5b2b93dee73268a3d34b34bc4077bab19c8fa23faed7a97a16",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_23.obj",
+          "component": 1,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "73e9a394c238a7d173a4e4beec70cb03ec63f1e3ee2db8eac4eb714c6fca38a1",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_24.obj",
+          "component": 1,
+          "vertices": 10,
+          "faces": 16,
+          "sha256": "1a63fd005ffa27803e907955c7910afc88f12ed8887bab2f5c0ab7aa2815e2f0",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_25.obj",
+          "component": 1,
+          "vertices": 36,
+          "faces": 68,
+          "sha256": "3983b166df83d66d54e99faf752cc7332acbf81065a3a1e7bb429a6bd09d2cdf",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_26.obj",
+          "component": 1,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "8978b08a63ecf661a3bf6dae2363d64717898ddf6ec2dbe7ea3af720f40bc21f",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_27.obj",
+          "component": 1,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "8c9f6937a7a9822baefa718d277be4f4008e83ef585322bd5748e72db59e22c6",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_28.obj",
+          "component": 1,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "656d7ee2e9fc1fc8c419d34ccb349fe386e2363bc992453794eb96efef550dd6",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_29.obj",
+          "component": 1,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "5256307f191e8f7219fac422532a62297ac7d789d5046bc777863e5cf96fe7f2",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_30.obj",
+          "component": 1,
+          "vertices": 8,
+          "faces": 12,
+          "sha256": "2d6959525b59a50edde54d0dde80ea811905c886f958a951f979446aa116cea4",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_31.obj",
+          "component": 1,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "4c54b975d62822125b8a01362058336b15d25162565e2f8b8d389dd8c9f2303e",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_32.obj",
+          "component": 1,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "883757b26d2ec656a360201d2e6bb75b35657f16554a262310cf56ff7aa0fe07",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_33.obj",
+          "component": 1,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "67ed46b164c39640652d087699af0b3ac797141a6a116677274cda60acf77d17",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        },
+        {
+          "file": "end_right_link_grasp_part_34.obj",
+          "component": 1,
+          "vertices": 6,
+          "faces": 8,
+          "sha256": "5a973c7605c4986cecd678872db341ef2ebd5099ba4201552df7249ae7151d62",
+          "projected_uncovered_source_area_m2": 0.0,
+          "max_source_vertex_outside_m": 0.0,
+          "z_range_m": [
+            -0.012700099849999999,
+            -0.005199900013999999
+          ]
+        }
+      ]
+    }
+  },
+  "offline_seconds": 0.24559012800455093,
+  "grip_fixed_pose": {
+    "jaw_angle_rad": 2.0504,
+    "unit_translation_in_ee_m": [
+      0,
+      -0.015,
+      -0.01
+    ],
+    "unit_axial_roll_rad": -0.5235987755982988,
+    "tag_policy": "Tagged source finger contact region may touch tube exterior and iron-cylinder exterior X=[.1,.11], radius .0325; never flange/cap, bore, or an arbitrary robot part.",
+    "near_contact_parts": {
+      "end_left_link": [
+        3,
+        4,
+        8,
+        9,
+        11,
+        12,
+        16,
+        17,
+        19,
+        21,
+        22,
+        24,
+        25,
+        27,
+        28,
+        30,
+        31,
+        32
+      ],
+      "end_right_link": [
+        2,
+        3,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        23,
+        24,
+        26,
+        32,
+        33,
+        34
+      ]
+    },
+    "mujo_co_probe_nearest_pairs": [
+      {
+        "jaw": "end_left_link",
+        "part": 3,
+        "distance_m": 8.11439e-05,
+        "nearest_unit_geom": "carried_unit_tube_5"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 4,
+        "distance_m": 0.000585879,
+        "nearest_unit_geom": "carried_unit_tube_2"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 8,
+        "distance_m": 0.000172223,
+        "nearest_unit_geom": "carried_unit_tube_3"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 9,
+        "distance_m": 0.0,
+        "nearest_unit_geom": "carried_unit_tube_5"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 11,
+        "distance_m": 0.000374972,
+        "nearest_unit_geom": "carried_unit_tube_6"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 12,
+        "distance_m": 0.000898069,
+        "nearest_unit_geom": "carried_unit_tube_7"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 16,
+        "distance_m": 7.50555e-05,
+        "nearest_unit_geom": "carried_unit_tube_5"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 17,
+        "distance_m": 0.000577948,
+        "nearest_unit_geom": "carried_unit_tube_2"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 19,
+        "distance_m": 0.000370344,
+        "nearest_unit_geom": "carried_unit_tube_6"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 21,
+        "distance_m": 0.000164756,
+        "nearest_unit_geom": "carried_unit_tube_3"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 22,
+        "distance_m": -4.25274e-06,
+        "nearest_unit_geom": "carried_unit_tube_4"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 24,
+        "distance_m": 0.000894393,
+        "nearest_unit_geom": "carried_unit_tube_7"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 25,
+        "distance_m": 0.000708855,
+        "nearest_unit_geom": "carried_unit_tube_1"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 27,
+        "distance_m": 0.000692667,
+        "nearest_unit_geom": "carried_unit_tube_7"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 28,
+        "distance_m": -1.37574e-05,
+        "nearest_unit_geom": "carried_unit_tube_5"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 30,
+        "distance_m": 0.000218685,
+        "nearest_unit_geom": "carried_unit_tube_3"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 31,
+        "distance_m": 0.000198061,
+        "nearest_unit_geom": "carried_unit_tube_6"
+      },
+      {
+        "jaw": "end_left_link",
+        "part": 32,
+        "distance_m": -6.12701e-06,
+        "nearest_unit_geom": "carried_unit_tube_4"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 2,
+        "distance_m": 0.000955033,
+        "nearest_unit_geom": "carried_unit_tube_31"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 3,
+        "distance_m": -3.0146e-06,
+        "nearest_unit_geom": "carried_unit_tube_28"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 12,
+        "distance_m": 0.000590617,
+        "nearest_unit_geom": "carried_unit_tube_31"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 13,
+        "distance_m": 0.0,
+        "nearest_unit_geom": "carried_unit_tube_23"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 14,
+        "distance_m": 0.000364277,
+        "nearest_unit_geom": "carried_unit_tube_30"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 15,
+        "distance_m": 0.000165048,
+        "nearest_unit_geom": "carried_unit_tube_29"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 16,
+        "distance_m": 0.000744793,
+        "nearest_unit_geom": "carried_unit_tube_25"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 17,
+        "distance_m": -8.74601e-06,
+        "nearest_unit_geom": "carried_unit_tube_28"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 18,
+        "distance_m": 0.0,
+        "nearest_unit_geom": "carried_unit_tube_26"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 19,
+        "distance_m": 0.0,
+        "nearest_unit_geom": "carried_unit_tube_26"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 20,
+        "distance_m": -1.73599e-05,
+        "nearest_unit_geom": "carried_unit_tube_27"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 21,
+        "distance_m": 7.96049e-05,
+        "nearest_unit_geom": "carried_unit_tube_27"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 23,
+        "distance_m": 0.000578776,
+        "nearest_unit_geom": "carried_unit_tube_30"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 24,
+        "distance_m": -4.50392e-06,
+        "nearest_unit_geom": "carried_unit_tube_28"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 26,
+        "distance_m": 0.000892311,
+        "nearest_unit_geom": "carried_unit_tube_25"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 32,
+        "distance_m": 0.0,
+        "nearest_unit_geom": "carried_unit_tube_28"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 33,
+        "distance_m": 7.42526e-05,
+        "nearest_unit_geom": "carried_unit_tube_27"
+      },
+      {
+        "jaw": "end_right_link",
+        "part": 34,
+        "distance_m": 0.000368748,
+        "nearest_unit_geom": "carried_unit_tube_26"
+      }
+    ],
+    "actual_source_to_65mm_circle_clearance_m": 2e-05,
+    "collision_proxy_worst_penetration_m": 1.73599e-05,
+    "iron_outer_surface_near_contact_pairs": [
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_16_grip",
+        "distance_m": 8.06035e-05,
+        "witness_local_unit_m": [
+          0.102694,
+          0.025905,
+          0.0197592
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_17_grip",
+        "distance_m": 0.000637306,
+        "witness_local_unit_m": [
+          0.102694,
+          0.032421,
+          0.00685265
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_19_grip",
+        "distance_m": 0.000384389,
+        "witness_local_unit_m": [
+          0.102602,
+          0.0230892,
+          0.0234152
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_21_grip",
+        "distance_m": 0.000204629,
+        "witness_local_unit_m": [
+          0.1,
+          0.0304906,
+          0.0118287
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_22_grip",
+        "distance_m": 2.02903e-05,
+        "witness_local_unit_m": [
+          0.102694,
+          0.0283743,
+          0.0158893
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_24_grip",
+        "distance_m": 0.000959335,
+        "witness_local_unit_m": [
+          0.102694,
+          0.0186928,
+          0.0277508
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_25_grip",
+        "distance_m": 0.000742275,
+        "witness_local_unit_m": [
+          0.101044,
+          0.0327302,
+          0.00581212
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_27_grip",
+        "distance_m": 0.000695892,
+        "witness_local_unit_m": [
+          0.101044,
+          0.0205735,
+          0.0260518
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_28_grip",
+        "distance_m": 5.05823e-05,
+        "witness_local_unit_m": [
+          0.101044,
+          0.0267312,
+          0.0185737
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_30_grip",
+        "distance_m": 0.000284966,
+        "witness_local_unit_m": [
+          0.1,
+          0.0308884,
+          0.0109893
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_31_grip",
+        "distance_m": 0.000259153,
+        "witness_local_unit_m": [
+          0.101044,
+          0.0241923,
+          0.0220884
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_left_link_part_32_grip",
+        "distance_m": 5.92423e-05,
+        "witness_local_unit_m": [
+          0.101044,
+          0.0289631,
+          0.0148742
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_2_grip",
+        "distance_m": 0.000995677,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0190574,
+          -0.0275459
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_3_grip",
+        "distance_m": 1.99145e-05,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0279539,
+          -0.0166169
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_12_grip",
+        "distance_m": 0.000653368,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0217618,
+          -0.0250114
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_14_grip",
+        "distance_m": 0.000365715,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0234559,
+          -0.0230212
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_15_grip",
+        "distance_m": 0.000204825,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0254889,
+          -0.020492
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_16_grip",
+        "distance_m": 0.000756103,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0330736,
+          -0.00347943
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_17_grip",
+        "distance_m": 5.92597e-05,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0271368,
+          -0.0179916
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_18_grip",
+        "distance_m": 0.000421709,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0322242,
+          -0.00674112
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_19_grip",
+        "distance_m": 0.000258776,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0313823,
+          -0.00939611
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_20_grip",
+        "distance_m": 4.68733e-05,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0294458,
+          -0.0138651
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_21_grip",
+        "distance_m": 7.96848e-05,
+        "witness_local_unit_m": [
+          0.100845,
+          -0.0300724,
+          -0.0125334
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_23_grip",
+        "distance_m": 0.000638142,
+        "witness_local_unit_m": [
+          0.102463,
+          -0.0221444,
+          -0.0246528
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_24_grip",
+        "distance_m": 1.99163e-05,
+        "witness_local_unit_m": [
+          0.102463,
+          -0.0279568,
+          -0.0166122
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_26_grip",
+        "distance_m": 0.000957208,
+        "witness_local_unit_m": [
+          0.102463,
+          -0.0333771,
+          -0.002314
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_32_grip",
+        "distance_m": 0.000204823,
+        "witness_local_unit_m": [
+          0.10431,
+          -0.0254908,
+          -0.0204896
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_33_grip",
+        "distance_m": 7.96777e-05,
+        "witness_local_unit_m": [
+          0.102463,
+          -0.0300637,
+          -0.0125543
+        ]
+      },
+      {
+        "jaw_geom": "collision_arm_end_right_link_part_34_grip",
+        "distance_m": 0.000382924,
+        "witness_local_unit_m": [
+          0.102569,
+          -0.0318216,
+          -0.00828677
+        ]
+      }
+    ],
+    "separate_category_distance_probes_m": {
+      "all_jaws_to_flange_lower_bound": 0.002,
+      "all_jaws_to_cap_lower_bound": 0.002,
+      "all_unit_to_wrist_lower_bound": 0.001,
+      "minimum_jaw_to_iron_outer": 1.99145e-05
+    }
+  }
+}

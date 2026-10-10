@@ -1,0 +1,1466 @@
+{
+  "schema_version": 1,
+  "scene": "models/planning/scene.xml",
+  "collision_query": "explicit mj_geomDistance; all contype/conaffinity masks are zero",
+  "joint_order": [
+    "j0",
+    "j1",
+    "j2",
+    "j3",
+    "j4",
+    "end_differential_controller/j5",
+    "end_differential_controller/j6",
+    "core0_twist",
+    "core0_flip",
+    "core0_lift"
+  ],
+  "planning_home_q": [
+    -0.6277037365452109,
+    2.329799330550719,
+    1.0289871622237392,
+    1.2715734368717495,
+    -1.747192543846495,
+    -0.8168119746695788,
+    1.9772845777886507
+  ],
+  "T_world_from_assembly": {
+    "translation_m": [
+      0.3,
+      0.2,
+      -0.25
+    ],
+    "quaternion_wxyz": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "T_ee_from_unit": {
+    "translation_m": [
+      0,
+      -0.015,
+      -0.01
+    ],
+    "quaternion_wxyz": [
+      0.3535533905932738,
+      -0.6123724356957945,
+      -0.3535533905932738,
+      -0.6123724356957945
+    ]
+  },
+  "grasp_contract": "pre-carried rigid two-jaw midsection grasp; source auxiliary jaws fixed at 2.0504 rad; no grasp dynamics or force validation",
+  "jaw_angles_rad": {
+    "gripper_controller/end_left_joint": 2.0504,
+    "gripper_controller/end_right_joint": 2.0504
+  },
+  "planning_tcp": {
+    "body": "carried_unit",
+    "position_local_m": [
+      0,
+      0,
+      0
+    ],
+    "quaternion_wxyz": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "meaning": "opening centre; local Z follows unit longitudinal +X"
+  },
+  "arm_mesh_convex_hulls": [
+    {
+      "geom": "j0_link_visual",
+      "rigid_cluster": "j0_link",
+      "body": "j0_link"
+    },
+    {
+      "geom": "j1_link_visual",
+      "rigid_cluster": "j1_link",
+      "body": "j1_link"
+    },
+    {
+      "geom": "j2_link_visual",
+      "rigid_cluster": "j2_link",
+      "body": "j2_link"
+    },
+    {
+      "geom": "j3_link_visual",
+      "rigid_cluster": "j3_link",
+      "body": "j3_link"
+    },
+    {
+      "geom": "collision_arm_j4_link_part_0",
+      "rigid_cluster": "j4_link",
+      "body": "j4_link"
+    },
+    {
+      "geom": "collision_arm_j4_link_part_1",
+      "rigid_cluster": "j4_link",
+      "body": "j4_link"
+    },
+    {
+      "geom": "collision_arm_j4_link_part_2",
+      "rigid_cluster": "j4_link",
+      "body": "j4_link"
+    },
+    {
+      "geom": "collision_arm_j4_link_part_3",
+      "rigid_cluster": "j4_link",
+      "body": "j4_link"
+    },
+    {
+      "geom": "collision_arm_j4_link_part_4",
+      "rigid_cluster": "j4_link",
+      "body": "j4_link"
+    },
+    {
+      "geom": "collision_arm_j4_link_part_5",
+      "rigid_cluster": "j4_link",
+      "body": "j4_link"
+    },
+    {
+      "geom": "j5_link_visual",
+      "rigid_cluster": "j5_link",
+      "body": "j5_link"
+    },
+    {
+      "geom": "collision_arm_j6_link_part_0",
+      "rigid_cluster": "j6_link",
+      "body": "j6_link"
+    },
+    {
+      "geom": "collision_arm_j6_link_part_1",
+      "rigid_cluster": "j6_link",
+      "body": "j6_link"
+    },
+    {
+      "geom": "collision_arm_j6_link_part_2",
+      "rigid_cluster": "j6_link",
+      "body": "j6_link"
+    },
+    {
+      "geom": "collision_arm_j6_link_part_3",
+      "rigid_cluster": "j6_link",
+      "body": "j6_link"
+    },
+    {
+      "geom": "collision_arm_j6_link_part_4",
+      "rigid_cluster": "j6_link",
+      "body": "j6_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_0",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_1",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_2",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_3_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_4_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_5",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_6",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_7",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_8_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_9_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_10",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_11_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_12_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_13",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_14",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_15",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_16_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_17_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_18",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_19_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_20",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_21_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_22_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_23",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_24_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_25_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_26",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_27_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_28_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_29",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_30_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_31_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_left_link_part_32_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_left_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_0",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_1",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_2_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_3_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_4",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_5",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_6",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_7",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_8",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_9",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_10",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_11",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_12_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_13_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_14_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_15_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_16_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_17_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_18_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_19_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_20_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_21_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_22",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_23_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_24_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_25",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_26_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_27",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_28",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_29",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_30",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_31",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_32_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_33_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "collision_arm_end_right_link_part_34_grip",
+      "rigid_cluster": "j6_link",
+      "body": "end_right_link"
+    },
+    {
+      "geom": "camera_link_visual",
+      "rigid_cluster": "j2_link",
+      "body": "camera_link"
+    }
+  ],
+  "arm_component_decomposition": {
+    "j4_link": [
+      {
+        "geom": "collision_arm_j4_link_part_0",
+        "mesh": "j4_link_part_0.obj",
+        "source_triangles": 3862
+      },
+      {
+        "geom": "collision_arm_j4_link_part_1",
+        "mesh": "j4_link_part_1.obj",
+        "source_triangles": 3862
+      },
+      {
+        "geom": "collision_arm_j4_link_part_2",
+        "mesh": "j4_link_part_2.obj",
+        "source_triangles": 2680
+      },
+      {
+        "geom": "collision_arm_j4_link_part_3",
+        "mesh": "j4_link_part_3.obj",
+        "source_triangles": 2634
+      },
+      {
+        "geom": "collision_arm_j4_link_part_4",
+        "mesh": "j4_link_part_4.obj",
+        "source_triangles": 856
+      },
+      {
+        "geom": "collision_arm_j4_link_part_5",
+        "mesh": "j4_link_part_5.obj",
+        "source_triangles": 856
+      }
+    ],
+    "j6_link": [
+      {
+        "geom": "collision_arm_j6_link_part_0",
+        "mesh": "j6_link_part_0.obj",
+        "source_triangles": 7176
+      },
+      {
+        "geom": "collision_arm_j6_link_part_1",
+        "mesh": "j6_link_part_1.obj",
+        "source_triangles": 1086
+      },
+      {
+        "geom": "collision_arm_j6_link_part_2",
+        "mesh": "j6_link_part_2.obj",
+        "source_triangles": 912
+      },
+      {
+        "geom": "collision_arm_j6_link_part_3",
+        "mesh": "j6_link_part_3.obj",
+        "source_triangles": 620
+      },
+      {
+        "geom": "collision_arm_j6_link_part_4",
+        "mesh": "j6_link_part_4.obj",
+        "source_triangles": 620
+      }
+    ],
+    "end_left_link": [
+      {
+        "geom": "collision_arm_end_left_link_part_0",
+        "mesh": "end_left_link_grasp_part_0.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_1",
+        "mesh": "end_left_link_grasp_part_1.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_2",
+        "mesh": "end_left_link_grasp_part_2.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_3_grip",
+        "mesh": "end_left_link_grasp_part_3.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_4_grip",
+        "mesh": "end_left_link_grasp_part_4.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_5",
+        "mesh": "end_left_link_grasp_part_5.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_6",
+        "mesh": "end_left_link_grasp_part_6.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_7",
+        "mesh": "end_left_link_grasp_part_7.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_8_grip",
+        "mesh": "end_left_link_grasp_part_8.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_9_grip",
+        "mesh": "end_left_link_grasp_part_9.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_10",
+        "mesh": "end_left_link_grasp_part_10.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_11_grip",
+        "mesh": "end_left_link_grasp_part_11.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_12_grip",
+        "mesh": "end_left_link_grasp_part_12.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_13",
+        "mesh": "end_left_link_grasp_part_13.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_14",
+        "mesh": "end_left_link_grasp_part_14.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_15",
+        "mesh": "end_left_link_grasp_part_15.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_16_grip",
+        "mesh": "end_left_link_grasp_part_16.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_17_grip",
+        "mesh": "end_left_link_grasp_part_17.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_18",
+        "mesh": "end_left_link_grasp_part_18.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_19_grip",
+        "mesh": "end_left_link_grasp_part_19.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_20",
+        "mesh": "end_left_link_grasp_part_20.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_21_grip",
+        "mesh": "end_left_link_grasp_part_21.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_22_grip",
+        "mesh": "end_left_link_grasp_part_22.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_23",
+        "mesh": "end_left_link_grasp_part_23.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_24_grip",
+        "mesh": "end_left_link_grasp_part_24.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_25_grip",
+        "mesh": "end_left_link_grasp_part_25.obj",
+        "source_component": 2
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_26",
+        "mesh": "end_left_link_grasp_part_26.obj",
+        "source_component": 2
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_27_grip",
+        "mesh": "end_left_link_grasp_part_27.obj",
+        "source_component": 2
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_28_grip",
+        "mesh": "end_left_link_grasp_part_28.obj",
+        "source_component": 2
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_29",
+        "mesh": "end_left_link_grasp_part_29.obj",
+        "source_component": 2
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_30_grip",
+        "mesh": "end_left_link_grasp_part_30.obj",
+        "source_component": 2
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_31_grip",
+        "mesh": "end_left_link_grasp_part_31.obj",
+        "source_component": 2
+      },
+      {
+        "geom": "collision_arm_end_left_link_part_32_grip",
+        "mesh": "end_left_link_grasp_part_32.obj",
+        "source_component": 2
+      }
+    ],
+    "end_right_link": [
+      {
+        "geom": "collision_arm_end_right_link_part_0",
+        "mesh": "end_right_link_grasp_part_0.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_1",
+        "mesh": "end_right_link_grasp_part_1.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_2_grip",
+        "mesh": "end_right_link_grasp_part_2.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_3_grip",
+        "mesh": "end_right_link_grasp_part_3.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_4",
+        "mesh": "end_right_link_grasp_part_4.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_5",
+        "mesh": "end_right_link_grasp_part_5.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_6",
+        "mesh": "end_right_link_grasp_part_6.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_7",
+        "mesh": "end_right_link_grasp_part_7.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_8",
+        "mesh": "end_right_link_grasp_part_8.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_9",
+        "mesh": "end_right_link_grasp_part_9.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_10",
+        "mesh": "end_right_link_grasp_part_10.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_11",
+        "mesh": "end_right_link_grasp_part_11.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_12_grip",
+        "mesh": "end_right_link_grasp_part_12.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_13_grip",
+        "mesh": "end_right_link_grasp_part_13.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_14_grip",
+        "mesh": "end_right_link_grasp_part_14.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_15_grip",
+        "mesh": "end_right_link_grasp_part_15.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_16_grip",
+        "mesh": "end_right_link_grasp_part_16.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_17_grip",
+        "mesh": "end_right_link_grasp_part_17.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_18_grip",
+        "mesh": "end_right_link_grasp_part_18.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_19_grip",
+        "mesh": "end_right_link_grasp_part_19.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_20_grip",
+        "mesh": "end_right_link_grasp_part_20.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_21_grip",
+        "mesh": "end_right_link_grasp_part_21.obj",
+        "source_component": 0
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_22",
+        "mesh": "end_right_link_grasp_part_22.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_23_grip",
+        "mesh": "end_right_link_grasp_part_23.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_24_grip",
+        "mesh": "end_right_link_grasp_part_24.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_25",
+        "mesh": "end_right_link_grasp_part_25.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_26_grip",
+        "mesh": "end_right_link_grasp_part_26.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_27",
+        "mesh": "end_right_link_grasp_part_27.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_28",
+        "mesh": "end_right_link_grasp_part_28.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_29",
+        "mesh": "end_right_link_grasp_part_29.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_30",
+        "mesh": "end_right_link_grasp_part_30.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_31",
+        "mesh": "end_right_link_grasp_part_31.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_32_grip",
+        "mesh": "end_right_link_grasp_part_32.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_33_grip",
+        "mesh": "end_right_link_grasp_part_33.obj",
+        "source_component": 1
+      },
+      {
+        "geom": "collision_arm_end_right_link_part_34_grip",
+        "mesh": "end_right_link_grasp_part_34.obj",
+        "source_component": 1
+      }
+    ]
+  },
+  "grasp_contact_candidates": [
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_3_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_4_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_8_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_9_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_11_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_12_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_16_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_17_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_19_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_21_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_22_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_24_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_25_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_27_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_28_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_30_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_31_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_left_link_part_32_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_2_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_3_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_12_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_13_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_14_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_15_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_16_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_17_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_18_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_19_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_20_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_21_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_23_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_24_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_26_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_32_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_33_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    },
+    {
+      "jaw_geom": "collision_arm_end_right_link_part_34_grip",
+      "unit_geoms": [
+        "carried_unit_tube_*",
+        "carried_unit_iron"
+      ],
+      "condition": "fixed pregrasp outer sidewall contact only; iron contact is exterior r=.0325 at x=.1.. .11, not internal stop face; penetration <=.0001 m"
+    }
+  ],
+  "jaw_decomposition_audit": "models/planning/collision/jaw_prism_decomposition.json",
+  "fixed_mount_contact_exemptions": [
+    {
+      "rigid_cluster": "j0_link",
+      "geom": "mount_visual",
+      "reason": "fixed j0 mount / immediately adjoining j1 mount joint"
+    },
+    {
+      "rigid_cluster": "j1_link",
+      "geom": "mount_visual",
+      "reason": "fixed j0 mount / immediately adjoining j1 mount joint"
+    }
+  ],
+  "adjacent_rigid_clusters": [
+    [
+      "j0_link",
+      "j1_link"
+    ],
+    [
+      "j1_link",
+      "j2_link"
+    ],
+    [
+      "j2_link",
+      "j3_link"
+    ],
+    [
+      "j3_link",
+      "j4_link"
+    ],
+    [
+      "j4_link",
+      "j5_link"
+    ],
+    [
+      "j5_link",
+      "j6_link"
+    ]
+  ],
+  "fixed_obstacles": [
+    "ground_visual",
+    "mount_visual",
+    "collision_core_shell",
+    "collision_block_fixture"
+  ],
+  "core_moving_mesh_convex_hulls": [
+    "core0_pillar_L_light_1",
+    "core0_pillar_L_light_2",
+    "core0_pillar_L_light_3",
+    "core0_pillar_L_light_4",
+    "core0_pillar_L_light_5",
+    "core0_pillar_L_light_6",
+    "core0_pillar_base_inner",
+    "core0_pillar_base_outer",
+    "core0_pillar_base_screw_1",
+    "core0_pillar_base_screw_2",
+    "core0_pillar_base_screw_3",
+    "core0_pillar_base_screw_4",
+    "core0_pillar_inner_ring_1",
+    "core0_pillar_inner_ring_2",
+    "core0_pillar_slide"
+  ],
+  "core_peg": [
+    "core0_peg"
+  ],
+  "carried_unit_hollow_proxies": [
+    "carried_unit_flange_0",
+    "carried_unit_tube_0",
+    "carried_unit_flange_1",
+    "carried_unit_tube_1",
+    "carried_unit_flange_2",
+    "carried_unit_tube_2",
+    "carried_unit_flange_3",
+    "carried_unit_tube_3",
+    "carried_unit_flange_4",
+    "carried_unit_tube_4",
+    "carried_unit_flange_5",
+    "carried_unit_tube_5",
+    "carried_unit_flange_6",
+    "carried_unit_tube_6",
+    "carried_unit_flange_7",
+    "carried_unit_tube_7",
+    "carried_unit_flange_8",
+    "carried_unit_tube_8",
+    "carried_unit_flange_9",
+    "carried_unit_tube_9",
+    "carried_unit_flange_10",
+    "carried_unit_tube_10",
+    "carried_unit_flange_11",
+    "carried_unit_tube_11",
+    "carried_unit_flange_12",
+    "carried_unit_tube_12",
+    "carried_unit_flange_13",
+    "carried_unit_tube_13",
+    "carried_unit_flange_14",
+    "carried_unit_tube_14",
+    "carried_unit_flange_15",
+    "carried_unit_tube_15",
+    "carried_unit_flange_16",
+    "carried_unit_tube_16",
+    "carried_unit_flange_17",
+    "carried_unit_tube_17",
+    "carried_unit_flange_18",
+    "carried_unit_tube_18",
+    "carried_unit_flange_19",
+    "carried_unit_tube_19",
+    "carried_unit_flange_20",
+    "carried_unit_tube_20",
+    "carried_unit_flange_21",
+    "carried_unit_tube_21",
+    "carried_unit_flange_22",
+    "carried_unit_tube_22",
+    "carried_unit_flange_23",
+    "carried_unit_tube_23",
+    "carried_unit_flange_24",
+    "carried_unit_tube_24",
+    "carried_unit_flange_25",
+    "carried_unit_tube_25",
+    "carried_unit_flange_26",
+    "carried_unit_tube_26",
+    "carried_unit_flange_27",
+    "carried_unit_tube_27",
+    "carried_unit_flange_28",
+    "carried_unit_tube_28",
+    "carried_unit_flange_29",
+    "carried_unit_tube_29",
+    "carried_unit_flange_30",
+    "carried_unit_tube_30",
+    "carried_unit_flange_31",
+    "carried_unit_tube_31",
+    "carried_unit_flange_32",
+    "carried_unit_tube_32",
+    "carried_unit_flange_33",
+    "carried_unit_tube_33",
+    "carried_unit_flange_34",
+    "carried_unit_tube_34",
+    "carried_unit_flange_35",
+    "carried_unit_tube_35",
+    "carried_unit_flange_36",
+    "carried_unit_tube_36",
+    "carried_unit_flange_37",
+    "carried_unit_tube_37",
+    "carried_unit_flange_38",
+    "carried_unit_tube_38",
+    "carried_unit_flange_39",
+    "carried_unit_tube_39",
+    "carried_unit_flange_40",
+    "carried_unit_tube_40",
+    "carried_unit_flange_41",
+    "carried_unit_tube_41",
+    "carried_unit_flange_42",
+    "carried_unit_tube_42",
+    "carried_unit_flange_43",
+    "carried_unit_tube_43",
+    "carried_unit_flange_44",
+    "carried_unit_tube_44",
+    "carried_unit_flange_45",
+    "carried_unit_tube_45",
+    "carried_unit_flange_46",
+    "carried_unit_tube_46",
+    "carried_unit_flange_47",
+    "carried_unit_tube_47",
+    "carried_unit_iron",
+    "carried_unit_cap"
+  ],
+  "shell_aabb_local_m": {
+    "min": [
+      -0.20100000500679016,
+      -0.2243005782365799,
+      -0.07836751639842987
+    ],
+    "max": [
+      -0.1120000034570694,
+      0.2243005782365799,
+      0.48763248324394226
+    ]
+  },
+  "visual_peg_parts_replaced_by_rulebook_cylinder": [
+    "core0_pillar_side_inner__electromagnet_base",
+    "core0_pillar_side_inner__electromagnet_ring",
+    "core0_pillar_side_light_1",
+    "core0_pillar_side_light_2",
+    "core0_pillar_side_light_3",
+    "core0_pillar_side_outer"
+  ],
+  "assembly_contact_candidates": [
+    {
+      "geom1": "core0_peg",
+      "geom2": "carried_unit_iron",
+      "condition": "axial endpoint s=.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_L_light_1",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_L_light_2",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_L_light_3",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_L_light_4",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_L_light_5",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_L_light_6",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_base_inner",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_base_outer",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_base_screw_1",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_base_screw_2",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_base_screw_3",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_base_screw_4",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_inner_ring_1",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    },
+    {
+      "geom1": "core0_pillar_inner_ring_2",
+      "geom2": "carried_unit_flange_*",
+      "condition": "opening face seated against mount x=-.1 only; touching allowed; penetration <=.0001 m"
+    }
+  ],
+  "recommended_external_clearance_m": 0.001,
+  "recommended_assembly_penetration_tolerance_m": 0.0001,
+  "limitations": [
+    "Shell AABB and arm/moving mesh convex hulls are conservative and can yield false rejections.",
+    "Nominal peg cylinder is r=.018 and x=[-.1,0]; visual central magnet protrusion is intentionally not collision geometry.",
+    "Same rigid cluster and adjacent joint clusters need explicit audited self-contact exemptions; never skip all arm self-collision.",
+    "Only explicitly tagged gripping jaw parts may contact carried_unit_tube or iron-cylinder outer sidewall; all other arm-unit pairs remain forbidden.",
+    "Allowed assembly contact is phase and geometry specific, never a blanket unit-core exemption.",
+    "Ground and mount are simple local scene obstacles; chassis and full field structure remain absent."
+  ]
+}

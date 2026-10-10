@@ -9,12 +9,13 @@
 namespace tech_core::planning {
 
 using JointVector = Eigen::Matrix<double, 7, 1>;
-// Spatial Jacobian in the target frame: linear velocity above angular velocity.
+// Geometric point Jacobian expressed in the same frame as the target:
+// controlled-point linear velocity above angular velocity.
 using Jacobian = Eigen::Matrix<double, 6, 7>;
 using ForwardKinematics = std::function<void(
     const JointVector&, Eigen::Vector3d&, Eigen::Matrix3d&, Jacobian*)>;
 
-enum class IKMethod { Baseline, FullStep, Reduced5D, AdaptiveLM };
+enum class IKMethod { Baseline, FullStep, Reduced5D, AdaptiveLM, BoundedQP };
 
 struct TaskTarget {
     Eigen::Vector3d position = Eigen::Vector3d::Zero();
@@ -37,6 +38,8 @@ struct IKOptions {
     double alpha = 0.2;
     std::optional<JointVector> max_joint_step;
     int max_backtracks = 12;
+    // Reduced5D/AdaptiveLM use a Euclidean radius. BoundedQP includes a
+    // per-joint box radius in its optimization, together with joint limits.
     double trust_radius = 0.5;
     // True requests termination; checked before every FK, including line searches.
     std::function<bool()> should_stop;
