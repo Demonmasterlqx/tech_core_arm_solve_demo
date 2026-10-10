@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="rm26_arm_kinematic">
+  <compiler angle="radian" meshdir="meshes" inertiafromgeom="false" autolimits="true" />
+  <option timestep="0.002" gravity="0 0 0" />
+  <size nuser_jnt="1" />
+  <visual>
+    <global offwidth="1280" offheight="960" />
+    <headlight diffuse=".75 .75 .75" ambient=".3 .3 .3" specular=".2 .2 .2" />
+    <map znear=".01" />
+  </visual>
+  <statistic center="0 0 0.45" extent="1.5" />
+  <default>
+    <geom contype="0" conaffinity="0" group="1" />
+    <joint type="hinge" damping="0" armature="0" limited="true" />
+  </default>
+  <asset>
+    <mesh name="j0_link" file="j0_link.STL" />
+    <mesh name="j1_link" file="j1_link.STL" />
+    <mesh name="j2_link" file="j2_link.STL" />
+    <mesh name="j3_link" file="j3_link.STL" />
+    <mesh name="j4_link" file="j4_link.STL" />
+    <mesh name="j5_link" file="j5_link.STL" />
+    <mesh name="j6_link" file="j6_link.STL" />
+    <mesh name="end_left_link" file="end_left_link.STL" />
+    <mesh name="end_right_link" file="end_right_link.STL" />
+    <mesh name="realsense_d415_link" file="realsense_d415_link.STL" />
+  </asset>
+  <worldbody>
+    <light pos="0 -1 2" dir="0 .3 -1" diffuse=".8 .8 .8" />
+    <geom name="ground_visual" type="plane" size="2 2 .01" rgba=".16 .19 .24 1" group="0" />
+    <geom name="mount_visual" type="cylinder" pos="-.181 0 .04" size=".085 .04" rgba=".26 .31 .37 1" />
+    <body name="j0_link" pos="-0.180999999999978 0 0.117999999999997" quat="1 0 0 0">
+      <joint name="j0" axis="0 0 1" range="-6.2832 6.2832" user="1" />
+      <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+      <geom name="j0_link_visual" type="mesh" mesh="j0_link" rgba="1 1 1 1" pos="0 0 0" quat="1 0 0 0" />
+      <body name="j1_link" pos="0 -0.0365000000000021 0.0698999999999999" quat="0.70710678118654624 -0.70710678118654879 0 0">
+        <joint name="j1" axis="0 0 1" range="-0.0005 3.15" user="1" />
+        <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+        <geom name="j1_link_visual" type="mesh" mesh="j1_link" rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" pos="0 0 0" quat="1 0 0 0" />
+        <body name="j2_link" pos="-0.363730669589467 -0.209999999999998 0.069750000000007" quat="1 0 0 0">
+          <joint name="j2" axis="0 0 -1" range="-0.1 3.14" user="1" />
+          <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+          <geom name="j2_link_visual" type="mesh" mesh="j2_link" rgba="0.847058823529412 0.847058823529412 0.847058823529412 1" pos="0 0 0" quat="1 0 0 0" />
+          <body name="j3_link" pos="0.1625 0 0.03" quat="4.8272640992987636e-06 0.70710807984299606 -4.8272818308624539e-06 0.70710548249475891">
+            <joint name="j3" axis="0 0 1" range="-6.2832 6.2832" user="1" />
+            <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+            <geom name="j3_link_visual" type="mesh" mesh="j3_link" rgba="1 1 1 1" pos="0 0 0" quat="1 0 0 0" />
+            <body name="j4_link" pos="0.0514999999999954 0 0.0315000000000052" quat="9.3818566868438639e-07 0.7071067811859264 -9.3818566868438978e-07 0.70710678118592385">
+              <joint name="j4" axis="0 0 -1" range="-3.14 3.14" user="1" />
+              <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+              <geom name="j4_link_visual" type="mesh" mesh="j4_link" rgba="1 1 1 1" pos="0 0 0" quat="1 0 0 0" />
+              <body name="j5_link" pos="0.121099999999997 0 -0.00700000000004847" quat="2.6794896585028633e-08 0 0 0.99999999999999967">
+                <joint name="end_differential_controller/j5" axis="0 0 -1" range="-1.57 1.57" user="1" />
+                <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+                <geom name="j5_link_visual" type="mesh" mesh="j5_link" rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" pos="0 0 0" quat="1 0 0 0" />
+                <body name="j6_link" pos="0.0123689056155763 0 -0.0449996696538328" quat="1.1423625238904151e-15 0.70710678118654624 -1.1423625238904192e-15 0.70710678118654879">
+                  <joint name="end_differential_controller/j6" axis="0 0 -1" range="-6.2831853 6.2831853" user="1" />
+                  <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+                  <geom name="j6_link_visual" type="mesh" mesh="j6_link" rgba="1 1 1 1" pos="0 0 0" quat="1 0 0 0" />
+                  <body name="end_link" pos="0 0 -0.122631094384405" quat="1.6155445744325867e-15 -1 0 0" />
+                  <body name="ee_link" pos="0 0.06161 -0.15266" quat="0.70710678118654813 0.70710678118654691 0 0">
+                    <site name="arm_tool" size=".008" rgba="1 .35 .08 1" group="2" />
+                  </body>
+                  <body name="end_left_link" pos="0.0155013152414012 -0.0372999999998274 -0.113631094384405" quat="0.50000000000000078 0.49999999999999739 0.50000000000000255 -0.49999999999999922">
+                    <geom name="end_left_link_visual" type="mesh" mesh="end_left_link" rgba="0.847058823529412 0.847058823529412 0.847058823529412 1" pos="0 0 0" quat="1 0 0 0" />
+                  </body>
+                  <body name="end_right_link" pos="-0.0154986847585824 -0.0378999999998242 -0.113631094384419" quat="0.50000000000000078 0.49999999999999739 0.50000000000000255 -0.49999999999999922">
+                    <geom name="end_right_link_visual" type="mesh" mesh="end_right_link" rgba="1 1 1 1" pos="0 0 0" quat="1 0 0 0" />
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+          <body name="camera_link" pos="0.110000000000023 -0.0485000000000022 0.0524999999999545" quat="0.70710678118654624 0.70710678118654879 0 0">
+            <geom name="camera_link_visual" type="mesh" mesh="realsense_d415_link" rgba="1 1 1 1" pos="0 0 0" quat="1 0 0 0" />
+            <body name="realsense_d415_color_link" pos="0.0043 0.007 0" quat="1 0 0 0" />
+            <body name="realsense_d415_depth_link" pos="0.0043 -0.008 0" quat="1 0 0 0" />
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <keyframe>
+    <key name="home" qpos="0 1 1.3999999999999999 0 0.69999999999999996 0 0" />
+  </keyframe>
+</mujoco>

@@ -1,0 +1,2 @@
+# Keep the pinned upstream URDF byte-identical, including its existing whitespace.
+reference/rm26_arm/source.urdf -text whitespace=-blank-at-eol
