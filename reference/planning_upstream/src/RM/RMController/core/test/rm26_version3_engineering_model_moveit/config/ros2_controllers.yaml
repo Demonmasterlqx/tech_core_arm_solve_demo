@@ -1,0 +1,407 @@
+# This config file is used by ros2_control
+controller_manager:
+  ros__parameters:
+    update_rate: 1000  # Hz
+
+    # chassis
+    chasis_power_controller:
+      type: RM_hardware_interface/RMChasisPowerController
+    chasis_pid_controller:
+      type: RM_hardware_interface/RMSpeedEffortController
+    mcknum_controller:
+      type: mecanum_drive_controller/MecanumDriveController
+
+    # arm
+    end_differential_controller:
+      type: RM_hardware_interface/RMHalfDifferentialEffortController
+    rm_mit_controller:
+      type: RM_hardware_interface/RMMitController
+    arm_control_group_controller:
+      type: rm_joint_trajectory_controller/JointTrajectoryController
+    gripper_controller:
+      type: RM_hardware_interface/RMConnectingRodGripperController
+
+    # supporter
+    left_supporter_controller:
+      type: RM_hardware_interface/RMRackPinionsOnefixedController
+    right_supporter_controller:
+      type: RM_hardware_interface/RMRackPinionsOnefixedController
+
+    image_pitch_controller:
+      type: RM_hardware_interface/RMZeroSpeedPositionController
+    remote_image_pitch_controller:
+      type: RM_hardware_interface/RMRemotePitchController
+
+    # joint state broadcaster
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+# chassis controllers
+
+chasis_power_controller:
+  ros__parameters:
+    type: RM_hardware_interface/RMChasisPowerController
+    motor_names: [fl_joint, fr_joint, rl_joint, rr_joint]
+    k1: [0.0188, 0.0178,0.018, 0.018]
+    k2: [2.95, 2.9, 3.13, 3.26]
+    alpha: [0.95, 0.95, 0.95, 0.95]
+    power_limit_max: 120.0
+    debug_mode: true
+
+chasis_pid_controller:
+  ros__parameters:
+    type: RM_hardware_interface/RMSpeedEffortController
+    joint: [fl_joint, fr_joint, rl_joint, rr_joint]
+    effort_command_name: [chasis_power_controller/fl_joint/effort,
+                          chasis_power_controller/fr_joint/effort,
+                          chasis_power_controller/rl_joint/effort,
+                          chasis_power_controller/rr_joint/effort]
+    chainable: [true]
+    Kp: [0.55, 0.55, 0.55, 0.55]
+    Kd: [0.0, 0.0, 0.0, 0.0]
+    Ki: [0.017, 0.017, 0.017, 0.017]
+    IntegralLimit: [50.0, 50.0, 50.0, 50.0]
+    CoefA: [2.0, 2.0, 2.0, 2.0]
+    CoefB: [1.0, 1.0, 1.0, 1.0]
+    velocity_state_cutoff_hz: [20.0, 20.0, 20.0, 20.0]
+    MaxOut: [7.0, 7.0, 7.0, 7.0]
+    DeadBand: [0.1, 0.1, 0.1, 0.1]
+    derivative_only_on_measurement: [true, true, true, true]
+    front_feed: [0.0, 0.0, 0.0, 0.0]
+    static_friction: [0.0, 0.0, 0.0, 0.0]
+    friction_co: [0.0, 0.0, 0.0, 0.0]
+    debug_mode: true
+
+
+mcknum_controller:
+  ros__parameters:
+    type: mecanum_drive_controller/MecanumDriveController
+    reference_timeout: 0.2
+
+    front_left_wheel_command_joint_name: "chasis_pid_controller/fl_joint"
+    front_right_wheel_command_joint_name: "chasis_pid_controller/fr_joint"
+    rear_left_wheel_command_joint_name: "chasis_pid_controller/rl_joint"
+    rear_right_wheel_command_joint_name: "chasis_pid_controller/rr_joint"
+
+    front_left_wheel_state_joint_name: "fl_joint"
+    front_right_wheel_state_joint_name: "fr_joint"
+    rear_left_wheel_state_joint_name: "rl_joint"
+    rear_right_wheel_state_joint_name: "rr_joint"
+
+    kinematics:
+      base_frame_offset: { x: 0.0, y: 0.0, theta: 0.0 }
+      wheels_radius: 0.076
+      sum_of_robot_center_projection_on_X_Y_axis: 0.42
+
+    use_stamped_vel: false
+    in_chained_mode: false
+
+    base_frame_id: "base_link"
+    odom_frame_id: "odom"
+    enable_odom_tf: true
+    pose_covariance_diagonal: [0.9, 0.9, 0.9, 0.9, 0.9, 0.9]
+    twist_covariance_diagonal: [0.9, 0.9, 0.9, 0.9, 0.9, 0.9]
+
+# arm controllers
+
+end_differential_controller:
+  ros__parameters:
+    type: RM_hardware_interface/RMHalfDifferentialEffortController
+    roll_motor: j6_joint_motor
+    pitch_motor: j5_joint_motor
+    chainable: true
+    debug_mode: true
+    roll_motor_state_velocity_low_pass_coefficient: 1.0
+    pitch_motor_state_velocity_low_pass_coefficient: 1.0
+
+    k_roll: 2.0
+    k_pitch: 1.0
+    k_pitch_roll_radius: 1.0
+
+    roll_joint: j6
+    roll_joint_inverse: false
+    pitch_joint: j5
+    pitch_joint_inverse: true
+
+    roll_joint_torque_transfer_coefficient: 1.0
+    pitch_joint_torque_transfer_coefficient: 1.0
+
+    zero_effort_roll_motor: -0.2
+    zero_effort_pitch_motor: -0.8
+
+    zero_enable_check_enabled: true
+    zero_roll_motor_enable_effort_threshold: 0.01
+    zero_pitch_motor_enable_effort_threshold: 0.01
+
+    maximum_rotational_range: 12.566370614359172953850573533118
+    zero_timeout: 5.0
+    zero_position_tolerance: 0.001
+    zero_effort_threshold: 0.5
+    zero_stable_count: 500
+    no_need_zero_motor: true
+
+    zero_roll_position: 0.0
+    zero_pitch_position: 1.5707963267948966192313216916
+
+    time_out: 0.5
+    max_roll_motor_effort_command: 0.0
+    max_pitch_motor_effort_command: 0.0
+
+rm_mit_controller:
+  ros__parameters:
+    type: RM_hardware_interface/RMMitController
+    kp: [55.0, 150.0, 30.0, 20.0, 30.0, 10.0, 5.0]
+    kd: [2.0, 20.0, 20.0, 1.0, 15.0, 0.3, 0.2]
+    max_output: [20.0, 30.0, 20.0, 10.0, 20.0, 10.0, 6.0]
+    max_effort_ff: [20.0, 30.0, 20.0, 10.0, 20.0, 10.0, 6.0]
+    DeadBand: [0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01]
+    coulomb_friction: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    safe_restore_mode:
+      enable: true
+      # kp_ratio: 0.2
+      kd_ratio: 0.9
+      kp: [11.0, 15.0, 6.0, 2.0, 3.0, 2.0, 1.0]
+      trigger_threshold: [0.5, 0.5, 10000000.0, 10000000.0, 10000000.0, 10000000.0, 10000000.0]
+      restore_threshold: [0.2, 0.2, 0.2, 0.2, 1.0, 1.0, 1.0]
+    motor_enable_threshold: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+    motor_disable_confirm_frames: 10
+    mit_motor_support: [true, true, true, true, true, false, false]
+    gravity_tf:
+      enable: false
+      ground_frame: "map"
+      robot_frame: "base_link"
+      update_period: 0.02
+    time_out: 1.0
+    dob_config:
+      enabled: true
+      g_bw: [5.0, 5.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+      dob_output_limit: [5.0, 40.0, 20.0, 20.0, 6.0, 3.0, 3.0]
+    # init_control_model: "GRAVITY"
+
+    debug_mode: true
+    chainable: true
+
+    control_joint_line: ["j0", "end_differential_controller/j6"]
+    control_joints: ["j0","j1", "j2",  "j3", "j4", 
+      "end_differential_controller/j5", "end_differential_controller/j6"]
+
+arm_control_group_controller:
+  ros__parameters:
+    type: rm_joint_trajectory_controller/JointTrajectoryController
+    joints:
+      - j0
+      - j1
+      - j2
+      - j3
+      - j4
+      - end_differential_controller/j5
+      - end_differential_controller/j6
+    cmd_timeout: 0.1
+    command_interfaces:
+      - position
+      - velocity
+    state_interfaces:
+      - position
+      - velocity
+    command_prefix:
+      - "rm_mit_controller"
+      - "rm_mit_controller"
+      - "rm_mit_controller"
+      - "rm_mit_controller"
+      - "rm_mit_controller"
+      - "rm_mit_controller"
+      - "rm_mit_controller"
+    allow_nonzero_velocity_at_trajectory_end: true
+    # interpolation_method: none
+    interpolation_method: splines
+
+
+gripper_controller:
+  ros__parameters:
+    type: RM_hardware_interface/RMConnectingRodGripperController
+    gripper_motor: end_joint
+    left_connecting_rod_joint: end_left_joint
+    right_connecting_rod_joint: end_right_joint
+    debug: true
+
+    open_position: -0.26
+    close_position: 3.0
+    kp: 0.000
+    ki: 0.0
+    kd: 0.00
+    max_output: 3.5
+    max_integral: 1.7
+    deadband: 0.3
+    static_friction: 1.2
+    hold_effort: 1.5
+    position_threshold: 0.3
+    position_reach_frames: 1
+    no_pid_config:
+      enable: true
+      open_effort: -1.5
+      close_effort: 1.5
+
+
+
+
+# left_supporter_controller:
+#   ros__parameters:
+#     type: RM_hardware_interface/RMRackPinionsOnefixedController
+#     motor: left_support_motor
+#     pinion_name: left_support_joint
+#     zero_topic: "/remote_controller/wheel_less_400"
+#     force_zero_topic: "supporter/force_zero"
+#     rise_topic: "supporter/rise"
+#     down_topic: "supporter/down"
+#     chainable: false
+#     debug_mode: true
+#     pinion_radius: 0.018
+#     maximum_rotational_range: 6.283185307179586476925286766559
+#     max_pinion_travel: 0.60
+#     zero_pinion_position: 0.0
+#     auto_zero_on_start: true
+#     zeroing_motor_effort: -0.9
+#     zero_timeout: 5.0
+#     zero_position_tolerance: 0.001
+#     zero_effort_threshold: 0.1
+#     zero_stable_count: 50
+#     rise_to_holding_frames: 50
+#     rise_target_pinion_velocity: -0.50
+#     rise_timeout: 0.0
+#     down_target_pinion_velocity: 0.9
+#     down_timeout: 0.0
+#     disable_detect_frames: 100
+#     friction_co: 0.0
+#     static_friction: 10.0
+#     gravity_pinion_effort_ff: -5.0
+#     support_pinion_effort_ff: 200.0
+#     block_velocity_tolerance: 0.001
+#     down_block_detect_frames: 10
+#     speed_pid_kp: 20.0
+#     speed_pid_ki: 0.0
+#     speed_pid_kd: 0.5
+#     speed_pid_dead_band: 0.0
+#     speed_pid_integral_limit: 0.0
+#     speed_pid_max_output: 250.0
+#     speed_pid_derivative_on_measurement: false
+#     holding_pinion_effort: -20.0
+#     max_abs_pinion_effort: 400.0
+#     max_abs_motor_effort: 3.0
+#     disable_travel_safety: true
+
+# right_supporter_controller:
+#   ros__parameters:
+#     type: RM_hardware_interface/RMRackPinionsOnefixedController
+#     motor: right_support_motor
+#     pinion_name: right_support_joint
+#     zero_topic: "/remote_controller/wheel_less_400"
+#     force_zero_topic: "supporter/force_zero"
+#     rise_topic: "supporter/rise"
+#     down_topic: "supporter/down"
+#     chainable: false
+#     debug_mode: true
+#     pinion_radius: 0.018
+#     maximum_rotational_range: 6.283185307179586476925286766559
+#     max_pinion_travel: 0.60
+#     zero_pinion_position: 0.0
+#     auto_zero_on_start: true
+#     zeroing_motor_effort: -0.9
+#     zero_timeout: 5.0
+#     zero_position_tolerance: 0.001
+#     zero_effort_threshold: 0.1
+#     zero_stable_count: 50
+#     rise_to_holding_frames: 50
+#     rise_target_pinion_velocity: -0.50
+#     rise_timeout: 0.0
+#     down_target_pinion_velocity: 0.9
+#     down_timeout: 0.0
+#     disable_detect_frames: 100
+#     friction_co: 0.0
+#     static_friction: 10.0
+#     gravity_pinion_effort_ff: -5.0
+#     support_pinion_effort_ff: 200.0
+#     block_velocity_tolerance: 0.001
+#     down_block_detect_frames: 10
+#     speed_pid_kp: 20.0
+#     speed_pid_ki: 0.0
+#     speed_pid_kd: 0.5
+#     speed_pid_dead_band: 0.0
+#     speed_pid_integral_limit: 0.0
+#     speed_pid_max_output: 250.0
+#     speed_pid_derivative_on_measurement: false
+#     holding_pinion_effort: -20.0
+#     max_abs_pinion_effort: 400.0
+#     max_abs_motor_effort: 3.0
+#     disable_travel_safety: true
+
+image_pitch_controller:
+  ros__parameters:
+    type: RM_hardware_interface/RMZeroSpeedPositionController
+    joint: image_pitch_motor
+    motor_name: image_pitch_motor
+    effort_command_name: effort
+    speed_state_name: velocity
+    position_state_name: position
+    effort_state_name: effort
+    motor_enable_effort_threshold: 0.1
+    reference_timeout: 0.5
+    chainable: true
+    command_topic: ~/speed_position_command
+    control_mode: "position_speed"
+    # control_mode: "only_speed"
+
+    # Position PID (conservative defaults)
+    pos_Kp: 2.0
+    pos_Ki: 0.0
+    pos_Kd: 0.0
+    pos_MaxOut: 3.0
+    pos_Integral_Limit: 2.0
+    pos_integral_segment_threshold: 1.0
+    pos_integral_segment_gain: 0.5
+
+    # Speed PID (conservative defaults)
+    vel_Kp: 0.5
+    vel_Ki: 0.0
+    vel_Kd: 0.0
+    vel_MaxOut: 1.0
+    vel_Integral_Limit: 1.0
+
+    # Friction
+    friction_coulomb: 0.1
+    friction_viscous: 0.0
+    friction_velocity_deadband: 0.001
+
+    # Feedforward
+    feedforward_torque: 0.0
+
+    # Position limits
+    pos_max: 1.57079632
+    pos_min: -0.7
+
+    # Zero params (disabled for testing)
+    auto_zero_on_start: true
+    zero_position: -0.698131700797
+    zero_timeout: 5.0
+    zero_position_tolerance: 0.001
+    zero_velocity_threshold: 0.05
+    zero_effort: -0.3
+    zero_stable_count: 50
+
+    # Topics
+    zero_topic: /remote_controller/wheel_bigger_1600
+    force_zero_topic: ~/force_zero
+    is_zero_topic: ~/is_zero
+
+    # Debug
+    debug_mode: true
+
+remote_image_pitch_controller:
+  ros__parameters:
+    type: RM_hardware_interface/RMRemotePitchController
+    pitch_motor: "image_pitch_controller/image_pitch_motor"
+    target_velocity: 2.0
+    channel_pitch_angle_scale: 1.0
+    keyboard_pitch_angle_scale: 10.0
+    timeout: 0.5
+    remote_control_topic: "/rm_manager/remote_control"

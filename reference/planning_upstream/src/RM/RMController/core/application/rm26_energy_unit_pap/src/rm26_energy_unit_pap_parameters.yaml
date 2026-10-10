@@ -1,0 +1,133 @@
+rm26_energy_unit_pap:
+    store_pipeline_service_name:
+        {
+            type: string,
+            default_value: "~/store_energy_unit",
+            description: "Trigger service exposed by this node for the store pipeline",
+        }
+
+    take_pipeline_service_name:
+        {
+            type: string,
+            default_value: "~/take_energy_unit",
+            description: "Trigger service exposed by this node for the take pipeline",
+        }
+
+    trajectory_topic:
+        {
+            type: string,
+            default_value: "/arm_control_group_controller/joint_trajectory",
+            description: "JointTrajectory topic used to command the arm controller",
+        }
+
+    joint_state_topic:
+        {
+            type: string,
+            default_value: "/joint_states",
+            description: "JointState topic used to read the current arm joint positions for trajectory interpolation",
+        }
+
+    move_to_energy_unit_trajectory_file:
+        {
+            type: string,
+            default_value: "",
+            description: "Absolute YAML trajectory path used in the take pipeline before gripping",
+        }
+
+    take_out_energy_unit_trajectory_file:
+        {
+            type: string,
+            default_value: "",
+            description: "Absolute YAML trajectory path used in the take pipeline after closing the gripper",
+        }
+
+    place_energy_unit_trajectory_file:
+        {
+            type: string,
+            default_value: "",
+            description: "Absolute YAML trajectory path used in the store pipeline before opening the gripper",
+        }
+
+    restore_trajectory_file:
+        {
+            type: string,
+            default_value: "",
+            description: "Absolute YAML trajectory path used in the store pipeline after releasing the energy unit",
+        }
+
+    open_gripper_topic:
+        {
+            type: string,
+            default_value: "/open_gripper",
+            description: "Bool topic that receives true once to open the gripper",
+        }
+
+    close_gripper_topic:
+        {
+            type: string,
+            default_value: "/close_gripper",
+            description: "Bool topic that receives true once to close the gripper",
+        }
+
+    interrupt_topic:
+        {
+            type: string,
+            default_value: "~/interrupt",
+            description: "Bool topic that interrupts the currently running pipeline when true is received",
+        }
+
+    trajectory_completion_extra_wait_sec:
+        {
+            type: double,
+            default_value: 0.1,
+            description: "Extra wait duration added to each trajectory's last time_from_start",
+        }
+
+    enable_trajectory_interpolation:
+        {
+            type: bool,
+            default_value: true,
+            description: "Enable generated interpolation trajectories before move_to_energy_unit and place_energy_unit",
+        }
+
+    trajectory_interpolation_time_interval_sec:
+        {
+            type: double,
+            default_value: 0.1,
+            description: "Time interval between adjacent generated interpolation trajectory points",
+        }
+
+    trajectory_interpolation_max_joint_step_rad:
+        {
+            type: double,
+            default_value: 0.1,
+            description: "Maximum per-joint position delta in radians between adjacent generated interpolation points",
+        }
+
+    trajectory_interpolation_joint_state_timeout_sec:
+        {
+            type: double,
+            default_value: 0.2,
+            description: "Maximum time to wait for usable JointState data before skipping interpolation",
+        }
+
+    wait_after_open_gripper_sec:
+        {
+            type: double,
+            default_value: 0.0,
+            description: "Wait duration after publishing the open-gripper command",
+        }
+
+    wait_after_close_gripper_sec:
+        {
+            type: double,
+            default_value: 0.0,
+            description: "Wait duration after publishing the close-gripper command",
+        }
+
+    gripper_command_wait_for_subscription_timeout_sec:
+        {
+            type: double,
+            default_value: 2.0,
+            description: "Maximum time to wait for at least one gripper command topic subscriber before publishing",
+        }

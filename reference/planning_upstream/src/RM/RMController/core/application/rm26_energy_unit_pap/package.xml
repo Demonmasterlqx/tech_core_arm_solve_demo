@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+    <name>rm26_energy_unit_pap</name>
+    <version>0.0.0</version>
+    <description>Trigger-based pick-and-place orchestration for RM26 energy units.</description>
+    <maintainer email="183842220@qq.com">pnx</maintainer>
+    <license>MIT</license>
+
+    <buildtool_depend>ament_cmake</buildtool_depend>
+
+    <build_depend>generate_parameter_library</build_depend>
+    <build_export_depend>generate_parameter_library</build_export_depend>
+    <exec_depend>generate_parameter_library</exec_depend>
+    <exec_depend>ament_index_python</exec_depend>
+
+    <depend>rclcpp</depend>
+    <depend>sensor_msgs</depend>
+    <depend>std_msgs</depend>
+    <depend>std_srvs</depend>
+    <depend>trajectory_msgs</depend>
+    <depend>yaml_cpp_vendor</depend>
+
+    <exec_depend>launch</exec_depend>
+    <exec_depend>launch_ros</exec_depend>
+
+    <test_depend>ament_lint_auto</test_depend>
+    <test_depend>ament_lint_common</test_depend>
+    <test_depend>ament_cmake_gtest</test_depend>
+
+    <export>
+        <build_type>ament_cmake</build_type>
+    </export>
+</package>

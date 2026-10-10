@@ -1,0 +1,44 @@
+axis_free_rotate_ik:
+
+    robot_description_topic:
+        {
+            type: string,
+            default_value: "",
+            read_only: true,
+            description: "Topic carrying std_msgs/String robot_description URDF XML.",
+        }
+
+    robot_description_timeout:
+        {
+            type: double,
+            default_value: 2.0,
+            read_only: true,
+            description: "Seconds to wait for robot_description before initialization fails.",
+            validation: {
+                gt<>: 0.0,
+            },
+        }
+
+    base_link:
+        {
+            type: string,
+            default_value: "",
+            read_only: true,
+            description: "Base link frame used as IK reference frame.",
+        }
+
+    end_effector_link:
+        {
+            type: string,
+            default_value: "",
+            read_only: true,
+            description: "End-effector link frame used as IK target frame.",
+        }
+
+    joint_trajectory_topic:
+        {
+            type: string,
+            default_value: "",
+            read_only: true,
+            description: "Optional topic used to publish solved JointTrajectory messages. Empty disables publishing.",
+        }

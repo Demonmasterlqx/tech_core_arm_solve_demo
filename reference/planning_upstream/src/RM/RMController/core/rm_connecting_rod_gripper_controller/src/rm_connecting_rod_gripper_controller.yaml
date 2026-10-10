@@ -1,0 +1,129 @@
+rm_connecting_rod_gripper_controller:
+  gripper_motor: {
+    type: string,
+    description: "夹爪驱动电机关节名称"
+  }
+
+  left_connecting_rod_joint: {
+    type: string,
+    description: "左侧连杆虚拟关节名称"
+  }
+
+  right_connecting_rod_joint: {
+    type: string,
+    description: "右侧连杆虚拟关节名称"
+  }
+
+  open_position: {
+    type: double,
+    description: "判定夹爪打开的电机位置"
+  }
+
+  close_position: {
+    type: double,
+    description: "判定夹爪闭合的电机位置"
+  }
+
+  kp: {
+    type: double,
+    default_value: 0.0,
+    description: "位置环比例系数"
+  }
+
+  ki: {
+    type: double,
+    default_value: 0.0,
+    description: "位置环积分系数"
+  }
+
+  kd: {
+    type: double,
+    default_value: 0.0,
+    description: "位置环微分系数"
+  }
+
+  deadband: {
+    type: double,
+    default_value: 0.0,
+    description: "PID 死区带宽，误差绝对值小于该值时视为 0",
+    validation: {
+      gt_eq<>: 0.0
+    }
+  }
+
+  max_output: {
+    type: double,
+    default_value: 1.0,
+    description: "PID 输出限幅",
+    validation: {
+      gt<>: 0.0
+    }
+  }
+
+  max_integral: {
+    type: double,
+    default_value: 0.0,
+    description: "PID 积分限幅",
+    validation: {
+      gt_eq<>: 0.0
+    }
+  }
+
+  static_friction: {
+    type: double,
+    default_value: 0.0,
+    description: "静摩擦补偿项"
+  }
+
+  hold_effort: {
+    type: double,
+    default_value: 0.1,
+    description: "夹爪闭合后保持输出的力矩",
+    validation: {
+      gt<>: 0.0
+    }
+  }
+
+  position_threshold: {
+    type: double,
+    default_value: 0.01,
+    description: "到位判定阈值",
+    validation: {
+      gt<>: 0.0
+    }
+  }
+
+  position_reach_frames: {
+    type: int,
+    default_value: 1,
+    description: "连续多少帧满足 position_threshold 才认为到达",
+    validation: {
+      gt_eq<>: 1
+    }
+  }
+
+  no_pid_config: 
+
+    enable: {
+      type: bool,
+      default_value: false,
+      description: "是否启用无 PID 配置，启用后将忽略 PID 参数，直接根据位置关系输出 open_effort 和 close_effort。 逻辑为如果是关闭状态则一直输出 close_effort， 如果是打开则使用 close_effort。 直到打开位置检测满足条件"
+    }
+
+    close_effort: {
+      type: double,
+      default_value: 0.5,
+      description: "无 PID 配置时夹爪闭合的输出力矩",
+    }
+
+    open_effort: {
+      type: double,
+      default_value: 0.5,
+      description: "无 PID 配置时夹爪打开的输出力矩",
+    }
+
+  debug: {
+    type: bool,
+    default_value: false,
+    description: "是否发布调试话题"
+  }

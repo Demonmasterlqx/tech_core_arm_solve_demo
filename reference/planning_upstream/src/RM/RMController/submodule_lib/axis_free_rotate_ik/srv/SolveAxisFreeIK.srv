@@ -1,0 +1,17 @@
+geometry_msgs/PoseStamped[] target_poses
+geometry_msgs/Vector3 local_axis
+float64 point_time_interval
+float64 tf_timeout
+float64[] initial_guess
+float64[] delta_max_q
+float64[] max_joint_step_between_points
+int32 max_iterations
+float64 tolerance
+float64 position_tolerance
+float64 axis_tolerance
+float64 damping
+float64 alpha
+bool publish_trajectory
+---
+trajectory_msgs/JointTrajectory trajectory
+string message

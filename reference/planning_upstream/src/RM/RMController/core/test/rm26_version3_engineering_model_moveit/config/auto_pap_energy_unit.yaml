@@ -1,0 +1,137 @@
+left_energy_unit_pap:
+    ros__parameters:
+        store_pipeline_service_name: "~/store_energy_unit"
+        take_pipeline_service_name: "~/take_energy_unit"
+
+        trajectory_topic: "/arm_control_group_controller/joint_trajectory"
+        move_to_energy_unit_trajectory_file: ""
+        take_out_energy_unit_trajectory_file: ""
+        place_energy_unit_trajectory_file: ""
+        restore_trajectory_file: ""
+
+        open_gripper_topic: "/gripper_controller/open"
+        close_gripper_topic: "/gripper_controller/close"
+        interrupt_topic: "/remote_controller/button/B"
+
+        trajectory_completion_extra_wait_sec: 0.001
+        wait_after_open_gripper_sec: 0.2
+        wait_after_close_gripper_sec: 0.2
+
+        gripper_command_wait_for_subscription_timeout_sec: 0.2
+
+        enable_trajectory_interpolation: true
+        trajectory_interpolation_time_interval_sec: 0.1
+        trajectory_interpolation_max_joint_step_rad: 0.3
+        trajectory_interpolation_joint_state_timeout_sec: 0.2
+        joint_state_topic: "/joint_states"
+
+
+right_down_energy_unit_pap:
+    ros__parameters:
+        store_pipeline_service_name: "~/store_energy_unit"
+        take_pipeline_service_name: "~/take_energy_unit"
+
+        trajectory_topic: "/arm_control_group_controller/joint_trajectory"
+        move_to_energy_unit_trajectory_file: ""
+        take_out_energy_unit_trajectory_file: ""
+        place_energy_unit_trajectory_file: ""
+        restore_trajectory_file: ""
+
+        open_gripper_topic: "/gripper_controller/open"
+        close_gripper_topic: "/gripper_controller/close"
+        interrupt_topic: "/remote_controller/button/B"
+
+        trajectory_completion_extra_wait_sec: 0.001
+        wait_after_open_gripper_sec: 0.2
+        wait_after_close_gripper_sec: 0.2
+
+        gripper_command_wait_for_subscription_timeout_sec: 0.2
+
+        enable_trajectory_interpolation: true
+        trajectory_interpolation_time_interval_sec: 0.1
+        trajectory_interpolation_max_joint_step_rad: 0.3
+        trajectory_interpolation_joint_state_timeout_sec: 0.2
+        joint_state_topic: "/joint_states"
+
+right_up_energy_unit_pap:
+    ros__parameters:
+        store_pipeline_service_name: "~/store_energy_unit"
+        take_pipeline_service_name: "~/take_energy_unit"
+
+        trajectory_topic: "/arm_control_group_controller/joint_trajectory"
+        move_to_energy_unit_trajectory_file: ""
+        take_out_energy_unit_trajectory_file: ""
+        place_energy_unit_trajectory_file: ""
+        restore_trajectory_file: ""
+
+        open_gripper_topic: "/gripper_controller/open"
+        close_gripper_topic: "/gripper_controller/close"
+        interrupt_topic: "/remote_controller/button/B"
+
+        trajectory_completion_extra_wait_sec: 0.001
+        wait_after_open_gripper_sec: 0.2
+        wait_after_close_gripper_sec: 0.2
+
+        gripper_command_wait_for_subscription_timeout_sec: 0.2
+
+        enable_trajectory_interpolation: true
+        trajectory_interpolation_time_interval_sec: 0.1
+        trajectory_interpolation_max_joint_step_rad: 0.3
+        trajectory_interpolation_joint_state_timeout_sec: 0.2
+        joint_state_topic: "/joint_states"
+
+get_outside_energy_unit_pose_sender:
+  ros__parameters:
+    # 关节名称（必须与控制器一致）
+    joint_names: 
+      - j0
+      - j1
+      - j2
+      - j3
+      - j4
+      - end_differential_controller/j5
+      - end_differential_controller/j6
+    
+    # 预设姿态（pose_name: [q1, q2, q3, q4, q5, q6]）
+    # 所有角度单位为弧度
+    poses:
+
+      names: 
+        - energy_unit_0_approach
+        - energy_unit_0_getout
+        - energy_unit_1_approach
+        - energy_unit_1_getout
+        - energy_unit_2_approach
+        - energy_unit_2_getout
+        - energy_unit_3_approach
+        - energy_unit_3_getout
+        - energy_unit_4_approach
+        - energy_unit_4_getout
+        - energy_unit_5_approach
+        - energy_unit_5_getout
+
+      energy_unit_0_approach: [-0.20919990539550781, 0.87457656860351562, 1.5990114212036133, 0.15320968627929688, -0.0090122222900390625, -0.69320742686721282, -0.13729381561279297]
+      energy_unit_0_getout: [-0.21226787567138672, 1.1391925811767578, 2.4269924163818359, 0.14898967742919922, -0.0055608749389648438, -0.92100779612990813, -0.093766212463378906]
+      energy_unit_1_approach: [-0.69241237640380859, 0.93670368194580078, 1.2975788116455078, 1.1622028350830078, 0.0047931671142578125, -0.73539225657912688, 0.071714878082275391]
+      energy_unit_1_getout: [-1.0065011978149414, 1.1645040512084961, 1.709075927734375, 1.3455171585083008, 0.0047931671142578125, -1.0076786716792245, 0.071139812469482422]
+      energy_unit_2_approach: [-0.63411998748779297, 0.97390365600585938, 0.87380886077880859, 2.1309280395507812, -0.023585319519042969, -0.62225977977248625, 0.0047936439514160156]
+      energy_unit_2_getout: [-1.0122528076171875, 1.2400541305541992, 0.91676139831542969, 2.0837574005126953, -0.11792659759521484, -0.96165816386672454, -0.24390697479248047]
+      energy_unit_3_approach: [-0.11025714874267578, 1.0513706207275391, 1.0344963073730469, -0.27017688751220703, -0.600372314453125, 0.72460015217331453, 3.4331092834472656]
+      energy_unit_3_getout: [-0.15627670288085938, 1.2653646469116211, 0.61072731018066406, -0.15550994873046875, -0.75760841369628906, 1.5514300624516348, 3.341644287109375]
+      energy_unit_4_approach: [0.19616127014160156, 0.91676139831542969, 0.89950370788574219, -1.6948871612548828, 0.041994094848632812, -0.23645655711623625, -0.28455829620361328]
+      energy_unit_4_getout: [0.66288375854492188, 1.2093734741210938, 0.96508216857910156, -1.9821300506591797, 0.02166748046875, -0.7591692646357675, 0.23738813400268555]
+      energy_unit_5_approach: [0.26212310791015625, 1.0291271209716797, 1.4375572204589844, -1.0118694305419922, -0.035474777221679688, -0.39675967296096282, -0.17391777038574219]
+      energy_unit_5_getout: [0.66173267364501953, 1.1871299743652344, 1.7838592529296875, -1.0973901748657227, -0.017449378967285156, -0.79023329814406829, -0.19635295867919922]
+
+
+    # 频率限制（Hz）- 0 表示无限制
+    # 设置为 1.0 表示每秒最多触发一次
+    rate_limit: 1.0
+
+    duration: 0.7
+    
+    # 话题前缀（触发话题格式：<topic_prefix>/<pose_name>/trigger）
+    # topic_prefix: "/"
+    
+    # 命令发布话题
+    command_topic: "/arm_control_group_controller/joint_trajectory"

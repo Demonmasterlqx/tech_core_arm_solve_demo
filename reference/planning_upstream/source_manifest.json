@@ -1,0 +1,336 @@
+{
+  "repository": "https://github.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc",
+  "commit": "6edc630a1a14a3904b42d5a360e9020562eefc99",
+  "files": [
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/README.md",
+      "git_blob": "6b6885c3bb3330a0afd3f3daace37b2b9f183732",
+      "size": 2445,
+      "sha256": "3992d491522b942e76afd12ab6424e2ccd41358ce8fef59f3b970922d34c100d"
+    },
+    {
+      "path": "report/08_control_launch_data_flow.md",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/report/08_control_launch_data_flow.md",
+      "git_blob": "b9d4c0eab8a837bbd630e255950ef95a7e99181a",
+      "size": 7114,
+      "sha256": "23dd9b851945e184c10219cf06d93c1fcd8f3197b05fad7653cc48852790080a"
+    },
+    {
+      "path": "report/09_arm_and_chassis_power_features.md",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/report/09_arm_and_chassis_power_features.md",
+      "git_blob": "6856ac753858e86a65089198d514f885cd46d9d5",
+      "size": 8329,
+      "sha256": "a385ddfc3523aac5d5d1c3862c8d441d969ac0d5e2c2f64c59209abaf3f5f893"
+    },
+    {
+      "path": "report/11_future_outlook_and_acknowledgements.md",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/report/11_future_outlook_and_acknowledgements.md",
+      "git_blob": "befff9a420631ed4cdd8a0e3c25f125eb16c1326",
+      "size": 3089,
+      "sha256": "d6576c335f90326f1159fa9ea2d55d0c0d5dbd3c4603235337cd0ed35d3e1dc9"
+    },
+    {
+      "path": "src/RM/RMController/core/application/handle_arm/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/handle_arm/CMakeLists.txt",
+      "git_blob": "5855261e2927c10e0a56d03fc747de9cb9f71f69",
+      "size": 2363,
+      "sha256": "977e17efb7c53bcec52bc7f7c14b951b4724376cdea5c86a9637ad81a1e69763"
+    },
+    {
+      "path": "src/RM/RMController/core/application/handle_arm/README.md",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/handle_arm/README.md",
+      "git_blob": "a251196db92384bbfea0c46f914948bb0e372597",
+      "size": 1174,
+      "sha256": "38d9ffea4b1a3dfe8e83f502f5c4bceadd40345d213f52ecf8ebed1b23d28a23"
+    },
+    {
+      "path": "src/RM/RMController/core/application/handle_arm/config/handle_arm_trajectory_loop.yaml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/handle_arm/config/handle_arm_trajectory_loop.yaml",
+      "git_blob": "bd1ef5d5197e80862bfe303544122b7ee50d75ef",
+      "size": 396,
+      "sha256": "e163da9bf85d8fe0c1493146a356cd44cc36f35931f8673650944b4a4da756e4"
+    },
+    {
+      "path": "src/RM/RMController/core/application/handle_arm/config/trajectory.yaml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/handle_arm/config/trajectory.yaml",
+      "git_blob": "e0385ed44a0388d6bc92b0926ed455458b2cd378",
+      "size": 1720,
+      "sha256": "1437025fbb093564bf4fa4d8f06c72cd8f9de562852c5326601dd6d914a9bc03"
+    },
+    {
+      "path": "src/RM/RMController/core/application/handle_arm/include/handle_arm/trajectory_loop_node.hpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/handle_arm/include/handle_arm/trajectory_loop_node.hpp",
+      "git_blob": "cc985a0c9ec0ce67b4250b96391052cdb1bd1a43",
+      "size": 2937,
+      "sha256": "8f453c3574fec484478fa87c89016767e3cee84ebb6fbf447255beb0ed5d1b1b"
+    },
+    {
+      "path": "src/RM/RMController/core/application/handle_arm/launch/handle_arm_trajectory_loop.launch.py",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/handle_arm/launch/handle_arm_trajectory_loop.launch.py",
+      "git_blob": "333b356a25aa7d878480c5bf482d9f90a55e3b8c",
+      "size": 1465,
+      "sha256": "15072b155b1c2ad960c9cddae68e42a5c49573fb13eb36b28b594626b4ad52ec"
+    },
+    {
+      "path": "src/RM/RMController/core/application/handle_arm/package.xml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/handle_arm/package.xml",
+      "git_blob": "3eaa97ed0b3be487c60045e37cfc1151bdc9d22f",
+      "size": 906,
+      "sha256": "1def9e442f5bfd3118f3f2df2abf5466aa0bc140d9e8af8bd180bcf092a069a0"
+    },
+    {
+      "path": "src/RM/RMController/core/application/handle_arm/src/main.cpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/handle_arm/src/main.cpp",
+      "git_blob": "81636e21ce73e9a6874517b4b64818a2df17de08",
+      "size": 358,
+      "sha256": "1c76e2c61d898fd6d23b9a7d9bdfc351214396a089ca6918e21555e02f6b1b0d"
+    },
+    {
+      "path": "src/RM/RMController/core/application/handle_arm/src/trajectory_loop_node.cpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/handle_arm/src/trajectory_loop_node.cpp",
+      "git_blob": "20714cfbe9385006b4f5701b2ab14b47ea7a8bac",
+      "size": 20949,
+      "sha256": "c29159c7a7091db74d214317c3a6f7e4b1c39919a562f5851ab59d80a7efeeca"
+    },
+    {
+      "path": "src/RM/RMController/core/application/handle_arm/test/test_trajectory_loop_node.cpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/handle_arm/test/test_trajectory_loop_node.cpp",
+      "git_blob": "cca6fc443f2525f910cfb2f02056865f2bd316b5",
+      "size": 11254,
+      "sha256": "7a4f2ce6ae52f4e0c80f4cb67c529924c0c32ccbcaac025841c9e6b546838df3"
+    },
+    {
+      "path": "src/RM/RMController/core/application/rm26_energy_unit_pap/Readme.md",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/rm26_energy_unit_pap/Readme.md",
+      "git_blob": "a2dd2e610ab723b8cbc4bcd262fc28cccbf1ae77",
+      "size": 3982,
+      "sha256": "c37ff8265aecd9ef6a2923ac3c7c61fde650657f0532d6e1a72c1ee98d028009"
+    },
+    {
+      "path": "src/RM/RMController/core/application/rm26_energy_unit_pap/package.xml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/rm26_energy_unit_pap/package.xml",
+      "git_blob": "83747bc25632d124d6d2023cb9fb65f8efc8b16d",
+      "size": 1216,
+      "sha256": "a656cc006264eeb61b7079cd70aa9250d09b35a3b06ac711585437c9a3102592"
+    },
+    {
+      "path": "src/RM/RMController/core/application/rm26_energy_unit_pap/src/rm26_energy_unit_pap.cpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/rm26_energy_unit_pap/src/rm26_energy_unit_pap.cpp",
+      "git_blob": "8ee1b175cb1715fa82a6ff235d7d96bf275f0b1a",
+      "size": 39441,
+      "sha256": "4062a8b098a57924e09238d73a123b1bf16d0c1a182c2dfb48b7cdd02024f719"
+    },
+    {
+      "path": "src/RM/RMController/core/application/rm26_energy_unit_pap/src/rm26_energy_unit_pap_parameters.yaml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/application/rm26_energy_unit_pap/src/rm26_energy_unit_pap_parameters.yaml",
+      "git_blob": "8227347e2ab07d3be97399c4f0992dde6819f18f",
+      "size": 4250,
+      "sha256": "6498b5d3d54f706e5c9d682ffdc5e024cecbc87af8f4df4717f9c5dadcf6fbc0"
+    },
+    {
+      "path": "src/RM/RMController/core/rm_connecting_rod_gripper_controller/Readme.md",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/rm_connecting_rod_gripper_controller/Readme.md",
+      "git_blob": "dcc5f133fba65e8635f595343f87b026682694ef",
+      "size": 2556,
+      "sha256": "7982cf717f6c20ace43ad27572d2d29140c7b6f5b9c3dfc7180778dfd230244c"
+    },
+    {
+      "path": "src/RM/RMController/core/rm_connecting_rod_gripper_controller/include/rm_connecting_rod_gripper_controller/gripper_core.hpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/rm_connecting_rod_gripper_controller/include/rm_connecting_rod_gripper_controller/gripper_core.hpp",
+      "git_blob": "b9231e8e69f5763f93ea6bc7cfcf60c6679f3916",
+      "size": 10864,
+      "sha256": "793bc0855fbab3f10f628b0eb7743c56b6b2da4d9c2e7bcf14e743e1e431d8eb"
+    },
+    {
+      "path": "src/RM/RMController/core/rm_connecting_rod_gripper_controller/package.xml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/rm_connecting_rod_gripper_controller/package.xml",
+      "git_blob": "911597cbaafa7b566fd524a2949d2cb40b79ee72",
+      "size": 1056,
+      "sha256": "ba2629b086d8468f88808aefc334432bf4c51b365da7e3195b0930dedf356095"
+    },
+    {
+      "path": "src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/control_part.cpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/control_part.cpp",
+      "git_blob": "7088206d4fc242f849e503e3015fe0393721f037",
+      "size": 4239,
+      "sha256": "81bb29771a9c3620d9e403a969d981acba8e3571dacf183f81f8690a796d403c"
+    },
+    {
+      "path": "src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/rm_connecting_rod_gripper_controller.cpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/rm_connecting_rod_gripper_controller.cpp",
+      "git_blob": "d1512f52018abecf2ccc4ec83daa600ca689e435",
+      "size": 12040,
+      "sha256": "1c60cc3e141f6d58a71a1c84248f5cfd45bde61852a8192f3bb2b650f0787fab"
+    },
+    {
+      "path": "src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/rm_connecting_rod_gripper_controller.yaml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/rm_connecting_rod_gripper_controller.yaml",
+      "git_blob": "49667217604782e6e8689a3e403dc1fa9583a2f4",
+      "size": 2641,
+      "sha256": "507701ea799650842d509207d5c8bb4a795336d38e4b4045fda277b85686bcd1"
+    },
+    {
+      "path": "src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/auto_pap_energy_unit.yaml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/auto_pap_energy_unit.yaml",
+      "git_blob": "6ce11f0cd1427f94b739aa20734c71c4233a8b1e",
+      "size": 6408,
+      "sha256": "b37450b2d9ac2ef24ee2392e02376f22df60d4825f0e502c71c49a866cc1cbdb"
+    },
+    {
+      "path": "src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/custom_controller.yaml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/custom_controller.yaml",
+      "git_blob": "dce3bd511ed316f54d50392c6a30071d9fd2d9a1",
+      "size": 1800,
+      "sha256": "d54a97967967539b5ef67aa8660a4fa7cfc78f7a5447a8f52d0902d81134082a"
+    },
+    {
+      "path": "src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/joint_limits.yaml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/joint_limits.yaml",
+      "git_blob": "1f8488c639f947c88c4e0717fb2b2fa43bb6f099",
+      "size": 1935,
+      "sha256": "bc766eea23f209d87ca59540b8562c1020474c78fbf61f1be169f957a7ef3cf9"
+    },
+    {
+      "path": "src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/ros2_controllers.yaml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/ros2_controllers.yaml",
+      "git_blob": "f67023b2aa65984b718ecc2e82c0a03bc115e0f3",
+      "size": 12390,
+      "sha256": "823c690b4a4c76122c8f29a71017bb865b40d61911235984cd96d3d6e49dba10"
+    },
+    {
+      "path": "src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/launch/moveit.launch.py",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/launch/moveit.launch.py",
+      "git_blob": "bd8eed8754e2b5e1f88c2164118c243af63215f8",
+      "size": 2663,
+      "sha256": "988b6775685555597899b49f6573376df61ee1a7b3d07022ef121075fe7662ad"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/CMakeLists.txt",
+      "git_blob": "bb555b73adba5a2144eee3a4dcc484a7f55978d5",
+      "size": 4579,
+      "sha256": "314b174f89ca678bf7f2aed382fdc75117dab43e4c0111899722fe6f1073c539"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/config/config.py",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/config/config.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/config/config.yaml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/config/config.yaml",
+      "git_blob": "9a1e7fe6ba0d28cd6ec1aff12207e7433572ec15",
+      "size": 262,
+      "sha256": "704b2e5f8a0a2b8860e6653549eef7badb611d330e6514590fc598d814b5da3d"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/include/axis_free_rotate_ik/axis_free_rotate_ik.hpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/include/axis_free_rotate_ik/axis_free_rotate_ik.hpp",
+      "git_blob": "216f249952fb95facadffe771af951833da683ce",
+      "size": 6879,
+      "sha256": "83fcfc4712cc0e6009658f9dafc9357acaa2aedc713cc836cac1a4e81736878b"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/include/axis_free_rotate_ik/axis_free_rotate_ik_ros.hpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/include/axis_free_rotate_ik/axis_free_rotate_ik_ros.hpp",
+      "git_blob": "f7ffc5c97b4a5e0b88aef1c29b35caa477647e39",
+      "size": 3635,
+      "sha256": "4846701ab0d4367bdfbd040f39889098b15531cfbaf7297507e97c6106ec53a5"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/launch/test.launch.py",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/launch/test.launch.py",
+      "git_blob": "e2adf72ce9247f67b23eff620c28ddc9926e59b8",
+      "size": 585,
+      "sha256": "3381152f63477b6007709b5e3798085b7d0fba0369094f9b43745f6b8b1ee88f"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/package.xml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/package.xml",
+      "git_blob": "c86d3999d0d7f358d1735c6adc5f2b230d536f33",
+      "size": 1180,
+      "sha256": "5bc832f00a3af24056cf90fb95f4328f7ec322eb5d5ac5afbff4633a9e0b37ef"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik.cpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik.cpp",
+      "git_blob": "026d7e3d6863e485137134d13d5a2e8be873d0f7",
+      "size": 32968,
+      "sha256": "fbbcbeca3dd03c1069bc502220c3c8875588a7fabbf7a7a6c80f732c5841cf5c"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik_ros.cpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik_ros.cpp",
+      "git_blob": "46742f7b0f50968132b919f69fe7878cd5f36f93",
+      "size": 21346,
+      "sha256": "8e4d46ef49f294ab6b5dad36cf16e454b19cc25d1a3c9fe5b7c0e50a8353fea7"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik_ros.yaml",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik_ros.yaml",
+      "git_blob": "dc258cd5004557fcd8d479979ff0251641c6e3a1",
+      "size": 1201,
+      "sha256": "31e5ec07679589c34d82611b59e6c31e714e4207065a4ba1207968a297ce1411"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/srv/SolveAxisFreeIK.srv",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/srv/SolveAxisFreeIK.srv",
+      "git_blob": "48fc105b9044b310e7239b029e89ca2ec03a477b",
+      "size": 412,
+      "sha256": "1835650c35fb3888fa75a9112f478bb6594438dbdb85bbf5ac762fc050db780a"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/srv/SolveFixedIK.srv",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/srv/SolveFixedIK.srv",
+      "git_blob": "1238fb72952ce659154b08bce3d14ef0f69fc1cd",
+      "size": 289,
+      "sha256": "b19ae0876b0f1a1b4e453317454f5152666417c397264285c5eee758fe0b8721"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/test/test_axis_free_rotate_ik.cpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/test/test_axis_free_rotate_ik.cpp",
+      "git_blob": "86f1d6b11ee16824ff88ba1469399cffbc46ab98",
+      "size": 33731,
+      "sha256": "515a943be2c8f2cfc7b7f012a90bd7058019664634a9b1ca5f4ec5ac4ccc100b"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/test/test_axis_free_rotate_ik_ros.cpp",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/test/test_axis_free_rotate_ik_ros.cpp",
+      "git_blob": "01096d79035588564ad0b9cd8ccdcadbdf386954",
+      "size": 33078,
+      "sha256": "33cfe704a706d4adfd3e554aab54e44ca9b40a9be5c907cce9e6c4fdc7c22d1b"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/theory/IK逆解.md",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/theory/IK%E9%80%86%E8%A7%A3.md",
+      "git_blob": "809d2cf6a8f2390f5747f2f6b16eeb024b682774",
+      "size": 12006,
+      "sha256": "70f52d5c4599b6a5dc17eac17433ecbca18ef69d3d7c02e9bf816c8372f5b881"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/theory/image.png",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/theory/image.png",
+      "git_blob": "2103ba0c57d98a5ffb0f125180ef8c73278be2e1",
+      "size": 61761,
+      "sha256": "fd2a6497aa5350505c74033b3ed479db387e9d1c08dc74fde0b0d6b53aa5a0fd"
+    },
+    {
+      "path": "src/RM/RMController/submodule_lib/axis_free_rotate_ik/uncrustify_4_spaces.cfg",
+      "url": "https://raw.githubusercontent.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/submodule_lib/axis_free_rotate_ik/uncrustify_4_spaces.cfg",
+      "git_blob": "deea771d23469bfdcda719d3d085cccc932dea3a",
+      "size": 155,
+      "sha256": "b099d5b89a15eea93c6a606b92d3743cf7f457305f6f07de714507058ff60944"
+    }
+  ],
+  "retrieved_utc": "2026-10-11",
+  "upstream_tree_truncated": false,
+  "license_inventory": [
+    "src/ecat_interface/LICENSE",
+    "src/ecat_interface/core/message_logger/LICENSE",
+    "src/ecat_interface/core/soem/soem_rsl/soem_rsl/LICENSE"
+  ],
+  "license_status": "No root or axis_free_rotate_ik license text. axis_free_rotate_ik/package.xml declares TODO: License declaration. Existing unrelated ecat licenses are not applicable."
+}
