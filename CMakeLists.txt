@@ -49,3 +49,5 @@ if(BUILD_TESTING)
   add_test(NAME cli_invalid_level COMMAND tech_core --headless --level 5)
   set_tests_properties(cli_invalid_level PROPERTIES WILL_FAIL TRUE)
 endif()
+
+include(cmake/rm26_arm.cmake)
