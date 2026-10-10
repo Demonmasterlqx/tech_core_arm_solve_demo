@@ -1,0 +1,8 @@
+/build*/
+/.deps/
+/artifacts/
+/.venv/
+__pycache__/
+*.pyc
+*.ppm
+MUJOCO_LOG.TXT
