@@ -1,0 +1,8 @@
+assembly_x,base_to_E_horizontal,ready_ik_success,start_clear,planning_success,dense_valid,planning_seconds,reason
+0.28000000000000003,0.37,1,1,1,1,0.26640993899999998,"validated"
+0.26000000000000001,0.34999999999999998,1,1,0,0,0.045535747000000001,"collision_approach_3_j2_link_visual/collision_arm_j4_link_part_5_d=0.000982"
+0.23999999999999999,0.32999999999999996,1,1,0,0,0.029511052999999999,"collision_approach_2_j2_link_visual/collision_arm_j4_link_part_5_d=0.000960"
+0.22,0.31,1,1,0,0,0.040628082000000003,"collision_approach_3_j2_link_visual/collision_arm_j4_link_part_5_d=0.000982"
+0.20000000000000001,0.29000000000000004,1,1,0,0,0.070731008999999997,"collision_approach_5_j2_link_visual/collision_arm_j4_link_part_5_d=0.000929"
+0.17999999999999999,0.27000000000000002,1,1,0,0,0.146134707,"collision_approach_8_j2_link_visual/collision_arm_j4_link_part_5_d=0.000944"
+0.16,0.25,1,1,0,0,0.219462199,"collision_approach_12_j2_link_visual/collision_arm_j4_link_part_5_d=0.000929"

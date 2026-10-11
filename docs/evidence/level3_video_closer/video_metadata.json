@@ -1,0 +1,102 @@
+{
+  "method": "rigid_cache",
+  "case": "closer_x200_s26",
+  "repeat": 0,
+  "planning_seconds": 0.338193234,
+  "execution_seconds": 50.29601869420354,
+  "playback_speed": 1.0,
+  "fps": 24,
+  "width": 1600,
+  "height": 900,
+  "source_trajectory": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/closer_mount_search/trajectories/rigid_cache_closer_x200_s26_r0.csv",
+  "source_trajectory_sha256": "da7ce6e2346c7a2b3fe2ae852c522df3c5fbc886db6a4cb8c09928bda4f58db5",
+  "scenario_csv_sha256": "9104eea2418a47997ea68a80e8ab36f4c30b16d3220b334b6fe74444b8f704b9",
+  "model_sha256": "f0492a28ddf9eac6f0ba71aa7bc7754fcae698f4c6d655e9fbfdeeda6d07a903",
+  "renderer_source_sha256": "da63303ffa9be3006df9bf0c927e54b405755cca0626764e3a512225e5dfb0cb",
+  "interpolation": "q and mechanism: 3*u^2 - 2*u^3; no mj_step",
+  "validation": "Original C++ dense validator, cache disabled, rerun before rendering",
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "LIBGL_ALWAYS_SOFTWARE": "1",
+    "GALLIUM_DRIVER": "llvmpipe",
+    "LP_NUM_THREADS": "4"
+  },
+  "current_model_recheck": "DENSE_RECHECK passed samples=1526",
+  "opengl_renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+  "ffprobe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1600,
+        "height": 900,
+        "coded_width": 1600,
+        "coded_height": 912,
+        "closed_captions": 0,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "chroma_location": "left",
+        "refs": 4,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "time_base": "1/12288",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 643072,
+        "duration": "52.333333",
+        "bit_rate": "1415191",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "1256",
+        "nb_read_frames": "1256",
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/.render-zguw5g4b/level3-closer-10cm.mp4",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "52.334000",
+      "size": "9273749",
+      "bit_rate": "1417625",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf58.76.100"
+      }
+    }
+  },
+  "frames": 1256,
+  "output_sha256": "db3af04fccd72b85fc86f8026a5601e59d9918fa4e89d43bf09bb457c904ed0a",
+  "output_bytes": 9273749
+}

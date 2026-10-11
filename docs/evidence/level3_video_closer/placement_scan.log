@@ -1,0 +1,12 @@
+closer_x200_s2 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=0.432973 reason=collision_insert_81_j5_link_visual/collision_core_shell_d=0.000457
+closer_x200_s3 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=0.106289 reason=collision_insert_81_j5_link_visual/collision_core_shell_d=0.000434
+closer_x200_s4 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=1.37528 reason=collision_lift_99_j5_link_visual/collision_core_shell_d=0.000000
+closer_x200_s5 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=0.7488 reason=collision_lift_87_j5_link_visual/collision_core_shell_d=0.000825
+closer_x200_s9 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=0.029326 reason=collision_approach_1_j2_link_visual/collision_arm_j4_link_part_5_d=0.000931
+closer_x200_s14 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=0.54924 reason=collision_insert_80_j5_link_visual/collision_core_shell_d=0.000456
+closer_x200_s16 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=0.130363 reason=collision_insert_81_j5_link_visual/collision_core_shell_d=0.000962
+closer_x200_s17 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=0.373952 reason=collision_flip_221_carried_unit_flange_35/core0_pillar_base_inner/assembly_axial_overlap_d=-0.000101_d=-0.000101
+closer_x200_s22 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=0.0997338 reason=collision_insert_81_j5_link_visual/collision_core_shell_d=0.000519
+closer_x200_s23 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=1.19068 reason=collision_lift_96_j5_link_visual/collision_core_shell_d=0.000886
+closer_x200_s25 base_to_E=0.29 ready=1 start_clear=1 success=0 seconds=0.32874 reason=collision_approach_18_j2_link_visual/collision_arm_j4_link_part_5_d=0.000983
+closer_x200_s26 base_to_E=0.29 ready=1 start_clear=1 success=1 seconds=0.338193 reason=validated

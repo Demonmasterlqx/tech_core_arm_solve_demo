@@ -1,0 +1,31 @@
+DENSE_RECHECK passed samples=1526
+OPENGL_RENDERER llvmpipe (LLVM 15.0.7, 256 bits)
+FRAME 1/1256 trajectory_time=0
+FRAME 49/1256 trajectory_time=2
+FRAME 97/1256 trajectory_time=4
+FRAME 145/1256 trajectory_time=6
+FRAME 193/1256 trajectory_time=8
+FRAME 241/1256 trajectory_time=10
+FRAME 289/1256 trajectory_time=12
+FRAME 337/1256 trajectory_time=14
+FRAME 385/1256 trajectory_time=16
+FRAME 433/1256 trajectory_time=18
+FRAME 481/1256 trajectory_time=20
+FRAME 529/1256 trajectory_time=22
+FRAME 577/1256 trajectory_time=24
+FRAME 625/1256 trajectory_time=26
+FRAME 673/1256 trajectory_time=28
+FRAME 721/1256 trajectory_time=30
+FRAME 769/1256 trajectory_time=32
+FRAME 817/1256 trajectory_time=34
+FRAME 865/1256 trajectory_time=36
+FRAME 913/1256 trajectory_time=38
+FRAME 961/1256 trajectory_time=40
+FRAME 1009/1256 trajectory_time=42
+FRAME 1057/1256 trajectory_time=44
+FRAME 1105/1256 trajectory_time=46
+FRAME 1153/1256 trajectory_time=48
+FRAME 1201/1256 trajectory_time=50
+FRAME 1249/1256 trajectory_time=50.296
+FRAME 1256/1256 trajectory_time=50.296
+COMPLETE /data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/level3-closer-10cm.mp4 frames=1256 bytes=9273749
