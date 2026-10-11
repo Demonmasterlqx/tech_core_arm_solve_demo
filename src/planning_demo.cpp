@@ -49,8 +49,8 @@ DemoPreview make_demo_preview(const Scenario& request, const PlanOptions& option
     try {
         PlanningScene workspace;
         workspace.configure(request);
-        // Build the intent before calling the planner, so early collision or
-        // front-plane rejection still has an honest, labelled visualization.
+        // Build the intent before calling the planner, so even an early
+        // rejection still has an honest, labelled visualization.
         for (const auto& point : make_task(workspace, options))
             preview.requested_path.push_back(point.target.position);
         preview.result = plan(workspace, request, options);

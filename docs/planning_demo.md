@@ -49,7 +49,7 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 
 平移都使用同一世界坐标系，不随相机改变。机械臂控制点是携带单元开口中心 `planning_tcp`，保留开始 jog 时的朝向；松键立即保持。默认机械臂速度 0.06 m/s，核心速度 **0.20 m/s**，核心角速度 **60°/s**。核心平移、旋转速度可分别通过 `--core-speed`（m/s）、`--core-rotation-speed`（°/s）调整，均接受正的有限数值。
 
-核心 RPY 按装配坐标系的 `Rz(yaw) Ry(pitch) Rx(roll)` 表示，对应旧 API 的 `alpha`、`phi−90°`、`theta`。核心原点是初始 E 点。**Demo 中核心 XYZ 和 RPY 均不设位姿限位**，可以直接向任意方向调整，角度可连续累加。规划使用当前实际位姿；无法到达、碰撞或违反前平面规则时，仍展示请求路径、返回的候选轨迹及失败原因。
+核心 RPY 按装配坐标系的 `Rz(yaw) Ry(pitch) Rx(roll)` 表示，对应旧 API 的 `alpha`、`phi−90°`、`theta`。核心原点是初始 E 点。**Demo 中核心 XYZ 和 RPY 均不设位姿限位，规划也不再受装配站前平面限制**，可以直接向任意方向调整，角度可连续累加。规划使用当前实际位姿；无法到达或碰撞时，仍展示请求路径、返回的候选轨迹及失败原因。
 
 **启动和 Backspace 均使用上游 URDF 的七关节零位 `[0,0,0,0,0,0,0]` rad**。Backspace 同时将插入、升降、P、Q 进度和执行时钟清零，清除预览并使旧规划请求失效，保留当前核心 XYZ/RPY 与后端。零位保留上游关节的固定安装变换，因此模型呈折叠姿态。来源是 [HKUST RM26 version3](https://github.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/tree/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/models/rm26_version3_engineering_model)；2026-10-11 在线核对 `main` 仍指向该提交，本地 `source.urdf` 与上游逐字节一致。
 
@@ -62,7 +62,7 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 1. 调整场景，选择 `1` 或 `2`，按 Enter 开始规划。计算使用独立线程和独立 MuJoCo model/data，窗口仍可旋转视角。
 2. 计算结束进入 `PREVIEW_READY` 或 `PREVIEW_FAILED`。机械臂、核心机构和执行时钟都保持原状态，直到下一次明确按键。
 3. 成功轨迹用绿色半透明机械臂虚影循环回放，并显示绿色路径与稀疏的目标轴向箭头。虚影使用独立 MuJoCo model/data，仅复制渲染几何叠加到画面中。再次按 Enter 才进入 `EXECUTING`，此时虚影隐藏，实体机械臂与核心机构同步执行。
-4. 失败候选用红色虚影回放返回的关节轨迹或已求解前缀，底部显示原始失败原因。失败前缀没有时间戳时，只给虚影副本生成时间戳，不修改原规划结果、不解除执行限制。黄色虚线始终表示**请求的任务路径**。如果规划在起点碰撞或前平面检查处被拒绝，可能没有任何候选关节点；此时虚影保持起点，并显示请求路径、红色起点标记和“没有候选”的说明。红色终点标记表示候选路径终点，不保证就是首次碰撞位置。
+4. 失败候选用红色虚影回放返回的关节轨迹或已求解前缀，底部显示原始失败原因。失败前缀没有时间戳时，只给虚影副本生成时间戳，不修改原规划结果、不解除执行限制。黄色虚线始终表示**请求的任务路径**。如果规划因起点碰撞等原因提前被拒绝，可能没有任何候选关节点；此时虚影保持起点，并显示请求路径、红色起点标记和“没有候选”的说明。红色终点标记表示候选路径终点，不保证就是首次碰撞位置。
 5. 失败轨迹不能执行；按 Enter 保留预览并提示原因。修改场景或按 Backspace 后可重新规划。
 
 长按 Enter 的重复事件、计算期间额外按 Enter 均不会排队触发执行。移动机械臂、调整核心、切换到另一个后端或回零，都会清除已有预览；后台旧请求即使成功也会被丢弃。后台至多一个请求，旧请求尚未返回时会提示稍后重新按 Enter。
@@ -81,7 +81,7 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 
 ## 规划与仿真范围
 
-后端 1 复用 HKUST 任务雅可比基线；后端 2 复用现有 `RigidCache` 方案。二者采用相同任务、碰撞和规则验证接口。Demo 默认规划超时 5 s、`motion_speed_scale=4`，保留最终 0.5 s 规则驻留。Demo 的场景设置 `enforce_core_pose_limits=false`；规划库其他调用默认保留规则表位姿范围检查。上述设置均不取消规划的关节限位、碰撞、前平面和装配过程验证。
+后端 1 复用 HKUST 任务雅可比基线；后端 2 复用现有 `RigidCache` 方案。二者采用相同任务、碰撞和规则验证接口。Demo 默认规划超时 5 s、`motion_speed_scale=4`，保留最终 0.5 s 规则驻留。Demo 的场景设置 `enforce_core_pose_limits=false`，跳过规则表位姿范围和前平面检查；规划库其他调用默认保留这两项检查。规划的关节限位、碰撞和装配过程验证继续生效。
 
 成功后按照验证器相同的 `3u²−2u³` 插值关节及机构状态，精确到达最终路径点。这里的“执行”是 MuJoCo 中的运动学仿真，能量单元保持既定固定抓持变换；没有硬件控制或接触力控制。手动 jog 只受关节限位与速度限制，规划阶段才验证完整路径及碰撞。沿用现有 [碰撞几何与抓持假设](planning_scene_audit.md)，不把离散采样验证解释为连续碰撞证明。
 
@@ -91,7 +91,7 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 ./scripts/run_planning_demo.sh --backend baseline --motion-speed-scale 1
 ./scripts/run_planning_demo.sh --core-speed 0.3 --core-rotation-speed 90
 ./scripts/run_planning_demo.sh --case confirm_top
-./scripts/run_planning_demo.sh --case reject_front_plane
+./scripts/run_planning_demo.sh --case reject_blocked
 ```
 
 后两条用于查看普通失败与零关节点失败，启动后按 R 载入对应场景的装配预设，再按 Enter。
@@ -117,3 +117,5 @@ xvfb-run -a -s '-screen 0 1440x1000x24 -nolisten tcp' \
 2026-10-11 的初版记录见 [初版运行时证据](evidence/keyboard_planning_demo.json)。归零与核心自由调节修正后的记录见 [修正验证](evidence/keyboard_zero_free_core.json)：重新构建默认 `build/rm26_demo`，23 项 CTest 全部通过；真实窗口的 X11/XTest 回归也通过，覆盖七关节精确归零、R 恢复非零初始姿态、核心以新速度越过旧范围、越界请求的失败预览，以及完整的预览/执行流程。控制器另验证 XYZ/RPY 的全部正负方向均不再限位、规划从零关节启动、旧规划结果不能覆盖归零状态，其他场景的默认范围检查仍生效。截图已更新。渲染为 llvmpipe，启动、执行和退出的 NVIDIA 进程表中均没有测试 Demo 进程，测试窗口和 Xvfb 已退出。
 
 同日进一步将启动姿态统一到上游 URDF 零位，记录见 [上游零位与启动验证](evidence/keyboard_urdf_zero.json)：在线核对上游提交与 URDF 哈希，独立 URDF/MuJoCo 的 68 组 FK 再次通过；规划场景的七主关节原点、轴向、范围和零参考保持一致。附加夹爪仍使用装配 Demo 既有的固定夹持角，详见 [夹持约定](planning_scene_audit.md)。重建后 3 项 Demo 测试及完整真实键盘回归通过，截图更新为启动即七关节全零；R 明确标为装配预设。
+
+同日移除 Demo 规划入口的前平面限制，记录见 [前平面限制移除验证](evidence/keyboard_no_front_plane.json)：23 项 CTest 和完整真实键盘回归通过。Baseline、RigidCache 均能对越过原前平面的核心位姿继续规划并展示结果；窗口测试中的该位姿因起点碰撞失败，保留请求路径与起点虚影，第一次回车及预览期间实体保持不动，失败结果不能执行。正常预设仍可在第二次回车后执行到完成。零关节点失败的窗口用例改用 `reject_blocked`；此前记录中的 `invalid_station_front_plane` 是修改前的历史结果。

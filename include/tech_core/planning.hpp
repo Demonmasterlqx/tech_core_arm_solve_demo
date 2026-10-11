@@ -39,7 +39,8 @@ struct Scenario {
     double arm_base_z = 0;
     bool blocking_obstacle = false;
     // The interactive demo allows arbitrary finite core XYZ/RPY. Other
-    // callers retain the rule-table bounds unless explicitly disabled.
+    // callers retain the rule-table bounds and station front-plane rule
+    // unless explicitly disabled. Collision and joint checks are unaffected.
     bool enforce_core_pose_limits = true;
 };
 struct TaskPoint {

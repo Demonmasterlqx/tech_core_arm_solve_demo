@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-11",
+  "change": "Disable the station front-plane gate in PlanningDemo via enforce_core_pose_limits=false",
+  "build": {
+    "command": "cmake --build build -j4",
+    "result": "PASS"
+  },
+  "ctest": {
+    "command": "CUDA_VISIBLE_DEVICES='' ctest --test-dir build --output-on-failure -j4",
+    "passed": 23,
+    "failed": 0,
+    "contract": "Both Demo backends reach collision checks beyond the former front plane; strict callers retain pose and front-plane checks"
+  },
+  "keyboard": {
+    "artifacts": "artifacts/keyboard_planning_demo/x11-no-front-plane",
+    "result": "PASS",
+    "checks": [
+      "Startup uses upstream URDF zero with all seven joint angles exactly zero",
+      "Planning from URDF zero still displays a preview and holds the actual robot",
+      "Backspace sets all seven joints exactly to zero, clears progress and preserves core XYZ/RPY",
+      "Core moves below the former Z minimum and above the former pitch maximum",
+      "Both backends preview beyond the former front plane with the real arm/core held; failed plans cannot execute",
+      "R loads the separate nonzero assembly preset and its core pose",
+      "Baseline first Enter and held Enter keep arm/core frozen at preview",
+      "Translucent arm/core ghost animates, pauses and scrubs while opaque arm/core remain fixed",
+      "Backend switch invalidates preview; RigidCache previews without execution",
+      "Second Enter executes, Space/focus loss hold, resume reaches complete assembly",
+      "Backspace during planning holds exact zero joints and discards a stale successful result",
+      "Partial and zero-knot failures are displayed and second Enter cannot execute them"
+    ],
+    "beyond_front_plane_previews": [
+      {
+        "backend": "baseline",
+        "state": "PREVIEW_FAILED",
+        "core_world": [
+          0.1871870004,
+          0,
+          0.25
+        ],
+        "core_rpy": [
+          0,
+          0,
+          0
+        ],
+        "reason": "start_collision_j5_link_visual/collision_core_shell_d=-0.017825",
+        "knots": 0,
+        "requested_points": 339,
+        "ghost_geoms": 36,
+        "time": 0
+      },
+      {
+        "backend": "rigid_cache",
+        "state": "PREVIEW_FAILED",
+        "core_world": [
+          0.1871870004,
+          0,
+          0.25
+        ],
+        "core_rpy": [
+          0,
+          0,
+          0
+        ],
+        "reason": "start_collision_j5_link_visual/collision_core_shell_d=-0.017825",
+        "knots": 0,
+        "requested_points": 339,
+        "ghost_geoms": 36,
+        "time": 0
+      }
+    ],
+    "nominal_execution_final_state": "COMPLETE",
+    "failure_previews": [
+      {
+        "state": "PREVIEW_FAILED",
+        "reason": "ik_flip_304_iteration limit",
+        "knots": 304,
+        "requested_points": 349,
+        "time": 0
+      },
+      {
+        "state": "PREVIEW_FAILED",
+        "reason": "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000",
+        "knots": 0,
+        "requested_points": 274,
+        "time": 0
+      }
+    ]
+  },
+  "resources": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+    "nvidia_demo_process_entries_in_four_snapshots": 0,
+    "nominal_viewer_pid": 2490956,
+    "nominal_viewer_exited": true,
+    "viewer_and_xvfb_processes_remaining_after_run": 0
+  }
+}

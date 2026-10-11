@@ -221,18 +221,31 @@ void free_core_contract() {
     demo.reset();
     for (int i = 0; i < 20; ++i) demo.jog_core({-.2, 0, 0}, {0, 0, 0}, .1);
     const auto edited = demo.core_position();
+    const auto initial = demo.joints();
+    require(!demo.scene().core_within_front_plane(), "Fixture must cross the former front-plane boundary");
     for (auto method : {Method::Baseline, Method::RigidCache}) {
         demo.set_backend(method);
         demo.enter(); finish_request(demo);
-        require(demo.state() == DemoState::PreviewFailed && demo.preview()->result.reason == "invalid_station_front_plane",
-                "Out-of-range core pose must reach the planner and retain its rejection reason");
+        require(demo.preview() && (demo.state() == DemoState::PreviewReady || demo.state() == DemoState::PreviewFailed),
+                "Core pose beyond the former front plane must produce a preview");
+        require(demo.preview()->result.reason != "invalid_station_front_plane" &&
+                demo.preview()->result.counters.collision_states > 0,
+                "Both demo backends must proceed to collision checking beyond the former front plane");
         require(!demo.preview()->requested_path.empty() && !demo.preview()->ghost_knots.empty(),
-                "Out-of-range failed plan lost the requested path or start ghost");
-        demo.enter(); demo.tick(.1);
-        require(demo.state() == DemoState::PreviewFailed && (demo.core_position() - edited).norm() < 1e-12,
-                "Rejected out-of-range request executed or changed the core pose");
+                "Out-of-range plan lost the requested path or ghost");
+        for (int i = 0; i < 10; ++i) demo.tick(.1);
+        require(same(initial, demo.joints()) && (demo.core_position() - edited).norm() < 1e-12 &&
+                demo.execution_time() == 0 && demo.mechanism().insertion == 0 && demo.mechanism().lift == 0 &&
+                demo.mechanism().flip == 0 && demo.mechanism().twist == 0,
+                "Planning/preview beyond the former front plane moved the robot or core");
+        if (demo.state() == DemoState::PreviewFailed) {
+            demo.enter(); demo.tick(.1);
+            require(demo.state() == DemoState::PreviewFailed && same(initial, demo.joints()) &&
+                    (demo.core_position() - edited).norm() < 1e-12 && demo.execution_time() == 0,
+                    "Failed out-of-range request executed or changed the scene");
+        }
     }
-    std::cout << "PASS unbounded core XYZ/RPY at increased speeds, strict defaults and failed preview in both backends\n";
+    std::cout << "PASS unbounded core XYZ/RPY, strict defaults and preview beyond the front plane in both backends\n";
 }
 
 void failure_contract() {
@@ -247,10 +260,12 @@ void failure_contract() {
     demo.enter(); demo.tick(.1);
     require(demo.state() == DemoState::PreviewFailed && same(initial, demo.joints()), "Failed trajectory executed");
 
-    // Front-plane rejection produces no knots at all; still show intent.
+    // Non-demo callers retain the front-plane rule; still show rejected intent.
     const auto suite = scenario_suite();
     request = *std::find_if(suite.begin(), suite.end(), [](const auto& s) { return s.id == "reject_front_plane"; });
     const auto empty = make_demo_preview(request, demo_plan_options());
+    require(empty.result.reason == "invalid_station_front_plane" && empty.result.counters.collision_states == 0,
+            "Non-demo scenes must retain the default front-plane rejection");
     require(!empty.result.success && empty.result.knots.empty() && !empty.requested_path.empty(), "Zero-knot failure lacks a preview");
     require(empty.ghost_knots.size() == 1 && same(empty.ghost_knots.front().q, request.start),
             "Zero-knot failure must show a stationary start ghost, not invent a path");

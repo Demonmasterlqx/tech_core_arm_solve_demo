@@ -247,15 +247,24 @@ def main():
 
         run.tap('r', 'reset')
         outside = run.jog('k', duration=1.0)
-        offset = len(run.records())
-        run.tap('Return', 'enter', 'PLANNING')
-        failed = run.wait(state='PREVIEW_FAILED', after=offset)
-        assert failed['requested_points'] > 0 and failed['reason'] == 'invalid_station_front_plane', failed
-        unchanged(outside, run.capture('free-core-failed-preview.png'))
-        blocked = run.tap('Return', 'enter', 'PREVIEW_FAILED')
-        unchanged(outside, blocked)
-        report['free_core_failure'] = failed
-        report['checks'].append('Out-of-range core reaches planning, shows failed preview and blocks execution')
+        assert outside['core_world'][0] < .30, outside  # Default station front plane.
+        report['free_core_previews'] = []
+        for key in ['1', '2']:
+            run.tap(key, 'backend')
+            offset = len(run.records())
+            run.tap('Return', 'enter', 'PLANNING')
+            preview = run.wait('state', after=offset)
+            assert preview['state'] in ('PREVIEW_READY', 'PREVIEW_FAILED'), preview
+            assert preview['requested_points'] > 0 and preview['reason'] != 'invalid_station_front_plane', preview
+            displayed = run.capture(f'free-core-backend-{key}-preview.png')
+            unchanged(outside, displayed)
+            assert displayed['core_world'] == outside['core_world'] and displayed['core_rpy'] == outside['core_rpy']
+            assert displayed['ghost_geoms'] > 0
+            if preview['state'] == 'PREVIEW_FAILED':
+                blocked = run.tap('Return', 'enter', 'PREVIEW_FAILED')
+                unchanged(outside, blocked)
+            report['free_core_previews'].append(preview)
+        report['checks'].append('Both backends preview beyond the former front plane with the real arm/core held; failed plans cannot execute')
 
         initial = run.tap('r', 'reset')
         unchanged(preset, initial)
@@ -330,7 +339,7 @@ def main():
         report['checks'].append('Backspace during planning holds exact zero joints and discards a stale successful result')
         run.exit(); run.close(); run = None
 
-        for case in ['confirm_top', 'reject_front_plane']:
+        for case in ['confirm_top', 'reject_blocked']:
             run = Run(args.binary.resolve(), args.output / case, keyboard, case)
             zeroed(run.initial)
             case_initial = run.tap('r', 'reset')
@@ -351,8 +360,9 @@ def main():
                 assert displayed['ghost_q'] == case_initial['q'] and displayed['ghost_time'] == 0
             blocked = run.tap('Return', 'enter', 'PREVIEW_FAILED')
             unchanged(displayed, blocked)
-            if case == 'reject_front_plane':
+            if case == 'reject_blocked':
                 assert blocked['knots'] == 0
+                assert blocked['reason'].startswith('start_collision_'), blocked
             report['failures'].append(blocked)
             run.exit(); run.close(); run = None
         report['checks'].append('Partial and zero-knot failures are displayed and second Enter cannot execute them')

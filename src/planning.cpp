@@ -310,7 +310,9 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
     scene.configure(scenario);
     scene.enable_rigid_pair_cache(options.method==Method::RigidCache);
     scene.enable_exact_state_cache(scenario.q_best_effort && options.method==Method::RigidCache);
-    if(!scene.core_within_front_plane()) {result.reason="invalid_station_front_plane";return finish();}
+    if(scenario.enforce_core_pose_limits && !scene.core_within_front_plane()) {
+        result.reason="invalid_station_front_plane";return finish();
+    }
     const auto initial=scene.collision(scenario.start,{});
     if(!initial.valid) {result.reason="start_collision_"+initial.pair+"_d="+std::to_string(initial.distance);return finish();}
     PlanOptions sampling=options;
