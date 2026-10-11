@@ -1,0 +1,61 @@
+{
+  "algorithm_commit": "fd6e983f7e5310d405cf8fa1f81475b01fbd2342",
+  "source_corpus": "docs/evidence/planner_quality/cases.csv",
+  "source_sha256": "93a563d4cb6756b1d578df8b2890208c9e766306b3a176b812e703e5f7e96e89",
+  "case_sha256": "049857c9bf7467dbeb32a532fd682256611668a75d5590635d52cbdf120d9872",
+  "population": "All 100 previously fixed confirmation poses, one physical start per pose; no exclusions by reachability or outcome",
+  "start_assignment": "Even pose index: seven-joint zero; odd pose index: assembly preset. 50 each, fixed before this run.",
+  "requests_per_backend": 100,
+  "backends": [
+    "baseline",
+    "rigid_cache"
+  ],
+  "bounds_relative_xyz_m": [
+    [
+      -0.2,
+      0.2
+    ],
+    [
+      -0.2,
+      0.2
+    ],
+    [
+      -0.2,
+      0.2
+    ]
+  ],
+  "bounds_relative_rpy_degrees": [
+    [
+      -90,
+      90
+    ],
+    [
+      -90,
+      90
+    ],
+    [
+      -90,
+      90
+    ]
+  ],
+  "original_sampling": "Six-dimensional Latin hypercube, seed 20261012; reused, not a new blind holdout",
+  "default_core_fields": [
+    -0.09,
+    0.2,
+    0.5,
+    0,
+    90,
+    0
+  ],
+  "physical_installation": "Default Demo: assembly (0.3,0.2,-0.25) m, yaw pi, arm_base_z=0",
+  "pose_limits": false,
+  "request_timeout_seconds": 5,
+  "motion_speed_scale": 4,
+  "success": "Best-effort Q contract: complete approach/alignment/insertion/lift/P, validated optional Q and final dwell, full uncached revalidation",
+  "full_q": "Separately count Q=0 -> +90 -> 0 -> -90 degrees; partial Q remains an accepted best-effort plan",
+  "denominator": "Exactly 100 per backend, including initial collision, IK failure, deadline and audit failures",
+  "seed_policy": "Online generation only; no saved per-pose solutions or cross-request warm start",
+  "compute": "CPU-only, empty CUDA_VISIBLE_DEVICES, backend CPU affinity 0 and 2, one numerical thread per process",
+  "artifacts": "Successful and failed trajectory CSVs, source/binary/suite hashes, logs rotated at 1 MiB with two backups",
+  "cleanup": "Runner reaps its planner child on normal and exceptional completion; retain inputs, trajectories and results; no renderer or shared memory created"
+}

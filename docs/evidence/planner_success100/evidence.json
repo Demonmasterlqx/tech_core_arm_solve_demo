@@ -1,0 +1,24 @@
+{
+  "algorithm_commit": "fd6e983f7e5310d405cf8fa1f81475b01fbd2342",
+  "archived_files": {
+    "baseline.csv": "9d568379916199fde4bc9ada55e247d734a47c0eb08661eb68eef25af11f225e",
+    "cases.csv": "049857c9bf7467dbeb32a532fd682256611668a75d5590635d52cbdf120d9872",
+    "protocol.json": "336a89d6517a90f34a63d253143479ac7d35934e37e13cb26fc8a80b74d6bbc6",
+    "rigid_cache.csv": "8cce2d03b15882dce8093a2bb61eb3d7f5d8236f0e110a1fafbfb0eee4244cc7",
+    "run_manifests.json": "3373bfdcd286f57ffa950df3dbcc0d944b1bc13faae3915f685dad932f66b931",
+    "summary.json": "9e568d34bc3b52a49c1c0d7bc6cf4ac58bd85f9f12c2cd81ab9b4deda4ba1bcf",
+    "urdf_audit.json": "3c90c978d325d7fb0669a0fe3b74d549a09fe47d0257667de780fa585fe4cc7f"
+  },
+  "raw_artifact_directory": "artifacts/planner_success100_20261011",
+  "audit_script": "artifacts/planner_success100_20261011/summarize.py",
+  "audit_script_sha256": "a7106032cbadd00e51c540b1b201a8d4d0d8edab112765973677834792040df8",
+  "audit_exit_code": 0,
+  "runner_child_pids": [
+    3998367,
+    3998369
+  ],
+  "runners_and_children_exited": true,
+  "compute": "CPU only; planners pinned to CPU 0/2, independent audit to CPU 4; no renderer; empty CUDA_VISIBLE_DEVICES",
+  "logs": "Runner rotates planning.log at 1 MiB with two backups; audit output bounded to one summary per backend",
+  "cleanup": "Planner children reaped; no renderer, X server or shared memory created. Raw inputs, outputs, logs and frozen binaries retained as experiment results."
+}
