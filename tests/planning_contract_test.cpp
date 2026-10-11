@@ -310,6 +310,9 @@ void best_effort_q_test(PlanningScene& scene) {
     request.start<<-.58298870078787879,1.4014363481415861,1.4956286729240151,
         .51538441396359136,-1.5264021873645037,-.58813609807777278,2.7857137959190528;
     PlanOptions options;options.method=Method::RigidCache;options.motion_speed_scale=4;
+    // Isolate stopping at this branch's collision boundary. Posture search may
+    // legitimately choose a different branch that can rotate farther.
+    options.optimize_joint_motion=false;
     options.validation_joint_step=.004;options.validation_min_substeps=4;
     const auto partial=plan(scene,request,options);
     require(partial.success && !partial.full_q_sweep && partial.validation.rule_success,

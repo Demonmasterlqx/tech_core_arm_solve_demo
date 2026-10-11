@@ -134,6 +134,23 @@ void convergence_test() {
             "fixed joint limits cannot claim success");
 }
 
+void fixed_coordinate_test() {
+    const auto redundant = [](const JointVector& q,Eigen::Vector3d& p,Eigen::Matrix3d& r,Jacobian* j) {
+        p=Eigen::Vector3d(10*q[0]+q[6],q[1],q[2]);r.setIdentity();
+        if(j) {j->setZero();(*j)(0,0)=10;(*j)(0,6)=1;(*j)(1,1)=1;(*j)(2,2)=1;}
+    };
+    JointLimits limits;limits.lower.setConstant(-1);limits.upper.setConstant(1);
+    limits.lower[0]=limits.upper[0]=.1;
+    JointVector start=JointVector::Zero();start[0]=.1;
+    TaskTarget target;target.position.x()=1.3;
+    for(auto method:{IKMethod::Baseline,IKMethod::Reduced5D}) {
+        IKOptions options;options.method=method;
+        const auto result=solve_ik(redundant,target,start,limits,options);
+        require(result.success && result.q[0]==.1 && std::abs(result.q[6]-.3)<1e-4,
+                "Fixed coordinates must reallocate the task to available joints");
+    }
+}
+
 void bounded_qp_test() {
     // The high-leverage actuator q0 is already at its upper bound. A lower
     // leverage redundant actuator q6 can reach the target exactly. Post-clamp
@@ -265,7 +282,7 @@ void invalid_test() {
 
 int main() {
     try {
-        jacobian_test(); baseline_step_test(); convergence_test(); invalid_test(); bounded_qp_test();
+        jacobian_test(); baseline_step_test(); convergence_test(); fixed_coordinate_test(); invalid_test(); bounded_qp_test();
         std::cout << "planning IK tests passed\n";
     } catch (const std::exception& error) {
         std::cerr << error.what() << '\n';

@@ -285,11 +285,19 @@ private:
                 << ",\"approach_iterations\":" << r.approach_iterations
                 << ",\"approach_shortcuts\":" << r.approach_shortcuts
                 << ",\"preinsert_ik_attempts\":" << r.preinsert_ik_attempts
+                << ",\"posture_candidates\":" << r.posture_candidates
+                << ",\"planning_attempts\":" << r.planning_attempts
+                << ",\"posture_search_seconds\":" << r.posture_search_seconds
                 << ",\"q_positive_degrees\":" << r.q_positive_degrees
                 << ",\"q_final_degrees\":" << r.q_final_degrees
                 << ",\"full_q_sweep\":" << (r.full_q_sweep ? "true" : "false")
                 << ",\"q_positive_stop\":" << json_string(r.q_positive_stop)
                 << ",\"q_negative_stop\":" << json_string(r.q_negative_stop);
+            if(r.preinsert_joints && !r.knots.empty()) {
+                const auto delta=(*r.preinsert_joints-r.knots.front().q).eval();
+                out << ",\"preinsert_joint_change_degrees\":" << delta.cwiseAbs().sum()*180/pi
+                    << ",\"preinsert_last_joint_change_degrees\":" << delta[6]*180/pi;
+            }
         }
         if (show_ghost()) {
             out << ",\"ghost_time\":" << ghost_sample_.time << ",\"ghost_geoms\":" << ghost_geom_count_
@@ -518,6 +526,11 @@ private:
             if (result.knots.empty()) bottom << "\nNo candidate: ghost holds start; amber = requested task";
             bottom << "\n" << result.reason << "\nPlan " << std::fixed << std::setprecision(3) << result.planning_seconds
                    << " s | " << result.knots.size() << " knots | motion x" << demo_.options().motion_speed_scale;
+            if(result.preinsert_joints && !result.knots.empty()) {
+                const auto delta=(*result.preinsert_joints-result.knots.front().q).eval();
+                bottom << "\nPre-insert change: sum " << std::setprecision(1) << delta.cwiseAbs().sum()*180/pi
+                       << " deg | last joint " << delta[6]*180/pi << " deg";
+            }
             if (!result.knots.empty() && result.success) {
                 bottom << " | execution " << std::setprecision(2) << demo_.execution_time() << " / " << result.knots.back().time << " s";
                 bottom << "\nValidated Q: 0 -> +" << std::setprecision(1) << result.q_positive_degrees

@@ -11,6 +11,32 @@ double seconds(Clock::time_point start) { return std::chrono::duration<double>(C
 bool valid_motion_scale(double value) {
     return std::isfinite(value) && value>0 && std::isfinite(2*value*value);
 }
+void accumulate(Counters& total,const Counters& added) {
+    total.ik_iterations+=added.ik_iterations;total.fk_evals+=added.fk_evals;
+    total.collision_states+=added.collision_states;total.narrowphase_calls+=added.narrowphase_calls;
+    total.broadphase_skips+=added.broadphase_skips;total.rigid_pair_cache_hits+=added.rigid_pair_cache_hits;
+    total.exact_state_cache_hits+=added.exact_state_cache_hits;
+}
+IKResult solve_continuous_ik(const ForwardKinematics& fk,const TaskTarget& target,
+                            const JointVector& seed,const JointLimits& limits,
+                            const IKOptions& options,bool recover) {
+    auto result=solve_ik(fk,target,seed,limits,options);
+    if(!result.success && recover && !(options.should_stop && options.should_stop())) {
+        auto bounded=options;bounded.method=IKMethod::BoundedQP;bounded.max_iterations=120;
+        auto fallback=solve_ik(fk,target,result.q,limits,bounded);
+        fallback.iterations+=result.iterations;fallback.fk_evals+=result.fk_evals;
+        result=std::move(fallback);
+    }
+    if(result.success && recover)for(int joint=0;joint<7;++joint) {
+        const double q=result.q[joint];
+        for(int turn=-2;turn<=2;++turn) {
+            const double alternative=q+turn*2*pi;
+            if(alternative>=limits.lower[joint] && alternative<=limits.upper[joint] &&
+               std::abs(alternative-seed[joint])<std::abs(result.q[joint]-seed[joint]))result.q[joint]=alternative;
+        }
+    }
+    return result;
+}
 double interval_seconds(const Knot& a,const Knot& b,double scale) {
     const double dq=(b.q-a.q).cwiseAbs().maxCoeff();
     return b.phase==Phase::Dwell?.5:std::max({.1,1.5*dq,std::sqrt(3*dq)})/scale;
@@ -279,8 +305,8 @@ ValidationResult validate_trajectory(PlanningScene& scene,const std::vector<Knot
     return out;
 }
 
-PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions& options,
-                const std::vector<AtlasEntry>* atlas) {
+static PlanResult plan_candidate(PlanningScene& scene,const Scenario& scenario,const PlanOptions& options,
+                const std::vector<AtlasEntry>* atlas, const std::optional<JointVector>& preinsert_goal = {}) {
     const auto start=Clock::now();
     PlanResult result;result.method=options.method;
     auto stop=[&](){return seconds(start)>=options.timeout_seconds;};
@@ -303,8 +329,10 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
         result.reason="invalid_approach_joint_waypoint";return finish();
     }
     scene.configure(scenario);
-    scene.enable_rigid_pair_cache(options.method==Method::RigidCache);
-    scene.enable_exact_state_cache(scenario.q_best_effort && options.method==Method::RigidCache);
+    const bool cached_validation=options.method==Method::RigidCache ||
+        (options.optimize_joint_motion && options.method==Method::Baseline);
+    scene.enable_rigid_pair_cache(cached_validation);
+    scene.enable_exact_state_cache(scenario.q_best_effort && cached_validation);
     if(scenario.enforce_core_pose_limits && !scene.core_within_front_plane()) {
         result.reason="invalid_station_front_plane";return finish();
     }
@@ -344,6 +372,14 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
         case Method::AdaptiveLM:ik.method=IKMethod::AdaptiveLM;break;
         case Method::BoundedQP:ik.method=IKMethod::BoundedQP;break;
         default:ik.method=IKMethod::Reduced5D;break;
+    }
+    const bool recover=options.optimize_joint_motion &&
+        (options.method==Method::Baseline || options.method==Method::RigidCache);
+    if(recover) {
+        ik.alpha=.7;ik.max_joint_step=JointVector::Constant(.2);ik.max_iterations=160;
+        // The seated-contact envelope is 0.1 mm: an IK endpoint tolerance of
+        // 0.1 mm leaves no room for interpolated tracking or numerical error.
+        ik.position_tolerance=1e-6;ik.axis_tolerance=1e-6;
     }
     const ForwardKinematics fk=[&](const JointVector& q,Eigen::Vector3d& p,Eigen::Matrix3d& r,Jacobian* j){scene.forward(q,p,r,j);};
     JointVector previous=scenario.start;
@@ -402,10 +438,16 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
     IKResult approached;
     bool clear_goal=false;
     std::string goal_failure;
+    if(preinsert_goal) {
+        approached.q=*preinsert_goal;approached.success=true;
+        clear_goal=scene.collision(approached.q,{}).valid;
+        if(!clear_goal)goal_failure="preinsert_goal_collision";
+    }
     for(const auto& seed:seeds) {
+        if(preinsert_goal)break;
         if(stop()) break;
         ++result.preinsert_ik_attempts;
-        approached=solve_ik(fk,targets.front().target,seed,scene.limits(),ik);
+        approached=solve_continuous_ik(fk,targets.front().target,seed,scene.limits(),ik,recover);
         scene.counters.ik_iterations+=approached.iterations;
         if(!approached.success) {goal_failure="ik_preinsert_"+approached.reason;continue;}
         const auto collision=scene.collision(approached.q,{});
@@ -416,6 +458,7 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
         result.reason=stop()?"deadline_during_preinsert_ik":goal_failure;
         result.ik_seconds=ik_seconds();return finish();
     }
+    result.preinsert_joints=approached.q;
     if(!connect(approached.q)) {result.ik_seconds=ik_seconds();return finish();}
     result.knots.back().target=targets.front().target;
     const std::size_t connection_knots=result.knots.size();
@@ -439,7 +482,7 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
             seed+=atlas_at(*entry,b)-atlas_at(*entry,a);
             seed=seed.cwiseMax(scene.limits().lower).cwiseMin(scene.limits().upper);
         }
-        const auto solved=solve_ik(fk,targets[i].target,seed,scene.limits(),ik);
+        const auto solved=solve_continuous_ik(fk,targets[i].target,seed,scene.limits(),ik,recover);
         scene.counters.ik_iterations+=solved.iterations;
         if(!solved.success) {
             result.reason="ik_"+std::string(phase_name(targets[i].phase))+"_"+std::to_string(i)+"_"+solved.reason;
@@ -447,7 +490,7 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
         }
         Knot k;static_cast<TaskPoint&>(k)=targets[i];k.q=solved.q;result.knots.push_back(k);previous=k.q;
     }
-    if(options.method==Method::SparseAdaptive) {
+    if(options.method==Method::SparseAdaptive || recover) {
         // Refinement retains existing endpoints, so it cannot repair a
         // collision at an already solved coarse knot. Reject that candidate.
         for(const auto& k:result.knots) {
@@ -472,13 +515,19 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
                 for(double t:{.25,.5,.75}) {
                     const auto expected=between(scene,a,b,t);Eigen::Vector3d p;Eigen::Matrix3d r;
                     scene.forward((1-t)*a.q+t*b.q,p,r);
-                    if((p-expected.target.position).norm()>.5*options.validation_position_tolerance ||
-                       angle(r.col(2),expected.target.direction)>.5*options.validation_axis_tolerance) split=true;
+                    // Endpoint accuracy alone cannot bound the error of a
+                    // joint chord. Leave room inside the 0.1 mm mating envelope.
+                    const double position_bound=recover?std::min(.000025,.5*options.validation_position_tolerance):
+                        .5*options.validation_position_tolerance;
+                    const double axis_bound=recover?std::min(.0001,.5*options.validation_axis_tolerance):
+                        .5*options.validation_axis_tolerance;
+                    if((p-expected.target.position).norm()>position_bound ||
+                       angle(r.col(2),expected.target.direction)>axis_bound) split=true;
                     if(!scene.collision((1-t)*a.q+t*b.q,expected.mechanism).valid) split=true;
                 }
                 if(split) {
                     const auto target=between(scene,a,b,.5);
-                    const auto solved=solve_ik(fk,target.target,.5*(a.q+b.q),scene.limits(),ik);
+                    const auto solved=solve_continuous_ik(fk,target.target,.5*(a.q+b.q),scene.limits(),ik,recover);
                     scene.counters.ik_iterations+=solved.iterations;
                     if(!solved.success){result.reason="adaptive_refinement_"+solved.reason;result.ik_seconds=ik_seconds();return finish();}
                     Knot mid;static_cast<TaskPoint&>(mid)=target;mid.q=solved.q;refined.push_back(mid);changed=true;
@@ -528,7 +577,7 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
         auto growth_stop=[&]() {
             // Exact-state memoization covers repeated prefix/forward samples.
             // Reverse samples are still budgeted at their measured full cost.
-            const double reserve=options.method==Method::RigidCache?
+            const double reserve=cached_validation?
                 .2*prefix_check_seconds+1.3*positive_checks+.2*negative_checks+.06:
                 1.3*(prefix_check_seconds+2*positive_checks+negative_checks)+.06;
             return seconds(start)+reserve>=options.timeout_seconds;
@@ -550,7 +599,7 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
                     seed+=predict_task_step(j,axis,next.target.position-p,axis.cross(next.target.direction));
                     seed=seed.cwiseMax(scene.limits().lower).cwiseMin(scene.limits().upper);
                 }
-                const auto solved=solve_ik(fk,next.target,seed,scene.limits(),qik);
+                const auto solved=solve_continuous_ik(fk,next.target,seed,scene.limits(),qik,recover);
                 result.ik_seconds+=seconds(solve_start);scene.counters.ik_iterations+=solved.iterations;
                 if(!solved.success) return std::string("ik_")+solved.reason;
                 next.q=solved.q;
@@ -602,6 +651,145 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
     result.reason=result.validation.reason;
     if(result.success && stop()) {result.success=false;result.reason="deadline_after_validation";}
     return finish();
+}
+
+PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions& options,
+                const std::vector<AtlasEntry>* atlas) {
+    if(!options.optimize_joint_motion ||
+       (options.method!=Method::Baseline && options.method!=Method::RigidCache) ||
+       !std::isfinite(options.timeout_seconds) || options.timeout_seconds<=0 ||
+       !valid_motion_scale(options.motion_speed_scale) ||
+       options.approach_joint_waypoint)
+        return plan_candidate(scene,scenario,options,atlas);
+    const auto begin=Clock::now();
+    auto stop=[&] {return seconds(begin)>=options.timeout_seconds;};
+    scene.configure(scenario);scene.enable_rigid_pair_cache(true);
+    if((scenario.enforce_core_pose_limits && !scene.core_within_front_plane()) ||
+       !scene.collision(scenario.start,{}).valid)
+        return plan_candidate(scene,scenario,options,atlas);
+    const ForwardKinematics fk=[&](const JointVector& q,Eigen::Vector3d& p,Eigen::Matrix3d& r,Jacobian* j){scene.forward(q,p,r,j);};
+    const auto target=make_task(scene,options).front().target;
+    const auto search_begin=Clock::now();
+    double search_fraction=.15,search_ik_seconds=0;
+    auto search_stop=[&] {return stop() || seconds(search_begin)>=search_fraction*options.timeout_seconds;};
+    IKOptions ik;ik.method=options.method==Method::Baseline?IKMethod::Baseline:IKMethod::Reduced5D;
+    ik.should_stop=search_stop;ik.alpha=.7;ik.max_joint_step=JointVector::Constant(.2);ik.max_iterations=160;
+    ik.position_tolerance=1e-6;ik.axis_tolerance=1e-6;
+    auto search_solve=[&](const TaskTarget& task,const JointVector& seed,const JointLimits& limits,
+                          const IKOptions& settings) {
+        const auto started=Clock::now();
+        auto solved=solve_continuous_ik(fk,task,seed,limits,settings,true);
+        search_ik_seconds+=seconds(started);scene.counters.ik_iterations+=solved.iterations;
+        return solved;
+    };
+    const auto lookahead=make_task(scene,options);
+    auto feasible_branch=[&](JointVector q) {
+        for(std::size_t k=1;k<lookahead.size() && lookahead[k].phase<Phase::Twist;++k) {
+            if(search_stop())return false;
+            const auto& point=lookahead[k];
+            JointVector seed=q;
+            if(options.method==Method::RigidCache) {
+                Eigen::Vector3d p;Eigen::Matrix3d r;Jacobian j;scene.forward(q,p,r,&j);
+                const auto axis=r.col(2).eval();
+                seed+=predict_task_step(j,axis,point.target.position-p,axis.cross(point.target.direction));
+                seed=seed.cwiseMax(scene.limits().lower).cwiseMin(scene.limits().upper);
+            }
+            const auto next=search_solve(point.target,seed,scene.limits(),ik);
+            if(!next.success)return false;
+            if((k%5==0 || k+1==lookahead.size() || lookahead[k+1].phase!=point.phase) &&
+               !scene.collision(next.q,point.mechanism).valid)return false;
+            q=next.q;
+        }
+        return true;
+    };
+    auto nearby=[&](JointVector q,const JointVector& reference) {
+        for(int j=0;j<7;++j) {
+            if(scene.limits().upper[j]-scene.limits().lower[j]<2*pi)continue;
+            double best=q[j];
+            for(int turn=-2;turn<=2;++turn) {
+                const double value=q[j]+turn*2*pi;
+                if(value>=scene.limits().lower[j] && value<=scene.limits().upper[j] &&
+                   std::abs(value-reference[j])<std::abs(best-reference[j]))best=value;
+            }
+            q[j]=best;
+        }
+        return q;
+    };
+    struct Candidate {JointVector q;double cost;};
+    std::vector<Candidate> candidates;
+    std::vector<JointVector> seeds{scenario.start,Scenario{}.start,.5*(scene.limits().lower+scene.limits().upper)};
+    std::mt19937 random(20261011);std::normal_distribution<double> normal(0,.55);
+    for(int n=0;n<9;++n) {
+        JointVector seed=n%2?scenario.start:Scenario{}.start;
+        for(int j=0;j<7;++j)seed[j]+=normal(random);
+        seeds.push_back(seed.cwiseMax(scene.limits().lower).cwiseMin(scene.limits().upper));
+    }
+    std::size_t ik_attempts=0;
+    // Keep the unmodified live IK candidate in the ranking, so a posture that
+    // is already close to the goal is not displaced by a worse wrist-locked
+    // branch merely because that branch was enumerated first.
+    IKOptions original_ik=ik;original_ik.max_joint_step.reset();original_ik.max_iterations=300;
+    for(const auto& seed:seeds) {
+        if(search_stop())break;
+        const auto solved=search_solve(target,seed,scene.limits(),original_ik);++ik_attempts;
+        if(!solved.success)continue;
+        const JointVector q=nearby(solved.q,scenario.start);
+        if(!scene.collision(q,{}).valid || !feasible_branch(q))continue;
+        const auto delta=(q-scenario.start).cwiseAbs().eval();
+        candidates.push_back({q,delta.sum()+3*delta[6]});
+        break;
+    }
+    search_fraction=.25;
+    // Use the same damped posture search in both online backends; the branch
+    // continuation and final trajectory still use the selected backend's IK.
+    // A full reduced-task step can jump to a distant wrist-locked IK branch.
+    auto posture_ik=ik;posture_ik.method=IKMethod::Baseline;
+    for(int mode=0;mode<8 && !search_stop();++mode) {
+        for(const auto& raw:seeds) {
+            if(search_stop())break;
+            JointLimits limits=scene.limits();JointVector seed=raw;
+            if(mode<7) {
+                const double offset=mode==0?0:((mode+1)/2)*.5*(mode%2?1:-1);
+                const double wrist=std::clamp(scenario.start[6]+offset,limits.lower[6],limits.upper[6]);
+                seed[6]=wrist;limits.lower[6]=limits.upper[6]=wrist;
+            }
+            const auto solved=search_solve(target,seed,limits,posture_ik);++ik_attempts;
+            if(!solved.success)continue;
+            const JointVector q=nearby(solved.q,scenario.start);
+            if(!scene.collision(q,{}).valid)continue;
+            if(std::any_of(candidates.begin(),candidates.end(),[&](const auto& c){return (c.q-q).norm()<.1;}))continue;
+            // This only rejects branches that already fail at checked points;
+            // acceptance still requires the original complete dense validator.
+            if(!feasible_branch(q))continue;
+            const auto delta=(q-scenario.start).cwiseAbs().eval();
+            candidates.push_back({q,delta.sum()+3*delta[6]});
+        }
+        if(candidates.size()>=2)break;
+    }
+    std::sort(candidates.begin(),candidates.end(),[](const auto& a,const auto& b){return a.cost<b.cost;});
+    PlanResult best;best.method=options.method;best.reason="preinsert_posture_search_exhausted";
+    const double search_seconds=seconds(search_begin);
+    Counters total_counters=scene.counters;
+    double total_ik=search_ik_seconds,total_approach=0,total_validation=0;
+    std::size_t attempts=0,total_approach_iterations=0,total_shortcuts=0;
+    for(std::size_t i=0;i<=candidates.size() && !stop();++i) {
+        auto trial=options;trial.timeout_seconds=options.timeout_seconds-seconds(begin);
+        auto result=plan_candidate(scene,scenario,trial,atlas,
+            i<candidates.size()?std::optional<JointVector>(candidates[i].q):std::nullopt);
+        ++attempts;total_ik+=result.ik_seconds;total_approach+=result.approach_seconds;total_validation+=result.validation_seconds;
+        accumulate(total_counters,result.counters);ik_attempts+=result.preinsert_ik_attempts;
+        total_approach_iterations+=result.approach_iterations;total_shortcuts+=result.approach_shortcuts;
+        if(attempts==1 || result.success || result.knots.size()>best.knots.size())best=std::move(result);
+        if(best.success)break;
+    }
+    best.planning_seconds=seconds(begin);best.ik_seconds=total_ik;best.approach_seconds=total_approach;
+    best.validation_seconds=total_validation;best.preinsert_ik_attempts=ik_attempts;
+    best.posture_search_seconds=search_seconds;best.counters=total_counters;
+    best.approach_iterations=total_approach_iterations;best.approach_shortcuts=total_shortcuts;
+    best.posture_candidates=candidates.size();best.planning_attempts=attempts;
+    if(!attempts && stop())best.reason="deadline_during_posture_search";
+    if(best.success && stop()) {best.success=false;best.reason="deadline_after_validation";}
+    return best;
 }
 
 std::vector<Scenario> scenario_suite() {

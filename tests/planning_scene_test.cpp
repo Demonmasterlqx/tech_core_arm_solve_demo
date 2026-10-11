@@ -117,5 +117,31 @@ void contact_boundaries(PlanningScene& scene){
     std::cout<<"assembly contact nominal="<<nominal.distance<<" intrusion="<<overlap.pair<<'\n';
     scene.configure(scenario);
 }
+
+void rotated_grasp_cache_equivalence(PlanningScene& scene) {
+    // Fixed development input where native world-frame mesh CCD reported a
+    // 0.444 mm penetration for a welded grasp pair only after disabling cache.
+    auto s=scenario_suite().front();s.enforce_core_pose_limits=false;s.start.setZero();
+    s.core={.03880536366456411,.1575398960575357,.5963354371411802,
+            46.355362393817984,145.26359223887667,-85.18092988237612};
+    JointVector a,b;
+    a<<-.5349466535352002,1.3870617258143012,.7278698618865178,1.0237407407769206,
+        -.3412093226212784,-.996550170064477,1.1448191658317814;
+    b<<-.5319618535641634,1.3843030170561499,.73066714219504,1.0253480917056987,
+        -.34075027216028103,-.9952616803338302,1.1506819146128535;
+    scene.configure(s);
+    for(int step=0;step<=32;++step) {
+        const double u=step/32.;const JointVector q=a+u*(b-a);
+        MechanismState mechanism;mechanism.insertion=.008+.002*u;
+        scene.enable_rigid_pair_cache(true);
+        const auto cached=scene.collision(q,mechanism);
+        scene.enable_rigid_pair_cache(false);
+        const auto direct=scene.collision(q,mechanism);
+        require(cached.valid && direct.valid,"Rigid grasp distance must be independent of world pose: "+direct.pair);
+        require(cached.pair==direct.pair && std::abs(cached.distance-direct.distance)<1e-9,
+                "Cached and uncached checks must share one rigid-pair geometry contract");
+    }
+    std::cout<<"rotated fixed grasp: 33 cached/uncached checks agree\n";
 }
-int main(){try{PlanningScene scene;frame_and_ground(scene);physical_base_translation(scene);hollow_bore(scene);split_wrist_hulls(scene);contact_boundaries(scene);std::cout<<"planning scene geometry tests passed\n";return 0;}catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 1;}}
+}
+int main(){try{PlanningScene scene;frame_and_ground(scene);physical_base_translation(scene);hollow_bore(scene);split_wrist_hulls(scene);contact_boundaries(scene);rotated_grasp_cache_equivalence(scene);std::cout<<"planning scene geometry tests passed\n";return 0;}catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 1;}}

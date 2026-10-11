@@ -96,6 +96,9 @@ private:
     };
     std::unique_ptr<mjModel, decltype(&mj_deleteModel)> model_{nullptr, mj_deleteModel};
     std::unique_ptr<mjData, decltype(&mj_deleteData)> data_{nullptr, mj_deleteData};
+    // Same rigid-pair geometry in a fixed frame. Native mesh CCD is sensitive
+    // to world rotation near coplanar grasp surfaces, although distance is not.
+    std::unique_ptr<mjData, decltype(&mj_deleteData)> rigid_reference_{nullptr, mj_deleteData};
     std::array<int, 7> arm_joints_{}, qadr_{}, dof_{};
     std::array<int, 3> core_qadr_{};
     int tool_ = -1, core_mocap_ = -1;
@@ -138,6 +141,9 @@ struct PlanOptions {
     double validation_axis_tolerance = .002;
     double validation_joint_step = .008;
     int validation_min_substeps = 2;
+    // Baseline/RigidCache search nearby redundant pre-insertion postures and
+    // retry feasible branches within the same online deadline.
+    bool optimize_joint_motion = true;
 };
 struct ApproachResult {
     bool success = false;
@@ -168,10 +174,14 @@ struct PlanResult {
     Method method = Method::Baseline;
     std::string atlas_source;
     std::vector<Knot> knots;
+    std::optional<JointVector> preinsert_joints;
     double planning_seconds = 0, ik_seconds = 0, validation_seconds = 0;
     double approach_seconds = 0;
+    // Includes candidate IK and mandatory-phase screening, inside the deadline.
+    double posture_search_seconds = 0;
     std::size_t approach_iterations = 0, approach_shortcuts = 0;
     std::size_t preinsert_ik_attempts = 0;
+    std::size_t posture_candidates = 0, planning_attempts = 0;
     Counters counters;
     ValidationResult validation;
     double q_positive_degrees = 0, q_final_degrees = 0;

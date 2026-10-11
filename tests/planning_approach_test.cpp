@@ -52,6 +52,13 @@ int main() {
                       << " total seconds=" << result.planning_seconds << std::endl;
             require(result.success && result.preinsert_ik_attempts>=2 && result.knots.front().q.isZero(0),
                     "A collision-free pre-insertion branch must allow the zero-start request: "+result.reason);
+            require(result.preinsert_joints && std::abs((*result.preinsert_joints)[6])<.75,
+                    "Nominal pre-insertion should avoid the original >2 rad wrist rotation");
+            double wrist_travel=0;
+            for(std::size_t i=1;i<result.knots.size() && result.knots[i].phase==Phase::Approach;++i)
+                wrist_travel+=std::abs(result.knots[i].q[6]-result.knots[i-1].q[6]);
+            require(wrist_travel<1 && result.posture_candidates>=2 && result.planning_attempts>0,
+                    "Nearby posture selection must reduce actual approach wrist travel");
             scene.configure(request);
             require(validate_trajectory(scene,result.knots,options).valid, "Zero-start plan failed uncached full validation");
         }

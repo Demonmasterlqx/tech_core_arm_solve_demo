@@ -94,7 +94,8 @@ PlanningScene::PlanningScene(std::string path) {
     model_.reset(mj_loadXML(path.c_str(), nullptr, error, sizeof(error)));
     if (!model_) throw std::runtime_error(error);
     data_.reset(mj_makeData(model_.get()));
-    if (!data_) throw std::runtime_error("Cannot allocate planning data");
+    rigid_reference_.reset(mj_makeData(model_.get()));
+    if (!data_ || !rigid_reference_) throw std::runtime_error("Cannot allocate planning data");
     const char* joints[] = {"j0", "j1", "j2", "j3", "j4",
                            "end_differential_controller/j5", "end_differential_controller/j6"};
     for (int i = 0; i < 7; ++i) {
@@ -221,6 +222,8 @@ void PlanningScene::configure(const Scenario& scenario) {
     const int obstacle=named(model(),mjOBJ_GEOM,"collision_block_fixture");
     Eigen::Map<Eigen::Vector3d>(model_->geom_pos+3*obstacle)=scenario.blocking_obstacle?
         mechanism_target({}).position:Eigen::Vector3d(0,0,-10);
+    set_state(JointVector::Zero(),{});
+    mj_copyData(rigid_reference_.get(),model(),data());
     set_state(scenario.start,{});
     counters={};
 }
@@ -388,7 +391,12 @@ CollisionResult PlanningScene::collision_uncached(const JointVector& q,const Mec
             continue;
         }
         ++counters.narrowphase_calls;
-        const double distance=mj_geomDistance(model(),data(),pair.a,pair.b,cutoff,nullptr);
+        // A welded pair has identical relative geometry at every arm state.
+        // Evaluate it in the same reference frame with or without caching;
+        // otherwise native mesh CCD can report spurious pose-dependent grasp
+        // penetrations and the two modes can disagree on trajectory safety.
+        const double distance=mj_geomDistance(model(),pair.rigid?rigid_reference_.get():data(),
+                                              pair.a,pair.b,cutoff,nullptr);
         if(!std::isfinite(distance)) return {false,-1,"nonfinite_distance"};
         if(rigid_pair_cache_enabled_ && pair.rigid) {pair.cached_cutoff=cutoff;pair.cached_distance=distance;}
         if(distance<result.distance) result.distance=distance;

@@ -252,6 +252,11 @@ IKResult solve_ik(const ForwardKinematics& fk, const TaskTarget& input_target,
         }
         report(state);
         if (converged(state)) { result.success = true; result.reason = "converged"; return result; }
+        // A fixed coordinate has no available velocity. Removing its column
+        // lets the remaining joints share the task instead of repeatedly
+        // allocating motion to a coordinate that will be clamped away.
+        for (int joint = 0; joint < 7; ++joint)
+            if (limits.lower[joint] == limits.upper[joint]) geometric.col(joint).setZero();
         ++result.iterations;
         Jacobian task;
         if (options.method != IKMethod::Reduced5D) {
