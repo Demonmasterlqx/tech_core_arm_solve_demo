@@ -195,6 +195,20 @@ def main():
         run = Run(args.binary.resolve(), args.output / 'nominal', keyboard)
         report['viewer_pid'] = run.process.pid
         gpu_snapshot(args.output, 'startup')
+        zeroed(run.initial)
+        report['startup'] = run.capture('startup-zero.png')
+        unchanged(run.initial, report['startup'])
+        report['checks'].append('Startup uses upstream URDF zero with all seven joint angles exactly zero')
+        offset = len(run.records())
+        run.tap('Return', 'enter', 'PLANNING')
+        zero_preview = run.wait('state', after=offset)
+        assert zero_preview['state'] in ('PREVIEW_READY', 'PREVIEW_FAILED') and zero_preview['requested_points'] > 0
+        unchanged(run.initial, run.capture('zero-start-preview.png'))
+        report['zero_start_preview'] = zero_preview
+        report['checks'].append('Planning from URDF zero still displays a preview and holds the actual robot')
+        preset = run.tap('r', 'reset')
+        assert any(abs(q) > .1 for q in preset['q']) and 'knots' not in preset
+        report['assembly_preset'] = preset
         for key, axis, sign in [('w', 0, 1), ('s', 0, -1), ('a', 1, 1), ('d', 1, -1), ('q', 2, 1), ('e', 2, -1)]:
             before = run.tap('r', 'reset')
             after = run.jog(key)
@@ -244,9 +258,9 @@ def main():
         report['checks'].append('Out-of-range core reaches planning, shows failed preview and blocks execution')
 
         initial = run.tap('r', 'reset')
-        unchanged(run.initial, initial)
+        unchanged(preset, initial)
         assert initial['core_world'] == run.initial['core_world'] and initial['core_rpy'] == run.initial['core_rpy']
-        report['checks'].append('R restores the initial nonzero carrying posture and core pose')
+        report['checks'].append('R loads the separate nonzero assembly preset and its core pose')
         run.tap('1', 'backend')
         offset = len(run.records())
         keyboard.key('Return', True)
@@ -318,21 +332,23 @@ def main():
 
         for case in ['confirm_top', 'reject_front_plane']:
             run = Run(args.binary.resolve(), args.output / case, keyboard, case)
+            zeroed(run.initial)
+            case_initial = run.tap('r', 'reset')
             run.tap('Return', 'enter', 'PLANNING')
             failed = run.wait(state='PREVIEW_FAILED')
             assert failed['requested_points'] > 0 and not failed['success']
             displayed = run.capture('failed-preview.png')
-            unchanged(run.initial, displayed)
+            unchanged(case_initial, displayed)
             assert displayed['ghost_geoms'] > 0
             if displayed['knots']:
                 run.tap('space', 'preview_pause')
                 for _ in range(12):
                     run.tap('bracketright', 'preview_scrub')
                 ghost = run.capture('failed-ghost-preview.png')
-                unchanged(run.initial, ghost)
+                unchanged(case_initial, ghost)
                 assert max(abs(x-y) for x, y in zip(ghost['q'], ghost['ghost_q'])) > .01
             else:
-                assert displayed['ghost_q'] == run.initial['q'] and displayed['ghost_time'] == 0
+                assert displayed['ghost_q'] == case_initial['q'] and displayed['ghost_time'] == 0
             blocked = run.tap('Return', 'enter', 'PREVIEW_FAILED')
             unchanged(displayed, blocked)
             if case == 'reject_front_plane':

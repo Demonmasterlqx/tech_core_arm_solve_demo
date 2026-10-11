@@ -40,8 +40,8 @@ void usage() {
         "  Shift + I/K, J/L, U/O: core +/-roll, +/-pitch, +/-yaw\n"
         "  1: Baseline; 2: RigidCache (default)\n"
         "  Enter: plan and hold a preview; Enter again: execute a valid plan\n"
-        "  Backspace: all 7 joints to zero, preserving core pose\n"
-        "  R: restore initial demo pose; Space: pause/resume ghost or execution; Esc: exit\n"
+        "  Backspace: upstream URDF joint zero, preserving core pose\n"
+        "  R: load assembly preset; Space: pause/resume ghost or execution; Esc: exit\n"
         "  [/]: scrub the ghost preview backward/forward (holds real robot)\n"
         "  Mouse: left orbit, right pan, wheel zoom; F: reset camera; F12: PNG\n"
         "Options:\n"
@@ -55,6 +55,7 @@ void usage() {
         "  --duration SEC          bounded wall-time run (default until Esc)\n"
         "  --screenshot PATH.png   capture on F12 and at exit\n"
         "  --log PATH              event log, 1 MiB rotation + two backups\n"
+        "Starts at the upstream URDF zero: all seven joint angles are 0 rad.\n"
         "Core XYZ/RPY controls have no pose limits. RPY = alpha, phi-90, theta\n"
         "relative to the assembly frame. Execution is the kinematic simulation.\n";
 }
@@ -146,6 +147,9 @@ public:
         mjv_defaultScene(&ghost_scene_);
         mjr_defaultContext(&context_);
         try {
+            // The interactive launch and Backspace share the upstream URDF
+            // zero. Scenario.start remains the assembly preset loaded by R.
+            demo_.home();
             glfwSetErrorCallback([](int code, const char* text) { std::cerr << "GLFW " << code << ": " << text << '\n'; });
             if (!glfwInit()) throw std::runtime_error("GLFW initialization failed; use a desktop or xvfb-run");
             glfw_ready_ = true;
@@ -487,7 +491,7 @@ private:
               << "CORE / WORLD AXES\nI/K: +X/-X   J/L: +Y/-Y   U/O: +Z/-Z\n"
               << "Shift + I/K: roll +/-\nShift + J/L: pitch +/-\nShift + U/O: yaw +/-\n\n"
               << "1: Baseline   2: RigidCache\nEnter: PLAN > PREVIEW > EXECUTE\n"
-              << "Backspace: zero all joints   R: initial demo pose\nSpace: pause / resume   [ / ]: scrub ghost\nEsc: exit\n"
+              << "Backspace: URDF zero   R: assembly preset\nSpace: pause / resume   [ / ]: scrub ghost\nEsc: exit\n"
               << "Mouse: orbit / pan / zoom   F: camera\nF12: screenshot";
         bottom << demo_.message();
         if (show_ghost()) {

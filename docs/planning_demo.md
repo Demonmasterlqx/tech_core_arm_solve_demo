@@ -41,7 +41,7 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 | 后端 1 / 后端 2 | 1：Baseline / 2：RigidCache（默认） |
 | 规划并展示 / 执行已展示轨迹 | 第一次 Enter / 预览成功后再次 Enter |
 | 七个关节角度全部归零，装配进度清零，保留核心位姿 | Backspace（退格键） |
-| 恢复演示初始携带姿态和核心位姿 | R |
+| 载入装配演示预设（非零关节角）和预设核心位姿 | R |
 | 虚影预览或实际执行暂停 / 继续 | Space |
 | 虚影前后查看（每次 5%，并暂停预览） | [ / ] |
 | 旋转 / 平移 / 缩放视角 | 鼠标左键 / 右键 / 滚轮 |
@@ -51,9 +51,11 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 
 核心 RPY 按装配坐标系的 `Rz(yaw) Ry(pitch) Rx(roll)` 表示，对应旧 API 的 `alpha`、`phi−90°`、`theta`。核心原点是初始 E 点。**Demo 中核心 XYZ 和 RPY 均不设位姿限位**，可以直接向任意方向调整，角度可连续累加。规划使用当前实际位姿；无法到达、碰撞或违反前平面规则时，仍展示请求路径、返回的候选轨迹及失败原因。
 
-**Backspace 将七个关节角度设置为 `[0,0,0,0,0,0,0]` rad**，并将插入、升降、P、Q 进度和执行时钟清零，清除预览并使旧规划请求失效，保留当前核心 XYZ/RPY 与后端。R 恢复程序启动时的整个场景，包括非零的初始携带姿态和核心位姿；后端仍保留。默认使用 `dev_nominal`，Q 目标 +35°。界面显示七个关节的实际角度：
+**启动和 Backspace 均使用上游 URDF 的七关节零位 `[0,0,0,0,0,0,0]` rad**。Backspace 同时将插入、升降、P、Q 进度和执行时钟清零，清除预览并使旧规划请求失效，保留当前核心 XYZ/RPY 与后端。零位保留上游关节的固定安装变换，因此模型呈折叠姿态。来源是 [HKUST RM26 version3](https://github.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc/tree/6edc630a1a14a3904b42d5a360e9020562eefc99/src/RM/RMController/core/models/rm26_version3_engineering_model)；2026-10-11 在线核对 `main` 仍指向该提交，本地 `source.urdf` 与上游逐字节一致。
 
-![Backspace 后七个关节全零](images/planning-demo-joint-zero.png)
+**R 单独载入装配演示预设**，包括非零携带姿态和预设核心位姿，后端保留；这不是机械臂零位。默认使用 `dev_nominal`，Q 目标 +35°。可直接从零位按 Enter 规划，也可先按 R 查看名义装配演示。界面显示七个关节的实际角度：
+
+![启动和 Backspace 均为上游七关节零位](images/planning-demo-joint-zero.png)
 
 ## 两次回车与轨迹显示
 
@@ -92,7 +94,7 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 ./scripts/run_planning_demo.sh --case reject_front_plane
 ```
 
-后两条用于查看普通失败与零关节点失败，仍需手动按 Enter。
+后两条用于查看普通失败与零关节点失败，启动后按 R 载入对应场景的装配预设，再按 Enter。
 
 ## 代码与验证
 
@@ -113,3 +115,5 @@ xvfb-run -a -s '-screen 0 1440x1000x24 -nolisten tcp' \
 键盘测试输出必须使用新目录；子进程限时且在异常时终止，释放按键、X11 连接及 Xvfb 临时资源。启动脚本将事件记录到 `artifacts/keyboard_planning_demo/viewer.log`，每 1 MiB 轮转，最多两份备份；`--log` 可指定其他路径。F12 默认写 `artifacts/keyboard_planning_demo/screenshot.png`，`--screenshot` 可指定路径，指定后退出时也会截图。
 
 2026-10-11 的初版记录见 [初版运行时证据](evidence/keyboard_planning_demo.json)。归零与核心自由调节修正后的记录见 [修正验证](evidence/keyboard_zero_free_core.json)：重新构建默认 `build/rm26_demo`，23 项 CTest 全部通过；真实窗口的 X11/XTest 回归也通过，覆盖七关节精确归零、R 恢复非零初始姿态、核心以新速度越过旧范围、越界请求的失败预览，以及完整的预览/执行流程。控制器另验证 XYZ/RPY 的全部正负方向均不再限位、规划从零关节启动、旧规划结果不能覆盖归零状态，其他场景的默认范围检查仍生效。截图已更新。渲染为 llvmpipe，启动、执行和退出的 NVIDIA 进程表中均没有测试 Demo 进程，测试窗口和 Xvfb 已退出。
+
+同日进一步将启动姿态统一到上游 URDF 零位，记录见 [上游零位与启动验证](evidence/keyboard_urdf_zero.json)：在线核对上游提交与 URDF 哈希，独立 URDF/MuJoCo 的 68 组 FK 再次通过；规划场景的七主关节原点、轴向、范围和零参考保持一致。附加夹爪仍使用装配 Demo 既有的固定夹持角，详见 [夹持约定](planning_scene_audit.md)。重建后 3 项 Demo 测试及完整真实键盘回归通过，截图更新为启动即七关节全零；R 明确标为装配预设。

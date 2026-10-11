@@ -142,7 +142,7 @@ Eigen::Vector3d PlanningDemo::core_position() const {
 
 bool PlanningDemo::editing_allowed() {
     if (state_ == DemoState::Executing || state_ == DemoState::Paused || state_ == DemoState::Complete) {
-        message_ = "Backspace: zero joints; R: reset demo before editing";
+        message_ = "Backspace: zero joints; R: load assembly preset before editing";
         return false;
     }
     return true;
@@ -157,7 +157,7 @@ void PlanningDemo::invalidate(const std::string& message) {
 }
 
 void PlanningDemo::home() {
-    invalidate("All 7 joints zero; core pose preserved. Enter: plan");
+    invalidate("URDF joint zero; core pose preserved. R: assembly preset; Enter: plan");
     q_.setZero();
     mechanism_ = {};
     stop_jog();
@@ -167,7 +167,7 @@ void PlanningDemo::home() {
 void PlanningDemo::reset() {
     scenario_ = initial_;
     scene_.configure(scenario_);
-    invalidate("Initial demo pose restored. Enter: plan and preview");
+    invalidate("Assembly preset loaded. Backspace: URDF zero; Enter: plan and preview");
     q_ = initial_.start;
     mechanism_ = {};
     stop_jog();
@@ -215,7 +215,7 @@ void PlanningDemo::enter() {
     } else if (state_ == DemoState::Paused) {
         message_ = "Space: resume the paused trajectory";
     } else if (state_ == DemoState::Complete) {
-        message_ = "Complete. Backspace: zero joints; R: reset demo";
+        message_ = "Complete. Backspace: zero joints; R: assembly preset";
     }
 }
 
@@ -250,7 +250,7 @@ void PlanningDemo::advance(double dt) {
     mechanism_ = sample.mechanism;
     if (execution_time_ >= knots.back().time) {
         state_ = DemoState::Complete;
-        message_ = "Assembly trajectory complete. Backspace: zero joints; R: reset demo";
+        message_ = "Assembly trajectory complete. Backspace: zero joints; R: assembly preset";
     }
     display_state();
 }

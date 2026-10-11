@@ -1,0 +1,802 @@
+{
+  "checks": [
+    "Startup uses upstream URDF zero with all seven joint angles exactly zero",
+    "Planning from URDF zero still displays a preview and holds the actual robot",
+    "Backspace sets all seven joints exactly to zero, clears progress and preserves core XYZ/RPY",
+    "Core moves below the former Z minimum and above the former pitch maximum",
+    "Out-of-range core reaches planning, shows failed preview and blocks execution",
+    "R loads the separate nonzero assembly preset and its core pose",
+    "Baseline first Enter and held Enter keep arm/core frozen at preview",
+    "Translucent arm/core ghost animates, pauses and scrubs while opaque arm/core remain fixed",
+    "Backend switch invalidates preview; RigidCache previews without execution",
+    "Second Enter executes, Space/focus loss hold, resume reaches complete assembly",
+    "Backspace during planning holds exact zero joints and discards a stale successful result",
+    "Partial and zero-knot failures are displayed and second Enter cannot execute them"
+  ],
+  "arm_directions": [
+    {
+      "key": "w",
+      "delta_m": [
+        0.02012107518399997,
+        -1.8078498424384297e-05,
+        0.00010903145899998634
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "s",
+      "delta_m": [
+        -0.023709361001000018,
+        -4.46064262528843e-05,
+        0.00019546098900002917
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "a",
+      "delta_m": [
+        -7.666012700002778e-05,
+        0.023679723014243315,
+        -2.682178999985352e-06
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "d",
+      "delta_m": [
+        -7.386539499998346e-05,
+        -0.022179307855156684,
+        6.412460000215781e-07
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "q",
+      "delta_m": [
+        -5.918063400001117e-05,
+        2.8633748289315702e-05,
+        0.023530873138000008
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "e",
+      "delta_m": [
+        -4.893126299998496e-05,
+        2.8641152944815703e-05,
+        -0.023379884364999992
+      ],
+      "release_holds": true
+    }
+  ],
+  "core_controls": [
+    {
+      "key": "i",
+      "delta": [
+        0.055881353999999994,
+        -2.77555756156e-17,
+        0.0
+      ]
+    },
+    {
+      "key": "k",
+      "delta": [
+        -0.05383760879999999,
+        2.77555756156e-17,
+        0.0
+      ]
+    },
+    {
+      "key": "j",
+      "delta": [
+        0.0,
+        0.0577240632,
+        0.0
+      ]
+    },
+    {
+      "key": "l",
+      "delta": [
+        0.0,
+        -0.056820885,
+        0.0
+      ]
+    },
+    {
+      "key": "u",
+      "delta": [
+        0.0,
+        0.0,
+        0.057396712000000016
+      ]
+    },
+    {
+      "key": "o",
+      "delta": [
+        0.0,
+        0.0,
+        -0.05743020880000002
+      ]
+    },
+    {
+      "key": "Shift+i",
+      "delta": [
+        17.12412828,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "Shift+k",
+      "delta": [
+        -17.17727448,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "Shift+l",
+      "delta": [
+        0.0,
+        -17.4298431,
+        0
+      ]
+    },
+    {
+      "key": "Shift+j",
+      "delta": [
+        0.0,
+        17.30502168,
+        0
+      ]
+    },
+    {
+      "key": "Shift+u",
+      "delta": [
+        0.0,
+        0.0,
+        17.03647128
+      ]
+    },
+    {
+      "key": "Shift+o",
+      "delta": [
+        0.0,
+        0.0,
+        -16.78340394
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "event": "enter",
+      "key": -1,
+      "state": "PREVIEW_FAILED",
+      "backend": "rigid_cache",
+      "revision": 2,
+      "time": 0,
+      "tcp": [
+        0.329999999599,
+        -1.57652433157e-08,
+        0.249999998658
+      ],
+      "q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ],
+      "core_world": [
+        0.4,
+        0,
+        0.45
+      ],
+      "core_rpy": [
+        0,
+        0,
+        0
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Failed candidate cannot execute. Edit the scene or press Backspace",
+      "success": false,
+      "reason": "ik_flip_304_iteration limit",
+      "knots": 304,
+      "requested_points": 349,
+      "candidate_points": 304,
+      "planning_seconds": 0.009420859,
+      "ghost_time": 8.5233012395,
+      "ghost_geoms": 36,
+      "ghost_paused": true,
+      "ghost_q": [
+        -0.432411196269,
+        1.81486212945,
+        1.41947141342,
+        2.3857357372,
+        -1.29055446858,
+        -0.606700733907,
+        3.40041782893
+      ]
+    },
+    {
+      "event": "enter",
+      "key": -1,
+      "state": "PREVIEW_FAILED",
+      "backend": "rigid_cache",
+      "revision": 2,
+      "time": 0,
+      "tcp": [
+        0.329999999599,
+        -1.57652433157e-08,
+        0.249999998658
+      ],
+      "q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ],
+      "core_world": [
+        0.3,
+        0,
+        0.25
+      ],
+      "core_rpy": [
+        45,
+        -45,
+        90
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Failed candidate cannot execute. Edit the scene or press Backspace",
+      "success": false,
+      "reason": "invalid_station_front_plane",
+      "knots": 0,
+      "requested_points": 337,
+      "candidate_points": 0,
+      "planning_seconds": 1.1798e-05,
+      "ghost_time": 0,
+      "ghost_geoms": 36,
+      "ghost_paused": false,
+      "ghost_q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ]
+    }
+  ],
+  "viewer_pid": 2144441,
+  "startup": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "EDITING",
+    "backend": "rigid_cache",
+    "revision": 1,
+    "time": 0,
+    "tcp": [
+      -0.0743385955027,
+      0.0627490093756,
+      0.326294350133
+    ],
+    "q": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "URDF joint zero; core pose preserved. R: assembly preset; Enter: plan"
+  },
+  "zero_start_preview": {
+    "event": "state",
+    "key": -1,
+    "state": "PREVIEW_FAILED",
+    "backend": "rigid_cache",
+    "revision": 1,
+    "time": 0,
+    "tcp": [
+      -0.0743385955027,
+      0.0627490093756,
+      0.326294350133
+    ],
+    "q": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Planning failed - preview only; execution blocked",
+    "success": false,
+    "reason": "ik_approach_46_iteration limit",
+    "knots": 46,
+    "requested_points": 465,
+    "candidate_points": 46,
+    "planning_seconds": 0.013912694,
+    "ghost_time": 0,
+    "ghost_geoms": 0,
+    "ghost_paused": false,
+    "ghost_q": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "assembly_preset": {
+    "event": "reset",
+    "key": -1,
+    "state": "EDITING",
+    "backend": "rigid_cache",
+    "revision": 2,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Assembly preset loaded. Backspace: URDF zero; Enter: plan and preview"
+  },
+  "joint_zero": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "EDITING",
+    "backend": "rigid_cache",
+    "revision": 159,
+    "time": 0,
+    "tcp": [
+      -0.0743385955027,
+      0.0627490093756,
+      0.326294350133
+    ],
+    "q": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "core_world": [
+      0.3920437452,
+      0.0009031782,
+      0.2499665032
+    ],
+    "core_rpy": [
+      -0.0531462,
+      -0.12482142,
+      0.25306734
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "URDF joint zero; core pose preserved. R: assembly preset; Enter: plan"
+  },
+  "free_core": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "EDITING",
+    "backend": "rigid_cache",
+    "revision": 182,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.1710190074
+    ],
+    "core_rpy": [
+      0,
+      23.38599492,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Core moved. Enter: plan again"
+  },
+  "free_core_failure": {
+    "event": "state",
+    "key": -1,
+    "state": "PREVIEW_FAILED",
+    "backend": "rigid_cache",
+    "revision": 212,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.1838432528,
+      2.77555756156e-17,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Planning failed - preview only; execution blocked",
+    "success": false,
+    "reason": "invalid_station_front_plane",
+    "knots": 0,
+    "requested_points": 341,
+    "candidate_points": 0,
+    "planning_seconds": 1.3641e-05,
+    "ghost_time": 0,
+    "ghost_geoms": 0,
+    "ghost_paused": false,
+    "ghost_q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ]
+  },
+  "ghost_preview": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "backend": "rigid_cache",
+    "revision": 215,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated",
+    "knots": 258,
+    "requested_points": 258,
+    "candidate_points": 258,
+    "planning_seconds": 0.248816871,
+    "ghost_time": 7.17843582901,
+    "ghost_geoms": 36,
+    "ghost_paused": true,
+    "ghost_q": [
+      -0.588319366381,
+      1.74900005532,
+      1.16000865467,
+      1.91612682254,
+      -1.31483332093,
+      -0.554590056505,
+      3.54116298897
+    ]
+  },
+  "successful_preview": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "backend": "rigid_cache",
+    "revision": 215,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated",
+    "knots": 258,
+    "requested_points": 258,
+    "candidate_points": 258,
+    "planning_seconds": 0.248816871,
+    "ghost_time": 0.788905571564,
+    "ghost_geoms": 36,
+    "ghost_paused": false,
+    "ghost_q": [
+      -0.596920022979,
+      2.33548696934,
+      1.14176038928,
+      1.43354886465,
+      -1.71596275221,
+      -0.832329542847,
+      2.14681223334
+    ]
+  },
+  "complete": {
+    "event": "state",
+    "key": -1,
+    "state": "COMPLETE",
+    "backend": "rigid_cache",
+    "revision": 215,
+    "time": 12.1905681168,
+    "tcp": [
+      0.450999999286,
+      0.0395767743651,
+      0.514521490956
+    ],
+    "q": [
+      -0.10890385447,
+      1.46651659584,
+      1.44383080728,
+      1.71395922058,
+      -0.597309619219,
+      0.479068322749,
+      3.95672543228
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0.1,
+      0.1,
+      1.57079632679,
+      0.610865238198
+    ],
+    "message": "Assembly trajectory complete. Backspace: zero joints; R: assembly preset",
+    "success": true,
+    "reason": "validated",
+    "knots": 258,
+    "requested_points": 258,
+    "candidate_points": 258,
+    "planning_seconds": 0.248816871
+  },
+  "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+  "result": "PASS",
+  "upstream_verification": {
+    "checked_utc": "2026-10-11T06:57:56.117012+00:00",
+    "repository": "https://github.com/HKUSTGZ-ROBOMASTER-PNX/UpperComputerControlOpenSourceDoc",
+    "main_commit": "6edc630a1a14a3904b42d5a360e9020562eefc99",
+    "source_path": "src/RM/RMController/core/models/rm26_version3_engineering_model/urdf/rm26_version3_engineering_model.urdf",
+    "upstream_and_local_urdf_sha256": "e19f7e34345a5653b0261d85b04bf4b7a15bdddcc12f4e01119947440e4fa8f9",
+    "byte_identical": true,
+    "independent_urdf_mujoco_fk": {
+      "poses_including_zero": 68,
+      "body_frames": 14,
+      "max_position_error_m": 4.440892098500626e-16,
+      "max_rotation_matrix_error": 1.3322676295501878e-15,
+      "source_files_checksums_verified": 12
+    },
+    "planning_scene_identical_body_origins_and_parents": [
+      "j0_link",
+      "j1_link",
+      "j2_link",
+      "j3_link",
+      "j4_link",
+      "j5_link",
+      "j6_link",
+      "end_link",
+      "ee_link",
+      "camera_link",
+      "realsense_d415_color_link",
+      "realsense_d415_depth_link"
+    ],
+    "planning_scene_identical_joint_axes_ranges_zero_refs": [
+      "j0",
+      "j1",
+      "j2",
+      "j3",
+      "j4",
+      "end_differential_controller/j5",
+      "end_differential_controller/j6"
+    ],
+    "planning_scene_identical_visual_meshes_and_local_transforms": [
+      "j0_link_visual",
+      "j1_link_visual",
+      "j2_link_visual",
+      "j3_link_visual",
+      "j4_link_visual",
+      "j5_link_visual",
+      "j6_link_visual",
+      "end_left_link_visual",
+      "end_right_link_visual",
+      "camera_link_visual"
+    ],
+    "existing_auxiliary_grasp_pose": {
+      "end_left_link": {
+        "source_quat": "0.50000000000000078 0.49999999999999739 0.50000000000000255 -0.49999999999999922",
+        "planning_quat": "-0.1679450292709226 -0.1679450292709271 0.6868729628855597 -0.6868729628855608",
+        "reason": "Existing fixed auxiliary gripper angle 2.0504 rad for the carried unit; outside the seven arm joints"
+      },
+      "end_right_link": {
+        "source_quat": "0.50000000000000078 0.49999999999999739 0.50000000000000255 -0.49999999999999922",
+        "planning_quat": "0.6868729628855602 0.6868729628855613 -0.1679450292709201 0.1679450292709247",
+        "reason": "Existing fixed auxiliary gripper angle 2.0504 rad for the carried unit; outside the seven arm joints"
+      }
+    }
+  },
+  "validation": {
+    "demo_ctest_passed": 3,
+    "demo_ctest_failed": 0,
+    "planning_scene_test_passed": true,
+    "binary_sha256": "328684aa39d29518c608a0ffb0c371f486a40a537854caa3fb9c0bb40fa4aa42",
+    "raw_evidence": "artifacts/keyboard_planning_demo/x11-urdf-zero",
+    "viewer_process_exited": true
+  },
+  "gpu_checks": {
+    "before": {
+      "test_viewer_has_no_gpu_context": true
+    },
+    "startup": {
+      "test_viewer_has_no_gpu_context": true
+    },
+    "execution": {
+      "test_viewer_has_no_gpu_context": true
+    },
+    "shutdown": {
+      "test_viewer_has_no_gpu_context": true
+    }
+  }
+}

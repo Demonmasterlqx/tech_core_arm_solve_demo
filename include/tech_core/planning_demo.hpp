@@ -39,7 +39,7 @@ public:
     void enter();
     void tick(double seconds);
     void home();                      // Seven zero joint angles + mechanism reset; preserve core pose/backend.
-    void reset();                     // Entire initial scene; preserve backend.
+    void reset();                     // Load the scenario's assembly preset (arm + core); preserve backend.
     void toggle_pause();
     void focus_lost();
     void set_backend(Method method);
