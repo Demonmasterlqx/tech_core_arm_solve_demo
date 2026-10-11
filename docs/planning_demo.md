@@ -83,6 +83,10 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 
 后端 1 复用 HKUST 任务雅可比基线；后端 2 复用现有 `RigidCache` 方案。二者采用相同任务、碰撞和规则验证接口。Demo 默认规划超时 5 s、`motion_speed_scale=4`，保留最终 0.5 s 规则驻留。Demo 的场景设置 `enforce_core_pose_limits=false`，跳过规则表位姿范围和前平面检查；规划库其他调用默认保留这两项检查。规划的关节限位、碰撞和装配过程验证继续生效。
 
+规划首先在插入起始点 E 的外法向前方 **40 mm** 处做一次逆解，位置为 `p_pre = p_E + 0.04 * outward_axis`，工具轴与插入轴对齐。然后从当前七关节状态到该解做关节空间线性插值：`q(s) = (1-s) * q_current + s * q_pre`。中间点只计算 FK，用于显示和碰撞验证，不再逐点求解从当前 TCP 到预插入点的笛卡尔直线路径。到达后继续原来的 40 mm 对准、100 mm 插入、升降、P/Q 旋转及驻留。黄色请求路径从预插入点开始；实际接近连线属于候选轨迹与虚影。若预插入点逆解失败，显示 `ik_preinsert_...`，保留请求路径和当前姿态虚影。
+
+这里的线性插值定义关节空间路径；时间参数化继续使用现有的速度、加速度上限和段内平滑。接近段也计入首次回车的预览，第二次回车才执行完整的已验证轨迹。
+
 成功后按照验证器相同的 `3u²−2u³` 插值关节及机构状态，精确到达最终路径点。这里的“执行”是 MuJoCo 中的运动学仿真，能量单元保持既定固定抓持变换；没有硬件控制或接触力控制。手动 jog 只受关节限位与速度限制，规划阶段才验证完整路径及碰撞。沿用现有 [碰撞几何与抓持假设](planning_scene_audit.md)，不把离散采样验证解释为连续碰撞证明。
 
 可选参数见 `./build/rm26_demo --help`，例如：
@@ -119,3 +123,5 @@ xvfb-run -a -s '-screen 0 1440x1000x24 -nolisten tcp' \
 同日进一步将启动姿态统一到上游 URDF 零位，记录见 [上游零位与启动验证](evidence/keyboard_urdf_zero.json)：在线核对上游提交与 URDF 哈希，独立 URDF/MuJoCo 的 68 组 FK 再次通过；规划场景的七主关节原点、轴向、范围和零参考保持一致。附加夹爪仍使用装配 Demo 既有的固定夹持角，详见 [夹持约定](planning_scene_audit.md)。重建后 3 项 Demo 测试及完整真实键盘回归通过，截图更新为启动即七关节全零；R 明确标为装配预设。
 
 同日移除 Demo 规划入口的前平面限制，记录见 [前平面限制移除验证](evidence/keyboard_no_front_plane.json)：23 项 CTest 和完整真实键盘回归通过。Baseline、RigidCache 均能对越过原前平面的核心位姿继续规划并展示结果；窗口测试中的该位姿因起点碰撞失败，保留请求路径与起点虚影，第一次回车及预览期间实体保持不动，失败结果不能执行。正常预设仍可在第二次回车后执行到完成。零关节点失败的窗口用例改用 `reject_blocked`；此前记录中的 `invalid_station_front_plane` 是修改前的历史结果。
+
+预插入点直接逆解与关节线性接近的验证见 [接近段验证](evidence/keyboard_direct_preinsert.json)：23 项 CTest 和完整真实键盘回归通过，覆盖名义起点、偏移起点及旋转核心下的关节直线连接。两个后端在名义装配预设下均返回 252 个轨迹点，RigidCache 预览在第二次回车后执行完成。默认全零初值在 RigidCache 下仍会出现 `ik_preinsert_no descending feasible step`；这是单点 IK 的局部收敛失败，保留 247 个请求路径点和起点虚影，不将失败当作成功执行，也不据此断言该位姿不可达。

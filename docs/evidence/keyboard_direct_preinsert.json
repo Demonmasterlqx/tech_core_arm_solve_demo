@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-11",
+  "algorithm": {
+    "preinsert_position": "p_E + 0.04 * outward_axis",
+    "preinsert_ik": "One direct target solve, seeded from the current joints or an explicit approach waypoint",
+    "connection": "q(s) = (1-s) * q_current + s * q_preinsert",
+    "max_joint_knot_step_rad": 0.02,
+    "intermediate_ik": false,
+    "timing": "Existing cubic blend with mock joint speed and acceleration bounds",
+    "subsequent_task": "40 mm alignment, insertion, lift, P/Q rotations and dwell"
+  },
+  "build": {
+    "command": "cmake --build build -j4",
+    "result": "PASS"
+  },
+  "ctest": {
+    "command": "CUDA_VISIBLE_DEVICES='' ctest --test-dir build --output-on-failure -j4",
+    "passed": 23,
+    "failed": 0,
+    "new_contracts": [
+      "Baseline and RigidCache reach the pre-insertion IK target through a monotone joint-space line",
+      "Nominal and rotated-core/displaced-start cases preserve the actual input and stationary mechanisms",
+      "Pre-insertion IK failure retains the requested task and physical start ghost",
+      "Explicit approach waypoint, Q sweep, collision checks, timeout and complete assembly regressions pass"
+    ]
+  },
+  "keyboard": {
+    "artifacts": "artifacts/keyboard_planning_demo/x11-direct-preinsert",
+    "result": "PASS",
+    "checks": [
+      "Startup uses upstream URDF zero with all seven joint angles exactly zero",
+      "Planning from URDF zero still displays a preview and holds the actual robot",
+      "Backspace sets all seven joints exactly to zero, clears progress and preserves core XYZ/RPY",
+      "Core moves below the former Z minimum and above the former pitch maximum",
+      "Both backends preview beyond the former front plane with the real arm/core held; failed plans cannot execute",
+      "R loads the separate nonzero assembly preset and its core pose",
+      "Assembly request starts at the pre-insertion pose independently of current arm joints",
+      "Baseline first Enter and held Enter keep arm/core frozen at preview",
+      "Translucent arm/core ghost animates, pauses and scrubs while opaque arm/core remain fixed",
+      "Backend switch invalidates preview; RigidCache previews without execution",
+      "Second Enter executes, Space/focus loss hold, resume reaches complete assembly",
+      "Backspace during planning holds exact zero joints and discards a stale successful result",
+      "Partial and zero-knot failures are displayed and second Enter cannot execute them"
+    ],
+    "baseline_preset_preview": {
+      "backend": "baseline",
+      "state": "PREVIEW_READY",
+      "reason": "validated",
+      "knots": 252,
+      "requested_points": 247,
+      "time": 0
+    },
+    "rigid_cache_preset_preview": {
+      "backend": "rigid_cache",
+      "state": "PREVIEW_READY",
+      "reason": "validated",
+      "knots": 252,
+      "requested_points": 247,
+      "time": 0
+    },
+    "execution_complete": {
+      "backend": "rigid_cache",
+      "state": "COMPLETE",
+      "reason": "validated",
+      "knots": 252,
+      "requested_points": 247,
+      "time": 12.0514744645
+    },
+    "rigid_cache_zero_start_preview": {
+      "backend": "rigid_cache",
+      "state": "PREVIEW_FAILED",
+      "reason": "ik_preinsert_no descending feasible step",
+      "knots": 0,
+      "requested_points": 247,
+      "time": 0
+    },
+    "observed_limitation": "The default all-zero IK seed still fails to converge at the pre-insertion pose; failure is previewed without execution"
+  },
+  "resources": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+    "nvidia_test_viewer_entries_in_four_snapshots": 0,
+    "test_nominal_pid": 2568835,
+    "test_nominal_exited": true,
+    "all_test_viewers_exited_normally": true,
+    "test_xvfb_released": true
+  }
+}

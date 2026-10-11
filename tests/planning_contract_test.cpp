@@ -149,16 +149,70 @@ void nonadjacent_collision_test(PlanningScene& scene) {
     throw std::runtime_error("No independently confirmed nonadjacent arm overlap was detected in 75 folded fixtures");
 }
 
+void check_preinsert_connection(PlanningScene& scene, const Scenario& request, const PlanResult& result) {
+    scene.configure(request);
+    auto goal = scene.mechanism_target({});
+    goal.position += .04 * goal.direction;
+    const auto reached = std::find_if(result.knots.begin(), result.knots.end(), [&](const Knot& k) {
+        return k.phase == Phase::Approach && (k.target.position-goal.position).norm() < 1e-12 &&
+               (k.target.direction-goal.direction).norm() < 1e-12;
+    });
+    require(reached != result.knots.end() && reached != result.knots.begin(),
+            "Missing direct pre-insertion solution: " + result.reason);
+    require((result.knots.front().q-request.start).norm() < 1e-12,
+            "Joint connection must begin at the actual input configuration");
+    Eigen::Vector3d position; Eigen::Matrix3d rotation;
+    scene.forward(reached->q, position, rotation);
+    require((position-goal.position).norm() <= 1e-4 && (rotation.col(2)-goal.direction).norm() <= 1e-4,
+            "Connection must reach the IK pose 40 mm outside E along its outward axis");
+    const JointVector delta = reached->q-request.start;
+    require(delta.squaredNorm() > 1e-6, "Fixture needs a nontrivial joint connection");
+    double previous_progress = 0;
+    for (auto it = result.knots.begin(); it <= reached; ++it) {
+        const double progress = (it->q-request.start).dot(delta)/delta.squaredNorm();
+        require((it->q-request.start-progress*delta).norm() < 1e-12 &&
+                progress >= previous_progress-1e-12 && progress <= 1+1e-12,
+                "Pre-insertion connection must be a monotone straight line in joint space");
+        require(it->phase == Phase::Approach && it->mechanism.insertion == 0 && it->mechanism.lift == 0 &&
+                it->mechanism.flip == 0 && it->mechanism.twist == 0,
+                "Joint connection must not advance assembly mechanisms");
+        if (it != result.knots.begin())
+            require((it->q-(it-1)->q).cwiseAbs().maxCoeff() <= .02+1e-12,
+                    "Joint connection lost its dense collision/preview samples");
+        previous_progress = progress;
+    }
+    require(std::abs(previous_progress-1) < 1e-12, "Joint interpolation did not reach its endpoint");
+    const auto task = make_task(scene, PlanOptions{});
+    require((task.front().target.position-goal.position).norm() < 1e-12 &&
+            (task.front().target.direction-goal.direction).norm() < 1e-12,
+            "Assembly task must start at the pre-insertion pose, not the current TCP");
+}
+
+void direct_preinsert_test(PlanningScene& scene) {
+    // A rotated core and a displaced current arm state exercise the opening's
+    // own axis and a substantial connection, independently of the nominal run.
+    auto request = scenario_suite()[2];
+    request.start[0] -= .15;
+    for (auto method : {Method::Baseline, Method::RigidCache}) {
+        PlanOptions options; options.method = method;
+        const auto result = plan(scene, request, options);
+        check_preinsert_connection(scene, request, result);
+    }
+    std::cout << "Direct pre-insertion IK and linear joint connection passed for both backends\n";
+}
+
 void complete_plan_test(PlanningScene& scene) {
     auto request=scenario_suite().front();
     PlanOptions options;
     const auto result=plan(scene,request,options);
     require(result.success && result.validation.rule_success,
             "complete nominal baseline regression: "+result.reason);
+    check_preinsert_connection(scene,request,result);
     options.method=Method::RigidCache;
     const auto cached=plan(scene,request,options);
     require(cached.success && cached.counters.rigid_pair_cache_hits>0,
             "complete cached planning regression: "+cached.reason);
+    check_preinsert_connection(scene,request,cached);
     auto fast_options=options;fast_options.motion_speed_scale=4;
     const auto fast=plan(scene,request,fast_options);
     require(fast.success && fast.validation.rule_success,"4x motion must retain full rule completion: "+fast.reason);
@@ -330,6 +384,7 @@ int main() {
         nonfinite_tests(scene);
         nonadjacent_collision_test(scene);
         complete_plan_test(scene);
+        direct_preinsert_test(scene);
         q_sweep_contract_test(scene);
         best_effort_q_test(scene);
         std::cout << "planning contract negative tests passed\n";

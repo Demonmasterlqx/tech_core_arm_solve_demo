@@ -269,6 +269,17 @@ void failure_contract() {
     require(!empty.result.success && empty.result.knots.empty() && !empty.requested_path.empty(), "Zero-knot failure lacks a preview");
     require(empty.ghost_knots.size() == 1 && same(empty.ghost_knots.front().q, request.start),
             "Zero-knot failure must show a stationary start ghost, not invent a path");
+    request = scenario_suite().front();
+    request.core.z = 2; request.enforce_core_pose_limits = false;
+    for (auto method : {Method::Baseline, Method::RigidCache}) {
+        auto options = demo_plan_options(); options.method = method;
+        const auto unreachable = make_demo_preview(request, options);
+        require(!unreachable.result.success && unreachable.result.reason.find("ik_preinsert_") == 0 &&
+                unreachable.result.knots.empty(), "Unreachable pre-insertion pose must fail at the direct IK solve");
+        require(!unreachable.requested_path.empty() && unreachable.ghost_knots.size() == 1 &&
+                same(unreachable.ghost_knots.front().q, request.start),
+                "Direct IK failure must retain assembly intent and the physical start ghost");
+    }
     request = *std::find_if(suite.begin(), suite.end(), [](const auto& s) { return s.id == "confirm_top"; });
     const auto prefix = make_demo_preview(request, demo_plan_options());
     require(!prefix.result.success && prefix.result.knots.size() > 1 && prefix.result.knots.back().time == 0,

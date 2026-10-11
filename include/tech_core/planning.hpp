@@ -128,9 +128,11 @@ struct PlanOptions {
     double motion_speed_scale = 1;
     double position_spacing = .002;
     double angular_spacing = radians(1);
-    // Optional online-selected approach configuration. The returned trajectory
-    // must first connect scenario.start to this waypoint in joint space; this
-    // connection is densely sampled and validated with the entire task.
+    // Optional online-selected waypoint before the pre-insertion IK solve.
+    // The physical start is retained and connected to it in joint space.
+    // The normal path solves E + 40 mm along its outward axis once, then
+    // linearly interpolates joints to that solution. Connections are densely
+    // sampled and validated with the entire task.
     std::optional<JointVector> approach_joint_waypoint;
     double validation_position_tolerance = .0005;
     double validation_axis_tolerance = .002;
@@ -160,6 +162,8 @@ struct PlanResult {
 };
 struct AtlasEntry { Scenario scenario; std::vector<Knot> knots; };
 
+// Starts at the pre-insertion pose, independent of the actual arm state.
+// plan() prepends the joint-space connection from scenario.start to its IK.
 std::vector<TaskPoint> make_task(PlanningScene& scene, const PlanOptions& options);
 void parameterize(std::vector<Knot>& knots, double motion_speed_scale = 1);
 ValidationResult validate_trajectory(PlanningScene& scene, const std::vector<Knot>& knots,

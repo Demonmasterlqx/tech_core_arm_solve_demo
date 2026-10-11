@@ -141,17 +141,12 @@ std::vector<TaskPoint> make_task(PlanningScene& scene,const PlanOptions& options
        options.position_spacing<1e-5 || options.angular_spacing<1e-5)
         throw std::invalid_argument("Task spacing must be positive");
     std::vector<TaskPoint> points;
-    TaskPoint first;
-    Eigen::Matrix3d rotation;
-    scene.forward(options.approach_joint_waypoint.value_or(scene.scenario().start),first.target.position,rotation);
-    first.target.direction=rotation.col(2);
-    points.push_back(first);
+    // The assembly task starts 40 mm outside E, along the opening's outward
+    // axis. plan() solves this pose once and joins it from the physical start
+    // in joint space; no Cartesian path from that start is prescribed here.
     TaskPoint approached; approached.target=scene.mechanism_target({});
     approached.target.position+=.04*approached.target.direction;
-    const int na=std::max(1,static_cast<int>(std::ceil(std::max(
-        (approached.target.position-first.target.position).norm()/options.position_spacing,
-        angle(first.target.direction,approached.target.direction)/options.angular_spacing))));
-    for(int i=1;i<=na;++i) points.push_back(between(scene,first,approached,double(i)/na));
+    points.push_back(approached);
     TaskPoint aligned;aligned.target=scene.mechanism_target({});
     const int alignment_steps=std::max(1,static_cast<int>(std::ceil(.04/options.position_spacing)));
     for(int i=1;i<=alignment_steps;++i) points.push_back(between(scene,approached,aligned,double(i)/alignment_steps));
@@ -353,25 +348,40 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
     const ForwardKinematics fk=[&](const JointVector& q,Eigen::Vector3d& p,Eigen::Matrix3d& r,Jacobian* j){scene.forward(q,p,r,j);};
     JointVector previous=scenario.start;
     const auto ikstart=Clock::now();
+    auto connect=[&](const JointVector& waypoint) {
+        const JointVector from=previous;
+        // A straight joint-space connection, sampled only for preview and
+        // validation. Intermediate points use FK, never additional IK solves.
+        const int n=std::max(1,static_cast<int>(std::ceil((waypoint-from).cwiseAbs().maxCoeff()/.02)));
+        for(int i=result.knots.empty()?0:1;i<=n;++i) {
+            if(stop()) {result.reason="deadline_during_approach_connection";return false;}
+            Knot k;k.q=i==n?waypoint:(from+(double(i)/n)*(waypoint-from)).eval();
+            Eigen::Matrix3d rotation;scene.forward(k.q,k.target.position,rotation);
+            k.target.direction=rotation.col(2);result.knots.push_back(k);
+        }
+        previous=waypoint;
+        return true;
+    };
     if(options.approach_joint_waypoint) {
         const auto& waypoint=*options.approach_joint_waypoint;
         if((waypoint.array()<scene.limits().lower.array()).any() ||
            (waypoint.array()>scene.limits().upper.array()).any()) {
             result.reason="approach_waypoint_joint_limits";return finish();
         }
-        // FK-derived targets make this a free-space joint connection. Dense
-        // knots keep the Cartesian interpolation error bounded by the shared
-        // validator, which checks collisions and the carried object throughout.
-        const int n=std::max(1,static_cast<int>(std::ceil((waypoint-scenario.start).cwiseAbs().maxCoeff()/.02)));
-        for(int i=0;i<=n;++i) {
-            if(stop()) {result.reason="deadline_during_approach_connection";result.ik_seconds=seconds(ikstart);return finish();}
-            Knot k;k.q=scenario.start+(double(i)/n)*(waypoint-scenario.start);
-            Eigen::Matrix3d rotation;scene.forward(k.q,k.target.position,rotation);
-            k.target.direction=rotation.col(2);result.knots.push_back(k);
-        }
-        previous=waypoint;
+        if(!connect(waypoint)) {result.ik_seconds=seconds(ikstart);return finish();}
     }
-    for(std::size_t i=options.approach_joint_waypoint?1:0;i<targets.size();++i) {
+    // First solve only the pre-insertion pose. The approach path is the joint
+    // line from the actual state (or explicit waypoint) to this solution.
+    const auto approached=solve_ik(fk,targets.front().target,previous,scene.limits(),ik);
+    scene.counters.ik_iterations+=approached.iterations;
+    if(!approached.success) {
+        result.reason=stop()?"deadline_during_preinsert_ik":"ik_preinsert_"+approached.reason;
+        result.ik_seconds=seconds(ikstart);return finish();
+    }
+    if(!connect(approached.q)) {result.ik_seconds=seconds(ikstart);return finish();}
+    result.knots.back().target=targets.front().target;
+    const std::size_t connection_knots=result.knots.size();
+    for(std::size_t i=1;i<targets.size();++i) {
         if(scenario.q_best_effort && targets[i].phase>=Phase::Twist) break;
         if(stop()) {result.reason="deadline_during_ik";result.ik_seconds=seconds(ikstart);return finish();}
         JointVector seed=previous;
@@ -417,6 +427,9 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
             for(std::size_t i=1;i<result.knots.size();++i) {
                 if(stop()) {result.reason="deadline_during_refinement";result.ik_seconds=seconds(ikstart);return finish();}
                 const auto& a=result.knots[i-1];const auto& b=result.knots[i];
+                // Preserve the prescribed joint line; only refine the assembly
+                // task. The final validator still checks every connection span.
+                if(i<connection_knots) {refined.push_back(b);continue;}
                 bool split=false;
                 for(double t:{.25,.5,.75}) {
                     const auto expected=between(scene,a,b,t);Eigen::Vector3d p;Eigen::Matrix3d r;

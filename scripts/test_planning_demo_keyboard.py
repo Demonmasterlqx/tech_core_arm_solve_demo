@@ -279,6 +279,8 @@ def main():
         held = run.capture('baseline-preview.png')
         unchanged(initial, held)
         assert ready['backend'] == 'baseline' and held['state'] == 'PREVIEW_READY'
+        assert ready['requested_points'] == zero_preview['requested_points'], (ready, zero_preview)
+        report['checks'].append('Assembly request starts at the pre-insertion pose independently of current arm joints')
         report['checks'].append('Baseline first Enter and held Enter keep arm/core frozen at preview')
 
         changed = run.tap('2', 'backend')
