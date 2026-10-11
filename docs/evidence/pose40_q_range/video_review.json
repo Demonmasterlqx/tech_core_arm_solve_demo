@@ -1,0 +1,95 @@
+{
+  "detail": {
+    "full_decode_exit": 0,
+    "full_decode_stderr": "",
+    "peak_time": 14.453584390896928,
+    "peak_degrees": 64.0,
+    "frames": [
+      {
+        "label": "start",
+        "frame": 0,
+        "video_seconds": 0.0,
+        "path": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/q_range_checks/pose11-start.png",
+        "evidence_relative_path": "visual_frames/pose11-start.png",
+        "sha256": "89940c879cabd74947b7e81565b1cc9dca5712ca2f1fafc00799e1cc3736921d"
+      },
+      {
+        "label": "positive_turn",
+        "frame": 347,
+        "video_seconds": 14.458333333333334,
+        "path": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/q_range_checks/pose11-positive_turn.png",
+        "evidence_relative_path": "visual_frames/pose11-positive_turn.png",
+        "sha256": "60cc124ba44f0f91412e89f33c651cb181f6af5d75bf6c785eb09f2b906bfbca"
+      },
+      {
+        "label": "safe_stop",
+        "frame": 593,
+        "video_seconds": 24.708333333333332,
+        "path": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/q_range_checks/pose11-safe_stop.png",
+        "evidence_relative_path": "visual_frames/pose11-safe_stop.png",
+        "sha256": "bce77781f5ec554071d68448a62208e0a82547b02eb85a38069aa6fc936c613c"
+      }
+    ],
+    "visual_review": "Positive-turn and final safe-stop frames inspected: Q +64 then -90, P 90, insertion/lift 100 mm, partial label correct.",
+    "frame_shape": [
+      1600,
+      900
+    ],
+    "frames_decoded": 594,
+    "duration_seconds": 24.75
+  },
+  "montage": {
+    "full_decode_exit": 0,
+    "full_decode_stderr": "",
+    "frames_decoded": 2758,
+    "duration_seconds": 137.9,
+    "frame_shape": [
+      1920,
+      1080
+    ],
+    "pages": [
+      {
+        "page": 1,
+        "frame": 563,
+        "video_seconds": 28.15,
+        "path": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/q_range_checks/page-01.png",
+        "evidence_relative_path": "visual_frames/page-01.png",
+        "sha256": "a24527fe95026732357c80d20d9de5061d2d2428ecac4e98e8bc53b2ac99f44c"
+      },
+      {
+        "page": 2,
+        "frame": 1118,
+        "video_seconds": 55.9,
+        "path": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/q_range_checks/page-02.png",
+        "evidence_relative_path": "visual_frames/page-02.png",
+        "sha256": "e4a9ceb6d67debee9230061bb7a6418eb45324fa48c07903787554ec089dfb51"
+      },
+      {
+        "page": 3,
+        "frame": 1668,
+        "video_seconds": 83.4,
+        "path": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/q_range_checks/page-03.png",
+        "evidence_relative_path": "visual_frames/page-03.png",
+        "sha256": "c25e0aca5d90e4b18f258956277976a911acecc48a0bff7310b3f74edd492a62"
+      },
+      {
+        "page": 4,
+        "frame": 2210,
+        "video_seconds": 110.5,
+        "path": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/q_range_checks/page-04.png",
+        "evidence_relative_path": "visual_frames/page-04.png",
+        "sha256": "308af48daec290d0f7032de11d6dd10571db765885631b5bd43b88f6b9be2dbd"
+      },
+      {
+        "page": 5,
+        "frame": 2757,
+        "video_seconds": 137.85,
+        "path": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/q_range_checks/page-05.png",
+        "evidence_relative_path": "visual_frames/page-05.png",
+        "sha256": "efd606a0ba5b50de7b1acdab957993253f7e81de2f40c886821bf85dda888a2d"
+      }
+    ],
+    "sha256": "e282e5b8fc94c62addd6babaebce790afaa35c0cd715eb707e6118313adefaa4",
+    "visual_review": "All 5 terminal pages inspected against runs.csv: 20 FULL Q, 15 PARTIAL Q with actual peak/end, 5 REJECTED held at start. Detail positive turn +64 and final -90 inspected."
+  }
+}

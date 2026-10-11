@@ -196,8 +196,11 @@ void PlanningScene::configure(const Scenario& scenario) {
         throw std::invalid_argument("Invalid planning scenario");
     if(scenario.q_sweep && scenario.target_degrees!=-90)
         throw std::invalid_argument("Q sweep must end at -90 degrees");
+    if(scenario.q_best_effort && !scenario.q_sweep)
+        throw std::invalid_argument("Best-effort Q requires a bidirectional sweep");
     scenario_=scenario;
     rigid_pair_cache_enabled_=false;
+    exact_state_cache_enabled_=false;exact_state_cache_.clear();
     for(auto& pair:pairs_) pair.cached_cutoff=-1;
     model_->body_pos[3*arm_root_body_+2]=arm_root_original_z_+scenario.arm_base_z;
     model_->geom_pos[3*mount_geom_+2]=mount_original_z_+scenario.arm_base_z;
@@ -289,6 +292,23 @@ CollisionResult PlanningScene::collision(const JointVector& q,const MechanismSta
     if(!q.allFinite() || (q.array()<limits_.lower.array()-1e-10).any() ||
        (q.array()>limits_.upper.array()+1e-10).any()) return {false,-1,"joint_limits"};
     if(!std::isfinite(s.insertion+s.lift+s.flip+s.twist)) return {false,-1,"nonfinite_mechanism"};
+    if(exact_state_cache_enabled_) {
+        std::array<double,12> key{};
+        std::copy(q.data(),q.data()+7,key.begin());
+        key[7]=s.insertion;key[8]=s.lift;key[9]=s.flip;key[10]=s.twist;key[11]=clearance;
+        const auto found=exact_state_cache_.find(key);
+        if(found!=exact_state_cache_.end()) {
+            ++counters.exact_state_cache_hits;
+            set_state(q,s); // Preserve collision()'s observable scene state.
+            return found->second;
+        }
+        const auto result=collision_uncached(q,s,clearance);
+        exact_state_cache_.emplace(key,result);return result;
+    }
+    return collision_uncached(q,s,clearance);
+}
+
+CollisionResult PlanningScene::collision_uncached(const JointVector& q,const MechanismState& s,double clearance) {
     set_state(q,s);
     const int tip=named(model(),mjOBJ_SITE,"core0_tip");
     const Eigen::Vector3d assembly_axis=Eigen::Map<const RowMatrix>(data_->site_xmat+9*tip).col(0);

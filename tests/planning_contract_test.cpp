@@ -252,6 +252,70 @@ void q_sweep_contract_test(PlanningScene& scene) {
             "Expired online budget must never produce a successful trajectory");
     std::cout << "Q sweep endpoint and order contract tests passed\n";
 }
+
+void best_effort_q_test(PlanningScene& scene) {
+    // Fixed input pose11 previously failed during Q because the wrist links
+    // lost the required clearance. No saved waypoint/solution is used here.
+    Scenario request;request.id="best_effort_collision_regression";
+    request.core={-.07890975691517935,.20725815472589337,.5322304533713367,
+                  -8.205880236221619,76.84229529874989,7.8383896119672976};
+    request.target_degrees=-90;request.q_sweep=true;request.q_best_effort=true;
+    request.arm_base_z=-.1;request.assembly_translation.x()=.2;
+    request.start<<-.58298870078787879,1.4014363481415861,1.4956286729240151,
+        .51538441396359136,-1.5264021873645037,-.58813609807777278,2.7857137959190528;
+    PlanOptions options;options.method=Method::RigidCache;options.motion_speed_scale=4;
+    options.validation_joint_step=.004;options.validation_min_substeps=4;
+    const auto partial=plan(scene,request,options);
+    require(partial.success && !partial.full_q_sweep && partial.validation.rule_success,
+            "Collision-limited Q must retain a fully validated partial path: "+partial.reason);
+    require(partial.counters.exact_state_cache_hits>0,"Repeated exact collision states should be reused");
+    require(partial.q_positive_degrees>0 && partial.q_positive_degrees<90 &&
+            partial.q_final_degrees<=0 && contains(partial.q_positive_stop,"collision"),
+            "Stop before the colliding positive segment, then try the negative direction");
+    scene.configure(request);
+    const auto checked=validate_trajectory(scene,partial.knots,options);
+    require(checked.valid && checked.samples==partial.validation.samples,
+            "Partial Q requires an uncached full-path recheck");
+    require(scene.counters.exact_state_cache_hits==0,"configure must disable and clear state memoization");
+    scene.enable_rigid_pair_cache(true);scene.enable_exact_state_cache(true);
+    const auto& end=partial.knots.back();
+    const auto first=scene.collision(end.q,end.mechanism);
+    const auto calls=scene.counters.narrowphase_calls;
+    const auto again=scene.collision(end.q,end.mechanism);
+    require(first.valid==again.valid && first.distance==again.distance && first.pair==again.pair &&
+            scene.counters.exact_state_cache_hits==1 && scene.counters.narrowphase_calls==calls,
+            "Exact-state hit must preserve the complete collision result");
+    scene.collision(end.q,end.mechanism,.002);
+    auto shifted=end.q;shifted[0]+=1e-12;scene.collision(shifted,end.mechanism);
+    auto mechanism=end.mechanism;mechanism.twist+=1e-12;scene.collision(end.q,mechanism);
+    require(scene.counters.exact_state_cache_hits==1,"No quantization; clearance, every joint and mechanism must enter key");
+    scene.configure(request);
+    auto changed=partial.knots;
+    changed.back().mechanism.twist+=radians(1);
+    changed.back().target=scene.mechanism_target(changed.back().mechanism);
+    require(validate_trajectory(scene,changed,options).reason=="q_dwell_jump",
+            "Dwell must hold the actual final Q, never jump to another angle");
+    changed=partial.knots;
+    const auto negative=std::find_if(changed.begin(),changed.end(),[](const Knot& k){
+        return k.phase==Phase::Twist && k.mechanism.twist<0;
+    });
+    require(negative!=changed.end(),"Regression must exercise the negative leg");
+    negative->mechanism.twist=radians(1);negative->target=scene.mechanism_target(negative->mechanism);
+    require(validate_trajectory(scene,changed,options).reason=="q_sweep_order",
+            "A second positive turn after reversal is outside the requested sequence");
+    changed=partial.knots;
+    changed.erase(std::remove_if(changed.begin(),changed.end(),[](const Knot& k){return k.phase==Phase::Flip;}),changed.end());
+    require(validate_trajectory(scene,changed,options).reason=="missing_phase",
+            "Best-effort Q must not relax mandatory P rotation");
+    request.q_best_effort=false;scene.configure(request);
+    require(!validate_trajectory(scene,partial.knots,options).valid,
+            "A partial path must never pass the original strict sweep contract");
+    request.q_best_effort=true;request.blocking_obstacle=true;
+    const auto blocked=plan(scene,request,options);
+    require(!blocked.success,"Pre-Q collision must not become a best-effort success");
+    std::cout<<"Best-effort Q collision stop and strict-mode isolation passed; peak="
+             <<partial.q_positive_degrees<<" final="<<partial.q_final_degrees<<'\n';
+}
 } // namespace
 
 int main() {
@@ -267,6 +331,7 @@ int main() {
         nonadjacent_collision_test(scene);
         complete_plan_test(scene);
         q_sweep_contract_test(scene);
+        best_effort_q_test(scene);
         std::cout << "planning contract negative tests passed\n";
         return 0;
     } catch (const std::exception& error) {

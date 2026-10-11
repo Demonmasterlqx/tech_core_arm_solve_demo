@@ -50,7 +50,7 @@ Phase phase(const std::string& name) {
 
 struct Case {
     Scenario scenario;Row run;std::vector<Knot> knots;
-    bool success=false;double duration=0,positive_time=0;
+    bool success=false,full_q=false;double duration=0,peak=0,end=0;
 };
 std::string short_reason(const std::string& reason) {
     if(reason.find("collision")!=std::string::npos) return "Collision / clearance rejection";
@@ -73,6 +73,7 @@ int main(int argc,char** argv) {
       Case c;auto& s=c.scenario;s.id=r.at("case");s.split=r.at("split");
       s.core={number(r,"core_x"),number(r,"core_y"),number(r,"core_z"),number(r,"core_theta_degrees"),number(r,"core_phi_degrees"),number(r,"core_alpha_degrees")};
       s.target_degrees=number(r,"target_degrees");s.q_sweep=r.at("q_sweep")=="1";
+      s.q_best_effort=r.count("q_best_effort") && r.at("q_best_effort")=="1";
       s.assembly_translation={number(r,"assembly_translation_x"),number(r,"assembly_translation_y"),number(r,"assembly_translation_z")};
       s.assembly_yaw=number(r,"assembly_yaw_radians");s.arm_base_z=number(r,"arm_base_z");
       for(int j=0;j<7;++j)s.start[j]=number(r,"start_q"+std::to_string(j));
@@ -88,11 +89,13 @@ int main(int argc,char** argv) {
           k.target.position={number(row,"target_x"),number(row,"target_y"),number(row,"target_z")};
           k.target.direction={number(row,"direction_x"),number(row,"direction_y"),number(row,"direction_z")};
           c.knots.push_back(k);
-          if(std::abs(k.mechanism.twist-pi/2)<1e-9)c.positive_time=k.time;
+          c.peak=std::max(c.peak,k.mechanism.twist);
         }
         PlanOptions options;options.motion_speed_scale=number(c.run,"motion_speed_scale");options.validation_joint_step*=.5;options.validation_min_substeps*=2;
         sim.configure(s);const auto valid=validate_trajectory(sim,c.knots,options);
         if(!valid.valid)throw std::runtime_error(s.id+" dense recheck failed: "+valid.reason);
+        c.end=c.knots.back().mechanism.twist;
+        c.full_q=std::abs(c.peak-pi/2)<1e-9 && std::abs(c.end+pi/2)<1e-9;
         c.duration=c.knots.back().time;++successes;total_samples+=valid.samples;
         std::cerr<<"DENSE_RECHECK "<<s.id<<" samples="<<valid.samples<<'\n';
       }
@@ -122,7 +125,8 @@ int main(int argc,char** argv) {
         const double t=still_page>=0?still_time:double(frame)/fps;
         mjr_rectangle(full,.04f,.055f,.075f,1);
         std::ostringstream title,footer;
-        title<<(online?"ONLINE - FIXED START  |  ":"")<<"40 CORE POSES  |  LEVEL 3  |  Q: 0 > +90 > -90 deg\n"
+        title<<(online?"ONLINE - FIXED START  |  ":"")<<"40 CORE POSES  |  LEVEL 3  |  "
+             <<(cases.front().scenario.q_best_effort?"Q: MAX VERIFIED RANGE (+ THEN -)":"Q: 0 > +90 > -90 deg")<<"\n"
              <<"Page "<<page+1<<" / 5   |   "<<successes<<" / 40 validated   |   Motion 4x   Playback 1x   Base Z -100 mm";
         mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{10,height-74,width-20,70},title.str().c_str(),nullptr,&context);
         for(int local=0;local<8;++local) {
@@ -139,10 +143,10 @@ int main(int argc,char** argv) {
           }
           const int x=(local%4)*tile_width+4,y=42+(1-local/4)*tile_height+3;
           const mjrRect tile{x,y,tile_width-8,tile_height-6},view{x,y+51,tile.width,tile.height-111};
-          mjr_rectangle(tile,c.success?.045f:.16f,c.success?.09f:.045f,c.success?.10f:.055f,1);
+          mjr_rectangle(tile,c.success?(c.full_q?.045f:.16f):.16f,c.success?.09f:.045f,c.success?.10f:.055f,1);
           mjv_updateScene(model,sim.data(),&option,nullptr,&camera,mjCAT_ALL,&scene);mjr_render(view,&scene,&context);
           std::ostringstream pose,status;
-          pose<<c.scenario.id<<"  "<<(c.success?"VALIDATED":"REJECTED");
+          pose<<c.scenario.id<<"  "<<(c.success?(c.full_q?"FULL Q":c.peak-c.end>1e-9?"PARTIAL Q":"NO Q MOTION"):"REJECTED");
           if(online)pose<<"  "<<std::fixed<<std::setprecision(3)<<number(c.run,"planning_seconds")<<" s online";
           pose<<"\n"<<std::fixed<<std::setprecision(0)
               <<"XYZ "<<c.scenario.core.x*1000<<","<<c.scenario.core.y*1000<<","<<c.scenario.core.z*1000<<" mm  YPR "
@@ -150,12 +154,13 @@ int main(int argc,char** argv) {
           mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{x,y+tile.height-58,tile.width,57},pose.str().c_str(),nullptr,&context);
           if(c.success) {
             status<<std::fixed<<std::setprecision(1)<<"t "<<now<<"/"<<c.duration<<"s  Q "<<mechanism.twist*180/pi<<" deg\n"
-                  <<(now>=c.duration?"COMPLETE":phase_name(phase_now))<<(now>=c.positive_time?"  |  +90 reached":"  |  +90 pending");
+                  <<(now>=c.duration?(c.full_q?"FULL Q DONE":"SAFE STOP"):phase_name(phase_now))
+                  <<" | 0 > "<<std::setprecision(0)<<c.peak*180/pi<<" > "<<c.end*180/pi<<" deg";
           }else status<<"NOT EXECUTED\n"<<short_reason(c.run.at("reason"));
           mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{x,y+1,tile.width,49},status.str().c_str(),nullptr,&context);
         }
         footer<<(online?"Same physical start. Online time includes retries, approach connection and dense collision checks. ":"All 40 requested poses shown. ")
-              <<"Red: not executed. Fixed-grasp kinematic simulation.";
+              <<"Teal: full Q. Amber: limited Q. Red: not executed. Kinematic simulation.";
         mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{10,3,width-20,35},footer.str().c_str(),nullptr,&context);
         mjr_readPixels(rgb.data(),nullptr,full,&context);
         if(std::fwrite(rgb.data(),1,rgb.size(),stdout)!=rgb.size())throw std::runtime_error("Encoder pipe closed");

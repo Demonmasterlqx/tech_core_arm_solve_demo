@@ -242,7 +242,11 @@ def trajectory_audit(path, scenario, arm, tcp, args, successful):
     if abs(times[0]) > 1e-12 or np.any(np.diff(times) <= 0):
         errors.append('timestamps must start at zero and strictly increase')
         return {'knots': len(rows), 'valid': False, 'errors': errors}
-    core_p, core_r, goal = scene_pose(scenario)
+    core_p, core_r, requested_goal = scene_pose(scenario)
+    best_effort = scenario.get('q_best_effort', '0') == '1'
+    goal = float(state[-1, 3]) if best_effort else requested_goal
+    if best_effort and scenario.get('q_sweep') != '1':
+        errors.append('best-effort Q requires a sweep')
     expected_ends = {'approach': [0, 0, 0, 0], 'insert': [.1, 0, 0, 0],
                      'lift': [.1, .1, 0, 0], 'flip': [.1, .1, math.pi/2, 0],
                      'twist': [.1, .1, math.pi/2, goal], 'dwell': [.1, .1, math.pi/2, goal]}
@@ -257,11 +261,11 @@ def trajectory_audit(path, scenario, arm, tcp, args, successful):
     if scenario.get('q_sweep', '0') == '1':
         sweep = np.array([0.] + [float(s[3]) for s, p in zip(state, phase) if p == 'twist'])
         peak = int(np.argmax(sweep))
-        if (abs(goal+math.pi/2) > 1e-9 or abs(sweep[peak]-math.pi/2) > 1e-9 or
+        if not best_effort and (abs(goal+math.pi/2) > 1e-9 or abs(sweep[peak]-math.pi/2) > 1e-9 or
                 abs(sweep[-1]+math.pi/2) > 1e-9):
             errors.append('Q sweep must visit +90 then finish at -90')
         if np.any(np.diff(sweep[:peak+1]) < -1e-9) or np.any(np.diff(sweep[peak:]) > 1e-9):
-            errors.append('Q sweep order is not 0 to +90 to -90')
+            errors.append('Q must turn positive then reverse at most once')
     for i, p in enumerate(phase):
         s, l, f, w = state[i]
         if ((p in ('approach', 'insert') and max(abs(l), abs(f), abs(w)) > 1e-8) or
@@ -341,7 +345,11 @@ def trajectory_audit(path, scenario, arm, tcp, args, successful):
             'max_exported_target_position_disagreement_m': export_p,
             'max_exported_target_axis_disagreement_rad': export_a,
             'max_joint_speed_rad_s': peak_v, 'max_joint_acceleration_rad_s2': peak_a,
-            'fk_aligned_suffix_seconds': float(dwell), 'execution_seconds': float(times[-1])}
+            'fk_aligned_suffix_seconds': float(dwell), 'execution_seconds': float(times[-1]),
+            'q_positive_degrees': float(np.max(state[:, 3])*180/math.pi),
+            'q_final_degrees': float(state[-1, 3]*180/math.pi),
+            'full_q_sweep': bool(abs(np.max(state[:, 3])-math.pi/2)<1e-9 and abs(state[-1, 3]+math.pi/2)<1e-9),
+            'q_best_effort': best_effort}
 
 
 def distribution(values):
@@ -454,6 +462,12 @@ def main():
             # success statistics, with negative fixtures kept separate.
             checked = trajectory_audit(trajectory, scenarios[row['case']], arm, tcp, args,
                                        row['plan_success'] == '1')
+            if row['plan_success'] == '1' and scenarios[row['case']].get('q_best_effort') == '1':
+                for key in ('q_positive_degrees', 'q_final_degrees'):
+                    if not math.isfinite(float(row[key])) or abs(float(row[key])-checked[key]) > 1e-8:
+                        checked['valid'] = False; checked['errors'].append('incorrect exported ' + key)
+                if (row['full_q_sweep'] == '1') != checked['full_q_sweep']:
+                    checked['valid'] = False; checked['errors'].append('incorrect exported full/partial Q label')
             if checked['knots'] != int(row['knots']):
                 checked['valid'] = False; checked['errors'].append('CSV knot count mismatch')
             if success and row['plan_success'] != '1':

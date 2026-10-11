@@ -52,7 +52,11 @@ def main():
     parser.add_argument("--retry", action="store_true",
                         help="Try online approach waypoints within the same 3 s request deadline; requires --online")
     parser.add_argument("--poses", type=Path, help="Reuse an exact requested_poses.csv without reading prior solutions")
+    parser.add_argument("--best-effort-q", action="store_true", help="Maximize safe Q travel within the online request")
+    parser.add_argument("--build-dir", type=Path, default=ROOT/"build-planning")
     args = parser.parse_args()
+    if args.best_effort_q and not args.online:
+        parser.error("--best-effort-q requires --online")
     if args.retry and not args.online:
         parser.error("--retry requires --online")
     output = args.output.resolve()
@@ -82,6 +86,14 @@ def main():
                       validation_joint_step_rad=.004, validation_min_substeps=4,
                       approach_joint_knot_step_rad=.02,
                       uncached_audit="Same density and tolerances as the timed validator; any mismatch aborts the experiment")
+    config.update(q_best_effort=args.best_effort_q)
+    if args.best_effort_q:
+        config.update(pre_q_screen="Reject colliding solved endpoints before dense validation; never accept without every dense sample",
+                      q_acceptance="Mandatory insert 100 mm, lift 100 mm, P 90 degrees; Q may stop short at a fully validated endpoint",
+                      q_search="Positive toward +90 then reverse along checked path to 0 and extend toward -90; 1 degree increments; retain greatest 2*peak-final travel among live candidates",
+                      q_range_claim="Largest verified travel found on searched IK branches within budget, not a globally maximal physical range",
+                      online_search_limit_seconds=2.94, return_reserve_seconds=.06,
+                      q_extension_validation_reserve=".2*prefix check + 1.3*positive checks + .2*negative checks + .06 s; exact-state collision memoization only within configured scene")
     (output/"experiment.json").write_text(json.dumps(config, indent=2)+"\n")
     if args.prepare_only:
         return
@@ -91,7 +103,7 @@ def main():
     handler = RotatingFileHandler(output/"planning.log", maxBytes=1024*1024, backupCount=2)
     logger.addHandler(handler)
     mujoco = ROOT/".deps/mujoco-3.3.7"
-    libraries = [ROOT/"build-planning"/name for name in
+    libraries = [args.build_dir.resolve()/name for name in
                  ("librm26_planning.a", "libtech_core_sim.a", "libtech_core_rules.a")]
     if not all(path.exists() for path in libraries):
         parser.error("Build build-planning first; see docs/pose40_q_sweep.md")
@@ -108,6 +120,8 @@ def main():
             cpu = min(os.sched_getaffinity(0)); os.sched_setaffinity(0, {cpu})
             started = time.monotonic()
             planner_arguments = [str(output), "96", "24"] + (["--online-retry" if args.retry else "--online"] if args.online else [])
+            if args.best_effort_q:
+                planner_arguments += ["--best-effort-q"]
             metadata = dict(utc_start=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                             cpu_affinity=[cpu], CUDA_VISIBLE_DEVICES="",
                             source_sha256=hashlib.sha256((ROOT/"scripts/plan_pose_sweep.cpp").read_bytes()).hexdigest(),

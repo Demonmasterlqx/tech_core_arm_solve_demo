@@ -35,6 +35,7 @@ def main():
     parser.add_argument("--fps", type=int, default=24)
     parser.add_argument("--speed", type=float, default=1.)
     parser.add_argument("--still", type=float, default=None, help="One PNG frame at this trajectory time")
+    parser.add_argument("--build-dir", type=Path, default=ROOT/"build-planning")
     args = parser.parse_args()
     if args.width < 960 or args.height < 600 or args.width % 2 or args.height % 2:
         parser.error("Use even dimensions of at least 960 x 600")
@@ -68,7 +69,7 @@ def main():
     environment = os.environ.copy()
     environment.update(CUDA_VISIBLE_DEVICES="", LIBGL_ALWAYS_SOFTWARE="1", GALLIUM_DRIVER="llvmpipe",
                        LP_NUM_THREADS="4", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1")
-    libraries = [ROOT / "build-planning" / name for name in
+    libraries = [args.build_dir.resolve() / name for name in
                  ("librm26_planning.a", "libtech_core_sim.a", "libtech_core_rules.a")]
     if not all(p.exists() for p in libraries):
         parser.error("Build the Release build-planning targets first; see docs/planning_results.md")
@@ -87,6 +88,9 @@ def main():
                     validation="Original C++ dense validator, cache disabled, rerun before rendering",
                     environment={key:environment[key] for key in
                                  ("CUDA_VISIBLE_DEVICES","LIBGL_ALWAYS_SOFTWARE","GALLIUM_DRIVER","LP_NUM_THREADS")})
+    metadata["q_positive_degrees"] = max(float(k["twist"]) for k in knots)*180/math.pi
+    metadata["q_final_degrees"] = float(knots[-1]["twist"])*180/math.pi
+    metadata["full_q_sweep"] = run.get("full_q_sweep", "")
     renderer = encoder = None
     with tempfile.TemporaryDirectory(prefix=".render-", dir=output.parent) as temporary:
         temp = Path(temporary); binary = temp/"renderer"; pending = temp/output.name

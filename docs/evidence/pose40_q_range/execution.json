@@ -1,0 +1,30 @@
+{
+  "utc_start": "2026-10-11T06:08:59.487704+00:00",
+  "cpu_affinity": [
+    0
+  ],
+  "CUDA_VISIBLE_DEVICES": "",
+  "source_sha256": "b4d100bc567f730362826d15f337ec2096e187c4c76a1ac5cab39f737c46efb3",
+  "command": [
+    "plan_pose_sweep",
+    "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/pose40_online_q_range_screened",
+    "96",
+    "24",
+    "--online-retry",
+    "--best-effort-q"
+  ],
+  "git_head": "08be460aed8ab5d18f32fb6c7e1a5e593698a466",
+  "source_sha256_by_path": {
+    "scripts/plan_pose_sweep.cpp": "b4d100bc567f730362826d15f337ec2096e187c4c76a1ac5cab39f737c46efb3",
+    "scripts/run_pose_sweep.py": "4fefef98112672ce67ddd248d8aaaa85535ec09c858772ac244c12231a039575",
+    "src/planning.cpp": "740963985a7b224dc03b8aa6bcf31ca5059ee9589b0baf2c4adb29d7d5684e49",
+    "src/planning_ik.cpp": "97cabe4e6db05fbc3b89af548486d2e98a24044a51bc702145d546f50feaf5d6",
+    "src/planning_scene.cpp": "4f178706eb55d6ee743701594cfeb00109dbccdebd2d1bc06ae82c942df18833",
+    "models/planning/scene.xml": "f0492a28ddf9eac6f0ba71aa7bc7754fcae698f4c6d655e9fbfdeeda6d07a903",
+    "build-q-best-effort/librm26_planning.a": "1737c033adf843ef6219837f451eeb3b51f6d9bd83142e5ee1aa7778a8987a89",
+    "build-q-best-effort/libtech_core_sim.a": "4b2e2c1c8f63f78001e79c34329cd405f4a5733c64a467c777d9c10c2ee37a48",
+    "build-q-best-effort/libtech_core_rules.a": "d7a11699c5bfa0a4bf61a1068aaa1dc27d0ff3f23552cd2e9f3a956c58b2d7f4"
+  },
+  "exit_code": 0,
+  "wall_seconds": 176.24754460901022
+}

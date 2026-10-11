@@ -1,0 +1,40 @@
+CASE_COMPLETE 1/40 pose01 success=1 online_s=0.878932 audit_s=2.63095 reason=validated_full_q
+CASE_COMPLETE 2/40 pose02 success=1 online_s=1.9156 audit_s=3.38171 reason=validated_full_q
+CASE_COMPLETE 3/40 pose03 success=1 online_s=2.6023 audit_s=2.98698 reason=validated_full_q
+CASE_COMPLETE 4/40 pose04 success=1 online_s=2.9404 audit_s=2.99396 reason=validated_partial_q
+CASE_COMPLETE 5/40 pose05 success=1 online_s=1.05517 audit_s=2.7844 reason=validated_full_q
+CASE_COMPLETE 6/40 pose06 success=0 online_s=0.414 audit_s=0 reason=ik_flip_219_iteration limit
+CASE_COMPLETE 7/40 pose07 success=1 online_s=1.10802 audit_s=2.61245 reason=validated_full_q
+CASE_COMPLETE 8/40 pose08 success=1 online_s=2.94042 audit_s=2.71221 reason=validated_partial_q
+CASE_COMPLETE 9/40 pose09 success=1 online_s=1.71556 audit_s=3.35511 reason=validated_full_q
+CASE_COMPLETE 10/40 pose10 success=1 online_s=1.17453 audit_s=2.74043 reason=validated_full_q
+CASE_COMPLETE 11/40 pose11 success=1 online_s=2.94011 audit_s=2.73147 reason=validated_partial_q
+CASE_COMPLETE 12/40 pose12 success=1 online_s=2.94029 audit_s=2.43034 reason=validated_partial_q
+CASE_COMPLETE 13/40 pose13 success=1 online_s=2.94021 audit_s=2.70619 reason=validated_partial_q
+CASE_COMPLETE 14/40 pose14 success=1 online_s=2.94035 audit_s=3.08247 reason=validated_partial_q
+CASE_COMPLETE 15/40 pose15 success=0 online_s=0.377293 audit_s=0 reason=ik_flip_220_iteration limit
+CASE_COMPLETE 16/40 pose16 success=0 online_s=2.94006 audit_s=0 reason=deadline_during_validation
+CASE_COMPLETE 17/40 pose17 success=1 online_s=1.07143 audit_s=3.11605 reason=validated_full_q
+CASE_COMPLETE 18/40 pose18 success=1 online_s=2.94002 audit_s=2.76143 reason=validated_partial_q
+CASE_COMPLETE 19/40 pose19 success=1 online_s=2.94024 audit_s=2.66801 reason=validated_partial_q
+CASE_COMPLETE 20/40 pose20 success=0 online_s=2.94001 audit_s=0 reason=deadline_during_pre_q_screen
+CASE_COMPLETE 21/40 pose21 success=1 online_s=2.94029 audit_s=2.70159 reason=validated_partial_q
+CASE_COMPLETE 22/40 pose22 success=1 online_s=0.916192 audit_s=2.90196 reason=validated_full_q
+CASE_COMPLETE 23/40 pose23 success=1 online_s=2.6577 audit_s=2.46589 reason=validated_partial_q
+CASE_COMPLETE 24/40 pose24 success=1 online_s=1.26047 audit_s=2.82253 reason=validated_full_q
+CASE_COMPLETE 25/40 pose25 success=1 online_s=2.9403 audit_s=2.59017 reason=validated_partial_q
+CASE_COMPLETE 26/40 pose26 success=1 online_s=2.94019 audit_s=2.77191 reason=validated_partial_q
+CASE_COMPLETE 27/40 pose27 success=1 online_s=1.17132 audit_s=2.87114 reason=validated_full_q
+CASE_COMPLETE 28/40 pose28 success=1 online_s=1.10623 audit_s=2.72582 reason=validated_full_q
+CASE_COMPLETE 29/40 pose29 success=1 online_s=1.28349 audit_s=2.83408 reason=validated_full_q
+CASE_COMPLETE 30/40 pose30 success=0 online_s=0.406812 audit_s=0 reason=ik_flip_219_iteration limit
+CASE_COMPLETE 31/40 pose31 success=1 online_s=2.94016 audit_s=2.64255 reason=validated_partial_q
+CASE_COMPLETE 32/40 pose32 success=1 online_s=2.9401 audit_s=2.62374 reason=validated_partial_q
+CASE_COMPLETE 33/40 pose33 success=1 online_s=1.23647 audit_s=2.81109 reason=validated_full_q
+CASE_COMPLETE 34/40 pose34 success=1 online_s=0.92469 audit_s=2.75277 reason=validated_full_q
+CASE_COMPLETE 35/40 pose35 success=1 online_s=1.0385 audit_s=2.65554 reason=validated_full_q
+CASE_COMPLETE 36/40 pose36 success=1 online_s=1.05925 audit_s=2.64407 reason=validated_full_q
+CASE_COMPLETE 37/40 pose37 success=1 online_s=2.22584 audit_s=2.64367 reason=validated_full_q
+CASE_COMPLETE 38/40 pose38 success=1 online_s=1.07628 audit_s=3.02194 reason=validated_full_q
+CASE_COMPLETE 39/40 pose39 success=1 online_s=1.04079 audit_s=2.73591 reason=validated_full_q
+CASE_COMPLETE 40/40 pose40 success=1 online_s=2.94023 audit_s=2.87525 reason=validated_partial_q

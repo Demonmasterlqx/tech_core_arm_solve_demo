@@ -1,0 +1,86 @@
+Start testing: Oct 11 14:04 CST
+----------------------------------------------------------
+18/21 Testing: planning_ik
+18/21 Test: planning_ik
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/planning_ik_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"planning_ik" start time: Oct 11 14:04 CST
+Output:
+----------------------------------------------------------
+method=0 reachable=16/16 iterations=644 antiparallel_iterations=52
+method=1 reachable=16/16 iterations=39 antiparallel_iterations=1
+method=2 reachable=16/16 iterations=52 antiparallel_iterations=8
+method=3 reachable=16/16 iterations=52 antiparallel_iterations=8
+method=4 reachable=16/16 iterations=41 antiparallel_iterations=8
+bounded redundancy: clipped_error=0.0151603 QP_error=3e-09 QP_iterations=1
+planning IK tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"planning_ik" end time: Oct 11 14:04 CST
+"planning_ik" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/21 Testing: planning_contract
+19/21 Test: planning_contract
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/planning_contract_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"planning_contract" start time: Oct 11 14:04 CST
+Output:
+----------------------------------------------------------
+contract structural/phase/position negative tests passed
+contract NaN preflight tests passed
+contract nonadjacent collision detected: j1_link_visual/j5_link_visual distance=-2.66903e-05 attempts=9
+complete baseline and obstacle revalidation passed
+Q sweep endpoint and order contract tests passed
+Best-effort Q collision stop and strict-mode isolation passed; peak=63 final=-90
+planning contract negative tests passed
+<end of output>
+Test time =   9.67 sec
+----------------------------------------------------------
+Test Passed.
+"planning_contract" end time: Oct 11 14:04 CST
+"planning_contract" time elapsed: 00:00:09
+----------------------------------------------------------
+
+20/21 Testing: planning_scene
+20/21 Test: planning_scene
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/planning_scene_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"planning_scene" start time: Oct 11 14:04 CST
+Output:
+----------------------------------------------------------
+bore clearance=0.002 stop=7.87913e-34 offset penetration=-0.000999936
+assembly contact nominal=-1.73599e-05 intrusion=carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.001000
+planning scene geometry tests passed
+<end of output>
+Test time =   0.68 sec
+----------------------------------------------------------
+Test Passed.
+"planning_scene" end time: Oct 11 14:04 CST
+"planning_scene" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/21 Testing: planning_demo_contract
+21/21 Test: planning_demo_contract
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/planning_demo_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"planning_demo_contract" start time: Oct 11 14:04 CST
+Output:
+----------------------------------------------------------
+PASS real baseline plan, 258 knots
+PASS real rigid_cache plan, 258 knots
+PASS preview hold, double Enter, interpolation, focus pause, completion and home
+PASS arm/core/backend invalidation and stale worker disposal
+PASS six arm directions, release hold, core world XYZ and RPY limits
+PASS collision/zero-knot/timeout visualization, failed ghost retiming and execution gates
+<end of output>
+Test time =   2.17 sec
+----------------------------------------------------------
+Test Passed.
+"planning_demo_contract" end time: Oct 11 14:04 CST
+"planning_demo_contract" time elapsed: 00:00:02
+----------------------------------------------------------
+
+End testing: Oct 11 14:04 CST

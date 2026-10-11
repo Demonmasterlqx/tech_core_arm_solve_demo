@@ -72,6 +72,7 @@ int main(int argc, char** argv) {
             scenario.assembly_yaw = number(r,"assembly_yaw_radians");
             scenario.arm_base_z = r.count("arm_base_z") ? number(r,"arm_base_z") : 0;
             scenario.q_sweep = r.count("q_sweep") && r.at("q_sweep") == "1";
+            scenario.q_best_effort = r.count("q_best_effort") && r.at("q_best_effort") == "1";
             scenario.blocking_obstacle = r.at("blocking_obstacle") == "1";
         }
         if (!found) throw std::runtime_error("Scenario missing");
@@ -145,10 +146,12 @@ int main(int argc, char** argv) {
             mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,left,"FULL ARM",nullptr,&context);
             mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,right,"GRIPPER / CORE",nullptr,&context);
             status << "t = " << std::fixed << std::setprecision(2) << t << " / " << duration << " s   |   "
-                   << (t >= duration ? "LEVEL 3 COMPLETE" : labels[static_cast<int>(b.phase)]);
+                   << (t >= duration ? (scenario.q_best_effort && run.at("full_q_sweep")!="1" ?
+                      "SAFE STOP - PARTIAL Q" : "FULL TASK COMPLETE") : labels[static_cast<int>(b.phase)]);
             values << "Insert " << std::setprecision(0) << std::fixed << mechanism.insertion*1000 << " mm    Lift " << mechanism.lift*1000
-                   << " mm    P " << mechanism.flip*180/pi << " deg    Q " << mechanism.twist*180/pi << " / " << scenario.target_degrees << " deg";
-            if(scenario.q_sweep) values << "   [0 > +90 > -90]";
+                   << " mm    P " << mechanism.flip*180/pi << " deg    Q " << mechanism.twist*180/pi << " / " << (scenario.q_best_effort?knots.back().mechanism.twist*180/pi:scenario.target_degrees) << " deg";
+            if(scenario.q_best_effort) values << "   [0 > " << number(run,"q_positive_degrees") << " > " << number(run,"q_final_degrees") << "]";
+            else if(scenario.q_sweep) values << "   [0 > +90 > -90]";
             mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{0,60,width,76},status.str().c_str(),nullptr,&context);
             mjr_overlay(mjFONT_NORMAL,mjGRID_BOTTOMLEFT,{0,60,width,76},values.str().c_str(),nullptr,&context);
             for (int i = 0; i < 6; ++i) {

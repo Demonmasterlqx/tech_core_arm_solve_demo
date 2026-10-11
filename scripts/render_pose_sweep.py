@@ -32,6 +32,7 @@ def main():
     parser.add_argument("--fps", type=int, default=20)
     parser.add_argument("--still-page", type=int, choices=range(1, 6), default=None)
     parser.add_argument("--still-time", type=float, default=0.)
+    parser.add_argument("--build-dir", type=Path, default=ROOT/"build-planning")
     args = parser.parse_args()
     if args.width < 1600 or args.height < 900 or args.width % 2 or args.height % 2:
         parser.error("Use even dimensions of at least 1600 x 900")
@@ -73,7 +74,7 @@ def main():
     environment = os.environ.copy()
     environment.update(CUDA_VISIBLE_DEVICES="", LIBGL_ALWAYS_SOFTWARE="1", GALLIUM_DRIVER="llvmpipe",
                        LP_NUM_THREADS="4", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1")
-    libraries = [ROOT / "build-planning" / name for name in
+    libraries = [args.build_dir.resolve() / name for name in
                  ("librm26_planning.a", "libtech_core_sim.a", "libtech_core_rules.a")]
     if not all(p.exists() for p in libraries):
         parser.error("Build the Release build-planning targets first; see docs/planning_results.md")
@@ -92,6 +93,11 @@ def main():
                     validation="Every successful trajectory dense-rechecked without cache; rejected cases are static",
                     environment={key:environment[key] for key in
                                  ("CUDA_VISIBLE_DEVICES","LIBGL_ALWAYS_SOFTWARE","GALLIUM_DRIVER","LP_NUM_THREADS")})
+    metadata["q_best_effort"] = scenarios[0].get("q_best_effort", "0") == "1"
+    metadata["q_range_by_case"] = {r["case"]: dict(positive_degrees=float(r.get("q_positive_degrees", 90)),
+                                                 final_degrees=float(r.get("q_final_degrees", -90)),
+                                                 full_sweep=r.get("full_q_sweep", "1") == "1")
+                                    for r in runs if r["success"] == "1"}
     renderer = encoder = None
     with tempfile.TemporaryDirectory(prefix=".render-", dir=output.parent) as temporary:
         temp = Path(temporary); binary = temp/"renderer"; pending = temp/output.name

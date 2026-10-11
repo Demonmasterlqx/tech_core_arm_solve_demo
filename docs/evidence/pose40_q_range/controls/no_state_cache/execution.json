@@ -1,0 +1,30 @@
+{
+  "utc_start": "2026-10-11T06:01:29.206156+00:00",
+  "cpu_affinity": [
+    0
+  ],
+  "CUDA_VISIBLE_DEVICES": "",
+  "source_sha256": "e1c37796ca5608ec58381dffa4e58cf0f99e566375eb0b93170cab695f159cd3",
+  "command": [
+    "plan_pose_sweep",
+    "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/pose40_online_q_best_effort",
+    "96",
+    "24",
+    "--online-retry",
+    "--best-effort-q"
+  ],
+  "git_head": "08be460aed8ab5d18f32fb6c7e1a5e593698a466",
+  "source_sha256_by_path": {
+    "scripts/plan_pose_sweep.cpp": "e1c37796ca5608ec58381dffa4e58cf0f99e566375eb0b93170cab695f159cd3",
+    "scripts/run_pose_sweep.py": "4c3fadba58ebd00d3350d39a3e2e969ed96cba3a3232a5a9f66745f8fb8fcb45",
+    "src/planning.cpp": "6c9d249f21ce1f56994f43e590b0ad79c9d8d7c0e759b0e6cbaf73c192a7c836",
+    "src/planning_ik.cpp": "97cabe4e6db05fbc3b89af548486d2e98a24044a51bc702145d546f50feaf5d6",
+    "src/planning_scene.cpp": "e9c8d961dd36fe8b9380755df6d3eeaf4e3294b93a89cf284cd1bc89d735a99b",
+    "models/planning/scene.xml": "f0492a28ddf9eac6f0ba71aa7bc7754fcae698f4c6d655e9fbfdeeda6d07a903",
+    "build-q-best-effort/librm26_planning.a": "1019ae855150ad8371df4d505d564b48a70e304915656b39ca05aec5936415c8",
+    "build-q-best-effort/libtech_core_sim.a": "4b2e2c1c8f63f78001e79c34329cd405f4a5733c64a467c777d9c10c2ee37a48",
+    "build-q-best-effort/libtech_core_rules.a": "d7a11699c5bfa0a4bf61a1068aaa1dc27d0ff3f23552cd2e9f3a956c58b2d7f4"
+  },
+  "exit_code": 0,
+  "wall_seconds": 180.0741565451026
+}

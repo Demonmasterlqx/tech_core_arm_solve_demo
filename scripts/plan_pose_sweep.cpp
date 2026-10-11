@@ -36,14 +36,14 @@ std::ofstream output_file(const std::filesystem::path& path) {
 }
 void write_scenarios(const std::filesystem::path& path, const std::vector<Scenario>& suite) {
     auto out = output_file(path);
-    out << "case,split,core_x,core_y,core_z,core_theta_degrees,core_phi_degrees,core_alpha_degrees,target_degrees,start_q0,start_q1,start_q2,start_q3,start_q4,start_q5,start_q6,assembly_translation_x,assembly_translation_y,assembly_translation_z,assembly_yaw_radians,blocking_obstacle,arm_base_z,q_sweep\n";
+    out << "case,split,core_x,core_y,core_z,core_theta_degrees,core_phi_degrees,core_alpha_degrees,target_degrees,start_q0,start_q1,start_q2,start_q3,start_q4,start_q5,start_q6,assembly_translation_x,assembly_translation_y,assembly_translation_z,assembly_yaw_radians,blocking_obstacle,arm_base_z,q_sweep,q_best_effort\n";
     for (const auto& scenario : suite) {
         const auto& p = scenario.core;
         out << csv(scenario.id) << ',' << csv(scenario.split) << ',' << p.x << ',' << p.y << ',' << p.z
             << ',' << p.theta << ',' << p.phi << ',' << p.alpha << ',' << scenario.target_degrees;
         for (int k = 0; k < 7; ++k) out << ',' << scenario.start[k];
         for (int k = 0; k < 3; ++k) out << ',' << scenario.assembly_translation[k];
-        out << ',' << scenario.assembly_yaw << ',' << scenario.blocking_obstacle << ',' << scenario.arm_base_z << ',' << scenario.q_sweep << '\n';
+        out << ',' << scenario.assembly_yaw << ',' << scenario.blocking_obstacle << ',' << scenario.arm_base_z << ',' << scenario.q_sweep << ',' << scenario.q_best_effort << '\n';
     }
 }
 PlanResult safe_plan(PlanningScene& scene, const Scenario& scenario, const PlanOptions& options,
@@ -74,7 +74,7 @@ void write_trajectory(const std::filesystem::path& path, const PlanResult& resul
 }
 
 // Explicit trial logging keeps ready search outside selected-request latency.
-const char* run_header = "method,case,split,repeat,success,plan_success,reason,planning_seconds,ik_seconds,validation_seconds,dense_recheck_seconds,dense_recheck_performed,dense_recheck_valid,dense_recheck_reason,knots,ik_iterations,fk_evals,collision_states,narrowphase_calls,broadphase_skips,validation_samples,max_position_error,max_axis_error,max_joint_speed,max_joint_acceleration,rule_success,dense_recheck_samples,trajectory,atlas_source,rigid_pair_cache_hits,motion_speed_scale,planning_mode,validation_joint_step,validation_min_substeps\n";
+const char* run_header = "method,case,split,repeat,success,plan_success,reason,planning_seconds,ik_seconds,validation_seconds,dense_recheck_seconds,dense_recheck_performed,dense_recheck_valid,dense_recheck_reason,knots,ik_iterations,fk_evals,collision_states,narrowphase_calls,broadphase_skips,validation_samples,max_position_error,max_axis_error,max_joint_speed,max_joint_acceleration,rule_success,dense_recheck_samples,trajectory,atlas_source,rigid_pair_cache_hits,motion_speed_scale,planning_mode,validation_joint_step,validation_min_substeps,q_positive_degrees,q_final_degrees,full_q_sweep,q_positive_stop,q_negative_stop,exact_state_cache_hits\n";
 void write_run(std::ostream& out,const Scenario& s,const PlanResult& r,const ValidationResult& dense,
                bool rechecked,double dense_seconds,const std::string& trajectory,bool online=false) {
     const auto& c=r.counters;const auto& v=r.validation;
@@ -85,7 +85,9 @@ void write_run(std::ostream& out,const Scenario& s,const PlanResult& r,const Val
        <<','<<c.ik_iterations<<','<<c.fk_evals<<','<<c.collision_states<<','<<c.narrowphase_calls<<','<<c.broadphase_skips
        <<','<<v.samples<<','<<v.max_position_error<<','<<v.max_axis_error<<','<<v.max_joint_speed<<','<<v.max_joint_acceleration
        <<','<<v.rule_success<<','<<dense.samples<<','<<csv(trajectory)<<','<<csv(r.atlas_source)<<','<<c.rigid_pair_cache_hits
-       <<",4,"<<(online?"online_fixed_start,0.004,4":"offline_ready_search,0.008,2")<<'\n';
+       <<",4,"<<(online?"online_fixed_start,0.004,4":"offline_ready_search,0.008,2")
+       <<','<<r.q_positive_degrees<<','<<r.q_final_degrees<<','<<r.full_q_sweep
+       <<','<<csv(r.q_positive_stop)<<','<<csv(r.q_negative_stop)<<','<<c.exact_state_cache_hits<<'\n';
     out.flush();
 }
 
@@ -104,7 +106,7 @@ void run_online(const std::filesystem::path& output,const std::vector<Scenario>&
     runs<<run_header;
     trial_runs<<run_header;
     scan<<"case,attempt,kind,ready_ik_seconds,ready_success,ready_clear,plan_called,reason,seed0,seed1,seed2,seed3,seed4,seed5,seed6,waypoint0,waypoint1,waypoint2,waypoint3,waypoint4,waypoint5,waypoint6\n";
-    summary<<"case,success,online_planning_seconds,ik_seconds,validation_seconds,uncached_audit_seconds,execution_seconds,planning_attempts,ready_attempts,selected_attempt,reason\n";
+    summary<<"case,success,online_planning_seconds,ik_seconds,validation_seconds,uncached_audit_seconds,execution_seconds,planning_attempts,ready_attempts,selected_attempt,reason,search_stop,q_positive_degrees,q_final_degrees,full_q_sweep\n";
     write_scenarios(output/"scenarios.csv",requested);
     std::vector<Scenario> trial_scenarios;
     struct Attempt {
@@ -115,14 +117,15 @@ void run_online(const std::filesystem::path& output,const std::vector<Scenario>&
     auto add_counters=[](Counters& a,const Counters& b) {
         a.ik_iterations+=b.ik_iterations;a.fk_evals+=b.fk_evals;a.collision_states+=b.collision_states;
         a.narrowphase_calls+=b.narrowphase_calls;a.broadphase_skips+=b.broadphase_skips;
-        a.rigid_pair_cache_hits+=b.rigid_pair_cache_hits;
+        a.rigid_pair_cache_hits+=b.rigid_pair_cache_hits;a.exact_state_cache_hits+=b.exact_state_cache_hits;
     };
     for(std::size_t index=0;index<requested.size();++index) {
         const auto& s=requested[index];
         PlanOptions options;options.method=Method::RigidCache;options.motion_speed_scale=4;
         options.timeout_seconds=3;options.validation_joint_step=.004;options.validation_min_substeps=4;
         const auto begin=Clock::now();
-        const auto stop=[&](){return elapsed(begin)>=3;};
+        const double search_limit=s.q_best_effort?2.94:3.;
+        const auto stop=[&](){return elapsed(begin)>=search_limit;};
         PlanResult result;result.method=Method::RigidCache;result.reason="online_search_exhausted";
         std::vector<Attempt> attempts;
         std::mt19937 generator(20261013+index);std::normal_distribution<double> normal(0,1);
@@ -148,17 +151,24 @@ void run_online(const std::filesystem::path& output,const std::vector<Scenario>&
                 }
                 options.approach_joint_waypoint=attempt.ready.q;
             }
-            options.timeout_seconds=3-elapsed(begin);
+            options.timeout_seconds=search_limit-elapsed(begin);
             if(options.timeout_seconds<=0)break;
             attempt.called=true;++plans;
             attempt.result=safe_plan(scene,s,options);
             total_ik+=attempt.result.ik_seconds;total_validation+=attempt.result.validation_seconds;
             add_counters(total,attempt.result.counters);
-            result=attempt.result;selected=candidate;
+            const auto score=[](const PlanResult& r){return 2*r.q_positive_degrees-r.q_final_degrees;};
+            if(!result.success || (attempt.result.success && score(attempt.result)>score(result)+1e-8)) {
+                result=attempt.result;selected=candidate;
+            }
+            const bool fatal=attempt.result.reason.rfind("start_collision",0)==0 ||
+                             attempt.result.reason=="invalid_station_front_plane";
             attempts.push_back(std::move(attempt));
-            if(result.success || result.reason.rfind("start_collision",0)==0 ||
-               result.reason=="invalid_station_front_plane")break;
+            if((result.success && (!s.q_best_effort || result.full_q_sweep)) || fatal)break;
         }
+        const std::string search_stop=stop()?"online_budget":
+            result.success && (!s.q_best_effort || result.full_q_sweep)?"full_path":
+            !retry?"single_attempt":"attempt_limit";
         result.planning_seconds=elapsed(begin);
         result.ik_seconds=total_ik;result.validation_seconds=total_validation;result.counters=total;
         if(result.planning_seconds>=3) {
@@ -201,7 +211,8 @@ void run_online(const std::filesystem::path& output,const std::vector<Scenario>&
         summary<<csv(s.id)<<','<<result.success<<','<<result.planning_seconds<<','<<result.ik_seconds
                <<','<<result.validation_seconds<<','<<audit_seconds<<','
                <<(result.success?result.knots.back().time:0)<<','<<plans<<','<<ready_count<<','<<selected
-               <<','<<csv(result.reason)<<'\n';summary.flush();
+               <<','<<csv(result.reason)<<','<<csv(search_stop)<<','<<result.q_positive_degrees<<','<<result.q_final_degrees
+               <<','<<result.full_q_sweep<<'\n';summary.flush();
         std::cout<<"CASE_COMPLETE "<<index+1<<'/'<<requested.size()<<' '<<s.id<<" success="<<result.success
                  <<" online_s="<<result.planning_seconds<<" audit_s="<<audit_seconds<<" reason="<<result.reason<<std::endl;
     }
@@ -210,8 +221,10 @@ void run_online(const std::filesystem::path& output,const std::vector<Scenario>&
 } // namespace
 int main(int argc,char** argv) {
   try {
-    if(argc<2 || argc>5)throw std::runtime_error("Usage: plan_pose_sweep OUTPUT [MAX_READY=96] [MAX_PLANS=24] [--online|--online-retry]");
-    const bool online=argc==5;
+    if(argc<2 || argc>6)throw std::runtime_error("Usage: plan_pose_sweep OUTPUT [MAX_READY=96] [MAX_PLANS=24] [--online|--online-retry] [--best-effort-q]");
+    const bool online=argc>=5;
+    const bool best_effort=argc==6 && std::string(argv[5])=="--best-effort-q";
+    if(argc==6 && !best_effort)throw std::runtime_error("Unknown Q mode");
     const bool retry=online && std::string(argv[4])=="--online-retry";
     if(online && std::string(argv[4])!="--online" && !retry)throw std::runtime_error("Unknown planning mode");
     const std::filesystem::path output=argv[1];
@@ -225,7 +238,7 @@ int main(int argc,char** argv) {
       std::replace(line.begin(),line.end(),',',' ');std::istringstream row(line);
       Scenario s;row>>s.id>>s.core.x>>s.core.y>>s.core.z>>s.core.theta>>s.core.phi>>s.core.alpha;
       if(!row)throw std::runtime_error("Invalid pose row");
-      s.split="video40";s.target_degrees=-90;s.q_sweep=true;s.arm_base_z=-.10;s.assembly_translation.x()=.20;
+      s.split="video40";s.target_degrees=-90;s.q_sweep=true;s.q_best_effort=best_effort;s.arm_base_z=-.10;s.assembly_translation.x()=.20;
       s.start<<-.58298870078787879,1.4014363481415861,1.4956286729240151,.51538441396359136,-1.5264021873645037,-.58813609807777278,2.7857137959190528;
       requested.push_back(s);
     }

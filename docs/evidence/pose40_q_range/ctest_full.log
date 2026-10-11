@@ -1,0 +1,420 @@
+Start testing: Oct 11 14:07 CST
+----------------------------------------------------------
+1/21 Testing: rules
+1/21 Test: rules
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/rules_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"rules" start time: Oct 11 14:07 CST
+Output:
+----------------------------------------------------------
+13 rule test groups passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"rules" end time: Oct 11 14:07 CST
+"rules" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/21 Testing: physics
+2/21 Test: physics
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/physics_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"physics" start time: Oct 11 14:07 CST
+Output:
+----------------------------------------------------------
+Physics contracts passed: orientation, geometry, contact, axes, input validation, torque/release
+<end of output>
+Test time =   1.71 sec
+----------------------------------------------------------
+Test Passed.
+"physics" end time: Oct 11 14:07 CST
+"physics" time elapsed: 00:00:01
+----------------------------------------------------------
+
+3/21 Testing: geometry_fidelity
+3/21 Test: geometry_fidelity
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/geometry_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"geometry_fidelity" start time: Oct 11 14:07 CST
+Output:
+----------------------------------------------------------
+All60 core assets /120 geoms: 17762 vertices, 34792 triangles, per-corner normals and actual world placement preserved
+MARK mask verified at16928 grid points /101568 mesh-ray queries;36 independent fan lights per core
+Five independent lift/P/Q poses preserve every pillar and shell vertex; P remains fixed
+Geometry fidelity contracts passed
+<end of output>
+Test time =   0.75 sec
+----------------------------------------------------------
+Test Passed.
+"geometry_fidelity" end time: Oct 11 14:07 CST
+"geometry_fidelity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/21 Testing: demo_level_1
+4/21 Test: demo_level_1
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/tech_core" "--headless" "--demo" "--level" "1" "--duration" "15"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"demo_level_1" start time: Oct 11 14:07 CST
+Output:
+----------------------------------------------------------
+MuJoCo 3.3.7 | CPU physics | level 1 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+3.202s core0 confirmed
+Result: SUCCESS at 15.000 s
+<end of output>
+Test time =   2.02 sec
+----------------------------------------------------------
+Test Passed.
+"demo_level_1" end time: Oct 11 14:07 CST
+"demo_level_1" time elapsed: 00:00:02
+----------------------------------------------------------
+
+5/21 Testing: demo_level_2
+5/21 Test: demo_level_2
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/tech_core" "--headless" "--demo" "--level" "2" "--duration" "15"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"demo_level_2" start time: Oct 11 14:07 CST
+Output:
+----------------------------------------------------------
+MuJoCo 3.3.7 | CPU physics | level 2 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+5.001s core0 confirmed
+Result: SUCCESS at 15.000 s
+<end of output>
+Test time =   2.05 sec
+----------------------------------------------------------
+Test Passed.
+"demo_level_2" end time: Oct 11 14:07 CST
+"demo_level_2" time elapsed: 00:00:02
+----------------------------------------------------------
+
+6/21 Testing: demo_level_3
+6/21 Test: demo_level_3
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/tech_core" "--headless" "--demo" "--level" "3" "--duration" "15"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"demo_level_3" start time: Oct 11 14:07 CST
+Output:
+----------------------------------------------------------
+MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.530s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+<end of output>
+Test time =   2.05 sec
+----------------------------------------------------------
+Test Passed.
+"demo_level_3" end time: Oct 11 14:07 CST
+"demo_level_3" time elapsed: 00:00:02
+----------------------------------------------------------
+
+7/21 Testing: demo_level_4
+7/21 Test: demo_level_4
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/tech_core" "--headless" "--demo" "--level" "4" "--duration" "15"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"demo_level_4" start time: Oct 11 14:07 CST
+Output:
+----------------------------------------------------------
+MuJoCo 3.3.7 | CPU physics | level 4 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+1.000s core1 ready
+2.330s core0 inserted
+2.510s core1 inserted
+4.035s core0 lifted
+4.215s core1 lifted
+6.170s core0 flipped
+6.350s core1 flipped
+8.530s core0 aligned
+8.735s core1 aligned
+11.502s core0 confirmed
+11.502s core1 confirmed
+Result: SUCCESS at 15.000 s
+<end of output>
+Test time =   2.98 sec
+----------------------------------------------------------
+Test Passed.
+"demo_level_4" end time: Oct 11 14:07 CST
+"demo_level_4" time elapsed: 00:00:02
+----------------------------------------------------------
+
+8/21 Testing: demo_q_positive_limit
+8/21 Test: demo_q_positive_limit
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/tech_core" "--headless" "--demo" "--level" "3" "--target" "90" "--duration" "15"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"demo_q_positive_limit" start time: Oct 11 14:07 CST
+Output:
+----------------------------------------------------------
+MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets 90, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.668s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+<end of output>
+Test time =   2.06 sec
+----------------------------------------------------------
+Test Passed.
+"demo_q_positive_limit" end time: Oct 11 14:07 CST
+"demo_q_positive_limit" time elapsed: 00:00:02
+----------------------------------------------------------
+
+9/21 Testing: demo_q_negative_limit
+9/21 Test: demo_q_negative_limit
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/tech_core" "--headless" "--demo" "--level" "3" "--target" "-90" "--duration" "15"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"demo_q_negative_limit" start time: Oct 11 14:07 CST
+Output:
+----------------------------------------------------------
+MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets -90, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.668s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+<end of output>
+Test time =   1.56 sec
+----------------------------------------------------------
+Test Passed.
+"demo_q_negative_limit" end time: Oct 11 14:07 CST
+"demo_q_negative_limit" time elapsed: 00:00:01
+----------------------------------------------------------
+
+10/21 Testing: demo_tilted_station
+10/21 Test: demo_tilted_station
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/tech_core" "--headless" "--demo" "--level" "3" "--pose" "-0.1,0.25,0.65,25,75,-15" "--duration" "15"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"demo_tilted_station" start time: Oct 11 14:07 CST
+Output:
+----------------------------------------------------------
+MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.530s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+<end of output>
+Test time =   1.55 sec
+----------------------------------------------------------
+Test Passed.
+"demo_tilted_station" end time: Oct 11 14:08 CST
+"demo_tilted_station" time elapsed: 00:00:01
+----------------------------------------------------------
+
+11/21 Testing: cli_invalid_level
+11/21 Test: cli_invalid_level
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/tech_core" "--headless" "--level" "5"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"cli_invalid_level" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+Error: Level must be 1..4
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"cli_invalid_level" end time: Oct 11 14:08 CST
+"cli_invalid_level" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/21 Testing: rm26_arm_control
+12/21 Test: rm26_arm_control
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/arm_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"rm26_arm_control" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+Arm contracts passed: source FK, seven fixed-base joints, position/velocity control, stops, keyboard XYZ, orientation, invalid input
+<end of output>
+Test time =   0.57 sec
+----------------------------------------------------------
+Test Passed.
+"rm26_arm_control" end time: Oct 11 14:08 CST
+"rm26_arm_control" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/21 Testing: rm26_arm_idle
+13/21 Test: rm26_arm_idle
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/rm26_arm" "--headless" "--duration" "0.2"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"rm26_arm_idle" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: j0 j1 j2 j3 j4 end_differential_controller/j5 end_differential_controller/j6
+State initial: {"time":0,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":0.2,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+<end of output>
+Test time =   0.53 sec
+----------------------------------------------------------
+Test Passed.
+"rm26_arm_idle" end time: Oct 11 14:08 CST
+"rm26_arm_idle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/21 Testing: rm26_arm_demo
+14/21 Test: rm26_arm_demo
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/rm26_arm" "--headless" "--demo" "--duration" "3"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"rm26_arm_demo" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: j0 j1 j2 j3 j4 end_differential_controller/j5 end_differential_controller/j6
+State initial: {"time":0,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":3,"tool":[0.151271640878,0.0627774449294,0.888273546658],"q":[0.000364327047469,1.00036738247,1.40171010629,0.000424544373255,0.699744686338,-0.0012811540491,-0.000679941163947],"qd":[-0.000198675657152,-0.154979521362,-0.61105791129,-0.000570548211118,0.174761841611,0.281086552541,0.000784977290343]}
+<end of output>
+Test time =   0.53 sec
+----------------------------------------------------------
+Test Passed.
+"rm26_arm_demo" end time: Oct 11 14:08 CST
+"rm26_arm_demo" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/21 Testing: rm26_arm_cartesian
+15/21 Test: rm26_arm_cartesian
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/rm26_arm" "--headless" "--cartesian" "0.03,0,0" "--duration" "0.5"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"rm26_arm_cartesian" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: j0 j1 j2 j3 j4 end_differential_controller/j5 end_differential_controller/j6
+State initial: {"time":0,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":0.5,"tool":[0.166336639051,0.0627482088454,0.887982625738],"q":[-2.21892899918e-05,1.03482053251,1.43303268077,-2.91606798347e-05,0.699531869379,0.00226351968207,4.40866360852e-05],"qd":[-2.57486400596e-05,0.0703601831775,0.0692332967669,-3.04959592337e-05,-0.00218856355116,0.00332472216923,4.81027717061e-05]}
+<end of output>
+Test time =   0.52 sec
+----------------------------------------------------------
+Test Passed.
+"rm26_arm_cartesian" end time: Oct 11 14:08 CST
+"rm26_arm_cartesian" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/21 Testing: rm26_arm_invalid_velocity
+16/21 Test: rm26_arm_invalid_velocity
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/rm26_arm" "--headless" "--velocity" "nan"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"rm26_arm_invalid_velocity" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+Error: Expected a finite number: nan
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"rm26_arm_invalid_velocity" end time: Oct 11 14:08 CST
+"rm26_arm_invalid_velocity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/21 Testing: rm26_arm_conflicting_commands
+17/21 Test: rm26_arm_conflicting_commands
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/rm26_arm" "--headless" "--demo" "--cartesian" "0,0,0"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"rm26_arm_conflicting_commands" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+Error: Select only one motion command
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"rm26_arm_conflicting_commands" end time: Oct 11 14:08 CST
+"rm26_arm_conflicting_commands" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/21 Testing: planning_ik
+18/21 Test: planning_ik
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/planning_ik_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"planning_ik" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+method=0 reachable=16/16 iterations=644 antiparallel_iterations=52
+method=1 reachable=16/16 iterations=39 antiparallel_iterations=1
+method=2 reachable=16/16 iterations=52 antiparallel_iterations=8
+method=3 reachable=16/16 iterations=52 antiparallel_iterations=8
+method=4 reachable=16/16 iterations=41 antiparallel_iterations=8
+bounded redundancy: clipped_error=0.0151603 QP_error=3e-09 QP_iterations=1
+planning IK tests passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"planning_ik" end time: Oct 11 14:08 CST
+"planning_ik" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/21 Testing: planning_contract
+19/21 Test: planning_contract
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/planning_contract_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"planning_contract" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+contract structural/phase/position negative tests passed
+contract NaN preflight tests passed
+contract nonadjacent collision detected: j1_link_visual/j5_link_visual distance=-2.66903e-05 attempts=9
+complete baseline and obstacle revalidation passed
+Q sweep endpoint and order contract tests passed
+Best-effort Q collision stop and strict-mode isolation passed; peak=63 final=-90
+planning contract negative tests passed
+<end of output>
+Test time =   9.88 sec
+----------------------------------------------------------
+Test Passed.
+"planning_contract" end time: Oct 11 14:08 CST
+"planning_contract" time elapsed: 00:00:09
+----------------------------------------------------------
+
+20/21 Testing: planning_scene
+20/21 Test: planning_scene
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/planning_scene_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"planning_scene" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+bore clearance=0.002 stop=7.87913e-34 offset penetration=-0.000999936
+assembly contact nominal=-1.73599e-05 intrusion=carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.001000
+planning scene geometry tests passed
+<end of output>
+Test time =   0.69 sec
+----------------------------------------------------------
+Test Passed.
+"planning_scene" end time: Oct 11 14:08 CST
+"planning_scene" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/21 Testing: planning_demo_contract
+21/21 Test: planning_demo_contract
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort/planning_demo_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-q-best-effort
+"planning_demo_contract" start time: Oct 11 14:08 CST
+Output:
+----------------------------------------------------------
+PASS real baseline plan, 258 knots
+PASS real rigid_cache plan, 258 knots
+PASS preview hold, double Enter, interpolation, focus pause, completion and home
+PASS arm/core/backend invalidation and stale worker disposal
+PASS six arm directions, release hold, core world XYZ and RPY limits
+PASS collision/zero-knot/timeout visualization, failed ghost retiming and execution gates
+<end of output>
+Test time =   2.18 sec
+----------------------------------------------------------
+Test Passed.
+"planning_demo_contract" end time: Oct 11 14:08 CST
+"planning_demo_contract" time elapsed: 00:00:02
+----------------------------------------------------------
+
+End testing: Oct 11 14:08 CST

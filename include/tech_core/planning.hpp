@@ -4,6 +4,7 @@
 #include "tech_core/simulation.hpp"
 #include <chrono>
 #include <memory>
+#include <map>
 #include <random>
 #include <vector>
 
@@ -22,6 +23,9 @@ struct Scenario {
     // Require Q to visit +90 degrees before ending at -90 degrees.
     // This extends the level-3 demonstration; target_degrees must be -90.
     bool q_sweep = false;
+    // Keep all pre-Q phases mandatory, but accept the validated Q range found
+    // within the online budget. Still try positive first, then reverse.
+    bool q_best_effort = false;
     // One fixed, development-selected carrying posture, 60 mm before nominal E.
     JointVector start = (JointVector() << -.62770373654521094, 2.3297993305507192,
         1.0289871622237392, 1.2715734368717495, -1.747192543846495,
@@ -53,6 +57,7 @@ struct Counters {
     std::size_t ik_iterations = 0, fk_evals = 0, collision_states = 0;
     std::size_t narrowphase_calls = 0, broadphase_skips = 0;
     std::size_t rigid_pair_cache_hits = 0;
+    std::size_t exact_state_cache_hits = 0;
 };
 
 // A per-planner, CPU-only MuJoCo workspace. Not shared between worker threads.
@@ -63,6 +68,9 @@ public:
     // Reset by configure. Cache only geometry pairs welded to one rigid body;
     // all entries are populated inside the timed request and keyed by cutoff.
     void enable_rigid_pair_cache(bool enabled) { rigid_pair_cache_enabled_ = enabled; }
+    // Exact (not quantized) q, mechanism and clearance key. Only for repeated
+    // checks in one configured scene; configure() clears/disables all entries.
+    void enable_exact_state_cache(bool enabled) { exact_state_cache_enabled_=enabled;exact_state_cache_.clear(); }
     void forward(const JointVector& q, Eigen::Vector3d& position,
                  Eigen::Matrix3d& rotation, Jacobian* jacobian = nullptr);
     void set_state(const JointVector& q, const MechanismState& mechanism);
@@ -95,6 +103,9 @@ private:
     Eigen::Matrix3d core_rotation_;
     std::vector<Pair> pairs_;
     bool rigid_pair_cache_enabled_ = false;
+    bool exact_state_cache_enabled_ = false;
+    std::map<std::array<double,12>,CollisionResult> exact_state_cache_;
+    CollisionResult collision_uncached(const JointVector& q,const MechanismState& mechanism,double clearance);
     std::vector<int> collision_geoms_;
     std::vector<Eigen::Vector3d> centres_, extents_;
     std::vector<std::array<double,2>> axial_supports_;
@@ -139,6 +150,9 @@ struct PlanResult {
     double planning_seconds = 0, ik_seconds = 0, validation_seconds = 0;
     Counters counters;
     ValidationResult validation;
+    double q_positive_degrees = 0, q_final_degrees = 0;
+    bool full_q_sweep = false;
+    std::string q_positive_stop, q_negative_stop;
 };
 struct AtlasEntry { Scenario scenario; std::vector<Knot> knots; };
 

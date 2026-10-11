@@ -77,7 +77,9 @@ def main():
             "Online run changed the original pose inputs")
     require(config["planning_mode"] == "online_fixed_start" and not config["atlas"]
             and not config["cross_request_warm_start"], "Unexpected online contract")
+    best_effort = config.get("q_best_effort", False)
     for pose, scenario in zip(requested, scenarios):
+        require((scenario.get("q_best_effort", "0") == "1") == best_effort, "Changed Q acceptance mode")
         for key in pose.keys()-{"case"}:
             require(float(pose[key]) == float(scenario[key]), "Changed requested pose")
         require([float(scenario[f"start_q{i}"]) for i in range(7)] == config["physical_start_q_rad"],
@@ -111,6 +113,16 @@ def main():
             knots = rows(directory/run["trajectory"])
             require([float(knots[0][f"q{i}"]) for i in range(7)] == config["physical_start_q_rad"],
                     "Executable path teleports to a different start")
+            if best_effort:
+                peak = max(float(k["twist"]) for k in knots)*180/math.pi
+                end = float(knots[-1]["twist"])*180/math.pi
+                require(abs(peak-float(run["q_positive_degrees"])) < 1e-8 and
+                        abs(end-float(run["q_final_degrees"])) < 1e-8, "Reported Q range differs from trajectory")
+                full = abs(peak-90) < 1e-8 and abs(end+90) < 1e-8
+                require((run["full_q_sweep"] == "1") == full, "Incorrect full/partial Q label")
+                candidates = [r for r in subset if r["plan_success"] == "1"]
+                require(all(2*float(r["q_positive_degrees"])-float(r["q_final_degrees"]) <= 2*peak-end+1e-8
+                            for r in candidates), "Did not retain the greatest validated Q travel")
             if int(summary["selected_attempt"]) > 0:
                 selected = next(a for a in own if int(a["attempt"]) == int(summary["selected_attempt"]))
                 waypoint = [float(selected[f"waypoint{i}"]) for i in range(7)]
@@ -126,7 +138,9 @@ def main():
         name = run["case"]
         comparison.append(dict(case=name, online_success=run["success"], online_seconds=run["planning_seconds"],
             previous_success=prior[name]["success"], previous_selected_plan_seconds=prior[name]["planning_seconds"],
-            previous_search_wall_seconds=prior_summary[name]["search_wall_seconds"],
+            previous_search_wall_seconds=prior_summary[name].get("search_wall_seconds", prior_summary[name].get("online_planning_seconds", "")),
+            q_positive_degrees=run.get("q_positive_degrees", ""), q_final_degrees=run.get("q_final_degrees", ""),
+            full_q_sweep=run.get("full_q_sweep", ""),
             direct_success=direct.get(name, {}).get("success", ""), reason=run["reason"]))
     with (directory/"comparison.csv").open("w", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=list(comparison[0]))
@@ -149,7 +163,18 @@ def main():
         independent_fk_samples=sum(r.get("samples", 0) for r in independent["trajectories"]),
         max_position_error_m=max((r.get("max_position_error_m", 0) for r in independent["trajectories"]), default=0),
         max_axis_error_rad=max((r.get("max_axis_error_rad", 0) for r in independent["trajectories"]), default=0),
-        note="Uncached equivalence audit is outside online time; the complete same-density cached collision acceptance is inside. Previous results used a different per-case physical start.")
+        note="Uncached equivalence audit is outside online time; the complete same-density cached collision acceptance is inside. Compare previous input and acceptance contracts separately.")
+    if best_effort:
+        full = [r for r in success if r["full_q_sweep"] == "1"]
+        zero = [r for r in success if abs(float(r["q_positive_degrees"]))+abs(float(r["q_final_degrees"])) < 1e-8]
+        report.update(q_best_effort=True, full_q_sweeps=len(full), partial_q_motion=len(success)-len(full)-len(zero),
+                      no_q_motion=len(zero), full_q_cases=[r["case"] for r in full], no_q_cases=[r["case"] for r in zero],
+                      q_positive_degrees=distribution([float(r["q_positive_degrees"]) for r in success]),
+                      negative_extent_degrees=distribution([-float(r["q_final_degrees"]) for r in success]),
+                      q_total_travel_degrees=distribution([2*float(r["q_positive_degrees"])-float(r["q_final_degrees"]) for r in success]),
+                      q_positive_stop=dict(Counter(category(r["q_positive_stop"]) for r in success)),
+                      q_negative_stop=dict(Counter(category(r["q_negative_stop"]) for r in success)),
+                      search_stop=dict(Counter(r["search_stop"] for r in case_summary)))
     (directory/"summary.json").write_text(json.dumps(report, indent=2, allow_nan=False)+"\n")
     print(json.dumps(report, indent=2, allow_nan=False))
 
