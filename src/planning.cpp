@@ -142,8 +142,8 @@ std::vector<TaskPoint> make_task(PlanningScene& scene,const PlanOptions& options
         throw std::invalid_argument("Task spacing must be positive");
     std::vector<TaskPoint> points;
     // The assembly task starts 40 mm outside E, along the opening's outward
-    // axis. plan() solves this pose once and joins it from the physical start
-    // in joint space; no Cartesian path from that start is prescribed here.
+    // axis. plan() solves at this pose and searches a collision-checked joint
+    // connection from the physical start; no Cartesian path is prescribed.
     TaskPoint approached; approached.target=scene.mechanism_target({});
     approached.target.position+=.04*approached.target.direction;
     points.push_back(approached);
@@ -348,19 +348,37 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
     const ForwardKinematics fk=[&](const JointVector& q,Eigen::Vector3d& p,Eigen::Matrix3d& r,Jacobian* j){scene.forward(q,p,r,j);};
     JointVector previous=scenario.start;
     const auto ikstart=Clock::now();
+    auto ik_seconds=[&] {return std::max(0.,seconds(ikstart)-result.approach_seconds);};
     auto connect=[&](const JointVector& waypoint) {
-        const JointVector from=previous;
-        // A straight joint-space connection, sampled only for preview and
-        // validation. Intermediate points use FK, never additional IK solves.
-        const int n=std::max(1,static_cast<int>(std::ceil((waypoint-from).cwiseAbs().maxCoeff()/.02)));
-        for(int i=result.knots.empty()?0:1;i<=n;++i) {
-            if(stop()) {result.reason="deadline_during_approach_connection";return false;}
-            Knot k;k.q=i==n?waypoint:(from+(double(i)/n)*(waypoint-from)).eval();
-            Eigen::Matrix3d rotation;scene.forward(k.q,k.target.position,rotation);
-            k.target.direction=rotation.col(2);result.knots.push_back(k);
+        const auto connection_start=Clock::now();
+        // Leave time for the assembly IK and full-path validation. Search and
+        // optimization share this request's deadline, including failed trials.
+        const double budget=.6*std::max(0.,options.timeout_seconds-seconds(start));
+        auto connection_stop=[&] {return stop() || seconds(connection_start)>=budget;};
+        const auto connected=optimize_approach(scene,previous,waypoint,options,connection_stop);
+        result.approach_iterations+=connected.iterations;
+        result.approach_shortcuts+=connected.shortcuts;
+        auto done=[&](bool success) {result.approach_seconds+=seconds(connection_start);return success;};
+        // Only interpolate edges certified by the optimizer. FK targets keep
+        // this free-space motion separate from the subsequent assembly task.
+        if(!connected.path.empty() && result.knots.empty()) {
+            Knot first;first.q=connected.path.front();
+            Eigen::Matrix3d r;scene.forward(first.q,first.target.position,r);
+            first.target.direction=r.col(2);result.knots.push_back(first);
         }
+        for(std::size_t edge=1;edge<connected.path.size();++edge) {
+            const auto& from=connected.path[edge-1];const auto& to=connected.path[edge];
+            const int n=std::max(1,static_cast<int>(std::ceil((to-from).cwiseAbs().maxCoeff()/.02)));
+            for(int i=1;i<=n;++i) {
+                if(stop()) {result.reason="deadline_during_approach_connection";return done(false);}
+                Knot k;k.q=i==n?to:(from+(double(i)/n)*(to-from)).eval();
+                Eigen::Matrix3d rotation;scene.forward(k.q,k.target.position,rotation);
+                k.target.direction=rotation.col(2);result.knots.push_back(k);
+            }
+        }
+        if(!connected.success) {result.reason=connected.reason;return done(false);}
         previous=waypoint;
-        return true;
+        return done(true);
     };
     if(options.approach_joint_waypoint) {
         const auto& waypoint=*options.approach_joint_waypoint;
@@ -368,22 +386,42 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
            (waypoint.array()>scene.limits().upper.array()).any()) {
             result.reason="approach_waypoint_joint_limits";return finish();
         }
-        if(!connect(waypoint)) {result.ik_seconds=seconds(ikstart);return finish();}
+        if(!connect(waypoint)) {result.ik_seconds=ik_seconds();return finish();}
     }
-    // First solve only the pre-insertion pose. The approach path is the joint
-    // line from the actual state (or explicit waypoint) to this solution.
-    const auto approached=solve_ik(fk,targets.front().target,previous,scene.limits(),ik);
-    scene.counters.ik_iterations+=approached.iterations;
-    if(!approached.success) {
-        result.reason=stop()?"deadline_during_preinsert_ik":"ik_preinsert_"+approached.reason;
-        result.ik_seconds=seconds(ikstart);return finish();
+    // A redundant IK solution can itself collide. Keep the actual start fixed,
+    // and try a bounded set of seeds for the same pre-insertion target. This is
+    // shared by all backends; every solve and collision check is timed online.
+    const JointVector nominal=Scenario{}.start;
+    std::vector<JointVector> seeds{previous,nominal,.5*(scene.limits().lower+scene.limits().upper)};
+    std::mt19937 seed_random(20261011);std::normal_distribution<double> seed_noise(0,.6);
+    for(int attempt=0;attempt<5;++attempt) {
+        JointVector seed=attempt%2?previous:nominal;
+        for(int j=0;j<7;++j) seed[j]+=seed_noise(seed_random);
+        seeds.push_back(seed.cwiseMax(scene.limits().lower).cwiseMin(scene.limits().upper));
     }
-    if(!connect(approached.q)) {result.ik_seconds=seconds(ikstart);return finish();}
+    IKResult approached;
+    bool clear_goal=false;
+    std::string goal_failure;
+    for(const auto& seed:seeds) {
+        if(stop()) break;
+        ++result.preinsert_ik_attempts;
+        approached=solve_ik(fk,targets.front().target,seed,scene.limits(),ik);
+        scene.counters.ik_iterations+=approached.iterations;
+        if(!approached.success) {goal_failure="ik_preinsert_"+approached.reason;continue;}
+        const auto collision=scene.collision(approached.q,{});
+        if(collision.valid) {clear_goal=true;break;}
+        goal_failure="preinsert_goal_collision_"+collision.pair;
+    }
+    if(!clear_goal) {
+        result.reason=stop()?"deadline_during_preinsert_ik":goal_failure;
+        result.ik_seconds=ik_seconds();return finish();
+    }
+    if(!connect(approached.q)) {result.ik_seconds=ik_seconds();return finish();}
     result.knots.back().target=targets.front().target;
     const std::size_t connection_knots=result.knots.size();
     for(std::size_t i=1;i<targets.size();++i) {
         if(scenario.q_best_effort && targets[i].phase>=Phase::Twist) break;
-        if(stop()) {result.reason="deadline_during_ik";result.ik_seconds=seconds(ikstart);return finish();}
+        if(stop()) {result.reason="deadline_during_ik";result.ik_seconds=ik_seconds();return finish();}
         JointVector seed=previous;
         if((options.method==Method::Predictor || options.method==Method::RigidCache) && i) {
             Eigen::Vector3d p;Eigen::Matrix3d r;Jacobian j;scene.forward(previous,p,r,&j);
@@ -405,7 +443,7 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
         scene.counters.ik_iterations+=solved.iterations;
         if(!solved.success) {
             result.reason="ik_"+std::string(phase_name(targets[i].phase))+"_"+std::to_string(i)+"_"+solved.reason;
-            result.ik_seconds=seconds(ikstart);return finish();
+            result.ik_seconds=ik_seconds();return finish();
         }
         Knot k;static_cast<TaskPoint&>(k)=targets[i];k.q=solved.q;result.knots.push_back(k);previous=k.q;
     }
@@ -413,11 +451,11 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
         // Refinement retains existing endpoints, so it cannot repair a
         // collision at an already solved coarse knot. Reject that candidate.
         for(const auto& k:result.knots) {
-            if(stop()) {result.reason="deadline_during_refinement";result.ik_seconds=seconds(ikstart);return finish();}
+            if(stop()) {result.reason="deadline_during_refinement";result.ik_seconds=ik_seconds();return finish();}
             const auto check=scene.collision(k.q,k.mechanism);
             if(!check.valid) {
                 result.reason="collision_coarse_"+std::string(phase_name(k.phase))+"_"+check.pair;
-                result.ik_seconds=seconds(ikstart);return finish();
+                result.ik_seconds=ik_seconds();return finish();
             }
         }
         // Refine only intervals whose joint-space interpolation misses the
@@ -425,9 +463,9 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
         for(int pass=0;pass<8;++pass) {
             bool changed=false;std::vector<Knot> refined;refined.push_back(result.knots.front());
             for(std::size_t i=1;i<result.knots.size();++i) {
-                if(stop()) {result.reason="deadline_during_refinement";result.ik_seconds=seconds(ikstart);return finish();}
+                if(stop()) {result.reason="deadline_during_refinement";result.ik_seconds=ik_seconds();return finish();}
                 const auto& a=result.knots[i-1];const auto& b=result.knots[i];
-                // Preserve the prescribed joint line; only refine the assembly
+                // Preserve the collision-checked connection; refine the assembly
                 // task. The final validator still checks every connection span.
                 if(i<connection_knots) {refined.push_back(b);continue;}
                 bool split=false;
@@ -442,7 +480,7 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
                     const auto target=between(scene,a,b,.5);
                     const auto solved=solve_ik(fk,target.target,.5*(a.q+b.q),scene.limits(),ik);
                     scene.counters.ik_iterations+=solved.iterations;
-                    if(!solved.success){result.reason="adaptive_refinement_"+solved.reason;result.ik_seconds=seconds(ikstart);return finish();}
+                    if(!solved.success){result.reason="adaptive_refinement_"+solved.reason;result.ik_seconds=ik_seconds();return finish();}
                     Knot mid;static_cast<TaskPoint&>(mid)=target;mid.q=solved.q;refined.push_back(mid);changed=true;
                 }
                 refined.push_back(b);
@@ -450,7 +488,7 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
             result.knots=std::move(refined);if(!changed)break;
         }
     }
-    result.ik_seconds=seconds(ikstart);
+    result.ik_seconds=ik_seconds();
     if(scenario.q_best_effort) {
         // Reject colliding pre-Q endpoints before paying for all dense samples.
         // This only rejects candidates; acceptance still uses every original

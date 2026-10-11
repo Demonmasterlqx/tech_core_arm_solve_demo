@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-11",
+  "algorithm": {
+    "goal": "Same target 40 mm outside E; collision-screened IK with at most eight bounded seed attempts",
+    "approach": "Direct edge check, bidirectional RRT-Connect if blocked, then collision-checked shortcuts",
+    "objective": "Shorten joint-space path length while preserving start and goal",
+    "random_seed": 20261011,
+    "max_search_iterations": 2000,
+    "max_shortcut_attempts": 80,
+    "fraction_of_remaining_request_time": 0.6,
+    "ordinary_clearance_m": 0.001,
+    "export_joint_step_rad": 0.02,
+    "edge_checks": "Same dense cubic sample grid as final trajectory validation"
+  },
+  "build": {
+    "command": "cmake --build build -j4",
+    "result": "PASS"
+  },
+  "ctest": {
+    "command": "CUDA_VISIBLE_DEVICES='' ctest --test-dir build --output-on-failure -j4",
+    "passed": 24,
+    "failed": 0,
+    "approach_contract_output": [
+      "Original zero-seed IK goal valid=0 pair=j1_link_visual/collision_arm_end_right_link_part_0",
+      "zero-start baseline success=1 reason=validated IK attempts=2 approach seconds=0.460737 total seconds=1.45859",
+      "zero-start rigid_cache success=1 reason=validated IK attempts=2 approach seconds=0.259443 total seconds=0.747467",
+      "approach cached=0 success=1 reason=collision_checked_shortcuts iterations=71 shortcuts=3 length=6.38388 -> 5.32412 seconds=3.00052",
+      "approach cached=1 success=1 reason=collision_checked_shortcuts iterations=71 shortcuts=10 length=6.38388 -> 4.21027 seconds=3.00049",
+      "PASS zero-start planning, obstacle detour, dense uncached recheck, endpoint and deadline contracts"
+    ],
+    "obstacle_test": "Place the existing collision box at the midpoint TCP; both endpoints stay clear and the direct edge collides",
+    "independent_recheck": "Uniform 0.002 rad maximum joint step with both collision caches disabled",
+    "failure_checks": [
+      "Fixed endpoints",
+      "Unchanged joint bounds and clearance",
+      "Interrupted search retains a connected start prefix",
+      "Invalid endpoint and expired request cannot succeed"
+    ]
+  },
+  "keyboard": {
+    "artifacts": "artifacts/keyboard_planning_demo/x11-optimized-approach",
+    "result": "PASS",
+    "checks": [
+      "Startup uses upstream URDF zero with all seven joint angles exactly zero",
+      "Both backends preview a collision-checked approach from URDF zero; second Enter executes the complete assembly",
+      "Backspace sets all seven joints exactly to zero, clears progress and preserves core XYZ/RPY",
+      "Core moves below the former Z minimum and above the former pitch maximum",
+      "Both backends preview beyond the former front plane with the real arm/core held; failed plans cannot execute",
+      "R loads the separate nonzero assembly preset and its core pose",
+      "Assembly request starts at the pre-insertion pose independently of current arm joints",
+      "Baseline first Enter and held Enter keep arm/core frozen at preview",
+      "Translucent arm/core ghost animates, pauses and scrubs while opaque arm/core remain fixed",
+      "Backend switch invalidates preview; RigidCache previews without execution",
+      "Second Enter executes, Space/focus loss hold, resume reaches complete assembly",
+      "Backspace during planning holds exact zero joints and discards a stale successful result",
+      "Partial and zero-knot failures are displayed and second Enter cannot execute them"
+    ],
+    "zero_start_previews": [
+      {
+        "backend": "rigid_cache",
+        "state": "PREVIEW_READY",
+        "reason": "validated",
+        "knots": 364,
+        "requested_points": 247,
+        "planning_seconds": 0.77597094,
+        "approach_seconds": 0.25610989,
+        "approach_iterations": 0,
+        "approach_shortcuts": 0,
+        "preinsert_ik_attempts": 2,
+        "time": 0
+      },
+      {
+        "backend": "baseline",
+        "state": "PREVIEW_READY",
+        "reason": "validated",
+        "knots": 364,
+        "requested_points": 247,
+        "planning_seconds": 1.497544888,
+        "approach_seconds": 0.467963056,
+        "approach_iterations": 0,
+        "approach_shortcuts": 0,
+        "preinsert_ik_attempts": 2,
+        "time": 0
+      },
+      {
+        "backend": "rigid_cache",
+        "state": "PREVIEW_READY",
+        "reason": "validated",
+        "knots": 364,
+        "requested_points": 247,
+        "planning_seconds": 0.741960833,
+        "approach_seconds": 0.254322198,
+        "approach_iterations": 0,
+        "approach_shortcuts": 0,
+        "preinsert_ik_attempts": 2,
+        "time": 0
+      }
+    ],
+    "zero_start_execution_complete": {
+      "backend": "rigid_cache",
+      "state": "COMPLETE",
+      "reason": "validated",
+      "knots": 364,
+      "requested_points": 247,
+      "planning_seconds": 0.741960833,
+      "approach_seconds": 0.254322198,
+      "approach_iterations": 0,
+      "approach_shortcuts": 0,
+      "preinsert_ik_attempts": 2,
+      "time": 18.9171865625
+    },
+    "nominal_execution_complete": "COMPLETE",
+    "screenshot": "artifacts/keyboard_planning_demo/x11-optimized-approach/nominal/zero-start-backend-1-preview.png"
+  },
+  "resources": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+    "test_nominal_pid": 2703762,
+    "test_nominal_exited": true,
+    "nvidia_test_viewer_entries_in_four_snapshots": 0,
+    "test_viewers_and_xvfb_released": true
+  }
+}

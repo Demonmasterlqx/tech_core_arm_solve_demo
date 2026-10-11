@@ -83,9 +83,11 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 
 后端 1 复用 HKUST 任务雅可比基线；后端 2 复用现有 `RigidCache` 方案。二者采用相同任务、碰撞和规则验证接口。Demo 默认规划超时 5 s、`motion_speed_scale=4`，保留最终 0.5 s 规则驻留。Demo 的场景设置 `enforce_core_pose_limits=false`，跳过规则表位姿范围和前平面检查；规划库其他调用默认保留这两项检查。规划的关节限位、碰撞和装配过程验证继续生效。
 
-规划首先在插入起始点 E 的外法向前方 **40 mm** 处做一次逆解，位置为 `p_pre = p_E + 0.04 * outward_axis`，工具轴与插入轴对齐。然后从当前七关节状态到该解做关节空间线性插值：`q(s) = (1-s) * q_current + s * q_pre`。中间点只计算 FK，用于显示和碰撞验证，不再逐点求解从当前 TCP 到预插入点的笛卡尔直线路径。到达后继续原来的 40 mm 对准、100 mm 插入、升降、P/Q 旋转及驻留。黄色请求路径从预插入点开始；实际接近连线属于候选轨迹与虚影。若预插入点逆解失败，显示 `ik_preinsert_...`，保留请求路径和当前姿态虚影。
+规划首先对插入起始点 E 的外法向前方 **40 mm** 处做逆解，位置为 `p_pre = p_E + 0.04 * outward_axis`，工具轴与插入轴对齐。逆解终点也检查碰撞；如果当前关节初值不收敛或解存在碰撞，会在同一目标位姿上尝试有限个初值，包括既有装配预设、关节范围中心及确定性的扰动。最多 8 次，两个后端使用相同流程，真实起点始终保留。
 
-这里的线性插值定义关节空间路径；时间参数化继续使用现有的速度、加速度上限和段内平滑。接近段也计入首次回车的预览，第二次回车才执行完整的已验证轨迹。
+**第一段采用带碰撞检查的路径搜索和缩短优化。** 先检查当前状态到目标解的直接连接；存在障碍时，用双向 RRT-Connect 在关节空间搜索绕行路径，再通过带碰撞检查的捷径缩短路径。机械臂、携带单元和场景都纳入检查，普通配对仍要求 1 mm 间距。每条边按最终轨迹相同的密集采样规则检查，拐点被保留；时间参数化继续使用现有速度、加速度上限和段内平滑。搜索与优化最多使用进入该段时剩余规划预算的 60%，为后续装配和完整验收留出时间。
+
+到达预插入点后，继续原来的 40 mm 对准、100 mm 插入、升降、P/Q 旋转及驻留。黄色请求路径从预插入点开始；实际接近路径属于候选轨迹与虚影。若逆解或接近搜索失败，仍显示原因和请求路径；搜索中断时只预览从真实起点连通、已经检查过的前缀。第一次回车预览，第二次回车才执行完整的已验证轨迹。
 
 成功后按照验证器相同的 `3u²−2u³` 插值关节及机构状态，精确到达最终路径点。这里的“执行”是 MuJoCo 中的运动学仿真，能量单元保持既定固定抓持变换；没有硬件控制或接触力控制。手动 jog 只受关节限位与速度限制，规划阶段才验证完整路径及碰撞。沿用现有 [碰撞几何与抓持假设](planning_scene_audit.md)，不把离散采样验证解释为连续碰撞证明。
 
@@ -105,6 +107,7 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 - `include/tech_core/planning_demo.hpp` / `src/planning_demo.cpp`：不依赖窗口的异步规划、预览、失效及执行状态机，可调用 `PlanningDemo`。
 - `src/planning_demo_main.cpp`：GLFW 按键、相机、独立虚影场景、轨迹几何、状态面板和 PNG 截图。
 - `tests/planning_demo_test.cpp`：真实后端、两次回车、状态保持、虚影隔离与失败前缀计时、失效、超时/失败展示、插值、暂停及完整执行测试。
+- `src/planning_approach.cpp` / `tests/planning_approach_test.cpp`：碰撞感知接近搜索、捷径优化、零位回归、障碍物绕行、密集无缓存复查和中断前缀检查。
 - `scripts/test_planning_demo_keyboard.py`：X11/XTest 向真实窗口注入按键并核验事件、截图和终态。
 
 复现：
@@ -124,4 +127,6 @@ xvfb-run -a -s '-screen 0 1440x1000x24 -nolisten tcp' \
 
 同日移除 Demo 规划入口的前平面限制，记录见 [前平面限制移除验证](evidence/keyboard_no_front_plane.json)：23 项 CTest 和完整真实键盘回归通过。Baseline、RigidCache 均能对越过原前平面的核心位姿继续规划并展示结果；窗口测试中的该位姿因起点碰撞失败，保留请求路径与起点虚影，第一次回车及预览期间实体保持不动，失败结果不能执行。正常预设仍可在第二次回车后执行到完成。零关节点失败的窗口用例改用 `reject_blocked`；此前记录中的 `invalid_station_front_plane` 是修改前的历史结果。
 
-预插入点直接逆解与关节线性接近的验证见 [接近段验证](evidence/keyboard_direct_preinsert.json)：23 项 CTest 和完整真实键盘回归通过，覆盖名义起点、偏移起点及旋转核心下的关节直线连接。两个后端在名义装配预设下均返回 252 个轨迹点，RigidCache 预览在第二次回车后执行完成。默认全零初值在 RigidCache 下仍会出现 `ik_preinsert_no descending feasible step`；这是单点 IK 的局部收敛失败，保留 247 个请求路径点和起点虚影，不将失败当作成功执行，也不据此断言该位姿不可达。
+此前的直接逆解与关节线性接近版本记录见 [接近段验证](evidence/keyboard_direct_preinsert.json)：当时 23 项 CTest 和真实键盘回归通过，名义装配预设可执行，但默认全零初值在 RigidCache 下出现 `ik_preinsert_no descending feasible step`。这份记录对应优化接近段之前的版本。
+
+带碰撞检测的接近优化记录见 [优化接近段验证](evidence/keyboard_optimized_approach.json)：24 项 CTest 和完整真实键盘回归通过。原零位场景中，Baseline 的首个 IK 解本身存在自碰，RigidCache 的首个初值不收敛；新的筛选流程在两次 IK 尝试后为两个后端找到可用解，各生成 364 个轨迹点。窗口中完整规划实测约为 Baseline 1.50 s、RigidCache 0.74 s；第一次回车保持实体零位，第二次回车后的零位起步仿真执行到 `COMPLETE`。额外障碍物测试确认直连被阻挡、搜索得到绕行路径、捷径优化缩短关节路径，并通过 0.002 rad 步长且关闭缓存的复查；中断只返回起点侧已检查前缀。

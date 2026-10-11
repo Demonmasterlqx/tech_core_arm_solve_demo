@@ -165,23 +165,15 @@ void check_preinsert_connection(PlanningScene& scene, const Scenario& request, c
     scene.forward(reached->q, position, rotation);
     require((position-goal.position).norm() <= 1e-4 && (rotation.col(2)-goal.direction).norm() <= 1e-4,
             "Connection must reach the IK pose 40 mm outside E along its outward axis");
-    const JointVector delta = reached->q-request.start;
-    require(delta.squaredNorm() > 1e-6, "Fixture needs a nontrivial joint connection");
-    double previous_progress = 0;
     for (auto it = result.knots.begin(); it <= reached; ++it) {
-        const double progress = (it->q-request.start).dot(delta)/delta.squaredNorm();
-        require((it->q-request.start-progress*delta).norm() < 1e-12 &&
-                progress >= previous_progress-1e-12 && progress <= 1+1e-12,
-                "Pre-insertion connection must be a monotone straight line in joint space");
+        require(scene.collision(it->q,{}).valid, "Pre-insertion connection contains a colliding knot");
         require(it->phase == Phase::Approach && it->mechanism.insertion == 0 && it->mechanism.lift == 0 &&
                 it->mechanism.flip == 0 && it->mechanism.twist == 0,
                 "Joint connection must not advance assembly mechanisms");
         if (it != result.knots.begin())
             require((it->q-(it-1)->q).cwiseAbs().maxCoeff() <= .02+1e-12,
                     "Joint connection lost its dense collision/preview samples");
-        previous_progress = progress;
     }
-    require(std::abs(previous_progress-1) < 1e-12, "Joint interpolation did not reach its endpoint");
     const auto task = make_task(scene, PlanOptions{});
     require((task.front().target.position-goal.position).norm() < 1e-12 &&
             (task.front().target.direction-goal.direction).norm() < 1e-12,
@@ -198,7 +190,7 @@ void direct_preinsert_test(PlanningScene& scene) {
         const auto result = plan(scene, request, options);
         check_preinsert_connection(scene, request, result);
     }
-    std::cout << "Direct pre-insertion IK and linear joint connection passed for both backends\n";
+    std::cout << "Collision-aware pre-insertion IK and joint connection passed for both backends\n";
 }
 
 void complete_plan_test(PlanningScene& scene) {

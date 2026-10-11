@@ -279,7 +279,11 @@ private:
             out << ",\"success\":" << (r.success ? "true" : "false") << ",\"reason\":" << json_string(r.reason)
                 << ",\"knots\":" << r.knots.size() << ",\"requested_points\":" << preview.requested_path.size()
                 << ",\"candidate_points\":" << preview.candidate_path.size()
-                << ",\"planning_seconds\":" << r.planning_seconds;
+                << ",\"planning_seconds\":" << r.planning_seconds
+                << ",\"approach_seconds\":" << r.approach_seconds
+                << ",\"approach_iterations\":" << r.approach_iterations
+                << ",\"approach_shortcuts\":" << r.approach_shortcuts
+                << ",\"preinsert_ik_attempts\":" << r.preinsert_ik_attempts;
         }
         if (show_ghost()) {
             out << ",\"ghost_time\":" << ghost_sample_.time << ",\"ghost_geoms\":" << ghost_geom_count_

@@ -129,16 +129,31 @@ struct PlanOptions {
     double position_spacing = .002;
     double angular_spacing = radians(1);
     // Optional online-selected waypoint before the pre-insertion IK solve.
-    // The physical start is retained and connected to it in joint space.
-    // The normal path solves E + 40 mm along its outward axis once, then
-    // linearly interpolates joints to that solution. Connections are densely
-    // sampled and validated with the entire task.
+    // The physical start is retained and connected to it with collision-aware
+    // joint-space search and shortcut optimization. The normal goal is the IK
+    // solution at E + 40 mm along its outward axis. All connections are densely
+    // checked and validated with the entire task.
     std::optional<JointVector> approach_joint_waypoint;
     double validation_position_tolerance = .0005;
     double validation_axis_tolerance = .002;
     double validation_joint_step = .008;
     int validation_min_substeps = 2;
 };
+struct ApproachResult {
+    bool success = false;
+    std::string reason;
+    // Ordered joint-space waypoints. On failure, only a checked prefix from
+    // the physical start is returned, never a disconnected goal-tree branch.
+    std::vector<JointVector> path;
+    std::size_t iterations = 0, shortcuts = 0;
+    double initial_length = 0, optimized_length = 0;
+};
+// Bidirectional collision-checked search followed by shortcut optimization.
+// Mechanisms remain at zero. Edges use the same dense samples as final cubic
+// validation after resampling to <= 0.02 rad per joint.
+ApproachResult optimize_approach(PlanningScene& scene, const JointVector& start,
+                               const JointVector& goal, const PlanOptions& options,
+                               const std::function<bool()>& should_stop = {});
 struct ValidationResult {
     bool valid = false;
     std::string reason;
@@ -154,6 +169,9 @@ struct PlanResult {
     std::string atlas_source;
     std::vector<Knot> knots;
     double planning_seconds = 0, ik_seconds = 0, validation_seconds = 0;
+    double approach_seconds = 0;
+    std::size_t approach_iterations = 0, approach_shortcuts = 0;
+    std::size_t preinsert_ik_attempts = 0;
     Counters counters;
     ValidationResult validation;
     double q_positive_degrees = 0, q_final_degrees = 0;

@@ -202,10 +202,27 @@ def main():
         offset = len(run.records())
         run.tap('Return', 'enter', 'PLANNING')
         zero_preview = run.wait('state', after=offset)
-        assert zero_preview['state'] in ('PREVIEW_READY', 'PREVIEW_FAILED') and zero_preview['requested_points'] > 0
+        assert zero_preview['state'] == 'PREVIEW_READY' and zero_preview['requested_points'] > 0, zero_preview
+        assert zero_preview['preinsert_ik_attempts'] >= 2 and zero_preview['approach_seconds'] > 0, zero_preview
         unchanged(run.initial, run.capture('zero-start-preview.png'))
         report['zero_start_preview'] = zero_preview
-        report['checks'].append('Planning from URDF zero still displays a preview and holds the actual robot')
+        report['zero_start_previews'] = [zero_preview]
+        for key in ['1', '2']:
+            run.tap(key, 'backend')
+            offset = len(run.records())
+            run.tap('Return', 'enter', 'PLANNING')
+            ready = run.wait('state', after=offset)
+            assert ready['state'] == 'PREVIEW_READY' and ready['preinsert_ik_attempts'] >= 2, ready
+            unchanged(run.initial, run.capture(f'zero-start-backend-{key}-preview.png'))
+            report['zero_start_previews'].append(ready)
+        offset = len(run.records())
+        run.tap('Return', 'enter', 'EXECUTING')
+        zero_complete = run.wait(state='COMPLETE', after=offset, timeout=45)
+        assert zero_complete['time'] > 0 and any(abs(q) > .1 for q in zero_complete['q']), zero_complete
+        report['zero_start_complete'] = zero_complete
+        run.capture('zero-start-complete.png')
+        zeroed(run.tap('BackSpace', 'home'))
+        report['checks'].append('Both backends preview a collision-checked approach from URDF zero; second Enter executes the complete assembly')
         preset = run.tap('r', 'reset')
         assert any(abs(q) > .1 for q in preset['q']) and 'knots' not in preset
         report['assembly_preset'] = preset

@@ -1,5 +1,5 @@
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
-add_library(rm26_planning src/planning_ik.cpp src/planning_scene.cpp src/planning.cpp)
+add_library(rm26_planning src/planning_ik.cpp src/planning_scene.cpp src/planning_approach.cpp src/planning.cpp)
 target_include_directories(rm26_planning PUBLIC "${PROJECT_SOURCE_DIR}/include")
 target_link_libraries(rm26_planning PUBLIC Eigen3::Eigen tech_core_sim)
 target_compile_definitions(rm26_planning PUBLIC
@@ -15,6 +15,11 @@ if(BUILD_TESTING)
   add_executable(planning_contract_test tests/planning_contract_test.cpp)
   target_link_libraries(planning_contract_test PRIVATE rm26_planning)
   add_test(NAME planning_contract COMMAND planning_contract_test)
+  add_executable(planning_approach_test tests/planning_approach_test.cpp)
+  target_link_libraries(planning_approach_test PRIVATE rm26_planning)
+  target_compile_options(planning_approach_test PRIVATE -Wall -Wextra -Wpedantic)
+  add_test(NAME planning_approach COMMAND planning_approach_test)
+  set_tests_properties(planning_approach PROPERTIES TIMEOUT 30)
   add_executable(planning_scene_test tests/planning_scene_test.cpp)
   target_link_libraries(planning_scene_test PRIVATE rm26_planning)
   target_compile_definitions(planning_scene_test PRIVATE
