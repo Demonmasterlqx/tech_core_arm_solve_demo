@@ -1,0 +1,68 @@
+{
+  "sampling": "One prior reference pose plus 39 six-dimensional Latin-hypercube samples; fixed before trials",
+  "rng_seed": 20261013,
+  "requested_cases": 40,
+  "bounds": {
+    "x_m": [
+      -0.1,
+      -0.07
+    ],
+    "y_m": [
+      0.17,
+      0.23
+    ],
+    "z_m": [
+      0.5,
+      0.56
+    ],
+    "yaw_degrees": [
+      -12,
+      12
+    ],
+    "phi_degrees": [
+      70,
+      88
+    ],
+    "roll_degrees": [
+      -15,
+      15
+    ]
+  },
+  "pitch_definition": "phi - 90 degrees",
+  "q_sequence_degrees": [
+    0,
+    90,
+    -90
+  ],
+  "assembly_translation_m": [
+    0.2,
+    0.2,
+    -0.25
+  ],
+  "arm_base_z_m": -0.1,
+  "motion_speed_scale": 4,
+  "max_ready_attempts": 0,
+  "max_planning_attempts": 1,
+  "planning_timeout_seconds": 3,
+  "offline_search_excluded_from_selected_planning_time": false,
+  "requested_poses_sha256": "4341706108d9ed926af719702e0061b8d85e3cbca320dd91898a8d3bff5bed08",
+  "requested_poses_source": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/pose40_q_sweep/requested_poses.csv",
+  "planning_mode": "online_fixed_start",
+  "physical_start_q_rad": [
+    -0.5829887007878788,
+    1.4014363481415861,
+    1.4956286729240151,
+    0.5153844139635914,
+    -1.5264021873645037,
+    -0.5881360980777728,
+    2.7857137959190528
+  ],
+  "ready_search": false,
+  "cross_request_warm_start": false,
+  "atlas": false,
+  "timing_includes": "scene configuration and cache reset, start collision check, approach and full task IK, time parameterization, dense cached collision/tracking/rule validation, return",
+  "timing_excludes": "one-time model load, CSV input/output, uncached equivalence audit, rendering, execution",
+  "validation_joint_step_rad": 0.004,
+  "validation_min_substeps": 4,
+  "uncached_audit": "Same density and tolerances as the timed validator; any mismatch aborts the experiment"
+}

@@ -223,9 +223,33 @@ void q_sweep_contract_test(PlanningScene& scene) {
     request.start<<-.58298870078787879,1.4014363481415861,1.4956286729240151,
         .51538441396359136,-1.5264021873645037,-.58813609807777278,2.7857137959190528;
     PlanOptions options;options.method=Method::RigidCache;options.motion_speed_scale=4;
+    options.validation_joint_step=.004;options.validation_min_substeps=4;
     const auto complete=plan(scene,request,options);
     require(complete.success && complete.validation.rule_success,
             "Lowered tilted-core Q sweep must complete with collision validation: "+complete.reason);
+    require((complete.knots.front().q-request.start).norm()<1e-12 && complete.atlas_source.empty(),
+            "Online Q sweep must preserve the physical start without atlas data");
+    scene.configure(request);
+    const auto uncached=validate_trajectory(scene,complete.knots,options);
+    require(uncached.valid && uncached.samples==complete.validation.samples,
+            "Dense cached online acceptance must agree with uncached checks at identical density");
+    auto connected_request=request;
+    connected_request.start[0]-=.02;
+    auto connected_options=options;connected_options.approach_joint_waypoint=request.start;
+    const auto connected=plan(scene,connected_request,connected_options);
+    require(connected.success && (connected.knots.front().q-connected_request.start).norm()<1e-12,
+            "Online waypoint must include a validated connection from the actual input: "+connected.reason);
+    require(connected.knots.size()>complete.knots.size() &&
+            std::any_of(connected.knots.begin()+1,connected.knots.end(),[&](const Knot& k){
+                return k.phase==Phase::Approach && (k.q-request.start).norm()<1e-12;
+            }),"Connection must explicitly visit the waypoint without replacing the start");
+    scene.configure(connected_request);
+    require(validate_trajectory(scene,connected.knots,options).valid,
+            "The physical-start connection must also pass uncached validation");
+    auto expired=options;expired.timeout_seconds=1e-9;
+    const auto timeout=plan(scene,request,expired);
+    require(!timeout.success && contains(timeout.reason,"deadline"),
+            "Expired online budget must never produce a successful trajectory");
     std::cout << "Q sweep endpoint and order contract tests passed\n";
 }
 } // namespace

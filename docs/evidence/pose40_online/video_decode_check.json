@@ -1,0 +1,18 @@
+[
+  {
+    "file": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/level3-40poses-online.mp4",
+    "sha256": "c3a2160b2124eafa6069127a6d1c1194427bcd625363709b293f036c44579cef",
+    "full_decode_exit_code": 0,
+    "frames": 2763,
+    "ffprobe_duration": "138.150000",
+    "stderr": ""
+  },
+  {
+    "file": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/level3-online-pose02-detail.mp4",
+    "sha256": "da481b2c4ba201805356004548361f96dd9c992eaa4b11e73afceba6c01bf64c",
+    "full_decode_exit_code": 0,
+    "frames": 677,
+    "ffprobe_duration": "28.209000",
+    "stderr": ""
+  }
+]

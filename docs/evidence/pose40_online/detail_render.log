@@ -1,0 +1,19 @@
+DENSE_RECHECK passed samples=3182
+OPENGL_RENDERER llvmpipe (LLVM 15.0.7, 256 bits)
+FRAME 1/677 trajectory_time=0
+FRAME 49/677 trajectory_time=2
+FRAME 97/677 trajectory_time=4
+FRAME 145/677 trajectory_time=6
+FRAME 193/677 trajectory_time=8
+FRAME 241/677 trajectory_time=10
+FRAME 289/677 trajectory_time=12
+FRAME 337/677 trajectory_time=14
+FRAME 385/677 trajectory_time=16
+FRAME 433/677 trajectory_time=18
+FRAME 481/677 trajectory_time=20
+FRAME 529/677 trajectory_time=22
+FRAME 577/677 trajectory_time=24
+FRAME 625/677 trajectory_time=26
+FRAME 673/677 trajectory_time=26.1875
+FRAME 677/677 trajectory_time=26.1875
+COMPLETE /data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/level3-online-pose02-detail.mp4 frames=677 bytes=7217238

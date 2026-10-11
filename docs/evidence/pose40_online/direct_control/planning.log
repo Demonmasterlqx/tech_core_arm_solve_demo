@@ -1,0 +1,40 @@
+CASE_COMPLETE 1/40 pose01 success=1 online_s=0.914121 audit_s=2.60814 reason=validated
+CASE_COMPLETE 2/40 pose02 success=0 online_s=0.255927 audit_s=0 reason=collision_lift_127_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000970
+CASE_COMPLETE 3/40 pose03 success=0 online_s=0.255924 audit_s=0 reason=collision_lift_132_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000949
+CASE_COMPLETE 4/40 pose04 success=0 online_s=0.243542 audit_s=0 reason=collision_lift_127_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000000
+CASE_COMPLETE 5/40 pose05 success=0 online_s=0.235953 audit_s=0 reason=collision_flip_145_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000967
+CASE_COMPLETE 6/40 pose06 success=0 online_s=0.0142737 audit_s=0 reason=ik_flip_240_iteration limit
+CASE_COMPLETE 7/40 pose07 success=0 online_s=0.224634 audit_s=0 reason=collision_flip_151_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000901
+CASE_COMPLETE 8/40 pose08 success=0 online_s=0.216166 audit_s=0 reason=collision_flip_148_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000907
+CASE_COMPLETE 9/40 pose09 success=0 online_s=0.26074 audit_s=0 reason=collision_lift_128_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000963
+CASE_COMPLETE 10/40 pose10 success=0 online_s=0.218875 audit_s=0 reason=collision_lift_143_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000974
+CASE_COMPLETE 11/40 pose11 success=0 online_s=0.678764 audit_s=0 reason=collision_twist_291_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000997
+CASE_COMPLETE 12/40 pose12 success=0 online_s=0.557181 audit_s=0 reason=collision_flip_236_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+CASE_COMPLETE 13/40 pose13 success=0 online_s=0.688762 audit_s=0 reason=collision_twist_301_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000988
+CASE_COMPLETE 14/40 pose14 success=0 online_s=0.279347 audit_s=0 reason=collision_lift_134_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000932
+CASE_COMPLETE 15/40 pose15 success=0 online_s=0.0132664 audit_s=0 reason=ik_flip_243_iteration limit
+CASE_COMPLETE 16/40 pose16 success=0 online_s=0.582386 audit_s=0 reason=collision_flip_237_carried_unit_flange_43/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+CASE_COMPLETE 17/40 pose17 success=1 online_s=1.17212 audit_s=3.1192 reason=validated
+CASE_COMPLETE 18/40 pose18 success=0 online_s=0.695506 audit_s=0 reason=collision_twist_312_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.001000
+CASE_COMPLETE 19/40 pose19 success=0 online_s=0.0142231 audit_s=0 reason=ik_twist_241_iteration limit
+CASE_COMPLETE 20/40 pose20 success=0 online_s=0.225661 audit_s=0 reason=collision_flip_160_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000972
+CASE_COMPLETE 21/40 pose21 success=0 online_s=0.661424 audit_s=0 reason=collision_twist_313_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000992
+CASE_COMPLETE 22/40 pose22 success=1 online_s=1.05685 audit_s=2.92524 reason=validated
+CASE_COMPLETE 23/40 pose23 success=0 online_s=0.221691 audit_s=0 reason=collision_flip_143_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000906
+CASE_COMPLETE 24/40 pose24 success=0 online_s=0.229892 audit_s=0 reason=collision_flip_138_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000000
+CASE_COMPLETE 25/40 pose25 success=0 online_s=0.682292 audit_s=0 reason=collision_twist_286_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000977
+CASE_COMPLETE 26/40 pose26 success=0 online_s=0.732417 audit_s=0 reason=collision_twist_285_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000984
+CASE_COMPLETE 27/40 pose27 success=0 online_s=0.244415 audit_s=0 reason=collision_flip_149_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000990
+CASE_COMPLETE 28/40 pose28 success=0 online_s=0.219192 audit_s=0 reason=collision_flip_146_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000890
+CASE_COMPLETE 29/40 pose29 success=0 online_s=0.23475 audit_s=0 reason=collision_flip_147_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000960
+CASE_COMPLETE 30/40 pose30 success=0 online_s=0.0141482 audit_s=0 reason=ik_flip_237_iteration limit
+CASE_COMPLETE 31/40 pose31 success=0 online_s=0.626595 audit_s=0 reason=collision_twist_300_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000989
+CASE_COMPLETE 32/40 pose32 success=0 online_s=0.675825 audit_s=0 reason=collision_twist_299_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000991
+CASE_COMPLETE 33/40 pose33 success=0 online_s=0.267266 audit_s=0 reason=collision_flip_147_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000983
+CASE_COMPLETE 34/40 pose34 success=1 online_s=0.964421 audit_s=2.73902 reason=validated
+CASE_COMPLETE 35/40 pose35 success=0 online_s=0.223607 audit_s=0 reason=collision_flip_149_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000983
+CASE_COMPLETE 36/40 pose36 success=0 online_s=0.223582 audit_s=0 reason=collision_flip_154_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000916
+CASE_COMPLETE 37/40 pose37 success=0 online_s=0.235368 audit_s=0 reason=collision_flip_140_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000984
+CASE_COMPLETE 38/40 pose38 success=1 online_s=1.16697 audit_s=3.0338 reason=validated
+CASE_COMPLETE 39/40 pose39 success=0 online_s=0.213375 audit_s=0 reason=collision_flip_142_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000000
+CASE_COMPLETE 40/40 pose40 success=0 online_s=0.22852 audit_s=0 reason=collision_flip_161_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000968

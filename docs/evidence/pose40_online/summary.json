@@ -1,0 +1,98 @@
+{
+  "valid": true,
+  "cases": 40,
+  "successes": 20,
+  "failures": 20,
+  "requested_poses_sha256": "4341706108d9ed926af719702e0061b8d85e3cbca320dd91898a8d3bff5bed08",
+  "all_online_seconds": {
+    "n": 40,
+    "min": 0.219582177,
+    "median": 1.8558137755000002,
+    "p95": 3.00024602355,
+    "max": 3.000281945,
+    "total": 76.660043927
+  },
+  "successful_online_seconds": {
+    "n": 20,
+    "min": 0.707574563,
+    "median": 1.229866366,
+    "p95": 2.73209667285,
+    "max": 2.808865524,
+    "total": 27.694676025
+  },
+  "successful_execution_seconds": {
+    "n": 20,
+    "min": 23.781205784956885,
+    "median": 24.870220407752026,
+    "p95": 25.772000211136337,
+    "max": 26.18749467380769,
+    "total": 497.8170859898449
+  },
+  "uncached_audit_seconds": {
+    "n": 20,
+    "min": 1.955941896,
+    "median": 2.0856829770000003,
+    "p95": 2.5135437703499997,
+    "max": 2.518474258,
+    "total": 42.590559397999996
+  },
+  "request_reasons": {
+    "validated": 20,
+    "deadline": 16,
+    "ik": 4
+  },
+  "trial_reasons": {
+    "validated": 20,
+    "collision_or_clearance": 205,
+    "ik": 113,
+    "deadline": 16
+  },
+  "planning_attempts": 354,
+  "ready_attempts": 451,
+  "success_cases": [
+    "pose01",
+    "pose02",
+    "pose03",
+    "pose05",
+    "pose07",
+    "pose09",
+    "pose10",
+    "pose17",
+    "pose22",
+    "pose24",
+    "pose27",
+    "pose28",
+    "pose29",
+    "pose33",
+    "pose34",
+    "pose35",
+    "pose36",
+    "pose37",
+    "pose38",
+    "pose39"
+  ],
+  "successes_using_online_waypoint": [
+    "pose02",
+    "pose03",
+    "pose05",
+    "pose07",
+    "pose09",
+    "pose10",
+    "pose24",
+    "pose27",
+    "pose28",
+    "pose29",
+    "pose33",
+    "pose35",
+    "pose36",
+    "pose37",
+    "pose39"
+  ],
+  "previous_successes": 21,
+  "direct_successes": 5,
+  "dense_collision_samples": 59977,
+  "independent_fk_samples": 119934,
+  "max_position_error_m": 8.454472938771961e-05,
+  "max_axis_error_rad": 0.0004481807065078362,
+  "note": "Uncached equivalence audit is outside online time; the complete same-density cached collision acceptance is inside. Previous results used a different per-case physical start."
+}

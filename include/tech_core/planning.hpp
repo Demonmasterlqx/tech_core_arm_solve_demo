@@ -113,6 +113,10 @@ struct PlanOptions {
     double motion_speed_scale = 1;
     double position_spacing = .002;
     double angular_spacing = radians(1);
+    // Optional online-selected approach configuration. The returned trajectory
+    // must first connect scenario.start to this waypoint in joint space; this
+    // connection is densely sampled and validated with the entire task.
+    std::optional<JointVector> approach_joint_waypoint;
     double validation_position_tolerance = .0005;
     double validation_axis_tolerance = .002;
     double validation_joint_step = .008;

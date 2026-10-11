@@ -1,0 +1,29 @@
+{
+  "utc_start": "2026-10-11T05:13:35.496326+00:00",
+  "cpu_affinity": [
+    0
+  ],
+  "CUDA_VISIBLE_DEVICES": "",
+  "source_sha256": "a36c0f113639b0192bd26343579d152580f30eeebce5092f193d42e7471ed487",
+  "command": [
+    "plan_pose_sweep",
+    "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/pose40_online",
+    "96",
+    "24",
+    "--online"
+  ],
+  "git_head": "880a5eb516dbfcb5bba0aa88150ffd56bfceb0ef",
+  "source_sha256_by_path": {
+    "scripts/plan_pose_sweep.cpp": "a36c0f113639b0192bd26343579d152580f30eeebce5092f193d42e7471ed487",
+    "scripts/run_pose_sweep.py": "784cbc3fd2ddf9490a56383a2a60b4fe6719316993ea082153ef5089ca15295a",
+    "src/planning.cpp": "82f5ccd33a93edf3883da29c4595643ceab9917ab2214233b02682781ae0b9ab",
+    "src/planning_ik.cpp": "97cabe4e6db05fbc3b89af548486d2e98a24044a51bc702145d546f50feaf5d6",
+    "src/planning_scene.cpp": "b9b5443ccfbe22f536b0ea5c3bbbc8fa2eb5ca5ecca4fa336354031cb2e2c9ae",
+    "models/planning/scene.xml": "f0492a28ddf9eac6f0ba71aa7bc7754fcae698f4c6d655e9fbfdeeda6d07a903",
+    "build-planning/librm26_planning.a": "4eea989e757ac5dc9d2f48593170fceab700b73985daee9400263f41e9091a59",
+    "build-planning/libtech_core_sim.a": "4b2e2c1c8f63f78001e79c34329cd405f4a5733c64a467c777d9c10c2ee37a48",
+    "build-planning/libtech_core_rules.a": "d7a11699c5bfa0a4bf61a1068aaa1dc27d0ff3f23552cd2e9f3a956c58b2d7f4"
+  },
+  "exit_code": 0,
+  "wall_seconds": 32.408941976726055
+}

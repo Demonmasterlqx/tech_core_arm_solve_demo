@@ -136,7 +136,8 @@ int main(int argc, char** argv) {
             title << "LEVEL 3 EXCHANGE  |  TRAJECTORY REPLAY\nBase Z "
                   << std::fixed << std::setprecision(0) << scenario.arm_base_z * 1000
                   << " mm | Pitch " << scenario.core.phi-90 << " deg | Roll " << scenario.core.alpha << " deg";
-            metric << method << "  |  Planning " << std::fixed << std::setprecision(3) << number(run,"planning_seconds")
+            const bool online=run.count("planning_mode") && run.at("planning_mode")=="online_fixed_start";
+            metric << method << (online?"  |  Online planning ":"  |  Planning ") << std::fixed << std::setprecision(3) << number(run,"planning_seconds")
                    << " s\nMotion " << std::setprecision(0) << check.motion_speed_scale << "x | "
                    << std::setprecision(2) << duration << " s | Playback " << speed << "x";
             mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{0,height-86,width,86},title.str().c_str(),nullptr,&context);

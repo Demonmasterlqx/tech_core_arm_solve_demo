@@ -193,6 +193,8 @@ int main() {
 
 完整轨迹的 CPU 视频回放及按用户要求将实际间距缩短 100 mm 的演示见 [视频说明](docs/planning_video.md)。
 
+40 个倾斜核心位姿、基座下降 100 mm、4 倍运动速度和 Q：0° → +90° → −90° 的[在线重跑与视频](docs/pose40_online.md)已完成：固定实际关节起点，在线重试和密碰撞验证共用 3 s 时限，20/40 成功，成功耗时中位数 1.230 s、最大 2.809 s；其余请求保留失败记录。
+
 ```bash
 cmake -S . -B build-planning -DCMAKE_BUILD_TYPE=Release -DTECH_CORE_VIEWER=OFF
 cmake --build build-planning -j4

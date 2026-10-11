@@ -91,7 +91,7 @@ std::vector<TaskPoint> make_task(PlanningScene& scene,const PlanOptions& options
     std::vector<TaskPoint> points;
     TaskPoint first;
     Eigen::Matrix3d rotation;
-    scene.forward(scene.scenario().start,first.target.position,rotation);
+    scene.forward(options.approach_joint_waypoint.value_or(scene.scenario().start),first.target.position,rotation);
     first.target.direction=rotation.col(2);
     points.push_back(first);
     TaskPoint approached; approached.target=scene.mechanism_target({});
@@ -271,6 +271,9 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
     if(!valid_motion_scale(options.motion_speed_scale)) {
         result.reason="invalid_motion_speed_scale";return finish();
     }
+    if(options.approach_joint_waypoint && !options.approach_joint_waypoint->allFinite()) {
+        result.reason="invalid_approach_joint_waypoint";return finish();
+    }
     scene.configure(scenario);
     scene.enable_rigid_pair_cache(options.method==Method::RigidCache);
     if(!scene.core_within_front_plane()) {result.reason="invalid_station_front_plane";return finish();}
@@ -314,7 +317,25 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
     const ForwardKinematics fk=[&](const JointVector& q,Eigen::Vector3d& p,Eigen::Matrix3d& r,Jacobian* j){scene.forward(q,p,r,j);};
     JointVector previous=scenario.start;
     const auto ikstart=Clock::now();
-    for(std::size_t i=0;i<targets.size();++i) {
+    if(options.approach_joint_waypoint) {
+        const auto& waypoint=*options.approach_joint_waypoint;
+        if((waypoint.array()<scene.limits().lower.array()).any() ||
+           (waypoint.array()>scene.limits().upper.array()).any()) {
+            result.reason="approach_waypoint_joint_limits";return finish();
+        }
+        // FK-derived targets make this a free-space joint connection. Dense
+        // knots keep the Cartesian interpolation error bounded by the shared
+        // validator, which checks collisions and the carried object throughout.
+        const int n=std::max(1,static_cast<int>(std::ceil((waypoint-scenario.start).cwiseAbs().maxCoeff()/.02)));
+        for(int i=0;i<=n;++i) {
+            if(stop()) {result.reason="deadline_during_approach_connection";result.ik_seconds=seconds(ikstart);return finish();}
+            Knot k;k.q=scenario.start+(double(i)/n)*(waypoint-scenario.start);
+            Eigen::Matrix3d rotation;scene.forward(k.q,k.target.position,rotation);
+            k.target.direction=rotation.col(2);result.knots.push_back(k);
+        }
+        previous=waypoint;
+    }
+    for(std::size_t i=options.approach_joint_waypoint?1:0;i<targets.size();++i) {
         if(stop()) {result.reason="deadline_during_ik";result.ik_seconds=seconds(ikstart);return finish();}
         JointVector seed=previous;
         if((options.method==Method::Predictor || options.method==Method::RigidCache) && i) {

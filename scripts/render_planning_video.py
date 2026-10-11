@@ -74,6 +74,7 @@ def main():
         parser.error("Build the Release build-planning targets first; see docs/planning_results.md")
     mujoco = ROOT / ".deps/mujoco-3.3.7"
     metadata = dict(method=args.method, case=args.case, repeat=args.repeat,
+                    planning_mode=run.get("planning_mode", "offline_ready_search"),
                     planning_seconds=float(run["planning_seconds"]), execution_seconds=execution_seconds,
                     motion_speed_scale=motion_scale, mock_velocity_limit_rad_s=motion_scale,
                     mock_acceleration_limit_rad_s2=2*motion_scale*motion_scale,

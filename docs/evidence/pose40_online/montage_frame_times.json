@@ -1,0 +1,27 @@
+[
+  {
+    "page": 1,
+    "video_seconds": 28.1,
+    "sha256": "125c04c77aaa06efefd6a44ac147afd67c3904140877c659684feb7a3f353868"
+  },
+  {
+    "page": 2,
+    "video_seconds": 55.9,
+    "sha256": "60d76fd647a41d7c2bc1a7a2c9f8a4d6ef19794eb70dc63e404afc41f23496a3"
+  },
+  {
+    "page": 3,
+    "video_seconds": 83.5,
+    "sha256": "577e92e6aa7caa817edbb7235cb36161ab4551c9b4a30960ba14db6377850b03"
+  },
+  {
+    "page": 4,
+    "video_seconds": 110.65,
+    "sha256": "fda334b66acf4c4dae8574ef4f5c25a95186b2d40263beba3c2edc95f955d3aa"
+  },
+  {
+    "page": 5,
+    "video_seconds": 138.05,
+    "sha256": "bdf7c2d61e62b9e75e267a238a8616549f563e877f57b8daa0643ca96dc9af20"
+  }
+]

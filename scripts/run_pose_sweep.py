@@ -10,6 +10,7 @@ from logging.handlers import RotatingFileHandler
 import os
 from pathlib import Path
 import random
+import shutil
 import subprocess
 import tempfile
 import time
@@ -46,12 +47,42 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--prepare-only", action="store_true")
+    parser.add_argument("--online", action="store_true",
+                        help="One live request from a fixed physical start; dense validation within 3 s")
+    parser.add_argument("--retry", action="store_true",
+                        help="Try online approach waypoints within the same 3 s request deadline; requires --online")
+    parser.add_argument("--poses", type=Path, help="Reuse an exact requested_poses.csv without reading prior solutions")
     args = parser.parse_args()
+    if args.retry and not args.online:
+        parser.error("--retry requires --online")
     output = args.output.resolve()
     if output.exists():
         parser.error("Use a new output directory; recorded experiments are not overwritten")
     output.mkdir(parents=True)
     prepare(output)
+    if args.poses:
+        shutil.copyfile(args.poses.resolve(), output/"requested_poses.csv")
+    with (output/"requested_poses.csv").open(newline="") as stream:
+        poses = list(csv.DictReader(stream))
+    if len(poses) != 40 or len({r["case"] for r in poses}) != 40:
+        parser.error("Exactly 40 distinct requested poses are required")
+    config = json.loads((output/"experiment.json").read_text())
+    config.update(requested_poses_sha256=hashlib.sha256((output/"requested_poses.csv").read_bytes()).hexdigest(),
+                  requested_poses_source=str(args.poses.resolve()) if args.poses else "fixed generator")
+    if args.online:
+        config.update(planning_mode="online_fixed_start", max_ready_attempts=96 if args.retry else 0,
+                      max_planning_attempts=24 if args.retry else 1, online_retry=args.retry,
+                      offline_search_excluded_from_selected_planning_time=False,
+                      physical_start_q_rad=[-.58298870078787879, 1.4014363481415861, 1.4956286729240151,
+                                            .51538441396359136, -1.5264021873645037, -.58813609807777278,
+                                            2.7857137959190528],
+                      ready_search=args.retry, cross_request_warm_start=False, atlas=False,
+                      timing_includes="scene configuration and cache reset, start collision check, online waypoint IK and failed retries if enabled, physical-start connection, approach and full task IK, time parameterization, dense cached collision/tracking/rule validation, return",
+                      timing_excludes="one-time model load, CSV input/output, uncached equivalence audit, rendering, execution",
+                      validation_joint_step_rad=.004, validation_min_substeps=4,
+                      approach_joint_knot_step_rad=.02,
+                      uncached_audit="Same density and tolerances as the timed validator; any mismatch aborts the experiment")
+    (output/"experiment.json").write_text(json.dumps(config, indent=2)+"\n")
     if args.prepare_only:
         return
     environment = os.environ.copy()
@@ -76,12 +107,18 @@ def main():
             subprocess.run(command, env=environment, check=True, timeout=120)
             cpu = min(os.sched_getaffinity(0)); os.sched_setaffinity(0, {cpu})
             started = time.monotonic()
+            planner_arguments = [str(output), "96", "24"] + (["--online-retry" if args.retry else "--online"] if args.online else [])
             metadata = dict(utc_start=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                             cpu_affinity=[cpu], CUDA_VISIBLE_DEVICES="",
                             source_sha256=hashlib.sha256((ROOT/"scripts/plan_pose_sweep.cpp").read_bytes()).hexdigest(),
-                            command=["plan_pose_sweep", str(output), "96", "24"])
+                            command=["plan_pose_sweep", *planner_arguments],
+                            git_head=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
+                            source_sha256_by_path={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+                                                   for p in [ROOT/"scripts/plan_pose_sweep.cpp", ROOT/"scripts/run_pose_sweep.py",
+                                                             ROOT/"src/planning.cpp", ROOT/"src/planning_ik.cpp", ROOT/"src/planning_scene.cpp",
+                                                             ROOT/"models/planning/scene.xml", *libraries]})
             (output/"execution.json").write_text(json.dumps(metadata, indent=2)+"\n")
-            process = subprocess.Popen([str(binary), str(output), "96", "24"], env=environment,
+            process = subprocess.Popen([str(binary), *planner_arguments], env=environment,
                                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
             try:
                 for line in process.stdout:

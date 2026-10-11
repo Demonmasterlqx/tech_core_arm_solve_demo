@@ -56,6 +56,7 @@ std::string short_reason(const std::string& reason) {
     if(reason.find("collision")!=std::string::npos) return "Collision / clearance rejection";
     if(reason.find("ik_")!=std::string::npos) return "IK did not find a complete path";
     if(reason.find("front_plane")!=std::string::npos)return "Initial front-plane rejection";
+    if(reason.find("deadline")!=std::string::npos)return "Online planning deadline reached";
     return "No validated path in search budget";
 }
 int main(int argc,char** argv) {
@@ -66,6 +67,7 @@ int main(int argc,char** argv) {
     if(width<1600||height<900||fps<1||still_page>4||!std::isfinite(still_time)||still_time<0)throw std::runtime_error("Invalid render arguments");
     const auto scenarios=read_csv(directory/"scenarios.csv"),runs=read_csv(directory/"runs.csv");
     if(scenarios.size()!=40||runs.size()!=40)throw std::runtime_error("Montage requires all 40 requested cases");
+    const bool online=runs.front().count("planning_mode") && runs.front().at("planning_mode")=="online_fixed_start";
     std::vector<Case> cases;PlanningScene sim;int successes=0;std::size_t total_samples=0;
     for(const auto& r:scenarios) {
       Case c;auto& s=c.scenario;s.id=r.at("case");s.split=r.at("split");
@@ -120,7 +122,7 @@ int main(int argc,char** argv) {
         const double t=still_page>=0?still_time:double(frame)/fps;
         mjr_rectangle(full,.04f,.055f,.075f,1);
         std::ostringstream title,footer;
-        title<<"40 CORE POSES  |  LEVEL 3  |  Q: 0 > +90 > -90 deg\n"
+        title<<(online?"ONLINE - FIXED START  |  ":"")<<"40 CORE POSES  |  LEVEL 3  |  Q: 0 > +90 > -90 deg\n"
              <<"Page "<<page+1<<" / 5   |   "<<successes<<" / 40 validated   |   Motion 4x   Playback 1x   Base Z -100 mm";
         mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{10,height-74,width-20,70},title.str().c_str(),nullptr,&context);
         for(int local=0;local<8;++local) {
@@ -140,7 +142,9 @@ int main(int argc,char** argv) {
           mjr_rectangle(tile,c.success?.045f:.16f,c.success?.09f:.045f,c.success?.10f:.055f,1);
           mjv_updateScene(model,sim.data(),&option,nullptr,&camera,mjCAT_ALL,&scene);mjr_render(view,&scene,&context);
           std::ostringstream pose,status;
-          pose<<c.scenario.id<<"  "<<(c.success?"VALIDATED":"REJECTED - STATIC")<<"\n"<<std::fixed<<std::setprecision(0)
+          pose<<c.scenario.id<<"  "<<(c.success?"VALIDATED":"REJECTED");
+          if(online)pose<<"  "<<std::fixed<<std::setprecision(3)<<number(c.run,"planning_seconds")<<" s online";
+          pose<<"\n"<<std::fixed<<std::setprecision(0)
               <<"XYZ "<<c.scenario.core.x*1000<<","<<c.scenario.core.y*1000<<","<<c.scenario.core.z*1000<<" mm  YPR "
               <<c.scenario.core.theta<<","<<c.scenario.core.phi-90<<","<<c.scenario.core.alpha<<" deg";
           mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{x,y+tile.height-58,tile.width,57},pose.str().c_str(),nullptr,&context);
@@ -150,7 +154,8 @@ int main(int argc,char** argv) {
           }else status<<"NOT EXECUTED\n"<<short_reason(c.run.at("reason"));
           mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{x,y+1,tile.width,49},status.str().c_str(),nullptr,&context);
         }
-        footer<<"All 40 requested poses shown. Red panels: rejected paths stay still. Fixed-grasp kinematic simulation.";
+        footer<<(online?"Same physical start. Online time includes retries, approach connection and dense collision checks. ":"All 40 requested poses shown. ")
+              <<"Red: not executed. Fixed-grasp kinematic simulation.";
         mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{10,3,width-20,35},footer.str().c_str(),nullptr,&context);
         mjr_readPixels(rgb.data(),nullptr,full,&context);
         if(std::fwrite(rgb.data(),1,rgb.size(),stdout)!=rgb.size())throw std::runtime_error("Encoder pipe closed");

@@ -79,6 +79,8 @@ def main():
         parser.error("Build the Release build-planning targets first; see docs/planning_results.md")
     mujoco = ROOT / ".deps/mujoco-3.3.7"
     metadata = dict(cases=40, successes=sum(r["success"] == "1" for r in runs),
+                    planning_mode=runs[0].get("planning_mode", "offline_ready_search"),
+                    planning_seconds_by_case={r["case"]: float(r["planning_seconds"]) for r in runs},
                     case_order=[s["case"] for s in scenarios], page_seconds=pages,
                     motion_speed_scale=4, playback_speed=1, fps=args.fps,
                     width=args.width, height=args.height, still_page=args.still_page,
