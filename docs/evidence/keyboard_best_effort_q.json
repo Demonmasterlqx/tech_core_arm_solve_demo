@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-11",
+  "behavior": {
+    "scope": "Keyboard demo, both backends and all presets",
+    "sequence": "Q=0 -> validated positive endpoint -> Q=0 -> validated negative endpoint -> 0.5 s dwell",
+    "travel_degrees": [
+      -90,
+      90
+    ],
+    "default_increment_degrees": 1,
+    "default_request_budget_seconds": 5,
+    "stopping_conditions": [
+      "IK or joint limits",
+      "Collision or clearance",
+      "Tracking error",
+      "Online budget",
+      "Mechanical travel limit"
+    ],
+    "validation": "Every added segment and the final complete trajectory; failed extension is excluded",
+    "range_meaning": "Validated range found in the selected IK branch and time budget; not a global reachability bound",
+    "preview": "Shows actual Q range and separate stopping reasons; first Enter previews and second Enter executes"
+  },
+  "build": {
+    "command": "cmake --build build -j4",
+    "result": "PASS"
+  },
+  "ctest": {
+    "command": "CUDA_VISIBLE_DEVICES='' ctest --test-dir build --output-on-failure -j4",
+    "passed": 24,
+    "failed": 0,
+    "range_checks": [
+      "PASS real baseline plan, 487 knots, Q 0 -> 90 -> -90, stops travel_limit / travel_limit",
+      "PASS real rigid_cache plan, 487 knots, Q 0 -> 90 -> -90, stops travel_limit / travel_limit",
+      "Best-effort Q collision stop and strict-mode isolation passed; peak=63 final=-90"
+    ],
+    "contracts": [
+      "Nominal range is bidirectional in both real demo backends",
+      "Fresh uncached full-path revalidation",
+      "Simulation visits the positive peak and holds the actual negative endpoint",
+      "Joint zero preserves best-effort bidirectional requests",
+      "Collision-limited Q retains the checked range while mandatory earlier phases stay strict"
+    ]
+  },
+  "keyboard": {
+    "artifacts": "artifacts/keyboard_planning_demo/x11-best-effort-q",
+    "result": "PASS",
+    "checks": [
+      "Startup uses upstream URDF zero with all seven joint angles exactly zero",
+      "Both backends preview a collision-checked approach from URDF zero; second Enter executes the complete assembly",
+      "Backspace sets all seven joints exactly to zero, clears progress and preserves core XYZ/RPY",
+      "Core moves below the former Z minimum and above the former pitch maximum",
+      "Both backends preview beyond the former front plane with the real arm/core held; failed plans cannot execute",
+      "R loads the separate nonzero assembly preset and its core pose",
+      "Assembly request starts at the pre-insertion pose independently of current arm joints",
+      "Baseline first Enter and held Enter keep arm/core frozen at preview",
+      "Translucent arm/core ghost animates, pauses and scrubs while opaque arm/core remain fixed",
+      "Backend switch invalidates preview; RigidCache previews without execution",
+      "Second Enter executes, Space/focus loss hold, resume reaches complete assembly",
+      "Both backends preview both Q directions from zero and the preset; execution holds the validated negative endpoint",
+      "Backspace during planning holds exact zero joints and discards a stale successful result",
+      "Partial and zero-knot failures are displayed and second Enter cannot execute them"
+    ],
+    "zero_start_previews": [
+      {
+        "backend": "rigid_cache",
+        "state": "PREVIEW_READY",
+        "reason": "validated_full_q",
+        "knots": 599,
+        "planning_seconds": 0.746553515,
+        "q_positive_degrees": 90,
+        "q_final_degrees": -90,
+        "full_q_sweep": true,
+        "q_positive_stop": "travel_limit",
+        "q_negative_stop": "travel_limit",
+        "time": 0
+      },
+      {
+        "backend": "baseline",
+        "state": "PREVIEW_READY",
+        "reason": "validated_full_q",
+        "knots": 599,
+        "planning_seconds": 3.290533417,
+        "q_positive_degrees": 90,
+        "q_final_degrees": -90,
+        "full_q_sweep": true,
+        "q_positive_stop": "travel_limit",
+        "q_negative_stop": "travel_limit",
+        "time": 0
+      },
+      {
+        "backend": "rigid_cache",
+        "state": "PREVIEW_READY",
+        "reason": "validated_full_q",
+        "knots": 599,
+        "planning_seconds": 0.736470687,
+        "q_positive_degrees": 90,
+        "q_final_degrees": -90,
+        "full_q_sweep": true,
+        "q_positive_stop": "travel_limit",
+        "q_negative_stop": "travel_limit",
+        "time": 0
+      }
+    ],
+    "preset_previews": [
+      {
+        "backend": "baseline",
+        "state": "PREVIEW_READY",
+        "reason": "validated_full_q",
+        "knots": 487,
+        "planning_seconds": 1.851623823,
+        "q_positive_degrees": 90,
+        "q_final_degrees": -90,
+        "full_q_sweep": true,
+        "q_positive_stop": "travel_limit",
+        "q_negative_stop": "travel_limit",
+        "time": 0
+      },
+      {
+        "backend": "rigid_cache",
+        "state": "PREVIEW_READY",
+        "reason": "validated_full_q",
+        "knots": 487,
+        "planning_seconds": 0.327192984,
+        "q_positive_degrees": 90,
+        "q_final_degrees": -90,
+        "full_q_sweep": true,
+        "q_positive_stop": "travel_limit",
+        "q_negative_stop": "travel_limit",
+        "time": 0
+      }
+    ],
+    "completed": [
+      {
+        "backend": "rigid_cache",
+        "state": "COMPLETE",
+        "reason": "validated_full_q",
+        "knots": 599,
+        "planning_seconds": 0.736470687,
+        "q_positive_degrees": 90,
+        "q_final_degrees": -90,
+        "full_q_sweep": true,
+        "q_positive_stop": "travel_limit",
+        "q_negative_stop": "travel_limit",
+        "time": 29.6389563972,
+        "mechanism": [
+          0.1,
+          0.1,
+          1.57079632679,
+          -1.57079632679
+        ]
+      },
+      {
+        "backend": "rigid_cache",
+        "state": "COMPLETE",
+        "reason": "validated_full_q",
+        "knots": 487,
+        "planning_seconds": 0.327192984,
+        "q_positive_degrees": 90,
+        "q_final_degrees": -90,
+        "full_q_sweep": true,
+        "q_positive_stop": "travel_limit",
+        "q_negative_stop": "travel_limit",
+        "time": 22.7732442991,
+        "mechanism": [
+          0.1,
+          0.1,
+          1.57079632679,
+          -1.57079632679
+        ]
+      }
+    ],
+    "screenshot": "artifacts/keyboard_planning_demo/x11-best-effort-q/nominal/zero-start-backend-1-preview.png"
+  },
+  "resources": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+    "viewer_pid": 2792600,
+    "viewer_exited": true,
+    "nvidia_viewer_entries_in_four_snapshots": 0,
+    "test_viewers_and_xvfb_released": true
+  }
+}

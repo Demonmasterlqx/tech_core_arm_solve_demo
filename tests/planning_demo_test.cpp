@@ -88,9 +88,15 @@ void two_stage_contract(const DemoPreview& solved) {
     for (int i = 0; i < 10; ++i) demo.tick(.05);
     require(same(paused, demo.joints()) && paused_time == demo.execution_time(), "Pause failed to hold");
     demo.toggle_pause();
-    for (int i = 0; i < 2000 && demo.state() != DemoState::Complete; ++i) demo.tick(.05);
+    double peak = 0;
+    for (int i = 0; i < 2000 && demo.state() != DemoState::Complete; ++i) {
+        demo.tick(.05);
+        peak = std::max(peak, demo.mechanism().twist);
+    }
     require(demo.state() == DemoState::Complete && same(demo.joints(), knots.back().q), "Execution did not reach exact final knot");
-    require(std::abs(demo.mechanism().twist - radians(35)) < 1e-12, "Core mechanism not synchronized with arm");
+    require(std::abs(demo.mechanism().twist - radians(solved.result.q_final_degrees)) < 1e-12 &&
+            demo.mechanism().twist < 0 && peak >= radians(solved.result.q_positive_degrees - 1),
+            "Execution must visit the positive range and hold the actual negative endpoint");
     demo.home();
     require_zeroed(demo);
     demo.reset();
@@ -150,6 +156,8 @@ void zero_start_contract() {
     demo.enter(); finish_request(demo);
     const auto actual = request.get();
     require(actual.start.isZero(0), "Planning after Backspace must start at seven zero joints");
+    require(actual.q_sweep && actual.q_best_effort && actual.target_degrees == -90,
+            "Demo requests must explore both Q directions after joint zero");
     require(!actual.enforce_core_pose_limits && actual.core.z == pose.z && actual.core.phi == pose.phi,
             "Planner snapshot lost the freely edited core pose");
     require(demo.preview() && demo.preview()->ghost_knots.front().q.isZero(0),
@@ -303,12 +311,24 @@ int main() {
         DemoPreview accelerated;
         for (const auto method : {Method::Baseline, Method::RigidCache}) {
             auto options = demo_plan_options(); options.method = method;
-            auto result = make_demo_preview(request, options);
+            PlanningDemo demo(request, options);
+            demo.enter(); finish_request(demo);
+            require(demo.preview().has_value(), "Real demo request lost its preview");
+            auto result = *demo.preview();
             require(result.result.success && result.result.validation.rule_success, std::string("Nominal backend failed: ") + method_name(method) + "/" + result.result.reason);
+            require(result.result.q_positive_degrees > 0 && result.result.q_final_degrees < 0 &&
+                    !result.result.q_positive_stop.empty() && !result.result.q_negative_stop.empty(),
+                    "Demo must attempt both Q directions and report each stopping boundary");
+            PlanningScene audit;
+            audit.configure(demo.scenario());
+            require(validate_trajectory(audit, result.result.knots, options).valid,
+                    "Bidirectional demo trajectory failed independent uncached validation");
             require(result.candidate_path.size() == result.result.knots.size() && !result.requested_path.empty(), "Incomplete preview data");
             require(result.ghost_knots.size() == result.result.knots.size() &&
                     result.ghost_knots.back().time == result.result.knots.back().time, "Successful ghost changed trajectory timing");
-            std::cout << "PASS real " << method_name(method) << " plan, " << result.result.knots.size() << " knots\n";
+            std::cout << "PASS real " << method_name(method) << " plan, " << result.result.knots.size()
+                      << " knots, Q 0 -> " << result.result.q_positive_degrees << " -> " << result.result.q_final_degrees
+                      << ", stops " << result.result.q_positive_stop << " / " << result.result.q_negative_stop << '\n';
             if (method == Method::RigidCache) accelerated = std::move(result);
         }
         two_stage_contract(accelerated);

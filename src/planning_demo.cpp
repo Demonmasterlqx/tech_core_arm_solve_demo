@@ -107,7 +107,12 @@ PlanningDemo::PlanningDemo(Scenario initial_scenario, PlanOptions options, DemoP
         options_.motion_speed_scale <= 0 || options_.motion_speed_scale > 4)
         throw std::invalid_argument("Invalid demo planner options");
     initial_.enforce_core_pose_limits = false;
-    scenario_.enforce_core_pose_limits = false;
+    // The last stage explores both directions up to the validated range,
+    // rather than requiring the preset's single fixed Q angle.
+    initial_.target_degrees = -90;
+    initial_.q_sweep = true;
+    initial_.q_best_effort = true;
+    scenario_ = initial_;
     scene_.configure(scenario_);
     tool_site_ = mj_name2id(scene_.model(), mjOBJ_SITE, "planning_tcp");
     if (tool_site_ < 0) throw std::runtime_error("Missing planning_tcp");

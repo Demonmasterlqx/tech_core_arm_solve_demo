@@ -56,6 +56,7 @@ void usage() {
         "  --screenshot PATH.png   capture on F12 and at exit\n"
         "  --log PATH              event log, 1 MiB rotation + two backups\n"
         "Starts at the upstream URDF zero: all seven joint angles are 0 rad.\n"
+        "Final Q rotation tries both directions within +/-90 deg; keeps the validated range.\n"
         "Core XYZ/RPY controls have no pose limits. RPY = alpha, phi-90, theta\n"
         "relative to the assembly frame. Execution is the kinematic simulation.\n";
 }
@@ -283,7 +284,12 @@ private:
                 << ",\"approach_seconds\":" << r.approach_seconds
                 << ",\"approach_iterations\":" << r.approach_iterations
                 << ",\"approach_shortcuts\":" << r.approach_shortcuts
-                << ",\"preinsert_ik_attempts\":" << r.preinsert_ik_attempts;
+                << ",\"preinsert_ik_attempts\":" << r.preinsert_ik_attempts
+                << ",\"q_positive_degrees\":" << r.q_positive_degrees
+                << ",\"q_final_degrees\":" << r.q_final_degrees
+                << ",\"full_q_sweep\":" << (r.full_q_sweep ? "true" : "false")
+                << ",\"q_positive_stop\":" << json_string(r.q_positive_stop)
+                << ",\"q_negative_stop\":" << json_string(r.q_negative_stop);
         }
         if (show_ghost()) {
             out << ",\"ghost_time\":" << ghost_sample_.time << ",\"ghost_geoms\":" << ghost_geom_count_
@@ -489,6 +495,8 @@ private:
         for (int i = 0; i < 7; ++i) left << ' ' << demo_.joints()[i];
         left << "\nCore XYZ:     " << core.x() << "  " << core.y() << "  " << core.z() << " m"
              << std::setprecision(1) << "\nCore RPY (assembly): " << p.alpha << "  " << p.phi - 90 << "  " << p.theta << " deg"
+             << "\nFinal Q: both directions, up to +/-90 deg"
+             << "\nCurrent Q: " << demo_.mechanism().twist * 180 / pi << " deg"
              << std::setprecision(2) << "\nCore speed: " << options_.core_speed << " m/s, "
              << std::setprecision(0) << options_.rotation_speed << " deg/s";
         right << "ARM / WORLD AXES\nW/S: +X/-X   A/D: +Y/-Y   Q/E: +Z/-Z\n\n"
@@ -510,8 +518,13 @@ private:
             if (result.knots.empty()) bottom << "\nNo candidate: ghost holds start; amber = requested task";
             bottom << "\n" << result.reason << "\nPlan " << std::fixed << std::setprecision(3) << result.planning_seconds
                    << " s | " << result.knots.size() << " knots | motion x" << demo_.options().motion_speed_scale;
-            if (!result.knots.empty() && result.success)
+            if (!result.knots.empty() && result.success) {
                 bottom << " | execution " << std::setprecision(2) << demo_.execution_time() << " / " << result.knots.back().time << " s";
+                bottom << "\nValidated Q: 0 -> +" << std::setprecision(1) << result.q_positive_degrees
+                       << " -> 0 -> " << result.q_final_degrees << " deg"
+                       << (result.full_q_sweep ? " (full travel)" : " (partial travel)")
+                       << "\nQ+ stop: " << result.q_positive_stop << "\nQ- stop: " << result.q_negative_stop;
+            }
         }
         const auto l = left.str(), r = right.str(), b = bottom.str();
         mjr_overlay(mjFONT_NORMAL, mjGRID_TOPLEFT, rect, l.c_str(), nullptr, &context_);

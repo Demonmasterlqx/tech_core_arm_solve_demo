@@ -8,6 +8,7 @@ Output directories must be new; event logs rotate at 1 MiB in the viewer.
 import argparse
 import ctypes as C
 import json
+import math
 import os
 from pathlib import Path
 import shutil
@@ -85,7 +86,7 @@ class Run:
         self.png = output / 'current.png'
         self.stdout = (output / 'stdout.log').open('w')
         self.process = subprocess.Popen([
-            str(binary), '--case', case, '--duration', '120', '--log', str(self.events),
+            str(binary), '--case', case, '--duration', '180', '--log', str(self.events),
             '--screenshot', str(self.png)], stdout=self.stdout, stderr=subprocess.STDOUT)
         try:
             self.initial = self.wait('ready')
@@ -171,6 +172,15 @@ def zeroed(state):
     assert state['state'] == 'EDITING' and 'knots' not in state, state
 
 
+def bidirectional_q(state):
+    assert state['success'] and 0 < state['q_positive_degrees'] <= 90, state
+    assert -90 <= state['q_final_degrees'] < 0, state
+    assert state['q_positive_stop'] and state['q_negative_stop'], state
+    full = (math.isclose(state['q_positive_degrees'], 90) and
+            math.isclose(state['q_final_degrees'], -90))
+    assert state['full_q_sweep'] == full, state
+
+
 def gpu_snapshot(output, label):
     if shutil.which('nvidia-smi'):
         with (output / f'gpu-{label}.txt').open('w') as log:
@@ -204,6 +214,7 @@ def main():
         zero_preview = run.wait('state', after=offset)
         assert zero_preview['state'] == 'PREVIEW_READY' and zero_preview['requested_points'] > 0, zero_preview
         assert zero_preview['preinsert_ik_attempts'] >= 2 and zero_preview['approach_seconds'] > 0, zero_preview
+        bidirectional_q(zero_preview)
         unchanged(run.initial, run.capture('zero-start-preview.png'))
         report['zero_start_preview'] = zero_preview
         report['zero_start_previews'] = [zero_preview]
@@ -213,12 +224,14 @@ def main():
             run.tap('Return', 'enter', 'PLANNING')
             ready = run.wait('state', after=offset)
             assert ready['state'] == 'PREVIEW_READY' and ready['preinsert_ik_attempts'] >= 2, ready
+            bidirectional_q(ready)
             unchanged(run.initial, run.capture(f'zero-start-backend-{key}-preview.png'))
             report['zero_start_previews'].append(ready)
         offset = len(run.records())
         run.tap('Return', 'enter', 'EXECUTING')
         zero_complete = run.wait(state='COMPLETE', after=offset, timeout=45)
         assert zero_complete['time'] > 0 and any(abs(q) > .1 for q in zero_complete['q']), zero_complete
+        assert math.isclose(zero_complete['mechanism'][3], math.radians(ready['q_final_degrees']), abs_tol=1e-9), zero_complete
         report['zero_start_complete'] = zero_complete
         run.capture('zero-start-complete.png')
         zeroed(run.tap('BackSpace', 'home'))
@@ -296,6 +309,8 @@ def main():
         held = run.capture('baseline-preview.png')
         unchanged(initial, held)
         assert ready['backend'] == 'baseline' and held['state'] == 'PREVIEW_READY'
+        bidirectional_q(ready)
+        report['baseline_preview'] = ready
         assert ready['requested_points'] == zero_preview['requested_points'], (ready, zero_preview)
         report['checks'].append('Assembly request starts at the pre-insertion pose independently of current arm joints')
         report['checks'].append('Baseline first Enter and held Enter keep arm/core frozen at preview')
@@ -304,6 +319,7 @@ def main():
         assert changed['state'] == 'EDITING' and 'knots' not in changed
         run.tap('Return', 'enter', 'PLANNING')
         ready = run.wait(state='PREVIEW_READY', after=len(run.records())-1)
+        bidirectional_q(ready)
         time.sleep(.3)
         held = run.capture('rigid-cache-preview.png')
         unchanged(initial, held)
@@ -342,10 +358,12 @@ def main():
         gpu_snapshot(args.output, 'execution')
         offset = len(run.records())
         run.tap('space', 'pause', 'EXECUTING')
-        complete = run.wait(state='COMPLETE', after=offset, timeout=35)
+        complete = run.wait(state='COMPLETE', after=offset, timeout=45)
+        assert math.isclose(complete['mechanism'][3], math.radians(ready['q_final_degrees']), abs_tol=1e-9), complete
         report['complete'] = complete
         run.capture('complete.png')
         report['checks'].append('Second Enter executes, Space/focus loss hold, resume reaches complete assembly')
+        report['checks'].append('Both backends preview both Q directions from zero and the preset; execution holds the validated negative endpoint')
 
         zeroed(run.tap('BackSpace', 'home'))
         run.tap('r', 'reset')
