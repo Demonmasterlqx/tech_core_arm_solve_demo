@@ -1,2 +1,5 @@
 # Keep the pinned upstream URDF byte-identical, including its existing whitespace.
 reference/rm26_arm/source.urdf -text whitespace=-blank-at-eol
+
+# Preserve the pre-optimization corpus hash, including csv.writer's CRLF.
+docs/evidence/planner_quality/cases.csv -text whitespace=cr-at-eol

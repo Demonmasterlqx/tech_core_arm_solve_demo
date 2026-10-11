@@ -1,0 +1,18 @@
+{
+  "code_commit": "8859a1cfcf338f321ca8933c5acd33e95f078757",
+  "artifacts": {
+    "build/rm26_demo": "58a86f4744ab448d31359e9e3fa943c5f8df41c1c6eb09bb45f8e9f48486c312",
+    "src/planning_demo_main.cpp": "b40b5d4b7023ab624db511a10be48d651cf65ef7757818a5dd9cf72794ac179a",
+    "src/planning.cpp": "2950fe7d6b61692c458deee40958635e074da1f80f158c68d17162fced42f2cc",
+    "src/planning_scene.cpp": "289ac5a97c9a10e95a78a0ddd6f3d82015131f54b11c3ec51b70d280f7300c25",
+    "src/planning_ik.cpp": "eb2fab55f02e22869f3b3dd5eed35312ac944e7bbd06dace5d923a7b65c677aa",
+    "include/tech_core/planning.hpp": "1a661157dc48191d1d3c542c1bcfeb5aff4272bc2ba0c6a94b80390a68d43347",
+    "artifacts/keyboard_planning_demo/posture-v7-x11/report.json": "760afb560192daee140055416e9ee595e30f9f05b31378b039738dc0658b3d71",
+    "artifacts/keyboard_planning_demo/posture-v7-x11/gpu-before.txt": "5260d43f64790f35e02b0d3993eab6025bd3f55ade13afb0888c10e8fb8371e6",
+    "artifacts/keyboard_planning_demo/posture-v7-x11/gpu-execution.txt": "5e0d4555d62d98048f0d01ee01e59c694acf341a5f5a5f645c87ebeefb40e31c",
+    "artifacts/keyboard_planning_demo/posture-v7-x11/gpu-shutdown.txt": "fde0bcc4885a6a1ed2cd11c525672c07fb87438e596f2008c314d31cf542ea08",
+    "artifacts/keyboard_planning_demo/posture-v7-x11/gpu-startup.txt": "814ecd41a7bc53ef6b61813a90e0b1c7ab4195ca0b456bb4da6fcaba48b778b9"
+  },
+  "tests": "24/24 CTest; added approach wrist regression subsequently passed",
+  "runtime": "X11/XTest passed; Mesa llvmpipe; test viewer and its Xvfb exited; pre-existing user viewer kept running"
+}

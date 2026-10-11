@@ -4,6 +4,8 @@
 
 **参考的核心是工具方向约束的任务雅可比 IK，以及沿已给定轨迹逐点求解。它没有实现三级兑换路径生成、避障 RRT、速度/加速度受限的时间参数化。** 三级任务采样、碰撞场景、时间约束和基准计时均须明确标为本项目扩展。
 
+当前 Demo 在上述求解器之上还使用附近预插入姿态搜索、有界 QP 失败恢复和装配插值细化，两个后端共享碰撞缓存。其调用参数和成功率应查阅 [当前评测](planner_quality.md)，不要直接套用本文的原始上游基线参数。
+
 ## 1. 快照与许可证
 
 [source_manifest.json](../reference/planning_upstream/source_manifest.json) 保存每个文件的原始路径、固定 SHA raw URL、字节数、SHA-256 和 Git blob SHA-1。选择性归档包括完整 `axis_free_rotate_ik` 包、完整 `handle_arm` 包、相关机械臂报告，以及 v3 MoveIt launch / joint-limit 配置；没有下载整个上游仓库、模型权重或运行缓存。上游 tree API 返回 `truncated=false`。

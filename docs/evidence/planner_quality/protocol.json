@@ -1,0 +1,47 @@
+{
+  "bounds_xyz_yaw_phi_roll": [
+    [
+      -0.29,
+      0.11
+    ],
+    [
+      0,
+      0.4
+    ],
+    [
+      0.3,
+      0.7
+    ],
+    [
+      -90,
+      90
+    ],
+    [
+      0,
+      180
+    ],
+    [
+      -90,
+      90
+    ]
+  ],
+  "phi_definition": "pitch + 90 degrees",
+  "physical_installation": "Demo defaults: assembly (0.3,0.2,-0.25), yaw pi, robot base_z 0",
+  "development_poses": 32,
+  "confirmation_poses": 100,
+  "starts": [
+    "seven joint zero",
+    "assembly preset"
+  ],
+  "sampling": "Independent deterministic six-dimensional Latin hypercubes fixed before optimization",
+  "primary_population": "All confirmation demo requests, separately per backend and starting posture. Reachability certificates are reported separately; no failure is assumed unreachable",
+  "success": "Original best-effort Q contract, mandatory insertion/lift/P complete, full uncached revalidation",
+  "target_success_rate": 0.9,
+  "request_deadline_seconds": 5,
+  "joint_metric": "Approach total absolute joint travel and final joint travel are primary; paired on common successful requests. Mandatory phases separately from optional Q travel",
+  "q_metrics": "Positive, negative and total Q travel; no motion reduction claim by truncating Q",
+  "legacy_regression": "All 40 original poses and original installation/start; reported separately",
+  "negative_controls": "Blocked and unreachable requests excluded from reasonable-pose denominator by construction, required to reject",
+  "online_seed_policy": "No saved per-pose solution, no cross-request warm start",
+  "suite_sha256": "93a563d4cb6756b1d578df8b2890208c9e766306b3a176b812e703e5f7e96e89"
+}
