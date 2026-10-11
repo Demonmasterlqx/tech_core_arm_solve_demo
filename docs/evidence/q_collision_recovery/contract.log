@@ -1,0 +1,24 @@
+19/24 Testing: planning_contract
+19/24 Test: planning_contract
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build/planning_contract_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build
+"planning_contract" start time: Oct 11 18:50 CST
+Output:
+----------------------------------------------------------
+contract structural/phase/position negative tests passed
+contract NaN preflight tests passed
+contract nonadjacent collision detected: j1_link_visual/j5_link_visual distance=-2.66903e-05 attempts=9
+complete baseline and obstacle revalidation passed
+Collision-aware pre-insertion IK and joint connection passed for both backends
+Q sweep endpoint and order contract tests passed
+Best-effort Q collision stop and strict-mode isolation passed; peak=63 final=-90
+Local Q collision recovery baseline Q=90/-90 preinsert wrist=0 time=2.04319 dense samples=3721
+Local Q collision recovery rigid_cache Q=90/-90 preinsert wrist=0 time=1.84232 dense samples=3714
+planning contract negative tests passed
+<end of output>
+Test time =  33.00 sec
+----------------------------------------------------------
+Test Passed.
+"planning_contract" end time: Oct 11 18:51 CST
+"planning_contract" time elapsed: 00:00:33
+----------------------------------------------------------

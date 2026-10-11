@@ -1,0 +1,1230 @@
+{
+  "checks": [
+    "Startup uses upstream URDF zero with all seven joint angles exactly zero",
+    "Both backends preview a collision-checked approach from URDF zero; second Enter executes the complete assembly",
+    "Backspace sets all seven joints exactly to zero, clears progress and preserves core XYZ/RPY",
+    "Core moves below the former Z minimum and above the former pitch maximum",
+    "Both backends preview beyond the former front plane with the real arm/core held; failed plans cannot execute",
+    "R loads the separate nonzero assembly preset and its core pose",
+    "Assembly request starts at the pre-insertion pose independently of current arm joints",
+    "Baseline first Enter and held Enter keep arm/core frozen at preview",
+    "Translucent arm/core ghost animates, pauses and scrubs while opaque arm/core remain fixed",
+    "Backend switch invalidates preview; RigidCache previews without execution",
+    "Second Enter executes, Space/focus loss hold, resume reaches complete assembly",
+    "Both backends preview both Q directions from zero and the preset; execution holds the validated negative endpoint",
+    "Backspace during planning holds exact zero joints and discards a stale successful result",
+    "Partial and zero-knot failures are displayed and second Enter cannot execute them"
+  ],
+  "arm_directions": [
+    {
+      "key": "w",
+      "delta_m": [
+        0.021998646582000014,
+        -1.34888888333843e-05,
+        8.975184499998567e-05
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "s",
+      "delta_m": [
+        -0.022378808651999982,
+        -2.5952045535184298e-05,
+        0.00010175176800003571
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "a",
+      "delta_m": [
+        -3.726948600002444e-05,
+        0.023498272726043316,
+        -1.3202220000008147e-06
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "d",
+      "delta_m": [
+        -4.989319800002834e-05,
+        -0.022134870040556684,
+        2.9242700000375876e-07
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "q",
+      "delta_m": [
+        -4.448214399999095e-05,
+        2.10458415228157e-05,
+        0.023640466299000018
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "e",
+      "delta_m": [
+        -3.1969181000013336e-05,
+        1.9266851360315703e-05,
+        -0.023516877285999993
+      ],
+      "release_holds": true
+    }
+  ],
+  "core_controls": [
+    {
+      "key": "i",
+      "delta": [
+        0.0577028604,
+        -2.77555756156e-17,
+        0.0
+      ]
+    },
+    {
+      "key": "k",
+      "delta": [
+        -0.05786187800000003,
+        2.77555756156e-17,
+        0.0
+      ]
+    },
+    {
+      "key": "j",
+      "delta": [
+        0.0,
+        0.0577227332,
+        0.0
+      ]
+    },
+    {
+      "key": "l",
+      "delta": [
+        0.0,
+        -0.0576120298,
+        0.0
+      ]
+    },
+    {
+      "key": "u",
+      "delta": [
+        0.0,
+        0.0,
+        0.05768084379999999
+      ]
+    },
+    {
+      "key": "o",
+      "delta": [
+        0.0,
+        0.0,
+        -0.057606290999999976
+      ]
+    },
+    {
+      "key": "Shift+i",
+      "delta": [
+        17.26453158,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "Shift+k",
+      "delta": [
+        -17.35119348,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "Shift+l",
+      "delta": [
+        0.0,
+        -17.33526462,
+        0
+      ]
+    },
+    {
+      "key": "Shift+j",
+      "delta": [
+        0.0,
+        15.7626519,
+        0
+      ]
+    },
+    {
+      "key": "Shift+u",
+      "delta": [
+        0.0,
+        0.0,
+        17.31593538
+      ]
+    },
+    {
+      "key": "Shift+o",
+      "delta": [
+        0.0,
+        0.0,
+        -17.36806164
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "event": "enter",
+      "key": -1,
+      "state": "PREVIEW_FAILED",
+      "backend": "rigid_cache",
+      "revision": 2,
+      "time": 0,
+      "tcp": [
+        0.329999999599,
+        -1.57652433157e-08,
+        0.249999998658
+      ],
+      "q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ],
+      "core_world": [
+        0.4,
+        0,
+        0.45
+      ],
+      "core_rpy": [
+        0,
+        0,
+        0
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Failed candidate cannot execute. Edit the scene or press Backspace",
+      "success": false,
+      "reason": "ik_flip_202_iteration limit",
+      "knots": 252,
+      "requested_points": 482,
+      "candidate_points": 252,
+      "planning_seconds": 0.480323632,
+      "approach_seconds": 0.073360654,
+      "approach_iterations": 0,
+      "approach_shortcuts": 0,
+      "preinsert_ik_attempts": 114,
+      "posture_candidates": 0,
+      "planning_attempts": 1,
+      "posture_search_seconds": 0.397460029,
+      "q_positive_degrees": 0,
+      "q_final_degrees": 0,
+      "full_q_sweep": false,
+      "q_positive_stop": "",
+      "q_negative_stop": "",
+      "preinsert_joint_change_degrees": 171.783481051,
+      "preinsert_last_joint_change_degrees": 56.5190368667,
+      "ghost_time": 8.51816766497,
+      "ghost_geoms": 36,
+      "ghost_paused": true,
+      "ghost_q": [
+        -0.507564182404,
+        1.81865799841,
+        1.93762023997,
+        1.9600095482,
+        -0.828005541755,
+        -1.06266194847,
+        3.75768398422
+      ]
+    },
+    {
+      "event": "enter",
+      "key": -1,
+      "state": "PREVIEW_FAILED",
+      "backend": "rigid_cache",
+      "revision": 2,
+      "time": 0,
+      "tcp": [
+        0.329999999599,
+        -1.57652433157e-08,
+        0.249999998658
+      ],
+      "q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ],
+      "core_world": [
+        0.39,
+        0,
+        0.3
+      ],
+      "core_rpy": [
+        0,
+        0,
+        0
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Failed candidate cannot execute. Edit the scene or press Backspace",
+      "success": false,
+      "reason": "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000",
+      "knots": 0,
+      "requested_points": 482,
+      "candidate_points": 0,
+      "planning_seconds": 0.00090326,
+      "approach_seconds": 0,
+      "approach_iterations": 0,
+      "approach_shortcuts": 0,
+      "preinsert_ik_attempts": 0,
+      "posture_candidates": 0,
+      "planning_attempts": 0,
+      "posture_search_seconds": 0,
+      "q_positive_degrees": 0,
+      "q_final_degrees": 0,
+      "full_q_sweep": false,
+      "q_positive_stop": "",
+      "q_negative_stop": "",
+      "ghost_time": 0,
+      "ghost_geoms": 36,
+      "ghost_paused": false,
+      "ghost_q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ]
+    }
+  ],
+  "viewer_pid": 3565453,
+  "startup": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "EDITING",
+    "backend": "rigid_cache",
+    "revision": 1,
+    "time": 0,
+    "tcp": [
+      -0.0743385955027,
+      0.0627490093756,
+      0.326294350133
+    ],
+    "q": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "URDF joint zero; core pose preserved. R: assembly preset; Enter: plan"
+  },
+  "zero_start_preview": {
+    "event": "state",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "backend": "rigid_cache",
+    "revision": 1,
+    "time": 0,
+    "tcp": [
+      -0.0743385955027,
+      0.0627490093756,
+      0.326294350133
+    ],
+    "q": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated_full_q",
+    "knots": 613,
+    "requested_points": 482,
+    "candidate_points": 613,
+    "planning_seconds": 0.73099086,
+    "approach_seconds": 0.165347402,
+    "approach_iterations": 0,
+    "approach_shortcuts": 0,
+    "preinsert_ik_attempts": 26,
+    "posture_candidates": 2,
+    "planning_attempts": 1,
+    "posture_search_seconds": 0.08292142,
+    "q_positive_degrees": 90,
+    "q_final_degrees": -90,
+    "full_q_sweep": true,
+    "q_positive_stop": "travel_limit",
+    "q_negative_stop": "travel_limit",
+    "preinsert_joint_change_degrees": 455.554208836,
+    "preinsert_last_joint_change_degrees": 28.6478897565,
+    "ghost_time": 0,
+    "ghost_geoms": 0,
+    "ghost_paused": false,
+    "ghost_q": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "zero_start_previews": [
+    {
+      "event": "state",
+      "key": -1,
+      "state": "PREVIEW_READY",
+      "backend": "rigid_cache",
+      "revision": 1,
+      "time": 0,
+      "tcp": [
+        -0.0743385955027,
+        0.0627490093756,
+        0.326294350133
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "core_world": [
+        0.39,
+        0,
+        0.25
+      ],
+      "core_rpy": [
+        0,
+        0,
+        0
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Preview only - arm held. Enter: execute",
+      "success": true,
+      "reason": "validated_full_q",
+      "knots": 613,
+      "requested_points": 482,
+      "candidate_points": 613,
+      "planning_seconds": 0.73099086,
+      "approach_seconds": 0.165347402,
+      "approach_iterations": 0,
+      "approach_shortcuts": 0,
+      "preinsert_ik_attempts": 26,
+      "posture_candidates": 2,
+      "planning_attempts": 1,
+      "posture_search_seconds": 0.08292142,
+      "q_positive_degrees": 90,
+      "q_final_degrees": -90,
+      "full_q_sweep": true,
+      "q_positive_stop": "travel_limit",
+      "q_negative_stop": "travel_limit",
+      "preinsert_joint_change_degrees": 455.554208836,
+      "preinsert_last_joint_change_degrees": 28.6478897565,
+      "ghost_time": 0,
+      "ghost_geoms": 0,
+      "ghost_paused": false,
+      "ghost_q": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "event": "state",
+      "key": -1,
+      "state": "PREVIEW_READY",
+      "backend": "baseline",
+      "revision": 2,
+      "time": 0,
+      "tcp": [
+        -0.0743385955027,
+        0.0627490093756,
+        0.326294350133
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "core_world": [
+        0.39,
+        0,
+        0.25
+      ],
+      "core_rpy": [
+        0,
+        0,
+        0
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Preview only - arm held. Enter: execute",
+      "success": true,
+      "reason": "validated_full_q",
+      "knots": 613,
+      "requested_points": 482,
+      "candidate_points": 613,
+      "planning_seconds": 0.76797794,
+      "approach_seconds": 0.16757539,
+      "approach_iterations": 0,
+      "approach_shortcuts": 0,
+      "preinsert_ik_attempts": 26,
+      "posture_candidates": 2,
+      "planning_attempts": 1,
+      "posture_search_seconds": 0.104337455,
+      "q_positive_degrees": 90,
+      "q_final_degrees": -90,
+      "full_q_sweep": true,
+      "q_positive_stop": "travel_limit",
+      "q_negative_stop": "travel_limit",
+      "preinsert_joint_change_degrees": 455.554208836,
+      "preinsert_last_joint_change_degrees": 28.6478897565,
+      "ghost_time": 0,
+      "ghost_geoms": 0,
+      "ghost_paused": false,
+      "ghost_q": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "event": "state",
+      "key": -1,
+      "state": "PREVIEW_READY",
+      "backend": "rigid_cache",
+      "revision": 3,
+      "time": 0,
+      "tcp": [
+        -0.0743385955027,
+        0.0627490093756,
+        0.326294350133
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "core_world": [
+        0.39,
+        0,
+        0.25
+      ],
+      "core_rpy": [
+        0,
+        0,
+        0
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Preview only - arm held. Enter: execute",
+      "success": true,
+      "reason": "validated_full_q",
+      "knots": 613,
+      "requested_points": 482,
+      "candidate_points": 613,
+      "planning_seconds": 0.732900767,
+      "approach_seconds": 0.16565177,
+      "approach_iterations": 0,
+      "approach_shortcuts": 0,
+      "preinsert_ik_attempts": 26,
+      "posture_candidates": 2,
+      "planning_attempts": 1,
+      "posture_search_seconds": 0.083320422,
+      "q_positive_degrees": 90,
+      "q_final_degrees": -90,
+      "full_q_sweep": true,
+      "q_positive_stop": "travel_limit",
+      "q_negative_stop": "travel_limit",
+      "preinsert_joint_change_degrees": 455.554208836,
+      "preinsert_last_joint_change_degrees": 28.6478897565,
+      "ghost_time": 0,
+      "ghost_geoms": 0,
+      "ghost_paused": false,
+      "ghost_q": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "zero_start_complete": {
+    "event": "state",
+    "key": -1,
+    "state": "COMPLETE",
+    "backend": "rigid_cache",
+    "revision": 3,
+    "time": 33.1840216416,
+    "tcp": [
+      0.45099999936,
+      -0.068999999729,
+      0.458000000062
+    ],
+    "q": [
+      -0.390326960439,
+      1.68244946293,
+      2.02220148791,
+      3.37811888637,
+      0.416769155176,
+      0.899262291675,
+      -1.95056765165
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0.1,
+      0.1,
+      1.57079632679,
+      -1.57079632679
+    ],
+    "message": "Assembly trajectory complete. Backspace: zero joints; R: assembly preset",
+    "success": true,
+    "reason": "validated_full_q",
+    "knots": 613,
+    "requested_points": 482,
+    "candidate_points": 613,
+    "planning_seconds": 0.732900767,
+    "approach_seconds": 0.16565177,
+    "approach_iterations": 0,
+    "approach_shortcuts": 0,
+    "preinsert_ik_attempts": 26,
+    "posture_candidates": 2,
+    "planning_attempts": 1,
+    "posture_search_seconds": 0.083320422,
+    "q_positive_degrees": 90,
+    "q_final_degrees": -90,
+    "full_q_sweep": true,
+    "q_positive_stop": "travel_limit",
+    "q_negative_stop": "travel_limit",
+    "preinsert_joint_change_degrees": 455.554208836,
+    "preinsert_last_joint_change_degrees": 28.6478897565
+  },
+  "assembly_preset": {
+    "event": "reset",
+    "key": -1,
+    "state": "EDITING",
+    "backend": "rigid_cache",
+    "revision": 5,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Assembly preset loaded. Backspace: URDF zero; Enter: plan and preview"
+  },
+  "joint_zero": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "EDITING",
+    "backend": "rigid_cache",
+    "revision": 230,
+    "time": 0,
+    "tcp": [
+      -0.0743385955027,
+      0.0627490093756,
+      0.326294350133
+    ],
+    "q": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "core_world": [
+      0.3898409824,
+      0.0001107034,
+      0.2500745528
+    ],
+    "core_rpy": [
+      -0.0866619,
+      -1.57261272,
+      -0.05212626
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "URDF joint zero; core pose preserved. R: assembly preset; Enter: plan"
+  },
+  "free_core": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "EDITING",
+    "backend": "rigid_cache",
+    "revision": 260,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.1717232188
+    ],
+    "core_rpy": [
+      0,
+      22.19941182,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Core moved. Enter: plan again"
+  },
+  "free_core_previews": [
+    {
+      "event": "state",
+      "key": -1,
+      "state": "PREVIEW_FAILED",
+      "backend": "baseline",
+      "revision": 301,
+      "time": 0,
+      "tcp": [
+        0.329999999599,
+        -1.57652433157e-08,
+        0.249999998658
+      ],
+      "q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ],
+      "core_world": [
+        0.1851253534,
+        2.77555756156e-17,
+        0.25
+      ],
+      "core_rpy": [
+        0,
+        0,
+        0
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Planning failed - preview only; execution blocked",
+      "success": false,
+      "reason": "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=0.000326",
+      "knots": 0,
+      "requested_points": 482,
+      "candidate_points": 0,
+      "planning_seconds": 0.000871473,
+      "approach_seconds": 0,
+      "approach_iterations": 0,
+      "approach_shortcuts": 0,
+      "preinsert_ik_attempts": 0,
+      "posture_candidates": 0,
+      "planning_attempts": 0,
+      "posture_search_seconds": 0,
+      "q_positive_degrees": 0,
+      "q_final_degrees": 0,
+      "full_q_sweep": false,
+      "q_positive_stop": "",
+      "q_negative_stop": "",
+      "ghost_time": 0,
+      "ghost_geoms": 0,
+      "ghost_paused": false,
+      "ghost_q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ]
+    },
+    {
+      "event": "state",
+      "key": -1,
+      "state": "PREVIEW_FAILED",
+      "backend": "rigid_cache",
+      "revision": 302,
+      "time": 0,
+      "tcp": [
+        0.329999999599,
+        -1.57652433157e-08,
+        0.249999998658
+      ],
+      "q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ],
+      "core_world": [
+        0.1851253534,
+        2.77555756156e-17,
+        0.25
+      ],
+      "core_rpy": [
+        0,
+        0,
+        0
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Planning failed - preview only; execution blocked",
+      "success": false,
+      "reason": "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=0.000326",
+      "knots": 0,
+      "requested_points": 482,
+      "candidate_points": 0,
+      "planning_seconds": 0.000864793,
+      "approach_seconds": 0,
+      "approach_iterations": 0,
+      "approach_shortcuts": 0,
+      "preinsert_ik_attempts": 0,
+      "posture_candidates": 0,
+      "planning_attempts": 0,
+      "posture_search_seconds": 0,
+      "q_positive_degrees": 0,
+      "q_final_degrees": 0,
+      "full_q_sweep": false,
+      "q_positive_stop": "",
+      "q_negative_stop": "",
+      "ghost_time": 0,
+      "ghost_geoms": 0,
+      "ghost_paused": false,
+      "ghost_q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ]
+    }
+  ],
+  "baseline_preview": {
+    "event": "state",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "backend": "baseline",
+    "revision": 304,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated_full_q",
+    "knots": 521,
+    "requested_points": 482,
+    "candidate_points": 521,
+    "planning_seconds": 0.659901532,
+    "approach_seconds": 0.012465511,
+    "approach_iterations": 0,
+    "approach_shortcuts": 0,
+    "preinsert_ik_attempts": 25,
+    "posture_candidates": 2,
+    "planning_attempts": 1,
+    "posture_search_seconds": 0.118434515,
+    "q_positive_degrees": 90,
+    "q_final_degrees": -90,
+    "full_q_sweep": true,
+    "q_positive_stop": "travel_limit",
+    "q_negative_stop": "travel_limit",
+    "preinsert_joint_change_degrees": 16.2093588416,
+    "preinsert_last_joint_change_degrees": 5.15970801435,
+    "ghost_time": 0,
+    "ghost_geoms": 0,
+    "ghost_paused": false,
+    "ghost_q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ]
+  },
+  "ghost_preview": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "backend": "rigid_cache",
+    "revision": 305,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated_full_q",
+    "knots": 521,
+    "requested_points": 482,
+    "candidate_points": 521,
+    "planning_seconds": 0.647320139,
+    "approach_seconds": 0.012466672,
+    "approach_iterations": 0,
+    "approach_shortcuts": 0,
+    "preinsert_ik_attempts": 25,
+    "posture_candidates": 2,
+    "planning_attempts": 1,
+    "posture_search_seconds": 0.11191605,
+    "q_positive_degrees": 90,
+    "q_final_degrees": -90,
+    "full_q_sweep": true,
+    "q_positive_stop": "travel_limit",
+    "q_negative_stop": "travel_limit",
+    "preinsert_joint_change_degrees": 16.2666992551,
+    "preinsert_last_joint_change_degrees": 5.12014338027,
+    "ghost_time": 14.1461611854,
+    "ghost_geoms": 36,
+    "ghost_paused": true,
+    "ghost_q": [
+      0.00110914832792,
+      1.50563496144,
+      1.391629061,
+      1.38556236905,
+      -0.575750760253,
+      0.538865218332,
+      3.62562570823
+    ]
+  },
+  "successful_preview": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "backend": "rigid_cache",
+    "revision": 305,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated_full_q",
+    "knots": 521,
+    "requested_points": 482,
+    "candidate_points": 521,
+    "planning_seconds": 0.647320139,
+    "approach_seconds": 0.012466672,
+    "approach_iterations": 0,
+    "approach_shortcuts": 0,
+    "preinsert_ik_attempts": 25,
+    "posture_candidates": 2,
+    "planning_attempts": 1,
+    "posture_search_seconds": 0.11191605,
+    "q_positive_degrees": 90,
+    "q_final_degrees": -90,
+    "full_q_sweep": true,
+    "q_positive_stop": "travel_limit",
+    "q_negative_stop": "travel_limit",
+    "preinsert_joint_change_degrees": 16.2666992551,
+    "preinsert_last_joint_change_degrees": 5.12014338027,
+    "ghost_time": 1.35969375424,
+    "ghost_geoms": 36,
+    "ghost_paused": false,
+    "ghost_q": [
+      -0.570876402172,
+      2.34193218911,
+      1.26268499637,
+      1.56524048895,
+      -1.65924693321,
+      -0.844868645893,
+      2.30137016463
+    ]
+  },
+  "complete": {
+    "event": "state",
+    "key": -1,
+    "state": "COMPLETE",
+    "backend": "rigid_cache",
+    "revision": 305,
+    "time": 23.8363500609,
+    "tcp": [
+      0.450999999614,
+      -0.0689999998937,
+      0.458000000049
+    ],
+    "q": [
+      -0.364264597108,
+      1.64049683293,
+      1.70187244719,
+      3.4253945677,
+      -0.176865816034,
+      1.15270908789,
+      4.26859237018
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0.1,
+      0.1,
+      1.57079632679,
+      -1.57079632679
+    ],
+    "message": "Assembly trajectory complete. Backspace: zero joints; R: assembly preset",
+    "success": true,
+    "reason": "validated_full_q",
+    "knots": 521,
+    "requested_points": 482,
+    "candidate_points": 521,
+    "planning_seconds": 0.647320139,
+    "approach_seconds": 0.012466672,
+    "approach_iterations": 0,
+    "approach_shortcuts": 0,
+    "preinsert_ik_attempts": 25,
+    "posture_candidates": 2,
+    "planning_attempts": 1,
+    "posture_search_seconds": 0.11191605,
+    "q_positive_degrees": 90,
+    "q_final_degrees": -90,
+    "full_q_sweep": true,
+    "q_positive_stop": "travel_limit",
+    "q_negative_stop": "travel_limit",
+    "preinsert_joint_change_degrees": 16.2666992551,
+    "preinsert_last_joint_change_degrees": 5.12014338027
+  },
+  "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+  "result": "PASS"
+}

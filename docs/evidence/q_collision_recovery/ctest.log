@@ -1,0 +1,58 @@
+[OUTPUT]
+Internal ctest changing into directory: /data/home/sim6g/code/tech_core_arm_solve/build
+
+[HANDLER_OUTPUT]
+Test project /data/home/sim6g/code/tech_core_arm_solve/build
+
+      Start 19: planning_contract
+      Start 22: planning_demo_contract
+ 1/24 Test #22: planning_demo_contract ...........   Passed    6.11 sec
+      Start  7: demo_level_4
+ 2/24 Test  #7: demo_level_4 .....................   Passed    2.22 sec
+      Start 20: planning_approach
+ 3/24 Test #20: planning_approach ................   Passed   13.81 sec
+      Start  9: demo_q_negative_limit
+ 4/24 Test  #9: demo_q_negative_limit ............   Passed    1.52 sec
+      Start  8: demo_q_positive_limit
+ 5/24 Test  #8: demo_q_positive_limit ............   Passed    1.51 sec
+      Start 10: demo_tilted_station
+ 6/24 Test #10: demo_tilted_station ..............   Passed    1.51 sec
+      Start  5: demo_level_2
+ 7/24 Test  #5: demo_level_2 .....................   Passed    1.53 sec
+      Start  6: demo_level_3
+ 8/24 Test  #6: demo_level_3 .....................   Passed    1.51 sec
+      Start  4: demo_level_1
+ 9/24 Test  #4: demo_level_1 .....................   Passed    1.49 sec
+      Start  2: physics
+10/24 Test  #2: physics ..........................   Passed    1.27 sec
+      Start 24: planning_demo_invalid_backend
+11/24 Test #19: planning_contract ................   Passed   33.00 sec
+      Start 12: rm26_arm_control
+12/24 Test #24: planning_demo_invalid_backend ....   Passed    0.66 sec
+      Start 14: rm26_arm_demo
+13/24 Test #12: rm26_arm_control .................   Passed    0.54 sec
+      Start 15: rm26_arm_cartesian
+14/24 Test #14: rm26_arm_demo ....................   Passed    0.51 sec
+      Start 13: rm26_arm_idle
+15/24 Test #15: rm26_arm_cartesian ...............   Passed    0.50 sec
+      Start  3: geometry_fidelity
+16/24 Test #13: rm26_arm_idle ....................   Passed    0.50 sec
+      Start 21: planning_scene
+17/24 Test  #3: geometry_fidelity ................   Passed    0.46 sec
+      Start 11: cli_invalid_level
+18/24 Test #11: cli_invalid_level ................   Passed    0.00 sec
+      Start 17: rm26_arm_conflicting_commands
+19/24 Test #17: rm26_arm_conflicting_commands ....   Passed    0.00 sec
+      Start 16: rm26_arm_invalid_velocity
+20/24 Test #16: rm26_arm_invalid_velocity ........   Passed    0.00 sec
+      Start 23: planning_demo_help
+21/24 Test #23: planning_demo_help ...............   Passed    0.00 sec
+      Start  1: rules
+22/24 Test  #1: rules ............................   Passed    0.00 sec
+      Start 18: planning_ik
+23/24 Test #18: planning_ik ......................   Passed    0.00 sec
+24/24 Test #21: planning_scene ...................   Passed    0.70 sec
+
+100% tests passed, 0 tests failed out of 24
+
+Total Test time (real) =  34.86 sec

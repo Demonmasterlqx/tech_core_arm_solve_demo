@@ -1,0 +1,46 @@
+{
+  "original-baseline": {
+    "method": "baseline",
+    "split": "all",
+    "cpu": 2,
+    "CUDA_VISIBLE_DEVICES": "",
+    "git_head": "e94db8e91f545ba2162fc7cff4b3d5e1d995f55b",
+    "source_hashes": {},
+    "binary": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/planner_quality/posture-v7-all-baseline/planner",
+    "binary_sha256": "882211329b5174221aa4faa9bab8b4fba29ae8190f36255699a31fc6d7b5f2dc",
+    "suite_sha256": "3c27f32ec35314ccecc33275607562b68910b278860fa9763fffff5a116e3534",
+    "timeout_seconds": 5.0,
+    "command": [
+      "/data/home/sim6g/code/tech_core_arm_solve/artifacts/planner_quality/posture-v7-all-baseline/planner",
+      "/data/home/sim6g/code/tech_core_arm_solve/artifacts/q_right_turn_20261011/suite/cases.csv",
+      "/data/home/sim6g/code/tech_core_arm_solve/artifacts/q_right_turn_20261011/original-baseline/results",
+      "baseline",
+      "all",
+      "5.0"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 4.126310838386416
+  },
+  "original-rigid": {
+    "method": "rigid_cache",
+    "split": "all",
+    "cpu": 0,
+    "CUDA_VISIBLE_DEVICES": "",
+    "git_head": "e94db8e91f545ba2162fc7cff4b3d5e1d995f55b",
+    "source_hashes": {},
+    "binary": "/data/home/sim6g/code/tech_core_arm_solve/artifacts/planner_quality/posture-v7-all-rigid/planner",
+    "binary_sha256": "882211329b5174221aa4faa9bab8b4fba29ae8190f36255699a31fc6d7b5f2dc",
+    "suite_sha256": "3c27f32ec35314ccecc33275607562b68910b278860fa9763fffff5a116e3534",
+    "timeout_seconds": 5.0,
+    "command": [
+      "/data/home/sim6g/code/tech_core_arm_solve/artifacts/planner_quality/posture-v7-all-rigid/planner",
+      "/data/home/sim6g/code/tech_core_arm_solve/artifacts/q_right_turn_20261011/suite/cases.csv",
+      "/data/home/sim6g/code/tech_core_arm_solve/artifacts/q_right_turn_20261011/original-rigid/results",
+      "rigid_cache",
+      "all",
+      "5.0"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 5.417221523821354
+  }
+}

@@ -571,7 +571,8 @@ static PlanResult plan_candidate(PlanningScene& scene,const Scenario& scenario,c
         const auto fallback_knots=result.knots;
         const auto fallback_validation=result.validation;
         result.knots.resize(prefix_size);
-        double positive_checks=0,negative_checks=0;
+        double positive_checks=0,negative_checks=0,repair_seconds=0;
+        const double repair_budget=.15*options.timeout_seconds;
         // Reserve measured validation work for the final complete pass,
         // including the reverse of the positive leg, plus return overhead.
         auto growth_stop=[&]() {
@@ -605,9 +606,61 @@ static PlanResult plan_candidate(PlanningScene& scene,const Scenario& scenario,c
                 next.q=solved.q;
                 next.time=result.knots.back().time+interval_seconds(result.knots.back(),next,options.motion_speed_scale);
                 ValidationResult check;const auto check_start=Clock::now();
-                const bool valid=validate_segment(scene,result.knots.back(),next,result.knots.size(),options,check,growth_stop);
-                const double spent=seconds(check_start);checked_seconds+=spent;result.validation_seconds+=spent;
+                bool valid=validate_segment(scene,result.knots.back(),next,result.knots.size(),options,check,growth_stop);
+                double accepted_check_seconds=seconds(check_start);
+                result.validation_seconds+=accepted_check_seconds;
+                if(!valid && recover && check.reason.rfind("collision_",0)==0 &&
+                   repair_seconds<repair_budget && !growth_stop()) {
+                    // A colliding nearest IK branch is not a task-space travel
+                    // limit. Explore the two redundant directions locally,
+                    // then project back onto this same next Q target. Retain
+                    // the prefix and require the original dense segment check.
+                    const auto repair_begin=Clock::now();
+                    auto repair_stop=[&] {return growth_stop() ||
+                        repair_seconds+seconds(repair_begin)>=repair_budget;};
+                    auto repair_ik=qik;repair_ik.should_stop=repair_stop;
+                    Eigen::Vector3d p;Eigen::Matrix3d r;Jacobian j;
+                    scene.forward(solved.q,p,r,&j);const auto axis=r.col(2).eval();
+                    std::vector<JointVector> basis;
+                    for(int joint:{6,3,0,4,1,2,5}) {
+                        JointVector direction=JointVector::Unit(joint)-predict_task_step(
+                            j,axis,j.topRows<3>().col(joint),j.bottomRows<3>().col(joint));
+                        for(const auto& b:basis)direction-=b.dot(direction)*b;
+                        if(direction.norm()<1e-5)continue;
+                        basis.push_back(direction.normalized());
+                        if(basis.size()==2)break;
+                    }
+                    std::vector<JointVector> directions;
+                    for(const auto& b:basis) {directions.push_back(b);directions.push_back(-b);}
+                    if(basis.size()==2)for(double a:{-1.,1.})for(double b:{-1.,1.})
+                        directions.push_back((a*basis[0]+b*basis[1]).normalized());
+                    for(double radius:{.025,.05,.1,.2}) {
+                        for(const auto& direction:directions) {
+                            if(repair_stop())break;
+                            const auto alternative_begin=Clock::now();
+                            const auto alternative=solve_continuous_ik(fk,next.target,
+                                solved.q+radius*direction,scene.limits(),repair_ik,true);
+                            result.ik_seconds+=seconds(alternative_begin);
+                            scene.counters.ik_iterations+=alternative.iterations;
+                            if(!alternative.success)continue;
+                            Knot candidate=next;candidate.q=alternative.q;
+                            candidate.time=result.knots.back().time+
+                                interval_seconds(result.knots.back(),candidate,options.motion_speed_scale);
+                            ValidationResult candidate_check;const auto candidate_begin=Clock::now();
+                            valid=validate_segment(scene,result.knots.back(),candidate,result.knots.size(),
+                                options,candidate_check,repair_stop);
+                            const double candidate_seconds=seconds(candidate_begin);
+                            result.validation_seconds+=candidate_seconds;
+                            if(valid) {next=std::move(candidate);accepted_check_seconds=candidate_seconds;break;}
+                        }
+                        if(valid || repair_stop())break;
+                    }
+                    repair_seconds+=seconds(repair_begin);
+                }
                 if(!valid) return check.reason;
+                // Failed repair trials are already timed above; the reserved
+                // final pass only needs to repeat the accepted segment.
+                checked_seconds+=accepted_check_seconds;
                 result.knots.push_back(next);
             }
             return std::string("travel_limit");

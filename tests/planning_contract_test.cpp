@@ -365,6 +365,45 @@ void best_effort_q_test(PlanningScene& scene) {
     std::cout<<"Best-effort Q collision stop and strict-mode isolation passed; peak="
              <<partial.q_positive_degrees<<" final="<<partial.q_final_degrees<<'\n';
 }
+void q_collision_recovery_test(PlanningScene& scene) {
+    // Live screenshot request, revision 179: world XYZ=(.14,0,.22),
+    // RPY=(6,-51,-66) degrees. The nearest branch stopped at +20/+21
+    // degrees at the j5/core-shell clearance boundary, despite a full sweep
+    // being reachable from the same low-motion pre-insertion posture.
+    Scenario request;request.id="q_local_collision_recovery";
+    request.core={.16,.2,.47,-66,39,6};request.start.setZero();
+    request.target_degrees=-90;request.q_sweep=true;request.q_best_effort=true;
+    request.enforce_core_pose_limits=false;
+    for(auto method:{Method::Baseline,Method::RigidCache}) {
+        PlanOptions options;options.method=method;options.timeout_seconds=5;options.motion_speed_scale=4;
+        const auto result=plan(scene,request,options);
+        require(result.success && result.full_q_sweep && result.validation.rule_success &&
+                std::abs(result.q_positive_degrees-90)<1e-8 && std::abs(result.q_final_degrees+90)<1e-8,
+                "Local Q collision recovery must complete both sides: "+result.reason+" / "+result.q_positive_stop);
+        require(result.preinsert_joints && std::abs((*result.preinsert_joints)[6])<1e-6 &&
+                (result.preinsert_joints.value()-request.start).cwiseAbs().sum()<radians(300),
+                "Q recovery must retain the nearby pre-insertion posture with an unmoved last joint");
+        check_preinsert_connection(scene,request,result);
+        // Finer full-path recheck after configure clears both caches. Includes
+        // repaired chords, reverse Q, the physical zero start and final dwell.
+        auto dense=options;dense.validation_joint_step=.004;dense.validation_min_substeps=4;
+        scene.configure(request);
+        const auto audit=validate_trajectory(scene,result.knots,dense);
+        require(audit.valid && audit.rule_success && scene.counters.exact_state_cache_hits==0 &&
+                scene.counters.rigid_pair_cache_hits==0,
+                "Locally repaired Q path failed dense uncached validation: "+audit.reason);
+        auto expired=options;expired.timeout_seconds=1e-9;
+        const auto timeout=plan(scene,request,expired);
+        require(!timeout.success && contains(timeout.reason,"deadline"),
+                "Local Q recovery must not bypass the request deadline");
+        auto obstructed=request;obstructed.blocking_obstacle=true;
+        require(!plan(scene,obstructed,options).success,
+                "Optional Q recovery must not turn a blocked mandatory stage into success");
+        std::cout<<"Local Q collision recovery "<<method_name(method)<<" Q="<<result.q_positive_degrees
+                 <<'/'<<result.q_final_degrees<<" preinsert wrist="<<(*result.preinsert_joints)[6]
+                 <<" time="<<result.planning_seconds<<" dense samples="<<audit.samples<<'\n';
+    }
+}
 } // namespace
 
 int main() {
@@ -382,6 +421,7 @@ int main() {
         direct_preinsert_test(scene);
         q_sweep_contract_test(scene);
         best_effort_q_test(scene);
+        q_collision_recovery_test(scene);
         std::cout << "planning contract negative tests passed\n";
         return 0;
     } catch (const std::exception& error) {

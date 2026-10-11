@@ -1,0 +1,70 @@
+{
+  "final-baseline": {
+    "method": "baseline",
+    "split": "all",
+    "cpu": 0,
+    "CUDA_VISIBLE_DEVICES": "",
+    "git_head": "e94db8e91f545ba2162fc7cff4b3d5e1d995f55b",
+    "source_hashes": {
+      "scripts/benchmark_planner_quality.cpp": "87d0816ba5ecac0e4bb0d42dcca900d3a9d2fe5a843cefc49641a25a90fce40c",
+      "src/planning.cpp": "63e1dea9678841a2533daa445a28a77b8a65547eeb19577435c20b75b70ce42d",
+      "src/planning_ik.cpp": "eb2fab55f02e22869f3b3dd5eed35312ac944e7bbd06dace5d923a7b65c677aa",
+      "src/planning_approach.cpp": "45b9e0ee33f71938d952cd7f1b899ee5b0527ed343e688821713b72bafa5be9e",
+      "src/planning_scene.cpp": "289ac5a97c9a10e95a78a0ddd6f3d82015131f54b11c3ec51b70d280f7300c25",
+      "include/tech_core/planning.hpp": "f38a74c05435e425dcc721cb455ad51d6b7c1738c868e30e9ff2968d3eaaa410",
+      "include/tech_core/planning_ik.hpp": "e6c51e66d165db7018f67f76ff2f9d225408d28b28899945bbc00ff0e64e150f",
+      "models/planning/scene.xml": "f0492a28ddf9eac6f0ba71aa7bc7754fcae698f4c6d655e9fbfdeeda6d07a903",
+      "build/librm26_planning.a": "5c247dd791b4558e05d9d53b58ed8f6bcf5170ccb5135f54069067c3dc579918",
+      "build/libtech_core_sim.a": "4b2e2c1c8f63f78001e79c34329cd405f4a5733c64a467c777d9c10c2ee37a48",
+      "build/libtech_core_rules.a": "d7a11699c5bfa0a4bf61a1068aaa1dc27d0ff3f23552cd2e9f3a956c58b2d7f4"
+    },
+    "binary": "artifacts/q_right_turn_20261011/final-baseline/planner",
+    "binary_sha256": "01e52c3ec267eb9e5bf497f16e4f883fcedeee42a58cf78d3902b13fc45af892",
+    "suite_sha256": "7e5ecf8443e10e66a11280fe49fb97b7ad54ffd8e05381ee50c6a02b6f8bbb0a",
+    "timeout_seconds": 5.0,
+    "command": [
+      "artifacts/q_right_turn_20261011/final-baseline/planner",
+      "/data/home/sim6g/code/tech_core_arm_solve/artifacts/q_right_turn_20261011/regression-suite/cases.csv",
+      "/data/home/sim6g/code/tech_core_arm_solve/artifacts/q_right_turn_20261011/final-baseline/results",
+      "baseline",
+      "all",
+      "5.0"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 185.6491525694728
+  },
+  "final-rigid": {
+    "method": "rigid_cache",
+    "split": "all",
+    "cpu": 2,
+    "CUDA_VISIBLE_DEVICES": "",
+    "git_head": "e94db8e91f545ba2162fc7cff4b3d5e1d995f55b",
+    "source_hashes": {
+      "scripts/benchmark_planner_quality.cpp": "87d0816ba5ecac0e4bb0d42dcca900d3a9d2fe5a843cefc49641a25a90fce40c",
+      "src/planning.cpp": "63e1dea9678841a2533daa445a28a77b8a65547eeb19577435c20b75b70ce42d",
+      "src/planning_ik.cpp": "eb2fab55f02e22869f3b3dd5eed35312ac944e7bbd06dace5d923a7b65c677aa",
+      "src/planning_approach.cpp": "45b9e0ee33f71938d952cd7f1b899ee5b0527ed343e688821713b72bafa5be9e",
+      "src/planning_scene.cpp": "289ac5a97c9a10e95a78a0ddd6f3d82015131f54b11c3ec51b70d280f7300c25",
+      "include/tech_core/planning.hpp": "f38a74c05435e425dcc721cb455ad51d6b7c1738c868e30e9ff2968d3eaaa410",
+      "include/tech_core/planning_ik.hpp": "e6c51e66d165db7018f67f76ff2f9d225408d28b28899945bbc00ff0e64e150f",
+      "models/planning/scene.xml": "f0492a28ddf9eac6f0ba71aa7bc7754fcae698f4c6d655e9fbfdeeda6d07a903",
+      "build/librm26_planning.a": "5c247dd791b4558e05d9d53b58ed8f6bcf5170ccb5135f54069067c3dc579918",
+      "build/libtech_core_sim.a": "4b2e2c1c8f63f78001e79c34329cd405f4a5733c64a467c777d9c10c2ee37a48",
+      "build/libtech_core_rules.a": "d7a11699c5bfa0a4bf61a1068aaa1dc27d0ff3f23552cd2e9f3a956c58b2d7f4"
+    },
+    "binary": "artifacts/q_right_turn_20261011/final-rigid/planner",
+    "binary_sha256": "01e52c3ec267eb9e5bf497f16e4f883fcedeee42a58cf78d3902b13fc45af892",
+    "suite_sha256": "7e5ecf8443e10e66a11280fe49fb97b7ad54ffd8e05381ee50c6a02b6f8bbb0a",
+    "timeout_seconds": 5.0,
+    "command": [
+      "artifacts/q_right_turn_20261011/final-rigid/planner",
+      "/data/home/sim6g/code/tech_core_arm_solve/artifacts/q_right_turn_20261011/regression-suite/cases.csv",
+      "/data/home/sim6g/code/tech_core_arm_solve/artifacts/q_right_turn_20261011/final-rigid/results",
+      "rigid_cache",
+      "all",
+      "5.0"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 182.46141290292144
+  }
+}

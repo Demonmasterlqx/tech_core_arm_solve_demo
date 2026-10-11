@@ -142,7 +142,8 @@ struct PlanOptions {
     double validation_joint_step = .008;
     int validation_min_substeps = 2;
     // Baseline/RigidCache search nearby redundant pre-insertion postures and
-    // retry feasible branches within the same online deadline.
+    // retry feasible branches within the same online deadline. Best-effort Q
+    // also tries local redundant IK alternatives at a collision boundary.
     bool optimize_joint_motion = true;
 };
 struct ApproachResult {

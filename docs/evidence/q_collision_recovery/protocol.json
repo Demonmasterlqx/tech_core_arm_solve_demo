@@ -1,0 +1,6 @@
+{
+  "source": "docs/evidence/planner_quality/cases.csv",
+  "groups": "All 64 development requests (XYZ +/-20 cm, RPY +/-90 deg), all 40 legacy requests, all 4 negative controls, plus screenshot revision 179",
+  "deadline_seconds": 5,
+  "case_sha256": "7e5ecf8443e10e66a11280fe49fb97b7ad54ffd8e05381ee50c6a02b6f8bbb0a"
+}

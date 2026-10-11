@@ -1,0 +1,71 @@
+{
+  "event": "state",
+  "key": -1,
+  "state": "PREVIEW_READY",
+  "backend": "rigid_cache",
+  "revision": 179,
+  "time": 0,
+  "tcp": [
+    -0.0743385955027,
+    0.0627490093756,
+    0.326294350133
+  ],
+  "q": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "core_world": [
+    0.14,
+    2.77555756156e-17,
+    0.22
+  ],
+  "core_rpy": [
+    6,
+    -51,
+    -66
+  ],
+  "mechanism": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "message": "Preview only - arm held. Enter: execute",
+  "success": true,
+  "reason": "validated_partial_q",
+  "knots": 440,
+  "requested_points": 482,
+  "candidate_points": 440,
+  "planning_seconds": 1.651850545,
+  "approach_seconds": 0.330394702,
+  "approach_iterations": 0,
+  "approach_shortcuts": 0,
+  "preinsert_ik_attempts": 21,
+  "posture_candidates": 2,
+  "planning_attempts": 1,
+  "posture_search_seconds": 0.172248704,
+  "q_positive_degrees": 21,
+  "q_final_degrees": -90,
+  "full_q_sweep": false,
+  "q_positive_stop": "collision_twist_328_j5_link_visual/collision_core_shell_d=0.000772",
+  "q_negative_stop": "travel_limit",
+  "preinsert_joint_change_degrees": 276.982289466,
+  "preinsert_last_joint_change_degrees": 0,
+  "ghost_time": 0,
+  "ghost_geoms": 0,
+  "ghost_paused": false,
+  "ghost_q": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}
