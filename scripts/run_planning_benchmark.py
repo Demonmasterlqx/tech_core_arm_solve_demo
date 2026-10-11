@@ -168,6 +168,7 @@ def main():
     parser.add_argument("--split", choices=["development", "confirmation", "negative", "all"], default="all")
     parser.add_argument("--repeat", type=int, default=3)
     parser.add_argument("--timeout", type=float, default=30)
+    parser.add_argument("--motion-speed-scale", type=float, default=1.)
     parser.add_argument("--process-timeout", type=float, default=None)
     parser.add_argument("--dense-check", action="store_true")
     parser.add_argument("--summarize-only", action="store_true")
@@ -179,6 +180,9 @@ def main():
         return 0
     if args.repeat < 1 or not math.isfinite(args.timeout) or args.timeout <= 0:
         parser.error("repeat and timeout must be positive")
+    if (not math.isfinite(args.motion_speed_scale) or args.motion_speed_scale <= 0 or
+            not math.isfinite(2*args.motion_speed_scale*args.motion_speed_scale)):
+        parser.error("motion speed scale must be positive and finite")
     if (output / "runs.csv").exists():
         parser.error("output already contains runs.csv; select a new directory or use --summarize-only")
     executable = args.executable.resolve()
@@ -211,7 +215,8 @@ def main():
     if chosen_cpu is not None:
         os.sched_setaffinity(0, {chosen_cpu})
     command = [str(executable), "--method", args.method, "--case", args.case, "--split", args.split,
-               "--repeat", str(args.repeat), "--timeout", str(args.timeout), "--output", str(output)]
+               "--repeat", str(args.repeat), "--timeout", str(args.timeout), "--output", str(output),
+               "--motion-speed-scale", str(args.motion_speed_scale)]
     if args.dense_check:
         command.append("--dense-check")
     metadata = {"utc_started": datetime.datetime.now(datetime.timezone.utc).isoformat(),

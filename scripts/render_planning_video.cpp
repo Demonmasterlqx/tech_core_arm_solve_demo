@@ -70,6 +70,7 @@ int main(int argc, char** argv) {
             for (int j = 0; j < 7; ++j) scenario.start[j] = number(r,"start_q" + std::to_string(j));
             scenario.assembly_translation = {number(r,"assembly_translation_x"),number(r,"assembly_translation_y"),number(r,"assembly_translation_z")};
             scenario.assembly_yaw = number(r,"assembly_yaw_radians");
+            scenario.arm_base_z = r.count("arm_base_z") ? number(r,"arm_base_z") : 0;
             scenario.blocking_obstacle = r.at("blocking_obstacle") == "1";
         }
         if (!found) throw std::runtime_error("Scenario missing");
@@ -84,6 +85,7 @@ int main(int argc, char** argv) {
         }
         PlanningScene sim; sim.configure(scenario);
         PlanOptions check; check.validation_joint_step /= 2; check.validation_min_substeps *= 2;
+        check.motion_speed_scale = run.count("motion_speed_scale") ? number(run,"motion_speed_scale") : 1;
         const auto validation = validate_trajectory(sim, knots, check);
         if (!validation.valid) throw std::runtime_error("Current-model recheck failed: " + validation.reason);
         std::cerr << "DENSE_RECHECK passed samples=" << validation.samples << '\n';
@@ -106,8 +108,7 @@ int main(int argc, char** argv) {
         mjr_setBuffer(mjFB_OFFSCREEN, &context);
         mjvCamera wide, close; mjv_defaultCamera(&wide); mjv_defaultCamera(&close);
         const double mount_shift = scenario.assembly_translation.x() - .30;
-        const double horizontal_spacing = sim.mechanism_target({}).position.head<2>().norm();
-        wide.lookat[0] = .22 + .5 * mount_shift; wide.lookat[1] = 0; wide.lookat[2] = .32;
+        wide.lookat[0] = .22 + .5 * mount_shift; wide.lookat[1] = 0; wide.lookat[2] = .32 + .5 * scenario.arm_base_z;
         wide.distance = 1.45; wide.azimuth = 315; wide.elevation = -22;
         close.lookat[0] = .43 + mount_shift; close.lookat[1] = .015; close.lookat[2] = .37;
         close.distance = .82; close.azimuth = 310; close.elevation = -17;
@@ -131,10 +132,12 @@ int main(int argc, char** argv) {
             mjv_updateScene(model,sim.data(),&option,nullptr,&wide,mjCAT_ALL,&scene); mjr_render(left,&scene,&context);
             mjv_updateScene(model,sim.data(),&option,nullptr,&close,mjCAT_ALL,&scene); mjr_render(right,&scene,&context);
             std::ostringstream title, metric, status, values;
-            title << "LEVEL 3 EXCHANGE  |  TRAJECTORY REPLAY\nBase-to-E horizontal: "
-                  << std::fixed << std::setprecision(0) << horizontal_spacing * 1000 << " mm | Fixed grasp";
+            title << "LEVEL 3 EXCHANGE  |  TRAJECTORY REPLAY\nBase Z "
+                  << std::fixed << std::setprecision(0) << scenario.arm_base_z * 1000
+                  << " mm | Pitch " << scenario.core.phi-90 << " deg | Roll " << scenario.core.alpha << " deg";
             metric << method << "  |  Planning " << std::fixed << std::setprecision(3) << number(run,"planning_seconds")
-                   << " s\nTrajectory " << std::setprecision(2) << duration << " s  |  " << speed << "x replay";
+                   << " s\nMotion " << std::setprecision(0) << check.motion_speed_scale << "x | "
+                   << std::setprecision(2) << duration << " s | Playback " << speed << "x";
             mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,{0,height-86,width,86},title.str().c_str(),nullptr,&context);
             mjr_overlay(mjFONT_NORMAL,mjGRID_TOPRIGHT,{0,height-86,width,86},metric.str().c_str(),nullptr,&context);
             mjr_overlay(mjFONT_NORMAL,mjGRID_TOPLEFT,left,"FULL ARM",nullptr,&context);

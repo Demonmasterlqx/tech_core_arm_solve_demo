@@ -289,6 +289,10 @@ def trajectory_audit(path, scenario, arm, tcp, args, successful):
                 p, a = physical_target(core_p, core_r, state[i-1]+blend*(state[i]-state[i-1]))
                 positions.append(p); directions.append(a)
     actual = arm.fk(np.array(qs)) @ tcp
+    base_z = float(scenario.get('arm_base_z', 0))
+    if not math.isfinite(base_z):
+        raise ValueError('nonfinite robot base translation')
+    actual[:, 2, 3] += base_z
     pos_errors = np.linalg.norm(actual[:, :3, 3]-positions, axis=1)
     axis_errors = unit_angle(actual[:, :3, 2], np.array(directions))
     max_p, max_axis = float(np.max(pos_errors)), float(np.max(axis_errors))

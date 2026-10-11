@@ -1,0 +1,15 @@
+{
+  "same_joint_path_1x_execution_seconds": 48.320600460671905,
+  "retimed_execution_seconds": 12.455150115167976,
+  "motion_speed_scale": 4.0,
+  "dwell_seconds": 0.5,
+  "max_per_interval_error_seconds": 8.81239525796218e-16,
+  "phase_seconds": {
+    "approach": 0.8897439258934414,
+    "insert": 1.5007472654102145,
+    "lift": 1.683364307175459,
+    "flip": 6.078905660015784,
+    "twist": 1.8023889566730773,
+    "dwell": 0.5
+  }
+}

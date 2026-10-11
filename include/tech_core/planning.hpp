@@ -23,10 +23,13 @@ struct Scenario {
     JointVector start = (JointVector() << -.62770373654521094, 2.3297993305507192,
         1.0289871622237392, 1.2715734368717495, -1.747192543846495,
         -.81681197466957878, 1.9772845777886507).finished();
-    // Rule assembly O frame -> source robot base frame. Fixed for every method.
-    // Arm base is 250 mm above the assembly ground; the source URDF is unchanged.
+    // Rule assembly O frame -> reference world (the original robot base frame).
+    // By default the arm base is 250 mm above the assembly ground.
     Eigen::Vector3d assembly_translation{.30, .2, -.25};
     double assembly_yaw = pi;
+    // Physical translation of the robot and its fixed mount, in reference world.
+    // Core and ground stay fixed. The original URDF chain is unchanged.
+    double arm_base_z = 0;
     bool blocking_obstacle = false;
 };
 struct TaskPoint {
@@ -81,6 +84,8 @@ private:
     std::array<int, 7> arm_joints_{}, qadr_{}, dof_{};
     std::array<int, 3> core_qadr_{};
     int tool_ = -1, core_mocap_ = -1;
+    int arm_root_body_ = -1, mount_geom_ = -1;
+    double arm_root_original_z_ = 0, mount_original_z_ = 0;
     JointLimits limits_;
     Scenario scenario_;
     Eigen::Vector3d core_position_;
@@ -100,6 +105,9 @@ Method parse_method(const std::string& name);
 struct PlanOptions {
     Method method = Method::Baseline;
     double timeout_seconds = 30;
+    // Divide motion intervals by this factor; keep the 0.5 s rule dwell.
+    // Mock speed/acceleration bounds scale by s and s^2, respectively.
+    double motion_speed_scale = 1;
     double position_spacing = .002;
     double angular_spacing = radians(1);
     double validation_position_tolerance = .0005;
@@ -128,7 +136,7 @@ struct PlanResult {
 struct AtlasEntry { Scenario scenario; std::vector<Knot> knots; };
 
 std::vector<TaskPoint> make_task(PlanningScene& scene, const PlanOptions& options);
-void parameterize(std::vector<Knot>& knots);
+void parameterize(std::vector<Knot>& knots, double motion_speed_scale = 1);
 ValidationResult validate_trajectory(PlanningScene& scene, const std::vector<Knot>& knots,
                                     const PlanOptions& options,
                                     const std::function<bool()>& should_stop = {});

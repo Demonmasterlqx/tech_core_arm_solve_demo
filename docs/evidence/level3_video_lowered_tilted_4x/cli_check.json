@@ -1,0 +1,26 @@
+{
+  "command": [
+    "python",
+    "scripts/run_planning_benchmark.py",
+    "--executable",
+    "build-planning/rm26_plan",
+    "--method",
+    "rigid_cache",
+    "--case",
+    "dev_nominal",
+    "--repeat",
+    "1",
+    "--motion-speed-scale",
+    "4",
+    "--dense-check",
+    "--output",
+    "<temporary>/run"
+  ],
+  "exit_code": 0,
+  "success": true,
+  "motion_speed_scale": 4,
+  "dense_recheck_valid": true,
+  "temporary_outputs_removed": true,
+  "note": "CLI integration smoke only; timing excluded from video result",
+  "setup_correction": "Initial smoke omitted --executable; build/rm26_plan did not exist. Corrected to build-planning/rm26_plan."
+}

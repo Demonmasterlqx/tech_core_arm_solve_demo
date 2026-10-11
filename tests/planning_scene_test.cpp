@@ -57,6 +57,27 @@ void hollow_bore(PlanningScene& scene){
     std::cout<<"bore clearance="<<nominal<<" stop="<<stop<<" offset penetration="<<wrong<<'\n';
 }
 
+void physical_base_translation(PlanningScene& scene){
+    auto s=scenario_suite().front();scene.configure(s);
+    const int ground=id(scene.model(),mjOBJ_GEOM,"ground_visual"),mount=id(scene.model(),mjOBJ_GEOM,"mount_visual");
+    const double floor_z=scene.data()->geom_xpos[3*ground+2],mount_z=scene.data()->geom_xpos[3*mount+2];
+    Eigen::Vector3d p0,p1;Eigen::Matrix3d r0,r1;Jacobian j0,j1;
+    scene.forward(s.start,p0,r0,&j0);const auto target=scene.mechanism_target({});
+    s.arm_base_z=-.1;scene.configure(s);scene.configure(s);
+    scene.forward(s.start,p1,r1,&j1);
+    require((p1-p0-Eigen::Vector3d(0,0,-.1)).norm()<1e-12,"Physical base lowering must move TCP exactly 100 mm without accumulating");
+    require((r1-r0).norm()<1e-12 && (j1-j0).norm()<1e-10,"Pure base translation must preserve orientation and point Jacobian");
+    require((scene.mechanism_target({}).position-target.position).norm()<1e-12,"Lowering robot must not translate the core");
+    require(std::abs(scene.data()->geom_xpos[3*ground+2]-floor_z)<1e-12,"Ground must stay fixed when robot lowers");
+    require(std::abs(scene.data()->geom_xpos[3*mount+2]-mount_z+.1)<1e-12,"Fixed robot mount must move with the robot");
+    s.arm_base_z=0;scene.configure(s);scene.forward(s.start,p1,r1);
+    require((p1-p0).norm()<1e-12,"Reconfigure must restore original base position");
+    s.arm_base_z=std::numeric_limits<double>::quiet_NaN();bool rejected=false;
+    try{scene.configure(s);}catch(const std::invalid_argument&){rejected=true;}
+    require(rejected,"Reject nonfinite base placement");
+    scene.configure(scenario_suite().front());
+}
+
 void split_wrist_hulls(PlanningScene& scene){
     Scenario s;s.start<<0,1,1.4,0,.7,0,0;scene.configure(s);
     auto*m=scene.model();auto*d=scene.data();
@@ -97,4 +118,4 @@ void contact_boundaries(PlanningScene& scene){
     scene.configure(scenario);
 }
 }
-int main(){try{PlanningScene scene;frame_and_ground(scene);hollow_bore(scene);split_wrist_hulls(scene);contact_boundaries(scene);std::cout<<"planning scene geometry tests passed\n";return 0;}catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 1;}}
+int main(){try{PlanningScene scene;frame_and_ground(scene);physical_base_translation(scene);hollow_bore(scene);split_wrist_hulls(scene);contact_boundaries(scene);std::cout<<"planning scene geometry tests passed\n";return 0;}catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 1;}}

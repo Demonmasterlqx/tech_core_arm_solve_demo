@@ -1,0 +1,22 @@
+{
+  "command": [
+    "ffmpeg",
+    "-v",
+    "error",
+    "-nostdin",
+    "-threads",
+    "2",
+    "-i",
+    "artifacts/level3_planning/videos/level3-lowered-tilted-motion4x.mp4",
+    "-f",
+    "null",
+    "-"
+  ],
+  "decode_exit_code": 0,
+  "stderr": "",
+  "review_frame_seconds": [
+    0,
+    6,
+    12.5
+  ]
+}

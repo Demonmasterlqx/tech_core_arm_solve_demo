@@ -1,0 +1,12 @@
+DENSE_RECHECK passed samples=1612
+OPENGL_RENDERER llvmpipe (LLVM 15.0.7, 256 bits)
+FRAME 1/347 trajectory_time=0
+FRAME 49/347 trajectory_time=2
+FRAME 97/347 trajectory_time=4
+FRAME 145/347 trajectory_time=6
+FRAME 193/347 trajectory_time=8
+FRAME 241/347 trajectory_time=10
+FRAME 289/347 trajectory_time=12
+FRAME 337/347 trajectory_time=12.4552
+FRAME 347/347 trajectory_time=12.4552
+COMPLETE /data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/level3-lowered-tilted-motion4x.mp4 frames=347 bytes=3226753

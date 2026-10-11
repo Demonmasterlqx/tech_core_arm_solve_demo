@@ -34,14 +34,14 @@ std::ofstream output_file(const std::filesystem::path& path) {
 }
 void write_scenarios(const std::filesystem::path& path, const std::vector<Scenario>& suite) {
     auto out = output_file(path);
-    out << "case,split,core_x,core_y,core_z,core_theta_degrees,core_phi_degrees,core_alpha_degrees,target_degrees,start_q0,start_q1,start_q2,start_q3,start_q4,start_q5,start_q6,assembly_translation_x,assembly_translation_y,assembly_translation_z,assembly_yaw_radians,blocking_obstacle\n";
+    out << "case,split,core_x,core_y,core_z,core_theta_degrees,core_phi_degrees,core_alpha_degrees,target_degrees,start_q0,start_q1,start_q2,start_q3,start_q4,start_q5,start_q6,assembly_translation_x,assembly_translation_y,assembly_translation_z,assembly_yaw_radians,blocking_obstacle,arm_base_z\n";
     for (const auto& scenario : suite) {
         const auto& p = scenario.core;
         out << csv(scenario.id) << ',' << csv(scenario.split) << ',' << p.x << ',' << p.y << ',' << p.z
             << ',' << p.theta << ',' << p.phi << ',' << p.alpha << ',' << scenario.target_degrees;
         for (int k = 0; k < 7; ++k) out << ',' << scenario.start[k];
         for (int k = 0; k < 3; ++k) out << ',' << scenario.assembly_translation[k];
-        out << ',' << scenario.assembly_yaw << ',' << scenario.blocking_obstacle << '\n';
+        out << ',' << scenario.assembly_yaw << ',' << scenario.blocking_obstacle << ',' << scenario.arm_base_z << '\n';
     }
 }
 PlanResult safe_plan(PlanningScene& scene, const Scenario& scenario, const PlanOptions& options,
@@ -73,7 +73,7 @@ void write_trajectory(const std::filesystem::path& path, const PlanResult& resul
 void usage() {
     std::cout << "rm26_plan [--method NAME|all] [--case ID|all] [--repeat N]\n"
                  "          [--split development|confirmation|negative|all] [--timeout SECONDS]\n"
-                 "          [--output DIRECTORY] [--dense-check] [--list]\n";
+                 "          [--output DIRECTORY] [--dense-check] [--motion-speed-scale S] [--list]\n";
 }
 } // namespace
 
@@ -83,6 +83,7 @@ int main(int argc, char** argv) {
         std::filesystem::path output = "artifacts/level3_planning/manual";
         int repeats = 1;
         double timeout = 30;
+        double motion_speed_scale = 1;
         bool dense_check = false, list = false;
         for (int i = 1; i < argc; ++i) {
             const std::string flag = argv[i];
@@ -103,6 +104,11 @@ int main(int argc, char** argv) {
                 std::size_t used = 0;
                 timeout = std::stod(text, &used);
                 if (used != text.size()) throw std::invalid_argument("Invalid timeout");
+            } else if (flag == "--motion-speed-scale") {
+                const auto text = value();
+                std::size_t used = 0;
+                motion_speed_scale = std::stod(text, &used);
+                if (used != text.size()) throw std::invalid_argument("Invalid motion speed scale");
             }
             else if (flag == "--output") output = value();
             else if (flag == "--dense-check") dense_check = true;
@@ -112,6 +118,9 @@ int main(int argc, char** argv) {
         }
         if (repeats < 1 || !std::isfinite(timeout) || timeout <= 0)
             throw std::invalid_argument("repeat and timeout must be positive");
+        if (!std::isfinite(motion_speed_scale) || motion_speed_scale <= 0 ||
+            !std::isfinite(2*motion_speed_scale*motion_speed_scale))
+            throw std::invalid_argument("motion speed scale must be positive and finite");
         if (split != "all" && split != "development" && split != "confirmation" && split != "negative")
             throw std::invalid_argument("Invalid split");
         const std::vector<Method> all_methods{Method::Baseline, Method::FullStep, Method::Reduced5D,
@@ -164,7 +173,7 @@ int main(int argc, char** argv) {
         metadata << cold_seconds << ',' << atlas_seconds << ',' << atlas.size() << '\n';
         metadata.flush();
         auto runs = output_file(output / "runs.csv");
-        runs << "method,case,split,repeat,success,plan_success,reason,planning_seconds,ik_seconds,validation_seconds,dense_recheck_seconds,dense_recheck_performed,dense_recheck_valid,dense_recheck_reason,knots,ik_iterations,fk_evals,collision_states,narrowphase_calls,broadphase_skips,validation_samples,max_position_error,max_axis_error,max_joint_speed,max_joint_acceleration,rule_success,dense_recheck_samples,trajectory,atlas_source,rigid_pair_cache_hits\n";
+        runs << "method,case,split,repeat,success,plan_success,reason,planning_seconds,ik_seconds,validation_seconds,dense_recheck_seconds,dense_recheck_performed,dense_recheck_valid,dense_recheck_reason,knots,ik_iterations,fk_evals,collision_states,narrowphase_calls,broadphase_skips,validation_samples,max_position_error,max_axis_error,max_joint_speed,max_joint_acceleration,rule_success,dense_recheck_samples,trajectory,atlas_source,rigid_pair_cache_hits,motion_speed_scale\n";
         // Rotate method order by case/repeat to avoid assigning every cold run
         // to baseline. Every invocation remains single-threaded and CPU-only.
         for (int repeat = 0; repeat < repeats; ++repeat) {
@@ -175,6 +184,7 @@ int main(int argc, char** argv) {
                     PlanOptions options;
                     options.method = method;
                     options.timeout_seconds = timeout;
+                    options.motion_speed_scale = motion_speed_scale;
                     const auto result = safe_plan(scene, scenario, options, method == Method::Atlas ? &atlas : nullptr);
                     ValidationResult recheck;
                     bool rechecked = false;
@@ -209,7 +219,7 @@ int main(int argc, char** argv) {
                          << ',' << v.samples << ',' << v.max_position_error << ',' << v.max_axis_error
                          << ',' << v.max_joint_speed << ',' << v.max_joint_acceleration << ',' << v.rule_success
                          << ',' << recheck.samples << ',' << csv(relative) << ',' << csv(result.atlas_source)
-                         << ',' << c.rigid_pair_cache_hits << '\n';
+                         << ',' << c.rigid_pair_cache_hits << ',' << options.motion_speed_scale << '\n';
                     runs.flush();
                     std::cout << method_name(method) << ' ' << scenario.id << " repeat=" << repeat
                               << " success=" << success << " seconds=" << result.planning_seconds

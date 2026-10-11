@@ -1,0 +1,13 @@
+attempt,ready_ik_success,start_clear,planning_success,dense_valid,planning_seconds,reason
+0,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_5"
+1,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_5"
+2,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_2"
+3,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_5"
+4,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_5"
+5,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_5"
+6,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_5"
+7,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_5"
+8,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_5"
+9,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_5"
+10,1,0,0,0,0,"j2_link_visual/collision_arm_j4_link_part_5"
+11,1,1,1,1,0.27590248099999998,"validated"

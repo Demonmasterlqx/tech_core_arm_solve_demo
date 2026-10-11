@@ -8,6 +8,9 @@ namespace tech_core::planning {
 namespace {
 using Clock=std::chrono::steady_clock;
 double seconds(Clock::time_point start) { return std::chrono::duration<double>(Clock::now()-start).count(); }
+bool valid_motion_scale(double value) {
+    return std::isfinite(value) && value>0 && std::isfinite(2*value*value);
+}
 MechanismState mix(const MechanismState& a,const MechanismState& b,double t) {
     return {a.insertion+t*(b.insertion-a.insertion),a.lift+t*(b.lift-a.lift),
             a.flip+t*(b.flip-a.flip),a.twist+t*(b.twist-a.twist)};
@@ -115,16 +118,18 @@ std::vector<TaskPoint> make_task(PlanningScene& scene,const PlanOptions& options
     return points;
 }
 
-void parameterize(std::vector<Knot>& knots) {
+void parameterize(std::vector<Knot>& knots,double motion_speed_scale) {
+    if(!valid_motion_scale(motion_speed_scale)) throw std::invalid_argument("Invalid motion speed scale");
     if(knots.empty())return;
     knots.front().time=0;
     for(std::size_t i=1;i<knots.size();++i) {
         const double dq=(knots[i].q-knots[i-1].q).cwiseAbs().maxCoeff();
         // Cubic position interpolation with zero velocity at each point,
         // matching upstream's zero-velocity message contract. Enforce the
-        // explicit mock v<=1 rad/s and a<=2 rad/s^2, not hardware limits.
+        // explicit default mock v<=1 rad/s and a<=2 rad/s^2. Scaling time
+        // changes these by s and s^2; these remain simulation-only limits.
         const double dt=knots[i].phase==Phase::Dwell?.5:
-            std::max({.1,1.5*dq,std::sqrt(3*dq)});
+            std::max({.1,1.5*dq,std::sqrt(3*dq)})/motion_speed_scale;
         knots[i].time=knots[i-1].time+dt;
     }
 }
@@ -132,7 +137,8 @@ void parameterize(std::vector<Knot>& knots) {
 ValidationResult validate_trajectory(PlanningScene& scene,const std::vector<Knot>& knots,
                                     const PlanOptions& options,const std::function<bool()>& stop) {
     ValidationResult out;
-    if(!std::isfinite(options.validation_joint_step) || options.validation_joint_step<=0 ||
+    if(!valid_motion_scale(options.motion_speed_scale) ||
+       !std::isfinite(options.validation_joint_step) || options.validation_joint_step<=0 ||
        !std::isfinite(options.validation_position_tolerance) || options.validation_position_tolerance<=0 ||
        !std::isfinite(options.validation_axis_tolerance) || options.validation_axis_tolerance<=0 ||
        options.validation_min_substeps<1) {out.reason="invalid_validation_options";return out;}
@@ -192,7 +198,10 @@ ValidationResult validate_trajectory(PlanningScene& scene,const std::vector<Knot
         const double dt=i?b.time-a.time:1;
         out.max_joint_speed=std::max(out.max_joint_speed,1.5*dq/dt);
         out.max_joint_acceleration=std::max(out.max_joint_acceleration,6*dq/(dt*dt));
-        if(out.max_joint_speed>1+1e-8 || out.max_joint_acceleration>2+1e-8) {out.reason="rate_limit";return out;}
+        if(out.max_joint_speed>options.motion_speed_scale+1e-8 ||
+           out.max_joint_acceleration>2*options.motion_speed_scale*options.motion_speed_scale+1e-8) {
+            out.reason="rate_limit";return out;
+        }
         const int n=i?std::max(options.validation_min_substeps,
                       static_cast<int>(std::ceil(1.5*dq/options.validation_joint_step))):1;
         for(int step=i?1:0;step<=(i?n:0);++step) {
@@ -240,6 +249,9 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
     auto finish=[&]() {result.planning_seconds=seconds(start);result.counters=scene.counters;return result;};
     if(!std::isfinite(options.timeout_seconds) || options.timeout_seconds<=0) {
         result.reason="invalid_timeout";return finish();
+    }
+    if(!valid_motion_scale(options.motion_speed_scale)) {
+        result.reason="invalid_motion_speed_scale";return finish();
     }
     scene.configure(scenario);
     scene.enable_rigid_pair_cache(options.method==Method::RigidCache);
@@ -348,7 +360,7 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
         }
     }
     result.ik_seconds=seconds(ikstart);
-    parameterize(result.knots);
+    parameterize(result.knots,options.motion_speed_scale);
     const auto validation_start=Clock::now();
     result.validation=validate_trajectory(scene,result.knots,options,stop);
     result.validation_seconds=seconds(validation_start);

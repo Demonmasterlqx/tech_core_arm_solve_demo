@@ -158,6 +158,28 @@ void complete_plan_test(PlanningScene& scene) {
     const auto cached=plan(scene,request,options);
     require(cached.success && cached.counters.rigid_pair_cache_hits>0,
             "complete cached planning regression: "+cached.reason);
+    auto fast_options=options;fast_options.motion_speed_scale=4;
+    const auto fast=plan(scene,request,fast_options);
+    require(fast.success && fast.validation.rule_success,"4x motion must retain full rule completion: "+fast.reason);
+    require(fast.knots.size()==cached.knots.size(),"Retiming must not drop collision/path samples");
+    for(std::size_t i=1;i<fast.knots.size();++i) {
+        require((fast.knots[i].q-cached.knots[i].q).norm()<1e-12,"Retiming must preserve the joint path");
+        const double before=cached.knots[i].time-cached.knots[i-1].time;
+        const double after=fast.knots[i].time-fast.knots[i-1].time;
+        require(std::abs(after-(fast.knots[i].phase==Phase::Dwell?.5:before/4))<1e-10,
+                "Motion must be 4x faster while rule dwell remains 0.5 s");
+    }
+    require(std::abs(fast.validation.max_joint_speed-4*cached.validation.max_joint_speed)<1e-9,
+            "Time scaling must scale peak speed by four");
+    require(std::abs(fast.validation.max_joint_acceleration-16*cached.validation.max_joint_acceleration)<1e-8,
+            "Time scaling must scale peak acceleration by sixteen");
+    scene.configure(request);
+    require(validate_trajectory(scene,fast.knots,options).reason=="rate_limit",
+            "Fast trajectory must not silently pass the original motion limits");
+    for(double scale:{0.,-1.,std::numeric_limits<double>::quiet_NaN()}) {
+        auto invalid=options;invalid.motion_speed_scale=scale;
+        require(plan(scene,request,invalid).reason=="invalid_motion_speed_scale","Reject invalid speed scale before IK");
+    }
     // Revalidate exactly the same solved path after adding a real box. This
     // checks the exported trajectory against changed geometry, not IK failure.
     request.blocking_obstacle=true;

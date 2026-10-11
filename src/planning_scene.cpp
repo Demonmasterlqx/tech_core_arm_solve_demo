@@ -104,6 +104,10 @@ PlanningScene::PlanningScene(std::string path) {
         limits_.lower[i] = model_->jnt_range[2*arm_joints_[i]];
         limits_.upper[i] = model_->jnt_range[2*arm_joints_[i]+1];
     }
+    arm_root_body_ = model_->jnt_bodyid[arm_joints_[0]];
+    mount_geom_ = named(model(), mjOBJ_GEOM, "mount_visual");
+    arm_root_original_z_ = model_->body_pos[3*arm_root_body_+2];
+    mount_original_z_ = model_->geom_pos[3*mount_geom_+2];
     const char* mechanism[] = {"core0_twist", "core0_flip", "core0_lift"};
     for (int i = 0; i < 3; ++i)
         core_qadr_[i] = model_->jnt_qposadr[named(model(), mjOBJ_JOINT, mechanism[i])];
@@ -188,10 +192,13 @@ void PlanningScene::configure(const Scenario& scenario) {
     validate_pose(scenario.core,3);
     if(!std::isfinite(scenario.target_degrees) || std::abs(scenario.target_degrees)>90 ||
        !scenario.start.allFinite() || !scenario.assembly_translation.allFinite() ||
-       !std::isfinite(scenario.assembly_yaw)) throw std::invalid_argument("Invalid planning scenario");
+       !std::isfinite(scenario.assembly_yaw) || !std::isfinite(scenario.arm_base_z))
+        throw std::invalid_argument("Invalid planning scenario");
     scenario_=scenario;
     rigid_pair_cache_enabled_=false;
     for(auto& pair:pairs_) pair.cached_cutoff=-1;
+    model_->body_pos[3*arm_root_body_+2]=arm_root_original_z_+scenario.arm_base_z;
+    model_->geom_pos[3*mount_geom_+2]=mount_original_z_+scenario.arm_base_z;
     const int ground=named(model(),mjOBJ_GEOM,"ground_visual");
     model_->geom_pos[3*ground+2]=scenario.assembly_translation.z();
     const auto cq=pose_quaternion(scenario.core);

@@ -54,6 +54,7 @@ def main():
     if len(selected) != 1 or selected[0]["success"] != "1" or selected[0]["dense_recheck_valid"] != "1":
         parser.error("Select exactly one successful trajectory with a valid dense recheck")
     run = selected[0]; trajectory = source / run["trajectory"]
+    motion_scale = float(run.get("motion_speed_scale", 1))
     with trajectory.open() as stream:
         knots = list(csv.DictReader(stream))
     execution_seconds = float(knots[-1]["time"])
@@ -74,6 +75,8 @@ def main():
     mujoco = ROOT / ".deps/mujoco-3.3.7"
     metadata = dict(method=args.method, case=args.case, repeat=args.repeat,
                     planning_seconds=float(run["planning_seconds"]), execution_seconds=execution_seconds,
+                    motion_speed_scale=motion_scale, mock_velocity_limit_rad_s=motion_scale,
+                    mock_acceleration_limit_rad_s2=2*motion_scale*motion_scale,
                     playback_speed=args.speed, fps=args.fps, width=args.width, height=args.height,
                     source_trajectory=str(trajectory), source_trajectory_sha256=digest(trajectory),
                     scenario_csv_sha256=digest(source/"scenarios.csv"),
