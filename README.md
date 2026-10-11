@@ -1,6 +1,8 @@
 # RoboMaster 2026 科技核心与机械臂仿真
 
-新增 **RM26 version3 七关节机械臂**：真实 HKUST 网格、固定底座、位置/速度 mock 驱动，以及 WASD / 方向键控制末端平移。构建后运行 `./scripts/run_arm_software_viewer.sh`；完整操作、C++ API 和验证见 [机械臂使用说明](docs/rm26_arm.md)。机械臂和科技核心当前为独立场景。
+**联合键盘规划 Demo**：构建后运行 `./scripts/run_planning_demo.sh`。WASDQE 控制机械臂末端，I/K、J/L、U/O 控制核心 XYZ，配合 Shift 控制 roll/pitch/yaw；Backspace 机械臂归零，1/2 切换 Baseline/RigidCache。**第一次回车用半透明机械臂虚影预览规划结果（包括失败），实体保持不动；预览成功后第二次回车才执行**。完整操作与范围见 [键盘规划 Demo](docs/planning_demo.md)。
+
+独立 **RM26 version3 七关节机械臂**入口保留：真实 HKUST 网格、固定底座、位置/速度 mock 驱动，以及 WASD / 方向键控制末端平移。构建后运行 `./scripts/run_arm_software_viewer.sh`；完整操作、C++ API 和验证见 [机械臂使用说明](docs/rm26_arm.md)。
 
 使用 **C++17 + MuJoCo 3.3.7** 模拟科技核心的定位、能量单元插入、升降、P 轴上翻、Q 轴角度装配和一至四级规则判定。支持键盘交互、CPU 无窗口演示、双核心四级协同、灯效、轨迹 CSV 和 PNG 截图。科技核心直接使用 HKUST 的 `exchange.blend` 详细网格，保留原始尺度、螺钉、倒角、六个 MARK 部件和 36 根角度灯条。
 

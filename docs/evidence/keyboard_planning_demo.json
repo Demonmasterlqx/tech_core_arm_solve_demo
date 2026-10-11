@@ -1,0 +1,496 @@
+{
+  "checks": [
+    "Backspace returns arm and mechanism home while preserving core XYZ/RPY",
+    "Baseline first Enter and held Enter keep arm/core frozen at preview",
+    "Translucent arm/core ghost animates, pauses and scrubs while opaque arm/core remain fixed",
+    "Backend switch invalidates preview; RigidCache previews without execution",
+    "Second Enter executes, Space/focus loss hold, resume reaches complete assembly",
+    "Backspace during planning discards a stale successful result",
+    "Partial and zero-knot failures are displayed and second Enter cannot execute them"
+  ],
+  "arm_directions": [
+    {
+      "key": "w",
+      "delta_m": [
+        0.022297635175999975,
+        -2.2251370685284298e-05,
+        0.00013081263399999932
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "s",
+      "delta_m": [
+        -0.023657773561000017,
+        -3.72904834993843e-05,
+        0.00015782517300000354
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "a",
+      "delta_m": [
+        -5.2993660000000276e-05,
+        0.022308367002743315,
+        -1.760094999997408e-06
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "d",
+      "delta_m": [
+        -7.183284400003043e-05,
+        -0.022961204372156683,
+        6.61502000010028e-07
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "q",
+      "delta_m": [
+        -6.231911900000942e-05,
+        3.03355161282157e-05,
+        0.022987353566000013
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "e",
+      "delta_m": [
+        -4.9161053000013055e-05,
+        2.86460415172157e-05,
+        -0.022186586218999993
+      ],
+      "release_holds": true
+    }
+  ],
+  "core_controls": [
+    {
+      "key": "i",
+      "delta": [
+        0.010000000000000009,
+        0,
+        0.0
+      ]
+    },
+    {
+      "key": "k",
+      "delta": [
+        -0.011611021240000019,
+        0,
+        0.0
+      ]
+    },
+    {
+      "key": "j",
+      "delta": [
+        0.0,
+        0.01165829144,
+        0.0
+      ]
+    },
+    {
+      "key": "l",
+      "delta": [
+        0.0,
+        -0.011705145359999999,
+        0.0
+      ]
+    },
+    {
+      "key": "u",
+      "delta": [
+        0.0,
+        0.0,
+        0.011741873199999975
+      ]
+    },
+    {
+      "key": "o",
+      "delta": [
+        0.0,
+        0.0,
+        -0.011741873199999975
+      ]
+    },
+    {
+      "key": "Shift+i",
+      "delta": [
+        5.18057266,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "Shift+k",
+      "delta": [
+        -6.0217202,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "Shift+l",
+      "delta": [
+        0.0,
+        -5.20639182,
+        0
+      ]
+    },
+    {
+      "key": "Shift+j",
+      "delta": [
+        0.0,
+        5.20639182,
+        0
+      ]
+    },
+    {
+      "key": "Shift+u",
+      "delta": [
+        0.0,
+        0,
+        5.14238484
+      ]
+    },
+    {
+      "key": "Shift+o",
+      "delta": [
+        0.0,
+        0,
+        -5.9167380000000005
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "event": "enter",
+      "key": -1,
+      "state": "PREVIEW_FAILED",
+      "backend": "rigid_cache",
+      "revision": 0,
+      "time": 0,
+      "tcp": [
+        0.329999999599,
+        -1.57652433157e-08,
+        0.249999998658
+      ],
+      "q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ],
+      "core_world": [
+        0.4,
+        0,
+        0.45
+      ],
+      "core_rpy": [
+        0,
+        0,
+        0
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Failed candidate cannot execute. Edit the scene or press Backspace",
+      "success": false,
+      "reason": "ik_flip_304_iteration limit",
+      "knots": 304,
+      "requested_points": 349,
+      "candidate_points": 304,
+      "planning_seconds": 0.009551047,
+      "ghost_time": 8.53163620566,
+      "ghost_geoms": 36,
+      "ghost_paused": true,
+      "ghost_q": [
+        -0.43276990258,
+        1.81326780454,
+        1.41817361829,
+        2.38532196667,
+        -1.290031343,
+        -0.605403094652,
+        3.40216603709
+      ]
+    },
+    {
+      "event": "enter",
+      "key": -1,
+      "state": "PREVIEW_FAILED",
+      "backend": "rigid_cache",
+      "revision": 0,
+      "time": 0,
+      "tcp": [
+        0.329999999599,
+        -1.57652433157e-08,
+        0.249999998658
+      ],
+      "q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ],
+      "core_world": [
+        0.3,
+        0,
+        0.25
+      ],
+      "core_rpy": [
+        45,
+        -45,
+        90
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Failed candidate cannot execute. Edit the scene or press Backspace",
+      "success": false,
+      "reason": "invalid_station_front_plane",
+      "knots": 0,
+      "requested_points": 337,
+      "candidate_points": 0,
+      "planning_seconds": 1.1618e-05,
+      "ghost_time": 0,
+      "ghost_geoms": 36,
+      "ghost_paused": false,
+      "ghost_q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ]
+    }
+  ],
+  "viewer_pid": 1713184,
+  "ghost_preview": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "backend": "rigid_cache",
+    "revision": 149,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated",
+    "knots": 258,
+    "requested_points": 258,
+    "candidate_points": 258,
+    "planning_seconds": 0.247886641,
+    "ghost_time": 7.34939300591,
+    "ghost_geoms": 36,
+    "ghost_paused": true,
+    "ghost_q": [
+      -0.586010476305,
+      1.72305214431,
+      1.14683892773,
+      1.93330897557,
+      -1.29758779253,
+      -0.525787483783,
+      3.59467004723
+    ]
+  },
+  "successful_preview": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "backend": "rigid_cache",
+    "revision": 149,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated",
+    "knots": 258,
+    "requested_points": 258,
+    "candidate_points": 258,
+    "planning_seconds": 0.247886641,
+    "ghost_time": 0.781321051132,
+    "ghost_geoms": 36,
+    "ghost_paused": false,
+    "ghost_q": [
+      -0.597321278899,
+      2.33544235177,
+      1.13998780768,
+      1.43135734689,
+      -1.7166934184,
+      -0.832155058115,
+      2.14433646819
+    ]
+  },
+  "complete": {
+    "event": "state",
+    "key": -1,
+    "state": "COMPLETE",
+    "backend": "rigid_cache",
+    "revision": 149,
+    "time": 12.1905681168,
+    "tcp": [
+      0.450999999286,
+      0.0395767743651,
+      0.514521490956
+    ],
+    "q": [
+      -0.10890385447,
+      1.46651659584,
+      1.44383080728,
+      1.71395922058,
+      -0.597309619219,
+      0.479068322749,
+      3.95672543228
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0.1,
+      0.1,
+      1.57079632679,
+      0.610865238198
+    ],
+    "message": "Assembly trajectory complete. Backspace: home",
+    "success": true,
+    "reason": "validated",
+    "knots": 258,
+    "requested_points": 258,
+    "candidate_points": 258,
+    "planning_seconds": 0.247886641
+  },
+  "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+  "result": "PASS",
+  "base_commit": "d458496fa908e153b9c0714b00618de83a9bf77e",
+  "runtime_output_dir": "artifacts/keyboard_planning_demo/x11-final",
+  "viewer_ctest": {
+    "passed": 23,
+    "failed": 0,
+    "directory": "build-demo",
+    "post_ghost_demo_regression": {
+      "passed": 3,
+      "failed": 0
+    }
+  },
+  "headless_ctest": {
+    "passed": 21,
+    "failed": 0,
+    "directory": "build-demo-headless"
+  },
+  "launcher_smoke": {
+    "result": "PASS",
+    "checks": [
+      "default build executable launches through CPU runner",
+      "automatic Xvfb startup and finite exit",
+      "PNG capture",
+      "1 MiB log rotation with two backups"
+    ],
+    "renderer": "llvmpipe",
+    "temporary_seed_logs_removed": true
+  },
+  "all_viewers_exited_normally": true,
+  "resource_check": {
+    "compute": "CPU",
+    "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+    "demo_pid_in_nvidia_process_table": false,
+    "snapshot_sha256": {
+      "gpu-before.txt": "1ec01838b6d5f6d747cb6d450d9a2fee0e5ad8e64024eac9bfcf35d2dbbdc197",
+      "gpu-startup.txt": "9bf16836aaab76b1bd296ad698e6c9ee941715b1dcf75f3f26e3cab885fb2900",
+      "gpu-execution.txt": "6a7a84bbb6fe4f226d4039995bbe10bad8192bd2c11c52327aee1e86cf5481b2",
+      "gpu-shutdown.txt": "6883943c50698649d206f27ff2dc56350ff77e27354f013b0868c92831d52fb1"
+    }
+  },
+  "source_sha256": {
+    "CMakeLists.txt": "f1766bf4a0007cfe7d263e6d32cab7efa03add80a43cf2539b67854cbb1d4d91",
+    "cmake/planning_demo.cmake": "e8cbc34b8d174f8af8cebdd34d5d1ab2911ce0add9a4cf4da9ca769514ddfaef",
+    "include/tech_core/planning_demo.hpp": "2991b95e3d3128c5cab6d1568606d74879070d1295f56cf6bfe9c030c560670a",
+    "src/planning_demo.cpp": "f6e43cc1293d124d16c8886f15906d87c1c05db3b552824aa4a027a5304a0921",
+    "src/planning_demo_main.cpp": "3d63cafae3c932cb86ea9f4d1e7eac6d635e09b36fc857daf9d8aa4b1214500f",
+    "tests/planning_demo_test.cpp": "2030294ec9fbefef244390092a69a4a29c9f4fc61b68a6978087a9ad8ad0a3f1",
+    "scripts/run_planning_demo.sh": "e821273ee748ab2185176096f959d2b6c903de87e0b03426e50a0cadd661e6b3",
+    "scripts/test_planning_demo_keyboard.py": "1203f6fa83bae6891e90d2b35cb60e2d8d49461d2895ac6a6637c87becf80313"
+  },
+  "screenshots": {
+    "planning-demo-preview.png": "920cb18bcbfbfe972fc7cb7626e060fb5f18f181ae9efecd0deccf8f82092779",
+    "planning-demo-failed.png": "23aed1bb69444a3b67501a7f6a3b7da7d673e2bd653b2e647db85dca51373736"
+  }
+}

@@ -1,0 +1,324 @@
+#!/usr/bin/env python3
+"""Bounded X11/XTest acceptance test of the real planning demo window.
+
+Run in xvfb-run. Uses only Python's standard library, libX11 and libXtst.
+Viewer processes, held keys and X11 connections are released in finally blocks.
+Output directories must be new; event logs rotate at 1 MiB in the viewer.
+"""
+import argparse
+import ctypes as C
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import time
+
+
+class Keyboard:
+    def __init__(self):
+        self.x11, self.xtst = C.CDLL('libX11.so.6'), C.CDLL('libXtst.so.6')
+        ptr, win = C.c_void_p, C.c_ulong
+        self.x11.XOpenDisplay.argtypes, self.x11.XOpenDisplay.restype = [C.c_char_p], ptr
+        self.x11.XDefaultRootWindow.argtypes, self.x11.XDefaultRootWindow.restype = [ptr], win
+        self.x11.XQueryTree.argtypes = [ptr, win, C.POINTER(win), C.POINTER(win), C.POINTER(C.POINTER(win)), C.POINTER(C.c_uint)]
+        self.x11.XFetchName.argtypes = [ptr, win, C.POINTER(C.c_char_p)]
+        self.x11.XFree.argtypes = [ptr]
+        self.x11.XStringToKeysym.argtypes, self.x11.XStringToKeysym.restype = [C.c_char_p], C.c_ulong
+        self.x11.XKeysymToKeycode.argtypes, self.x11.XKeysymToKeycode.restype = [ptr, C.c_ulong], C.c_uint
+        self.x11.XSetInputFocus.argtypes = [ptr, win, C.c_int, C.c_ulong]
+        self.x11.XFlush.argtypes = [ptr]
+        self.x11.XCloseDisplay.argtypes = [ptr]
+        self.xtst.XTestFakeKeyEvent.argtypes = [ptr, C.c_uint, C.c_int, C.c_ulong]
+        self.display = self.x11.XOpenDisplay(None)
+        if not self.display:
+            raise RuntimeError('Cannot open X11 DISPLAY')
+        self.root = self.x11.XDefaultRootWindow(self.display)
+        self.held = set()
+
+    def key(self, name, down):
+        code = self.x11.XKeysymToKeycode(self.display, self.x11.XStringToKeysym(name.encode()))
+        if not code or not self.xtst.XTestFakeKeyEvent(self.display, code, int(down), 0):
+            raise RuntimeError(f'XTest failed for {name}')
+        self.x11.XFlush(self.display)
+        (self.held.add if down else self.held.discard)(name)
+
+    def focus(self, window):
+        self.x11.XSetInputFocus(self.display, window, 1, 0)
+        self.x11.XFlush(self.display)
+        time.sleep(.15)
+
+    def locate(self, parent=None):
+        parent = self.root if parent is None else parent
+        name = C.c_char_p()
+        if self.x11.XFetchName(self.display, parent, C.byref(name)) and name.value:
+            title = name.value.decode(errors='replace')
+            self.x11.XFree(C.cast(name, C.c_void_p))
+            if title.startswith('RM26 Planning Demo |'):
+                return parent
+        win = C.c_ulong
+        root, owner, children, count = win(), win(), C.POINTER(win)(), C.c_uint()
+        if self.x11.XQueryTree(self.display, parent, C.byref(root), C.byref(owner), C.byref(children), C.byref(count)):
+            ids = [children[i] for i in range(count.value)]
+            if children:
+                self.x11.XFree(children)
+            for child in ids:
+                found = self.locate(child)
+                if found:
+                    return found
+        return None
+
+    def release(self):
+        for name in list(self.held):
+            self.key(name, False)
+
+    def close(self):
+        self.release()
+        self.x11.XCloseDisplay(self.display)
+
+
+class Run:
+    def __init__(self, binary, output, keyboard, case='dev_nominal'):
+        self.output, self.keyboard = output, keyboard
+        output.mkdir()
+        self.events = output / 'events.jsonl'
+        self.png = output / 'current.png'
+        self.stdout = (output / 'stdout.log').open('w')
+        self.process = subprocess.Popen([
+            str(binary), '--case', case, '--duration', '120', '--log', str(self.events),
+            '--screenshot', str(self.png)], stdout=self.stdout, stderr=subprocess.STDOUT)
+        try:
+            self.initial = self.wait('ready')
+            self.window = keyboard.locate()
+            if not self.window:
+                raise RuntimeError('Planning window not found')
+            keyboard.focus(self.window)
+        except BaseException:
+            self.close()
+            raise
+
+    def records(self):
+        if not self.events.exists():
+            return []
+        # Ignore a concurrently written last line until the next poll.
+        lines = self.events.read_text().splitlines(keepends=True)
+        return [json.loads(line) for line in lines if line.endswith('\n')]
+
+    def wait(self, event=None, after=0, state=None, timeout=15):
+        deadline = time.monotonic() + timeout
+        while time.monotonic() < deadline:
+            matches = [r for r in self.records()[after:]
+                       if (event is None or r['event'] == event) and (state is None or r['state'] == state)]
+            if matches:
+                return matches[-1]
+            if self.process.poll() is not None:
+                raise RuntimeError(f'Viewer exited {self.process.returncode}: {self.output / "stdout.log"}')
+            time.sleep(.02)
+        raise RuntimeError(f'Timeout {event}/{state}: {self.output / "stdout.log"}')
+
+    def tap(self, key, event, state=None):
+        offset = len(self.records())
+        self.keyboard.key(key, True)
+        time.sleep(.07)
+        self.keyboard.key(key, False)
+        result = self.wait(event, offset, state)
+        time.sleep(.08)
+        return result
+
+    def jog(self, key, shift=False, duration=.35):
+        offset = len(self.records())
+        if shift:
+            self.keyboard.key('Shift_L', True)
+        self.keyboard.key(key, True)
+        self.wait('motion_start', offset)
+        time.sleep(duration)
+        self.keyboard.key(key, False)
+        if shift:
+            self.keyboard.key('Shift_L', False)
+        return self.wait('motion_stop', offset)
+
+    def capture(self, name):
+        result = self.tap('F12', 'screenshot')
+        shutil.copyfile(self.png, self.output / name)
+        return result
+
+    def close(self):
+        self.keyboard.release()
+        if self.process.poll() is None:
+            self.process.terminate()
+            try:
+                self.process.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                self.process.kill()
+                self.process.wait(timeout=5)
+        self.stdout.close()
+
+    def exit(self):
+        self.tap('Escape', 'exit')
+        self.process.wait(timeout=10)
+        assert self.process.returncode == 0
+
+
+def unchanged(a, b):
+    assert max(abs(x-y) for x, y in zip(a['q'], b['q'])) < 1e-10, (a, b)
+    assert max(abs(x-y) for x, y in zip(a['tcp'], b['tcp'])) < 1e-10, (a, b)
+    assert a['mechanism'] == b['mechanism'] and a['time'] == b['time'], (a, b)
+
+
+def gpu_snapshot(output, label):
+    if shutil.which('nvidia-smi'):
+        with (output / f'gpu-{label}.txt').open('w') as log:
+            subprocess.run(['nvidia-smi', '--query-gpu=index,uuid,memory.used', '--format=csv'], stdout=log, check=True)
+            subprocess.run(['nvidia-smi'], stdout=log, check=True)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--binary', type=Path, default=Path('build/rm26_demo'))
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    if not os.environ.get('DISPLAY'):
+        parser.error('Run inside xvfb-run or an isolated X11 DISPLAY')
+    args.output.mkdir(parents=True, exist_ok=False)
+    os.environ.update(CUDA_VISIBLE_DEVICES='', LIBGL_ALWAYS_SOFTWARE='1',
+                      GALLIUM_DRIVER='llvmpipe', __GLX_VENDOR_LIBRARY_NAME='mesa', LP_NUM_THREADS='4')
+    keyboard, run = Keyboard(), None
+    report = {'checks': [], 'arm_directions': [], 'core_controls': [], 'failures': []}
+    try:
+        gpu_snapshot(args.output, 'before')
+        run = Run(args.binary.resolve(), args.output / 'nominal', keyboard)
+        report['viewer_pid'] = run.process.pid
+        gpu_snapshot(args.output, 'startup')
+        for key, axis, sign in [('w', 0, 1), ('s', 0, -1), ('a', 1, 1), ('d', 1, -1), ('q', 2, 1), ('e', 2, -1)]:
+            before = run.tap('BackSpace', 'home')
+            after = run.jog(key)
+            delta = [y-x for x, y in zip(before['tcp'], after['tcp'])]
+            assert delta[axis] * sign > .005, (key, delta)
+            assert max(abs(v) for i, v in enumerate(delta) if i != axis) < .005, (key, delta)
+            held = run.tap('2', 'backend')
+            unchanged(after, held)
+            report['arm_directions'].append({'key': key, 'delta_m': delta, 'release_holds': True})
+
+        before = run.tap('r', 'reset')
+        for key, axis, sign, shift in [('i',0,1,False), ('k',0,-1,False), ('j',1,1,False),
+                ('l',1,-1,False), ('u',2,1,False), ('o',2,-1,False),
+                ('i',0,1,True), ('k',0,-1,True), ('l',1,-1,True), ('j',1,1,True),
+                ('u',2,1,True), ('o',2,-1,True)]:
+            after = run.jog(key, shift=shift, duration=.25)
+            field = 'core_rpy' if shift else 'core_world'
+            delta = [y-x for x, y in zip(before[field], after[field])]
+            assert delta[axis] * sign > (.5 if shift else .002), (key, shift, delta)
+            report['core_controls'].append({'key': ('Shift+' if shift else '')+key, 'delta': delta})
+            before = after
+        home = run.tap('BackSpace', 'home')
+        assert home['core_world'] == before['core_world'] and home['core_rpy'] == before['core_rpy']
+        assert home['q'] == run.initial['q']
+        report['checks'].append('Backspace returns arm and mechanism home while preserving core XYZ/RPY')
+
+        initial = run.tap('r', 'reset')
+        run.tap('1', 'backend')
+        offset = len(run.records())
+        keyboard.key('Return', True)
+        ready = run.wait(state='PREVIEW_READY', after=offset)
+        time.sleep(.65)  # Key repeat after completion must not execute.
+        keyboard.key('Return', False)
+        held = run.capture('baseline-preview.png')
+        unchanged(initial, held)
+        assert ready['backend'] == 'baseline' and held['state'] == 'PREVIEW_READY'
+        report['checks'].append('Baseline first Enter and held Enter keep arm/core frozen at preview')
+
+        changed = run.tap('2', 'backend')
+        assert changed['state'] == 'EDITING' and 'knots' not in changed
+        run.tap('Return', 'enter', 'PLANNING')
+        ready = run.wait(state='PREVIEW_READY', after=len(run.records())-1)
+        time.sleep(.3)
+        held = run.capture('rigid-cache-preview.png')
+        unchanged(initial, held)
+        assert held['ghost_geoms'] > 0
+        assert max(abs(x-y) for x, y in zip(held['q'], held['ghost_q'])) > .001
+        run.tap('space', 'preview_pause')
+        for _ in range(10):
+            run.tap('bracketright', 'preview_scrub')
+        ghost = run.capture('rigid-cache-ghost-preview.png')
+        unchanged(initial, ghost)
+        assert ghost['ghost_paused'] and ghost['ghost_time'] > held['ghost_time']
+        time.sleep(.3)
+        frozen = run.capture('ghost-paused.png')
+        assert ghost['ghost_q'] == frozen['ghost_q'] and ghost['ghost_time'] == frozen['ghost_time']
+        run.tap('space', 'preview_pause')
+        time.sleep(.3)
+        animated = run.capture('ghost-resumed.png')
+        unchanged(initial, animated)
+        assert animated['ghost_time'] != frozen['ghost_time']
+        report['ghost_preview'] = ghost
+        report['checks'].append('Translucent arm/core ghost animates, pauses and scrubs while opaque arm/core remain fixed')
+        report['successful_preview'] = held
+        report['checks'].append('Backend switch invalidates preview; RigidCache previews without execution')
+        run.tap('Return', 'enter', 'EXECUTING')
+        time.sleep(.25)
+        paused = run.tap('space', 'pause', 'PAUSED')
+        assert max(abs(x-y) for x, y in zip(initial['q'], paused['q'])) > .005
+        time.sleep(.2)
+        unchanged(paused, run.capture('paused.png'))
+        run.tap('space', 'pause', 'EXECUTING')
+        offset = len(run.records())
+        keyboard.focus(keyboard.root)
+        lost = run.wait('focus_lost', offset, 'PAUSED')
+        keyboard.focus(run.window)
+        unchanged(lost, run.capture('focus-paused.png'))
+        gpu_snapshot(args.output, 'execution')
+        offset = len(run.records())
+        run.tap('space', 'pause', 'EXECUTING')
+        complete = run.wait(state='COMPLETE', after=offset, timeout=35)
+        report['complete'] = complete
+        run.capture('complete.png')
+        report['checks'].append('Second Enter executes, Space/focus loss hold, resume reaches complete assembly')
+
+        run.tap('BackSpace', 'home')
+        offset = len(run.records())
+        run.tap('Return', 'enter', 'PLANNING')
+        run.tap('BackSpace', 'home')
+        run.wait('discarded', offset)
+        unchanged(initial, run.capture('stale-discarded.png'))
+        report['checks'].append('Backspace during planning discards a stale successful result')
+        run.exit(); run.close(); run = None
+
+        for case in ['confirm_top', 'reject_front_plane']:
+            run = Run(args.binary.resolve(), args.output / case, keyboard, case)
+            run.tap('Return', 'enter', 'PLANNING')
+            failed = run.wait(state='PREVIEW_FAILED')
+            assert failed['requested_points'] > 0 and not failed['success']
+            displayed = run.capture('failed-preview.png')
+            unchanged(run.initial, displayed)
+            assert displayed['ghost_geoms'] > 0
+            if displayed['knots']:
+                run.tap('space', 'preview_pause')
+                for _ in range(12):
+                    run.tap('bracketright', 'preview_scrub')
+                ghost = run.capture('failed-ghost-preview.png')
+                unchanged(run.initial, ghost)
+                assert max(abs(x-y) for x, y in zip(ghost['q'], ghost['ghost_q'])) > .01
+            else:
+                assert displayed['ghost_q'] == run.initial['q'] and displayed['ghost_time'] == 0
+            blocked = run.tap('Return', 'enter', 'PREVIEW_FAILED')
+            unchanged(displayed, blocked)
+            if case == 'reject_front_plane':
+                assert blocked['knots'] == 0
+            report['failures'].append(blocked)
+            run.exit(); run.close(); run = None
+        report['checks'].append('Partial and zero-knot failures are displayed and second Enter cannot execute them')
+        renderer = next(line.strip().split(': ', 1)[1] for line in
+                        (args.output/'nominal/stdout.log').read_text().splitlines() if line.startswith('OpenGL renderer:'))
+        assert 'llvmpipe' in renderer.lower(), renderer
+        report['renderer'], report['result'] = renderer, 'PASS'
+    finally:
+        if run is not None:
+            run.close()
+        keyboard.close()
+        gpu_snapshot(args.output, 'shutdown')
+    (args.output/'report.json').write_text(json.dumps(report, indent=2)+'\n')
+    print(json.dumps(report, indent=2))
+
+
+if __name__ == '__main__':
+    main()

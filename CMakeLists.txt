@@ -52,3 +52,4 @@ endif()
 
 include(cmake/rm26_arm.cmake)
 include(cmake/planning.cmake)
+include(cmake/planning_demo.cmake)
