@@ -112,8 +112,10 @@ std::vector<TaskPoint> make_task(PlanningScene& scene,const PlanOptions& options
     append({.1,0,0,0},Phase::Insert,.1,options.position_spacing);
     append({.1,.1,0,0},Phase::Lift,.1,options.position_spacing);
     append({.1,.1,pi/2,0},Phase::Flip,pi/2,options.angular_spacing);
+    if(scene.scenario().q_sweep)
+        append({.1,.1,pi/2,pi/2},Phase::Twist,pi/2,options.angular_spacing);
     append({.1,.1,pi/2,radians(scene.scenario().target_degrees)},Phase::Twist,
-           std::abs(radians(scene.scenario().target_degrees)),options.angular_spacing);
+           std::abs(radians(scene.scenario().target_degrees)-points.back().mechanism.twist),options.angular_spacing);
     TaskPoint dwell=points.back();dwell.phase=Phase::Dwell;points.push_back(dwell);
     return points;
 }
@@ -187,6 +189,22 @@ ValidationResult validate_trajectory(PlanningScene& scene,const std::vector<Knot
                (k.target.direction-expected.direction).norm()>1e-8) {
                 out.reason="invalid_exported_target";return out;
             }
+        }
+    }
+    if(scene.scenario().q_sweep) {
+        bool positive_endpoint=false;
+        double previous=0;
+        for(const auto& k:knots) if(k.phase==Phase::Twist) {
+            const double q=k.mechanism.twist;
+            if((!positive_endpoint && q<previous-1e-9) ||
+               (positive_endpoint && q>previous+1e-9)) {
+                out.reason="q_sweep_order";return out;
+            }
+            if(std::abs(q-pi/2)<1e-9) positive_endpoint=true;
+            previous=q;
+        }
+        if(!positive_endpoint || std::abs(previous+pi/2)>1e-9) {
+            out.reason="q_sweep_missing_endpoint";return out;
         }
     }
     AssemblyRules rules(3,{radians(scene.scenario().target_degrees),0});
@@ -265,7 +283,9 @@ PlanResult plan(PlanningScene& scene,const Scenario& scenario,const PlanOptions&
     if(options.method==Method::Atlas && atlas) {
         double nearest=std::numeric_limits<double>::infinity();
         for(const auto& e:*atlas) {
-            if(e.knots.empty() || e.scenario.split!="development")continue;
+            // Atlas phase indexing assumes a monotone Q leg. Sweeps use live IK.
+            if(e.knots.empty() || e.scenario.split!="development" ||
+               e.scenario.q_sweep || scenario.q_sweep)continue;
             const double distance=std::hypot(e.scenario.core.x-scenario.core.x,e.scenario.core.z-scenario.core.z)+
                 std::abs(e.scenario.core.y-scenario.core.y)+.002*std::abs(e.scenario.target_degrees-scenario.target_degrees)+
                 .002*(std::abs(e.scenario.core.theta-scenario.core.theta)+std::abs(e.scenario.core.phi-scenario.core.phi)+

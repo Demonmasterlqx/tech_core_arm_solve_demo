@@ -1,0 +1,573 @@
+pose01 attempt=0 success=1 plan_s=0.482006 reason=validated
+CASE_COMPLETE 1/40 pose01 success=1 ready=1 plans=1
+pose02 attempt=0 success=0 plan_s=0.124841 reason=collision_lift_122_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000895
+pose02 attempt=1 success=0 plan_s=0.125027 reason=collision_lift_122_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000895
+pose02 attempt=3 success=0 plan_s=0.0549397 reason=collision_lift_84_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000970
+pose02 attempt=5 success=0 plan_s=0.0590473 reason=collision_lift_98_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000884
+pose02 attempt=6 success=0 plan_s=0.0860863 reason=collision_lift_116_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000835
+pose02 attempt=7 success=0 plan_s=0.0695251 reason=collision_lift_107_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000844
+pose02 attempt=8 success=0 plan_s=0.00165668 reason=ik_lift_118_no descending feasible step
+pose02 attempt=9 success=0 plan_s=0.142364 reason=collision_flip_142_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000927
+pose02 attempt=12 success=0 plan_s=0.0657775 reason=collision_lift_115_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000889
+pose02 attempt=13 success=0 plan_s=0.153943 reason=collision_flip_147_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000967
+pose02 attempt=17 success=0 plan_s=0.0849219 reason=collision_lift_102_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000956
+pose02 attempt=22 success=1 plan_s=0.71286 reason=validated
+CASE_COMPLETE 2/40 pose02 success=1 ready=23 plans=12
+pose03 attempt=0 success=0 plan_s=0.121653 reason=collision_lift_123_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000873
+pose03 attempt=1 success=0 plan_s=0.287856 reason=collision_flip_198_carried_unit_flange_35/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose03 attempt=2 success=0 plan_s=0.609106 reason=collision_twist_421_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000973
+pose03 attempt=3 success=0 plan_s=0.301324 reason=collision_flip_198_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000107_d=-0.000107
+pose03 attempt=7 success=0 plan_s=0.331816 reason=collision_flip_196_carried_unit_flange_38/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose03 attempt=8 success=0 plan_s=0.0643616 reason=collision_lift_106_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000000
+pose03 attempt=10 success=0 plan_s=0.0714826 reason=collision_lift_115_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000930
+pose03 attempt=16 success=1 plan_s=0.584925 reason=validated
+CASE_COMPLETE 3/40 pose03 success=1 ready=17 plans=8
+pose04 attempt=0 success=0 plan_s=0.116568 reason=collision_lift_124_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000954
+pose04 attempt=1 success=0 plan_s=0.424973 reason=collision_twist_290_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000989
+pose04 attempt=2 success=0 plan_s=0.00176989 reason=ik_lift_120_no descending feasible step
+pose04 attempt=5 success=0 plan_s=0.467951 reason=collision_twist_293_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000986
+pose04 attempt=7 success=0 plan_s=0.133512 reason=collision_flip_143_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000962
+pose04 attempt=8 success=0 plan_s=0.105168 reason=collision_flip_133_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000900
+pose04 attempt=9 success=0 plan_s=0.472289 reason=collision_twist_294_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000971
+pose04 attempt=10 success=0 plan_s=0.00172779 reason=ik_lift_120_no descending feasible step
+pose04 attempt=11 success=0 plan_s=0.11735 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000997
+pose04 attempt=13 success=0 plan_s=0.531055 reason=collision_twist_304_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000973
+pose04 attempt=15 success=0 plan_s=0.123584 reason=collision_flip_139_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000991
+pose04 attempt=17 success=0 plan_s=0.10226 reason=collision_flip_133_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000979
+pose04 attempt=20 success=0 plan_s=0.0675484 reason=collision_lift_104_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000916
+pose04 attempt=21 success=0 plan_s=0.427297 reason=collision_twist_288_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000993
+pose04 attempt=22 success=0 plan_s=0.511645 reason=collision_twist_303_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000000
+pose04 attempt=24 success=0 plan_s=0.0723631 reason=collision_lift_105_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000911
+pose04 attempt=25 success=0 plan_s=0.443054 reason=collision_twist_290_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000992
+pose04 attempt=26 success=0 plan_s=0.1122 reason=collision_lift_123_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000935
+pose04 attempt=27 success=0 plan_s=0.0996402 reason=collision_lift_119_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000798
+pose04 attempt=29 success=0 plan_s=0.137298 reason=collision_lift_123_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000996
+pose04 attempt=30 success=0 plan_s=0.125791 reason=collision_lift_125_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000913
+pose04 attempt=35 success=0 plan_s=0.358718 reason=collision_flip_193_carried_unit_flange_35/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose04 attempt=40 success=0 plan_s=0.521333 reason=collision_twist_430_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000945
+pose04 attempt=42 success=0 plan_s=0.0679888 reason=collision_lift_108_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000999
+CASE_COMPLETE 4/40 pose04 success=0 ready=43 plans=24
+pose05 attempt=0 success=0 plan_s=0.123707 reason=collision_flip_149_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000963
+pose05 attempt=1 success=1 plan_s=0.51191 reason=validated
+CASE_COMPLETE 5/40 pose05 success=1 ready=2 plans=2
+pose06 attempt=0 success=0 plan_s=0.014453 reason=ik_flip_219_iteration limit
+pose06 attempt=1 success=0 plan_s=0.0147899 reason=ik_flip_219_iteration limit
+pose06 attempt=2 success=0 plan_s=0.0162191 reason=ik_flip_219_iteration limit
+pose06 attempt=3 success=0 plan_s=0.0150254 reason=ik_flip_219_iteration limit
+pose06 attempt=4 success=0 plan_s=0.0131478 reason=ik_flip_219_iteration limit
+pose06 attempt=5 success=0 plan_s=0.0140692 reason=ik_flip_219_iteration limit
+pose06 attempt=8 success=0 plan_s=0.0158756 reason=ik_flip_219_iteration limit
+pose06 attempt=9 success=0 plan_s=0.0148581 reason=ik_flip_219_iteration limit
+pose06 attempt=10 success=0 plan_s=0.0144399 reason=ik_flip_219_iteration limit
+pose06 attempt=11 success=0 plan_s=0.0142135 reason=ik_flip_219_iteration limit
+pose06 attempt=13 success=0 plan_s=0.0150861 reason=ik_flip_219_iteration limit
+pose06 attempt=14 success=0 plan_s=0.014394 reason=ik_flip_219_iteration limit
+pose06 attempt=15 success=0 plan_s=0.014311 reason=ik_flip_219_iteration limit
+pose06 attempt=16 success=0 plan_s=0.0172742 reason=ik_flip_219_iteration limit
+pose06 attempt=18 success=0 plan_s=0.0198673 reason=ik_flip_219_iteration limit
+pose06 attempt=19 success=0 plan_s=0.0147883 reason=ik_flip_219_iteration limit
+pose06 attempt=21 success=0 plan_s=0.0143091 reason=ik_flip_219_iteration limit
+pose06 attempt=24 success=0 plan_s=0.0142098 reason=ik_flip_219_iteration limit
+pose06 attempt=26 success=0 plan_s=0.0156187 reason=ik_flip_219_iteration limit
+pose06 attempt=27 success=0 plan_s=0.0143579 reason=ik_flip_219_iteration limit
+pose06 attempt=28 success=0 plan_s=0.0250421 reason=ik_flip_219_iteration limit
+pose06 attempt=29 success=0 plan_s=0.0141877 reason=ik_flip_219_iteration limit
+pose06 attempt=30 success=0 plan_s=0.0172444 reason=ik_flip_219_iteration limit
+pose06 attempt=31 success=0 plan_s=0.0140001 reason=ik_flip_219_iteration limit
+CASE_COMPLETE 6/40 pose06 success=0 ready=32 plans=24
+pose07 attempt=0 success=0 plan_s=0.109035 reason=collision_flip_142_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000951
+pose07 attempt=1 success=0 plan_s=0.464539 reason=collision_flip_204_carried_unit_flange_34/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose07 attempt=2 success=0 plan_s=0.0888935 reason=collision_flip_135_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000970
+pose07 attempt=3 success=1 plan_s=0.470082 reason=validated
+CASE_COMPLETE 7/40 pose07 success=1 ready=4 plans=4
+pose08 attempt=0 success=0 plan_s=0.105098 reason=collision_flip_139_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000950
+pose08 attempt=1 success=0 plan_s=0.119558 reason=collision_flip_149_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000979
+pose08 attempt=2 success=0 plan_s=0.340608 reason=collision_twist_310_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000991
+pose08 attempt=3 success=0 plan_s=0.103015 reason=collision_flip_138_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000938
+pose08 attempt=4 success=0 plan_s=0.0907945 reason=collision_lift_119_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000969
+pose08 attempt=5 success=0 plan_s=0.361439 reason=collision_twist_302_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000997
+pose08 attempt=8 success=0 plan_s=0.333272 reason=collision_twist_305_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000987
+pose08 attempt=10 success=0 plan_s=0.0802895 reason=collision_lift_119_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000877
+pose08 attempt=11 success=0 plan_s=0.0982135 reason=collision_flip_141_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000963
+pose08 attempt=12 success=0 plan_s=0.114862 reason=collision_lift_125_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000905
+pose08 attempt=15 success=0 plan_s=0.327816 reason=collision_twist_298_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000962
+pose08 attempt=16 success=0 plan_s=0.0929233 reason=collision_flip_134_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000921
+pose08 attempt=17 success=0 plan_s=0.35803 reason=collision_twist_299_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000956
+pose08 attempt=18 success=0 plan_s=0.00187029 reason=ik_lift_115_no descending feasible step
+pose08 attempt=19 success=0 plan_s=0.228969 reason=collision_flip_199_carried_unit_flange_34/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose08 attempt=20 success=0 plan_s=0.0629005 reason=collision_lift_117_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000882
+pose08 attempt=21 success=0 plan_s=0.547148 reason=collision_twist_421_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000964
+pose08 attempt=22 success=0 plan_s=0.54032 reason=collision_twist_419_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000972
+pose08 attempt=23 success=0 plan_s=0.336538 reason=collision_twist_297_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000995
+pose08 attempt=25 success=0 plan_s=0.0865163 reason=collision_lift_128_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000961
+pose08 attempt=26 success=0 plan_s=0.100913 reason=collision_flip_134_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000837
+pose08 attempt=27 success=0 plan_s=0.133143 reason=collision_flip_150_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000976
+pose08 attempt=29 success=0 plan_s=0.224928 reason=collision_flip_197_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose08 attempt=30 success=0 plan_s=0.20514 reason=collision_flip_200_carried_unit_flange_32/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+CASE_COMPLETE 8/40 pose08 success=0 ready=31 plans=24
+pose09 attempt=0 success=0 plan_s=0.126192 reason=collision_lift_123_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000907
+pose09 attempt=2 success=0 plan_s=0.0668591 reason=collision_lift_82_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000987
+pose09 attempt=4 success=0 plan_s=0.117224 reason=collision_lift_124_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000805
+pose09 attempt=5 success=0 plan_s=0.126333 reason=collision_flip_135_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000904
+pose09 attempt=7 success=0 plan_s=0.0975689 reason=collision_lift_124_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000838
+pose09 attempt=8 success=0 plan_s=0.00653456 reason=ik_lift_124_iteration limit
+pose09 attempt=10 success=0 plan_s=0.136562 reason=collision_lift_122_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000931
+pose09 attempt=11 success=1 plan_s=0.724479 reason=validated
+CASE_COMPLETE 9/40 pose09 success=1 ready=12 plans=8
+pose10 attempt=0 success=0 plan_s=0.10115 reason=collision_lift_127_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000837
+pose10 attempt=1 success=0 plan_s=0.267243 reason=collision_flip_197_carried_unit_flange_34/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose10 attempt=2 success=0 plan_s=0.103811 reason=collision_flip_139_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000890
+pose10 attempt=4 success=0 plan_s=0.0940876 reason=collision_lift_120_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000896
+pose10 attempt=6 success=0 plan_s=0.0859136 reason=collision_lift_117_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000897
+pose10 attempt=8 success=0 plan_s=0.0940498 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000862
+pose10 attempt=9 success=1 plan_s=0.559353 reason=validated
+CASE_COMPLETE 10/40 pose10 success=1 ready=10 plans=7
+pose11 attempt=0 success=0 plan_s=0.348916 reason=collision_twist_286_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000962
+pose11 attempt=1 success=0 plan_s=0.212319 reason=collision_flip_196_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000107_d=-0.000107
+pose11 attempt=2 success=0 plan_s=0.100339 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000855
+pose11 attempt=3 success=0 plan_s=0.197688 reason=collision_flip_195_carried_unit_flange_34/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose11 attempt=4 success=0 plan_s=0.133521 reason=collision_flip_148_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000975
+pose11 attempt=5 success=0 plan_s=0.484994 reason=collision_twist_426_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000936
+pose11 attempt=7 success=0 plan_s=0.483698 reason=collision_twist_420_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000941
+pose11 attempt=8 success=0 plan_s=0.0784301 reason=collision_lift_126_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000847
+pose11 attempt=10 success=0 plan_s=0.349786 reason=collision_twist_275_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000991
+pose11 attempt=11 success=0 plan_s=0.223719 reason=collision_flip_195_carried_unit_flange_36/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose11 attempt=13 success=0 plan_s=0.490612 reason=collision_twist_418_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000000
+pose11 attempt=15 success=0 plan_s=0.336416 reason=collision_twist_274_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000955
+pose11 attempt=16 success=0 plan_s=0.0821459 reason=collision_lift_129_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000942
+pose11 attempt=17 success=0 plan_s=0.526067 reason=collision_twist_427_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000978
+pose11 attempt=18 success=0 plan_s=0.52295 reason=collision_twist_413_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000937
+pose11 attempt=19 success=0 plan_s=0.552807 reason=collision_twist_433_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000954
+pose11 attempt=20 success=0 plan_s=0.0866283 reason=collision_lift_126_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000965
+pose11 attempt=21 success=0 plan_s=0.492186 reason=collision_twist_429_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000976
+pose11 attempt=22 success=0 plan_s=0.341586 reason=collision_twist_281_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000990
+pose11 attempt=23 success=0 plan_s=0.218118 reason=collision_flip_197_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000107_d=-0.000107
+pose11 attempt=24 success=0 plan_s=0.344813 reason=collision_twist_278_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000966
+pose11 attempt=25 success=0 plan_s=0.194396 reason=collision_flip_197_carried_unit_flange_32/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000102_d=-0.000102
+pose11 attempt=26 success=0 plan_s=0.490058 reason=collision_twist_418_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000908
+pose11 attempt=28 success=0 plan_s=0.0876001 reason=collision_lift_122_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000895
+CASE_COMPLETE 11/40 pose11 success=0 ready=29 plans=24
+pose12 attempt=0 success=0 plan_s=0.282388 reason=collision_flip_221_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000114_d=-0.000114
+pose12 attempt=1 success=0 plan_s=0.583199 reason=collision_twist_435_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000993
+pose12 attempt=2 success=0 plan_s=0.297848 reason=collision_flip_221_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000110_d=-0.000110
+pose12 attempt=3 success=0 plan_s=0.202598 reason=collision_flip_193_carried_unit_flange_37/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose12 attempt=4 success=0 plan_s=0.28938 reason=collision_flip_221_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000107_d=-0.000107
+pose12 attempt=5 success=0 plan_s=0.581773 reason=collision_twist_433_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000916
+pose12 attempt=6 success=0 plan_s=0.271233 reason=collision_flip_221_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000107_d=-0.000107
+pose12 attempt=8 success=0 plan_s=0.178698 reason=collision_flip_194_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000105_d=-0.000105
+pose12 attempt=9 success=0 plan_s=0.586396 reason=collision_twist_433_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000996
+pose12 attempt=13 success=0 plan_s=0.609212 reason=collision_twist_432_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000873
+pose12 attempt=14 success=0 plan_s=0.198226 reason=collision_flip_193_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000109_d=-0.000109
+pose12 attempt=15 success=0 plan_s=0.616446 reason=collision_twist_430_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000961
+pose12 attempt=16 success=0 plan_s=0.270694 reason=collision_flip_221_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000106_d=-0.000106
+pose12 attempt=17 success=0 plan_s=0.574699 reason=collision_twist_436_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000956
+pose12 attempt=18 success=0 plan_s=0.639418 reason=collision_twist_430_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000934
+pose12 attempt=19 success=0 plan_s=0.571551 reason=collision_twist_434_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000959
+pose12 attempt=21 success=0 plan_s=0.603474 reason=collision_twist_430_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000956
+pose12 attempt=22 success=0 plan_s=0.0574845 reason=collision_lift_106_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000960
+pose12 attempt=23 success=0 plan_s=0.618208 reason=collision_twist_430_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000941
+pose12 attempt=25 success=0 plan_s=0.205876 reason=collision_flip_194_carried_unit_flange_38/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose12 attempt=26 success=0 plan_s=0.260363 reason=collision_flip_221_carried_unit_flange_41/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose12 attempt=27 success=0 plan_s=0.568691 reason=collision_twist_434_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000948
+pose12 attempt=28 success=0 plan_s=0.289611 reason=collision_flip_220_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000107_d=-0.000107
+pose12 attempt=36 success=0 plan_s=0.0574931 reason=collision_lift_97_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000936
+CASE_COMPLETE 12/40 pose12 success=0 ready=37 plans=24
+pose13 attempt=0 success=0 plan_s=0.356072 reason=collision_twist_290_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000999
+pose13 attempt=1 success=0 plan_s=0.398296 reason=collision_twist_298_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000942
+pose13 attempt=2 success=0 plan_s=0.116716 reason=collision_flip_149_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000982
+pose13 attempt=3 success=0 plan_s=0.271751 reason=collision_flip_195_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000107_d=-0.000107
+pose13 attempt=5 success=0 plan_s=0.272928 reason=collision_flip_195_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000106_d=-0.000106
+pose13 attempt=7 success=0 plan_s=0.230636 reason=collision_flip_197_carried_unit_flange_32/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose13 attempt=8 success=0 plan_s=0.369923 reason=collision_twist_296_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000918
+pose13 attempt=9 success=0 plan_s=0.396371 reason=collision_twist_293_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000979
+pose13 attempt=11 success=0 plan_s=0.259493 reason=collision_flip_196_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000102_d=-0.000102
+pose13 attempt=12 success=0 plan_s=0.109308 reason=collision_flip_144_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000902
+pose13 attempt=13 success=0 plan_s=0.209984 reason=collision_flip_200_carried_unit_flange_37/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose13 attempt=15 success=0 plan_s=0.261451 reason=collision_flip_195_carried_unit_flange_33/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose13 attempt=16 success=0 plan_s=0.120494 reason=collision_flip_140_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000978
+pose13 attempt=17 success=0 plan_s=0.283037 reason=collision_flip_196_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000105_d=-0.000105
+pose13 attempt=19 success=0 plan_s=0.244486 reason=collision_flip_196_carried_unit_flange_33/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose13 attempt=21 success=0 plan_s=0.0922964 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000972
+pose13 attempt=22 success=0 plan_s=0.222353 reason=collision_flip_200_carried_unit_flange_37/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose13 attempt=25 success=0 plan_s=0.296243 reason=collision_flip_196_carried_unit_flange_40/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose13 attempt=26 success=0 plan_s=0.0911509 reason=collision_lift_126_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000929
+pose13 attempt=27 success=0 plan_s=0.355187 reason=collision_twist_287_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000975
+pose13 attempt=28 success=0 plan_s=0.0804728 reason=collision_lift_122_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000885
+pose13 attempt=29 success=0 plan_s=0.554592 reason=collision_twist_415_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000985
+pose13 attempt=30 success=0 plan_s=0.0906583 reason=collision_flip_132_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000884
+pose13 attempt=31 success=0 plan_s=0.367732 reason=collision_twist_296_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000959
+CASE_COMPLETE 13/40 pose13 success=0 ready=32 plans=24
+pose14 attempt=0 success=0 plan_s=0.126879 reason=collision_lift_126_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000912
+pose14 attempt=1 success=0 plan_s=0.264496 reason=collision_flip_194_carried_unit_flange_37/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose14 attempt=2 success=0 plan_s=0.0745554 reason=collision_lift_99_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000956
+pose14 attempt=3 success=0 plan_s=0.00197636 reason=ik_lift_116_no descending feasible step
+pose14 attempt=4 success=0 plan_s=0.00186279 reason=ik_lift_116_no descending feasible step
+pose14 attempt=5 success=0 plan_s=0.626869 reason=collision_twist_429_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000962
+pose14 attempt=6 success=0 plan_s=0.132956 reason=collision_lift_114_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000978
+pose14 attempt=7 success=0 plan_s=0.743793 reason=collision_twist_426_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000956
+pose14 attempt=8 success=0 plan_s=0.0943344 reason=collision_lift_115_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000860
+pose14 attempt=9 success=0 plan_s=0.625097 reason=collision_twist_431_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000964
+pose14 attempt=11 success=0 plan_s=0.271612 reason=collision_flip_194_carried_unit_flange_33/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000102_d=-0.000102
+pose14 attempt=12 success=0 plan_s=0.262876 reason=collision_flip_194_carried_unit_flange_35/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose14 attempt=15 success=0 plan_s=0.386393 reason=collision_twist_288_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000940
+pose14 attempt=17 success=0 plan_s=0.616383 reason=collision_twist_434_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000985
+pose14 attempt=18 success=0 plan_s=0.123691 reason=collision_lift_126_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000876
+pose14 attempt=19 success=0 plan_s=0.604542 reason=collision_flip_199_carried_unit_flange_38/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose14 attempt=23 success=0 plan_s=0.661103 reason=collision_twist_428_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000988
+pose14 attempt=26 success=0 plan_s=0.391176 reason=collision_twist_294_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000982
+pose14 attempt=27 success=0 plan_s=0.124166 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000957
+pose14 attempt=28 success=0 plan_s=0.106952 reason=collision_lift_114_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000808
+pose14 attempt=29 success=0 plan_s=0.261912 reason=collision_flip_195_carried_unit_flange_37/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose14 attempt=30 success=0 plan_s=0.384739 reason=collision_twist_299_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000987
+pose14 attempt=34 success=0 plan_s=0.264094 reason=collision_flip_194_carried_unit_flange_35/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose14 attempt=35 success=0 plan_s=0.246322 reason=collision_flip_196_carried_unit_flange_32/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+CASE_COMPLETE 14/40 pose14 success=0 ready=36 plans=24
+pose15 attempt=0 success=0 plan_s=0.0141515 reason=ik_flip_220_iteration limit
+pose15 attempt=1 success=0 plan_s=0.0160315 reason=ik_flip_220_iteration limit
+pose15 attempt=2 success=0 plan_s=0.0142713 reason=ik_flip_220_iteration limit
+pose15 attempt=3 success=0 plan_s=0.0140915 reason=ik_flip_220_iteration limit
+pose15 attempt=4 success=0 plan_s=0.0141117 reason=ik_flip_220_iteration limit
+pose15 attempt=6 success=0 plan_s=0.0142318 reason=ik_flip_220_iteration limit
+pose15 attempt=7 success=0 plan_s=0.0138315 reason=ik_flip_220_iteration limit
+pose15 attempt=8 success=0 plan_s=0.0140803 reason=ik_flip_220_iteration limit
+pose15 attempt=9 success=0 plan_s=0.0139852 reason=ik_flip_220_iteration limit
+pose15 attempt=11 success=0 plan_s=0.0141405 reason=ik_flip_220_iteration limit
+pose15 attempt=13 success=0 plan_s=0.0161697 reason=ik_flip_219_iteration limit
+pose15 attempt=14 success=0 plan_s=0.0150005 reason=ik_flip_220_iteration limit
+pose15 attempt=15 success=0 plan_s=0.0123649 reason=ik_flip_220_iteration limit
+pose15 attempt=17 success=0 plan_s=0.0149999 reason=ik_flip_220_iteration limit
+pose15 attempt=18 success=0 plan_s=0.0136184 reason=ik_flip_220_iteration limit
+pose15 attempt=19 success=0 plan_s=0.0149293 reason=ik_flip_220_iteration limit
+pose15 attempt=21 success=0 plan_s=0.0149622 reason=ik_flip_220_iteration limit
+pose15 attempt=22 success=0 plan_s=0.0139807 reason=ik_flip_220_iteration limit
+pose15 attempt=23 success=0 plan_s=0.0150258 reason=ik_flip_220_iteration limit
+pose15 attempt=24 success=0 plan_s=0.0169388 reason=ik_flip_220_iteration limit
+pose15 attempt=25 success=0 plan_s=0.0156481 reason=ik_flip_220_iteration limit
+pose15 attempt=26 success=0 plan_s=0.0148937 reason=ik_flip_220_iteration limit
+pose15 attempt=27 success=0 plan_s=0.0150598 reason=ik_flip_220_iteration limit
+pose15 attempt=28 success=0 plan_s=0.0138708 reason=ik_flip_220_iteration limit
+CASE_COMPLETE 15/40 pose15 success=0 ready=29 plans=24
+pose16 attempt=0 success=0 plan_s=0.288765 reason=collision_flip_220_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000109_d=-0.000109
+pose16 attempt=1 success=0 plan_s=0.208132 reason=collision_flip_193_carried_unit_flange_38/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose16 attempt=2 success=0 plan_s=0.286743 reason=collision_flip_220_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000105_d=-0.000105
+pose16 attempt=5 success=0 plan_s=0.197226 reason=collision_flip_192_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000104_d=-0.000104
+pose16 attempt=6 success=0 plan_s=0.304422 reason=collision_flip_220_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000104_d=-0.000104
+pose16 attempt=10 success=0 plan_s=0.287426 reason=collision_flip_220_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000107_d=-0.000107
+pose16 attempt=11 success=0 plan_s=0.695807 reason=collision_twist_426_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000965
+pose16 attempt=13 success=0 plan_s=0.272914 reason=collision_flip_220_carried_unit_flange_43/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose16 attempt=14 success=0 plan_s=0.189274 reason=collision_flip_195_carried_unit_flange_31/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose16 attempt=15 success=0 plan_s=0.306207 reason=collision_flip_221_carried_unit_flange_30/core0_pillar_L_light_1/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose16 attempt=17 success=0 plan_s=0.754268 reason=collision_twist_425_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000921
+pose16 attempt=19 success=0 plan_s=0.0999882 reason=collision_flip_134_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000989
+pose16 attempt=20 success=0 plan_s=0.208494 reason=collision_flip_193_carried_unit_flange_38/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose16 attempt=21 success=0 plan_s=0.101214 reason=collision_flip_138_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000998
+pose16 attempt=22 success=0 plan_s=0.212337 reason=collision_flip_193_carried_unit_flange_34/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose16 attempt=23 success=0 plan_s=0.203644 reason=collision_flip_197_carried_unit_flange_33/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose16 attempt=24 success=0 plan_s=0.0837643 reason=collision_lift_111_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000886
+pose16 attempt=25 success=0 plan_s=0.20722 reason=collision_flip_193_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose16 attempt=26 success=0 plan_s=0.312132 reason=collision_flip_220_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose16 attempt=27 success=0 plan_s=0.326744 reason=tracking_flip_221_p=0.000223_a=0.002253
+pose16 attempt=28 success=0 plan_s=0.317145 reason=collision_flip_220_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000107_d=-0.000107
+pose16 attempt=29 success=0 plan_s=0.77868 reason=collision_twist_425_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000971
+pose16 attempt=30 success=0 plan_s=0.0992677 reason=collision_lift_129_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000911
+pose16 attempt=38 success=0 plan_s=0.332771 reason=tracking_flip_221_p=0.000255_a=0.002152
+CASE_COMPLETE 16/40 pose16 success=0 ready=39 plans=24
+pose17 attempt=0 success=1 plan_s=0.636942 reason=validated
+CASE_COMPLETE 17/40 pose17 success=1 ready=1 plans=1
+pose18 attempt=0 success=0 plan_s=0.351519 reason=collision_twist_295_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000977
+pose18 attempt=1 success=0 plan_s=0.350921 reason=collision_twist_296_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000989
+pose18 attempt=2 success=0 plan_s=0.248595 reason=collision_flip_199_carried_unit_flange_33/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose18 attempt=3 success=0 plan_s=0.0933063 reason=collision_flip_135_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000891
+pose18 attempt=5 success=0 plan_s=0.0768831 reason=collision_lift_128_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000975
+pose18 attempt=7 success=0 plan_s=0.361121 reason=collision_twist_300_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000954
+pose18 attempt=8 success=0 plan_s=0.00164232 reason=ik_lift_129_no descending feasible step
+pose18 attempt=9 success=0 plan_s=0.121698 reason=collision_flip_150_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000993
+pose18 attempt=10 success=0 plan_s=0.111586 reason=collision_flip_146_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000998
+pose18 attempt=11 success=0 plan_s=0.356899 reason=collision_twist_302_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000964
+pose18 attempt=12 success=0 plan_s=0.0785801 reason=collision_lift_129_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000910
+pose18 attempt=14 success=0 plan_s=0.250542 reason=collision_flip_198_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose18 attempt=17 success=0 plan_s=0.10995 reason=collision_flip_135_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000954
+pose18 attempt=19 success=0 plan_s=0.0830158 reason=collision_lift_131_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000858
+pose18 attempt=20 success=0 plan_s=0.0883623 reason=collision_lift_123_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000947
+pose18 attempt=22 success=0 plan_s=0.403537 reason=collision_twist_309_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000986
+pose18 attempt=23 success=0 plan_s=0.0926268 reason=collision_flip_137_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000820
+pose18 attempt=24 success=0 plan_s=0.0962362 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000800
+pose18 attempt=26 success=0 plan_s=0.113981 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000838
+pose18 attempt=27 success=0 plan_s=0.111447 reason=collision_flip_146_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000917
+pose18 attempt=29 success=0 plan_s=0.367202 reason=collision_twist_304_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000990
+pose18 attempt=30 success=0 plan_s=0.353095 reason=collision_twist_296_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000909
+pose18 attempt=38 success=0 plan_s=0.0777739 reason=collision_lift_122_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000994
+pose18 attempt=40 success=0 plan_s=0.445871 reason=collision_twist_449_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000974
+CASE_COMPLETE 18/40 pose18 success=0 ready=41 plans=24
+pose19 attempt=0 success=0 plan_s=0.0136893 reason=ik_twist_229_iteration limit
+pose19 attempt=1 success=0 plan_s=0.0138676 reason=ik_twist_229_iteration limit
+pose19 attempt=3 success=0 plan_s=0.0129665 reason=ik_twist_229_iteration limit
+pose19 attempt=4 success=0 plan_s=0.0129036 reason=ik_twist_229_iteration limit
+pose19 attempt=5 success=0 plan_s=0.0140868 reason=ik_twist_229_iteration limit
+pose19 attempt=7 success=0 plan_s=0.0154454 reason=ik_twist_229_iteration limit
+pose19 attempt=8 success=0 plan_s=0.0143361 reason=ik_twist_229_iteration limit
+pose19 attempt=9 success=0 plan_s=0.0158958 reason=ik_twist_229_iteration limit
+pose19 attempt=10 success=0 plan_s=0.0153324 reason=ik_twist_229_iteration limit
+pose19 attempt=12 success=0 plan_s=0.0128391 reason=ik_twist_229_iteration limit
+pose19 attempt=16 success=0 plan_s=0.0125979 reason=ik_twist_229_iteration limit
+pose19 attempt=17 success=0 plan_s=0.0164139 reason=ik_twist_229_iteration limit
+pose19 attempt=18 success=0 plan_s=0.015027 reason=ik_twist_229_iteration limit
+pose19 attempt=19 success=0 plan_s=0.0132175 reason=ik_twist_229_iteration limit
+pose19 attempt=20 success=0 plan_s=0.0137096 reason=ik_twist_229_iteration limit
+pose19 attempt=21 success=0 plan_s=0.00177485 reason=ik_lift_107_no descending feasible step
+pose19 attempt=23 success=0 plan_s=0.0138311 reason=ik_twist_229_iteration limit
+pose19 attempt=25 success=0 plan_s=0.0166216 reason=ik_twist_229_iteration limit
+pose19 attempt=26 success=0 plan_s=0.0176024 reason=ik_twist_229_iteration limit
+pose19 attempt=27 success=0 plan_s=0.0139355 reason=ik_twist_229_iteration limit
+pose19 attempt=30 success=0 plan_s=0.0159985 reason=ik_twist_229_iteration limit
+pose19 attempt=31 success=0 plan_s=0.0138403 reason=ik_twist_229_iteration limit
+pose19 attempt=33 success=0 plan_s=0.0137649 reason=ik_twist_229_iteration limit
+pose19 attempt=34 success=0 plan_s=0.00146516 reason=ik_lift_105_no descending feasible step
+CASE_COMPLETE 19/40 pose19 success=0 ready=35 plans=24
+pose20 attempt=0 success=0 plan_s=0.10208 reason=collision_flip_141_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000929
+pose20 attempt=1 success=0 plan_s=0.105586 reason=collision_flip_145_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000983
+pose20 attempt=2 success=0 plan_s=0.0918724 reason=collision_flip_133_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000979
+pose20 attempt=4 success=0 plan_s=0.256693 reason=collision_flip_221_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000106_d=-0.000106
+pose20 attempt=5 success=0 plan_s=0.0937544 reason=collision_flip_132_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000788
+pose20 attempt=6 success=0 plan_s=0.0929041 reason=collision_lift_115_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000852
+pose20 attempt=9 success=0 plan_s=0.191703 reason=collision_flip_198_carried_unit_flange_34/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose20 attempt=10 success=0 plan_s=0.0780916 reason=collision_lift_121_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000983
+pose20 attempt=11 success=0 plan_s=0.322572 reason=collision_twist_292_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000990
+pose20 attempt=13 success=0 plan_s=0.00178423 reason=ik_lift_113_no descending feasible step
+pose20 attempt=14 success=0 plan_s=0.0955115 reason=collision_lift_111_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000955
+pose20 attempt=15 success=0 plan_s=0.262722 reason=collision_flip_221_carried_unit_flange_39/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose20 attempt=16 success=0 plan_s=0.180222 reason=collision_flip_199_carried_unit_flange_33/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose20 attempt=18 success=0 plan_s=0.234544 reason=collision_flip_221_carried_unit_flange_41/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose20 attempt=19 success=0 plan_s=0.234435 reason=collision_flip_221_carried_unit_flange_41/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose20 attempt=20 success=0 plan_s=0.0569283 reason=collision_lift_111_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000867
+pose20 attempt=22 success=0 plan_s=0.0790578 reason=collision_lift_122_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000938
+pose20 attempt=23 success=0 plan_s=0.0759637 reason=collision_lift_119_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000929
+pose20 attempt=24 success=0 plan_s=0.082145 reason=collision_lift_125_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000955
+pose20 attempt=27 success=0 plan_s=0.0730486 reason=collision_lift_117_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000981
+pose20 attempt=30 success=0 plan_s=0.0990414 reason=collision_lift_111_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000989
+pose20 attempt=37 success=0 plan_s=0.0547426 reason=collision_lift_108_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000881
+pose20 attempt=42 success=0 plan_s=0.0156389 reason=collision_approach_7_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000998
+pose20 attempt=48 success=0 plan_s=0.543188 reason=collision_twist_432_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000982
+CASE_COMPLETE 20/40 pose20 success=0 ready=49 plans=24
+pose21 attempt=0 success=0 plan_s=0.336382 reason=collision_twist_300_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000985
+pose21 attempt=1 success=0 plan_s=0.34264 reason=collision_twist_302_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000981
+pose21 attempt=2 success=0 plan_s=0.0880931 reason=collision_flip_135_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000812
+pose21 attempt=3 success=0 plan_s=0.33674 reason=collision_twist_302_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000932
+pose21 attempt=4 success=0 plan_s=0.340836 reason=collision_twist_297_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000965
+pose21 attempt=5 success=0 plan_s=0.479856 reason=collision_twist_414_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000993
+pose21 attempt=7 success=0 plan_s=0.0811839 reason=collision_lift_124_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000948
+pose21 attempt=10 success=1 plan_s=0.556014 reason=validated
+CASE_COMPLETE 21/40 pose21 success=1 ready=11 plans=8
+pose22 attempt=0 success=1 plan_s=0.535419 reason=validated
+CASE_COMPLETE 22/40 pose22 success=1 ready=1 plans=1
+pose23 attempt=0 success=0 plan_s=0.110911 reason=collision_flip_135_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000857
+pose23 attempt=1 success=0 plan_s=0.00201129 reason=ik_flip_136_no descending feasible step
+pose23 attempt=2 success=0 plan_s=0.00400801 reason=ik_flip_135_iteration limit
+pose23 attempt=4 success=0 plan_s=0.00180056 reason=ik_flip_136_no descending feasible step
+pose23 attempt=6 success=0 plan_s=0.0997662 reason=collision_flip_135_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000871
+pose23 attempt=10 success=0 plan_s=0.115129 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000709
+pose23 attempt=11 success=0 plan_s=0.133072 reason=collision_flip_137_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000943
+pose23 attempt=12 success=0 plan_s=0.00388832 reason=ik_flip_135_iteration limit
+pose23 attempt=14 success=0 plan_s=0.00174384 reason=ik_flip_135_no descending feasible step
+pose23 attempt=15 success=0 plan_s=0.122803 reason=collision_flip_134_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000806
+pose23 attempt=16 success=0 plan_s=0.112264 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000898
+pose23 attempt=17 success=0 plan_s=0.103657 reason=collision_flip_132_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000855
+pose23 attempt=18 success=0 plan_s=0.0038916 reason=ik_flip_135_iteration limit
+pose23 attempt=19 success=0 plan_s=0.109634 reason=collision_flip_135_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000704
+pose23 attempt=20 success=0 plan_s=0.142292 reason=collision_flip_137_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000872
+pose23 attempt=22 success=0 plan_s=0.0972621 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000754
+pose23 attempt=23 success=0 plan_s=0.125146 reason=collision_flip_135_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000977
+pose23 attempt=24 success=0 plan_s=0.104792 reason=collision_flip_134_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000947
+pose23 attempt=25 success=0 plan_s=0.110056 reason=collision_flip_135_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000852
+pose23 attempt=26 success=0 plan_s=0.0832842 reason=collision_lift_129_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000947
+pose23 attempt=27 success=0 plan_s=0.0626682 reason=collision_lift_125_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000875
+pose23 attempt=28 success=0 plan_s=0.00458815 reason=ik_flip_135_iteration limit
+pose23 attempt=29 success=0 plan_s=0.335312 reason=collision_flip_203_carried_unit_flange_31/core0_pillar_L_light_5/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose23 attempt=31 success=0 plan_s=0.00410183 reason=ik_flip_136_no descending feasible step
+CASE_COMPLETE 23/40 pose23 success=0 ready=32 plans=24
+pose24 attempt=0 success=0 plan_s=0.112792 reason=collision_flip_132_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000902
+pose24 attempt=1 success=0 plan_s=0.113326 reason=collision_flip_133_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000888
+pose24 attempt=3 success=0 plan_s=0.0510989 reason=collision_lift_97_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000912
+pose24 attempt=4 success=0 plan_s=0.103297 reason=collision_lift_127_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000882
+pose24 attempt=6 success=1 plan_s=0.57956 reason=validated
+CASE_COMPLETE 24/40 pose24 success=1 ready=7 plans=5
+pose25 attempt=0 success=0 plan_s=0.357554 reason=collision_twist_281_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000993
+pose25 attempt=1 success=0 plan_s=0.216528 reason=collision_flip_196_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose25 attempt=2 success=0 plan_s=0.351703 reason=collision_twist_277_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000000
+pose25 attempt=4 success=0 plan_s=0.522785 reason=collision_twist_421_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000956
+pose25 attempt=6 success=0 plan_s=0.371821 reason=collision_twist_275_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000955
+pose25 attempt=7 success=0 plan_s=0.359527 reason=collision_twist_281_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000956
+pose25 attempt=8 success=0 plan_s=0.0639466 reason=collision_lift_113_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000995
+pose25 attempt=10 success=0 plan_s=0.369776 reason=collision_twist_274_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000962
+pose25 attempt=11 success=0 plan_s=0.216946 reason=collision_flip_193_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000109_d=-0.000109
+pose25 attempt=12 success=0 plan_s=0.353797 reason=collision_twist_291_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000934
+pose25 attempt=14 success=0 plan_s=0.526483 reason=collision_twist_424_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000959
+pose25 attempt=15 success=0 plan_s=0.221619 reason=collision_flip_194_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000103_d=-0.000103
+pose25 attempt=16 success=0 plan_s=0.0744923 reason=collision_lift_117_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000917
+pose25 attempt=20 success=0 plan_s=0.345634 reason=collision_twist_279_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000962
+pose25 attempt=21 success=0 plan_s=0.225049 reason=collision_flip_194_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000103_d=-0.000103
+pose25 attempt=22 success=0 plan_s=0.38419 reason=collision_twist_290_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000989
+pose25 attempt=24 success=0 plan_s=0.100329 reason=collision_lift_127_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000923
+pose25 attempt=25 success=0 plan_s=0.201257 reason=collision_flip_195_carried_unit_flange_32/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000102_d=-0.000102
+pose25 attempt=29 success=0 plan_s=0.21525 reason=collision_flip_195_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000103_d=-0.000103
+pose25 attempt=30 success=0 plan_s=0.116602 reason=collision_flip_133_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000975
+pose25 attempt=31 success=0 plan_s=0.0941745 reason=collision_lift_124_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000839
+pose25 attempt=35 success=0 plan_s=0.528391 reason=collision_twist_428_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000000
+pose25 attempt=36 success=0 plan_s=0.521843 reason=collision_twist_424_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000952
+pose25 attempt=37 success=0 plan_s=0.219939 reason=collision_flip_195_carried_unit_flange_32/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+CASE_COMPLETE 25/40 pose25 success=0 ready=38 plans=24
+pose26 attempt=0 success=0 plan_s=0.374319 reason=collision_twist_282_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000952
+pose26 attempt=1 success=0 plan_s=0.232343 reason=collision_flip_199_carried_unit_flange_34/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose26 attempt=2 success=0 plan_s=0.370452 reason=collision_twist_286_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000995
+pose26 attempt=3 success=0 plan_s=0.405633 reason=collision_twist_281_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000996
+pose26 attempt=4 success=0 plan_s=0.103493 reason=collision_flip_132_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000911
+pose26 attempt=6 success=0 plan_s=0.129513 reason=collision_flip_140_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000999
+pose26 attempt=8 success=0 plan_s=0.0949256 reason=collision_lift_121_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000862
+pose26 attempt=9 success=0 plan_s=0.36752 reason=collision_twist_284_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000952
+pose26 attempt=10 success=0 plan_s=0.139718 reason=collision_flip_144_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000918
+pose26 attempt=11 success=0 plan_s=0.115265 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000905
+pose26 attempt=12 success=0 plan_s=0.370719 reason=collision_twist_276_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000948
+pose26 attempt=13 success=0 plan_s=0.546071 reason=collision_twist_405_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000984
+pose26 attempt=14 success=0 plan_s=0.391303 reason=collision_twist_286_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000961
+pose26 attempt=15 success=0 plan_s=0.100596 reason=collision_lift_130_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000913
+pose26 attempt=16 success=0 plan_s=0.232119 reason=collision_flip_195_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000104_d=-0.000104
+pose26 attempt=19 success=0 plan_s=0.376812 reason=collision_twist_283_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000977
+pose26 attempt=21 success=0 plan_s=0.565079 reason=collision_twist_403_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000000
+pose26 attempt=22 success=0 plan_s=0.0908399 reason=collision_lift_119_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000794
+pose26 attempt=24 success=0 plan_s=0.368707 reason=collision_twist_285_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000959
+pose26 attempt=26 success=0 plan_s=0.384802 reason=collision_twist_286_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000912
+pose26 attempt=27 success=0 plan_s=0.364787 reason=collision_twist_283_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000918
+pose26 attempt=28 success=0 plan_s=0.371702 reason=collision_twist_273_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000936
+pose26 attempt=30 success=0 plan_s=0.117537 reason=collision_flip_132_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000913
+pose26 attempt=31 success=0 plan_s=0.240622 reason=collision_flip_197_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000101_d=-0.000101
+CASE_COMPLETE 26/40 pose26 success=0 ready=32 plans=24
+pose27 attempt=0 success=0 plan_s=0.123038 reason=collision_flip_147_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000972
+pose27 attempt=1 success=1 plan_s=0.558165 reason=validated
+CASE_COMPLETE 27/40 pose27 success=1 ready=2 plans=2
+pose28 attempt=0 success=0 plan_s=0.107523 reason=collision_flip_139_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000938
+pose28 attempt=1 success=1 plan_s=0.496281 reason=validated
+CASE_COMPLETE 28/40 pose28 success=1 ready=2 plans=2
+pose29 attempt=0 success=0 plan_s=0.113744 reason=collision_flip_138_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000952
+pose29 attempt=1 success=1 plan_s=0.523482 reason=validated
+CASE_COMPLETE 29/40 pose29 success=1 ready=2 plans=2
+pose30 attempt=0 success=0 plan_s=0.0142314 reason=ik_flip_219_iteration limit
+pose30 attempt=1 success=0 plan_s=0.0150553 reason=ik_flip_219_iteration limit
+pose30 attempt=2 success=0 plan_s=0.0130882 reason=ik_flip_219_iteration limit
+pose30 attempt=4 success=0 plan_s=0.0193017 reason=ik_flip_219_iteration limit
+pose30 attempt=5 success=0 plan_s=0.0142414 reason=ik_flip_219_iteration limit
+pose30 attempt=7 success=0 plan_s=0.0147298 reason=ik_flip_219_iteration limit
+pose30 attempt=11 success=0 plan_s=0.0139168 reason=ik_flip_219_iteration limit
+pose30 attempt=12 success=0 plan_s=0.0149558 reason=ik_flip_219_iteration limit
+pose30 attempt=14 success=0 plan_s=0.0148953 reason=ik_flip_219_iteration limit
+pose30 attempt=15 success=0 plan_s=0.0127432 reason=ik_flip_219_iteration limit
+pose30 attempt=18 success=0 plan_s=0.0121592 reason=ik_flip_218_iteration limit
+pose30 attempt=22 success=0 plan_s=0.0150849 reason=ik_flip_219_iteration limit
+pose30 attempt=23 success=0 plan_s=0.0174062 reason=ik_flip_219_iteration limit
+pose30 attempt=24 success=0 plan_s=0.0129771 reason=ik_flip_219_iteration limit
+pose30 attempt=26 success=0 plan_s=0.0157222 reason=ik_flip_219_iteration limit
+pose30 attempt=30 success=0 plan_s=0.0147604 reason=ik_flip_219_iteration limit
+pose30 attempt=31 success=0 plan_s=0.0126241 reason=ik_flip_219_iteration limit
+pose30 attempt=32 success=0 plan_s=0.0128933 reason=ik_flip_219_iteration limit
+pose30 attempt=34 success=0 plan_s=0.0165058 reason=ik_flip_219_iteration limit
+pose30 attempt=37 success=0 plan_s=0.0145516 reason=ik_flip_219_iteration limit
+pose30 attempt=40 success=0 plan_s=0.0156777 reason=ik_flip_219_iteration limit
+pose30 attempt=42 success=0 plan_s=0.0142519 reason=ik_flip_219_iteration limit
+pose30 attempt=45 success=0 plan_s=0.0150653 reason=ik_flip_219_iteration limit
+pose30 attempt=48 success=0 plan_s=0.0149087 reason=ik_flip_219_iteration limit
+CASE_COMPLETE 30/40 pose30 success=0 ready=49 plans=24
+pose31 attempt=0 success=0 plan_s=0.319257 reason=collision_twist_289_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000962
+pose31 attempt=1 success=0 plan_s=0.188955 reason=collision_flip_198_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose31 attempt=3 success=0 plan_s=0.198686 reason=collision_flip_200_carried_unit_flange_31/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose31 attempt=5 success=0 plan_s=0.49328 reason=collision_twist_422_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000988
+pose31 attempt=6 success=0 plan_s=0.599972 reason=collision_twist_421_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000895
+pose31 attempt=9 success=0 plan_s=0.497662 reason=collision_twist_422_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000941
+pose31 attempt=10 success=0 plan_s=0.0618609 reason=collision_lift_116_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000848
+pose31 attempt=11 success=0 plan_s=0.585494 reason=collision_twist_418_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000897
+pose31 attempt=12 success=0 plan_s=0.113122 reason=collision_flip_147_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000953
+pose31 attempt=13 success=0 plan_s=0.202082 reason=collision_flip_196_carried_unit_flange_37/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose31 attempt=16 success=0 plan_s=0.196076 reason=collision_flip_197_carried_unit_flange_37/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose31 attempt=18 success=0 plan_s=0.318684 reason=collision_twist_293_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000931
+pose31 attempt=19 success=0 plan_s=0.594907 reason=collision_twist_422_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000928
+pose31 attempt=20 success=0 plan_s=0.189587 reason=collision_flip_198_carried_unit_flange_34/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose31 attempt=21 success=0 plan_s=0.204376 reason=collision_flip_196_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000109_d=-0.000109
+pose31 attempt=22 success=0 plan_s=0.113361 reason=collision_flip_144_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000939
+pose31 attempt=23 success=0 plan_s=0.1923 reason=collision_flip_197_carried_unit_flange_37/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose31 attempt=24 success=0 plan_s=0.0783629 reason=collision_lift_130_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000926
+pose31 attempt=26 success=0 plan_s=0.18787 reason=collision_flip_196_carried_unit_flange_38/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose31 attempt=27 success=0 plan_s=0.241744 reason=collision_flip_196_carried_unit_flange_38/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose31 attempt=28 success=0 plan_s=0.316894 reason=collision_twist_287_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000977
+pose31 attempt=29 success=0 plan_s=0.319998 reason=collision_twist_282_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000995
+pose31 attempt=31 success=0 plan_s=0.511792 reason=collision_twist_421_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000933
+pose31 attempt=33 success=0 plan_s=0.211619 reason=collision_flip_196_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000103_d=-0.000103
+CASE_COMPLETE 31/40 pose31 success=0 ready=34 plans=24
+pose32 attempt=0 success=0 plan_s=0.357467 reason=collision_twist_294_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000939
+pose32 attempt=1 success=0 plan_s=0.219361 reason=collision_flip_199_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose32 attempt=3 success=0 plan_s=0.259911 reason=collision_flip_196_carried_unit_flange_0/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000111_d=-0.000111
+pose32 attempt=4 success=0 plan_s=0.0919326 reason=collision_lift_122_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000883
+pose32 attempt=6 success=0 plan_s=0.0929566 reason=collision_lift_126_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000914
+pose32 attempt=7 success=0 plan_s=0.390567 reason=collision_twist_297_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000951
+pose32 attempt=8 success=0 plan_s=0.215019 reason=collision_flip_196_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000103_d=-0.000103
+pose32 attempt=11 success=0 plan_s=0.196294 reason=collision_flip_197_carried_unit_flange_36/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000101_d=-0.000101
+pose32 attempt=12 success=0 plan_s=0.106779 reason=collision_flip_132_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000981
+pose32 attempt=14 success=0 plan_s=0.221373 reason=collision_flip_196_carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.000105_d=-0.000105
+pose32 attempt=15 success=0 plan_s=0.537743 reason=collision_twist_418_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000947
+pose32 attempt=16 success=0 plan_s=0.211291 reason=collision_flip_196_carried_unit_flange_38/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose32 attempt=18 success=0 plan_s=0.372694 reason=collision_twist_287_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000982
+pose32 attempt=19 success=0 plan_s=0.52557 reason=collision_twist_417_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000986
+pose32 attempt=22 success=0 plan_s=0.364871 reason=collision_twist_295_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000935
+pose32 attempt=24 success=0 plan_s=0.215083 reason=collision_flip_197_carried_unit_flange_35/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose32 attempt=26 success=0 plan_s=0.354127 reason=collision_twist_299_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000980
+pose32 attempt=27 success=0 plan_s=0.12269 reason=collision_flip_133_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000974
+pose32 attempt=28 success=0 plan_s=0.0937392 reason=collision_lift_126_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000943
+pose32 attempt=29 success=0 plan_s=0.367527 reason=collision_twist_290_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000971
+pose32 attempt=31 success=0 plan_s=0.354615 reason=collision_twist_305_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000942
+pose32 attempt=36 success=0 plan_s=0.0588557 reason=collision_lift_115_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000889
+pose32 attempt=37 success=0 plan_s=0.379008 reason=collision_approach_27_j2_link_visual/collision_arm_j4_link_part_5_d=0.000927
+pose32 attempt=39 success=0 plan_s=0.573749 reason=collision_twist_423_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000939
+CASE_COMPLETE 32/40 pose32 success=0 ready=40 plans=24
+pose33 attempt=0 success=0 plan_s=0.137648 reason=collision_flip_145_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000998
+pose33 attempt=1 success=1 plan_s=0.551512 reason=validated
+CASE_COMPLETE 33/40 pose33 success=1 ready=2 plans=2
+pose34 attempt=0 success=1 plan_s=0.511053 reason=validated
+CASE_COMPLETE 34/40 pose34 success=1 ready=1 plans=1
+pose35 attempt=0 success=0 plan_s=0.111231 reason=collision_flip_141_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000957
+pose35 attempt=1 success=0 plan_s=0.110455 reason=collision_flip_140_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000979
+pose35 attempt=2 success=1 plan_s=0.498618 reason=validated
+CASE_COMPLETE 35/40 pose35 success=1 ready=3 plans=3
+pose36 attempt=0 success=0 plan_s=0.108813 reason=collision_flip_145_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000765
+pose36 attempt=1 success=1 plan_s=0.42276 reason=validated
+CASE_COMPLETE 36/40 pose36 success=1 ready=2 plans=2
+pose37 attempt=0 success=0 plan_s=0.109123 reason=collision_flip_132_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000983
+pose37 attempt=1 success=1 plan_s=0.477499 reason=validated
+CASE_COMPLETE 37/40 pose37 success=1 ready=2 plans=2
+pose38 attempt=0 success=1 plan_s=0.613597 reason=validated
+CASE_COMPLETE 38/40 pose38 success=1 ready=1 plans=1
+pose39 attempt=0 success=0 plan_s=0.109541 reason=collision_flip_142_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000975
+pose39 attempt=1 success=0 plan_s=0.106706 reason=collision_flip_141_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000883
+pose39 attempt=3 success=1 plan_s=0.482702 reason=validated
+CASE_COMPLETE 39/40 pose39 success=1 ready=4 plans=3
+pose40 attempt=0 success=0 plan_s=0.1034 reason=collision_flip_143_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000978
+pose40 attempt=1 success=0 plan_s=0.225544 reason=collision_flip_196_carried_unit_flange_33/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose40 attempt=2 success=0 plan_s=0.210381 reason=collision_flip_197_carried_unit_flange_38/core0_pillar_L_light_3/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose40 attempt=3 success=0 plan_s=0.339849 reason=collision_twist_289_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000986
+pose40 attempt=4 success=0 plan_s=0.362507 reason=collision_twist_298_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000954
+pose40 attempt=6 success=0 plan_s=0.069721 reason=collision_lift_116_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000911
+pose40 attempt=7 success=0 plan_s=0.0106388 reason=collision_approach_1_j2_link_visual/collision_arm_j4_link_part_5_d=0.000978
+pose40 attempt=8 success=0 plan_s=0.213687 reason=collision_flip_197_carried_unit_flange_33/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000102_d=-0.000102
+pose40 attempt=9 success=0 plan_s=0.37078 reason=collision_twist_295_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000956
+pose40 attempt=10 success=0 plan_s=0.340703 reason=collision_twist_295_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000958
+pose40 attempt=11 success=0 plan_s=0.278591 reason=collision_flip_195_carried_unit_flange_36/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose40 attempt=12 success=0 plan_s=0.35025 reason=collision_twist_292_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000926
+pose40 attempt=13 success=0 plan_s=0.62899 reason=collision_twist_417_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000902
+pose40 attempt=15 success=0 plan_s=0.332383 reason=collision_twist_289_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000981
+pose40 attempt=16 success=0 plan_s=0.096391 reason=collision_flip_136_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000896
+pose40 attempt=17 success=0 plan_s=0.595225 reason=collision_twist_418_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000938
+pose40 attempt=19 success=0 plan_s=0.0953792 reason=collision_flip_140_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000993
+pose40 attempt=21 success=0 plan_s=0.351364 reason=collision_twist_292_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000949
+pose40 attempt=22 success=0 plan_s=0.0898576 reason=collision_flip_132_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000910
+pose40 attempt=24 success=0 plan_s=0.355286 reason=collision_twist_298_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000919
+pose40 attempt=25 success=0 plan_s=0.361814 reason=collision_twist_292_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000960
+pose40 attempt=26 success=0 plan_s=0.356874 reason=collision_twist_292_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0_d=0.000988
+pose40 attempt=30 success=0 plan_s=0.229901 reason=collision_flip_194_carried_unit_flange_34/core0_pillar_L_light_4/assembly_axial_overlap_d=-0.000100_d=-0.000100
+pose40 attempt=31 success=0 plan_s=0.58428 reason=collision_twist_419_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0_d=0.000904
+CASE_COMPLETE 40/40 pose40 success=0 ready=32 plans=24

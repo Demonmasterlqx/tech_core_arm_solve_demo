@@ -1,0 +1,24 @@
+Start testing: Oct 11 12:35 CST
+----------------------------------------------------------
+19/20 Testing: planning_contract
+19/20 Test: planning_contract
+Command: "/data/home/sim6g/code/tech_core_arm_solve/build-planning/planning_contract_test"
+Directory: /data/home/sim6g/code/tech_core_arm_solve/build-planning
+"planning_contract" start time: Oct 11 12:35 CST
+Output:
+----------------------------------------------------------
+contract structural/phase/position negative tests passed
+contract NaN preflight tests passed
+contract nonadjacent collision detected: j1_link_visual/j5_link_visual distance=-2.66903e-05 attempts=9
+complete baseline and obstacle revalidation passed
+Q sweep endpoint and order contract tests passed
+planning contract negative tests passed
+<end of output>
+Test time =   2.07 sec
+----------------------------------------------------------
+Test Passed.
+"planning_contract" end time: Oct 11 12:35 CST
+"planning_contract" time elapsed: 00:00:02
+----------------------------------------------------------
+
+End testing: Oct 11 12:35 CST

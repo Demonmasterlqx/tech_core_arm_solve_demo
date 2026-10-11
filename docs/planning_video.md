@@ -1,6 +1,8 @@
 # 三级兑换视频：更近的安装位置、降低基座与 4 倍运动速度
 
-## 当前视频：基座降低 100 mm，pitch −10°，roll +10°
+后续的 **40 位姿、Q 从 0° 到 +90° 再到 −90°** 试验、视频及算法参数见 [40 位姿报告](pose40_q_sweep.md)。本页保留先前单场景视频的记录。
+
+## 单场景视频：基座降低 100 mm，pitch −10°，roll +10°
 
 按用户要求，在先前更近的安装位置上，将机器人根刚体和固定安装座沿世界 Z **实际下移 0.10 m**，核心与地面不随之移动。`Scenario::arm_base_z=-0.10`，安装平移仍为 `(0.20, 0.20, -0.25)` m。核心初始姿态为 `phi=80°`、`alpha=10°`，即本模型约定的 **pitch = phi − 90° = −10°、roll = +10°**。规则对 `phi` 的范围限制是 `[0°,90°]`。更改的是仿真中的空间位置和姿态。
 
@@ -75,4 +77,4 @@ python scripts/render_planning_video.py docs/evidence/level3_video_closer \
 
 脚本强制 `CUDA_VISIBLE_DEVICES=''`、Mesa llvmpipe 和 4 个 CPU 渲染线程，并核验实际 OpenGL renderer；ffmpeg 编码使用 2 个 CPU 线程。RGB 直接通过管道交给编码器，不落盘保存帧序列。临时编译文件在结束或异常时清理；日志 1 MiB 轮转、最多两份备份。最终视频先写临时文件，经 ffprobe 验证完整帧数后原子改名，同时输出 SHA-256、实际 renderer、模型/轨迹哈希和时长 JSON。
 
-前一版成品保留于 `artifacts/level3_planning/videos/level3-closer-10cm.mp4`。原始 390 mm 名义视频也保留供比较；最新交付为本页开头的降低基座、倾斜核心和 4 倍运动速度版本。
+前一版成品保留于 `artifacts/level3_planning/videos/level3-closer-10cm.mp4`。原始 390 mm 名义视频也保留供比较；该轮交付为本页开头的降低基座、倾斜核心和 4 倍运动速度版本。

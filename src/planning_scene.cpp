@@ -194,6 +194,8 @@ void PlanningScene::configure(const Scenario& scenario) {
        !scenario.start.allFinite() || !scenario.assembly_translation.allFinite() ||
        !std::isfinite(scenario.assembly_yaw) || !std::isfinite(scenario.arm_base_z))
         throw std::invalid_argument("Invalid planning scenario");
+    if(scenario.q_sweep && scenario.target_degrees!=-90)
+        throw std::invalid_argument("Q sweep must end at -90 degrees");
     scenario_=scenario;
     rigid_pair_cache_enabled_=false;
     for(auto& pair:pairs_) pair.cached_cutoff=-1;

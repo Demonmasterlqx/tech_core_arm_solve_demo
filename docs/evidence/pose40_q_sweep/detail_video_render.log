@@ -1,0 +1,17 @@
+DENSE_RECHECK passed samples=2838
+OPENGL_RENDERER llvmpipe (LLVM 15.0.7, 256 bits)
+FRAME 1/619 trajectory_time=0
+FRAME 49/619 trajectory_time=2
+FRAME 97/619 trajectory_time=4
+FRAME 145/619 trajectory_time=6
+FRAME 193/619 trajectory_time=8
+FRAME 241/619 trajectory_time=10
+FRAME 289/619 trajectory_time=12
+FRAME 337/619 trajectory_time=14
+FRAME 385/619 trajectory_time=16
+FRAME 433/619 trajectory_time=18
+FRAME 481/619 trajectory_time=20
+FRAME 529/619 trajectory_time=22
+FRAME 577/619 trajectory_time=23.7812
+FRAME 619/619 trajectory_time=23.7812
+COMPLETE /data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/videos/level3-q-sweep-detail.mp4 frames=619 bytes=6924890

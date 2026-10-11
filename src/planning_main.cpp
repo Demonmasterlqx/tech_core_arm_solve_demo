@@ -34,14 +34,14 @@ std::ofstream output_file(const std::filesystem::path& path) {
 }
 void write_scenarios(const std::filesystem::path& path, const std::vector<Scenario>& suite) {
     auto out = output_file(path);
-    out << "case,split,core_x,core_y,core_z,core_theta_degrees,core_phi_degrees,core_alpha_degrees,target_degrees,start_q0,start_q1,start_q2,start_q3,start_q4,start_q5,start_q6,assembly_translation_x,assembly_translation_y,assembly_translation_z,assembly_yaw_radians,blocking_obstacle,arm_base_z\n";
+    out << "case,split,core_x,core_y,core_z,core_theta_degrees,core_phi_degrees,core_alpha_degrees,target_degrees,start_q0,start_q1,start_q2,start_q3,start_q4,start_q5,start_q6,assembly_translation_x,assembly_translation_y,assembly_translation_z,assembly_yaw_radians,blocking_obstacle,arm_base_z,q_sweep\n";
     for (const auto& scenario : suite) {
         const auto& p = scenario.core;
         out << csv(scenario.id) << ',' << csv(scenario.split) << ',' << p.x << ',' << p.y << ',' << p.z
             << ',' << p.theta << ',' << p.phi << ',' << p.alpha << ',' << scenario.target_degrees;
         for (int k = 0; k < 7; ++k) out << ',' << scenario.start[k];
         for (int k = 0; k < 3; ++k) out << ',' << scenario.assembly_translation[k];
-        out << ',' << scenario.assembly_yaw << ',' << scenario.blocking_obstacle << ',' << scenario.arm_base_z << '\n';
+        out << ',' << scenario.assembly_yaw << ',' << scenario.blocking_obstacle << ',' << scenario.arm_base_z << ',' << scenario.q_sweep << '\n';
     }
 }
 PlanResult safe_plan(PlanningScene& scene, const Scenario& scenario, const PlanOptions& options,

@@ -1,0 +1,16 @@
+{
+  "utc_start": "2026-10-11T04:22:38.119709+00:00",
+  "cpu_affinity": [
+    0
+  ],
+  "CUDA_VISIBLE_DEVICES": "",
+  "source_sha256": "a32cdb103530d26e51fed61f54538e5481b6fd637a3f3776f2d926cc8dc82e2a",
+  "command": [
+    "plan_pose_sweep",
+    "/data/home/sim6g/code/tech_core_arm_solve/artifacts/level3_planning/pose40_q_sweep",
+    "96",
+    "24"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 177.5592553652823
+}

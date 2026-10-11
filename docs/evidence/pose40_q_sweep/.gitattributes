@@ -1,0 +1,2 @@
+# Keep the exact csv.writer output bytes used by the experiment.
+requested_poses.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol

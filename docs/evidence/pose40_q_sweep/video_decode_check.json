@@ -1,0 +1,51 @@
+{
+  "videos": [
+    {
+      "video": "artifacts/level3_planning/videos/level3-40poses-q-sweep.mp4",
+      "exit_code": 0,
+      "decode_stderr": ""
+    },
+    {
+      "video": "artifacts/level3_planning/videos/level3-q-sweep-detail.mp4",
+      "exit_code": 0,
+      "decode_stderr": ""
+    }
+  ],
+  "review_frames": [
+    {
+      "page": 1,
+      "video_seconds": 25.4,
+      "path": "artifacts/level3_planning/videos/pose40-review-page1.png"
+    },
+    {
+      "page": 2,
+      "video_seconds": 51.599999999999994,
+      "path": "artifacts/level3_planning/videos/pose40-review-page2.png"
+    },
+    {
+      "page": 3,
+      "video_seconds": 78.75,
+      "path": "artifacts/level3_planning/videos/pose40-review-page3.png"
+    },
+    {
+      "page": 4,
+      "video_seconds": 105.1,
+      "path": "artifacts/level3_planning/videos/pose40-review-page4.png"
+    },
+    {
+      "page": 5,
+      "video_seconds": 131.7,
+      "path": "artifacts/level3_planning/videos/pose40-review-page5.png"
+    },
+    {
+      "detail_endpoint": "plus90",
+      "video_seconds": 14.708333333333334,
+      "path": "artifacts/level3_planning/videos/q-sweep-review-plus90.png"
+    },
+    {
+      "detail_endpoint": "minus90",
+      "video_seconds": 24.281205784956885,
+      "path": "artifacts/level3_planning/videos/q-sweep-review-minus90.png"
+    }
+  ]
+}

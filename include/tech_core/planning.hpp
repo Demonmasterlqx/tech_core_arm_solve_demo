@@ -19,6 +19,9 @@ struct Scenario {
     std::string split = "development";
     Pose core;
     double target_degrees = 35;
+    // Require Q to visit +90 degrees before ending at -90 degrees.
+    // This extends the level-3 demonstration; target_degrees must be -90.
+    bool q_sweep = false;
     // One fixed, development-selected carrying posture, 60 mm before nominal E.
     JointVector start = (JointVector() << -.62770373654521094, 2.3297993305507192,
         1.0289871622237392, 1.2715734368717495, -1.747192543846495,

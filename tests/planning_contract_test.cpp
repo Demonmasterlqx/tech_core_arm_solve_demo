@@ -1,5 +1,6 @@
 #include "tech_core/planning.hpp"
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <iostream>
@@ -189,6 +190,44 @@ void complete_plan_test(PlanningScene& scene) {
             "inserted obstacle must invalidate a previously valid complete plan");
     std::cout << "complete baseline and obstacle revalidation passed\n";
 }
+
+void q_sweep_contract_test(PlanningScene& scene) {
+    auto request=scenario_suite().front();request.target_degrees=-90;request.q_sweep=true;
+    scene.configure(request);
+    const auto task=make_task(scene,PlanOptions{});
+    std::vector<Knot> knots;
+    for(const auto& point:task) {Knot k;static_cast<TaskPoint&>(k)=point;k.q=request.start;knots.push_back(k);}
+    parameterize(knots);
+    auto peak=std::find_if(knots.begin(),knots.end(),[](const Knot& k){
+        return k.phase==Phase::Twist && std::abs(k.mechanism.twist-pi/2)<1e-12;
+    });
+    require(peak!=knots.end(),"Sweep must explicitly reach positive 90 degrees");
+    require(std::abs(knots.back().mechanism.twist+pi/2)<1e-12,"Sweep must end at negative 90 degrees");
+    // Structural fixtures intentionally do not solve IK: omission/order must
+    // be rejected before their unrelated FK/collision failure.
+    auto missing=knots;
+    missing.erase(missing.begin()+(peak-knots.begin())+1,missing.end()-1);
+    require(validate_trajectory(scene,missing,PlanOptions{}).reason=="q_sweep_missing_endpoint",
+            "A jump from +90 directly into final dwell must not count as the return leg");
+    auto reversed=knots;
+    auto first=std::find_if(reversed.begin(),reversed.end(),[](const Knot& k){return k.phase==Phase::Twist;});
+    first->mechanism.twist=-radians(1);first->target=scene.mechanism_target(first->mechanism);
+    require(validate_trajectory(scene,reversed,PlanOptions{}).reason=="q_sweep_order",
+            "Negative Q before visiting +90 must be rejected");
+    bool rejected=false;
+    request.target_degrees=35;
+    try {scene.configure(request);} catch(const std::invalid_argument&) {rejected=true;}
+    require(rejected,"Sweep and final target must agree");
+    request.core={-.09,.2,.5,0,80,10};request.target_degrees=-90;
+    request.arm_base_z=-.1;request.assembly_translation.x()=.2;
+    request.start<<-.58298870078787879,1.4014363481415861,1.4956286729240151,
+        .51538441396359136,-1.5264021873645037,-.58813609807777278,2.7857137959190528;
+    PlanOptions options;options.method=Method::RigidCache;options.motion_speed_scale=4;
+    const auto complete=plan(scene,request,options);
+    require(complete.success && complete.validation.rule_success,
+            "Lowered tilted-core Q sweep must complete with collision validation: "+complete.reason);
+    std::cout << "Q sweep endpoint and order contract tests passed\n";
+}
 } // namespace
 
 int main() {
@@ -203,6 +242,7 @@ int main() {
         nonfinite_tests(scene);
         nonadjacent_collision_test(scene);
         complete_plan_test(scene);
+        q_sweep_contract_test(scene);
         std::cout << "planning contract negative tests passed\n";
         return 0;
     } catch (const std::exception& error) {

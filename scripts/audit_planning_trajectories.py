@@ -254,6 +254,14 @@ def trajectory_audit(path, scenario, arm, tcp, args, successful):
         errors.append('mechanism travel bounds')
     if np.any(np.abs(state[:, 3]) > math.pi/2+1e-9):
         errors.append('Q bound exceeded')
+    if scenario.get('q_sweep', '0') == '1':
+        sweep = np.array([0.] + [float(s[3]) for s, p in zip(state, phase) if p == 'twist'])
+        peak = int(np.argmax(sweep))
+        if (abs(goal+math.pi/2) > 1e-9 or abs(sweep[peak]-math.pi/2) > 1e-9 or
+                abs(sweep[-1]+math.pi/2) > 1e-9):
+            errors.append('Q sweep must visit +90 then finish at -90')
+        if np.any(np.diff(sweep[:peak+1]) < -1e-9) or np.any(np.diff(sweep[peak:]) > 1e-9):
+            errors.append('Q sweep order is not 0 to +90 to -90')
     for i, p in enumerate(phase):
         s, l, f, w = state[i]
         if ((p in ('approach', 'insert') and max(abs(l), abs(f), abs(w)) > 1e-8) or
