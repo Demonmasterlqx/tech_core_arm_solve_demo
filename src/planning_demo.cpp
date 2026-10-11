@@ -98,14 +98,16 @@ Knot sample_demo_trajectory(const std::vector<Knot>& knots, double seconds) {
     return sample;
 }
 
-PlanningDemo::PlanningDemo(Scenario home, PlanOptions options, DemoPlanner planner)
-    : initial_(std::move(home)), scenario_(initial_), options_(std::move(options)),
+PlanningDemo::PlanningDemo(Scenario initial_scenario, PlanOptions options, DemoPlanner planner)
+    : initial_(std::move(initial_scenario)), scenario_(initial_), options_(std::move(options)),
       planner_(std::move(planner)), q_(initial_.start) {
     if (!planner_ || (options_.method != Method::Baseline && options_.method != Method::RigidCache) ||
         !std::isfinite(options_.timeout_seconds) || options_.timeout_seconds <= 0 ||
         options_.timeout_seconds > 30 || !std::isfinite(options_.motion_speed_scale) ||
         options_.motion_speed_scale <= 0 || options_.motion_speed_scale > 4)
         throw std::invalid_argument("Invalid demo planner options");
+    initial_.enforce_core_pose_limits = false;
+    scenario_.enforce_core_pose_limits = false;
     scene_.configure(scenario_);
     tool_site_ = mj_name2id(scene_.model(), mjOBJ_SITE, "planning_tcp");
     if (tool_site_ < 0) throw std::runtime_error("Missing planning_tcp");
@@ -140,7 +142,7 @@ Eigen::Vector3d PlanningDemo::core_position() const {
 
 bool PlanningDemo::editing_allowed() {
     if (state_ == DemoState::Executing || state_ == DemoState::Paused || state_ == DemoState::Complete) {
-        message_ = "Backspace: return arm/assembly home before editing";
+        message_ = "Backspace: zero joints; R: reset demo before editing";
         return false;
     }
     return true;
@@ -155,8 +157,8 @@ void PlanningDemo::invalidate(const std::string& message) {
 }
 
 void PlanningDemo::home() {
-    invalidate("Arm home; core pose preserved. Enter: plan");
-    q_ = initial_.start;
+    invalidate("All 7 joints zero; core pose preserved. Enter: plan");
+    q_.setZero();
     mechanism_ = {};
     stop_jog();
     display_state();
@@ -165,8 +167,11 @@ void PlanningDemo::home() {
 void PlanningDemo::reset() {
     scenario_ = initial_;
     scene_.configure(scenario_);
-    home();
-    message_ = "Scene reset. Enter: plan and preview";
+    invalidate("Initial demo pose restored. Enter: plan and preview");
+    q_ = initial_.start;
+    mechanism_ = {};
+    stop_jog();
+    display_state();
 }
 
 void PlanningDemo::set_backend(Method method) {
@@ -193,7 +198,7 @@ void PlanningDemo::enter() {
         }
         execution_time_ = 0;
         state_ = DemoState::Executing;
-        message_ = "Executing previewed trajectory. Space: pause; Backspace: home";
+        message_ = "Executing previewed trajectory. Space: pause; Backspace: zero joints";
     } else if (state_ == DemoState::PreviewFailed) {
         message_ = "Failed candidate cannot execute. Edit the scene or press Backspace";
     } else if (state_ == DemoState::Editing) {
@@ -210,7 +215,7 @@ void PlanningDemo::enter() {
     } else if (state_ == DemoState::Paused) {
         message_ = "Space: resume the paused trajectory";
     } else if (state_ == DemoState::Complete) {
-        message_ = "Complete. Backspace: arm/assembly home for a new plan";
+        message_ = "Complete. Backspace: zero joints; R: reset demo";
     }
 }
 
@@ -245,7 +250,7 @@ void PlanningDemo::advance(double dt) {
     mechanism_ = sample.mechanism;
     if (execution_time_ >= knots.back().time) {
         state_ = DemoState::Complete;
-        message_ = "Assembly trajectory complete. Backspace: home";
+        message_ = "Assembly trajectory complete. Backspace: zero joints; R: reset demo";
     }
     display_state();
 }
@@ -259,7 +264,7 @@ void PlanningDemo::tick(double seconds) {
 void PlanningDemo::toggle_pause() {
     if (state_ == DemoState::Executing) {
         state_ = DemoState::Paused;
-        message_ = "Paused. Space: resume; Backspace: home";
+        message_ = "Paused. Space: resume; Backspace: zero joints";
     } else if (state_ == DemoState::Paused) {
         state_ = DemoState::Executing;
         message_ = "Executing previewed trajectory";
@@ -304,25 +309,18 @@ void PlanningDemo::jog_core(const Eigen::Vector3d& velocity,
     if (!velocity.allFinite() || !rpy_rate.allFinite()) throw std::invalid_argument("Nonfinite core jog");
     if (seconds == 0 || (velocity.squaredNorm() == 0 && rpy_rate.squaredNorm() == 0) || !editing_allowed()) return;
     const Eigen::Vector3d delta = seconds * (Eigen::AngleAxisd(-scenario_.assembly_yaw,
-        Eigen::Vector3d::UnitZ()) * bounded(velocity, .1));
-    const auto old = scenario_.core;
-    auto& p = scenario_.core;
-    // Preserve the planning library's rule-table contract. Boundaries remain
-    // visible in the UI; all translations use the same world axes as the arm.
-    p.x = std::clamp(p.x + delta.x(), -.1, 0.);
-    p.y = std::clamp(p.y + delta.y(), .1, .3);
-    p.z = std::clamp(p.z + delta.z(), .5, .7);
-    const Eigen::Vector3d angle = seconds * bounded(rpy_rate, 30);
-    p.alpha = std::clamp(p.alpha + angle.x(), -45., 45.);
-    p.phi = std::clamp(p.phi + angle.y(), 0., 90.);
-    p.theta = std::clamp(p.theta + angle.z(), -90., 90.);
-    if (p.x == old.x && p.y == old.y && p.z == old.z &&
-        p.alpha == old.alpha && p.phi == old.phi && p.theta == old.theta) {
-        message_ = "Core at rule-table limit (see pose values)";
-        return;
-    }
+        Eigen::Vector3d::UnitZ()) * velocity);
+    auto updated = scenario_;
+    auto& p = updated.core;
+    p.x += delta.x();
+    p.y += delta.y();
+    p.z += delta.z();
+    p.alpha += seconds * rpy_rate.x();
+    p.phi += seconds * rpy_rate.y();
+    p.theta += seconds * rpy_rate.z();
+    scene_.configure(updated);
+    scenario_ = std::move(updated);
     invalidate("Core moved. Enter: plan again");
-    scene_.configure(scenario_);
     display_state();
 }
 

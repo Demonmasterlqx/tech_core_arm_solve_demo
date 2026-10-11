@@ -40,18 +40,20 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 | 核心 yaw | Shift+U / Shift+O |
 | 后端 1 / 后端 2 | 1：Baseline / 2：RigidCache（默认） |
 | 规划并展示 / 执行已展示轨迹 | 第一次 Enter / 预览成功后再次 Enter |
-| 机械臂与装配机构归零，保留核心位姿 | Backspace（退格键） |
-| 恢复整个初始场景 | R |
+| 七个关节角度全部归零，装配进度清零，保留核心位姿 | Backspace（退格键） |
+| 恢复演示初始携带姿态和核心位姿 | R |
 | 虚影预览或实际执行暂停 / 继续 | Space |
 | 虚影前后查看（每次 5%，并暂停预览） | [ / ] |
 | 旋转 / 平移 / 缩放视角 | 鼠标左键 / 右键 / 滚轮 |
 | 恢复视角 / 截图 / 退出 | F / F12 / Esc |
 
-平移都使用同一世界坐标系，不随相机改变。机械臂控制点是携带单元开口中心 `planning_tcp`，保留开始 jog 时的朝向；松键立即保持。默认机械臂速度 0.06 m/s，核心速度 0.04 m/s，核心角速度 20°/s。
+平移都使用同一世界坐标系，不随相机改变。机械臂控制点是携带单元开口中心 `planning_tcp`，保留开始 jog 时的朝向；松键立即保持。默认机械臂速度 0.06 m/s，核心速度 **0.20 m/s**，核心角速度 **60°/s**。核心平移、旋转速度可分别通过 `--core-speed`（m/s）、`--core-rotation-speed`（°/s）调整，均接受正的有限数值。
 
-核心 RPY 按装配坐标系的 `Rz(yaw) Ry(pitch) Rx(roll)` 表示，对应旧 API 的 `alpha`、`phi−90°`、`theta`。核心原点是初始 E 点。沿用规划场景的规则表范围：装配坐标系 x∈[−0.1,0]、y∈[0.1,0.3]、z∈[0.5,0.7] m；roll∈[−45°,45°]、pitch∈[−90°,0°]、yaw∈[−90°,90°]。超过范围时停在边界，界面给出提示。默认核心处于最低高度、pitch=0°，因此先按 U 升高才能向下移动，先按 Shift+L 减小 pitch 才能增加回来。
+核心 RPY 按装配坐标系的 `Rz(yaw) Ry(pitch) Rx(roll)` 表示，对应旧 API 的 `alpha`、`phi−90°`、`theta`。核心原点是初始 E 点。**Demo 中核心 XYZ 和 RPY 均不设位姿限位**，可以直接向任意方向调整，角度可连续累加。规划使用当前实际位姿；无法到达、碰撞或违反前平面规则时，仍展示请求路径、返回的候选轨迹及失败原因。
 
-**Backspace 的“归零”指回到程序启动时的待装配姿态**，并将插入、升降、P、Q 进度清零；七个关节不是全 0 rad。使用现有 `dev_nominal` 的起始携带姿态，默认 Q 目标 +35°。需要恢复核心的初始位姿时按 R。
+**Backspace 将七个关节角度设置为 `[0,0,0,0,0,0,0]` rad**，并将插入、升降、P、Q 进度和执行时钟清零，清除预览并使旧规划请求失效，保留当前核心 XYZ/RPY 与后端。R 恢复程序启动时的整个场景，包括非零的初始携带姿态和核心位姿；后端仍保留。默认使用 `dev_nominal`，Q 目标 +35°。界面显示七个关节的实际角度：
+
+![Backspace 后七个关节全零](images/planning-demo-joint-zero.png)
 
 ## 两次回车与轨迹显示
 
@@ -73,11 +75,11 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 
 ![失败前缀虚影预览](images/planning-demo-failed.png)
 
-执行中按 Space 暂停，窗口失焦也会暂停；重新聚焦后需 Space 继续。执行、暂停和完成状态下，位姿调整和后端切换锁定，先按 Backspace 回到可编辑状态。归零立即恢复仿真初始关节，是交互复位，不是一条规划回程轨迹。
+执行中按 Space 暂停，窗口失焦也会暂停；重新聚焦后需 Space 继续。执行、暂停和完成状态下，位姿调整和后端切换锁定，按 Backspace 或 R 回到可编辑状态。Backspace 立即将七个仿真关节置零，是交互复位，不是一条规划回程轨迹。
 
 ## 规划与仿真范围
 
-后端 1 复用 HKUST 任务雅可比基线；后端 2 复用现有 `RigidCache` 方案。二者采用相同任务、碰撞和规则验证接口。Demo 默认规划超时 5 s、`motion_speed_scale=4`，保留最终 0.5 s 规则驻留；这些是 Demo 的显式选项，没有修改规划库默认值。
+后端 1 复用 HKUST 任务雅可比基线；后端 2 复用现有 `RigidCache` 方案。二者采用相同任务、碰撞和规则验证接口。Demo 默认规划超时 5 s、`motion_speed_scale=4`，保留最终 0.5 s 规则驻留。Demo 的场景设置 `enforce_core_pose_limits=false`；规划库其他调用默认保留规则表位姿范围检查。上述设置均不取消规划的关节限位、碰撞、前平面和装配过程验证。
 
 成功后按照验证器相同的 `3u²−2u³` 插值关节及机构状态，精确到达最终路径点。这里的“执行”是 MuJoCo 中的运动学仿真，能量单元保持既定固定抓持变换；没有硬件控制或接触力控制。手动 jog 只受关节限位与速度限制，规划阶段才验证完整路径及碰撞。沿用现有 [碰撞几何与抓持假设](planning_scene_audit.md)，不把离散采样验证解释为连续碰撞证明。
 
@@ -85,6 +87,7 @@ RM26_DEMO_BINARY="$PWD/build-demo/rm26_demo" ./scripts/run_planning_demo.sh
 
 ```bash
 ./scripts/run_planning_demo.sh --backend baseline --motion-speed-scale 1
+./scripts/run_planning_demo.sh --core-speed 0.3 --core-rotation-speed 90
 ./scripts/run_planning_demo.sh --case confirm_top
 ./scripts/run_planning_demo.sh --case reject_front_plane
 ```
@@ -109,4 +112,4 @@ xvfb-run -a -s '-screen 0 1440x1000x24 -nolisten tcp' \
 
 键盘测试输出必须使用新目录；子进程限时且在异常时终止，释放按键、X11 连接及 Xvfb 临时资源。启动脚本将事件记录到 `artifacts/keyboard_planning_demo/viewer.log`，每 1 MiB 轮转，最多两份备份；`--log` 可指定其他路径。F12 默认写 `artifacts/keyboard_planning_demo/screenshot.png`，`--screenshot` 可指定路径，指定后退出时也会截图。
 
-2026-10-11 验证记录见 [运行时证据](evidence/keyboard_planning_demo.json)：窗口配置 23 项 CTest 通过，加入虚影后的 3 项 Demo 测试再次通过；无窗口配置 21 项通过。X11/XTest 检查了所有平移/旋转按键、长按 Enter、两个后端、虚影播放/暂停/前后查看、实体保持、完整执行、失焦暂停及旧规划失效。名义成功轨迹 258 点、执行时长 12.190568 s；失败示例分别保留 304 点前缀和 0 点早期拒绝。渲染为 llvmpipe，启动、执行和退出的 NVIDIA 进程表中均没有 Demo 进程。
+2026-10-11 的初版记录见 [初版运行时证据](evidence/keyboard_planning_demo.json)。归零与核心自由调节修正后的记录见 [修正验证](evidence/keyboard_zero_free_core.json)：重新构建默认 `build/rm26_demo`，23 项 CTest 全部通过；真实窗口的 X11/XTest 回归也通过，覆盖七关节精确归零、R 恢复非零初始姿态、核心以新速度越过旧范围、越界请求的失败预览，以及完整的预览/执行流程。控制器另验证 XYZ/RPY 的全部正负方向均不再限位、规划从零关节启动、旧规划结果不能覆盖归零状态，其他场景的默认范围检查仍生效。截图已更新。渲染为 llvmpipe，启动、执行和退出的 NVIDIA 进程表中均没有测试 Demo 进程，测试窗口和 Xvfb 已退出。

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <iostream>
+#include <limits>
 #include <stdexcept>
 #include <thread>
 
@@ -22,6 +23,23 @@ void finish_request(PlanningDemo& demo) {
     require(!demo.worker_pending(), "Planner did not finish");
 }
 bool same(const JointVector& a, const JointVector& b) { return (a - b).norm() < 1e-12; }
+void require_zeroed(PlanningDemo& demo) {
+    require(demo.state() == DemoState::Editing && demo.joints().isZero(0) && !demo.preview(),
+            "Backspace must zero all seven joints and clear the preview");
+    const auto& mechanism = demo.mechanism();
+    require(mechanism.insertion == 0 && mechanism.lift == 0 && mechanism.flip == 0 && mechanism.twist == 0,
+            "Backspace did not reset the assembly mechanism");
+    auto& scene = demo.scene();
+    require(demo.execution_time() == 0 && scene.data()->time == 0, "Backspace did not reset the execution clock");
+    for (const char* name : {"j0", "j1", "j2", "j3", "j4",
+                            "end_differential_controller/j5", "end_differential_controller/j6"}) {
+        const int joint = mj_name2id(scene.model(), mjOBJ_JOINT, name);
+        require(joint >= 0 && scene.data()->qpos[scene.model()->jnt_qposadr[joint]] == 0,
+                "Displayed joint differs from the requested zero");
+    }
+    for (int i = 0; i < scene.model()->nv; ++i)
+        require(scene.data()->qvel[i] == 0, "Backspace left a nonzero model velocity");
+}
 
 void two_stage_contract(const DemoPreview& solved) {
     PlanningDemo demo(scenario_suite().front(), demo_plan_options(),
@@ -74,9 +92,10 @@ void two_stage_contract(const DemoPreview& solved) {
     require(demo.state() == DemoState::Complete && same(demo.joints(), knots.back().q), "Execution did not reach exact final knot");
     require(std::abs(demo.mechanism().twist - radians(35)) < 1e-12, "Core mechanism not synchronized with arm");
     demo.home();
-    require(demo.state() == DemoState::Editing && same(initial, demo.joints()) && !demo.preview(), "Home did not reset arm and invalidate preview");
-    require(demo.mechanism().flip == 0 && demo.execution_time() == 0, "Home did not reset assembly");
-    std::cout << "PASS preview hold, double Enter, interpolation, focus pause, completion and home\n";
+    require_zeroed(demo);
+    demo.reset();
+    require(same(initial, demo.joints()) && !demo.joints().isZero(0), "R must restore the initial carrying posture");
+    std::cout << "PASS preview hold, double Enter, interpolation, focus pause, completion, joint zero and scene reset\n";
 }
 
 void invalidation_contract(const DemoPreview& solved) {
@@ -88,12 +107,14 @@ void invalidation_contract(const DemoPreview& solved) {
     demo.enter(); finish_request(demo);
     demo.jog_arm({.02, 0, 0}, .05);
     require(demo.state() == DemoState::Editing && !demo.preview(), "Arm jog must invalidate a ready preview");
-    demo.home(); demo.enter(); finish_request(demo);
+    demo.reset(); demo.enter(); finish_request(demo);
     demo.jog_core({-.01, 0, 0}, {0, 0, 0}, .05);
     require(demo.state() == DemoState::Editing && !demo.preview(), "Core jog must invalidate a ready preview");
     const auto core = demo.core_position();
     demo.home();
+    require_zeroed(demo);
     require((core - demo.core_position()).norm() < 1e-12, "Backspace must preserve edited core pose");
+    require(demo.options().method == Method::Baseline, "Backspace must preserve the selected backend");
 
     // Hold a worker across a reset, then release its old successful answer.
     // The gate is released before any assertion/destructor can wait on it.
@@ -106,16 +127,41 @@ void invalidation_contract(const DemoPreview& solved) {
     stale.home();
     gate.set_value();
     finish_request(stale);
-    require(stale.state() == DemoState::Editing && !stale.preview(), "Stale asynchronous result resurrected after reset");
-    require(stale.execution_time() == 0, "Stale result executed");
+    require_zeroed(stale);
     std::cout << "PASS arm/core/backend invalidation and stale worker disposal\n";
+}
+
+void zero_start_contract() {
+    std::promise<Scenario> captured;
+    auto request = captured.get_future();
+    PlanningDemo demo(scenario_suite().front(), demo_plan_options(),
+        [&captured](const Scenario& scenario, const PlanOptions&) {
+            captured.set_value(scenario);
+            return DemoPreview{};
+        });
+    demo.jog_core({-.2, .2, -.2}, {60, 60, 60}, .1);
+    const auto position = demo.core_position();
+    const auto pose = demo.scenario().core;
+    demo.home();
+    require_zeroed(demo);
+    require((demo.core_position() - position).norm() < 1e-12 && demo.scenario().core.alpha == pose.alpha &&
+            demo.scenario().core.phi == pose.phi && demo.scenario().core.theta == pose.theta,
+            "Backspace changed the core XYZ/RPY");
+    demo.enter(); finish_request(demo);
+    const auto actual = request.get();
+    require(actual.start.isZero(0), "Planning after Backspace must start at seven zero joints");
+    require(!actual.enforce_core_pose_limits && actual.core.z == pose.z && actual.core.phi == pose.phi,
+            "Planner snapshot lost the freely edited core pose");
+    require(demo.preview() && demo.preview()->ghost_knots.front().q.isZero(0),
+            "Empty candidate ghost must start at the zero joint pose");
+    std::cout << "PASS exact zero joints passed to planner, core pose preserved and zero-start ghost\n";
 }
 
 void jogging_contract() {
     PlanningDemo demo;
     const auto initial = demo.joints();
     for (int axis = 0; axis < 3; ++axis) for (int sign : {-1, 1}) {
-        demo.home();
+        demo.reset();
         const auto before = demo.tool_position();
         for (int i = 0; i < 20; ++i) demo.jog_arm(.04 * sign * Eigen::Vector3d::Unit(axis), .01);
         const auto delta = (demo.tool_position() - before).eval();
@@ -128,16 +174,65 @@ void jogging_contract() {
         require(same(released, demo.joints()), "Jog continued after release");
     }
     demo.home();
-    require(same(initial, demo.joints()), "Arm home differs after jogging");
+    require_zeroed(demo);
+    demo.reset();
+    require(same(initial, demo.joints()), "R did not restore the initial posture after jogging and zeroing");
     const auto before = demo.core_position();
     demo.jog_core({-.04, .04, .04}, {10, -10, 10}, .1);
     const auto delta = (demo.core_position() - before).eval();
     require(delta.x() < -.002 && delta.y() > .002 && delta.z() > .002, "Core world axes differ from arm world axes");
     require(demo.scenario().core.alpha == 1 && demo.scenario().core.phi == 89 && demo.scenario().core.theta == 1,
             "Core RPY controls use wrong parameter mapping");
-    for (int i = 0; i < 100; ++i) demo.jog_core({.1, .1, .1}, {30, 30, 30}, .1);
-    validate_pose(demo.scenario().core, 3);
-    std::cout << "PASS six arm directions, release hold, core world XYZ and RPY limits\n";
+    std::cout << "PASS six arm directions, release hold and core world XYZ/RPY mapping\n";
+}
+
+void free_core_contract() {
+    PlanningDemo demo;
+    for (int axis = 0; axis < 3; ++axis) for (int sign : {-1, 1}) {
+        demo.reset();
+        const auto before = demo.core_position();
+        for (int i = 0; i < 20; ++i) demo.jog_core(.2 * sign * Eigen::Vector3d::Unit(axis), {0, 0, 0}, .1);
+        require((demo.core_position() - before - .4 * sign * Eigen::Vector3d::Unit(axis)).norm() < 1e-12,
+                "Core translation was clipped or slowed outside the former bounds");
+        const int core = mj_name2id(demo.scene().model(), mjOBJ_BODY, "core0_base");
+        require((Eigen::Map<const Eigen::Vector3d>(demo.scene().data()->xpos + 3 * core) -
+                 demo.core_position()).norm() < 1e-12, "Rendered core differs from the unbounded pose");
+        demo.reset();
+        const auto initial = demo.scenario().core;
+        for (int i = 0; i < 20; ++i) demo.jog_core({0, 0, 0}, 60 * sign * Eigen::Vector3d::Unit(axis), .1);
+        const auto& pose = demo.scenario().core;
+        const Eigen::Vector3d delta(pose.alpha - initial.alpha, pose.phi - initial.phi, pose.theta - initial.theta);
+        require((delta - 120 * sign * Eigen::Vector3d::Unit(axis)).norm() < 1e-12,
+                "Core rotation was clipped or slowed outside the former bounds");
+    }
+
+    PlanningScene strict;
+    auto outside = scenario_suite().front(); outside.core.x = .2;
+    bool rejected = false;
+    try { strict.configure(outside); } catch (const std::invalid_argument&) { rejected = true; }
+    require(rejected, "Non-demo scenes must retain the default rule-table bounds");
+    for (auto field : {&Pose::x, &Pose::y, &Pose::z, &Pose::alpha, &Pose::phi, &Pose::theta}) {
+        auto invalid = demo.scenario(); invalid.core.*field = std::numeric_limits<double>::quiet_NaN();
+        rejected = false;
+        try { strict.configure(invalid); } catch (const std::invalid_argument&) { rejected = true; }
+        require(rejected, "Unbounded scenes must still reject nonfinite core poses");
+    }
+
+    demo.reset();
+    for (int i = 0; i < 20; ++i) demo.jog_core({-.2, 0, 0}, {0, 0, 0}, .1);
+    const auto edited = demo.core_position();
+    for (auto method : {Method::Baseline, Method::RigidCache}) {
+        demo.set_backend(method);
+        demo.enter(); finish_request(demo);
+        require(demo.state() == DemoState::PreviewFailed && demo.preview()->result.reason == "invalid_station_front_plane",
+                "Out-of-range core pose must reach the planner and retain its rejection reason");
+        require(!demo.preview()->requested_path.empty() && !demo.preview()->ghost_knots.empty(),
+                "Out-of-range failed plan lost the requested path or start ghost");
+        demo.enter(); demo.tick(.1);
+        require(demo.state() == DemoState::PreviewFailed && (demo.core_position() - edited).norm() < 1e-12,
+                "Rejected out-of-range request executed or changed the core pose");
+    }
+    std::cout << "PASS unbounded core XYZ/RPY at increased speeds, strict defaults and failed preview in both backends\n";
 }
 
 void failure_contract() {
@@ -192,7 +287,9 @@ int main() {
         }
         two_stage_contract(accelerated);
         invalidation_contract(accelerated);
+        zero_start_contract();
         jogging_contract();
+        free_core_contract();
         failure_contract();
         return 0;
     } catch (const std::exception& error) {

@@ -29,7 +29,7 @@ Knot sample_demo_trajectory(const std::vector<Knot>& knots, double seconds);
 // and owns a different MuJoCo model/data; previewing never advances this scene.
 class PlanningDemo {
 public:
-    explicit PlanningDemo(Scenario home = scenario_suite().front(),
+    explicit PlanningDemo(Scenario initial_scenario = scenario_suite().front(),
                           PlanOptions options = demo_plan_options(),
                           DemoPlanner planner = make_demo_preview);
     ~PlanningDemo();
@@ -38,7 +38,7 @@ public:
 
     void enter();
     void tick(double seconds);
-    void home();                      // Arm + assembly mechanism; preserve core pose/backend.
+    void home();                      // Seven zero joint angles + mechanism reset; preserve core pose/backend.
     void reset();                     // Entire initial scene; preserve backend.
     void toggle_pause();
     void focus_lost();

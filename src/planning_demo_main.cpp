@@ -21,7 +21,7 @@ using Clock = std::chrono::steady_clock;
 struct Options {
     Scenario scenario = scenario_suite().front();
     PlanOptions planning = demo_plan_options();
-    double duration = 0, speed = .06, core_speed = .04, rotation_speed = 20;
+    double duration = 0, speed = .06, core_speed = .20, rotation_speed = 60;
     std::string screenshot, log;
 };
 
@@ -40,8 +40,8 @@ void usage() {
         "  Shift + I/K, J/L, U/O: core +/-roll, +/-pitch, +/-yaw\n"
         "  1: Baseline; 2: RigidCache (default)\n"
         "  Enter: plan and hold a preview; Enter again: execute a valid plan\n"
-        "  Backspace: arm/assembly home, preserving core pose\n"
-        "  R: full scene reset; Space: pause/resume ghost or execution; Esc: exit\n"
+        "  Backspace: all 7 joints to zero, preserving core pose\n"
+        "  R: restore initial demo pose; Space: pause/resume ghost or execution; Esc: exit\n"
         "  [/]: scrub the ghost preview backward/forward (holds real robot)\n"
         "  Mouse: left orbit, right pan, wheel zoom; F: reset camera; F12: PNG\n"
         "Options:\n"
@@ -50,12 +50,13 @@ void usage() {
         "  --timeout SEC           planning deadline, (0,30], default 5\n"
         "  --motion-speed-scale S  demo retiming, (0,4], default 4\n"
         "  --speed M/S             arm jog, (0,0.1], default 0.06\n"
+        "  --core-speed M/S        core translation, positive, default 0.20\n"
+        "  --core-rotation-speed DEG/S  core rotation, positive, default 60\n"
         "  --duration SEC          bounded wall-time run (default until Esc)\n"
         "  --screenshot PATH.png   capture on F12 and at exit\n"
         "  --log PATH              event log, 1 MiB rotation + two backups\n"
-        "Core motion respects rule table 5-10. RPY = alpha, phi-90, theta\n"
-        "relative to the assembly frame. Home is the initial carrying posture,\n"
-        "not seven zero joint angles. Execution is the kinematic simulation.\n";
+        "Core XYZ/RPY controls have no pose limits. RPY = alpha, phi-90, theta\n"
+        "relative to the assembly frame. Execution is the kinematic simulation.\n";
 }
 
 Options arguments(int argc, char** argv) {
@@ -70,6 +71,8 @@ Options arguments(int argc, char** argv) {
         else if (arg == "--timeout") out.planning.timeout_seconds = number(value());
         else if (arg == "--motion-speed-scale") out.planning.motion_speed_scale = number(value());
         else if (arg == "--speed") out.speed = number(value());
+        else if (arg == "--core-speed") out.core_speed = number(value());
+        else if (arg == "--core-rotation-speed") out.rotation_speed = number(value());
         else if (arg == "--duration") {
             out.duration = number(value());
             if (out.duration <= 0 || out.duration > 3600) throw std::invalid_argument("Duration must be in (0,3600]");
@@ -84,6 +87,8 @@ Options arguments(int argc, char** argv) {
         } else throw std::invalid_argument("Unknown option: " + arg);
     }
     if (out.speed <= 0 || out.speed > .1) throw std::invalid_argument("Speed must be in (0,0.1]");
+    if (out.core_speed <= 0 || out.rotation_speed <= 0)
+        throw std::invalid_argument("Core translation and rotation speeds must be positive");
     return out;
 }
 
@@ -472,15 +477,17 @@ private:
              << "\nBackend [" << (demo_.options().method == Method::Baseline ? 1 : 2) << "]: " << method_name(demo_.options().method)
              << std::fixed << std::setprecision(3)
              << "\nArm TCP XYZ:  " << tcp.x() << "  " << tcp.y() << "  " << tcp.z() << " m"
-             << "\nCore XYZ:     " << core.x() << "  " << core.y() << "  " << core.z() << " m"
+             << "\nArm joints (rad):";
+        for (int i = 0; i < 7; ++i) left << ' ' << demo_.joints()[i];
+        left << "\nCore XYZ:     " << core.x() << "  " << core.y() << "  " << core.z() << " m"
              << std::setprecision(1) << "\nCore RPY (assembly): " << p.alpha << "  " << p.phi - 90 << "  " << p.theta << " deg"
-             << "\nCore limits: x[-.1,0] y[.1,.3] z[.5,.7] in assembly"
-             << "\nRPY limits: +/-45 / [-90,0] / +/-90 deg";
+             << std::setprecision(2) << "\nCore speed: " << options_.core_speed << " m/s, "
+             << std::setprecision(0) << options_.rotation_speed << " deg/s";
         right << "ARM / WORLD AXES\nW/S: +X/-X   A/D: +Y/-Y   Q/E: +Z/-Z\n\n"
               << "CORE / WORLD AXES\nI/K: +X/-X   J/L: +Y/-Y   U/O: +Z/-Z\n"
               << "Shift + I/K: roll +/-\nShift + J/L: pitch +/-\nShift + U/O: yaw +/-\n\n"
               << "1: Baseline   2: RigidCache\nEnter: PLAN > PREVIEW > EXECUTE\n"
-              << "Backspace: arm home   R: reset scene\nSpace: pause / resume   [ / ]: scrub ghost\nEsc: exit\n"
+              << "Backspace: zero all joints   R: initial demo pose\nSpace: pause / resume   [ / ]: scrub ghost\nEsc: exit\n"
               << "Mouse: orbit / pan / zoom   F: camera\nF12: screenshot";
         bottom << demo_.message();
         if (show_ghost()) {

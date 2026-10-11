@@ -1,0 +1,668 @@
+{
+  "checks": [
+    "Backspace sets all seven joints exactly to zero, clears progress and preserves core XYZ/RPY",
+    "Core moves below the former Z minimum and above the former pitch maximum",
+    "Out-of-range core reaches planning, shows failed preview and blocks execution",
+    "R restores the initial nonzero carrying posture and core pose",
+    "Baseline first Enter and held Enter keep arm/core frozen at preview",
+    "Translucent arm/core ghost animates, pauses and scrubs while opaque arm/core remain fixed",
+    "Backend switch invalidates preview; RigidCache previews without execution",
+    "Second Enter executes, Space/focus loss hold, resume reaches complete assembly",
+    "Backspace during planning holds exact zero joints and discards a stale successful result",
+    "Partial and zero-knot failures are displayed and second Enter cannot execute them"
+  ],
+  "arm_directions": [
+    {
+      "key": "w",
+      "delta_m": [
+        0.02374237377599997,
+        -2.28642920107843e-05,
+        0.00013524538300002664
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "s",
+      "delta_m": [
+        -0.02068718744600001,
+        -3.22162815576843e-05,
+        0.00013523455800001916
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "a",
+      "delta_m": [
+        -6.0629009999979555e-05,
+        0.021156412593743314,
+        -1.9209929999763897e-06
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "d",
+      "delta_m": [
+        -8.819080799998824e-05,
+        -0.024303831299556683,
+        1.0092870000311116e-06
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "q",
+      "delta_m": [
+        -6.900788699998328e-05,
+        3.35954947917157e-05,
+        0.02421833884000002
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "e",
+      "delta_m": [
+        -5.861272500001791e-05,
+        3.40767485725157e-05,
+        -0.024180083813999997
+      ],
+      "release_holds": true
+    }
+  ],
+  "core_controls": [
+    {
+      "key": "i",
+      "delta": [
+        0.060630117799999994,
+        -2.77555756156e-17,
+        0.0
+      ]
+    },
+    {
+      "key": "k",
+      "delta": [
+        -0.0529396224,
+        2.77555756156e-17,
+        0.0
+      ]
+    },
+    {
+      "key": "j",
+      "delta": [
+        0.0,
+        0.0549768536,
+        0.0
+      ]
+    },
+    {
+      "key": "l",
+      "delta": [
+        0.0,
+        -0.052866105,
+        0.0
+      ]
+    },
+    {
+      "key": "u",
+      "delta": [
+        0.0,
+        0.0,
+        0.05473276799999999
+      ]
+    },
+    {
+      "key": "o",
+      "delta": [
+        0.0,
+        0.0,
+        -0.05843057659999998
+      ]
+    },
+    {
+      "key": "Shift+i",
+      "delta": [
+        17.49987084,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "Shift+k",
+      "delta": [
+        -17.45556996,
+        0,
+        0
+      ]
+    },
+    {
+      "key": "Shift+l",
+      "delta": [
+        0.0,
+        -17.45123802,
+        0
+      ]
+    },
+    {
+      "key": "Shift+j",
+      "delta": [
+        0.0,
+        17.08601304,
+        0
+      ]
+    },
+    {
+      "key": "Shift+u",
+      "delta": [
+        0.0,
+        0.0,
+        16.72282272
+      ]
+    },
+    {
+      "key": "Shift+o",
+      "delta": [
+        0.0,
+        0.0,
+        -17.17619448
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "event": "enter",
+      "key": -1,
+      "state": "PREVIEW_FAILED",
+      "backend": "rigid_cache",
+      "revision": 0,
+      "time": 0,
+      "tcp": [
+        0.329999999599,
+        -1.57652433157e-08,
+        0.249999998658
+      ],
+      "q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ],
+      "core_world": [
+        0.4,
+        0,
+        0.45
+      ],
+      "core_rpy": [
+        0,
+        0,
+        0
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Failed candidate cannot execute. Edit the scene or press Backspace",
+      "success": false,
+      "reason": "ik_flip_304_iteration limit",
+      "knots": 304,
+      "requested_points": 349,
+      "candidate_points": 304,
+      "planning_seconds": 0.009691377,
+      "ghost_time": 8.42783742579,
+      "ghost_geoms": 36,
+      "ghost_paused": true,
+      "ghost_q": [
+        -0.426966715213,
+        1.83803191338,
+        1.43869559636,
+        2.39229145392,
+        -1.29769198917,
+        -0.625343736483,
+        3.3754228677
+      ]
+    },
+    {
+      "event": "enter",
+      "key": -1,
+      "state": "PREVIEW_FAILED",
+      "backend": "rigid_cache",
+      "revision": 0,
+      "time": 0,
+      "tcp": [
+        0.329999999599,
+        -1.57652433157e-08,
+        0.249999998658
+      ],
+      "q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ],
+      "core_world": [
+        0.3,
+        0,
+        0.25
+      ],
+      "core_rpy": [
+        45,
+        -45,
+        90
+      ],
+      "mechanism": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "message": "Failed candidate cannot execute. Edit the scene or press Backspace",
+      "success": false,
+      "reason": "invalid_station_front_plane",
+      "knots": 0,
+      "requested_points": 337,
+      "candidate_points": 0,
+      "planning_seconds": 1.2649e-05,
+      "ghost_time": 0,
+      "ghost_geoms": 36,
+      "ghost_paused": false,
+      "ghost_q": [
+        -0.627703736545,
+        2.32979933055,
+        1.02898716222,
+        1.27157343687,
+        -1.74719254385,
+        -0.81681197467,
+        1.97728457779
+      ]
+    }
+  ],
+  "viewer_pid": 1979190,
+  "joint_zero": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "EDITING",
+    "backend": "rigid_cache",
+    "revision": 143,
+    "time": 0,
+    "tcp": [
+      -0.0743385955027,
+      0.0627490093756,
+      0.326294350133
+    ],
+    "q": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "core_world": [
+      0.3976904954,
+      0.0021107486,
+      0.2463021914
+    ],
+    "core_rpy": [
+      0.04430088,
+      -0.36522498,
+      -0.45337176
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "All 7 joints zero; core pose preserved. Enter: plan"
+  },
+  "free_core": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "EDITING",
+    "backend": "rigid_cache",
+    "revision": 164,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.1738730102
+    ],
+    "core_rpy": [
+      0,
+      23.1561186,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Core moved. Enter: plan again"
+  },
+  "free_core_failure": {
+    "event": "state",
+    "key": -1,
+    "state": "PREVIEW_FAILED",
+    "backend": "rigid_cache",
+    "revision": 192,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.1831715792,
+      2.77555756156e-17,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Planning failed - preview only; execution blocked",
+    "success": false,
+    "reason": "invalid_station_front_plane",
+    "knots": 0,
+    "requested_points": 341,
+    "candidate_points": 0,
+    "planning_seconds": 1.4372e-05,
+    "ghost_time": 0,
+    "ghost_geoms": 0,
+    "ghost_paused": false,
+    "ghost_q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ]
+  },
+  "ghost_preview": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "backend": "rigid_cache",
+    "revision": 195,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated",
+    "knots": 258,
+    "requested_points": 258,
+    "candidate_points": 258,
+    "planning_seconds": 0.253074634,
+    "ghost_time": 7.3744382721,
+    "ghost_geoms": 36,
+    "ghost_paused": true,
+    "ghost_q": [
+      -0.585658397929,
+      1.71983990512,
+      1.14532119368,
+      1.9354529487,
+      -1.29533067923,
+      -0.522089368368,
+      3.6012836112
+    ]
+  },
+  "successful_preview": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "backend": "rigid_cache",
+    "revision": 195,
+    "time": 0,
+    "tcp": [
+      0.329999999599,
+      -1.57652433157e-08,
+      0.249999998658
+    ],
+    "q": [
+      -0.627703736545,
+      2.32979933055,
+      1.02898716222,
+      1.27157343687,
+      -1.74719254385,
+      -0.81681197467,
+      1.97728457779
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated",
+    "knots": 258,
+    "requested_points": 258,
+    "candidate_points": 258,
+    "planning_seconds": 0.253074634,
+    "ghost_time": 0.791159122018,
+    "ghost_geoms": 36,
+    "ghost_paused": false,
+    "ghost_q": [
+      -0.596803653034,
+      2.33549990907,
+      1.14227446325,
+      1.43418443608,
+      -1.71575084858,
+      -0.83238014591,
+      2.14753024058
+    ]
+  },
+  "complete": {
+    "event": "state",
+    "key": -1,
+    "state": "COMPLETE",
+    "backend": "rigid_cache",
+    "revision": 195,
+    "time": 12.1905681168,
+    "tcp": [
+      0.450999999286,
+      0.0395767743651,
+      0.514521490956
+    ],
+    "q": [
+      -0.10890385447,
+      1.46651659584,
+      1.44383080728,
+      1.71395922058,
+      -0.597309619219,
+      0.479068322749,
+      3.95672543228
+    ],
+    "core_world": [
+      0.39,
+      0,
+      0.25
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0.1,
+      0.1,
+      1.57079632679,
+      0.610865238198
+    ],
+    "message": "Assembly trajectory complete. Backspace: zero joints; R: reset demo",
+    "success": true,
+    "reason": "validated",
+    "knots": 258,
+    "requested_points": 258,
+    "candidate_points": 258,
+    "planning_seconds": 0.253074634
+  },
+  "renderer": "llvmpipe (LLVM 15.0.7, 256 bits)",
+  "result": "PASS",
+  "validation": {
+    "recorded_utc": "2026-10-11T06:31:45.418371+00:00",
+    "source_head": "08be460aed8ab5d18f32fb6c7e1a5e593698a466",
+    "build": "cmake --build build -j4",
+    "ctest": {
+      "command": "CUDA_VISIBLE_DEVICES='' ctest --test-dir build --output-on-failure -j4",
+      "passed": 23,
+      "failed": 0
+    },
+    "keyboard_command": "xvfb-run -a -s '-screen 0 1440x1000x24 -nolisten tcp' python3 scripts/test_planning_demo_keyboard.py --binary build/rm26_demo --output artifacts/keyboard_planning_demo/x11-zero-free-core",
+    "binary_sha256": "8412c6ecbeb1593e860351e5d6cafe6ac4474ac3503ebcf6b0d2e5f6f93c4200",
+    "core_translation_m_s": 0.2,
+    "core_rotation_deg_s": 60,
+    "joint_zero_radians": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "raw_evidence": "artifacts/keyboard_planning_demo/x11-zero-free-core",
+    "viewer_process_exited": true
+  },
+  "gpu_process_checks": {
+    "before": {
+      "viewer_on_gpu": false,
+      "process_rows": [
+        "|    0   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    1   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    1   N/A  N/A         1585350      C   VLLM::EngineCore                      22162MiB |",
+        "|    2   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    2   N/A  N/A          562316      C   ...stimate_demo/.venv/bin/python      19128MiB |",
+        "|    3   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    4   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    5   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    6   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    7   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |"
+      ]
+    },
+    "startup": {
+      "viewer_on_gpu": false,
+      "process_rows": [
+        "|    0   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    1   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    1   N/A  N/A         1585350      C   VLLM::EngineCore                      22162MiB |",
+        "|    2   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    2   N/A  N/A          562316      C   ...stimate_demo/.venv/bin/python      19128MiB |",
+        "|    3   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    4   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    5   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    6   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    7   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |"
+      ]
+    },
+    "execution": {
+      "viewer_on_gpu": false,
+      "process_rows": [
+        "|    0   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    1   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    1   N/A  N/A         1585350      C   VLLM::EngineCore                      22162MiB |",
+        "|    2   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    2   N/A  N/A          562316      C   ...stimate_demo/.venv/bin/python      19128MiB |",
+        "|    3   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    4   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    5   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    6   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    7   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |"
+      ]
+    },
+    "shutdown": {
+      "viewer_on_gpu": false,
+      "process_rows": [
+        "|    0   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    1   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    1   N/A  N/A         1585350      C   VLLM::EngineCore                      22162MiB |",
+        "|    2   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    2   N/A  N/A          562316      C   ...stimate_demo/.venv/bin/python      19128MiB |",
+        "|    3   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    4   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    5   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    6   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |",
+        "|    7   N/A  N/A            7361      G   /usr/lib/xorg/Xorg                        4MiB |"
+      ]
+    }
+  }
+}

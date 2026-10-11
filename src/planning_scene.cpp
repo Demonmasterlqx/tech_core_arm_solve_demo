@@ -189,7 +189,11 @@ PlanningScene::PlanningScene(std::string path) {
 }
 
 void PlanningScene::configure(const Scenario& scenario) {
-    validate_pose(scenario.core,3);
+    const auto& core=scenario.core;
+    if(!std::isfinite(core.x) || !std::isfinite(core.y) || !std::isfinite(core.z) ||
+       !std::isfinite(core.alpha) || !std::isfinite(core.phi) || !std::isfinite(core.theta))
+        throw std::invalid_argument("Nonfinite core pose");
+    if(scenario.enforce_core_pose_limits) validate_pose(core,3);
     if(!std::isfinite(scenario.target_degrees) || std::abs(scenario.target_degrees)>90 ||
        !scenario.start.allFinite() || !scenario.assembly_translation.allFinite() ||
        !std::isfinite(scenario.assembly_yaw) || !std::isfinite(scenario.arm_base_z))

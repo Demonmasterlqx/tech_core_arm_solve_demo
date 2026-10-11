@@ -165,6 +165,12 @@ def unchanged(a, b):
     assert a['mechanism'] == b['mechanism'] and a['time'] == b['time'], (a, b)
 
 
+def zeroed(state):
+    assert state['q'] == [0.0] * 7, state
+    assert state['mechanism'] == [0.0] * 4 and state['time'] == 0, state
+    assert state['state'] == 'EDITING' and 'knots' not in state, state
+
+
 def gpu_snapshot(output, label):
     if shutil.which('nvidia-smi'):
         with (output / f'gpu-{label}.txt').open('w') as log:
@@ -190,7 +196,7 @@ def main():
         report['viewer_pid'] = run.process.pid
         gpu_snapshot(args.output, 'startup')
         for key, axis, sign in [('w', 0, 1), ('s', 0, -1), ('a', 1, 1), ('d', 1, -1), ('q', 2, 1), ('e', 2, -1)]:
-            before = run.tap('BackSpace', 'home')
+            before = run.tap('r', 'reset')
             after = run.jog(key)
             delta = [y-x for x, y in zip(before['tcp'], after['tcp'])]
             assert delta[axis] * sign > .005, (key, delta)
@@ -207,15 +213,40 @@ def main():
             after = run.jog(key, shift=shift, duration=.25)
             field = 'core_rpy' if shift else 'core_world'
             delta = [y-x for x, y in zip(before[field], after[field])]
-            assert delta[axis] * sign > (.5 if shift else .002), (key, shift, delta)
+            assert delta[axis] * sign > (8 if shift else .025), (key, shift, delta)
             report['core_controls'].append({'key': ('Shift+' if shift else '')+key, 'delta': delta})
             before = after
         home = run.tap('BackSpace', 'home')
         assert home['core_world'] == before['core_world'] and home['core_rpy'] == before['core_rpy']
-        assert home['q'] == run.initial['q']
-        report['checks'].append('Backspace returns arm and mechanism home while preserving core XYZ/RPY')
+        zeroed(home)
+        report['joint_zero'] = run.capture('joint-zero.png')
+        unchanged(home, report['joint_zero'])
+        report['checks'].append('Backspace sets all seven joints exactly to zero, clears progress and preserves core XYZ/RPY')
+
+        run.tap('r', 'reset')
+        low = run.jog('o')
+        assert low['core_world'][2] < run.initial['core_world'][2] - .04, low
+        tilted = run.jog('j', shift=True)
+        assert tilted['core_rpy'][1] > 10, tilted
+        report['free_core'] = run.capture('free-core.png')
+        report['checks'].append('Core moves below the former Z minimum and above the former pitch maximum')
+
+        run.tap('r', 'reset')
+        outside = run.jog('k', duration=1.0)
+        offset = len(run.records())
+        run.tap('Return', 'enter', 'PLANNING')
+        failed = run.wait(state='PREVIEW_FAILED', after=offset)
+        assert failed['requested_points'] > 0 and failed['reason'] == 'invalid_station_front_plane', failed
+        unchanged(outside, run.capture('free-core-failed-preview.png'))
+        blocked = run.tap('Return', 'enter', 'PREVIEW_FAILED')
+        unchanged(outside, blocked)
+        report['free_core_failure'] = failed
+        report['checks'].append('Out-of-range core reaches planning, shows failed preview and blocks execution')
 
         initial = run.tap('r', 'reset')
+        unchanged(run.initial, initial)
+        assert initial['core_world'] == run.initial['core_world'] and initial['core_rpy'] == run.initial['core_rpy']
+        report['checks'].append('R restores the initial nonzero carrying posture and core pose')
         run.tap('1', 'backend')
         offset = len(run.records())
         keyboard.key('Return', True)
@@ -274,13 +305,15 @@ def main():
         run.capture('complete.png')
         report['checks'].append('Second Enter executes, Space/focus loss hold, resume reaches complete assembly')
 
-        run.tap('BackSpace', 'home')
+        zeroed(run.tap('BackSpace', 'home'))
+        run.tap('r', 'reset')
         offset = len(run.records())
         run.tap('Return', 'enter', 'PLANNING')
-        run.tap('BackSpace', 'home')
+        home = run.tap('BackSpace', 'home')
+        zeroed(home)
         run.wait('discarded', offset)
-        unchanged(initial, run.capture('stale-discarded.png'))
-        report['checks'].append('Backspace during planning discards a stale successful result')
+        unchanged(home, run.capture('stale-discarded.png'))
+        report['checks'].append('Backspace during planning holds exact zero joints and discards a stale successful result')
         run.exit(); run.close(); run = None
 
         for case in ['confirm_top', 'reject_front_plane']:

@@ -38,6 +38,9 @@ struct Scenario {
     // Core and ground stay fixed. The original URDF chain is unchanged.
     double arm_base_z = 0;
     bool blocking_obstacle = false;
+    // The interactive demo allows arbitrary finite core XYZ/RPY. Other
+    // callers retain the rule-table bounds unless explicitly disabled.
+    bool enforce_core_pose_limits = true;
 };
 struct TaskPoint {
     TaskTarget target;
