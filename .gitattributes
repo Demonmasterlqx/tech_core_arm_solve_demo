@@ -7,3 +7,9 @@ docs/evidence/planner_quality/cases.csv -text whitespace=cr-at-eol
 # Pinned MecArm package is byte-preserved, including upstream CRLF/whitespace.
 reference/mec_arm/** -text whitespace=-blank-at-eol,cr-at-eol
 models/mec_arm/meshes/** -text -diff
+
+# Preserve the completed CAD export, including its source validation evidence.
+reference/exported_arms/** -text whitespace=-blank-at-eol,cr-at-eol
+models/*/meshes/*.stl -text -diff
+# Trimesh's OBJ exporter terminates generated geometry with a blank line.
+models/*/collision/*.obj -text whitespace=-blank-at-eof

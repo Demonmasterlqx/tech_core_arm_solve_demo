@@ -1,0 +1,176 @@
+{
+  "robot": "pie_eng",
+  "zero_definition": "Native SW arm saved pose, as confirmed by user",
+  "tree": "PASS",
+  "mesh_paths": "PASS",
+  "axis_normalization": "PASS",
+  "zero_reconstruction": {
+    "base_link": {
+      "triangles": 304739,
+      "max_coordinate_error_m": 7.450394745589506e-09,
+      "status": "PASS"
+    },
+    "yaw_link": {
+      "triangles": 798748,
+      "max_coordinate_error_m": 6.80802147989823e-09,
+      "status": "PASS"
+    },
+    "upper_arm": {
+      "triangles": 324051,
+      "max_coordinate_error_m": 1.490078127552863e-08,
+      "status": "PASS"
+    },
+    "forearm": {
+      "triangles": 1098244,
+      "max_coordinate_error_m": 1.4847573837073469e-08,
+      "status": "PASS"
+    },
+    "forearm_roll": {
+      "triangles": 580775,
+      "max_coordinate_error_m": 7.495755183217767e-09,
+      "status": "PASS"
+    },
+    "wrist_pitch": {
+      "triangles": 68102,
+      "max_coordinate_error_m": 1.8862408024400423e-09,
+      "status": "PASS"
+    },
+    "tool_link": {
+      "triangles": 189901,
+      "max_coordinate_error_m": 7.471079754850507e-09,
+      "status": "PASS"
+    },
+    "jaw_left": {
+      "triangles": 5620,
+      "max_coordinate_error_m": 3.70672617600043e-09,
+      "status": "PASS"
+    },
+    "jaw_right": {
+      "triangles": 6380,
+      "max_coordinate_error_m": 3.731553011032673e-09,
+      "status": "PASS"
+    }
+  },
+  "mate_axes": [
+    {
+      "joint": "joint_1_yaw",
+      "cad_mate": "同心12",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.5996621987036712e-30,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_2_shoulder",
+      "cad_mate": "同心5",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 3.137200020591923e-16,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_3_elbow",
+      "cad_mate": "同心6",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 2.4743224392560014e-16,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_4_roll",
+      "cad_mate": "同心52",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.577054623142483e-16,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_5_pitch",
+      "cad_mate": "同心22",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 3.585952641767507e-15,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_6_roll",
+      "cad_mate": "同心24",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 2.5592511918365507e-15,
+      "status": "PASS"
+    },
+    {
+      "joint": "gripper_open",
+      "cad_mate": "同心10",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.5211220961297108e-14,
+      "status": "PASS"
+    },
+    {
+      "joint": "gripper_mirror",
+      "cad_mate": "同心19",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.297817038941763e-14,
+      "status": "PASS"
+    }
+  ],
+  "missing_source_geometry": [
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/零件6^J4-L2改长（有滑环）-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J4-L2改长（有滑环）\\零件6^J4-L2改长（有滑环）.SLDPRT",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/零件7^J4-L2改长（有滑环）-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J4-L2改长（有滑环）\\零件7^J4-L2改长（有滑环）.SLDPRT",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/零件12-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\零件12.SLDPRT",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/L1-碳管固定侧板1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L1-碳管固定侧板1.SLDPRT",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/L1-线材保护-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L1-线材保护.SLDASM",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/3-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\3.SLDPRT",
+      "link": "tool_link"
+    },
+    {
+      "capture": "mount",
+      "component": "滚子链节距6.35-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\滚子链节距6.35.SLDASM",
+      "link": "base_link"
+    }
+  ],
+  "sha256": {
+    "meshes\\base_link.stl": "2056eafd07f86b7c07b6a7b8cbe3e2bb04d9486d8055d37ea8b4ce68e7aef554",
+    "meshes\\yaw_link.stl": "13af6d9f414e39d049c558dd91623f14292af668cbfcf61761a7723f642b1103",
+    "meshes\\upper_arm.stl": "108394c8719a3f9c93fe02101d712b2dafc1bb3107c9f83041bb6f1625e1d33c",
+    "meshes\\forearm.stl": "86fd3ba20c0e2a5bba3da8ef6fcc97f72932d1491c3da4be4fa870ea6a1be044",
+    "meshes\\forearm_roll.stl": "8dc6c2af2d67212f5d69628fca5b9e3f1e8561cd708e34a6f51259c7b777f75d",
+    "meshes\\wrist_pitch.stl": "d87db1a67d3fdc96abc5da299e5c0919fd699ab61f70a3e3d1eb0b2f86a7ad45",
+    "meshes\\tool_link.stl": "474567dbf2693e11a278c5670922b412dc51f277496ad91c2acea5c0cd2dbc9d",
+    "meshes\\jaw_left.stl": "479b7186e17a1556f84dd20cbb5ba0e94a52e37723bbd24ff005a144778dba95",
+    "meshes\\jaw_right.stl": "3d1bf959671a16196fa230816297adc9286736f8c45eb0af812831b122f5bd05",
+    "pie_eng.urdf": "997930c7084369e3bd930a968a7bff33c392eee05f8ceadb6ba4efc010be57b2"
+  },
+  "dynamic_parameters": "Outside final user-requested scope; not exported or verified",
+  "viewer_ui": {
+    "url": "https://viewer.robotsfan.com/",
+    "joint_count": 8,
+    "reset": "PASS",
+    "evidence": "verification/ui_joint_checks.json",
+    "visual_review": "See verification/README.md"
+  }
+}

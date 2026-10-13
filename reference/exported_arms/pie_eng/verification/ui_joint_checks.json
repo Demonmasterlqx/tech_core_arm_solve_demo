@@ -1,0 +1,50 @@
+[
+  {
+    "joint": "joint_1_yaw",
+    "plus": "0.628318530000001",
+    "minus": "-0.62831853",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "joint_2_shoulder",
+    "plus": "0.628318530000001",
+    "minus": "-0.62831853",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "joint_3_elbow",
+    "plus": "0.628318530000001",
+    "minus": "-0.62831853",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "joint_4_roll",
+    "plus": "0.628318530000001",
+    "minus": "-0.62831853",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "joint_5_pitch",
+    "plus": "0.628318530000001",
+    "minus": "-0.62831853",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "joint_6_roll",
+    "plus": "0.628318530000001",
+    "minus": "-0.62831853",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "gripper_open",
+    "plus": "0.12",
+    "minus": "-0.12",
+    "reset": "0"
+  },
+  {
+    "joint": "gripper_mirror",
+    "plus": "0.12",
+    "minus": "-0.12",
+    "reset": "0"
+  }
+]

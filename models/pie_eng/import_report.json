@@ -1,0 +1,54 @@
+{
+  "robot": "pie_eng",
+  "joint_order": [
+    "joint_1_yaw",
+    "joint_2_shoulder",
+    "joint_3_elbow",
+    "joint_4_roll",
+    "joint_5_pitch",
+    "joint_6_roll"
+  ],
+  "mujoco_joint_order": [
+    "joint_1_yaw",
+    "joint_2_shoulder",
+    "joint_3_elbow",
+    "joint_4_roll",
+    "joint_5_pitch",
+    "joint_6_roll"
+  ],
+  "link_count": 9,
+  "source_urdf_sha256": "997930c7084369e3bd930a968a7bff33c392eee05f8ceadb6ba4efc010be57b2",
+  "dynamics": "Kinematic mock: placeholder inertias, no actuators or contact response.",
+  "collision": "Source collision geometry (visual fallback), convex hull per mesh; same welded/adjacent bodies excluded, all other pairs checked.",
+  "payload": {
+    "parent": "tool_link",
+    "pos": [
+      0.00032349246648268764,
+      -0.14195495287202203,
+      0.040830095565594575
+    ],
+    "quat": [
+      0.48708635134706396,
+      0.509237944116,
+      0.512736820592568,
+      -0.4904330284682497
+    ],
+    "contract": "Rigid side grasp at the CAD jaw opening. Auxiliary jaws frozen at declared source coordinates; cylinder-to-jaw geometric clearance about 1.1-1.2 mm. Kinematic carrying only, no gripping forces or hardware calibration."
+  },
+  "files_sha256": {
+    "scene.xml": "8bf4f7bb0200bd7d40c0a0eaa8f9437480593aa9ac79ed5bd0d7815957b788fb",
+    "planning.xml": "273de24abe53beda0343a749e93a98122bb39f0c821414c5eb3ece5e1b784748"
+  },
+  "adapted_urdf_sha256": "e6a9943d6a1fac11c58f8577ae1d2b29f75ba7d0a8e1c1cd8fa372da2e9b6f35",
+  "locked_joints": {
+    "gripper_open": 0.18973053810526586,
+    "gripper_mirror": -0.18973053810526586
+  },
+  "excluded_links": [],
+  "compound_joint_bodies": [
+    [
+      "forearm_roll",
+      "tool_link"
+    ]
+  ]
+}

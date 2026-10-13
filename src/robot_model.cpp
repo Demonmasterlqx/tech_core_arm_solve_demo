@@ -41,6 +41,12 @@ RobotModel RobotModel::read(const mjModel* m) {
     r.joint_names = robot_words(m, "robot_joints");
     r.velocity_limits = robot_numbers(m, "robot_velocity_limits");
     r.planning_home = robot_numbers(m, "robot_planning_home");
+    const auto preset = robot_numbers(m, "robot_demo_start_at_preset", false);
+    if (!preset.empty()) {
+        if (preset.size() != 1 || (preset[0] != 0 && preset[0] != 1))
+            throw std::invalid_argument("Invalid demo start pose flag");
+        r.demo_start_at_preset = preset[0] != 0;
+    }
     const auto recovery = robot_numbers(m, "robot_recovery_joint_order", false);
     std::set<int> recovery_seen;
     for (double value : recovery) {

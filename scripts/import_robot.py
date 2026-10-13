@@ -103,7 +103,8 @@ def generate(config):
             key = (rel.as_posix(), mesh.get('scale', '1 1 1'))
             if key not in meshes:
                 meshes[key] = 'robot_mesh_'+str(len(meshes))
-                ET.SubElement(asset, 'mesh', name=meshes[key], file=key[0], scale=key[1])
+                extra = {'inertia': profile['mesh_inertia']} if 'mesh_inertia' in profile else {}
+                ET.SubElement(asset, 'mesh', name=meshes[key], file=key[0], scale=key[1], **extra)
             attrs.update(type='mesh', mesh=meshes[key])
         elif shape.find('box') is not None:
             attrs.update(type='box', size=fmt(float(x)/2 for x in shape.find('box').get('size').split()))
@@ -150,9 +151,11 @@ def generate(config):
         raise ValueError('Selected tree does not contain all joints/tool')
     key = ET.SubElement(ET.SubElement(scene, 'keyframe'), 'key', name='home', qpos=fmt(profile['home'][names.index(n)] for n in order))
     metadata(scene, profile)
-    write(scene, directory/'scene.xml')
     if 'carried_unit' not in profile:
+        write(scene, directory/'scene.xml')
         return
+    if not profile.get('carried_unit_in_control', False):
+        write(scene, directory/'scene.xml')
     task_asset, station, carried, block, _, _ = task_components(directory)
     asset.extend(list(task_asset))
     payload = profile['carried_unit']
@@ -161,7 +164,11 @@ def generate(config):
     parent = scene.find(f'.//body[@name="{payload["parent"]}"]')
     if parent is None:
         raise ValueError('Missing payload parent')
-    parent.append(carried)
+    if profile.get('carried_unit_in_control', False):
+        parent.append(carried)
+        write(scene, directory/'scene.xml')
+    else:
+        parent.append(carried)
     world.append(station)
     world.append(block)
     for geom in scene.iter('geom'):
@@ -171,10 +178,14 @@ def generate(config):
     collision_metadata(scene, arm_geoms, profile['mount_bodies'])
     write(scene, directory/'planning.xml')
     report = dict(robot=profile['id'], joint_order=names, mujoco_joint_order=order, link_count=len(visited),
-                  source_urdf_sha256=hashlib.sha256((directory/profile['urdf']).read_bytes()).hexdigest(),
+                  source_urdf_sha256=hashlib.sha256((directory/profile.get('source_urdf',profile['urdf'])).read_bytes()).hexdigest(),
                   dynamics='Kinematic mock: placeholder inertias, no actuators or contact response.',
                   collision='Source collision geometry (visual fallback), convex hull per mesh; same welded/adjacent bodies excluded, all other pairs checked.',
                   payload=payload, files_sha256={name:hashlib.sha256((directory/name).read_bytes()).hexdigest() for name in ('scene.xml','planning.xml')})
+    if 'source_urdf' in profile:
+        report.update(adapted_urdf_sha256=hashlib.sha256((directory/profile['urdf']).read_bytes()).hexdigest(),
+                      locked_joints=profile.get('locked_joints',{}), excluded_links=profile.get('excluded_links',[]),
+                      compound_joint_bodies=profile.get('compound_joint_bodies',[]))
     (directory/'import_report.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
 

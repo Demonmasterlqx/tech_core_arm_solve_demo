@@ -1,0 +1,4235 @@
+{
+  "robot": "hkust_eng",
+  "title": "HKUST ENG Open",
+  "source_url": "https://bbs.robomaster.com/article/1947243?source=4",
+  "unit": "m",
+  "zero_pose": "Native arm assembly saved pose",
+  "root_origin_in_canonical_cad": [
+    0.0,
+    0.01,
+    -0.147
+  ],
+  "cad_to_urdf_rotation": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "capture_to_canonical_cad": {
+    "arm": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "mount": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "notes": [
+    "Uses Arm_newopen from ENG_full_3.24; suppressed Robotic arm v2 is not exported.",
+    "Active yaw底座newopen and MG8016-i6 (2)open from ENG_Baseopen replace the hidden old mount and motor. They are aligned to the standalone arm saved pose.",
+    "Differential wrist is represented by its independent output pitch/roll coordinates; motor/differential transmissions are not modeled.",
+    "Camera and UWB auxiliary structures are retained in their saved pose."
+  ],
+  "joints": [
+    {
+      "name": "joint_1_yaw",
+      "parent": "base_link",
+      "child": "yaw_link",
+      "point": [
+        3.469446951953614e-18,
+        0.020049999999999957,
+        -0.14700000000000002
+      ],
+      "axis": [
+        -3.3801852209688392e-18,
+        1.0,
+        1.145735558000914e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心1",
+        "source": "Arm_newopen",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "yaw底座hackopen-1",
+            "point": [
+              1.775737858763655e-18,
+              0.03,
+              -0.14700000000000002
+            ],
+            "axis": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "radius": 0.038,
+            "ref_type": 4
+          },
+          {
+            "component": "J1 full3.24open-1/J1_lk8010固定cnc.2025.10.13.24-1",
+            "point": [
+              3.469446951953614e-18,
+              0.020049999999999957,
+              -0.14700000000000002
+            ],
+            "axis": [
+              -3.3801852209688392e-18,
+              1.0,
+              1.145735558000914e-16
+            ],
+            "radius": 0.038,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_2_shoulder",
+      "parent": "yaw_link",
+      "child": "upper_arm",
+      "point": [
+        -0.07349600004196166,
+        0.09104999999999992,
+        -0.14699999999999983
+      ],
+      "axis": [
+        1.0,
+        -3.877195031394447e-17,
+        -1.837546738808878e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心11",
+        "source": "Arm_newopen",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "J1 full3.24open-1/04C-24T3.24-1",
+            "point": [
+              -0.06728600004196167,
+              0.09104999999999996,
+              -0.14699999999999994
+            ],
+            "axis": [
+              -1.0,
+              6.108668296983005e-18,
+              2.7231700104552307e-16
+            ],
+            "radius": 0.009980000000000001,
+            "ref_type": 4
+          },
+          {
+            "component": "Arm_Link2_Full3.24open-1/Link2 tube3.24-2",
+            "point": [
+              -0.07349600004196166,
+              0.09104999999999992,
+              -0.14699999999999983
+            ],
+            "axis": [
+              1.0,
+              -3.877195031394447e-17,
+              -1.837546738808878e-16
+            ],
+            "radius": 0.01,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_3_elbow",
+      "parent": "upper_arm",
+      "child": "forearm",
+      "point": [
+        -0.04119600004196154,
+        0.20847645786247856,
+        0.21440147619215902
+      ],
+      "axis": [
+        -1.0,
+        -7.907234010019308e-17,
+        2.220446049250313e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心17",
+        "source": "Arm_newopen",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "Link3_Full3.24open-1/6012-RAU3.24-1/MG6012-i36v3-RAU5005CC0P53.24-1",
+            "point": [
+              0.037870125279462194,
+              0.20847645786247854,
+              0.21440147619215882
+            ],
+            "axis": [
+              1.0,
+              4.3807213492209323e-16,
+              -2.908525637581101e-16
+            ],
+            "radius": 0.04,
+            "ref_type": 4
+          },
+          {
+            "component": "Arm_Link2_Full3.24open-1/Link2 tube3.24-2",
+            "point": [
+              -0.04119600004196154,
+              0.20847645786247856,
+              0.21440147619215902
+            ],
+            "axis": [
+              -1.0,
+              -7.907234010019308e-17,
+              2.220446049250313e-16
+            ],
+            "radius": 0.02650000000000003,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_4_roll",
+      "parent": "forearm",
+      "child": "forearm_roll",
+      "point": [
+        0.0032039999580384133,
+        0.18856986123046124,
+        0.011375055718048754
+      ],
+      "axis": [
+        -1.2994779444709366e-15,
+        -0.09758135603930136,
+        -0.995227551343677
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心8",
+        "source": "Arm_newopen",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "26ArmL5_Assemble3.244010open-1/L5_Frame3.244010-1",
+            "point": [
+              0.0032039999580384133,
+              0.18856986123046124,
+              0.011375055718048754
+            ],
+            "axis": [
+              -1.2994779444709364e-15,
+              -0.09758135603930135,
+              -0.9952275513436769
+            ],
+            "radius": 0.01,
+            "ref_type": 4
+          },
+          {
+            "component": "Link3_Full3.24open-1/L3 Main Assemble3.24-1",
+            "point": [
+              0.003203999958038454,
+              0.18466172792108718,
+              -0.028483807713265516
+            ],
+            "axis": [
+              1.5006053695514935e-16,
+              0.09758135603930082,
+              0.9952275513436771
+            ],
+            "radius": 0.006000000000000001,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_5_pitch",
+      "parent": "forearm_roll",
+      "child": "wrist_pitch",
+      "point": [
+        -0.016498058111497075,
+        0.1658334052733026,
+        -0.2205129637450279
+      ],
+      "axis": [
+        -1.0,
+        -1.779670528040378e-15,
+        1.0789863970577824e-15
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心24",
+        "source": "26ArmL5_Assemble3.244010open",
+        "prefix": "26ArmL5_Assemble3.244010open-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "26ArmL5_Assemble3.244010open-1/BevelAssembly013.244010-1/Bevel023.244010-2",
+            "point": [
+              -0.016398788418443715,
+              0.16583340527330417,
+              -0.2205129637450284
+            ],
+            "axis": [
+              -1.0,
+              -1.4950511016637697e-15,
+              1.9877992179180022e-15
+            ],
+            "radius": 0.008570000000000001,
+            "ref_type": 4
+          },
+          {
+            "component": "26ArmL5_Assemble3.244010open-1/ClawAxisBearingHub3.244010-1",
+            "point": [
+              -0.016498058111497075,
+              0.1658334052733026,
+              -0.2205129637450279
+            ],
+            "axis": [
+              -1.0,
+              -1.779670528040378e-15,
+              1.0789863970577824e-15
+            ],
+            "radius": 0.0075,
+            "ref_type": 2
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_6_roll",
+      "parent": "wrist_pitch",
+      "child": "tool_link",
+      "point": [
+        0.0032039999580380867,
+        0.1763944608777445,
+        -0.2211730268119716
+      ],
+      "axis": [
+        -1.8414148914848587e-15,
+        0.9980525955939261,
+        -0.06237801237797897
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心14",
+        "source": "Arm_newopen",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "26ArmL5_Assemble3.244010open-1/BevelAssembly013.244010-1/Bevel013.244010-1",
+            "point": [
+              0.0032039999580380646,
+              0.16234972939293005,
+              -0.2202952349618499
+            ],
+            "axis": [
+              -1.8414148914848575e-15,
+              0.998052595593926,
+              -0.062378012377978735
+            ],
+            "radius": 0.00275,
+            "ref_type": 4
+          },
+          {
+            "component": "Claw_Full3.24open-1/Bevel013.24-1",
+            "point": [
+              0.0032039999580380867,
+              0.1763944608777445,
+              -0.2211730268119716
+            ],
+            "axis": [
+              -1.8414148914848587e-15,
+              0.9980525955939261,
+              -0.06237801237797897
+            ],
+            "radius": 0.009,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "gripper_open",
+      "parent": "tool_link",
+      "child": "jaw_left",
+      "point": [
+        -0.03753911016186342,
+        0.228531544874017,
+        -0.2249315305199918
+      ],
+      "axis": [
+        0.8771931597445295,
+        -0.029950032115676303,
+        -0.4792026252783664
+      ],
+      "type": "revolute",
+      "limit": [
+        -0.6,
+        0.6
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心118",
+        "source": "Claw_Full3.24open",
+        "prefix": "Claw_Full3.24open-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "Claw_Full3.24open-1/Claw_Base_Assemble3.24-1",
+            "point": [
+              -0.03271454778326848,
+              0.22836681969738076,
+              -0.2275671449590228
+            ],
+            "axis": [
+              0.8771931597445295,
+              -0.02995003211567628,
+              -0.4792026252783664
+            ],
+            "radius": 0.02005,
+            "ref_type": 4
+          },
+          {
+            "component": "Claw_Full3.24open-1/Claw_M1.25Z323.24-1",
+            "point": [
+              -0.03753911016186342,
+              0.228531544874017,
+              -0.2249315305199918
+            ],
+            "axis": [
+              0.8771931597445295,
+              -0.029950032115676303,
+              -0.4792026252783664
+            ],
+            "radius": 0.008,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "gripper_mirror",
+      "parent": "tool_link",
+      "child": "jaw_right",
+      "point": [
+        0.03749974035381708,
+        0.22881392796091116,
+        -0.22041338122214924
+      ],
+      "axis": [
+        0.8771931597445295,
+        -0.029950032115676303,
+        -0.4792026252783664
+      ],
+      "type": "revolute",
+      "limit": [
+        -0.6,
+        0.6
+      ],
+      "mimic": [
+        "gripper_open",
+        -1
+      ],
+      "provenance": {
+        "name": "同心125",
+        "source": "Claw_Full3.24open",
+        "prefix": "Claw_Full3.24open-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "Claw_Full3.24open-1/Claw_Base_Assemble3.24-1",
+            "point": [
+              0.03574535403432803,
+              0.2288738280251425,
+              -0.2194549759715925
+            ],
+            "axis": [
+              0.8771931597445295,
+              -0.029950032115676276,
+              -0.4792026252783663
+            ],
+            "radius": 0.010000000000000002,
+            "ref_type": 4
+          },
+          {
+            "component": "Claw_Full3.24open-1/Claw lower_M1.25Z323.24-1",
+            "point": [
+              0.03749974035381708,
+              0.22881392796091116,
+              -0.22041338122214924
+            ],
+            "axis": [
+              -0.8771931597445294,
+              0.02995003211567442,
+              0.47920262527836666
+            ],
+            "radius": 0.003025,
+            "ref_type": 4
+          }
+        ]
+      }
+    }
+  ],
+  "components": [
+    {
+      "capture": "arm",
+      "component": "04C-34从动open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\04C-34从动open.SLDPRT",
+      "link": "base_link",
+      "triangles": 3678
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Claw_Full3.24open.SLDASM",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-6",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-15",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-5",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/Claw_Base_Assemble3.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Claw_Base_Assemble3.24open.SLDPRT",
+      "link": "tool_link",
+      "triangles": 21532
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-14",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/MG4036E-i36 V3_Bearinged3.24-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\MG4036E-i36 V3_Bearinged3.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-13",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M4x83.24-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x53.24-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x53.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x53.24-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x53.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x53.24-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x53.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-5",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-8",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-6",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-9",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-30",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-29",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-10",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x123.24-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x123.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x63.24-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-26",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-27",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-7",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-25",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-28",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x63.24-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x123.24-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x123.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x123.24-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x123.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x123.24-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x123.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-31",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x63.24-6",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x63.24-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x63.24-7",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x63.24-8",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-11",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-13",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-40",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x63.24-5",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-36",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x63.24-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-35",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-37",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-12",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-32",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-33",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-14",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-39",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-41",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-42",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/Claw_M1.25Z323.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Claw_M1.25Z323.24open.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 4044
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x83.24-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x83.24-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/Claw lower_M1.25Z323.24-镜向1-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Claw lower_M1.25Z323.24-镜向1open.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 2672
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x83.24-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/内六角平圆头螺钉 M3x83.24-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.24open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/MMC2353.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MMC2353.24open.SLDPRT",
+      "link": "tool_link",
+      "triangles": 3768
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/Bevel013.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Bevel013.24open.SLDPRT",
+      "link": "tool_link",
+      "triangles": 15232
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\原型爪\\dm_4340__3d20240822_1(2)(1)open.SLDASM",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\dm_4340__3d20240822_1(2)(1).stp.SLDASM",
+      "link": "tool_link",
+      "triangles": 286932
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340__3D20240325_1_4.stp.SLDASM",
+      "excluded": "represented by recovered STEP parent Claw_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/4310__VER_B0001_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310__VER_B0001_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent Claw_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/DM_4340_3D_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340_3D_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent Claw_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/G43_V1_1_3-230824_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\G43_V1_1_3-230824_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent Claw_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/Claw lower_M1.25Z323.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Claw lower_M1.25Z323.24open.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 7240
+    },
+    {
+      "capture": "arm",
+      "component": "Claw_Full3.24open-1/夹爪-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\夹爪open.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 864
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\UWBbar_full3.24open.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-14",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-11",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/04C-24T-23.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\04C-24T-23.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 21628
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/RM_定位模块_UW01_2020.step3.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\RM_定位模块_UW01_2020.step3.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 5606
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-12",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-13",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-16",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-21",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-15",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-20",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-18",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-17",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-24",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-23",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-26",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-19",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-25",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "UWBbar_full3.24open-1/内六角圆柱头螺钉 M3x83.24-22",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "MG8016BR-i63.24open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MG8016BR-i63.24open.SLDPRT",
+      "excluded": "Hidden old mount/motor replaced by active ENG_Baseopen components"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\26ArmL5_Assemble3.244010open.SLDASM",
+      "link": "forearm_roll"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/BevelAssembly013.244010-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\BevelAssembly013.244010open.SLDASM",
+      "link": "forearm_roll"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/BevelAssembly013.244010-1/Bevel023.244010-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Bevel023.244010open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 5376
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/BevelAssembly013.244010-1/Bevel023.244010-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Bevel023.244010open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 5376
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/BevelAssembly013.244010-1/Bevel013.244010-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Bevel013.244010open.SLDPRT",
+      "link": "tool_link",
+      "triangles": 5930
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M5x123.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M5x123.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/Claw_Full3.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\Claw_Full3.244010open.SLDASM",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x63.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-12",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M5x123.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M5x123.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-7",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-10",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-6",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-8",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-9",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-5",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M3x203.244010-11",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x203.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x103.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x103.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x103.244010-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x103.244010-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x83.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x83.244010-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-8",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x83.244010-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x83.244010-6",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-7",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-5",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-6",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x83.244010-5",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-10",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-11",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-9",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-5",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-12",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-14",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-9",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-13",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-15",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x83.244010-16",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-6",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-7",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-8",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-15",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x63.244010-8",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-12",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x183.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x183.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x63.244010-9",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-10",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-11",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x63.244010-10",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x63.244010-13",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-13",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-14",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x103.244010-16",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x103.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x63.244010-11",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x63.244010-12",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M5x183.244010-5",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M5x183.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x183.244010-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x183.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x183.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x183.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x183.244010-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x183.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M5x183.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M5x183.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M4x153.244010-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x153.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M5x183.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M5x183.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M4x153.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x153.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M4x153.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x153.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M5x183.244010-3",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M5x183.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M5x183.244010-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M5x183.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x63.244010-14",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x63.244010-15",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M3x63.244010-16",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M4x83.244010-7",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x83.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角平圆头螺钉 M5x183.244010-6",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M5x183.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M4x153.244010-4",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x153.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M4x153.244010-5",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x153.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/内六角圆柱头螺钉 M4x153.244010-6",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x153.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4005Encoder-Pulley fix3.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\4005Encoder-Pulley fix3.244010open.SLDASM",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4005Encoder-Pulley fix3.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\4005Encoder-Pulley fix3.244010open.SLDASM",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/T24 5M Pulley_Front3.244010-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\T24 5M Pulley_Front3.244010open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 3672
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link3.244010-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\4310link3.244010open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 2344
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/5mbelt 1603.244010-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\5mbelt 1603.244010open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 224
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/T24 5M Pulley_Front3.244010-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\T24 5M Pulley_Front3.244010open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 3672
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4005link3.244010-2",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\4005link3.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/MG4010-i10 (2)-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\MG4010-i10 (2)open.SLDASM",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4005link3.244010-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\4005link3.244010open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/L5_Frame3.244010-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\L5_Frame3.244010open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 30032
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/MHF7015-3D3.244010-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MHF7015-3D3.244010open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 29260
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/5mbelt 953.244010-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\5mbelt 953.244010open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 240
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/ClawAxisBearingHub3.244010-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\ClawAxisBearingHub3.244010open.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 2578
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\4310linkopen.SLDASM",
+      "link": "forearm_roll"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-1/4310 减速电机 3D 202403041.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\26DGI full1.24\\4310 减速电机 3D 202403041.24open.SLDASM",
+      "link": "forearm_roll"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-1/4310 减速电机 3D 202403041.24-1/4310 减速电机 3D 20240304.STEP-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310 减速电机 3D 20240304.STEP.SLDASM",
+      "link": "forearm_roll"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-1/4310 减速电机 3D 202403041.24-1/4310 减速电机 3D 20240304.STEP-1/4310 ________Ver.B 3D.STEP-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310 ________Ver.B 3D.STEP.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 3276
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-1/4310 减速电机 3D 202403041.24-1/4310 减速电机 3D 20240304.STEP-1/g43_v1_1_220606a.STEP-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\g43_v1_1_220606a.STEP.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 325162
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-1/4310 减速电机 3D 202403041.24-1/4310 减速电机 3D 20240304.STEP-1/4310 ________________ Ver.B.STEP-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310 ________________ Ver.B.STEP.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 8084
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-1/T24 5M Pulley3.244310-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\T24 5M Pulley3.244310open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 4910
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-1/4005Hub3.244310-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\4005Hub3.244310open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 1282
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\4310linkopen.SLDASM",
+      "link": "forearm_roll"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-2/4310 减速电机 3D 202403041.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\26DGI full1.24\\4310 减速电机 3D 202403041.24open.SLDASM",
+      "link": "forearm_roll"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-2/4310 减速电机 3D 202403041.24-1/4310 减速电机 3D 20240304.STEP-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310 减速电机 3D 20240304.STEP.SLDASM",
+      "link": "forearm_roll"
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-2/4310 减速电机 3D 202403041.24-1/4310 减速电机 3D 20240304.STEP-1/4310 ________Ver.B 3D.STEP-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310 ________Ver.B 3D.STEP.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 3276
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-2/4310 减速电机 3D 202403041.24-1/4310 减速电机 3D 20240304.STEP-1/g43_v1_1_220606a.STEP-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\g43_v1_1_220606a.STEP.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 325162
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-2/4310 减速电机 3D 202403041.24-1/4310 减速电机 3D 20240304.STEP-1/4310 ________________ Ver.B.STEP-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310 ________________ Ver.B.STEP.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 8084
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-2/T24 5M Pulley3.244310-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\T24 5M Pulley3.244310open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 4910
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link-2/4005Hub3.244310-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\4005Hub3.244310open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 1282
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/4310link3.244010-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\4310link3.244010open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 2344
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/MMC2353.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MMC2353.24open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 3768
+    },
+    {
+      "capture": "arm",
+      "component": "26ArmL5_Assemble3.244010open-1/碳管夹-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\碳管夹open.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 1326
+    },
+    {
+      "capture": "arm",
+      "component": "yaw底座hackopen-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\yaw底座hackopen.SLDPRT",
+      "excluded": "Hidden old mount/motor replaced by active ENG_Baseopen components"
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\J1 full3.24open.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M5x103.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M5x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/04C-24T3.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\04C-24T3.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 3510
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M3x63.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M3x63.24-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M5x123.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M5x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M5x103.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M5x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M3x63.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M3x63.24-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M3x63.24-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M3x63.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M5x123.24-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M5x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M5x103.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M5x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M4x123.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M4x123.24-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角圆柱头螺钉 M4x103.24-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M4x123.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角圆柱头螺钉 M4x103.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M4x123.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M4x123.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角圆柱头螺钉 M4x103.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角平圆头螺钉 M4x123.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角圆柱头螺钉 M4x103.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/bearing_RA5008.2025.10.13.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\bearing_RA5008.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 10454
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x103.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/J1_lk8010固定cnc.2025.10.13.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\J1_lk8010固定cnc.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 19440
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/J1_bearing61811外侧固定cnc.2025.10.13.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\J1_bearing61811外侧固定cnc.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 6036
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/Cupscrew_M4_10.2025.10.13.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Cupscrew_M4_10.2025.10.13.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 418
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/J1_lk8010输出轴1cnc_v2.2025.10.13.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\J1_lk8010输出轴1cnc_v2.2025.10.13.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 3132
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/J1_lk8010输出轴2cnc_v2.2025.10.13.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\J1_lk8010输出轴2cnc_v2.2025.10.13.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 3172
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/MG8010E-i36.2025.10.13.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MG8010E-i36.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 37066
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x83.24-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x83.24-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x83.24-17",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x103.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x103.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x83.24-15",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x103.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x103.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x103.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x103.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x83.24-14",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x83.24-13",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x83.24-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x123.24-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 298
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x83.24-11",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x83.24-16",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x123.24-11",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 298
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x123.24-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 298
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x123.24-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 298
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x123.24-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 298
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x123.24-13",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 298
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x123.24-12",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 298
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x83.24-12",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x123.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 298
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x123.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 298
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/内六角锥形沉头螺钉 M4x123.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x123.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 298
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/Cupscrew_M4_10.2025.10.13.24-15",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Cupscrew_M4_10.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 418
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/Cupscrew_M4_10.2025.10.13.24-12",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Cupscrew_M4_10.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 418
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/Cupscrew_M4_10.2025.10.13.24-14",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Cupscrew_M4_10.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 418
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/Cupscrew_M4_10.2025.10.13.24-16",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Cupscrew_M4_10.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 418
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/Cupscrew_M4_10.2025.10.13.24-11",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Cupscrew_M4_10.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 418
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/Cupscrew_M4_10.2025.10.13.24-13",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Cupscrew_M4_10.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 418
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/Cupscrew_M4_10.2025.10.13.24-17",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Cupscrew_M4_10.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 418
+    },
+    {
+      "capture": "arm",
+      "component": "J1 full3.24open-1/Cupscrew_M4_10.2025.10.13.24-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Cupscrew_M4_10.2025.10.13.24open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 418
+    },
+    {
+      "capture": "arm",
+      "component": "04C-348016open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\04C-348016open.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 8208
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Link3_Full3.24open.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/L3 Main Assemble3.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\L3 Main Assemble3.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 31880
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/2025rm图传+v13.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\2025rm图传+v13.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 4476
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M4x123.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\6012-RAU3.24open.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/MG6012-i36v3-RAU5005CC0P53.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MG6012-i36v3-RAU5005CC0P53.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 2256
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角圆柱头螺钉 M3x103.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x103.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 986
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/MG6012-RAU5005-Fit3.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MG6012-RAU5005-Fit3.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 21918
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角锥形沉头螺钉 M3x83.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角圆柱头螺钉 M3x103.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x103.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 986
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角锥形沉头螺钉 M3x83.24-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角锥形沉头螺钉 M3x83.24-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角圆柱头螺钉 M3x103.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x103.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 986
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角圆柱头螺钉 M3x103.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x103.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 986
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角锥形沉头螺钉 M3x83.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角圆柱头螺钉 M3x103.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x103.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 986
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角锥形沉头螺钉 M3x83.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角圆柱头螺钉 M3x103.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x103.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 986
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角锥形沉头螺钉 M3x83.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角锥形沉头螺钉 M3x83.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角锥形沉头螺钉 M3x83.24-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角锥形沉头螺钉 M3x83.24-11",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/6012-RAU3.24-1/内六角锥形沉头螺钉 M3x83.24-12",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 314
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M4x123.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M4x123.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M3x63.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M4x123.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M3x63.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M3x63.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M3x63.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M3x63.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M3x63.24-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M3x63.24-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M4x123.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M4x123.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x123.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1178
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M3x63.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M3x63.24-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角平圆头螺钉 M3x63.24-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M3x63.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1086
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M3x63.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1086
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M3x63.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1086
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M3x63.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x63.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1086
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1110
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1110
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角圆柱头螺钉 M4x83.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1110
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/内六角锥形沉头螺钉 M4x83.24-11",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角锥形沉头螺钉 M4x83.24open.SLDPRT",
+      "link": "forearm",
+      "triangles": 274
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/MOFLON_518_0805_H2.22LegBeta-1",
+      "source_file": "E:\\RM\\ENG Open\\DGI\\MOFLON_518_0805_H2.22LegBetaopen.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/3DP_分电板-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\3DP_分电板open.SLDPRT",
+      "link": "forearm",
+      "triangles": 1922
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\原型爪\\dm_4340__3d20240822_1(2)(1)open.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\dm_4340__3d20240822_1(2)(1).stp.SLDASM",
+      "link": "forearm",
+      "triangles": 286932
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340__3D20240325_1_4.stp.SLDASM",
+      "excluded": "represented by recovered STEP parent Link3_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/4310__VER_B0001_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310__VER_B0001_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent Link3_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/DM_4340_3D_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340_3D_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent Link3_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/G43_V1_1_3-230824_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\G43_V1_1_3-230824_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent Link3_Full3.24open-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "Link3_Full3.24open-1/MT1233-S06-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MT1233-S06open.SLDPRT",
+      "link": "forearm",
+      "triangles": 2512
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Arm_Link2_Full3.24open.SLDASM",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x83.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1230
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x83.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1230
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/Link2 tube3.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\Link2 tube3.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 33544
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-11",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x83.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1230
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x83.24-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1230
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角圆柱头螺钉 M3x83.24-12",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角圆柱头螺钉 M3x83.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1084
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-17",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-18",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-19",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-21",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-20",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-23",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-22",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-16",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-14",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-13",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-15",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-24",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-31",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-34",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-36",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-26",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-25",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-29",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-27",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-30",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-28",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-32",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-33",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-35",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-38",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-42",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-48",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-41",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-37",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-40",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-39",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-43",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-45",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-44",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-46",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M3x63.24-47",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M3x63.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1272
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-12",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/04c 3803.24-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\04c 3803.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 208
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-16",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-11",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-17",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-13",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-14",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-15",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-18",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-19",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "Arm_Link2_Full3.24open-1/内六角平圆头螺钉 M4x403.24-20",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\内六角平圆头螺钉 M4x403.24open.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 954
+    },
+    {
+      "capture": "arm",
+      "component": "MG8016-i6 (2)open-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\MG8016-i6 (2)open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "CVopen-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\CVopen.SLDPRT",
+      "excluded": "Competition target or hidden alternative"
+    },
+    {
+      "capture": "arm",
+      "component": "CFB_限位open-1",
+      "source_file": "E:\\RM\\ENG Open\\ENG_full_3.24\\CFB_限位open.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "CV-UP01open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\CV-UP01open.SLDPRT",
+      "link": "forearm",
+      "triangles": 356
+    },
+    {
+      "capture": "arm",
+      "component": "CV-镜向1open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\8010\\CV-镜向1open.SLDPRT",
+      "link": "forearm",
+      "triangles": 3168
+    },
+    {
+      "capture": "arm",
+      "component": "相机保护open-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\相机保护open.SLDPRT",
+      "link": "forearm",
+      "triangles": 928
+    },
+    {
+      "capture": "arm",
+      "component": "Energy_Unit4.1open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_4.1\\Energy_Unit4.1open.SLDPRT",
+      "excluded": "Competition target or hidden alternative"
+    },
+    {
+      "capture": "arm",
+      "component": "相机保护open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\相机保护open.SLDPRT",
+      "link": "forearm",
+      "triangles": 928
+    },
+    {
+      "capture": "arm",
+      "component": "MirrorCVopen-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MirrorCVopen.SLDPRT",
+      "link": "forearm",
+      "triangles": 9408
+    },
+    {
+      "capture": "arm",
+      "component": "CVopen-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\CVopen.SLDPRT",
+      "link": "forearm",
+      "triangles": 9418
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-35",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-26",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-28",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-30",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-31",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-29",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-32",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-27",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-33",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-34",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-36",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-14",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-11",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-12",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-13",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-20",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-23",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-19",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-27",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-29",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-18",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-17",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-22",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-26",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-15",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-16",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-21",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-25",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-24",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-28",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-38",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-30",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-34",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-33",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-32",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-36",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-37",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-31",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "Energy_Unit4.1open-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_4.1\\Energy_Unit4.1open.SLDPRT",
+      "excluded": "Competition target or hidden alternative"
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-35",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-40",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-40",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-38",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-41",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-39",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-39",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-37",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-41",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条外链节open-42",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条外链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 800
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-42",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "MirrorCVopen-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MirrorCVopen.SLDPRT",
+      "excluded": "Competition target or hidden alternative"
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-4",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-2",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-5",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-3",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-14",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-16",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-10",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-11",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-8",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-6",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-12",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-13",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-9",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-7",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-15",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-19",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-21",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-23",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-24",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-25",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-18",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-22",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-17",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "arm",
+      "component": "2分链条内链节open-20",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\SolidWorks2024\\2分链条内链节open.SLDPRT",
+      "link": "base_link",
+      "triangles": 776
+    },
+    {
+      "capture": "mount",
+      "component": "yaw底座newopen-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\yaw底座newopen.SLDPRT",
+      "link": "base_link",
+      "triangles": 36872
+    },
+    {
+      "capture": "mount",
+      "component": "MG8016-i6 (2)open-1",
+      "source_file": "D:\\sd_project\\RM26其他学校机械臂导出\\hkust ENG Open\\ENG_full_3.24\\MG8016-i6 (2)open.SLDPRT",
+      "link": "base_link",
+      "triangles": 43024
+    }
+  ],
+  "meshes": {
+    "base_link": {
+      "path": "meshes/base_link.stl",
+      "triangles": 149766,
+      "bounds": [
+        [
+          -0.276883602142334,
+          -0.43269674491882326,
+          -0.08900000363588338
+        ],
+        [
+          0.276883602142334,
+          0.06399999547004698,
+          0.12600000739097605
+        ]
+      ]
+    },
+    "yaw_link": {
+      "path": "meshes/yaw_link.stl",
+      "triangles": 112758,
+      "bounds": [
+        [
+          -0.09293999999105931,
+          -0.19491648201411307,
+          -0.021794000077247577
+        ],
+        [
+          0.039399999950081116,
+          0.05107377469539642,
+          0.12210000073909759
+        ]
+      ]
+    },
+    "upper_arm": {
+      "path": "meshes/upper_arm.stl",
+      "triangles": 126784,
+      "bounds": [
+        [
+          -0.017899999950081125,
+          -0.389753207235929,
+          -0.02998423301780035
+        ],
+        [
+          0.04649600047409534,
+          0.02835173912172259,
+          0.14741068624103157
+        ]
+      ]
+    },
+    "forearm": {
+      "path": "meshes/forearm.stl",
+      "triangles": 468870,
+      "bounds": [
+        [
+          -0.12699400025606172,
+          -0.1867416710554315,
+          -0.05016345593799518
+        ],
+        [
+          0.16970000029802312,
+          0.24346940729033534,
+          0.27349673201832636
+        ]
+      ]
+    },
+    "forearm_roll": {
+      "path": "meshes/forearm_roll.stl",
+      "triangles": 773062,
+      "bounds": [
+        [
+          -0.043499998748302786,
+          -0.02392285914813755,
+          -0.047547943564660494
+        ],
+        [
+          0.04349999874830219,
+          0.25705527824109486,
+          0.036326009295189005
+        ]
+      ]
+    },
+    "wrist_pitch": {
+      "path": "meshes/wrist_pitch.stl",
+      "triangles": 2578,
+      "bounds": [
+        [
+          -0.0008000007195988965,
+          -0.011805273308243963,
+          -0.00748044874657719
+        ],
+        [
+          0.040204116858669176,
+          0.012296812041344113,
+          0.011246930434024943
+        ]
+      ]
+    },
+    "tool_link": {
+      "path": "meshes/tool_link.stl",
+      "triangles": 333374,
+      "bounds": [
+        [
+          -0.04954345242687782,
+          -0.05363391708307469,
+          -0.007455393830174212
+        ],
+        [
+          0.05063994446476214,
+          0.060743878483521585,
+          0.082646634948871
+        ]
+      ]
+    },
+    "jaw_left": {
+      "path": "meshes/jaw_left.stl",
+      "triangles": 6716,
+      "bounds": [
+        [
+          -0.027508545757519966,
+          -0.018641473160724814,
+          -0.03302422996113763
+        ],
+        [
+          0.06807230950985244,
+          0.0942717764575143,
+          0.04885011253761817
+        ]
+      ]
+    },
+    "jaw_right": {
+      "path": "meshes/jaw_right.stl",
+      "triangles": 8104,
+      "bounds": [
+        [
+          -0.06603613281792209,
+          -0.08418978332049018,
+          -0.028463916611684154
+        ],
+        [
+          0.035930667500229364,
+          0.013995707758336362,
+          0.05754277546048342
+        ]
+      ]
+    }
+  },
+  "missing_geometry": [],
+  "bounds": [
+    [
+      -0.276883602142334,
+      -0.5481431472475905,
+      -0.08900000363588338
+    ],
+    [
+      0.276883602142334,
+      0.1722033069775061,
+      0.47197318988080494
+    ]
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "id": "zhuimeng_dual",
+  "urdf": "adapted.urdf",
+  "source_urdf": "../../reference/exported_arms/zhuimeng_dual/zhuimeng_dual.urdf",
+  "root_body": "base_link",
+  "tool_link": "left_link_7",
+  "joint_names": [
+    "left_joint_1",
+    "left_joint_2",
+    "left_joint_3",
+    "left_joint_4",
+    "left_joint_5",
+    "left_joint_6",
+    "left_joint_7"
+  ],
+  "home": [
+    2.3742369872178526,
+    -2.071530325981533,
+    2.078250460112863,
+    1.15361763362618,
+    2.1866560942590922,
+    0.6814325308187532,
+    -0.22767510236282423
+  ],
+  "planning_home": [
+    2.3742369872178526,
+    -2.071530325981533,
+    2.078250460112863,
+    1.15361763362618,
+    2.1866560942590922,
+    0.6814325308187532,
+    -0.22767510236282423
+  ],
+  "velocity_limits": [
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6
+  ],
+  "locked_joints": {
+    "left_gripper_outer": 0.0015636979410944018,
+    "left_gripper_inner": 0.0015636979410944018,
+    "torso_pitch": 0
+  },
+  "excluded_links": [
+    "right_link_1",
+    "right_link_2",
+    "right_link_3",
+    "right_link_4",
+    "right_link_5",
+    "right_link_6",
+    "right_link_7",
+    "right_jaw_outer",
+    "right_jaw_inner"
+  ],
+  "mount_bodies": [
+    "base_link",
+    "torso_link"
+  ],
+  "grasp_axis": [
+    -6.841862330577808e-16,
+    0.9997457574690509,
+    0.022548180029301975
+  ],
+  "grasp_center": [
+    -6.4860967820136e-11,
+    0.003225541040935725,
+    -0.1429636173734872
+  ],
+  "collision_partition_depth": {
+    "base_link": 3,
+    "torso_link": 3,
+    "left_link_1": 3,
+    "left_link_2": 3,
+    "left_link_3": 3,
+    "left_link_4": 3,
+    "left_link_5": 3,
+    "left_link_6": 3,
+    "left_link_7": 4
+  },
+  "demo_start_at_preset": true,
+  "carried_unit": {
+    "parent": "left_link_7",
+    "pos": [
+      -6.48609182166341e-11,
+      -0.06925602637557046,
+      -0.14459836042561158
+    ],
+    "quat": [
+      -0.007972492260803276,
+      0.7070618356036132,
+      0.7070618356037711,
+      0.007972492246846078
+    ],
+    "contract": "Rigid side grasp at the CAD jaw opening. Auxiliary jaws frozen at declared source coordinates; cylinder-to-jaw geometric clearance about 1.1-1.2 mm. Kinematic carrying only, no gripping forces or hardware calibration."
+  },
+  "scenario": {
+    "core_pose": [
+      -0.38,
+      0.0,
+      0.35,
+      0,
+      90,
+      0
+    ],
+    "assembly_translation": [
+      0,
+      0,
+      -0.25
+    ],
+    "assembly_yaw": 6.283185307179586,
+    "target_degrees": 0,
+    "enforce_core_pose_limits": false
+  },
+  "carried_unit_in_control": true,
+  "mesh_inertia": "shell",
+  "merge_jaw_projection": true,
+  "compound_joint_bodies": [
+    [
+      "left_link_5",
+      "left_link_7"
+    ],
+    [
+      "torso_link",
+      "left_link_2"
+    ]
+  ],
+  "demo_camera": [
+    135.0,
+    -22
+  ]
+}

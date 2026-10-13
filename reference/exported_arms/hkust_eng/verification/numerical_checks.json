@@ -1,0 +1,133 @@
+{
+  "robot": "hkust_eng",
+  "zero_definition": "Native SW arm saved pose, as confirmed by user",
+  "tree": "PASS",
+  "mesh_paths": "PASS",
+  "axis_normalization": "PASS",
+  "zero_reconstruction": {
+    "base_link": {
+      "triangles": 149766,
+      "max_coordinate_error_m": 1.4781951940268101e-08,
+      "status": "PASS"
+    },
+    "yaw_link": {
+      "triangles": 112758,
+      "max_coordinate_error_m": 7.449264066705652e-09,
+      "status": "PASS"
+    },
+    "upper_arm": {
+      "triangles": 126784,
+      "max_coordinate_error_m": 1.489934714493657e-08,
+      "status": "PASS"
+    },
+    "forearm": {
+      "triangles": 468870,
+      "max_coordinate_error_m": 1.4766220524098372e-08,
+      "status": "PASS"
+    },
+    "forearm_roll": {
+      "triangles": 773062,
+      "max_coordinate_error_m": 1.4896367833694413e-08,
+      "status": "PASS"
+    },
+    "wrist_pitch": {
+      "triangles": 2578,
+      "max_coordinate_error_m": 1.6452084382334586e-09,
+      "status": "PASS"
+    },
+    "tool_link": {
+      "triangles": 333374,
+      "max_coordinate_error_m": 3.757331196174718e-09,
+      "status": "PASS"
+    },
+    "jaw_left": {
+      "triangles": 6716,
+      "max_coordinate_error_m": 3.7213314096895544e-09,
+      "status": "PASS"
+    },
+    "jaw_right": {
+      "triangles": 8104,
+      "max_coordinate_error_m": 3.7063217772637103e-09,
+      "status": "PASS"
+    }
+  },
+  "mate_axes": [
+    {
+      "joint": "joint_1_yaw",
+      "cad_mate": "同心1",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.693709093189959e-18,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_2_shoulder",
+      "cad_mate": "同心11",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.1700346758933724e-16,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_3_elbow",
+      "cad_mate": "同心17",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.823016545274216e-16,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_4_roll",
+      "cad_mate": "同心8",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.0189872249088906e-16,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_5_pitch",
+      "cad_mate": "同心24",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.6588768390962634e-15,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_6_roll",
+      "cad_mate": "同心14",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 4.8057889755643416e-17,
+      "status": "PASS"
+    },
+    {
+      "joint": "gripper_open",
+      "cad_mate": "同心118",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 2.1940867595885762e-17,
+      "status": "PASS"
+    },
+    {
+      "joint": "gripper_mirror",
+      "cad_mate": "同心125",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.0006467378888505e-17,
+      "status": "PASS"
+    }
+  ],
+  "missing_source_geometry": [],
+  "sha256": {
+    "meshes\\base_link.stl": "923a0c08452f6c34b57a493f97776a41ae72d738e891b6ac7e823ddbf4d9d188",
+    "meshes\\yaw_link.stl": "32a9ce410e886b1b7e1672cbceb531c24ad20fcba4b3ac422761df17da5ff441",
+    "meshes\\upper_arm.stl": "1e52c2b74d9ba3e830b80d72e43f407337a88d7014c440a10c70f5e378c355ad",
+    "meshes\\forearm.stl": "0920dc21a9d1b40fcafeb558c7ba704c8fae576acb48c8a1c5e8efb8d622248b",
+    "meshes\\forearm_roll.stl": "59b881792820791526b24039a79a7bf40c8e40d8fa293a1ec9d546eb33711918",
+    "meshes\\wrist_pitch.stl": "35692403d8013870f62754d8e0b04b7399b40ecc91db6157d87f5ab406e82464",
+    "meshes\\tool_link.stl": "ab47f31efb8f5db27acfb59c99671b8531a150492b181f76e00340afe0bc4496",
+    "meshes\\jaw_left.stl": "ab20573f52bc12fe5b242e07eeba13d9e9e62732b68f72fe22039a4c456f0071",
+    "meshes\\jaw_right.stl": "d9fb007f650ae2e9f4ed12a9630451f439041f17dcbe576d9fefbf0a2b052355",
+    "hkust_eng.urdf": "53407d3afc9557daf89c924e732242cac5cddcf5210a10ff1b017efcab3fd005"
+  },
+  "dynamic_parameters": "Outside final user-requested scope; not exported or verified",
+  "viewer_ui": {
+    "url": "https://viewer.robotsfan.com/",
+    "joint_count": 8,
+    "reset": "PASS",
+    "evidence": "verification/ui_joint_checks.json",
+    "visual_review": "See verification/README.md"
+  }
+}

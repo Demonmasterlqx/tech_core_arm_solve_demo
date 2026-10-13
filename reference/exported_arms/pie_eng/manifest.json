@@ -1,0 +1,3864 @@
+{
+  "robot": "pie_eng",
+  "title": "首都师范大学 PIE RM2026 工程机器人",
+  "source_url": "https://bbs.robomaster.com/article/1942548?source=4",
+  "unit": "m",
+  "zero_pose": "Native arm assembly saved pose",
+  "root_origin_in_canonical_cad": [
+    0.8678644256211462,
+    0.9045571962283413,
+    1.1087555339193438
+  ],
+  "cad_to_urdf_rotation": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "capture_to_canonical_cad": {
+    "arm": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "mount": [
+      [
+        0.9995939725585136,
+        -9.811008389955716e-17,
+        0.028493683943795617,
+        0.8667482014157332
+      ],
+      [
+        -1.0894211246120125e-16,
+        -1.0,
+        3.7860294575853506e-16,
+        0.9088271959440553
+      ],
+      [
+        0.028493683943795613,
+        -3.815533845898595e-16,
+        -0.9995939725585137,
+        1.0715958020049514
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "notes": [
+    "Regional competition CAD uses 臂V5.0, not the older arm versions.",
+    "J1 bearing and chain drive were aligned from the full robot chassis to retain the otherwise separate yaw joint.",
+    "Auxiliary UWB and image transmitter lift retain their saved position; six main axes and the gripper are articulated.",
+    "Controller installation hemisphere, camera field-of-view cone and UWB clearance surface are nonphysical reference bodies and were omitted; physical sensor bodies remain."
+  ],
+  "joints": [
+    {
+      "name": "joint_1_yaw",
+      "parent": "base_link",
+      "child": "yaw_link",
+      "point": [
+        0.8678644256211462,
+        0.9045571962283413,
+        1.1087555339193438
+      ],
+      "axis": [
+        9.811008389956266e-17,
+        1.0,
+        3.8155338458984463e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心12",
+        "source": "J1",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "J1-轴承内圈铝件-1",
+            "point": [
+              0.0021745886443596796,
+              0.004269999715713981,
+              -0.03711283870379748
+            ],
+            "axis": [
+              5.062859467971495e-30,
+              -1.0,
+              1.5065054825334984e-29
+            ],
+            "radius": 0.0195,
+            "ref_type": 4
+          },
+          {
+            "component": "J1-轴承外圈铝件-1",
+            "point": [
+              0.0021745886443596796,
+              0.104921803331323,
+              -0.03711283870379748
+            ],
+            "axis": [
+              5.062859467971495e-30,
+              -1.0,
+              1.5065054825334984e-29
+            ],
+            "radius": 0.037,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_2_shoulder",
+      "parent": "yaw_link",
+      "child": "upper_arm",
+      "point": [
+        0.8711939304734679,
+        0.9799071962282931,
+        1.117755533919344
+      ],
+      "axis": [
+        -1.0,
+        -1.8388068845354155e-16,
+        1.6653345369377348e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心5",
+        "source": "臂V5.0",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "J2-2/J2-减速箱固定侧板-2",
+            "point": [
+              0.859293930473468,
+              0.9799071962282934,
+              1.1177555339193441
+            ],
+            "axis": [
+              1.0,
+              6.189818984710502e-17,
+              -9.771279828694648e-17
+            ],
+            "radius": 0.0455,
+            "ref_type": 4
+          },
+          {
+            "component": "J3-L1-1/L1-下侧固定板-1",
+            "point": [
+              0.8711939304734679,
+              0.9799071962282931,
+              1.117755533919344
+            ],
+            "axis": [
+              -1.0,
+              -1.8388068845354155e-16,
+              1.6653345369377348e-16
+            ],
+            "radius": 0.034,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_3_elbow",
+      "parent": "upper_arm",
+      "child": "forearm",
+      "point": [
+        0.9141939304734673,
+        1.026217546722236,
+        0.7405879962956345
+      ],
+      "axis": [
+        1.0,
+        -1.1331076925423646e-16,
+        -1.3053372641999567e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心6",
+        "source": "臂V5.0",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "J3-L1-1/改轴承-1/J3-中轴铝件-1",
+            "point": [
+              0.919193930473468,
+              1.0262175467222359,
+              0.7405879962956347
+            ],
+            "axis": [
+              -1.0,
+              2.1510571102112413e-16,
+              6.245004513516507e-17
+            ],
+            "radius": 0.0205,
+            "ref_type": 4
+          },
+          {
+            "component": "J4-L2改长（有滑环）-1/L2-侧板尝试2-1",
+            "point": [
+              0.9141939304734673,
+              1.026217546722236,
+              0.7405879962956345
+            ],
+            "axis": [
+              1.0,
+              -1.1331076925423646e-16,
+              -1.3053372641999567e-16
+            ],
+            "radius": 0.011000000000000034,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_4_roll",
+      "parent": "forearm",
+      "child": "forearm_roll",
+      "point": [
+        0.9541939304734678,
+        1.0302175467221997,
+        1.0075086066730932
+      ],
+      "axis": [
+        2.0292097572644518e-15,
+        -3.826877180088089e-14,
+        1.0
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心52",
+        "source": "J4-L2改长（有滑环）",
+        "prefix": "J4-L2改长（有滑环）-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "J4-L2改长（有滑环）-1/深沟球轴承61808-2RZ-1",
+            "point": [
+              0.9541939304734678,
+              1.0302175467221997,
+              1.0075086066730932
+            ],
+            "axis": [
+              2.029209757264452e-15,
+              -3.8268771800880897e-14,
+              1.0000000000000002
+            ],
+            "radius": 0.02,
+            "ref_type": 4
+          },
+          {
+            "component": "J4-L2改长（有滑环）-1/J4-轴承内铝件gai-1",
+            "point": [
+              0.9541939304734677,
+              1.0302175467222026,
+              0.9361043066144507
+            ],
+            "axis": [
+              2.024723870775793e-15,
+              -3.8281563768805327e-14,
+              1.0
+            ],
+            "radius": 0.019969999999999998,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_5_pitch",
+      "parent": "forearm_roll",
+      "child": "wrist_pitch",
+      "point": [
+        0.97419393047349,
+        1.0302175467212495,
+        1.1385879962956358
+      ],
+      "axis": [
+        -1.0,
+        -2.215835422286294e-15,
+        1.4559129141470768e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心22",
+        "source": "臂V5.0",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "J5-L3-1/L4-电机固定板^J5-L3-1",
+            "point": [
+              0.9711939304734939,
+              1.03021754672125,
+              1.1385879962956322
+            ],
+            "axis": [
+              1.0,
+              4.771079114804071e-18,
+              -1.8775412924327306e-15
+            ],
+            "radius": 0.012000000000000005,
+            "ref_type": 4
+          },
+          {
+            "component": "J6-1/J5-侧板-1",
+            "point": [
+              0.97419393047349,
+              1.0302175467212495,
+              1.1385879962956358
+            ],
+            "axis": [
+              -1.0,
+              -2.215835422286294e-15,
+              1.4559129141470768e-16
+            ],
+            "radius": 0.02,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_6_roll",
+      "parent": "wrist_pitch",
+      "child": "tool_link",
+      "point": [
+        0.9541939304734904,
+        1.028306426262372,
+        1.1815455057508133
+      ],
+      "axis": [
+        2.4349726791957107e-16,
+        -0.044444661834365684,
+        0.9990118477948241
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心24",
+        "source": "臂V5.0",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "J6-1/J6-轴承内圈铝件-1",
+            "point": [
+              0.9541939304734904,
+              1.028306426262372,
+              1.1815455057508133
+            ],
+            "axis": [
+              2.434972679195711e-16,
+              -0.04444466183436569,
+              0.9990118477948243
+            ],
+            "radius": 0.01347,
+            "ref_type": 4
+          },
+          {
+            "component": "夹爪-1/J6-圆柱齿轮28×2-1",
+            "point": [
+              0.9541939304734924,
+              1.028261981600536,
+              1.1825445175986078
+            ],
+            "axis": [
+              2.393918396847994e-16,
+              -0.0444446618343657,
+              0.9990118477948242
+            ],
+            "radius": 0.01,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "gripper_open",
+      "parent": "tool_link",
+      "child": "jaw_left",
+      "point": [
+        0.9341272967101202,
+        1.016786472647794,
+        1.2230745423171325
+      ],
+      "axis": [
+        -0.006847205207986733,
+        -0.998988428575115,
+        -0.04444361994552055
+      ],
+      "type": "revolute",
+      "limit": [
+        -0.6,
+        0.6
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心10",
+        "source": "夹爪",
+        "prefix": "夹爪-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "夹爪-1/轴承5-13-5-1",
+            "point": [
+              0.9341272967101354,
+              1.0167864726477938,
+              1.2230745423171325
+            ],
+            "axis": [
+              -0.006847205207986733,
+              -0.998988428575115,
+              -0.04444361994552055
+            ],
+            "radius": 0.006500000000000001,
+            "ref_type": 4
+          },
+          {
+            "component": "夹爪-1/壳子子子3mm-2",
+            "point": [
+              0.9341272967101202,
+              1.016786472647794,
+              1.2230745423171325
+            ],
+            "axis": [
+              -0.006847205207972816,
+              -0.998988428575115,
+              -0.04444361994552059
+            ],
+            "radius": 0.005,
+            "ref_type": 2
+          }
+        ]
+      }
+    },
+    {
+      "name": "gripper_mirror",
+      "parent": "tool_link",
+      "child": "jaw_right",
+      "point": [
+        0.9741455311893312,
+        1.0193100226827916,
+        1.2231868115841837
+      ],
+      "axis": [
+        -0.006847205207986733,
+        -0.998988428575115,
+        -0.04444361994552055
+      ],
+      "type": "revolute",
+      "limit": [
+        -0.6,
+        0.6
+      ],
+      "mimic": [
+        "gripper_open",
+        -1
+      ],
+      "provenance": {
+        "name": "同心19",
+        "source": "夹爪",
+        "prefix": "夹爪-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "夹爪-1/轴承10-24-4-1",
+            "point": [
+              0.9741318367789282,
+              1.017312045825641,
+              1.2230979243442925
+            ],
+            "axis": [
+              -0.006847205207986733,
+              -0.998988428575115,
+              -0.04444361994552055
+            ],
+            "radius": 0.012000000000000002,
+            "ref_type": 4
+          },
+          {
+            "component": "夹爪-1/壳子子子-5",
+            "point": [
+              0.9741455311893312,
+              1.0193100226827916,
+              1.2231868115841837
+            ],
+            "axis": [
+              -0.006847205207979686,
+              -0.998988428575115,
+              -0.04444361994552069
+            ],
+            "radius": 0.0175,
+            "ref_type": 4
+          }
+        ]
+      }
+    }
+  ],
+  "components": [
+    {
+      "capture": "arm",
+      "component": "uwb支架-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb支架.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/16mm管夹-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\16mm管夹.SLDPRT",
+      "link": "forearm",
+      "triangles": 416
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/16mm管夹-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\16mm管夹.SLDPRT",
+      "link": "forearm",
+      "triangles": 416
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/uwb底部碳管固定改-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb底部碳管固定改.SLDPRT",
+      "link": "forearm",
+      "triangles": 3354
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/定位模块_安装要求-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\定位模块_安装要求.SLDPRT",
+      "body_filter": [
+        {
+          "name": "实体3[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 1858,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              0.0687941461801529,
+              -0.030649255961179733,
+              0.01786433719098568
+            ],
+            [
+              0.07527194917201996,
+              -0.024149255827069283,
+              0.0590800866484642
+            ]
+          ]
+        },
+        {
+          "name": "实体4[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 3556,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              0.05728304758667946,
+              -0.02874925546348095,
+              -0.02250000089406967
+            ],
+            [
+              0.1022830456495285,
+              0.0007507444242946804,
+              0.02250000089406967
+            ]
+          ]
+        },
+        {
+          "name": "实体2[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 3690,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              0.05703304708003998,
+              -0.03274925425648689,
+              -0.022749999538064003
+            ],
+            [
+              0.10253304988145828,
+              -0.02574925497174263,
+              0.022749999538064003
+            ]
+          ]
+        },
+        {
+          "name": "曲面-输入1",
+          "excluded": "CAD installation clearance / field of view reference body"
+        }
+      ],
+      "link": "forearm",
+      "triangles": 9104
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/uwb碳管^uwb支架-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\uwb支架\\uwb碳管^uwb支架.SLDPRT",
+      "link": "forearm",
+      "triangles": 280
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/uwb固定底板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb固定底板.SLDPRT",
+      "link": "forearm",
+      "triangles": 996
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/16mm管夹-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\16mm管夹.SLDPRT",
+      "link": "forearm",
+      "triangles": 416
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/1111-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\1111.SLDPRT",
+      "link": "forearm",
+      "triangles": 900
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/转轴-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\转轴.SLDPRT",
+      "excluded": "Detached alternative shaft hidden in full 2026工程-分区赛版本 assembly"
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/小四孔-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\小四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 572
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/16mm管夹-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\16mm管夹.SLDPRT",
+      "link": "forearm",
+      "triangles": 416
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/小四孔-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\小四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 572
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/1111-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\1111.SLDPRT",
+      "link": "forearm",
+      "triangles": 900
+    },
+    {
+      "capture": "arm",
+      "component": "uwb支架-1/2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\2.SLDPRT",
+      "link": "forearm",
+      "triangles": 670
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J5-L3.SLDASM",
+      "link": "forearm_roll"
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/DM-J4310-2EC-V1.1__3d_20240822_1.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM-J4310-2EC-V1.1__3d_20240822_1.stp.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 544490
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/C610电调 粗制模型-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\C610电调 粗制模型.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 116
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/J5-电调插口保护^J5-L3-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J5-L3\\J5-电调插口保护^J5-L3.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 1096
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/L4-侧板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L4-侧板.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 3248
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/L4-电机固定板^J5-L3-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J5-L3\\L4-电机固定板^J5-L3.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 4416
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/大四孔-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/大四孔-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/J6-电调固定底板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J6-电调固定底板.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 2104
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/J5-线材保护-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J5-线材保护.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 1682
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/法兰轴承F6802^J5-L3-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J5-L3\\法兰轴承F6802^J5-L3.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 656
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/2026.2.21J5-大带轮-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\2026.2.21J5-大带轮.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 4126
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/零件10^J5-L3-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J5-L3\\零件10^J5-L3.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 1520
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/J5-内圈垫片-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J5-内圈垫片.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 568
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/J5-内圈垫片-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J5-内圈垫片.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 568
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/复件 (2) 法兰轴承F6802^J5-L3-2",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J5-L3\\复件 (2) 法兰轴承F6802^J5-L3.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 656
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/J5-轴承内圈-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J5-轴承内圈.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 784
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/J5-轴承内圈-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J5-轴承内圈.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 784
+    },
+    {
+      "capture": "arm",
+      "component": "J5-L3-1/J5-小带轮-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J5-小带轮.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 4236
+    },
+    {
+      "capture": "arm",
+      "component": "小臂最大角 限位下-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\小臂最大角 限位下.SLDPRT",
+      "link": "forearm",
+      "triangles": 550
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4-L2改长（有滑环）.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/又一个零件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\又一个零件.SLDPRT",
+      "link": "forearm",
+      "triangles": 632
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/复件 (2) 零件3-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\复件 (2) 零件3.SLDPRT",
+      "link": "forearm",
+      "triangles": 1072
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/J4电机输出铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4电机输出铝件.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 1702
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/J4-内圈盖板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4-内圈盖板.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 138
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/MT1233-S12-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\MT1233-S12.SLDPRT",
+      "link": "forearm",
+      "triangles": 5550
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/L4-电机固定板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L4-电机固定板.SLDPRT",
+      "link": "forearm",
+      "triangles": 2520
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/L2-滑环固定3D件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L2-滑环固定3D件.SLDPRT",
+      "link": "forearm",
+      "triangles": 1072
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/DM-J4310-2EC-V1.1__3d_20240822_1.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM-J4310-2EC-V1.1__3d_20240822_1.stp.SLDPRT",
+      "link": "forearm",
+      "triangles": 544490
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/J4-10-20-13涨紧套-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4-10-20-13涨紧套.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 400
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/J4-轴承外圈固定铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4-轴承外圈固定铝件.SLDPRT",
+      "link": "forearm",
+      "triangles": 1322
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/J4-10-20-13涨紧套-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4-10-20-13涨紧套.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 400
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小四孔-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\小四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 572
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/J4-轴承内铝件gai-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4-轴承内铝件gai.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 2798
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/L2-侧板尝试2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L2-侧板尝试2.SLDPRT",
+      "link": "forearm",
+      "triangles": 7398
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/J4-轴承外圈盖板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4-轴承外圈盖板.SLDPRT",
+      "link": "forearm",
+      "triangles": 736
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小四孔-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\小四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 572
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/J4-轴承内圈压板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4-轴承内圈压板.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 1528
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/深沟球轴承61808-2RZ-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\深沟球轴承61808-2RZ.SLDPRT",
+      "link": "forearm",
+      "triangles": 39352
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/L2-侧板尝试-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L2-侧板尝试.SLDPRT",
+      "link": "forearm",
+      "triangles": 9124
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/零件6^J4-L2改长（有滑环）-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J4-L2改长（有滑环）\\零件6^J4-L2改长（有滑环）.SLDPRT",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/L3-l2连接件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L3-l2连接件.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 1760
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/大四孔-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/L2-上盖板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L2-上盖板.SLDPRT",
+      "link": "forearm",
+      "triangles": 3504
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb传动装置.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/uwb蜗轮蜗杆-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb蜗轮蜗杆.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/uwb蜗轮蜗杆-1/uwb蜗轮 0.5模 35齿-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb蜗轮 0.5模 35齿.SLDPRT",
+      "link": "forearm",
+      "triangles": 1352
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/uwb蜗轮蜗杆-1/uwb蜗杆 1.5模 长43-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb蜗杆 1.5模 长43.SLDPRT",
+      "link": "forearm",
+      "triangles": 950
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/RoboMaster M2006 P36直流无刷减速电机-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RoboMaster M2006 P36直流无刷减速电机.SLDPRT",
+      "link": "forearm",
+      "triangles": 56684
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/uwb电机固定铝件gai-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb电机固定铝件gai.SLDPRT",
+      "link": "forearm",
+      "triangles": 928
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/法兰轴承 30-42-7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\法兰轴承 30-42-7.SLDPRT",
+      "link": "forearm",
+      "triangles": 666
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/uwb蜗杆双边支撑铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb蜗杆双边支撑铝件.SLDPRT",
+      "link": "forearm",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/uwb涡轮D型轴带法兰-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb涡轮D型轴带法兰.SLDPRT",
+      "link": "forearm",
+      "triangles": 724
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/uwb涡轮中轴-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb涡轮中轴.SLDPRT",
+      "link": "forearm",
+      "triangles": 404
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/推力球轴承 6-14-5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\推力球轴承 6-14-5.SLDPRT",
+      "link": "forearm",
+      "triangles": 400
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/轴承内圈压板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\轴承内圈压板.SLDPRT",
+      "link": "forearm",
+      "triangles": 384
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/法兰轴承 6-12-4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\法兰轴承 6-12-4.SLDPRT",
+      "link": "forearm",
+      "triangles": 632
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/轴套-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\轴套.SLDPRT",
+      "link": "forearm",
+      "triangles": 340
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/uwb传动装置-2/uwb支架连接铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\uwb支架连接铝件.SLDPRT",
+      "link": "forearm",
+      "triangles": 1256
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/L2-下盖板-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L2-下盖板.SLDPRT",
+      "link": "forearm",
+      "triangles": 3452
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/RoboMaster M2006 P36直流无刷减速电机-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RoboMaster M2006 P36直流无刷减速电机.SLDPRT",
+      "link": "forearm",
+      "triangles": 56684
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/圆柱齿轮17×2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\圆柱齿轮17×2.SLDPRT",
+      "link": "forearm",
+      "triangles": 1524
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/2006联轴器-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\2006联轴器.SLDPRT",
+      "link": "forearm",
+      "triangles": 1334
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\小臂分电板新.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN3_______~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~FhSB-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN3_______~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~FhSB.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN3_______~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~FhSB-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~frXP-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~frXP.SLDPRT",
+      "link": "forearm",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN~[CONNECTOR] XH2.54 WS 4P~XH2.54 WS 4P~EzOq-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN~[CONNECTOR] XH2.54 WS 4P~XH2.54 WS 4P~EzOq.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN~[CONNECTOR] XH2.54 WS 4P~XH2.54 WS 4P~EzOq-1/[CONNECTOR] XH2.54 WS 4P~XH2.54 WS 4P~a537-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] XH2.54 WS 4P~XH2.54 WS 4P~a537.SLDPRT",
+      "link": "forearm",
+      "triangles": 888
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN2~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~cBNC-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN2~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~cBNC.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN2~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~cBNC-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~frXP-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~frXP.SLDPRT",
+      "link": "forearm",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN2_J4~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~KdHF-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN2_J4~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~KdHF.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN2_J4~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~KdHF-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~frXP-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~frXP.SLDPRT",
+      "link": "forearm",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN2_UWB~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~LdxO-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN2_UWB~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~LdxO.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN2_UWB~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~LdxO-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~frXP-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~frXP.SLDPRT",
+      "link": "forearm",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN3~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~RBZl-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN3~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~RBZl.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/CAN3~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~RBZl-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~frXP-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~frXP.SLDPRT",
+      "link": "forearm",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/______UART_1~[CONNECTOR] GH1.25 3P~GH1.25 3P BM03B~FvaT-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\______UART_1~[CONNECTOR] GH1.25 3P~GH1.25 3P BM03B~FvaT.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/______UART_1~[CONNECTOR] GH1.25 3P~GH1.25 3P BM03B~FvaT-1/[CONNECTOR] GH1.25 3P~GH1.25 3P BM03B~xAKb-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] GH1.25 3P~GH1.25 3P BM03B~xAKb.SLDPRT",
+      "link": "forearm",
+      "triangles": 312
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/XT30_1~[CONNECTOR] XT30 M~XT30U M Yellow~z6ez-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\XT30_1~[CONNECTOR] XT30 M~XT30U M Yellow~z6ez.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/XT30_1~[CONNECTOR] XT30 M~XT30U M Yellow~z6ez-1/[CONNECTOR] XT30 M~XT30U M Yellow~PCAG-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] XT30 M~XT30U M Yellow~PCAG.SLDPRT",
+      "link": "forearm",
+      "triangles": 8260
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/J_______~[CONNECTOR] XT30 F~XT30U F Yellow~NUjo-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J_______~[CONNECTOR] XT30 F~XT30U F Yellow~NUjo.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/J_______~[CONNECTOR] XT30 F~XT30U F Yellow~NUjo-1/[CONNECTOR] XT30 F~XT30U F Yellow~QHon-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] XT30 F~XT30U F Yellow~QHon.SLDPRT",
+      "link": "forearm",
+      "triangles": 6396
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/____________~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~ILw2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\____________~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~ILw2.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/____________~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~ILw2-1/[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~8qXl-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~8qXl.SLDPRT",
+      "link": "forearm",
+      "triangles": 1812
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/UWB~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~ufLO-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\UWB~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~ufLO.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/UWB~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~ufLO-1/[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~8qXl-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~8qXl.SLDPRT",
+      "link": "forearm",
+      "triangles": 1812
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/___~[CONNECTOR] MR30PW F~MR30PW F~zz4b-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\___~[CONNECTOR] MR30PW F~MR30PW F~zz4b.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/___~[CONNECTOR] MR30PW F~MR30PW F~zz4b-1/[CONNECTOR] MR30PW F~MR30PW F~1r1e-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] MR30PW F~MR30PW F~1r1e.SLDPRT",
+      "link": "forearm",
+      "triangles": 9586
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/J_UWB~[CONNECTOR] XT30 F~XT30U F Yellow~Q3ip-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J_UWB~[CONNECTOR] XT30 F~XT30U F Yellow~Q3ip.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/J_UWB~[CONNECTOR] XT30 F~XT30U F Yellow~Q3ip-1/[CONNECTOR] XT30 F~XT30U F Yellow~QHon-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] XT30 F~XT30U F Yellow~QHon.SLDPRT",
+      "link": "forearm",
+      "triangles": 6396
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/______~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~u8KX-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\______~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~u8KX.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/______~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~u8KX-1/[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~8qXl-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~8qXl.SLDPRT",
+      "link": "forearm",
+      "triangles": 1812
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/UART~[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~HMBS-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\UART~[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~HMBS.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/UART~[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~HMBS-1/[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~OS4O-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~OS4O.SLDPRT",
+      "link": "forearm",
+      "triangles": 312
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/J4~[CONNECTOR] XT30 F~XT30U F Yellow~XRis-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4~[CONNECTOR] XT30 F~XT30U F Yellow~XRis.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/J4~[CONNECTOR] XT30 F~XT30U F Yellow~XRis-1/[CONNECTOR] XT30 F~XT30U F Yellow~QHon-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] XT30 F~XT30U F Yellow~QHon.SLDPRT",
+      "link": "forearm",
+      "triangles": 6396
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/XT30_2~[CONNECTOR] XT30PW F~XT30PW F~FQ3d-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\XT30_2~[CONNECTOR] XT30PW F~XT30PW F~FQ3d.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/XT30_2~[CONNECTOR] XT30PW F~XT30PW F~FQ3d-1/[CONNECTOR] XT30PW F~XT30PW F~S5jo-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] XT30PW F~XT30PW F~S5jo.SLDPRT",
+      "link": "forearm",
+      "triangles": 12368
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/___~[CONNECTOR] MR30PW F~MR30PW F~nqES-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\___~[CONNECTOR] MR30PW F~MR30PW F~nqES.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/___~[CONNECTOR] MR30PW F~MR30PW F~nqES-1/[CONNECTOR] MR30PW F~MR30PW F~1r1e-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] MR30PW F~MR30PW F~1r1e.SLDPRT",
+      "link": "forearm",
+      "triangles": 9586
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/小臂分电板新-2/Board~Tv4o-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\Board~Tv4o.SLDPRT",
+      "link": "forearm",
+      "triangles": 6824
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/图传抬升滑块-MGN9-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\图传抬升滑块-MGN9.SLDPRT",
+      "link": "forearm",
+      "triangles": 428
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/大四孔-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/零件7^J4-L2改长（有滑环）-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J4-L2改长（有滑环）\\零件7^J4-L2改长（有滑环）.SLDPRT",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/大四孔-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/C610电调 粗制模型-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\C610电调 粗制模型.SLDPRT",
+      "link": "forearm",
+      "triangles": 116
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/C610电调 粗制模型-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\C610电调 粗制模型.SLDPRT",
+      "link": "forearm",
+      "triangles": 116
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/大四孔-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/大四孔-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/大四孔-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/J3限位高-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3限位高.SLDPRT",
+      "link": "forearm",
+      "triangles": 616
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/ye-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\ye.SLDPRT",
+      "link": "forearm",
+      "triangles": 1052
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/L4-保护-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L4-保护.SLDPRT",
+      "link": "forearm",
+      "triangles": 1736
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/零件8-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\零件8.SLDPRT",
+      "link": "forearm",
+      "triangles": 504
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-L1.SLDASM",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/L1-下侧固定板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L1-下侧固定板.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 6520
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/零件12-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\零件12.SLDPRT",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/零件5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\零件5.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1296
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/L1-铝柱-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L1-铝柱.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1968
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/L1-碳管固定侧板1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L1-碳管固定侧板1.SLDPRT",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/L1-臂连接侧板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L1-臂连接侧板.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 5220
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/J3-小带轮-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-小带轮.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 4152
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/dm_4340__3d20240822_1(2)(1).stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\dm_4340__3d20240822_1(2)(1).stp.SLDASM",
+      "link": "upper_arm",
+      "triangles": 286932
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340__3D20240325_1_4.stp.SLDASM",
+      "excluded": "represented by recovered STEP parent J3-L1-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/4310__VER_B0001_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310__VER_B0001_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent J3-L1-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/G43_V1_1_3-230824_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\G43_V1_1_3-230824_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent J3-L1-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/DM_4340_3D_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340_3D_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent J3-L1-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/J2-铝柱M3-D7-25-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-铝柱M3-D7-25.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1680
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\改轴承.SLDASM",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/J3-轴承内圈盖板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-轴承内圈盖板.SLDPRT",
+      "link": "forearm",
+      "triangles": 1528
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/J2-上端固定侧改-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-上端固定侧改.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 2916
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/Copy of L1-六角碳方管改-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\Copy of L1-六角碳方管改.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 3364
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/J3-大带轮改-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-大带轮改.SLDPRT",
+      "link": "forearm",
+      "triangles": 6716
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/J3-铝柱 M3-D7-25改-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-铝柱 M3-D7-25改.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1600
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/J3-转轴铝件固定板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-转轴铝件固定板.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 2094
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/J3-KA025-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-KA025.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 464
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/J3-KA025-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-KA025.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 464
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/零件2^改轴承-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\改轴承\\零件2^改轴承.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 840
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/J3-中轴铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-中轴铝件.SLDPRT",
+      "link": "forearm",
+      "triangles": 2304
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/改轴承-1/J3-走线固定件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-走线固定件.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 2764
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/皮带1-2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\皮带1-2.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 252
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/J3-同步带涨紧轮-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-同步带涨紧轮.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 768
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/L1-线材保护-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L1-线材保护.SLDASM",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/J3-同步带涨紧轮-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-同步带涨紧轮.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 768
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J4-L2-图传抬升机构.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/自制图传250-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\自制图传250.SLDPRT",
+      "body_filter": [
+        {
+          "name": "旋转6",
+          "excluded": "CAD installation clearance / field of view reference body"
+        },
+        {
+          "name": "旋转4",
+          "excluded": "CAD installation clearance / field of view reference body"
+        },
+        {
+          "name": "凸台-拉伸2",
+          "type": 0,
+          "visible": true,
+          "triangles": 436,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              0.0,
+              -0.06419999897480011,
+              -0.030209999531507492
+            ],
+            [
+              0.03754999861121178,
+              0.014299999922513962,
+              0.030209999531507492
+            ]
+          ]
+        }
+      ],
+      "link": "forearm",
+      "triangles": 436
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/J3-L2-图传抬升滑轨-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J3-L2-图传抬升滑轨.SLDPRT",
+      "link": "forearm",
+      "triangles": 692
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/图传底板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\图传底板.SLDPRT",
+      "link": "forearm",
+      "triangles": 1580
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/大四孔-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "forearm",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/图传支撑斜梁^J4-L2-图传抬升机构-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J4-L2-图传抬升机构\\图传支撑斜梁^J4-L2-图传抬升机构.SLDPRT",
+      "link": "forearm",
+      "triangles": 422
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/图传支撑斜梁2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\图传支撑斜梁2.SLDPRT",
+      "link": "forearm",
+      "triangles": 402
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/图传限位低-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\图传限位低.SLDPRT",
+      "link": "forearm",
+      "triangles": 144
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RoboMaster裁判系统相机图传模块（发送端）VT03.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\0031_ASM_2_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\003_ASM_1_ASM_1_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_CAM_ASM_1_1_ASM_1_ASM_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\01_RS0105_CAM_ASM_1_1_ASM_1_ASM_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_CAM_ASM_1_1_ASM_1_ASM_ASM-1/ZA530_FOV146_16_9_FY_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\ZA530_FOV146_16_9_FY_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 4940
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\YC_XC_XX000493_01_4__ASM_ASM_1__ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-2/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\YC_XC_XX000493_01_4__ASM_1_AS_1_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-2/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1/YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-2/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1/YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM-1/PRT0003_8_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\PRT0003_8_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 16466
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-2/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1/YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM-1/PRT0004_1_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\PRT0004_1_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 17210
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-2/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1/YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM-1/SRDINBAN_1_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\SRDINBAN_1_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 2530
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-2/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1/YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM-1/PRT0002_1_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\PRT0002_1_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 3832
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/02_RS0105_SHELL_BOT_ASM_1_1_ASM_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\02_RS0105_SHELL_BOT_ASM_1_1_ASM_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/02_RS0105_SHELL_BOT_ASM_1_1_ASM_ASM-1/RS0105_SHELL_BOT_2_1_1_2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_SHELL_BOT_2_1_1_2.SLDPRT",
+      "link": "forearm",
+      "triangles": 4768
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/YC_WJ_LL000420_03_1_1_1_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\YC_WJ_LL000420_03_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 11010
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/RS0105_SHELL_LENS_2_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_SHELL_LENS_2_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 148
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/02_RS0105_SHELL_TOP_ASM_1_1_ASM_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\02_RS0105_SHELL_TOP_ASM_1_1_ASM_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/02_RS0105_SHELL_TOP_ASM_1_1_ASM_ASM-1/RS0105_SHELL_SIDENET_L_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_SHELL_SIDENET_L_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 4790
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/02_RS0105_SHELL_TOP_ASM_1_1_ASM_ASM-1/RS0105_SHELL_TOP_2_1_2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_SHELL_TOP_2_1_2.SLDPRT",
+      "link": "forearm",
+      "triangles": 70228
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/02_RS0105_SHELL_TOP_ASM_1_1_ASM_ASM-1/RS0105_SHELL_TOPNET_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_SHELL_TOPNET_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 15140
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/02_RS0105_SHELL_TOP_ASM_1_1_ASM_ASM-1/RS0105_SHELL_SIDENET_L_1_1_1_1-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_SHELL_SIDENET_L_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 4790
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/YC_WJ_LL000420_03_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\YC_WJ_LL000420_03_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 11010
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/YC_WJ_LL000420_03_1_1_1_1-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\YC_WJ_LL000420_03_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 11010
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/RS0105_SHELL_LEDBOSS_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_SHELL_LEDBOSS_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 760
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_SHELL_ASM_1_1_ASM_1_A_ASM-1/YC_WJ_LL000420_03_1_1_1_1-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\YC_WJ_LL000420_03_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 11010
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_PCBA_ASM_1_ASM_1_ASM__ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\01_RS0105_PCBA_ASM_1_ASM_1_ASM__ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_PCBA_ASM_1_ASM_1_ASM__ASM-1/02_RS0105_RMPCB_PCBA_UNIT_ASM_2_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\02_RS0105_RMPCB_PCBA_UNIT_ASM_2_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_PCBA_ASM_1_ASM_1_ASM__ASM-1/02_RS0105_RMPCB_PCBA_UNIT_ASM_2_ASM-1/RS0105_RMPCB_PCBA_LAYOUT_1010_6_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_RMPCB_PCBA_LAYOUT_1010_6_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_PCBA_ASM_1_ASM_1_ASM__ASM-1/02_RS0105_RMPCB_PCBA_UNIT_ASM_2_ASM-1/RS0105_RMPCB_PCBA_LAYOUT_1010_6_ASM-1/RS0105_RMPCB_PCBA_LAYOUT_1010_8-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_RMPCB_PCBA_LAYOUT_1010_8.SLDPRT",
+      "link": "forearm",
+      "triangles": 12
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_PCBA_ASM_1_ASM_1_ASM__ASM-1/02_RS0105_RMPCB_PCBA_UNIT_ASM_2_ASM-1/RS0105_RMPCB_PCBA_LAYOUT_1010_6_ASM-1/RS0105_RMPCB_PCBA_LAYOUT_1010_7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_RMPCB_PCBA_LAYOUT_1010_7.SLDPRT",
+      "link": "forearm",
+      "triangles": 4350
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/01_RS0105_PCBA_ASM_1_ASM_1_ASM__ASM-1/02_RS0105_RMPCB_PCBA_UNIT_ASM_2_ASM-1/RS0105_RMPCB_PCBA_LAYOUT_1010_6_ASM-1/RS0105_RMPCB_PCBA_LAYOUT_1010_5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RS0105_RMPCB_PCBA_LAYOUT_1010_5.SLDPRT",
+      "link": "forearm",
+      "triangles": 288
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\YC_XC_XX000493_01_4__ASM_ASM_1__ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-1/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\YC_XC_XX000493_01_4__ASM_1_AS_1_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-1/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1/YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM.SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-1/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1/YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM-1/PRT0003_8_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\PRT0003_8_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 16466
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-1/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1/YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM-1/PRT0004_1_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\PRT0004_1_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 17210
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-1/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1/YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM-1/SRDINBAN_1_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\SRDINBAN_1_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 2530
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/RoboMaster裁判系统相机图传模块（发送端）VT03-3/0031_ASM_2_ASM-1/003_ASM_1_ASM_1_ASM-1/00_RS0105_ZONGZHUANG_ASM_2_ASM__ASM-1/YC_XC_XX000493_01_4__ASM_ASM_1__ASM-1/YC_XC_XX000493_01_4__ASM_1_AS_1_ASM-1/YC_XC_XX000493_01_ASM_7_ASM_1_1_ASM-1/PRT0002_1_1_1_1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\PRT0002_1_1_1_1_1.SLDPRT",
+      "link": "forearm",
+      "triangles": 3832
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/图传限位低-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\图传限位低.SLDPRT",
+      "link": "forearm",
+      "triangles": 144
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2-图传抬升机构-1/齿条改-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\齿条改.SLDPRT",
+      "link": "forearm",
+      "triangles": 1592
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J6.SLDASM",
+      "link": "wrist_pitch"
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/J6-轴承外圈铝件gai_J6-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J6-轴承外圈铝件gai_J6.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 1128
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/J6-轴承内圈铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J6-轴承内圈铝件.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1164
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/2006联轴器-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\2006联轴器.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 1334
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/圆柱齿轮14×2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\圆柱齿轮14×2.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 1776
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/RoboMaster M2006 P36直流无刷减速电机-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RoboMaster M2006 P36直流无刷减速电机.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 56684
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/深沟球轴承 30-37-4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\深沟球轴承 30-37-4.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 464
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/J6-内圈轴承盖板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J6-内圈轴承盖板.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 932
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/四孔连接件（40）-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\四孔连接件（40）.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/四孔连接件（40）-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\四孔连接件（40）.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/J5-侧板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J5-侧板.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 1384
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/J5-侧板动力端-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J5-侧板动力端.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 1344
+    },
+    {
+      "capture": "arm",
+      "component": "J6-1/J6-固定板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J6-固定板.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 2040
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-RAU2005 交叉滚子轴承-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-RAU2005 交叉滚子轴承.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 448
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-双边支撑固定板4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-双边支撑固定板4.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5296
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-电机减速箱连接铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-电机减速箱连接铝件.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 2114
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-双边支撑轴承外圈3D件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-双边支撑轴承外圈3D件.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1548
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/M3-D7-16.5-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\M3-D7-16.5.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 2016
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-电机固定侧板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-电机固定侧板.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 2016
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边固定3D件-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-磁边固定3D件.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 2662
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-双边支撑内铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-双边支撑内铝件.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1080
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-2.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 4442
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-3-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-3.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 21100
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-1.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 26088
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-6-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-6.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-1-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-1.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 26088
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-3-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-3.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 21100
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-1-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-1.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 26088
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-1.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 26088
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-3-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-3.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 21100
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-3-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-3.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 21100
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-4.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 7996
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-5.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 32822
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-7.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-8-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-8.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-18-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-18.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-12-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-12.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-13-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-13.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-9-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-9.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-11-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-11.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-14-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-14.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-10-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-10.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-15-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-15.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-16-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-16.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-17-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-17.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-19-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-19.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-22-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-22.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-21-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-21.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-26-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-26.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-33-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-33.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 40468
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-31-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-31.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 126572
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-24-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-24.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-23-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-23.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-32-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-32.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 2762
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-20-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-20.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-27-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-27.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-25-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-25.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-28-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-28.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5852
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-29-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-29.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1548
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-30-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-30.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1712
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-36-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-36.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1760
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-34-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-34.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 19950
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/F14（8轴）-2/F14（8轴）.sldasm-Part-35-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\F14（8轴）.sldasm-Part-35.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 728
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-减速箱固定侧板-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-减速箱固定侧板.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1676
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-磁边.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边-2/SPI~[CONNECTOR] GH1.25 WS 6P~GH1.25 WS 6P SM06B~iWbm-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\SPI~[CONNECTOR] GH1.25 WS 6P~GH1.25 WS 6P SM06B~iWbm.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边-2/SPI~[CONNECTOR] GH1.25 WS 6P~GH1.25 WS 6P SM06B~iWbm-1/[CONNECTOR] GH1.25 WS 6P~GH1.25 WS 6P SM06B~eGtr-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] GH1.25 WS 6P~GH1.25 WS 6P SM06B~eGtr.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 372
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边-2/C2~[C] C0603~C0603~Zii8-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\C2~[C] C0603~C0603~Zii8.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边-2/C2~[C] C0603~C0603~Zii8-1/[C] C0603~C0603~Sy92-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[C] C0603~C0603~Sy92.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1116
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边-2/C1~[C] C0603~C0603~hRH6-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\C1~[C] C0603~C0603~hRH6.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边-2/C1~[C] C0603~C0603~hRH6-1/[C] C0603~C0603~Sy92-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[C] C0603~C0603~Sy92.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1116
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边-2/U1~[IC]QFN-16(3mmx3mm)~QFN-16_L3.0-W3.0-P0.50-TR-EP1.7~2B5I-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\U1~[IC]QFN-16(3mmx3mm)~QFN-16_L3.0-W3.0-P0.50-TR-EP1.7~2B5I.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边-2/U1~[IC]QFN-16(3mmx3mm)~QFN-16_L3.0-W3.0-P0.50-TR-EP1.7~2B5I-1/[IC]QFN-16(3mmx3mm)~QFN-16_L3.0-W3.0-P0.50-TR-EP1.7~fTYc-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[IC]QFN-16(3mmx3mm)~QFN-16_L3.0-W3.0-P0.50-TR-EP1.7~fTYc.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 4394
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边-2/Board~WlxA-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\Board~WlxA.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 588
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/MF7015v2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\MF7015v2.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 61440
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-固定板-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-固定板.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 3280
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大四孔-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大臂分电板_2026-04-11.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN1_1~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2E28-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN1_1~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2E28.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN1_1~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2E28-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/MC_XHB~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~Wepa-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\MC_XHB~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~Wepa.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/MC_XHB~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~Wepa-1/[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~MATe-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~MATe.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1812
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN3_2~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~TTTc-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN3_2~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~TTTc.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN3_2~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~TTTc-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN2_1~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~OYyc-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN2_1~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~OYyc.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN2_1~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~OYyc-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN2_2~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~wAro-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN2_2~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~wAro.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN2_2~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~wAro-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN3_1~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~Wiww-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN3_1~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~Wiww.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN3_1~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~Wiww-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN1_3~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~cqjn-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CAN1_3~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~cqjn.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/CAN1_3~[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~cqjn-1/[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM CAN 2P~[CONN RM] RM CAN 2P~2nEB.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 276
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/UART~[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~5yru-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\UART~[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~5yru.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/UART~[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~5yru-1/[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~s1bf-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~s1bf.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 312
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/MA600_1~[CONNECTOR] GH1.25 6P~GH1.25 6P BM06B~znxd-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\MA600_1~[CONNECTOR] GH1.25 6P~GH1.25 6P BM06B~znxd.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/MA600_1~[CONNECTOR] GH1.25 6P~GH1.25 6P BM06B~znxd-1/[CONNECTOR] GH1.25 6P~GH1.25 6P BM06B~6RRO-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] GH1.25 6P~GH1.25 6P BM06B~6RRO.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 420
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/UART1~[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~8Bt8-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\UART1~[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~8Bt8.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/UART1~[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~8Bt8-1/[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~s1bf-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] RM UART 3P~[CONNECTOR] RM UART 3P~s1bf.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 312
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/MA600_2~[CONNECTOR] GH1.25 WS 6P~GH1.25 WS 6P SM06B~bBaX-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\MA600_2~[CONNECTOR] GH1.25 WS 6P~GH1.25 WS 6P SM06B~bBaX.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/MA600_2~[CONNECTOR] GH1.25 WS 6P~GH1.25 WS 6P SM06B~bBaX-1/[CONNECTOR] GH1.25 WS 6P~GH1.25 WS 6P SM06B~h1uU-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] GH1.25 WS 6P~GH1.25 WS 6P SM06B~h1uU.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 372
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/MF7015~CONN-SMD_8P-P1.50_ZX-ZH1.5-8PWT~CONN-SMD_8P-P1.50_ZX-ZH1.5-8PWT~tkAo-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\MF7015~CONN-SMD_8P-P1.50_ZX-ZH1.5-8PWT~CONN-SMD_8P-P1.50_ZX-ZH1.5-8PWT~tkAo.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/MF7015~CONN-SMD_8P-P1.50_ZX-ZH1.5-8PWT~CONN-SMD_8P-P1.50_ZX-ZH1.5-8PWT~tkAo-1/CONN-SMD_8P-P1.50_ZX-ZH1.5-8PWT~CONN-SMD_8P-P1.50_ZX-ZH1.5-8PWT~k9W7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\CONN-SMD_8P-P1.50_ZX-ZH1.5-8PWT~CONN-SMD_8P-P1.50_ZX-ZH1.5-8PWT~k9W7.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 10944
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/MC_XHB1~[CONNECTOR]  RM SACC XH2.54 WS 4P~[CONNECTOR]  RM SACC XH2.54 WS 4P~usJo-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\MC_XHB1~[CONNECTOR]  RM SACC XH2.54 WS 4P~[CONNECTOR]  RM SACC XH2.54 WS 4P~usJo.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/MC_XHB1~[CONNECTOR]  RM SACC XH2.54 WS 4P~[CONNECTOR]  RM SACC XH2.54 WS 4P~usJo-1/[CONNECTOR]  RM SACC XH2.54 WS 4P~[CONNECTOR]  RM SACC XH2.54 WS 4P~HaBA-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR]  RM SACC XH2.54 WS 4P~[CONNECTOR]  RM SACC XH2.54 WS 4P~HaBA.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 868
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/XHB_2~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~7rqh-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\XHB_2~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~7rqh.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/XHB_2~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~7rqh-1/[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~MATe-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~MATe.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1812
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/GIMBLE_1~[CONNECTOR] XT30PW M~XT30PW M~Hv1I-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\GIMBLE_1~[CONNECTOR] XT30PW M~XT30PW M~Hv1I.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/GIMBLE_1~[CONNECTOR] XT30PW M~XT30PW M~Hv1I-1/[CONNECTOR] XT30PW M~XT30PW M~Qi0V-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] XT30PW M~XT30PW M~Qi0V.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 22050
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/GIMBLE_3~[CONNECTOR] XT30 F~XT30U F Yellow~l4aI-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\GIMBLE_3~[CONNECTOR] XT30 F~XT30U F Yellow~l4aI.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/GIMBLE_3~[CONNECTOR] XT30 F~XT30U F Yellow~l4aI-1/[CONNECTOR] XT30 F~XT30U F Yellow~jxuN-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] XT30 F~XT30U F Yellow~jxuN.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 6400
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/XHB_1~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~TaP4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\XHB_1~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~TaP4.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/XHB_1~[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~TaP4-1/[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~MATe-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR]  RM SACC XH2.54 4P~[CONNECTOR]  RM SACC XH2.54 4P~MATe.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1812
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/GIMBLE_2~[CONNECTOR] XT30PW F~XT30PW F~XMAw-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\GIMBLE_2~[CONNECTOR] XT30PW F~XT30PW F~XMAw.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/GIMBLE_2~[CONNECTOR] XT30PW F~XT30PW F~XMAw-1/[CONNECTOR] XT30PW F~XT30PW F~dzaB-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\[CONNECTOR] XT30PW F~XT30PW F~dzaB.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 12320
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大臂分电板_2026-04-11-1/Board~wqqf-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\Board~wqqf.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 5084
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-磁边固定件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-磁边固定件.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1374
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-yaw连接铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-yaw连接铝件.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 4298
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-侧板支撑板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-侧板支撑板.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1800
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大四孔-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-固定底板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-固定底板.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 2232
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/小四孔-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\小四孔.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 572
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-主控底板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-主控底板.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 2452
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/主控安装要求-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\主控安装要求.SLDPRT",
+      "body_filter": [
+        {
+          "name": "实体8[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 308,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              0.025100000202655792,
+              9.999999747378752e-05,
+              0.019200000911951065
+            ],
+            [
+              0.028699999675154686,
+              0.009349999949336052,
+              0.02280000038444996
+            ]
+          ]
+        },
+        {
+          "name": "实体7[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 256,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              -0.02126999944448471,
+              0.011850000359117985,
+              -0.02607000060379505
+            ],
+            [
+              0.015469999983906746,
+              0.014150000177323818,
+              -0.00913000013679266
+            ]
+          ]
+        },
+        {
+          "name": "实体3[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 10178,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              -0.01889999955892563,
+              0.005499999970197678,
+              0.000750000006519258
+            ],
+            [
+              0.01889999955892563,
+              0.015354882925748825,
+              0.021549999713897705
+            ]
+          ]
+        },
+        {
+          "name": "实体12[1]",
+          "excluded": "CAD installation clearance / field of view reference body"
+        },
+        {
+          "name": "实体5[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 3490,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              -0.03799999877810478,
+              0.0,
+              -0.03150000050663948
+            ],
+            [
+              0.03799999877810478,
+              0.006300000008195639,
+              0.03150000050663948
+            ]
+          ]
+        },
+        {
+          "name": "实体2[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 2414,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              -0.0032500000670552254,
+              0.001449999981559813,
+              0.021961811929941177
+            ],
+            [
+              0.0032500000670552254,
+              0.00795000046491623,
+              0.02991456724703312
+            ]
+          ]
+        },
+        {
+          "name": "实体9[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 212,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              -0.028699209913611412,
+              9.999999747378752e-05,
+              0.019200000911951065
+            ],
+            [
+              -0.025100789964199066,
+              0.0013500000350177288,
+              0.022796839475631714
+            ]
+          ]
+        },
+        {
+          "name": "实体6[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 308,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              0.025100000202655792,
+              9.999999747378752e-05,
+              -0.02930000051856041
+            ],
+            [
+              0.028699999675154686,
+              0.009349999949336052,
+              -0.025699999183416367
+            ]
+          ]
+        },
+        {
+          "name": "实体10[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 6766,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              -0.02800000086426735,
+              0.0017999999690800905,
+              -0.029100000858306885
+            ],
+            [
+              0.02800000086426735,
+              0.012199999764561653,
+              0.023099999874830246
+            ]
+          ]
+        },
+        {
+          "name": "实体11[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 29164,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              -0.03799999877810478,
+              0.00430000014603138,
+              -0.03150000050663948
+            ],
+            [
+              0.03799999877810478,
+              0.014000000432133675,
+              0.03150000050663948
+            ]
+          ]
+        },
+        {
+          "name": "实体4[1]",
+          "type": 0,
+          "visible": true,
+          "triangles": 212,
+          "material": [
+            "",
+            ""
+          ],
+          "bounds": [
+            [
+              -0.028699209913611412,
+              9.999999747378752e-05,
+              -0.02930000051856041
+            ],
+            [
+              -0.025100789964199066,
+              0.0013500000350177288,
+              -0.02570316195487976
+            ]
+          ]
+        }
+      ],
+      "link": "yaw_link",
+      "triangles": 53308
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/小四孔-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\小四孔.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 572
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大四孔-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大四孔-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-主控支架^J2-2",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J2\\J2-主控支架^J2.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1024
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/J2-主控支架^J2-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J2\\J2-主控支架^J2.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1024
+    },
+    {
+      "capture": "arm",
+      "component": "J2-2/大四孔-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\大四孔.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 508
+    },
+    {
+      "capture": "arm",
+      "component": "J2-大臂分电板保护-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-大臂分电板保护.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 2448
+    },
+    {
+      "capture": "arm",
+      "component": "2026.2.21J5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\2026.2.21J5.SLDASM",
+      "excluded": "Unused detached design subassembly in source"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\夹爪.SLDASM",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/tpu-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\tpu.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 1612
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/轴承10-24-4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\轴承10-24-4.SLDPRT",
+      "link": "tool_link",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/壳子子子3mm-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\壳子子子3mm.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 1484
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/tpu-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\tpu.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 1612
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/电机面夹板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\电机面夹板.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1638
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\RoboMaster M3508直流无刷减速电.SLDASM",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/5_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\5_ASM.SLDASM",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/5_ASM-1/15-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\15.SLDPRT",
+      "link": "tool_link",
+      "triangles": 310
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/5_ASM-1/19-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\19.SLDPRT",
+      "link": "tool_link",
+      "triangles": 18513
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/5_ASM-1/15-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\15.SLDPRT",
+      "link": "tool_link",
+      "triangles": 310
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/5_ASM-1/15-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\15.SLDPRT",
+      "link": "tool_link",
+      "triangles": 310
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/5_ASM-1/20-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\20.SLDPRT",
+      "link": "tool_link",
+      "triangles": 4996
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/3-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\3.SLDPRT",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/4_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\4_ASM.SLDASM",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/4_ASM-1/__-__20-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\__-__20.SLDPRT",
+      "link": "tool_link",
+      "triangles": 4114
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/4_ASM-1/__-__10_1_-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\__-__10_1_.SLDPRT",
+      "link": "tool_link",
+      "triangles": 222
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/4_ASM-1/__-__10_3_-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\__-__10_3_.SLDPRT",
+      "link": "tool_link",
+      "triangles": 222
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/4_ASM-1/__-__10_2_-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\__-__10_2_.SLDPRT",
+      "link": "tool_link",
+      "triangles": 222
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\2_ASM.SLDASM",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/26_ASM-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\26_ASM.SLDASM",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/26_ASM-2/27-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\27.SLDPRT",
+      "link": "tool_link",
+      "triangles": 9210
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/26_ASM-2/28-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\28.SLDPRT",
+      "link": "tool_link",
+      "triangles": 444
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/26_ASM-2/28-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\28.SLDPRT",
+      "link": "tool_link",
+      "triangles": 444
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/25-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\25.SLDPRT",
+      "link": "tool_link",
+      "triangles": 600
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/18-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\18.SLDPRT",
+      "link": "tool_link",
+      "triangles": 28236
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/26_ASM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\26_ASM.SLDASM",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/26_ASM-1/27-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\27.SLDPRT",
+      "link": "tool_link",
+      "triangles": 9210
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/26_ASM-1/28-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\28.SLDPRT",
+      "link": "tool_link",
+      "triangles": 444
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/26_ASM-1/28-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\28.SLDPRT",
+      "link": "tool_link",
+      "triangles": 444
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/18-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\18.SLDPRT",
+      "link": "tool_link",
+      "triangles": 28236
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/23-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\23.SLDPRT",
+      "link": "tool_link",
+      "triangles": 4638
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/18-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\18.SLDPRT",
+      "link": "tool_link",
+      "triangles": 28236
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/18-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\18.SLDPRT",
+      "link": "tool_link",
+      "triangles": 28236
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/17-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\17.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1442
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/16-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\16.SLDPRT",
+      "link": "tool_link",
+      "triangles": 3010
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/2_ASM-1/24-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\24.SLDPRT",
+      "link": "tool_link",
+      "triangles": 442
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\1_1.SLDPRT",
+      "link": "tool_link",
+      "triangles": 4944
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/3508抱紧联轴器2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\3508抱紧联轴器2.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1564
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/壳子子子3mm-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\壳子子子3mm.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 1484
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/轴承5-13-5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\轴承5-13-5.SLDPRT",
+      "link": "tool_link",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/外直齿轮M2Z20-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\外直齿轮M2Z20.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 1072
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/外直齿轮M2Z20-2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\外直齿轮M2Z20-2.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 1040
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/2026.2.28小四孔-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\2026.2.28小四孔.SLDPRT",
+      "link": "tool_link",
+      "triangles": 572
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/壳子子子3mm-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\壳子子子3mm.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 1484
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/壳子子子-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\壳子子子.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 1428
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/垫高-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\垫高.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 784
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/上板子-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\上板子.SLDPRT",
+      "link": "tool_link",
+      "triangles": 540
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/轴承10-24-4-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\轴承10-24-4.SLDPRT",
+      "link": "tool_link",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/2026.2.28小四孔-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\2026.2.28小四孔.SLDPRT",
+      "link": "tool_link",
+      "triangles": 572
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/6-12-4法兰-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\6-12-4法兰.SLDPRT",
+      "link": "tool_link",
+      "triangles": 640
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/新新新新新底板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\新新新新新底板.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1292
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/J6-圆柱齿轮28×2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J6-圆柱齿轮28×2.SLDPRT",
+      "link": "tool_link",
+      "triangles": 3260
+    },
+    {
+      "capture": "arm",
+      "component": "J2-60°限位-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J2-60°限位.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 412
+    },
+    {
+      "capture": "mount",
+      "component": "滚子链节距6.35-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\滚子链节距6.35.SLDASM",
+      "link": "base_link"
+    },
+    {
+      "capture": "mount",
+      "component": "J1-轴承内圈盖板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J1-轴承内圈盖板.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1224
+    },
+    {
+      "capture": "mount",
+      "component": "DM-J4310-2EC-V1.1__3d_20240822_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\DM-J4310-2EC-V1.1__3d_20240822_1.SLDPRT",
+      "link": "base_link",
+      "triangles": 286012
+    },
+    {
+      "capture": "mount",
+      "component": "零件7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\零件7.SLDPRT",
+      "link": "base_link",
+      "triangles": 1196
+    },
+    {
+      "capture": "mount",
+      "component": "RA5008^J1-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J1\\RA5008^J1.SLDPRT",
+      "link": "base_link",
+      "triangles": 464
+    },
+    {
+      "capture": "mount",
+      "component": "J1-轴承外圈盖板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J1-轴承外圈盖板.SLDPRT",
+      "link": "base_link",
+      "triangles": 1216
+    },
+    {
+      "capture": "mount",
+      "component": "链驱动-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\链驱动.SLDASM",
+      "link": "base_link"
+    },
+    {
+      "capture": "mount",
+      "component": "链驱动-2/滚子链轮1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\滚子链轮1.SLDPRT",
+      "link": "base_link",
+      "triangles": 4954
+    },
+    {
+      "capture": "mount",
+      "component": "链驱动-2/滚子链轮2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\滚子链轮2.SLDPRT",
+      "link": "base_link",
+      "triangles": 6366
+    },
+    {
+      "capture": "mount",
+      "component": "链驱动-2/滚子链_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\滚子链_1.SLDPRT",
+      "link": "base_link",
+      "triangles": 1984
+    },
+    {
+      "capture": "mount",
+      "component": "J1-轴承内圈铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J1-轴承内圈铝件.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 2024
+    },
+    {
+      "capture": "mount",
+      "component": "J1-轴承外圈铝件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\J1-轴承外圈铝件.SLDPRT",
+      "link": "base_link",
+      "triangles": 2548
+    }
+  ],
+  "meshes": {
+    "base_link": {
+      "path": "meshes/base_link.stl",
+      "triangles": 304739,
+      "bounds": [
+        [
+          -0.05154353564578995,
+          -0.05153414471698059,
+          -0.049999999076128065
+        ],
+        [
+          0.05152198526369589,
+          0.14144298037332226,
+          0.015349999888241261
+        ]
+      ]
+    },
+    "yaw_link": {
+      "path": "meshes/yaw_link.stl",
+      "triangles": 798748,
+      "bounds": [
+        [
+          -0.1399704956543235,
+          -0.05950000175833736,
+          -1.8998980166884394e-10
+        ],
+        [
+          0.05057999999888152,
+          0.0714873481493421,
+          0.12370488292574511
+        ]
+      ]
+    },
+    "upper_arm": {
+      "path": "meshes/upper_arm.stl",
+      "triangles": 324051,
+      "bounds": [
+        [
+          -0.04399999976158142,
+          -0.03525755172252354,
+          -0.033939189153298854
+        ],
+        [
+          0.05225000000000002,
+          0.4146669041704618,
+          0.08110215761687412
+        ]
+      ]
+    },
+    "forearm": {
+      "path": "meshes/forearm.stl",
+      "triangles": 1098244,
+      "bounds": [
+        [
+          -0.06600000004749695,
+          -0.26351223861119744,
+          -0.08293608576062339
+        ],
+        [
+          0.2440000014967666,
+          0.18205189486901885,
+          0.07585234382727402
+        ]
+      ]
+    },
+    "forearm_roll": {
+      "path": "meshes/forearm_roll.stl",
+      "triangles": 580775,
+      "bounds": [
+        [
+          -0.028899999999973836,
+          -0.1585793856886324,
+          -0.03800000019093741
+        ],
+        [
+          0.04390000009502104,
+          0.19892061037746045,
+          0.03794911116267019
+        ]
+      ]
+    },
+    "wrist_pitch": {
+      "path": "meshes/wrist_pitch.stl",
+      "triangles": 68102,
+      "bounds": [
+        [
+          -0.04999999932944765,
+          -0.055197000386951744,
+          -0.06014455992696188
+        ],
+        [
+          0.00999999932944784,
+          0.019999059108218864,
+          0.02819256829058059
+        ]
+      ]
+    },
+    "tool_link": {
+      "path": "meshes/tool_link.stl",
+      "triangles": 189901,
+      "bounds": [
+        [
+          -0.04152682605232427,
+          -0.13757776968573476,
+          -0.08887651445754496
+        ],
+        [
+          0.0640048889187611,
+          0.0007762207695940493,
+          0.029612667256624148
+        ]
+      ]
+    },
+    "jaw_left": {
+      "path": "meshes/jaw_left.stl",
+      "triangles": 5620,
+      "bounds": [
+        [
+          -0.04324271365475818,
+          -0.10856985704821742,
+          -0.00581675823957295
+        ],
+        [
+          0.021891088197893094,
+          0.019791361777836913,
+          0.018766860922618367
+        ]
+      ]
+    },
+    "jaw_right": {
+      "path": "meshes/jaw_right.stl",
+      "triangles": 6380,
+      "bounds": [
+        [
+          -0.021990871005540313,
+          -0.10843882054385356,
+          -0.008765497595961236
+        ],
+        [
+          0.04334644469300142,
+          0.021126721912345436,
+          0.01577113657767293
+        ]
+      ]
+    }
+  },
+  "missing_geometry": [
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/零件6^J4-L2改长（有滑环）-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J4-L2改长（有滑环）\\零件6^J4-L2改长（有滑环）.SLDPRT",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J4-L2改长（有滑环）-1/零件7^J4-L2改长（有滑环）-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\VC~~\\J4-L2改长（有滑环）\\零件7^J4-L2改长（有滑环）.SLDPRT",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/零件12-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\零件12.SLDPRT",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/L1-碳管固定侧板1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L1-碳管固定侧板1.SLDPRT",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "J3-L1-1/L1-线材保护-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\L1-线材保护.SLDASM",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "夹爪-1/RoboMaster M3508直流无刷减速电-1/3-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\3.SLDPRT",
+      "link": "tool_link"
+    },
+    {
+      "capture": "mount",
+      "component": "滚子链节距6.35-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\pie\\cad\\滚子链节距6.35.SLDASM",
+      "link": "base_link"
+    }
+  ],
+  "bounds": [
+    [
+      -0.1399704956543235,
+      -0.22288886544600617,
+      -0.049999999076128065
+    ],
+    [
+      0.2903295063490877,
+      0.5502194324927281,
+      0.1975126943211688
+    ]
+  ]
+}

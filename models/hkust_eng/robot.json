@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "id": "hkust_eng",
+  "urdf": "adapted.urdf",
+  "source_urdf": "../../reference/exported_arms/hkust_eng/hkust_eng.urdf",
+  "root_body": "base_link",
+  "tool_link": "tool_link",
+  "joint_names": [
+    "joint_1_yaw",
+    "joint_2_shoulder",
+    "joint_3_elbow",
+    "joint_4_roll",
+    "joint_5_pitch",
+    "joint_6_roll"
+  ],
+  "home": [
+    0.4488978036391182,
+    -1.264231599248458,
+    -0.5187294975092186,
+    -1.5983282184929997,
+    -2.4596190875450454,
+    1.7916181723256488
+  ],
+  "planning_home": [
+    0.4488978036391182,
+    -1.264231599248458,
+    -0.5187294975092186,
+    -1.5983282184929997,
+    -2.4596190875450454,
+    1.7916181723256488
+  ],
+  "velocity_limits": [
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6
+  ],
+  "locked_joints": {
+    "gripper_open": 0.6906230269385979,
+    "gripper_mirror": -0.6906230269385979
+  },
+  "excluded_links": [],
+  "mount_bodies": [
+    "base_link",
+    "yaw_link"
+  ],
+  "grasp_axis": [
+    0.8771931597250566,
+    0.47920262531368824,
+    -0.02995003212085551
+  ],
+  "grasp_center": [
+    -0.0014682946913735458,
+    0.0073046467907158154,
+    0.12979711814781442
+  ],
+  "collision_partition_depth": {
+    "base_link": 3,
+    "yaw_link": 3,
+    "upper_arm": 3,
+    "forearm": 3,
+    "forearm_roll": 3,
+    "wrist_pitch": 3,
+    "tool_link": 4
+  },
+  "demo_start_at_preset": true,
+  "carried_unit": {
+    "parent": "tool_link",
+    "pos": [
+      -0.06506479877144014,
+      -0.027437543544526582,
+      0.13196849547657644
+    ],
+    "quat": [
+      0.9683401604316991,
+      -0.030231003252281348,
+      0.007732311781175382,
+      0.2476764653575111
+    ],
+    "contract": "Rigid side grasp at the CAD jaw opening. Auxiliary jaws frozen at declared source coordinates; cylinder-to-jaw geometric clearance about 1.1-1.2 mm. Kinematic carrying only, no gripping forces or hardware calibration."
+  },
+  "scenario": {
+    "core_pose": [
+      -0.38,
+      0.0,
+      0.45,
+      0,
+      90,
+      0
+    ],
+    "assembly_translation": [
+      0,
+      0,
+      -0.25
+    ],
+    "assembly_yaw": 4.71238898038469,
+    "target_degrees": 0,
+    "enforce_core_pose_limits": false
+  },
+  "carried_unit_in_control": true,
+  "mesh_inertia": "shell",
+  "merge_jaw_projection": false,
+  "compound_joint_bodies": [
+    [
+      "forearm_roll",
+      "tool_link"
+    ]
+  ],
+  "demo_camera": [
+    45.0,
+    -22
+  ]
+}

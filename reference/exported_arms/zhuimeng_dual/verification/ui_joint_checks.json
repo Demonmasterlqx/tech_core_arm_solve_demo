@@ -1,0 +1,86 @@
+[
+  {
+    "joint": "torso_pitch",
+    "reset": "0"
+  },
+  {
+    "joint": "left_joint_1",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "left_joint_2",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "left_joint_3",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "left_joint_4",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "left_joint_5",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "left_joint_6",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "left_joint_7",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "left_gripper_outer",
+    "reset": "0",
+    "plus": "0.004",
+    "minus": "-0.004"
+  },
+  {
+    "joint": "left_gripper_inner",
+    "reset": "0",
+    "plus": "0.004",
+    "minus": "-0.004"
+  },
+  {
+    "joint": "right_joint_1",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "right_joint_2",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "right_joint_3",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "right_joint_4",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "right_joint_5",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "right_joint_6",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "right_joint_7",
+    "reset": "5e-16"
+  },
+  {
+    "joint": "right_gripper_outer",
+    "reset": "0",
+    "plus": "0.004",
+    "minus": "-0.004"
+  },
+  {
+    "joint": "right_gripper_inner",
+    "reset": "0",
+    "plus": "0.004",
+    "minus": "-0.004"
+  }
+]

@@ -13,6 +13,7 @@ struct RobotModel {
     std::vector<int> joints, recovery_joint_order;
     std::vector<double> velocity_limits, planning_home;
     int posture_joint = -1; // Optional redundancy preference; -1 disables it.
+    bool demo_start_at_preset = false;
     static RobotModel read(const mjModel* model);
 };
 std::string robot_text(const mjModel* model, const std::string& name, bool required = true);

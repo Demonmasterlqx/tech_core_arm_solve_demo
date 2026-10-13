@@ -12,6 +12,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--binary',type=Path,default=Path('build/arm_demo'))
     parser.add_argument('--robot',default='mec_arm')
+    parser.add_argument('--expect-preset-start',action='store_true',help='Require startup to match the model assembly preset')
     parser.add_argument('--output',type=Path,required=True)
     args = parser.parse_args()
     if not os.environ.get('DISPLAY'):
@@ -27,6 +28,9 @@ def main():
         assert run.initial['robot']==args.robot and n>0
         reset=run.tap('r','reset')
         assert len(reset['q'])==n
+        if args.expect_preset_start:
+            assert run.initial['q']==reset['q'], 'Startup did not load the assembly preset'
+            assert run.initial['core_world']==reset['core_world'], 'Startup core pose differs from preset'
         report['preset']=run.capture('preset.png')
         offset=len(run.records())
         run.tap('Return','enter','PLANNING')

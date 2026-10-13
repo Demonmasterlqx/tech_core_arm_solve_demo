@@ -24,7 +24,7 @@ def rotation(axis, angle):
 
 def verify(config, probe):
     profile = json.loads(config.read_text())
-    urdf = config.parent/profile['urdf']
+    urdf = config.parent/profile.get('source_urdf', profile['urdf'])
     robot = ET.parse(urdf).getroot()
     names = profile['joint_names']
     joints = {j.get('name'): j for j in robot.findall('joint')}
@@ -37,6 +37,9 @@ def verify(config, probe):
         frames = {profile['root_body']: np.eye(4)}
         def descend(parent):
             for joint in children.get(parent, []):
+                child = joint.find('child').get('link')
+                if child in profile.get('excluded_links', []):
+                    continue
                 origin = joint.find('origin')
                 xyz = np.fromstring(origin.get('xyz', '0 0 0'), sep=' ') if origin is not None else np.zeros(3)
                 angles = np.fromstring(origin.get('rpy', '0 0 0'), sep=' ') if origin is not None else np.zeros(3)
@@ -45,15 +48,14 @@ def verify(config, probe):
                 t[:3,3] = xyz
                 name = joint.get('name')
                 if joint.get('type') != 'fixed':
-                    index = names.index(name)
+                    value = q[names.index(name)] if name in names else profile['locked_joints'][name]
                     axis = np.fromstring(joint.find('axis').get('xyz'), sep=' ')
                     local = np.eye(4)
                     if joint.get('type') == 'prismatic':
-                        local[:3,3] = axis/np.linalg.norm(axis)*q[index]
+                        local[:3,3] = axis/np.linalg.norm(axis)*value
                     else:
-                        local[:3,:3] = rotation(axis, q[index])
+                        local[:3,:3] = rotation(axis, value)
                     t = t@local
-                child = joint.find('child').get('link')
                 frames[child] = frames[parent]@t
                 descend(child)
         descend(profile['root_body'])

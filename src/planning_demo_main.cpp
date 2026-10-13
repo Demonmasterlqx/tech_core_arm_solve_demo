@@ -59,7 +59,7 @@ void usage() {
         "  --duration SEC          bounded wall-time run (default until Esc)\n"
         "  --screenshot PATH.png   capture on F12 and at exit\n"
         "  --log PATH              event log, 1 MiB rotation + two backups\n"
-        "Starts at the upstream URDF zero: joint zero is clamped to the selected robot limits.\n"
+        "Starts at the model's declared demo pose (assembly preset or bounded URDF zero).\n"
         "Final Q rotation tries both directions within +/-90 deg; keeps the validated range.\n"
         "Core XYZ/RPY controls have no pose limits. RPY = alpha, phi-90, theta\n"
         "relative to the assembly frame. Execution is the kinematic simulation.\n";
@@ -162,9 +162,9 @@ public:
         mjv_defaultScene(&ghost_scene_);
         mjr_defaultContext(&context_);
         try {
-            // The interactive launch and Backspace share the upstream URDF
-            // zero. Scenario.start remains the assembly preset loaded by R.
-            demo_.home();
+            // CAD carrying packages start at their calibrated assembly pose.
+            // Legacy packages keep zero startup; Backspace always exposes zero.
+            if (!demo_.scene().robot().demo_start_at_preset) demo_.home();
             glfwSetErrorCallback([](int code, const char* text) { std::cerr << "GLFW " << code << ": " << text << '\n'; });
             if (!glfwInit()) throw std::runtime_error("GLFW initialization failed; use a desktop or xvfb-run");
             glfw_ready_ = true;
@@ -327,6 +327,12 @@ private:
         camera_.type = mjCAMERA_FREE;
         frame_model(demo_.scene().model(),demo_.scene().data(),camera_);
         camera_.azimuth = 315; camera_.elevation = -22;
+        const auto camera = tech_core::robot_numbers(demo_.scene().model(), "robot_demo_camera", false);
+        if (!camera.empty()) {
+            if (camera.size()!=2 || camera[1]<=-90 || camera[1]>=90)
+                throw std::invalid_argument("Robot demo camera requires azimuth/elevation degrees");
+            camera_.azimuth=camera[0];camera_.elevation=camera[1];
+        }
     }
     static void key_callback(GLFWwindow* w, int key, int, int action, int) {
         auto& v = get(w);

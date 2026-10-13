@@ -144,6 +144,22 @@ PlanningScene::PlanningScene(std::string path) : model_path_(std::move(path)) {
         if(!arm_body(body)) throw std::invalid_argument("Mount exemption outside robot subtree");
     for(int geom:grasp_geoms)
         if(!declared_arm.count(geom)) throw std::invalid_argument("Grasp geom must be declared collision geometry");
+    // A compound wrist/shoulder can have a small intermediate output link:
+    // bearing housings on its two outer links are mechanical neighbours.
+    // Accept only explicitly declared ancestor/grandchild motion clusters.
+    std::set<std::pair<int,int>> compound;
+    const auto compound_names = robot_words(model(), "robot_compound_joint_bodies", false);
+    if(compound_names.size()%2) throw std::invalid_argument("Compound joint body pairs require two names");
+    auto parent_weld = [&](int body) { return model_->body_weldid[model_->body_parentid[body]]; };
+    for(std::size_t i=0;i<compound_names.size();i+=2) {
+        const int a=named(model(),mjOBJ_BODY,compound_names[i].c_str());
+        const int b=named(model(),mjOBJ_BODY,compound_names[i+1].c_str());
+        const int wa=model_->body_weldid[a],wb=model_->body_weldid[b];
+        if(!arm_body(a) || !arm_body(b) || wa==wb || parent_weld(wa)==wb || parent_weld(wb)==wa ||
+           (parent_weld(parent_weld(wa))!=wb && parent_weld(parent_weld(wb))!=wa))
+            throw std::invalid_argument("Compound joint must span exactly two neighbouring joints");
+        compound.insert(std::minmax(wa,wb));
+    }
     if(!arm_body(model_->site_bodyid[tool_])) throw std::invalid_argument("Planning TCP outside robot subtree");
 
     for (int g = 0; g < model_->ngeom; ++g) {
@@ -169,7 +185,7 @@ PlanningScene::PlanningScene(std::string path) : model_path_(std::move(path)) {
     };
     for (std::size_t i=0;i<arm.size();++i) {
         for(std::size_t j=i+1;j<arm.size();++j)
-            if (group[arm[i]] != group[arm[j]] &&
+            if (group[arm[i]] != group[arm[j]] && !compound.count(std::minmax(group[arm[i]],group[arm[j]])) &&
                 model_->body_weldid[model_->body_parentid[group[arm[i]]]] != group[arm[j]] &&
                 model_->body_weldid[model_->body_parentid[group[arm[j]]]] != group[arm[i]]) add(arm[i],arm[j]);
         for(int g:fixed) {

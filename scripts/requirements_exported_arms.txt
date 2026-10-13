@@ -1,0 +1,6 @@
+# Optional offline CAD mesh regeneration; runtime C++ demos do not need Python.
+numpy==1.26.4
+scipy==1.16.2
+trimesh==4.7.4
+shapely==2.1.1
+fast-simplification==0.2.0

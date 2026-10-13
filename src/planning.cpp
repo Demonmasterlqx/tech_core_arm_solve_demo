@@ -376,11 +376,10 @@ static PlanResult plan_candidate(PlanningScene& scene,const Scenario& scenario,c
     if(entry) result.atlas_source=entry->scenario.id;
     IKOptions ik;
     ik.should_stop=stop;
-    if(options.method==Method::SparseAdaptive) {
-        // Coarse endpoint error must leave room for the stricter 0.1 mm mating
-        // contact envelope, even though global path tracking permits 0.5 mm.
-        ik.position_tolerance=1e-6;ik.axis_tolerance=1e-6;
-    }
+    // Every backend needs headroom inside the 0.1 mm seated-contact envelope.
+    // A 0.1 mm IK stop threshold plus angular/chord error can reject a feasible
+    // insertion (notably the exported six-axis arm) by only a few micrometres.
+    ik.position_tolerance=1e-6;ik.axis_tolerance=1e-6;
     switch(options.method) {
         case Method::Baseline:ik.method=IKMethod::Baseline;break;
         case Method::FullStep:ik.method=IKMethod::FullStep;break;
@@ -392,9 +391,6 @@ static PlanResult plan_candidate(PlanningScene& scene,const Scenario& scenario,c
         (options.method==Method::Baseline || options.method==Method::RigidCache);
     if(recover) {
         ik.alpha=.7;ik.max_joint_step=JointVector::Constant(scene.dof(), .2);ik.max_iterations=160;
-        // The seated-contact envelope is 0.1 mm: an IK endpoint tolerance of
-        // 0.1 mm leaves no room for interpolated tracking or numerical error.
-        ik.position_tolerance=1e-6;ik.axis_tolerance=1e-6;
     }
     const ForwardKinematics fk=[&](const JointVector& q,Eigen::Vector3d& p,Eigen::Matrix3d& r,Jacobian* j){scene.forward(q,p,r,j);};
     JointVector previous=scenario.start;
@@ -506,7 +502,10 @@ static PlanResult plan_candidate(PlanningScene& scene,const Scenario& scenario,c
         }
         Knot k;static_cast<TaskPoint&>(k)=targets[i];k.q=solved.q;result.knots.push_back(k);previous=k.q;
     }
-    if(options.method==Method::SparseAdaptive || recover) {
+    {
+        // Contact-safe interpolation is shared by every IK backend. Even
+        // accurate endpoints one degree apart can produce a joint chord that
+        // crosses the seated-contact envelope on a different robot geometry.
         // Refinement retains existing endpoints, so it cannot repair a
         // collision at an already solved coarse knot. Reject that candidate.
         for(const auto& k:result.knots) {
@@ -533,10 +532,8 @@ static PlanResult plan_candidate(PlanningScene& scene,const Scenario& scenario,c
                     scene.forward((1-t)*a.q+t*b.q,p,r);
                     // Endpoint accuracy alone cannot bound the error of a
                     // joint chord. Leave room inside the 0.1 mm mating envelope.
-                    const double position_bound=recover?std::min(.000025,.5*options.validation_position_tolerance):
-                        .5*options.validation_position_tolerance;
-                    const double axis_bound=recover?std::min(.0001,.5*options.validation_axis_tolerance):
-                        .5*options.validation_axis_tolerance;
+                    const double position_bound=std::min(.000025,.5*options.validation_position_tolerance);
+                    const double axis_bound=std::min(.0001,.5*options.validation_axis_tolerance);
                     if((p-expected.target.position).norm()>position_bound ||
                        angle(r.col(2),expected.target.direction)>axis_bound) split=true;
                     if(!scene.collision((1-t)*a.q+t*b.q,expected.mechanism).valid) split=true;

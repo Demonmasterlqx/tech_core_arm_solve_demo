@@ -1,0 +1,119 @@
+{
+  "robot": "zhuimeng_single",
+  "zero_definition": "Native SW arm saved pose, as confirmed by user",
+  "tree": "PASS",
+  "mesh_paths": "PASS",
+  "axis_normalization": "PASS",
+  "zero_reconstruction": {
+    "base_link": {
+      "triangles": 296604,
+      "max_coordinate_error_m": 7.447435501628519e-09,
+      "status": "PASS"
+    },
+    "yaw_link": {
+      "triangles": 40371,
+      "max_coordinate_error_m": 3.7248757689400946e-09,
+      "status": "PASS"
+    },
+    "upper_arm": {
+      "triangles": 358997,
+      "max_coordinate_error_m": 1.4876271103858585e-08,
+      "status": "PASS"
+    },
+    "forearm": {
+      "triangles": 352478,
+      "max_coordinate_error_m": 7.461713052991925e-09,
+      "status": "PASS"
+    },
+    "forearm_roll": {
+      "triangles": 312721,
+      "max_coordinate_error_m": 7.501918114494188e-09,
+      "status": "PASS"
+    },
+    "wrist_pitch": {
+      "triangles": 542674,
+      "max_coordinate_error_m": 3.75760865478636e-09,
+      "status": "PASS"
+    },
+    "tool_link": {
+      "triangles": 576624,
+      "max_coordinate_error_m": 3.772907167243211e-09,
+      "status": "PASS"
+    },
+    "jaw_left": {
+      "triangles": 18406,
+      "max_coordinate_error_m": 3.722561536800839e-09,
+      "status": "PASS"
+    },
+    "jaw_right": {
+      "triangles": 18230,
+      "max_coordinate_error_m": 3.764028769226435e-09,
+      "status": "PASS"
+    }
+  },
+  "mate_axes": [
+    {
+      "joint": "joint_1_yaw",
+      "cad_mate": "同心574",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 5.064917260848195e-16,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_2_shoulder",
+      "cad_mate": "同心591",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 4.797930171508568e-16,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_3_elbow",
+      "cad_mate": "同心599",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.206350709248168e-15,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_4_roll",
+      "cad_mate": "同心362",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 2.300300290447496e-15,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_5_pitch",
+      "cad_mate": "同心156",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 4.6400593224265015e-17,
+      "status": "PASS"
+    },
+    {
+      "joint": "joint_6_roll",
+      "cad_mate": "同心190",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 2.28839303820826e-16,
+      "status": "PASS"
+    }
+  ],
+  "missing_source_geometry": [],
+  "sha256": {
+    "meshes\\base_link.stl": "d7d1d14d3b15dba54045d44465ef0d2d3b30faddd6d2c667053a00d0ab896a98",
+    "meshes\\yaw_link.stl": "03d5e672f1350f23cc0f8b0552fc6002111539f13c9f88c23ab23eb132c056a0",
+    "meshes\\upper_arm.stl": "9f6124573fab1b844096f5ac7411575081b95c54a9b60fded4789f640012a5b3",
+    "meshes\\forearm.stl": "c1d970b8ee16fb0c74d7be22305be81e24f6c11cd530a1d592fcbf2c19ba9289",
+    "meshes\\forearm_roll.stl": "c8da198f0d2aeff87ae25c6fd28f79bbc62248877220a99a7e9a6f93ebee04d8",
+    "meshes\\wrist_pitch.stl": "1d93585911316dc94385403005ad2c06bd0a9f97e77cfb3ddec64cae4b03fb54",
+    "meshes\\tool_link.stl": "6892ecd93fc56952e73bd505c6eed756216cb59742f7d66ce127a2d15631c501",
+    "meshes\\jaw_left.stl": "0332f4b910062b8a3059675bf0c0d6d0f4f04df6bdf563a7abfdc7cbcb8eea88",
+    "meshes\\jaw_right.stl": "ed1c7738d32cb8aac15e2c0b709a0005f5409a4c395b4287256665369f25d10d",
+    "zhuimeng_single.urdf": "b30c141de3d4eee0d72b49aa0f0b795575f539b753af26cf5a9f71a52314891a"
+  },
+  "dynamic_parameters": "Outside final user-requested scope; not exported or verified",
+  "viewer_ui": {
+    "url": "https://viewer.robotsfan.com/",
+    "joint_count": 8,
+    "reset": "PASS",
+    "evidence": "verification/ui_joint_checks.json",
+    "visual_review": "See verification/README.md"
+  }
+}

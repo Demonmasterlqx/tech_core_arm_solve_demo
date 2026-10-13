@@ -18,6 +18,7 @@ import time
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--binary', type=Path, default=Path('build/rm26_arm'))
+    parser.add_argument('--robot', default='rm26')
     parser.add_argument('--output', type=Path, default=Path('artifacts/rm26_arm/keyboard'))
     args = parser.parse_args()
     if not os.environ.get('DISPLAY'):
@@ -101,11 +102,14 @@ def main():
                     return found
         return None
 
-    report = {'renderer': None, 'directions': [], 'joint_modes': [], 'checks': []}
+    report = {'robot': args.robot, 'renderer': None, 'directions': [], 'joint_modes': [], 'checks': []}
     try:
         with log_path.open('w') as log:
-            process = subprocess.Popen([str(args.binary.resolve()), '--screenshot', str((args.output/'keyboard.png').resolve())], stdout=log, stderr=subprocess.STDOUT)
+            process = subprocess.Popen([str(args.binary.resolve()), '--robot', args.robot, '--screenshot', str((args.output/'keyboard.png').resolve())], stdout=log, stderr=subprocess.STDOUT)
             initial = wait_event('ready')
+            n = len(initial['joints'])
+            assert n > 0
+            report['dof'] = n
             window = locate(x11.XDefaultRootWindow(display))
             if not window:
                 raise RuntimeError('GLFW window not found')
@@ -146,17 +150,19 @@ def main():
                 changed = tap('m', 'mode')
                 assert changed['mode'] == expected
                 tap('r', 'reset')
-                before = tap('7', 'select')
+                before = tap('1', 'select')
+                for _ in range(n-1):
+                    before = tap('bracketright', 'select')
                 offset = len(records())
                 key('equal', True)
                 wait_event('motion_start', offset)
                 time.sleep(.65)
                 key('equal', False)
                 after = wait_event('motion_stop', offset)
-                delta = after['joints'][6] - before['joints'][6]
+                delta = after['joints'][n-1] - before['joints'][n-1]
                 assert delta > .02, (expected, delta)
-                assert max(abs(a-b) for a,b in zip(before['joints'][:6],after['joints'][:6])) < 2e-6
-                report['joint_modes'].append({'mode':expected, 'joint_index':7, 'delta_rad':delta})
+                assert max((abs(a-b) for a,b in zip(before['joints'][:n-1],after['joints'][:n-1])),default=0) < 2e-6
+                report['joint_modes'].append({'mode':expected, 'joint_index':n, 'delta_rad':delta})
             reset = tap('r', 'reset')
             assert reset['joints'] == initial['joints']
             report['checks'].append('reset restores home')

@@ -1,0 +1,2073 @@
+{
+  "robot": "zhuimeng_single",
+  "title": "追梦 RM2026 国赛单臂工程",
+  "source_url": "https://bbs.robomaster.com/article/1942225?source=4",
+  "unit": "m",
+  "zero_pose": "Native arm assembly saved pose",
+  "root_origin_in_canonical_cad": [
+    0.0606828,
+    -0.0856555,
+    0.015
+  ],
+  "cad_to_urdf_rotation": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "capture_to_canonical_cad": {
+    "arm": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "notes": [
+    "National competition single-arm CAD; big chassis yaw platform is outside the arm boundary.",
+    "Arm output axes are modeled directly; gear reduction and motor rotor internals are not separate joints.",
+    "Prismatic gripper zero is the saved CAD opening. Limits are display ranges pending hardware calibration."
+  ],
+  "joints": [
+    {
+      "name": "joint_1_yaw",
+      "parent": "base_link",
+      "child": "yaw_link",
+      "point": [
+        0.06068278864082358,
+        -0.08565548993353878,
+        0.021353222615426555
+      ],
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心574",
+        "source": "臂-丐版纯享版2",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "yaw外轴承盖2-1",
+            "point": [
+              0.06068278864082358,
+              -0.08565548993353878,
+              0.021353222615426555
+            ],
+            "axis": [
+              9.457547085121248e-33,
+              -5.333987565097488e-31,
+              -1.0
+            ],
+            "radius": 0.05,
+            "ref_type": 4
+          },
+          {
+            "component": "5m50齿带轮-3",
+            "point": [
+              0.060682788640823083,
+              -0.08565548993353869,
+              0.02135322261542657
+            ],
+            "axis": [
+              -1.1137391205841283e-17,
+              2.2096719713034327e-17,
+              -1.0
+            ],
+            "radius": 0.04,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_2_shoulder",
+      "parent": "yaw_link",
+      "child": "upper_arm",
+      "point": [
+        0.0734712250165786,
+        -0.041989646359146426,
+        0.07835322261542657
+      ],
+      "axis": [
+        -0.2810645357308833,
+        -0.9596888697668549,
+        -3.216202765709744e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心591",
+        "source": "臂-丐版纯享版",
+        "prefix": "臂-丐版纯享版-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "臂-丐版纯享版-1/8009-RAU_5005_外形尺寸-20240809-2",
+            "point": [
+              0.0734712250165786,
+              -0.041989646359146426,
+              0.07835322261542657
+            ],
+            "axis": [
+              -0.2810645357308833,
+              -0.9596888697668549,
+              -3.216202765709744e-16
+            ],
+            "radius": 0.012,
+            "ref_type": 4
+          },
+          {
+            "component": "臂-丐版纯享版-1/新link1-1",
+            "point": [
+              -0.049072912562086284,
+              -0.46041399357749524,
+              0.07835322261542685
+            ],
+            "axis": [
+              0.28106453573088336,
+              0.9596888697668549,
+              3.389153254431083e-16
+            ],
+            "radius": 0.004000000000000002,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_3_elbow",
+      "parent": "upper_arm",
+      "child": "forearm",
+      "point": [
+        0.2970920762086537,
+        -0.10748159140516403,
+        0.26730961982446944
+      ],
+      "axis": [
+        0.2810645357308833,
+        0.9596888697668546,
+        3.389153254431082e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心599",
+        "source": "臂-丐版纯享版",
+        "prefix": "臂-丐版纯享版-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "臂-丐版纯享版-1/新link1-1",
+            "point": [
+              0.2970920762086537,
+              -0.10748159140516403,
+              0.26730961982446944
+            ],
+            "axis": [
+              0.28106453573088336,
+              0.9596888697668549,
+              3.389153254431083e-16
+            ],
+            "radius": 0.024,
+            "ref_type": 4
+          },
+          {
+            "component": "臂-丐版纯享版-1/rau4005-1",
+            "point": [
+              0.29624888260146176,
+              -0.1103606580144648,
+              0.2673096198244685
+            ],
+            "axis": [
+              0.2810645357308833,
+              0.9596888697668549,
+              4.559224570460512e-16
+            ],
+            "radius": 0.019999999999999997,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_4_roll",
+      "parent": "forearm",
+      "child": "forearm_roll",
+      "point": [
+        0.16254590286922602,
+        -0.11548818864522083,
+        0.23468337823349888
+      ],
+      "axis": [
+        -0.9294483737684917,
+        0.27220798728500206,
+        -0.2490552793203842
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心362",
+        "source": "小臂总装(重置)",
+        "prefix": "臂-丐版纯享版-1/小臂总装(重置)-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "臂-丐版纯享版-1/小臂总装(重置)-1/RAU5005-1",
+            "point": [
+              0.15789866100038383,
+              -0.11412714870879345,
+              0.23343810183689662
+            ],
+            "axis": [
+              0.9294483737684889,
+              -0.2722079872850132,
+              0.2490552793203825
+            ],
+            "radius": 0.025,
+            "ref_type": 4
+          },
+          {
+            "component": "臂-丐版纯享版-1/小臂总装(重置)-1/roll轴承内压（xin）-1",
+            "point": [
+              0.16254590286922602,
+              -0.11548818864522083,
+              0.23468337823349888
+            ],
+            "axis": [
+              -0.9294483737684917,
+              0.27220798728500206,
+              -0.2490552793203842
+            ],
+            "radius": 0.025,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_5_pitch",
+      "parent": "forearm_roll",
+      "child": "wrist_pitch",
+      "point": [
+        0.04887507947724351,
+        -0.038433176825839924,
+        0.20106091460511
+      ],
+      "axis": [
+        0.281064535727796,
+        0.9596888697677589,
+        4.367103927778779e-12
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心156",
+        "source": "小臂总装(重置)",
+        "prefix": "臂-丐版纯享版-1/小臂总装(重置)-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "臂-丐版纯享版-1/小臂总装(重置)-1/picth侧板电机侧-1",
+            "point": [
+              0.04775082133433228,
+              -0.042271932304910956,
+              0.2010609146050925
+            ],
+            "axis": [
+              0.281064535727796,
+              0.9596888697677589,
+              4.36710392777878e-12
+            ],
+            "radius": 0.0205,
+            "ref_type": 4
+          },
+          {
+            "component": "臂-丐版纯享版-1/小臂总装(重置)-1/35-44-5轴承-1",
+            "point": [
+              0.04887507947724351,
+              -0.038433176825839924,
+              0.20106091460511
+            ],
+            "axis": [
+              0.281064535727796,
+              0.9596888697677589,
+              4.367103927778779e-12
+            ],
+            "radius": 0.022,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "joint_6_roll",
+      "parent": "wrist_pitch",
+      "child": "tool_link",
+      "point": [
+        0.016179613212816746,
+        -0.07262182377957117,
+        0.18508772719048586
+      ],
+      "axis": [
+        -0.7737317952786908,
+        0.22660319888158123,
+        -0.5915996105741187
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心190",
+        "source": "小臂总装(重置)",
+        "prefix": "臂-丐版纯享版-1/小臂总装(重置)-1",
+        "type": 1,
+        "entities": [
+          {
+            "component": "臂-丐版纯享版-1/小臂总装(重置)-1/末端roll轴承座-1",
+            "point": [
+              0.016179613212816746,
+              -0.07262182377957117,
+              0.18508772719048586
+            ],
+            "axis": [
+              -0.7737317952786908,
+              0.22660319888158123,
+              -0.5915996105741187
+            ],
+            "radius": 0.0305,
+            "ref_type": 4
+          },
+          {
+            "component": "臂-丐版纯享版-1/小臂总装(重置)-1/RAU5005-2",
+            "point": [
+              0.012310954236423588,
+              -0.07148880778516312,
+              0.18212972913761546
+            ],
+            "axis": [
+              0.7737317952786921,
+              -0.22660319888158187,
+              0.5915996105741168
+            ],
+            "radius": 0.0305,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "gripper_open",
+      "parent": "tool_link",
+      "child": "jaw_left",
+      "point": [
+        -0.10073759919763182,
+        -0.09613959177381493,
+        0.10685152149748527
+      ],
+      "axis": [
+        -0.2810600534435742,
+        -0.9596901824851056,
+        0.0
+      ],
+      "type": "prismatic",
+      "limit": [
+        -0.025,
+        0.025
+      ],
+      "mimic": null,
+      "provenance": {
+        "description": "MGN12 carriage rail; CAD bilateral rack drive"
+      }
+    },
+    {
+      "name": "gripper_mirror",
+      "parent": "tool_link",
+      "child": "jaw_right",
+      "point": [
+        -0.0699836706980877,
+        0.010372225758795194,
+        0.10742729310722635
+      ],
+      "axis": [
+        -0.2810600534435742,
+        -0.9596901824851056,
+        0.0
+      ],
+      "type": "prismatic",
+      "limit": [
+        -0.025,
+        0.025
+      ],
+      "mimic": [
+        "gripper_open",
+        -1
+      ],
+      "provenance": {
+        "description": "Opposed rack with equal displacement"
+      }
+    }
+  ],
+  "components": [
+    {
+      "capture": "arm",
+      "component": "臂限位-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\臂限位.SLDPRT",
+      "excluded": "Reference envelope / competition object, not robot geometry"
+    },
+    {
+      "capture": "arm",
+      "component": "5m50齿带轮-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\5m50齿带轮.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 11186
+    },
+    {
+      "capture": "arm",
+      "component": "yaw外轴承盖2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\yaw外轴承盖2.SLDPRT",
+      "link": "base_link",
+      "triangles": 2588
+    },
+    {
+      "capture": "arm",
+      "component": "基准板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\基准板.SLDPRT",
+      "excluded": "Reference envelope / competition object, not robot geometry"
+    },
+    {
+      "capture": "arm",
+      "component": "大yaw同步带410-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\大yaw同步带410.SLDPRT",
+      "link": "base_link",
+      "triangles": 400
+    },
+    {
+      "capture": "arm",
+      "component": "RAU6008UUCC0P5-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\RAU6008UUCC0P5.SLDPRT",
+      "link": "base_link",
+      "triangles": 472
+    },
+    {
+      "capture": "arm",
+      "component": "5m25齿带轮-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\5m25齿带轮.SLDPRT",
+      "link": "base_link",
+      "triangles": 4584
+    },
+    {
+      "capture": "arm",
+      "component": "小yaw电机垫块-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\小yaw电机垫块.SLDPRT",
+      "link": "base_link",
+      "triangles": 1630
+    },
+    {
+      "capture": "arm",
+      "component": "dm_4340__3d20240822_1(2)(1)-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\dm_4340__3d20240822_1(2)(1).SLDASM",
+      "link": "base_link"
+    },
+    {
+      "capture": "arm",
+      "component": "dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\dm_4340__3d20240822_1(2)(1).stp.SLDASM",
+      "link": "base_link",
+      "triangles": 286932
+    },
+    {
+      "capture": "arm",
+      "component": "dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340__3D20240325_1_4.stp.SLDASM",
+      "excluded": "represented by recovered STEP parent dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/4310__VER_B0001_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310__VER_B0001_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/DM_4340_3D_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340_3D_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/G43_V1_1_3-230824_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\G43_V1_1_3-230824_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂范围-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\臂范围.SLDPRT",
+      "excluded": "Reference envelope / competition object, not robot geometry"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\臂-丐版纯享版.SLDASM",
+      "link": "yaw_link"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\小臂总装(重置).SLDASM",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/固定件-27",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\固定件.SLDPRT",
+      "link": "forearm",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/固定件-29",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\固定件.SLDPRT",
+      "link": "forearm",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/roll后上下防护板-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\roll后上下防护板.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 3528
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪2.SLDASM",
+      "link": "tool_link"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪开合电机嵌套机加-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪开合电机嵌套机加.SLDPRT",
+      "link": "tool_link",
+      "triangles": 5108
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪侧转接板-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪侧转接板.SLDPRT",
+      "link": "tool_link",
+      "triangles": 2478
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/六面螺母M3-10×10×10-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\六面螺母M3-10×10×10.SLDPRT",
+      "link": "tool_link",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/斜支撑板-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\斜支撑板.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1512
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/MGN12-65MM-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\MGN12-65MM.SLDPRT",
+      "link": "tool_link",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/滑轨作伴-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\滑轨作伴.SLDPRT",
+      "link": "tool_link",
+      "triangles": 7528
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/斜支撑板-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\斜支撑板.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1512
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/斜支撑板-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\斜支撑板.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1512
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/六面螺母M3-10×10×10-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\六面螺母M3-10×10×10.SLDPRT",
+      "link": "tool_link",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/斜支撑板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\斜支撑板.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1512
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/六面螺母M3-10×10×10-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\六面螺母M3-10×10×10.SLDPRT",
+      "link": "tool_link",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/六面螺母M3-10×10×10-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\六面螺母M3-10×10×10.SLDPRT",
+      "link": "tool_link",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪侧转接板-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪侧转接板.SLDPRT",
+      "link": "tool_link",
+      "triangles": 2478
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/MGN12C滑块-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\MGN12C滑块.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 420
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/MGN12C滑块-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\MGN12C滑块.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 420
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪固定板2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪固定板2.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 2632
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/10-10-34-4孔m4-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\10-10-34-4孔m4.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪固定板2-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪固定板2.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 2632
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/20齿齿条-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\20齿齿条.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 2388
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/圆柱齿轮20×2-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\圆柱齿轮20×2.SLDPRT",
+      "link": "tool_link",
+      "triangles": 4044
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪固定板-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪固定板.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 2384
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪滑块接齿条-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪滑块接齿条.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 2596
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪滑块接齿条-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪滑块接齿条.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 2596
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪固定板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪固定板.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 2384
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/20齿齿条-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\20齿齿条.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 2388
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪电机动子垫块-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪电机动子垫块.SLDPRT",
+      "link": "tool_link",
+      "triangles": 2044
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/10-10-34-4孔m4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\10-10-34-4孔m4.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-11",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/10-10-34-4孔m4-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\10-10-34-4孔m4.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-13",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/齿条夹持板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\齿条夹持板.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1676
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/10-10-34-4孔m4-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\10-10-34-4孔m4.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪打印件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪打印件.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 5834
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/夹爪打印件-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\夹爪打印件.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 5834
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-10",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-19",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-10",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-10",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/齿条夹持板-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\齿条夹持板.SLDPRT",
+      "link": "tool_link",
+      "triangles": 1676
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-10",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-11",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-11",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-12",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-12",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-12",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-13",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-11",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-14",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-14",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/3-6-47垫柱-拉簧挂-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\3-6-47垫柱-拉簧挂.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-22",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/能量单元-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\能量单元.SLDPRT",
+      "excluded": "Reference envelope / competition object, not robot geometry"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/打印夹爪电机座-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\打印夹爪电机座.SLDPRT",
+      "link": "tool_link",
+      "triangles": 2548
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/3-6-47垫柱-拉簧挂-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\3-6-47垫柱-拉簧挂.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-3-1.5垫片-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-3-1.5垫片.SLDPRT",
+      "link": "tool_link",
+      "triangles": 368
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/2-6-3轴承-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\2-6-3轴承.SLDPRT",
+      "link": "tool_link",
+      "triangles": 344
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M2-10螺栓-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M2-10螺栓.SLDPRT",
+      "link": "tool_link",
+      "triangles": 296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-21",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_left",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/M4-15铜柱-23",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\M4-15铜柱.SLDPRT",
+      "link": "jaw_right",
+      "triangles": 176
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/MGN12-65MM-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\MGN12-65MM.SLDPRT",
+      "link": "tool_link",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/六面螺母M3-10×10×10-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\六面螺母M3-10×10×10.SLDPRT",
+      "link": "tool_link",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/DM-J4310-2EC-V1.1_3d_20260228_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\DM-J4310-2EC-V1.1_3d_20260228_1.SLDPRT",
+      "link": "tool_link",
+      "triangles": 505178
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/六面螺母M3-10×10×10-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\六面螺母M3-10×10×10.SLDPRT",
+      "link": "tool_link",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/夹爪2-1/打印夹爪电机座-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\打印夹爪电机座.SLDPRT",
+      "link": "tool_link",
+      "triangles": 2548
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/roll后上下防护板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\roll后上下防护板.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 3528
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/固定件-30",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\固定件.SLDPRT",
+      "link": "forearm",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/末端roll电机座板2-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\末端roll电机座板2.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 2620
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/风味MT1233六线滑环-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\风味MT1233六线滑环.SLDPRT",
+      "link": "tool_link",
+      "triangles": 580
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/小臂外侧板（重置）-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\小臂外侧板（重置）.SLDPRT",
+      "link": "forearm",
+      "triangles": 6626
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\dm_4340__3d20240822_1(2)(1).SLDASM",
+      "link": "forearm"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\dm_4340__3d20240822_1(2)(1).stp.SLDASM",
+      "link": "forearm",
+      "triangles": 286932
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340__3D20240325_1_4.stp.SLDASM",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/4310__VER_B0001_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310__VER_B0001_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/DM_4340_3D_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340_3D_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/G43_V1_1_3-230824_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\G43_V1_1_3-230824_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-1/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/固定件-26",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\固定件.SLDPRT",
+      "link": "forearm",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/固定件-28",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\固定件.SLDPRT",
+      "link": "forearm",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/小臂内侧板（重置）-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\小臂内侧板（重置）.SLDPRT",
+      "link": "forearm",
+      "triangles": 6606
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/新末端转接-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\新末端转接.SLDPRT",
+      "link": "tool_link",
+      "triangles": 2608
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/J2轴重重置-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\J2轴重重置.SLDPRT",
+      "link": "forearm",
+      "triangles": 4520
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\dm_4340__3d20240822_1(2)(1).SLDASM",
+      "link": "forearm_roll"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\dm_4340__3d20240822_1(2)(1).stp.SLDASM",
+      "link": "forearm_roll",
+      "triangles": 286932
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340__3D20240325_1_4.stp.SLDASM",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/4310__VER_B0001_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310__VER_B0001_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/DM_4340_3D_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340_3D_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/G43_V1_1_3-230824_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\G43_V1_1_3-230824_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/小臂总装(重置)-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/DM-J4310-2EC-V1.1_3d_20260228_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\DM-J4310-2EC-V1.1_3d_20260228_1.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 505178
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/RAU5005-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\RAU5005.SLDPRT",
+      "link": "forearm",
+      "triangles": 472
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/35-44-5轴承-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\35-44-5轴承.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 464
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/roll轴承内压（xin）-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\roll轴承内压（xin）.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 4304
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/易拆花瓶板-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\易拆花瓶板.SLDPRT",
+      "link": "forearm",
+      "triangles": 4004
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/摇摆picth从动侧-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\摇摆picth从动侧.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 3950
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/摇摆picth主动侧-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\摇摆picth主动侧.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 4744
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/picth侧板电机侧-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\picth侧板电机侧.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 3576
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/易拆花瓶板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\易拆花瓶板.SLDPRT",
+      "link": "forearm",
+      "triangles": 4004
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/picth从动轴承内压-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\picth从动轴承内压.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 1448
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/RAU5005-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\RAU5005.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 472
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/picth侧板从动侧-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\picth侧板从动侧.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 3940
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/末端roll轴承盖-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\末端roll轴承盖.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 1560
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/picth电机动子垫块-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\picth电机动子垫块.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 2044
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/六面螺母M3-10×10×10-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\六面螺母M3-10×10×10.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/picth从动轴承内压板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\picth从动轴承内压板.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 1240
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/末端roll轴承座-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\末端roll轴承座.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 3274
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/picth上下板-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\picth上下板.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 5168
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/末端roll前板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\末端roll前板.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 3024
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/末端roll传动轴-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\末端roll传动轴.SLDPRT",
+      "link": "tool_link",
+      "triangles": 3034
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/末端roll轴承内压（xin）-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\末端roll轴承内压（xin）.SLDPRT",
+      "link": "tool_link",
+      "triangles": 4760
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/picth轴承盖-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\picth轴承盖.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 1824
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/picth上下板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\picth上下板.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 5168
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/六面螺母M3-10×10×10-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\六面螺母M3-10×10×10.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/固定件-21",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\固定件.SLDPRT",
+      "link": "forearm",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/固定件-25",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\固定件.SLDPRT",
+      "link": "forearm",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/六面螺母M3-10×10×10-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\六面螺母M3-10×10×10.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/六面螺母M3-10×10×10-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\六面螺母M3-10×10×10.SLDPRT",
+      "link": "wrist_pitch",
+      "triangles": 696
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/固定件-24",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\固定件.SLDPRT",
+      "link": "forearm",
+      "triangles": 460
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/roll轴承座重置-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\roll轴承座重置.SLDPRT",
+      "link": "forearm",
+      "triangles": 2016
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/roll轴承外盖重置-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\roll轴承外盖重置.SLDPRT",
+      "link": "forearm",
+      "triangles": 1660
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/MT2042-S12-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\MT2042-S12.SLDPRT",
+      "link": "forearm",
+      "triangles": 5536
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/roll电机后板重置-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\roll电机后板重置.SLDPRT",
+      "link": "forearm",
+      "triangles": 2296
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/roll电机前板重置-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\roll电机前板重置.SLDPRT",
+      "link": "forearm",
+      "triangles": 2330
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/小臂总装(重置)-1/roll传动轴-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\roll传动轴.SLDPRT",
+      "link": "forearm_roll",
+      "triangles": 4650
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/YAW板-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\YAW板.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 3884
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/J1角件2-8009-镜像-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\J1角件2-8009-镜像.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 564
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/J1角件1-8009-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\J1角件1-8009.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 620
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/J1角件2-8009-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\J1角件2-8009.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 566
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/rau4005-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\rau4005.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 464
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/J1机加8009-1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\J1机加8009-1.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 1528
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/J1角件1-8009-镜像-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\J1角件1-8009-镜像.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 620
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/8009-RAU_5005_外形尺寸-20240809-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\8009-RAU_5005_外形尺寸-20240809.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 18967
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/新link1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\新link1.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 60364
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/4-12-4轴承-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\4-12-4轴承.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/J1机加2-8009-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\J1机加2-8009.SLDPRT",
+      "link": "yaw_link",
+      "triangles": 2436
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/4-12-4轴承-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\4-12-4轴承.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/40-50-6轴承-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\40-50-6轴承.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 464
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/dm_4340__3d20240822_1(2)(1)-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\dm_4340__3d20240822_1(2)(1).SLDASM",
+      "link": "upper_arm"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\dm_4340__3d20240822_1(2)(1).stp.SLDASM",
+      "link": "upper_arm",
+      "triangles": 286932
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340__3D20240325_1_4.stp.SLDASM",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/4310__VER_B0001_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\4310__VER_B0001_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/DM_4340_3D_1_1_1_1_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\DM_4340_3D_1_1_1_1_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1/DM_4340__3D20240325_1_4.stp-1/G43_V1_1_3-230824_4.stp-1",
+      "source_file": "C:\\Users\\18384\\AppData\\Local\\Temp\\swx40564\\IC~~\\G43_V1_1_3-230824_4.stp.SLDPRT",
+      "excluded": "represented by recovered STEP parent 臂-丐版纯享版-1/dm_4340__3d20240822_1(2)(1)-2/dm_4340__3d20240822_1(2)(1).stp-1"
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/J2轴承盖-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\J2轴承盖.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 1808
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/J2交滚内压盖-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\J2交滚内压盖.SLDPRT",
+      "link": "forearm",
+      "triangles": 10952
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/4-12-4轴承-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\4-12-4轴承.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/4-12-4轴承-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\4-12-4轴承.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/4-12-4轴承-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\4-12-4轴承.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/4-12-4轴承-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\4-12-4轴承.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/8M16齿带轮-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\8M16齿带轮.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 5714
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/4-12-4轴承-10",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\4-12-4轴承.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/4-12-4轴承-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\4-12-4轴承.SLDPRT",
+      "link": "upper_arm",
+      "triangles": 408
+    },
+    {
+      "capture": "arm",
+      "component": "臂-丐版纯享版-1/8M28齿大带轮-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_single\\cad\\8M28齿大带轮.SLDPRT",
+      "link": "forearm",
+      "triangles": 10858
+    }
+  ],
+  "meshes": {
+    "base_link": {
+      "path": "meshes/base_link.stl",
+      "triangles": 296604,
+      "bounds": [
+        [
+          -0.06675617799103069,
+          -0.1316328117170319,
+          -0.019146776937538565
+        ],
+        [
+          0.05823139393954491,
+          0.0556281784941214,
+          0.05265322261542678
+        ]
+      ]
+    },
+    "yaw_link": {
+      "path": "meshes/yaw_link.stl",
+      "triangles": 40371,
+      "bounds": [
+        [
+          -0.05346216010603938,
+          -0.05101619495593582,
+          -0.025500000335276066
+        ],
+        [
+          0.0605734752168765,
+          0.07635637334675933,
+          0.10843060907721525
+        ]
+      ]
+    },
+    "upper_arm": {
+      "path": "meshes/upper_arm.stl",
+      "triangles": 358997,
+      "bounds": [
+        [
+          -0.03134649779885701,
+          -0.07912273295276362,
+          -0.034648573525786375
+        ],
+        [
+          0.27602454874392623,
+          0.056815897054561165,
+          0.22874203346911043
+        ]
+      ]
+    },
+    "forearm": {
+      "path": "meshes/forearm.stl",
+      "triangles": 352478,
+      "bounds": [
+        [
+          -0.15548554850458526,
+          -0.0878509757496739,
+          -0.06893072347486329
+        ],
+        [
+          0.04707581296653904,
+          0.05291796940402725,
+          0.037051647165173396
+        ]
+      ]
+    },
+    "forearm_roll": {
+      "path": "meshes/forearm_roll.stl",
+      "triangles": 312721,
+      "bounds": [
+        [
+          -0.17928881234712615,
+          -0.06168480805269881,
+          -0.06212238253743746
+        ],
+        [
+          0.044560618341603436,
+          0.09104105576195351,
+          0.03481015030745205
+        ]
+      ]
+    },
+    "wrist_pitch": {
+      "path": "meshes/wrist_pitch.stl",
+      "triangles": 542674,
+      "bounds": [
+        [
+          -0.06650222413709281,
+          -0.09639795192966451,
+          -0.04919103139338071
+        ],
+        [
+          0.07342193315247275,
+          0.012057988922494878,
+          0.07285501993707577
+        ]
+      ]
+    },
+    "tool_link": {
+      "path": "meshes/tool_link.stl",
+      "triangles": 576624,
+      "bounds": [
+        [
+          -0.09746869598216676,
+          -0.08699522839673433,
+          -0.07998035881200702
+        ],
+        [
+          0.046245094980576426,
+          0.1186481221584051,
+          0.040971516929959484
+        ]
+      ]
+    },
+    "jaw_left": {
+      "path": "meshes/jaw_left.stl",
+      "triangles": 18406,
+      "bounds": [
+        [
+          -0.05784950871656919,
+          -0.046089708271776,
+          -0.05968398532997932
+        ],
+        [
+          0.062495183938033466,
+          0.08352259133777114,
+          0.06223372256861165
+        ]
+      ]
+    },
+    "jaw_right": {
+      "path": "meshes/jaw_right.stl",
+      "triangles": 18230,
+      "bounds": [
+        [
+          -0.0662928712924567,
+          -0.10977142588623451,
+          -0.06025610124056504
+        ],
+        [
+          0.0736580301086992,
+          0.027882299751008102,
+          0.05327093320042499
+        ]
+      ]
+    }
+  },
+  "missing_geometry": [],
+  "bounds": [
+    [
+      -0.219269907914201,
+      -0.1316328117170319,
+      -0.01914677771984951
+    ],
+    [
+      0.28881297376050485,
+      0.13168179837883393,
+      0.292095256084537
+    ]
+  ]
+}

@@ -1,0 +1,3807 @@
+{
+  "robot": "zhuimeng_dual",
+  "title": "追梦 RM2026 国赛双臂工程",
+  "source_url": "https://bbs.robomaster.com/article/1942225?source=4",
+  "unit": "m",
+  "zero_pose": "Native arm assembly saved pose",
+  "root_origin_in_canonical_cad": [
+    0.45492650505048,
+    0.25373260136965,
+    0.20224209659135
+  ],
+  "cad_to_urdf_rotation": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "capture_to_canonical_cad": {
+    "arms": [
+      [
+        -1.0,
+        1.2816698427288617e-16,
+        -7.026367432316161e-16,
+        0.447926505050062
+      ],
+      [
+        -6.793904916786219e-16,
+        -0.47419892926174,
+        0.8804177278354973,
+        0.4848391760999916
+      ],
+      [
+        -2.2034910622332618e-16,
+        0.8804177278354973,
+        0.47419892926174,
+        0.5556648608303467
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "torso": [
+      [
+        -1.9315798213342103e-16,
+        -2.109716797654467e-16,
+        -1.0,
+        0.5208869720507943
+      ],
+      [
+        -1.0000000000000002,
+        -4.874572967494829e-16,
+        1.9315798213342118e-16,
+        0.46019801203350436
+      ],
+      [
+        -4.874572967494829e-16,
+        1.0000000000000002,
+        -2.1097167976544665e-16,
+        0.5347004426288049
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "notes": [
+    "Both 7-DOF arms are included, mounted to the original linkO torso and torso pitch output.",
+    "Left/right labels follow positive/negative X in the standalone Double_arm CAD frame.",
+    "Wrist J5 uses the driven pulley at the wrist, not the remote motor shaft.",
+    "Grippers expose their parallel carriage opening. Passive two-stage finger linkages and crank/rod transmissions retain the saved CAD shape; closed-chain deformation is not encoded in standard URDF."
+  ],
+  "joints": [
+    {
+      "name": "torso_pitch",
+      "parent": "base_link",
+      "child": "torso_link",
+      "point": [
+        0.45492650505048,
+        0.25373260136965,
+        0.20224209659135
+      ],
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "type": "revolute",
+      "limit": [
+        -0.6,
+        0.6
+      ],
+      "mimic": null,
+      "provenance": {
+        "description": "Full robot concentric mates 同心162 / 同心167; linkO torso pivot"
+      }
+    },
+    {
+      "name": "left_joint_1",
+      "parent": "torso_link",
+      "child": "left_link_1",
+      "point": [
+        0.38842650505048204,
+        0.44623260137271625,
+        0.5672420965896996
+      ],
+      "axis": [
+        -1.0,
+        -4.629642269404241e-16,
+        -3.350228313648749e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心331",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "4340p-7",
+            "point": [
+              0.056499999999580004,
+              0.02849999999999997,
+              -0.028500000000000025
+            ],
+            "axis": [
+              1.0,
+              -6.089407372084572e-30,
+              0.0
+            ],
+            "radius": 0.00475,
+            "ref_type": 4
+          },
+          {
+            "component": "link2_2-3",
+            "point": [
+              0.059499999999579986,
+              0.02850000000000269,
+              -0.02850000000000318
+            ],
+            "axis": [
+              1.0,
+              -2.035898835345258e-16,
+              1.3616736256815032e-16
+            ],
+            "radius": 0.009,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "left_joint_2",
+      "parent": "left_link_1",
+      "child": "left_link_2",
+      "point": [
+        0.34492650505047756,
+        0.47535019655884697,
+        0.5678988123330942
+      ],
+      "axis": [
+        5.36738335068271e-13,
+        0.9997457574690168,
+        0.022548180030806563
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心343",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "link2_1-6",
+            "point": [
+              0.10299999999958441,
+              0.015270651722695998,
+              -0.002552939103849074
+            ],
+            "axis": [
+              -5.374225213013083e-13,
+              -0.45422655029622644,
+              0.8908862110314592
+            ],
+            "radius": 0.016,
+            "ref_type": 4
+          },
+          {
+            "component": "link1_9-2",
+            "point": [
+              0.10299999999957458,
+              0.012545292420984136,
+              0.0027923781623107186
+            ],
+            "axis": [
+              2.1050182852832578e-16,
+              0.4542265502962123,
+              -0.8908862110314665
+            ],
+            "radius": 0.008999999999999996,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "left_joint_3",
+      "parent": "left_link_2",
+      "child": "left_link_3",
+      "point": [
+        0.34492650505100936,
+        0.4451502887312157,
+        0.615229892949145
+      ],
+      "axis": [
+        1.4849560430895452e-11,
+        0.022548180030824105,
+        -0.9997457574690165
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心19",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "4340p-1",
+            "point": [
+              0.10299999999905263,
+              0.07126253813034407,
+              -0.0066971255853612854
+            ],
+            "axis": [
+              -1.4849355456830464e-11,
+              -0.8908862110314671,
+              -0.45422655029621084
+            ],
+            "radius": 0.0285,
+            "ref_type": 4
+          },
+          {
+            "component": "link1_1&link3_1-3",
+            "point": [
+              0.10299999999900807,
+              0.06858987949724969,
+              -0.008059805236249912
+            ],
+            "axis": [
+              1.484813530693406e-11,
+              0.8908862110314665,
+              0.45422655029621223
+            ],
+            "radius": 0.016,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "left_joint_4",
+      "parent": "left_link_3",
+      "child": "left_link_4",
+      "point": [
+        0.34492650505060274,
+        0.4714263990099624,
+        0.7263506230291916
+      ],
+      "axis": [
+        -2.25052937307829e-16,
+        0.9997457574690166,
+        0.0225481800308211
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心39",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "4340p-2",
+            "point": [
+              0.10299999999945919,
+              0.15663509546349516,
+              0.06913015894534874
+            ],
+            "axis": [
+              -4.591332957294165e-16,
+              -0.4542265502962135,
+              0.8908862110314658
+            ],
+            "radius": 0.01875,
+            "ref_type": 2
+          },
+          {
+            "component": "link2_3-3",
+            "point": [
+              0.10299999999946248,
+              0.15590833298302054,
+              0.0705555768829981
+            ],
+            "axis": [
+              4.0362214449836064e-16,
+              0.4542265502962111,
+              -0.890886211031467
+            ],
+            "radius": 0.021499999999999953,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "left_joint_5",
+      "parent": "left_link_4",
+      "child": "left_link_5",
+      "point": [
+        0.2849265050506031,
+        0.44378350239867803,
+        0.6758307412688931
+      ],
+      "axis": [
+        1.037641333460127e-15,
+        0.0225481800308247,
+        -0.9997457574690165
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心371",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "rau3005-2",
+            "point": [
+              0.1629999999994589,
+              0.12526472792833926,
+              0.020836388882886976
+            ],
+            "axis": [
+              -8.326672684688674e-16,
+              -0.8908862110314675,
+              -0.4542265502962103
+            ],
+            "radius": 0.0205,
+            "ref_type": 4
+          },
+          {
+            "component": "link4_6-1",
+            "point": [
+              0.16299999999945886,
+              0.12526472792833931,
+              0.020836388882886994
+            ],
+            "axis": [
+              -8.470585549469969e-16,
+              -0.8908862110314673,
+              -0.4542265502962107
+            ],
+            "radius": 0.0205,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "left_joint_6",
+      "parent": "left_link_5",
+      "child": "left_link_6",
+      "point": [
+        0.28492650505060696,
+        0.4926455823025152,
+        0.4773820381426872
+      ],
+      "axis": [
+        5.089914335587527e-16,
+        -0.9997457574690166,
+        -0.022548180030822526
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心151",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "link5_1-1",
+            "point": [
+              0.16299999999945505,
+              -0.07262337434183719,
+              -0.030248732286687903
+            ],
+            "axis": [
+              1.751947994784931e-16,
+              0.45422655029621223,
+              -0.8908862110314665
+            ],
+            "radius": 0.020999999999999984,
+            "ref_type": 4
+          },
+          {
+            "component": "5m24齿带轮-1",
+            "point": [
+              0.16299999999945008,
+              -0.07966388587143544,
+              -0.016439996015703597
+            ],
+            "axis": [
+              -3.768694387696826e-16,
+              -0.45422655029621145,
+              0.890886211031467
+            ],
+            "radius": 0.018528,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "left_joint_7",
+      "parent": "left_link_6",
+      "child": "left_link_7",
+      "point": [
+        0.2849265050513965,
+        0.44726116964340706,
+        0.5160935443467725
+      ],
+      "axis": [
+        -1.9739721624633337e-11,
+        0.022548180030826405,
+        -0.9997457574690164
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心120",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "4310p-2",
+            "point": [
+              0.16299999999866546,
+              -0.017019838120424634,
+              -0.051849018967082015
+            ],
+            "axis": [
+              1.97403610287682e-11,
+              -0.8908862110314673,
+              -0.4542265502962108
+            ],
+            "radius": 0.0285,
+            "ref_type": 4
+          },
+          {
+            "component": "link6_2-1",
+            "point": [
+              0.1629999999986655,
+              -0.01701983812042463,
+              -0.051849018967082015
+            ],
+            "axis": [
+              1.9739926598698338e-11,
+              -0.8908862110314683,
+              -0.4542265502962088
+            ],
+            "radius": 0.0165,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "left_gripper_outer",
+      "parent": "left_link_7",
+      "child": "left_jaw_outer",
+      "point": [
+        0.25001810105527206,
+        0.449731790923098,
+        0.38797680823005487
+      ],
+      "axis": [
+        -1.0,
+        -6.793904916786219e-16,
+        -2.2034910622332618e-16
+      ],
+      "type": "prismatic",
+      "limit": [
+        -0.02,
+        0.02
+      ],
+      "mimic": null,
+      "provenance": {
+        "description": "Parallel jaw carriage on MGN9 rail; equal opposed jaw opening"
+      }
+    },
+    {
+      "name": "left_gripper_inner",
+      "parent": "left_link_7",
+      "child": "left_jaw_inner",
+      "point": [
+        0.3198370248404174,
+        0.4505714927356669,
+        0.3879957467913131
+      ],
+      "axis": [
+        1.0,
+        6.793904916786219e-16,
+        2.2034910622332618e-16
+      ],
+      "type": "prismatic",
+      "limit": [
+        -0.02,
+        0.02
+      ],
+      "mimic": [
+        "left_gripper_outer",
+        1
+      ],
+      "provenance": {
+        "description": "Parallel jaw carriage on MGN9 rail; equal opposed jaw opening"
+      }
+    },
+    {
+      "name": "right_joint_1",
+      "parent": "torso_link",
+      "child": "right_link_1",
+      "point": [
+        0.5184265050496419,
+        0.4462326013727155,
+        0.5672420965896968
+      ],
+      "axis": [
+        1.0,
+        1.1039157155932076e-16,
+        1.8086553939653608e-16
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心406",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "4340p-9",
+            "point": [
+              -0.07049999999958001,
+              0.028500000000002745,
+              -0.028500000000003217
+            ],
+            "axis": [
+              -1.0,
+              1.0152102497013318e-16,
+              -3.9850935271855545e-17
+            ],
+            "radius": 0.0285,
+            "ref_type": 4
+          },
+          {
+            "component": "link2_1-8",
+            "point": [
+              -0.07049999999957998,
+              0.028500000000000567,
+              -0.028500000000005264
+            ],
+            "axis": [
+              -1.0,
+              2.3505664647917527e-16,
+              -5.196798015049847e-16
+            ],
+            "radius": 0.016,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "right_joint_2",
+      "parent": "right_link_1",
+      "child": "right_link_2",
+      "point": [
+        0.564926505049642,
+        0.4753501965585807,
+        0.5678988123330851
+      ],
+      "axis": [
+        3.0331848353638257e-16,
+        0.9997457574690165,
+        0.02254818003082258
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心423",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "link0_8-2",
+            "point": [
+              -0.11699999999957998,
+              0.040934451814359306,
+              -0.05288801002699174
+            ],
+            "axis": [
+              1.0704219086788743e-15,
+              0.4542265502962122,
+              -0.8908862110314665
+            ],
+            "radius": 0.006000000000000003,
+            "ref_type": 4
+          },
+          {
+            "component": "4340p-10",
+            "point": [
+              -0.11699999999958005,
+              0.015270651722814277,
+              -0.0025529391040879923
+            ],
+            "axis": [
+              -9.875047165736285e-16,
+              -0.4542265502962122,
+              0.8908862110314665
+            ],
+            "radius": 0.0285,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "right_joint_3",
+      "parent": "right_link_2",
+      "child": "right_link_3",
+      "point": [
+        0.5649265050496244,
+        0.44388131528823493,
+        0.6717156409856175
+      ],
+      "axis": [
+        -3.844061129754009e-17,
+        -0.022548180030825253,
+        0.9997457574690165
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心427",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "link1_1&link3_1-7",
+            "point": [
+              -0.11699999999957995,
+              0.06858760836366515,
+              -0.008055350805620727
+            ],
+            "axis": [
+              4.539882863227601e-16,
+              0.8908862110314676,
+              0.45422655029621
+            ],
+            "radius": 0.016,
+            "ref_type": 4
+          },
+          {
+            "component": "4340p-11",
+            "point": [
+              -0.11699999999956234,
+              0.12159533791962673,
+              0.0189711289367296
+            ],
+            "axis": [
+              -1.6653345369371937e-16,
+              0.8908862110314677,
+              0.4542265502962098
+            ],
+            "radius": 0.0285,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "right_joint_4",
+      "parent": "right_link_3",
+      "child": "right_link_4",
+      "point": [
+        0.564926505049642,
+        0.4717813087529094,
+        0.7263586276323434
+      ],
+      "axis": [
+        -1.8052418262152174e-17,
+        0.9997457574690165,
+        0.022548180030824275
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心438",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "link2_3-4",
+            "point": [
+              -0.11699999999958006,
+              0.15590606185005404,
+              0.07056003131285377
+            ],
+            "axis": [
+              4.455397828168916e-16,
+              0.4542265502962106,
+              -0.8908862110314675
+            ],
+            "radius": 0.021499999999999953,
+            "ref_type": 4
+          },
+          {
+            "component": "4340p-12",
+            "point": [
+              -0.1169999999995801,
+              0.1564738450379243,
+              0.06944642354906441
+            ],
+            "axis": [
+              -6.661338147750941e-16,
+              -0.45422655029621073,
+              0.8908862110314674
+            ],
+            "radius": 0.0285,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "right_joint_5",
+      "parent": "right_link_4",
+      "child": "right_link_5",
+      "point": [
+        0.6249265050496421,
+        0.4438962432982324,
+        0.6708320124808003
+      ],
+      "axis": [
+        -1.0376413334601271e-15,
+        -0.022548180030824906,
+        0.9997457574690165
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心531",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "link4_6-2",
+            "point": [
+              -0.1769999999995801,
+              0.12526472792796248,
+              0.020836388882002694
+            ],
+            "axis": [
+              -6.770686640788961e-16,
+              -0.8908862110314677,
+              -0.4542265502962099
+            ],
+            "radius": 0.0205,
+            "ref_type": 4
+          },
+          {
+            "component": "rau3005-3",
+            "point": [
+              -0.1769999999995801,
+              0.120810296872808,
+              0.018565256130523095
+            ],
+            "axis": [
+              8.326672684688676e-16,
+              0.8908862110314676,
+              0.4542265502962101
+            ],
+            "radius": 0.0205,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "right_joint_6",
+      "parent": "right_link_5",
+      "child": "right_link_6",
+      "point": [
+        0.6249265050496259,
+        0.49264558230183075,
+        0.477382038141944
+      ],
+      "axis": [
+        2.423840403188261e-14,
+        -0.9997457574690165,
+        -0.022548180030824875
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心496",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "5m24齿带轮-4",
+            "point": [
+              -0.17699999999955682,
+              -0.07966388587181486,
+              -0.016439996016587695
+            ],
+            "axis": [
+              5.033480089977269e-13,
+              -0.4542265502961975,
+              0.8908862110314739
+            ],
+            "radius": 0.018528,
+            "ref_type": 4
+          },
+          {
+            "component": "link5_1-4",
+            "point": [
+              -0.1769999999995639,
+              -0.07262337434216687,
+              -0.030248732287643174
+            ],
+            "axis": [
+              -2.3554217798845375e-14,
+              0.45422655029621023,
+              -0.8908862110314677
+            ],
+            "radius": 0.020999999999999984,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "right_joint_7",
+      "parent": "right_link_6",
+      "child": "right_link_7",
+      "point": [
+        0.6249265050504348,
+        0.44726116964280727,
+        0.5160935443460243
+      ],
+      "axis": [
+        -1.9738056074947543e-11,
+        0.022548180030838753,
+        -0.9997457574690163
+      ],
+      "type": "revolute",
+      "limit": [
+        -3.14159265,
+        3.14159265
+      ],
+      "mimic": null,
+      "provenance": {
+        "name": "同心473",
+        "source": "Double_arm",
+        "prefix": "",
+        "type": 1,
+        "entities": [
+          {
+            "component": "link6_2-2",
+            "point": [
+              -0.17700000000037275,
+              -0.01701983812079893,
+              -0.05184901896796512
+            ],
+            "axis": [
+              1.9738261049012538e-11,
+              -0.8908862110314739,
+              -0.4542265502961978
+            ],
+            "radius": 0.0165,
+            "ref_type": 4
+          },
+          {
+            "component": "4310p-7",
+            "point": [
+              -0.1770000000003729,
+              -0.017019838120801937,
+              -0.05184901896796591
+            ],
+            "axis": [
+              1.973826104901254e-11,
+              -0.8908862110314739,
+              -0.4542265502961978
+            ],
+            "radius": 0.0285,
+            "ref_type": 4
+          }
+        ]
+      }
+    },
+    {
+      "name": "right_gripper_outer",
+      "parent": "right_link_7",
+      "child": "right_jaw_outer",
+      "point": [
+        0.6598370248294694,
+        0.450571492735068,
+        0.3879957467905548
+      ],
+      "axis": [
+        1.0,
+        6.793904916786219e-16,
+        2.2034910622332618e-16
+      ],
+      "type": "prismatic",
+      "limit": [
+        -0.02,
+        0.02
+      ],
+      "mimic": null,
+      "provenance": {
+        "description": "Parallel jaw carriage on MGN9 rail; equal opposed jaw opening"
+      }
+    },
+    {
+      "name": "right_gripper_inner",
+      "parent": "right_link_7",
+      "child": "right_jaw_inner",
+      "point": [
+        0.5900181010641078,
+        0.4497317909224995,
+        0.38797680822931624
+      ],
+      "axis": [
+        -1.0,
+        -6.793904916786219e-16,
+        -2.2034910622332618e-16
+      ],
+      "type": "prismatic",
+      "limit": [
+        -0.02,
+        0.02
+      ],
+      "mimic": [
+        "right_gripper_outer",
+        1
+      ],
+      "provenance": {
+        "description": "Parallel jaw carriage on MGN9 rail; equal opposed jaw opening"
+      }
+    }
+  ],
+  "components": [
+    {
+      "capture": "arms",
+      "component": "link4_7-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_7.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 1068
+    },
+    {
+      "capture": "arms",
+      "component": "MGN9C滑块-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\MGN9C滑块.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 228
+    },
+    {
+      "capture": "arms",
+      "component": "4310p-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4310p.SLDPRT",
+      "link": "right_link_6",
+      "triangles": 25833
+    },
+    {
+      "capture": "arms",
+      "component": "DM-J4310 V1.1减速电机 STEP3D20230904 - 副本-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\DM-J4310 V1.1减速电机 STEP3D20230904 - 副本.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 28147
+    },
+    {
+      "capture": "arms",
+      "component": "MGN9C滑块-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\MGN9C滑块.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 228
+    },
+    {
+      "capture": "arms",
+      "component": "mgn9滑轨夹爪用-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\mgn9滑轨夹爪用.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 552
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4推力球-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4推力球.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 160
+    },
+    {
+      "capture": "arms",
+      "component": "爪传动-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪传动.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 1716
+    },
+    {
+      "capture": "arms",
+      "component": "link4_8mir-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_8mir.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 2866
+    },
+    {
+      "capture": "arms",
+      "component": "link4_5mir-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_5mir.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 2674
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4推力球-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4推力球.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 160
+    },
+    {
+      "capture": "arms",
+      "component": "link4_7-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_7.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 1068
+    },
+    {
+      "capture": "arms",
+      "component": "link4_6-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_6.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 3318
+    },
+    {
+      "capture": "arms",
+      "component": "link4_2-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_2.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 1704
+    },
+    {
+      "capture": "arms",
+      "component": "能量单元-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\能量单元.SLDPRT",
+      "excluded": "Competition object or reference envelope"
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\二段二指夹爪.SLDASM",
+      "link": "left_jaw_outer"
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-8-3.5推力球-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger2_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger2_1.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 856
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger1_1.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 388
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger3_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger3_1.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 588
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-6-2.5轴承-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/M3D610mm铝柱-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger5.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 1044
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-6-2.5轴承-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger4_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger4_1.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 608
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/M3D610mm铝柱-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-8-3.5推力球-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-6-2.5轴承-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-8-3.5推力球-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-6-2.5轴承-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/M3D610mm铝柱-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-8-3.5推力球-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/M3D610mm铝柱-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger7.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 252
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger6-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger6.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 576
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger1_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger1_1.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 388
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger2_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger2_1.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 856
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-6-2.5轴承-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-6-2.5轴承-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-8-3.5推力球-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-8-3.5推力球-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger3_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger3_1.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 588
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-8-3.5推力球-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-6-2.5轴承-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-6-2.5轴承-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/finger4_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger4_1.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 608
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-1/3-8-3.5推力球-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "finger0_1-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger0_1.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 690
+    },
+    {
+      "capture": "arms",
+      "component": "rau3005-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\rau3005.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 192
+    },
+    {
+      "capture": "arms",
+      "component": "finger0_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger0_1.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 690
+    },
+    {
+      "capture": "arms",
+      "component": "link2_1-13",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_1.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 1836
+    },
+    {
+      "capture": "arms",
+      "component": "J4从动齿-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\J4从动齿.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 2714
+    },
+    {
+      "capture": "arms",
+      "component": "link4_4-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_4.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 2134
+    },
+    {
+      "capture": "arms",
+      "component": "J4轴承盖外-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\J4轴承盖外.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 1446
+    },
+    {
+      "capture": "arms",
+      "component": "link4_3-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_3.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 1188
+    },
+    {
+      "capture": "arms",
+      "component": "J4主动齿-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\J4主动齿.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 4574
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\二段二指夹爪.SLDASM",
+      "link": "left_jaw_inner"
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-8-3.5推力球-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger2_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger2_1.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 856
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger1_1.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 388
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger3_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger3_1.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 588
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-6-2.5轴承-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/M3D610mm铝柱-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger5.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 1044
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-6-2.5轴承-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger4_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger4_1.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 608
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/M3D610mm铝柱-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-8-3.5推力球-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-6-2.5轴承-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-8-3.5推力球-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-6-2.5轴承-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/M3D610mm铝柱-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-8-3.5推力球-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/M3D610mm铝柱-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger7.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 252
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger6-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger6.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 576
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger1_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger1_1.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 388
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger2_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger2_1.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 856
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-6-2.5轴承-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-6-2.5轴承-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-8-3.5推力球-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-8-3.5推力球-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger3_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger3_1.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 588
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-8-3.5推力球-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-6-2.5轴承-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-6-2.5轴承-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/finger4_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger4_1.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 608
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-2/3-8-3.5推力球-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "finger0_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger0_1.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 690
+    },
+    {
+      "capture": "arms",
+      "component": "finger0_1-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger0_1.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 690
+    },
+    {
+      "capture": "arms",
+      "component": "link4_5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_5.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 2774
+    },
+    {
+      "capture": "arms",
+      "component": "新臂伸展-1",
+      "source_file": "C:\\Users\\wbz15\\Desktop\\CopyDesignTemp\\新臂伸展.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\二段二指夹爪.SLDASM",
+      "link": "right_jaw_inner"
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-8-3.5推力球-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger2_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger2_1.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 856
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger1_1.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 388
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger3_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger3_1.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 588
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-6-2.5轴承-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/M3D610mm铝柱-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger5.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 1044
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-6-2.5轴承-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger4_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger4_1.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 608
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/M3D610mm铝柱-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-8-3.5推力球-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-6-2.5轴承-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-8-3.5推力球-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-6-2.5轴承-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/M3D610mm铝柱-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-8-3.5推力球-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/M3D610mm铝柱-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger7.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 252
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger6-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger6.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 576
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger1_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger1_1.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 388
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger2_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger2_1.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 856
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-6-2.5轴承-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-6-2.5轴承-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-8-3.5推力球-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-8-3.5推力球-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger3_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger3_1.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 588
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-8-3.5推力球-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-6-2.5轴承-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-6-2.5轴承-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/finger4_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger4_1.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 608
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-4/3-8-3.5推力球-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_inner",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "能量单元-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\能量单元.SLDPRT",
+      "excluded": "Competition object or reference envelope"
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\二段二指夹爪.SLDASM",
+      "link": "right_jaw_outer"
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-8-3.5推力球-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger2_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger2_1.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 856
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger1_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger1_1.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 388
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger3_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger3_1.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 588
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-6-2.5轴承-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/M3D610mm铝柱-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger5.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 1044
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-6-2.5轴承-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger4_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger4_1.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 608
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/M3D610mm铝柱-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-8-3.5推力球-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-6-2.5轴承-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-8-3.5推力球-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-6-2.5轴承-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/M3D610mm铝柱-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-8-3.5推力球-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/M3D610mm铝柱-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\M3D610mm铝柱.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 144
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger7.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 252
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger6-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger6.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 576
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger1_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger1_1.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 388
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger2_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger2_1.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 856
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-6-2.5轴承-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-6-2.5轴承-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-8-3.5推力球-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-8-3.5推力球-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger3_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger3_1.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 588
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-8-3.5推力球-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-6-2.5轴承-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-6-2.5轴承-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-6-2.5轴承.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 540
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/finger4_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\finger4_1.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 608
+    },
+    {
+      "capture": "arms",
+      "component": "二段二指夹爪-3/3-8-3.5推力球-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\3-8-3.5推力球.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 336
+    },
+    {
+      "capture": "arms",
+      "component": "link4_8-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_8.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 2972
+    },
+    {
+      "capture": "arms",
+      "component": "肘电机线护-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\肘电机线护.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 776
+    },
+    {
+      "capture": "arms",
+      "component": "新臂伸展-2",
+      "source_file": "C:\\Users\\wbz15\\Desktop\\CopyDesignTemp\\新臂伸展.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arms",
+      "component": "link2_4-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_4.SLDPRT",
+      "link": "right_link_3",
+      "triangles": 3642
+    },
+    {
+      "capture": "arms",
+      "component": "6路5A滑环-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\6路5A滑环.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 1082
+    },
+    {
+      "capture": "arms",
+      "component": "4340p-12",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4340p.SLDPRT",
+      "link": "right_link_3",
+      "triangles": 55237
+    },
+    {
+      "capture": "arms",
+      "component": "4310p-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4310p.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 25833
+    },
+    {
+      "capture": "arms",
+      "component": "link5_10-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_10.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 3602
+    },
+    {
+      "capture": "arms",
+      "component": "皮带1-4^Double_arm-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\皮带1-4^Double_arm.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 304
+    },
+    {
+      "capture": "arms",
+      "component": "link2_3-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_3.SLDPRT",
+      "link": "right_link_3",
+      "triangles": 2934
+    },
+    {
+      "capture": "arms",
+      "component": "link2_2-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_2.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 2256
+    },
+    {
+      "capture": "arms",
+      "component": "link2_1-11",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_1.SLDPRT",
+      "link": "right_link_4",
+      "triangles": 1836
+    },
+    {
+      "capture": "arms",
+      "component": "link5_12-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_12.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 576
+    },
+    {
+      "capture": "arms",
+      "component": "F6804ZZ-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\F6804ZZ.SLDPRT",
+      "link": "right_link_3",
+      "triangles": 580
+    },
+    {
+      "capture": "arms",
+      "component": "DM-J4310 V1.1减速电机 STEP3D20230904 - 副本-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\DM-J4310 V1.1减速电机 STEP3D20230904 - 副本.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 28147
+    },
+    {
+      "capture": "arms",
+      "component": "link5_8-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_8.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 1308
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-14",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-15",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "link5_7-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_7.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 1284
+    },
+    {
+      "capture": "arms",
+      "component": "5m24齿带轮-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\5m24齿带轮.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 7040
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-17",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-21",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-24",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-16",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-20",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-19",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-22",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "link5_5-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_5.SLDPRT",
+      "link": "right_link_6",
+      "triangles": 2604
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-23",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-18",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "5m24齿带轮-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\5m24齿带轮.SLDPRT",
+      "link": "right_link_6",
+      "triangles": 7040
+    },
+    {
+      "capture": "arms",
+      "component": "F6804ZZ-10",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\F6804ZZ.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 580
+    },
+    {
+      "capture": "arms",
+      "component": "J5转接-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\J5转接.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 4400
+    },
+    {
+      "capture": "arms",
+      "component": "爪电机线护-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪电机线护.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 1636
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-25",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "link5_1-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_1.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 4640
+    },
+    {
+      "capture": "arms",
+      "component": "link5_2-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_2.SLDPRT",
+      "link": "right_link_6",
+      "triangles": 2506
+    },
+    {
+      "capture": "arms",
+      "component": "link5_1-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_1.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 4640
+    },
+    {
+      "capture": "arms",
+      "component": "link6_2-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link6_2.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 1404
+    },
+    {
+      "capture": "arms",
+      "component": "link5_4-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_4.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 4002
+    },
+    {
+      "capture": "arms",
+      "component": "mf84zz-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\mf84zz.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 556
+    },
+    {
+      "capture": "arms",
+      "component": "5m24齿带轮垫片-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\5m24齿带轮垫片.SLDPRT",
+      "link": "right_link_6",
+      "triangles": 1276
+    },
+    {
+      "capture": "arms",
+      "component": "link6_3-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link6_3.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 2212
+    },
+    {
+      "capture": "arms",
+      "component": "F6804ZZ-11",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\F6804ZZ.SLDPRT",
+      "link": "right_link_5",
+      "triangles": 580
+    },
+    {
+      "capture": "arms",
+      "component": "link5_3-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_3.SLDPRT",
+      "link": "right_link_6",
+      "triangles": 1144
+    },
+    {
+      "capture": "arms",
+      "component": "link5_3-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_3.SLDPRT",
+      "link": "right_link_6",
+      "triangles": 1144
+    },
+    {
+      "capture": "arms",
+      "component": "爪传动杆-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪传动杆.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 708
+    },
+    {
+      "capture": "arms",
+      "component": "mf84zz-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\mf84zz.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 556
+    },
+    {
+      "capture": "arms",
+      "component": "link1_1&link3_1-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_1&link3_1.SLDPRT",
+      "link": "right_link_6",
+      "triangles": 2592
+    },
+    {
+      "capture": "arms",
+      "component": "爪钣金-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪钣金.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 2016
+    },
+    {
+      "capture": "arms",
+      "component": "link1_2&link3_2-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_2&link3_2.SLDPRT",
+      "link": "right_link_6",
+      "triangles": 1990
+    },
+    {
+      "capture": "arms",
+      "component": "F6702ZZ-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\F6702ZZ.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 272
+    },
+    {
+      "capture": "arms",
+      "component": "爪中间固定-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪中间固定.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 1772
+    },
+    {
+      "capture": "arms",
+      "component": "爪传动杆-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪传动杆.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 708
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4推力球-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4推力球.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 160
+    },
+    {
+      "capture": "arms",
+      "component": "mf84zz-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\mf84zz.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 556
+    },
+    {
+      "capture": "arms",
+      "component": "link6_1-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link6_1.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 2366
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4推力球-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4推力球.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 160
+    },
+    {
+      "capture": "arms",
+      "component": "爪传动-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪传动.SLDPRT",
+      "link": "right_jaw_outer",
+      "triangles": 1716
+    },
+    {
+      "capture": "arms",
+      "component": "mf84zz-10",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\mf84zz.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 556
+    },
+    {
+      "capture": "arms",
+      "component": "爪主动杆-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪主动杆.SLDPRT",
+      "link": "right_link_7",
+      "triangles": 3122
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-10",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "link5_8-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_8.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 1308
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-13",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "link5_7-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_7.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 1284
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-11",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "皮带1-4^Double_arm-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\皮带1-4^Double_arm.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 304
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "皮带1-4^Double_arm-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\皮带1-4^Double_arm.SLDPRT",
+      "excluded": "suppressed in source assembly"
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-12",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "link5_10-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_10.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 3602
+    },
+    {
+      "capture": "arms",
+      "component": "link2_2-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_2.SLDPRT",
+      "link": "left_link_1",
+      "triangles": 2256
+    },
+    {
+      "capture": "arms",
+      "component": "4340p-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4340p.SLDPRT",
+      "link": "left_link_1",
+      "triangles": 55237
+    },
+    {
+      "capture": "arms",
+      "component": "F6804ZZ-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\F6804ZZ.SLDPRT",
+      "link": "left_link_1",
+      "triangles": 580
+    },
+    {
+      "capture": "arms",
+      "component": "link1_9-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_9.SLDPRT",
+      "link": "left_link_2",
+      "triangles": 3128
+    },
+    {
+      "capture": "arms",
+      "component": "link2_1-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_1.SLDPRT",
+      "link": "left_link_1",
+      "triangles": 1836
+    },
+    {
+      "capture": "arms",
+      "component": "link0_7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link0_7.SLDPRT",
+      "link": "left_link_1",
+      "triangles": 2210
+    },
+    {
+      "capture": "arms",
+      "component": "4340p-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4340p.SLDPRT",
+      "link": "torso_link",
+      "triangles": 55237
+    },
+    {
+      "capture": "arms",
+      "component": "link0_8-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link0_8.SLDPRT",
+      "link": "left_link_1",
+      "triangles": 3592
+    },
+    {
+      "capture": "arms",
+      "component": "link2_1-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_1.SLDPRT",
+      "link": "left_link_2",
+      "triangles": 1836
+    },
+    {
+      "capture": "arms",
+      "component": "link1_8-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_8.SLDPRT",
+      "link": "left_link_2",
+      "triangles": 3092
+    },
+    {
+      "capture": "arms",
+      "component": "J4主动齿-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\J4主动齿.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 4574
+    },
+    {
+      "capture": "arms",
+      "component": "J4轴承盖外-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\J4轴承盖外.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 1446
+    },
+    {
+      "capture": "arms",
+      "component": "link2_1-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_1.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 1836
+    },
+    {
+      "capture": "arms",
+      "component": "link4_2-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_2.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 1704
+    },
+    {
+      "capture": "arms",
+      "component": "link4_3-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_3.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 1188
+    },
+    {
+      "capture": "arms",
+      "component": "rau3005-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\rau3005.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 192
+    },
+    {
+      "capture": "arms",
+      "component": "link2_2-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_2.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 2256
+    },
+    {
+      "capture": "arms",
+      "component": "6路5A滑环-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\6路5A滑环.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 1082
+    },
+    {
+      "capture": "arms",
+      "component": "link4_6-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_6.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 3318
+    },
+    {
+      "capture": "arms",
+      "component": "J4从动齿-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\J4从动齿.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 2714
+    },
+    {
+      "capture": "arms",
+      "component": "link4_4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_4.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 2134
+    },
+    {
+      "capture": "arms",
+      "component": "DM-J4310 V1.1减速电机 STEP3D20230904 - 副本-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\DM-J4310 V1.1减速电机 STEP3D20230904 - 副本.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 28147
+    },
+    {
+      "capture": "arms",
+      "component": "link4_7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_7.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 1068
+    },
+    {
+      "capture": "arms",
+      "component": "4340p-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4340p.SLDPRT",
+      "link": "torso_link",
+      "triangles": 55237
+    },
+    {
+      "capture": "arms",
+      "component": "link0_8-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link0_8.SLDPRT",
+      "link": "right_link_1",
+      "triangles": 3592
+    },
+    {
+      "capture": "arms",
+      "component": "F6804ZZ-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\F6804ZZ.SLDPRT",
+      "link": "right_link_1",
+      "triangles": 580
+    },
+    {
+      "capture": "arms",
+      "component": "link4_7-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link4_7.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 1068
+    },
+    {
+      "capture": "arms",
+      "component": "link5_12-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_12.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 576
+    },
+    {
+      "capture": "arms",
+      "component": "link2_1-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_1.SLDPRT",
+      "link": "right_link_1",
+      "triangles": 1836
+    },
+    {
+      "capture": "arms",
+      "component": "link2_2-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_2.SLDPRT",
+      "link": "right_link_1",
+      "triangles": 2256
+    },
+    {
+      "capture": "arms",
+      "component": "link0_7-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link0_7.SLDPRT",
+      "link": "right_link_1",
+      "triangles": 2210
+    },
+    {
+      "capture": "arms",
+      "component": "4340p-10",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4340p.SLDPRT",
+      "link": "right_link_1",
+      "triangles": 55237
+    },
+    {
+      "capture": "arms",
+      "component": "link2_1-9",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_1.SLDPRT",
+      "link": "right_link_2",
+      "triangles": 1836
+    },
+    {
+      "capture": "arms",
+      "component": "link1_2&link3_2-8",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_2&link3_2.SLDPRT",
+      "link": "right_link_2",
+      "triangles": 1990
+    },
+    {
+      "capture": "arms",
+      "component": "link2_2-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_2.SLDPRT",
+      "link": "right_link_3",
+      "triangles": 2256
+    },
+    {
+      "capture": "arms",
+      "component": "link1_6-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_6.SLDPRT",
+      "link": "right_link_2",
+      "triangles": 1248
+    },
+    {
+      "capture": "arms",
+      "component": "link1_1&link3_1-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_1&link3_1.SLDPRT",
+      "link": "right_link_2",
+      "triangles": 2592
+    },
+    {
+      "capture": "arms",
+      "component": "link1_9-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_9.SLDPRT",
+      "link": "right_link_2",
+      "triangles": 3128
+    },
+    {
+      "capture": "arms",
+      "component": "link2_1-10",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_1.SLDPRT",
+      "link": "right_link_3",
+      "triangles": 1836
+    },
+    {
+      "capture": "arms",
+      "component": "4340p-11",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4340p.SLDPRT",
+      "link": "right_link_2",
+      "triangles": 55237
+    },
+    {
+      "capture": "arms",
+      "component": "link1_8-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_8.SLDPRT",
+      "link": "right_link_2",
+      "triangles": 3092
+    },
+    {
+      "capture": "arms",
+      "component": "link1_5-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_5.SLDPRT",
+      "link": "right_link_2",
+      "triangles": 1146
+    },
+    {
+      "capture": "arms",
+      "component": "link1_6-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_6.SLDPRT",
+      "link": "left_link_2",
+      "triangles": 1248
+    },
+    {
+      "capture": "arms",
+      "component": "4340p-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4340p.SLDPRT",
+      "link": "left_link_2",
+      "triangles": 55237
+    },
+    {
+      "capture": "arms",
+      "component": "link1_2&link3_2-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_2&link3_2.SLDPRT",
+      "link": "left_link_2",
+      "triangles": 1990
+    },
+    {
+      "capture": "arms",
+      "component": "link1_1&link3_1-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_1&link3_1.SLDPRT",
+      "link": "left_link_2",
+      "triangles": 2592
+    },
+    {
+      "capture": "arms",
+      "component": "mgn9滑轨夹爪用-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\mgn9滑轨夹爪用.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 552
+    },
+    {
+      "capture": "arms",
+      "component": "link1_5-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_5.SLDPRT",
+      "link": "left_link_2",
+      "triangles": 1146
+    },
+    {
+      "capture": "arms",
+      "component": "link2_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_1.SLDPRT",
+      "link": "left_link_3",
+      "triangles": 1836
+    },
+    {
+      "capture": "arms",
+      "component": "4340p-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4340p.SLDPRT",
+      "link": "left_link_3",
+      "triangles": 55237
+    },
+    {
+      "capture": "arms",
+      "component": "link2_2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_2.SLDPRT",
+      "link": "left_link_3",
+      "triangles": 2256
+    },
+    {
+      "capture": "arms",
+      "component": "link2_3-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_3.SLDPRT",
+      "link": "left_link_3",
+      "triangles": 2934
+    },
+    {
+      "capture": "arms",
+      "component": "link2_4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_4.SLDPRT",
+      "link": "left_link_3",
+      "triangles": 3642
+    },
+    {
+      "capture": "arms",
+      "component": "4310p-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4310p.SLDPRT",
+      "link": "left_link_6",
+      "triangles": 25833
+    },
+    {
+      "capture": "arms",
+      "component": "4310p-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4310p.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 25833
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4推力球-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4推力球.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 160
+    },
+    {
+      "capture": "arms",
+      "component": "爪主动杆-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪主动杆.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 3122
+    },
+    {
+      "capture": "arms",
+      "component": "MGN9C滑块-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\MGN9C滑块.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 228
+    },
+    {
+      "capture": "arms",
+      "component": "mf84zz-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\mf84zz.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 556
+    },
+    {
+      "capture": "arms",
+      "component": "mf84zz-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\mf84zz.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 556
+    },
+    {
+      "capture": "arms",
+      "component": "MGN9C滑块-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\MGN9C滑块.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 228
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4推力球-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4推力球.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 160
+    },
+    {
+      "capture": "arms",
+      "component": "爪传动-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪传动.SLDPRT",
+      "link": "left_jaw_outer",
+      "triangles": 1716
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4推力球-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4推力球.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 160
+    },
+    {
+      "capture": "arms",
+      "component": "爪传动-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪传动.SLDPRT",
+      "link": "left_jaw_inner",
+      "triangles": 1716
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4推力球-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4推力球.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 160
+    },
+    {
+      "capture": "arms",
+      "component": "爪传动杆-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪传动杆.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 708
+    },
+    {
+      "capture": "arms",
+      "component": "爪传动杆-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪传动杆.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 708
+    },
+    {
+      "capture": "arms",
+      "component": "mf84zz-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\mf84zz.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 556
+    },
+    {
+      "capture": "arms",
+      "component": "爪中间固定-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪中间固定.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 1772
+    },
+    {
+      "capture": "arms",
+      "component": "link6_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link6_1.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 2366
+    },
+    {
+      "capture": "arms",
+      "component": "link1_1&link3_1-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_1&link3_1.SLDPRT",
+      "link": "left_link_6",
+      "triangles": 2592
+    },
+    {
+      "capture": "arms",
+      "component": "link6_3-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link6_3.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 2212
+    },
+    {
+      "capture": "arms",
+      "component": "link5_3-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_3.SLDPRT",
+      "link": "left_link_6",
+      "triangles": 1144
+    },
+    {
+      "capture": "arms",
+      "component": "DM-J4310 V1.1减速电机 STEP3D20230904 - 副本-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\DM-J4310 V1.1减速电机 STEP3D20230904 - 副本.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 28147
+    },
+    {
+      "capture": "arms",
+      "component": "link2_1-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link2_1.SLDPRT",
+      "link": "left_link_4",
+      "triangles": 1836
+    },
+    {
+      "capture": "arms",
+      "component": "link5_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_1.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 4640
+    },
+    {
+      "capture": "arms",
+      "component": "爪钣金-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪钣金.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 2016
+    },
+    {
+      "capture": "arms",
+      "component": "mf84zz-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\mf84zz.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 556
+    },
+    {
+      "capture": "arms",
+      "component": "F6702ZZ-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\F6702ZZ.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 272
+    },
+    {
+      "capture": "arms",
+      "component": "F6804ZZ-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\F6804ZZ.SLDPRT",
+      "link": "left_link_3",
+      "triangles": 580
+    },
+    {
+      "capture": "arms",
+      "component": "link1_2&link3_2-7",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link1_2&link3_2.SLDPRT",
+      "link": "left_link_6",
+      "triangles": 1990
+    },
+    {
+      "capture": "arms",
+      "component": "link6_2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link6_2.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 1404
+    },
+    {
+      "capture": "arms",
+      "component": "link5_3-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_3.SLDPRT",
+      "link": "left_link_6",
+      "triangles": 1144
+    },
+    {
+      "capture": "arms",
+      "component": "爪电机线护-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\爪电机线护.SLDPRT",
+      "link": "left_link_7",
+      "triangles": 1636
+    },
+    {
+      "capture": "arms",
+      "component": "link5_2-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_2.SLDPRT",
+      "link": "left_link_6",
+      "triangles": 2506
+    },
+    {
+      "capture": "arms",
+      "component": "F6804ZZ-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\F6804ZZ.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 580
+    },
+    {
+      "capture": "arms",
+      "component": "F6804ZZ-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\F6804ZZ.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 580
+    },
+    {
+      "capture": "arms",
+      "component": "5m24齿带轮-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\5m24齿带轮.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 7040
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "J5转接-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\J5转接.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 4400
+    },
+    {
+      "capture": "arms",
+      "component": "5m24齿带轮-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\5m24齿带轮.SLDPRT",
+      "link": "left_link_6",
+      "triangles": 7040
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "arms",
+      "component": "5m24齿带轮垫片-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\5m24齿带轮垫片.SLDPRT",
+      "link": "left_link_6",
+      "triangles": 1276
+    },
+    {
+      "capture": "arms",
+      "component": "link5_4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_4.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 4002
+    },
+    {
+      "capture": "arms",
+      "component": "link5_5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_5.SLDPRT",
+      "link": "left_link_6",
+      "triangles": 2604
+    },
+    {
+      "capture": "arms",
+      "component": "link5_1-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\link5_1.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 4640
+    },
+    {
+      "capture": "arms",
+      "component": "4-10-4轴承-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\4-10-4轴承.SLDPRT",
+      "link": "left_link_5",
+      "triangles": 352
+    },
+    {
+      "capture": "torso",
+      "component": "linkO_2-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\linkO_2.SLDPRT",
+      "link": "torso_link",
+      "triangles": 16132
+    },
+    {
+      "capture": "torso",
+      "component": "linkO_7-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\linkO_7.SLDPRT",
+      "link": "torso_link",
+      "triangles": 3484
+    },
+    {
+      "capture": "torso",
+      "component": "ROBSTRIDE04-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\ROBSTRIDE04.SLDPRT",
+      "link": "base_link",
+      "triangles": 3090
+    },
+    {
+      "capture": "torso",
+      "component": "linkO_5-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\linkO_5.SLDPRT",
+      "link": "torso_link",
+      "triangles": 2760
+    },
+    {
+      "capture": "torso",
+      "component": "linkO_4-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\linkO_4.SLDPRT",
+      "link": "torso_link",
+      "triangles": 7344
+    },
+    {
+      "capture": "torso",
+      "component": "四面M3铝排连接件-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\四面M3铝排连接件.SLDPRT",
+      "link": "torso_link",
+      "triangles": 412
+    },
+    {
+      "capture": "torso",
+      "component": "四面M3铝排连接件-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\四面M3铝排连接件.SLDPRT",
+      "link": "torso_link",
+      "triangles": 412
+    },
+    {
+      "capture": "torso",
+      "component": "linkO_8-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\linkO_8.SLDPRT",
+      "link": "torso_link",
+      "triangles": 6032
+    },
+    {
+      "capture": "torso",
+      "component": "四面M3铝排连接件-5",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\四面M3铝排连接件.SLDPRT",
+      "link": "torso_link",
+      "triangles": 412
+    },
+    {
+      "capture": "torso",
+      "component": "小电脑-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\小电脑.SLDPRT",
+      "link": "torso_link",
+      "triangles": 6042
+    },
+    {
+      "capture": "torso",
+      "component": "四面M3铝排连接件-6",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\四面M3铝排连接件.SLDPRT",
+      "link": "torso_link",
+      "triangles": 412
+    },
+    {
+      "capture": "torso",
+      "component": "linkO_10-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\linkO_10.SLDPRT",
+      "link": "torso_link",
+      "triangles": 2084
+    },
+    {
+      "capture": "torso",
+      "component": "linkO_4-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\linkO_4.SLDPRT",
+      "link": "torso_link",
+      "triangles": 7344
+    },
+    {
+      "capture": "torso",
+      "component": "linkO_1-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\linkO_1.SLDPRT",
+      "link": "torso_link",
+      "triangles": 29702
+    },
+    {
+      "capture": "torso",
+      "component": "linkO_3-1",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\linkO_3.SLDPRT",
+      "link": "torso_link",
+      "triangles": 11666
+    },
+    {
+      "capture": "torso",
+      "component": "linkO_5-2",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\linkO_5.SLDPRT",
+      "link": "torso_link",
+      "triangles": 2760
+    },
+    {
+      "capture": "torso",
+      "component": "四面M3铝排连接件-4",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\四面M3铝排连接件.SLDPRT",
+      "link": "torso_link",
+      "triangles": 412
+    },
+    {
+      "capture": "torso",
+      "component": "四面M3铝排连接件-3",
+      "source_file": "D:\\sd_project\\过洞步兵\\sources\\robot_arms\\zhuimeng_dual\\cad\\四面M3铝排连接件.SLDPRT",
+      "link": "torso_link",
+      "triangles": 412
+    }
+  ],
+  "meshes": {
+    "base_link": {
+      "path": "meshes/base_link.stl",
+      "triangles": 3090,
+      "bounds": [
+        [
+          -0.024599999999998123,
+          -0.05998248061802236,
+          -0.05998248061802042
+        ],
+        [
+          0.031100000375511194,
+          0.0599824806180283,
+          0.05998248061803019
+        ]
+      ]
+    },
+    "torso_link": {
+      "path": "meshes/torso_link.stl",
+      "triangles": 208296,
+      "bounds": [
+        [
+          -0.06975000065564924,
+          -0.059866013526913564,
+          -0.05996649205684179
+        ],
+        [
+          0.06974999892711825,
+          0.22099957347223315,
+          0.3934961592389526
+        ]
+      ]
+    },
+    "left_link_1": {
+      "path": "meshes/left_link_1.stl",
+      "triangles": 65711,
+      "bounds": [
+        [
+          -0.07199999933915308,
+          -0.03875937297242954,
+          -0.029107729096152446
+        ],
+        [
+          0.0030000000000000027,
+          0.03100903602767624,
+          0.02913932413187037
+        ]
+      ]
+    },
+    "left_link_2": {
+      "path": "meshes/left_link_2.stl",
+      "triangles": 70269,
+      "bounds": [
+        [
+          -0.028500000015067917,
+          -0.06798389745122013,
+          -0.023516519591976315
+        ],
+        [
+          0.02850000800419883,
+          0.006359245468792796,
+          0.10585840302257643
+        ]
+      ]
+    },
+    "left_link_3": {
+      "path": "meshes/left_link_3.stl",
+      "triangles": 66485,
+      "bounds": [
+        [
+          -0.028500008004749333,
+          -0.04125086842659348,
+          0.05612486441471698
+        ],
+        [
+          0.02849997339860144,
+          0.02903693479264008,
+          0.13959698598518183
+        ]
+      ]
+    },
+    "left_link_4": {
+      "path": "meshes/left_link_4.stl",
+      "triangles": 50287,
+      "bounds": [
+        [
+          -0.13650000001490084,
+          -0.06757649860302195,
+          -0.06410276127196662
+        ],
+        [
+          0.02200000226442672,
+          0.007518269503780151,
+          0.018072205502037253
+        ]
+      ]
+    },
+    "left_link_5": {
+      "path": "meshes/left_link_5.stl",
+      "triangles": 75349,
+      "bounds": [
+        [
+          -0.02850000001491043,
+          -0.04368748811409884,
+          -0.2215065221513582
+        ],
+        [
+          0.02850000001489189,
+          0.06761301509552697,
+          0.030332861695836655
+        ]
+      ]
+    },
+    "left_link_6": {
+      "path": "meshes/left_link_6.stl",
+      "triangles": 46129,
+      "bounds": [
+        [
+          -0.02850000001414138,
+          -0.09170221855585359,
+          -0.019885855402104302
+        ],
+        [
+          0.028500000016732363,
+          0.016946726938288692,
+          0.091627652519357
+        ]
+      ]
+    },
+    "left_link_7": {
+      "path": "meshes/left_link_7.stl",
+      "triangles": 45465,
+      "bounds": [
+        [
+          -0.05206902134596203,
+          -0.02824472336923428,
+          -0.09037498292861679
+        ],
+        [
+          0.052069028882572255,
+          0.029875176343879928,
+          0.0003720171877221734
+        ]
+      ]
+    },
+    "left_jaw_outer": {
+      "path": "meshes/left_jaw_outer.stl",
+      "triangles": 16970,
+      "bounds": [
+        [
+          -0.029646475268767625,
+          -0.02551915964406226,
+          -0.05721462203743971
+        ],
+        [
+          0.0271812684552854,
+          0.017717649759953602,
+          0.045613256487187614
+        ]
+      ]
+    },
+    "left_jaw_inner": {
+      "path": "meshes/left_jaw_inner.stl",
+      "triangles": 16970,
+      "bounds": [
+        [
+          -0.027183384975206004,
+          -0.018491040611204657,
+          -0.05723356060111556
+        ],
+        [
+          0.02964435947163191,
+          0.023747281680655596,
+          0.04559431792505253
+        ]
+      ]
+    },
+    "right_link_1": {
+      "path": "meshes/right_link_1.stl",
+      "triangles": 65711,
+      "bounds": [
+        [
+          -2.607702942469814e-11,
+          -0.03875937297242915,
+          -0.029107729096162327
+        ],
+        [
+          0.07499999696539161,
+          0.03100903602767635,
+          0.02913932413187037
+        ]
+      ]
+    },
+    "right_link_2": {
+      "path": "meshes/right_link_2.stl",
+      "triangles": 70269,
+      "bounds": [
+        [
+          -0.028500000014901272,
+          -0.06797889872150076,
+          -0.023516406852036376
+        ],
+        [
+          0.02850000800432506,
+          0.00636924292684371,
+          0.10585862850431549
+        ]
+      ]
+    },
+    "right_link_3": {
+      "path": "meshes/right_link_3.stl",
+      "triangles": 66485,
+      "bounds": [
+        [
+          -0.028499973398990464,
+          -0.0399773942073301,
+          -0.00036077090817221436
+        ],
+        [
+          0.028500008004360478,
+          0.030310906963452566,
+          0.08311135068884518
+        ]
+      ]
+    },
+    "right_link_4": {
+      "path": "meshes/right_link_4.stl",
+      "triangles": 50857,
+      "bounds": [
+        [
+          -0.02200000226494281,
+          -0.06792141094101106,
+          -0.06411035150904071
+        ],
+        [
+          0.13650000001490126,
+          0.009113152194772711,
+          0.01806442637765171
+        ]
+      ]
+    },
+    "right_link_5": {
+      "path": "meshes/right_link_5.stl",
+      "triangles": 75349,
+      "bounds": [
+        [
+          -0.028500000014930804,
+          -0.04380022901433789,
+          -0.21650779336401776
+        ],
+        [
+          0.02850000001487263,
+          0.06750027419528837,
+          0.03533159048320539
+        ]
+      ]
+    },
+    "right_link_6": {
+      "path": "meshes/right_link_6.stl",
+      "triangles": 46129,
+      "bounds": [
+        [
+          -0.02850000001413522,
+          -0.0917022185557676,
+          -0.019885855402114516
+        ],
+        [
+          0.028500000016765004,
+          0.016946726938375067,
+          0.09162765251934935
+        ]
+      ]
+    },
+    "right_link_7": {
+      "path": "meshes/right_link_7.stl",
+      "triangles": 45465,
+      "bounds": [
+        [
+          -0.05206902134596614,
+          -0.02824472336921957,
+          -0.09037498292861607
+        ],
+        [
+          0.052069028882568924,
+          0.02987517634389425,
+          0.00037162143846813933
+        ]
+      ]
+    },
+    "right_jaw_outer": {
+      "path": "meshes/right_jaw_outer.stl",
+      "triangles": 16970,
+      "bounds": [
+        [
+          -0.02718338497513384,
+          -0.01849104061120571,
+          -0.05723356060110951
+        ],
+        [
+          0.02964435947170374,
+          0.023747281680654875,
+          0.045594317925063854
+        ]
+      ]
+    },
+    "right_jaw_inner": {
+      "path": "meshes/right_jaw_inner.stl",
+      "triangles": 16970,
+      "bounds": [
+        [
+          -0.029646475268651384,
+          -0.025519159644064315,
+          -0.057214622037442764
+        ],
+        [
+          0.027181268455401364,
+          0.017717649759951715,
+          0.045613256487189724
+        ]
+      ]
+    }
+  },
+  "missing_geometry": [],
+  "bounds": [
+    [
+      -0.2465000000147781,
+      -0.05998248061802236,
+      -0.05998248061802042
+    ],
+    [
+      0.2465000000140633,
+      0.257663916124555,
+      0.5525848950831127
+    ]
+  ]
+}

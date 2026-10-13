@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="pie_eng">
+  <!--CAD geometry in metres. Zero angles preserve saved assembly pose. Limits are visualization defaults, not hardware safety limits.-->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/base_link.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_0">
+        <color rgba="0.22 0.25 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/base_link.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="yaw_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/yaw_link.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_1">
+        <color rgba="0.66 0.70 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/yaw_link.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="upper_arm">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/upper_arm.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_2">
+        <color rgba="0.20 0.25 0.31 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/upper_arm.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="forearm">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/forearm.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_3">
+        <color rgba="0.55 0.59 0.64 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/forearm.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="forearm_roll">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/forearm_roll.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_4">
+        <color rgba="0.18 0.23 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/forearm_roll.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="wrist_pitch">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/wrist_pitch.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_5">
+        <color rgba="0.70 0.72 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/wrist_pitch.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="tool_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/tool_link.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_6">
+        <color rgba="0.32 0.39 0.48 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/tool_link.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="jaw_left">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/jaw_left.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_7">
+        <color rgba="0.18 0.21 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/jaw_left.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="jaw_right">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/jaw_right.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_8">
+        <color rgba="0.22 0.25 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/jaw_right.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_1_yaw" type="revolute">
+    <parent link="base_link" />
+    <child link="yaw_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="9.81100839e-17 -3.815533846e-16 1" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="joint_2_shoulder" type="revolute">
+    <parent link="yaw_link" />
+    <child link="upper_arm" />
+    <origin xyz="0.003329504852 -0.009 0.07535" rpy="0 0 0" />
+    <axis xyz="-1 -1.665334537e-16 -1.838806885e-16" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="joint_3_elbow" type="revolute">
+    <parent link="upper_arm" />
+    <child link="forearm" />
+    <origin xyz="0.043 0.3771675376 0.04631035049" rpy="0 0 0" />
+    <axis xyz="1 1.305337264e-16 -1.133107693e-16" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="joint_4_roll" type="revolute">
+    <parent link="forearm" />
+    <child link="forearm_roll" />
+    <origin xyz="0.04 -0.2669206104 0.004" rpy="0 0 0" />
+    <axis xyz="2.029209757e-15 -1 -3.82687718e-14" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="joint_5_pitch" type="revolute">
+    <parent link="forearm_roll" />
+    <child link="wrist_pitch" />
+    <origin xyz="0.02 -0.1310793896 -9.501288645e-13" rpy="0 0 0" />
+    <axis xyz="-1 -1.455912914e-16 -2.215835422e-15" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="joint_6_roll" type="revolute">
+    <parent link="wrist_pitch" />
+    <child link="tool_link" />
+    <origin xyz="-0.02 -0.04295750946 -0.001911120459" rpy="0 0 0" />
+    <axis xyz="2.434972679e-16 -0.9990118478 -0.04444466183" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="gripper_open" type="revolute">
+    <parent link="tool_link" />
+    <child link="jaw_left" />
+    <origin xyz="-0.02006663376 -0.04152903657 -0.01151995361" rpy="0 0 0" />
+    <axis xyz="-0.006847205208 0.04444361995 -0.9989884286" />
+    <limit lower="-0.6" upper="0.6" effort="0" velocity="0" />
+  </joint>
+  <joint name="gripper_mirror" type="revolute">
+    <parent link="tool_link" />
+    <child link="jaw_right" />
+    <origin xyz="0.01995160072 -0.04164130583 -0.00899640358" rpy="0 0 0" />
+    <axis xyz="-0.006847205208 0.04444361995 -0.9989884286" />
+    <limit lower="-0.6" upper="0.6" effort="0" velocity="0" />
+    <mimic joint="gripper_open" multiplier="-1" offset="0" />
+  </joint>
+</robot>

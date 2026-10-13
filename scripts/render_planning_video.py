@@ -80,11 +80,22 @@ def main():
     model_path = (ROOT/"models/planning/scene.xml" if robot == "rm26" else ROOT/"models"/robot/"planning.xml")
     if not model_path.exists():
         model_path = Path(scenario["model_path"])
+    robot_csv = source/"robot.csv"
+    if robot_csv.exists():
+        with robot_csv.open() as stream:
+            joints = list(csv.DictReader(stream))
+    else:
+        # Historical RM26 exports predate per-robot rate metadata.
+        joints = [dict(joint="q"+str(i), type="revolute", velocity_limit="1") for i in range(7)]
     metadata = dict(method=args.method, case=args.case, repeat=args.repeat,
                     planning_mode=run.get("planning_mode", "offline_ready_search"),
                     planning_seconds=float(run["planning_seconds"]), execution_seconds=execution_seconds,
-                    motion_speed_scale=motion_scale, mock_velocity_limit_rad_s=motion_scale,
-                    mock_acceleration_limit_rad_s2=2*motion_scale*motion_scale,
+                    motion_speed_scale=motion_scale,
+                    joint_rate_limits=[dict(joint=j["joint"], type=j["type"],
+                                            velocity=float(j["velocity_limit"])*motion_scale,
+                                            acceleration=2*float(j["velocity_limit"])*motion_scale**2)
+                                       for j in joints],
+                    joint_rate_units="rad/s and rad/s^2 for revolute; m/s and m/s^2 for prismatic",
                     playback_speed=args.speed, fps=args.fps, width=args.width, height=args.height,
                     source_trajectory=str(trajectory), source_trajectory_sha256=digest(trajectory),
                     scenario_csv_sha256=digest(source/"scenarios.csv"),

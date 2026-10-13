@@ -1,0 +1,39 @@
+{
+  "status": "finished",
+  "completed_at_utc": "2026-10-13T17:31:26.735961+00:00",
+  "zero_definition": "SolidWorks saved assembly pose",
+  "viewer": "https://viewer.robotsfan.com/",
+  "physics": "excluded per final user instruction",
+  "exporter_commit": "5296cd42557c14176487d39458fa6977bf12c4d9",
+  "robots": [
+    {
+      "robot": "hkust_eng",
+      "urdf": "hkust_eng/hkust_eng.urdf",
+      "stl_count": 9,
+      "verified_joints": 8,
+      "source_empty_geometry_references": 0
+    },
+    {
+      "robot": "pie_eng",
+      "urdf": "pie_eng/pie_eng.urdf",
+      "stl_count": 9,
+      "verified_joints": 8,
+      "source_empty_geometry_references": 7
+    },
+    {
+      "robot": "zhuimeng_single",
+      "urdf": "zhuimeng_single/zhuimeng_single.urdf",
+      "stl_count": 9,
+      "verified_joints": 8,
+      "source_empty_geometry_references": 0
+    },
+    {
+      "robot": "zhuimeng_dual",
+      "urdf": "zhuimeng_dual/zhuimeng_dual.urdf",
+      "stl_count": 20,
+      "verified_joints": 19,
+      "source_empty_geometry_references": 0
+    }
+  ],
+  "source_limitations": "PIE has 7 empty geometry references in upstream CAD; documented in pie_eng/README.md."
+}

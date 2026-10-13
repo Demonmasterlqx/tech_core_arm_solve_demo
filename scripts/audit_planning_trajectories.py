@@ -71,7 +71,7 @@ def xml_transform(element):
 
 
 class UrdfArm:
-    def __init__(self, path, joint_names=None, root_link="base_link", tool_link="ee_link"):
+    def __init__(self, path, joint_names=None, root_link="base_link", tool_link="ee_link", fixed_joints=None):
         self.names = list(JOINTS if joint_names is None else joint_names)
         self.tool_link = tool_link
         tree = ET.parse(path).getroot()
@@ -92,6 +92,17 @@ class UrdfArm:
             angles = numbers(None if origin is None else origin.get('rpy'), '0 0 0')
             fixed = transform(xyz, rpy(angles))
             name, kind = j.get('name'), j.get('type')
+            if name in (fixed_joints or {}):
+                axis = numbers(j.find('axis').get('xyz'), '1 0 0')
+                axis /= np.linalg.norm(axis)
+                value = fixed_joints[name]
+                if kind == 'revolute':
+                    fixed = fixed @ transform(orientation=rotation(axis, value))
+                elif kind == 'prismatic':
+                    fixed = fixed @ transform(position=axis*value)
+                else:
+                    raise ValueError('unsupported fixed source joint: '+name)
+                kind = 'fixed'
             if kind == 'fixed':
                 self.chain.append((fixed, None, None, kind))
                 continue
@@ -400,9 +411,9 @@ def main():
     if args.robot != 'rm26':
         directory = Path(args.robot) if Path(args.robot).is_dir() else ROOT/'models'/args.robot
         profile = json.loads((directory/'robot.json').read_text())
-        args.urdf = args.urdf or directory/profile['urdf']
+        args.urdf = args.urdf or directory/profile.get('source_urdf', profile['urdf'])
         args.scene = args.scene or directory/'planning.xml'
-        arm = UrdfArm(args.urdf, profile['joint_names'], profile['root_body'], profile['tool_link'])
+        arm = UrdfArm(args.urdf, profile['joint_names'], profile['root_body'], profile['tool_link'], profile.get('locked_joints'))
         arm.velocity_limits = profile['velocity_limits']
     else:
         directory = ROOT/'models/rm26_arm'
@@ -553,7 +564,10 @@ def main():
         'sampling': {'factor_of_online_segment_count': 2, 'online_joint_step': args.online_joint_step,
                      'online_min_substeps': args.online_min_substeps},
         'thresholds': {'position_m': args.position_tolerance, 'axis_rad': args.axis_tolerance,
-                       'velocity_rad_s': args.velocity_limit, 'acceleration_rad_s2': args.acceleration_limit},
+                       'velocity_multiplier': args.velocity_limit, 'acceleration_multiplier': args.acceleration_limit,
+                       'joint_velocity_limits': [args.velocity_limit*v for v in getattr(arm, 'velocity_limits', [1.]*len(arm.names))],
+                       'joint_acceleration_limits': [args.acceleration_limit*v for v in getattr(arm, 'velocity_limits', [1.]*len(arm.names))],
+                       'joint_rate_units': 'rad/s and rad/s^2 for revolute; m/s and m/s^2 for prismatic'},
         'inputs_sha256': {'urdf': sha(args.urdf), 'scene': sha(args.scene), 'runs_csv': sha(directory/'runs.csv'),
                           'scenarios_csv': sha(directory/'scenarios.csv')},
         'T_ee_tcp': tcp.tolist(), 'T_ee_opening': opening.tolist(), 'groups': groups,

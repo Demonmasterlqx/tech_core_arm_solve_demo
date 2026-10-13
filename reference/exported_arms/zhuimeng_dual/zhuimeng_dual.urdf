@@ -1,0 +1,479 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="zhuimeng_dual">
+  <!--CAD geometry in metres. Zero angles preserve saved assembly pose. Limits are visualization defaults, not hardware safety limits.-->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/base_link.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_0">
+        <color rgba="0.22 0.25 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/base_link.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="torso_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/torso_link.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_1">
+        <color rgba="0.66 0.70 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/torso_link.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_link_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_1.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_2">
+        <color rgba="0.20 0.25 0.31 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_1.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_link_2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_2.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_3">
+        <color rgba="0.55 0.59 0.64 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_2.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_link_3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_3.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_4">
+        <color rgba="0.18 0.23 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_3.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_link_4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_4.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_5">
+        <color rgba="0.70 0.72 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_4.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_link_5">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_5.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_6">
+        <color rgba="0.32 0.39 0.48 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_5.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_link_6">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_6.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_7">
+        <color rgba="0.18 0.21 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_6.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_link_7">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_7.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_8">
+        <color rgba="0.22 0.25 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_link_7.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_jaw_outer">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_jaw_outer.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_9">
+        <color rgba="0.66 0.70 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_jaw_outer.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_jaw_inner">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_jaw_inner.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_10">
+        <color rgba="0.20 0.25 0.31 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_jaw_inner.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_link_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_1.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_11">
+        <color rgba="0.55 0.59 0.64 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_1.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_link_2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_2.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_12">
+        <color rgba="0.18 0.23 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_2.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_link_3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_3.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_13">
+        <color rgba="0.70 0.72 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_3.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_link_4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_4.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_14">
+        <color rgba="0.32 0.39 0.48 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_4.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_link_5">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_5.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_15">
+        <color rgba="0.18 0.21 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_5.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_link_6">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_6.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_16">
+        <color rgba="0.22 0.25 0.29 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_6.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_link_7">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_7.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_17">
+        <color rgba="0.66 0.70 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_link_7.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_jaw_outer">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_jaw_outer.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_18">
+        <color rgba="0.20 0.25 0.31 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_jaw_outer.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_jaw_inner">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_jaw_inner.stl" scale="1 1 1" />
+      </geometry>
+      <material name="cad_visual_19">
+        <color rgba="0.55 0.59 0.64 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_jaw_inner.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="torso_pitch" type="revolute">
+    <parent link="base_link" />
+    <child link="torso_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.6" upper="0.6" effort="0" velocity="0" />
+  </joint>
+  <joint name="left_joint_1" type="revolute">
+    <parent link="torso_link" />
+    <child link="left_link_1" />
+    <origin xyz="-0.0665 0.1925 0.365" rpy="0 0 0" />
+    <axis xyz="-1 -4.629642269e-16 -3.350228314e-16" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="left_joint_2" type="revolute">
+    <parent link="left_link_1" />
+    <child link="left_link_2" />
+    <origin xyz="-0.0435 0.02911759519 0.0006567157434" rpy="0 0 0" />
+    <axis xyz="5.367383351e-13 0.9997457575 0.02254818003" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="left_joint_3" type="revolute">
+    <parent link="left_link_2" />
+    <child link="left_link_3" />
+    <origin xyz="5.317968288e-13 -0.03019990783 0.04733108062" rpy="0 0 0" />
+    <axis xyz="1.484956043e-11 0.02254818003 -0.9997457575" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="left_joint_4" type="revolute">
+    <parent link="left_link_3" />
+    <child link="left_link_4" />
+    <origin xyz="-4.066191828e-13 0.02627611028 0.1111207301" rpy="0 0 0" />
+    <axis xyz="-2.250529373e-16 0.9997457575 0.02254818003" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="left_joint_5" type="revolute">
+    <parent link="left_link_4" />
+    <child link="left_link_5" />
+    <origin xyz="-0.06 -0.02764289661 -0.05051988176" rpy="0 0 0" />
+    <axis xyz="1.037641333e-15 0.02254818003 -0.9997457575" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="left_joint_6" type="revolute">
+    <parent link="left_link_5" />
+    <child link="left_link_6" />
+    <origin xyz="3.885780586e-15 0.0488620799 -0.1984487031" rpy="0 0 0" />
+    <axis xyz="5.089914336e-16 -0.9997457575 -0.02254818003" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="left_joint_7" type="revolute">
+    <parent link="left_link_6" />
+    <child link="left_link_7" />
+    <origin xyz="7.89535104e-13 -0.04538441266 0.0387115062" rpy="0 0 0" />
+    <axis xyz="-1.973972162e-11 0.02254818003 -0.9997457575" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="left_gripper_outer" type="prismatic">
+    <parent link="left_link_7" />
+    <child link="left_jaw_outer" />
+    <origin xyz="-0.034908404 0.00247062128 -0.1281167361" rpy="0 0 0" />
+    <axis xyz="-1 -6.793904917e-16 -2.203491062e-16" />
+    <limit lower="-0.02" upper="0.02" effort="0" velocity="0" />
+  </joint>
+  <joint name="left_gripper_inner" type="prismatic">
+    <parent link="left_link_7" />
+    <child link="left_jaw_inner" />
+    <origin xyz="0.03491051979 0.003310323092 -0.1280977976" rpy="0 0 0" />
+    <axis xyz="1 6.793904917e-16 2.203491062e-16" />
+    <limit lower="-0.02" upper="0.02" effort="0" velocity="0" />
+    <mimic joint="left_gripper_outer" multiplier="1" offset="0" />
+  </joint>
+  <joint name="right_joint_1" type="revolute">
+    <parent link="torso_link" />
+    <child link="right_link_1" />
+    <origin xyz="0.0635 0.1925 0.365" rpy="0 0 0" />
+    <axis xyz="1 1.103915716e-16 1.808655394e-16" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="right_joint_2" type="revolute">
+    <parent link="right_link_1" />
+    <child link="right_link_2" />
+    <origin xyz="0.0465 0.02911759519 0.0006567157434" rpy="0 0 0" />
+    <axis xyz="3.033184835e-16 0.9997457575 0.02254818003" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="right_joint_3" type="revolute">
+    <parent link="right_link_2" />
+    <child link="right_link_3" />
+    <origin xyz="-1.765254609e-14 -0.03146888127 0.1038168287" rpy="0 0 0" />
+    <axis xyz="-3.84406113e-17 -0.02254818003 0.9997457575" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="right_joint_4" type="revolute">
+    <parent link="right_link_3" />
+    <child link="right_link_4" />
+    <origin xyz="1.765254609e-14 0.02789999346 0.05464298665" rpy="0 0 0" />
+    <axis xyz="-1.805241826e-17 0.9997457575 0.02254818003" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="right_joint_5" type="revolute">
+    <parent link="right_link_4" />
+    <child link="right_link_5" />
+    <origin xyz="0.06 -0.02788506545 -0.05552661515" rpy="0 0 0" />
+    <axis xyz="-1.037641333e-15 -0.02254818003 0.9997457575" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="right_joint_6" type="revolute">
+    <parent link="right_link_5" />
+    <child link="right_link_6" />
+    <origin xyz="-1.620925616e-14 0.048749339 -0.1934499743" rpy="0 0 0" />
+    <axis xyz="2.423840403e-14 -0.9997457575 -0.02254818003" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="right_joint_7" type="revolute">
+    <parent link="right_link_6" />
+    <child link="right_link_7" />
+    <origin xyz="8.089084957e-13 -0.04538441266 0.0387115062" rpy="0 0 0" />
+    <axis xyz="-1.973805607e-11 0.02254818003 -0.9997457575" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="0" velocity="0" />
+  </joint>
+  <joint name="right_gripper_outer" type="prismatic">
+    <parent link="right_link_7" />
+    <child link="right_jaw_outer" />
+    <origin xyz="0.03491051978 0.003310323092 -0.1280977976" rpy="0 0 0" />
+    <axis xyz="1 6.793904917e-16 2.203491062e-16" />
+    <limit lower="-0.02" upper="0.02" effort="0" velocity="0" />
+  </joint>
+  <joint name="right_gripper_inner" type="prismatic">
+    <parent link="right_link_7" />
+    <child link="right_jaw_inner" />
+    <origin xyz="-0.03490840399 0.00247062128 -0.1281167361" rpy="0 0 0" />
+    <axis xyz="-1 -6.793904917e-16 -2.203491062e-16" />
+    <limit lower="-0.02" upper="0.02" effort="0" velocity="0" />
+    <mimic joint="right_gripper_outer" multiplier="1" offset="0" />
+  </joint>
+</robot>

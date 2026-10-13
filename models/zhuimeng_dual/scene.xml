@@ -1,0 +1,690 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="zhuimeng_dual_kinematic">
+  <compiler angle="radian" autolimits="true" inertiafromgeom="false" />
+  <option timestep=".002" gravity="0 0 0" />
+  <visual>
+    <global offwidth="1280" offheight="960" />
+    <headlight diffuse=".75 .75 .75" ambient=".3 .3 .3" />
+  </visual>
+  <statistic center="0 0 .4" extent="1.5" />
+  <default>
+    <geom contype="0" conaffinity="0" group="1" />
+  </default>
+  <asset>
+    <mesh name="robot_mesh_0" file="meshes/base_link.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_1" file="collision/base_link_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_2" file="collision/base_link_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_3" file="collision/base_link_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_4" file="collision/base_link_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_5" file="collision/base_link_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_6" file="collision/base_link_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_7" file="collision/base_link_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_8" file="collision/base_link_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_9" file="meshes/torso_link.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_10" file="collision/torso_link_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_11" file="collision/torso_link_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_12" file="collision/torso_link_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_13" file="collision/torso_link_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_14" file="collision/torso_link_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_15" file="collision/torso_link_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_16" file="collision/torso_link_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_17" file="collision/torso_link_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_18" file="meshes/left_link_1.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_19" file="collision/left_link_1_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_20" file="collision/left_link_1_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_21" file="collision/left_link_1_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_22" file="collision/left_link_1_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_23" file="collision/left_link_1_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_24" file="collision/left_link_1_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_25" file="collision/left_link_1_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_26" file="collision/left_link_1_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_27" file="meshes/left_link_2.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_28" file="collision/left_link_2_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_29" file="collision/left_link_2_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_30" file="collision/left_link_2_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_31" file="collision/left_link_2_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_32" file="collision/left_link_2_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_33" file="collision/left_link_2_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_34" file="collision/left_link_2_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_35" file="collision/left_link_2_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_36" file="meshes/left_link_3.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_37" file="collision/left_link_3_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_38" file="collision/left_link_3_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_39" file="collision/left_link_3_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_40" file="collision/left_link_3_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_41" file="collision/left_link_3_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_42" file="collision/left_link_3_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_43" file="collision/left_link_3_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_44" file="collision/left_link_3_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_45" file="meshes/left_link_4.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_46" file="collision/left_link_4_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_47" file="collision/left_link_4_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_48" file="collision/left_link_4_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_49" file="collision/left_link_4_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_50" file="collision/left_link_4_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_51" file="collision/left_link_4_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_52" file="collision/left_link_4_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_53" file="collision/left_link_4_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_54" file="meshes/left_link_5.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_55" file="collision/left_link_5_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_56" file="collision/left_link_5_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_57" file="collision/left_link_5_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_58" file="collision/left_link_5_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_59" file="collision/left_link_5_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_60" file="collision/left_link_5_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_61" file="collision/left_link_5_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_62" file="collision/left_link_5_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_63" file="meshes/left_link_6.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_64" file="collision/left_link_6_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_65" file="collision/left_link_6_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_66" file="collision/left_link_6_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_67" file="collision/left_link_6_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_68" file="collision/left_link_6_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_69" file="collision/left_link_6_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_70" file="collision/left_link_6_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_71" file="collision/left_link_6_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_72" file="meshes/left_link_7.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_73" file="collision/left_link_7_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_74" file="collision/left_link_7_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_75" file="collision/left_link_7_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_76" file="collision/left_link_7_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_77" file="collision/left_link_7_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_78" file="collision/left_link_7_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_79" file="collision/left_link_7_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_80" file="collision/left_link_7_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_81" file="collision/left_link_7_8.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_82" file="collision/left_link_7_9.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_83" file="collision/left_link_7_10.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_84" file="collision/left_link_7_11.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_85" file="collision/left_link_7_12.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_86" file="collision/left_link_7_13.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_87" file="collision/left_link_7_14.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_88" file="collision/left_link_7_15.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_89" file="meshes/left_jaw_outer.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_90" file="collision/left_jaw_outer_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_91" file="collision/left_jaw_outer_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_92" file="collision/left_jaw_outer_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_93" file="collision/left_jaw_outer_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_94" file="collision/left_jaw_outer_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_95" file="collision/left_jaw_outer_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_96" file="collision/left_jaw_outer_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_97" file="collision/left_jaw_outer_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_98" file="collision/left_jaw_outer_8.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_99" file="collision/left_jaw_outer_9.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_100" file="collision/left_jaw_outer_10.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_101" file="collision/left_jaw_outer_11.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_102" file="collision/left_jaw_outer_12.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_103" file="collision/left_jaw_outer_13.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_104" file="collision/left_jaw_outer_14.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_105" file="collision/left_jaw_outer_15.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_106" file="collision/left_jaw_outer_16.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_107" file="collision/left_jaw_outer_17.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_108" file="collision/left_jaw_outer_18.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_109" file="collision/left_jaw_outer_19.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_110" file="collision/left_jaw_outer_20.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_111" file="collision/left_jaw_outer_21.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_112" file="collision/left_jaw_outer_22.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_113" file="collision/left_jaw_outer_23.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_114" file="collision/left_jaw_outer_24.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_115" file="collision/left_jaw_outer_25.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_116" file="collision/left_jaw_outer_26.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_117" file="collision/left_jaw_outer_27.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_118" file="collision/left_jaw_outer_28.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_119" file="collision/left_jaw_outer_29.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_120" file="collision/left_jaw_outer_30.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_121" file="collision/left_jaw_outer_31.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_122" file="collision/left_jaw_outer_32.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_123" file="collision/left_jaw_outer_33.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_124" file="collision/left_jaw_outer_34.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_125" file="collision/left_jaw_outer_35.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_126" file="collision/left_jaw_outer_36.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_127" file="collision/left_jaw_outer_37.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_128" file="collision/left_jaw_outer_38.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_129" file="collision/left_jaw_outer_39.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_130" file="collision/left_jaw_outer_40.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_131" file="collision/left_jaw_outer_41.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_132" file="collision/left_jaw_outer_42.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_133" file="collision/left_jaw_outer_43.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_134" file="collision/left_jaw_outer_44.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_135" file="collision/left_jaw_outer_45.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_136" file="meshes/left_jaw_inner.stl" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_137" file="collision/left_jaw_inner_0.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_138" file="collision/left_jaw_inner_1.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_139" file="collision/left_jaw_inner_2.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_140" file="collision/left_jaw_inner_3.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_141" file="collision/left_jaw_inner_4.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_142" file="collision/left_jaw_inner_5.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_143" file="collision/left_jaw_inner_6.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_144" file="collision/left_jaw_inner_7.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_145" file="collision/left_jaw_inner_8.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_146" file="collision/left_jaw_inner_9.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_147" file="collision/left_jaw_inner_10.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_148" file="collision/left_jaw_inner_11.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_149" file="collision/left_jaw_inner_12.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_150" file="collision/left_jaw_inner_13.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_151" file="collision/left_jaw_inner_14.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_152" file="collision/left_jaw_inner_15.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_153" file="collision/left_jaw_inner_16.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_154" file="collision/left_jaw_inner_17.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_155" file="collision/left_jaw_inner_18.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_156" file="collision/left_jaw_inner_19.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_157" file="collision/left_jaw_inner_20.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_158" file="collision/left_jaw_inner_21.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_159" file="collision/left_jaw_inner_22.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_160" file="collision/left_jaw_inner_23.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_161" file="collision/left_jaw_inner_24.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_162" file="collision/left_jaw_inner_25.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_163" file="collision/left_jaw_inner_26.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_164" file="collision/left_jaw_inner_27.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_165" file="collision/left_jaw_inner_28.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_166" file="collision/left_jaw_inner_29.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_167" file="collision/left_jaw_inner_30.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_168" file="collision/left_jaw_inner_31.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_169" file="collision/left_jaw_inner_32.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_170" file="collision/left_jaw_inner_33.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_171" file="collision/left_jaw_inner_34.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_172" file="collision/left_jaw_inner_35.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_173" file="collision/left_jaw_inner_36.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_174" file="collision/left_jaw_inner_37.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_175" file="collision/left_jaw_inner_38.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_176" file="collision/left_jaw_inner_39.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_177" file="collision/left_jaw_inner_40.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_178" file="collision/left_jaw_inner_41.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_179" file="collision/left_jaw_inner_42.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_180" file="collision/left_jaw_inner_43.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_181" file="collision/left_jaw_inner_44.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_182" file="collision/left_jaw_inner_45.obj" scale="1 1 1" inertia="shell" />
+    <mesh name="robot_mesh_183" file="collision/left_jaw_inner_46.obj" scale="1 1 1" inertia="shell" />
+    <texture name="floor_texture" type="2d" builtin="checker" width="256" height="256" rgb1="0.16 0.18 0.21" rgb2="0.18 0.2 0.23" />
+    <texture name="sky" type="skybox" builtin="gradient" rgb1="0.1 0.12 0.15" rgb2="0.32 0.35 0.4" width="256" height="1536" />
+    <material name="floor" texture="floor_texture" texrepeat="6 6" reflectance="0.08" />
+    <mesh name="hkust_back_light_bar_1" file="../meshes/core/back_light_bar_1.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_10" file="../meshes/core/back_light_bar_10.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_11" file="../meshes/core/back_light_bar_11.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_12" file="../meshes/core/back_light_bar_12.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_13" file="../meshes/core/back_light_bar_13.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_14" file="../meshes/core/back_light_bar_14.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_15" file="../meshes/core/back_light_bar_15.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_16" file="../meshes/core/back_light_bar_16.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_17" file="../meshes/core/back_light_bar_17.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_18" file="../meshes/core/back_light_bar_18.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_19" file="../meshes/core/back_light_bar_19.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_2" file="../meshes/core/back_light_bar_2.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_20" file="../meshes/core/back_light_bar_20.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_21" file="../meshes/core/back_light_bar_21.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_22" file="../meshes/core/back_light_bar_22.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_23" file="../meshes/core/back_light_bar_23.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_24" file="../meshes/core/back_light_bar_24.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_25" file="../meshes/core/back_light_bar_25.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_26" file="../meshes/core/back_light_bar_26.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_27" file="../meshes/core/back_light_bar_27.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_28" file="../meshes/core/back_light_bar_28.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_29" file="../meshes/core/back_light_bar_29.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_3" file="../meshes/core/back_light_bar_3.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_30" file="../meshes/core/back_light_bar_30.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_31" file="../meshes/core/back_light_bar_31.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_32" file="../meshes/core/back_light_bar_32.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_33" file="../meshes/core/back_light_bar_33.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_34" file="../meshes/core/back_light_bar_34.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_35" file="../meshes/core/back_light_bar_35.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_36" file="../meshes/core/back_light_bar_36.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_4" file="../meshes/core/back_light_bar_4.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_5" file="../meshes/core/back_light_bar_5.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_6" file="../meshes/core/back_light_bar_6.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_7" file="../meshes/core/back_light_bar_7.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_8" file="../meshes/core/back_light_bar_8.obj" inertia="shell" />
+    <mesh name="hkust_back_light_bar_9" file="../meshes/core/back_light_bar_9.obj" inertia="shell" />
+    <mesh name="hkust_back_main_light_1" file="../meshes/core/back_main_light_1.obj" inertia="shell" />
+    <mesh name="hkust_back_main_light_2" file="../meshes/core/back_main_light_2.obj" inertia="shell" />
+    <mesh name="hkust_pillar_L_light_1" file="../meshes/core/pillar_L_light_1.obj" inertia="shell" />
+    <mesh name="hkust_pillar_L_light_2" file="../meshes/core/pillar_L_light_2.obj" inertia="shell" />
+    <mesh name="hkust_pillar_L_light_3" file="../meshes/core/pillar_L_light_3.obj" inertia="shell" />
+    <mesh name="hkust_pillar_L_light_4" file="../meshes/core/pillar_L_light_4.obj" inertia="shell" />
+    <mesh name="hkust_pillar_L_light_5" file="../meshes/core/pillar_L_light_5.obj" inertia="shell" />
+    <mesh name="hkust_pillar_L_light_6" file="../meshes/core/pillar_L_light_6.obj" inertia="shell" />
+    <mesh name="hkust_pillar_base_inner" file="../meshes/core/pillar_base_inner.obj" inertia="shell" />
+    <mesh name="hkust_pillar_base_outer" file="../meshes/core/pillar_base_outer.obj" inertia="shell" />
+    <mesh name="hkust_pillar_base_screw_1" file="../meshes/core/pillar_base_screw_1.obj" inertia="shell" />
+    <mesh name="hkust_pillar_base_screw_2" file="../meshes/core/pillar_base_screw_2.obj" inertia="shell" />
+    <mesh name="hkust_pillar_base_screw_3" file="../meshes/core/pillar_base_screw_3.obj" inertia="shell" />
+    <mesh name="hkust_pillar_base_screw_4" file="../meshes/core/pillar_base_screw_4.obj" inertia="shell" />
+    <mesh name="hkust_pillar_inner_ring_1" file="../meshes/core/pillar_inner_ring_1.obj" inertia="shell" />
+    <mesh name="hkust_pillar_inner_ring_2" file="../meshes/core/pillar_inner_ring_2.obj" inertia="shell" />
+    <mesh name="hkust_pillar_side_inner__electromagnet_base" file="../meshes/core/pillar_side_inner__electromagnet_base.obj" inertia="shell" />
+    <mesh name="hkust_pillar_side_inner__electromagnet_ring" file="../meshes/core/pillar_side_inner__electromagnet_ring.obj" inertia="shell" />
+    <mesh name="hkust_pillar_side_light_1" file="../meshes/core/pillar_side_light_1.obj" inertia="shell" />
+    <mesh name="hkust_pillar_side_light_2" file="../meshes/core/pillar_side_light_2.obj" inertia="shell" />
+    <mesh name="hkust_pillar_side_light_3" file="../meshes/core/pillar_side_light_3.obj" inertia="shell" />
+    <mesh name="hkust_pillar_side_outer" file="../meshes/core/pillar_side_outer.obj" inertia="shell" />
+    <mesh name="hkust_pillar_slide" file="../meshes/core/pillar_slide.obj" inertia="shell" />
+    <mesh name="hkust_shell" file="../meshes/core/shell.obj" inertia="shell" />
+    <mesh name="energy_gray_body_rule" file="../meshes/energy_unit_rule/energy_gray_body_rule.obj" inertia="shell" />
+    <material name="energy_gray_body_rule_material" rgba="0.420000006 0.420000006 0.420000006 1" specular="0.4" shininess="0.35" />
+    <mesh name="energy_white_panels" file="../meshes/energy_unit_rule/energy_white_panels.obj" inertia="shell" />
+    <material name="energy_white_panels_material" rgba="1 1 1 1" specular="0.4" shininess="0.35" />
+    <mesh name="energy_bore_internal_repairs" file="../meshes/energy_unit_rule/energy_bore_internal_repairs.obj" inertia="shell" />
+    <material name="energy_bore_internal_repairs_material" rgba="0.420000006 0.420000006 0.420000006 1" specular="0.4" shininess="0.35" />
+    <mesh name="energy_bore_liner" file="../meshes/energy_unit_rule/energy_bore_liner.obj" inertia="shell" />
+    <material name="energy_bore_liner_material" rgba="0.420000006 0.420000006 0.420000006 1" specular="0.4" shininess="0.35" />
+    <mesh name="energy_bore_stop" file="../meshes/energy_unit_rule/energy_bore_stop.obj" inertia="shell" />
+    <material name="energy_bore_stop_material" rgba="0.420000006 0.420000006 0.420000006 1" specular="0.4" shininess="0.35" />
+    <mesh name="collision_unit_flange" vertex="0 0.02 -0.0013108692563 0 0.039999999999956 -0.0026217385126138 0 0.039999999999956 0.0026217385126138 0 0.02 0.0013108692563 0.035 0.02 -0.0013108692563 0.035 0.039999999999956 -0.0026217385126138 0.035 0.039999999999956 0.0026217385126138 0.035 0.02 0.0013108692563" face="0 2 1 0 3 2 4 5 6 4 6 7 0 1 5 0 5 4 1 2 6 1 6 5 2 3 7 2 7 6 3 0 4 3 4 7" />
+    <mesh name="collision_unit_tube" vertex="0 0.02 -0.0013108692563 0 0.032500000000045 -0.0021301625414956 0 0.032500000000045 0.0021301625414956 0 0.02 0.0013108692563 0.065 0.02 -0.0013108692563 0.065 0.032500000000045 -0.0021301625414956 0.065 0.032500000000045 0.0021301625414956 0.065 0.02 0.0013108692563" face="0 2 1 0 3 2 4 5 6 4 6 7 0 1 5 0 5 4 1 2 6 1 6 5 2 3 7 2 7 6 3 0 4 3 4 7" />
+    <material name="core0_back_light_bar_1_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_10_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_11_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_12_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_13_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_14_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_15_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_16_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_17_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_18_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_19_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_2_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_20_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_21_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_22_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_23_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_24_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_25_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_26_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_27_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_28_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_29_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_3_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_30_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_31_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_32_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_33_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_34_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_35_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_36_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_4_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_5_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_6_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_7_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_8_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_light_bar_9_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_main_light_1_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_back_main_light_2_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_pillar_L_light_1_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_pillar_L_light_2_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_pillar_L_light_3_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_pillar_L_light_4_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_pillar_L_light_5_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_pillar_L_light_6_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_pillar_base_inner_mat" rgba="0.0986138174517 0.0986138174517 0.0986138174517 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_base_outer_mat" rgba="0.0986138174517 0.0986138174517 0.0986138174517 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_base_screw_1_mat" rgba="0.554588915575 0.554588915575 0.554588915575 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_base_screw_2_mat" rgba="0.554588915575 0.554588915575 0.554588915575 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_base_screw_3_mat" rgba="0.554588915575 0.554588915575 0.554588915575 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_base_screw_4_mat" rgba="0.554588915575 0.554588915575 0.554588915575 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_inner_ring_1_mat" rgba="0.0986138174517 0.0986138174517 0.0986138174517 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_inner_ring_2_mat" rgba="0.0986138174517 0.0986138174517 0.0986138174517 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_side_inner__electromagnet_base_mat" rgba="0.0785109598464 0.0575937786241 0.0356285324786 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_side_inner__electromagnet_ring_mat" rgba="0.696380728002 0.696380728002 0.696380728002 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_side_light_1_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_pillar_side_light_2_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_pillar_side_light_3_mat" rgba="0.9 0.02 0.035 1" specular="0.25" shininess="0.3" emission="0.6" />
+    <material name="core0_pillar_side_outer_mat" rgba="0.0986138174517 0.0986138174517 0.0986138174517 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_pillar_slide_mat" rgba="0.0986138174517 0.0986138174517 0.0986138174517 1" specular="0.4" shininess="0.3" emission="0" />
+    <material name="core0_shell_mat" rgba="0.0986138174517 0.0986138174517 0.0986138174517 1" specular="0.4" shininess="0.3" emission="0" />
+  </asset>
+  <worldbody>
+    <light pos="0 -1 2" dir="0 .3 -1" />
+    <geom name="ground_visual" type="plane" pos="0 0 -.25" size="2 2 .01" rgba=".16 .19 .24 1" group="0" />
+    <geom name="mount_visual" type="cylinder" pos="0 0 -.04" size=".085 .04" rgba=".26 .31 .37 1" />
+    <body name="base_link">
+      <geom name="base_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.22 0.25 0.29 1" type="mesh" mesh="robot_mesh_0" />
+      <geom name="collision_arm_base_link_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_1" />
+      <geom name="collision_arm_base_link_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_2" />
+      <geom name="collision_arm_base_link_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_3" />
+      <geom name="collision_arm_base_link_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_4" />
+      <geom name="collision_arm_base_link_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_5" />
+      <geom name="collision_arm_base_link_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_6" />
+      <geom name="collision_arm_base_link_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_7" />
+      <geom name="collision_arm_base_link_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_8" />
+      <body name="torso_link" pos="0 0 0" quat="1 0 0 0">
+        <geom name="torso_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.66 0.70 0.75 1" type="mesh" mesh="robot_mesh_9" />
+        <geom name="collision_arm_torso_link_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_10" />
+        <geom name="collision_arm_torso_link_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_11" />
+        <geom name="collision_arm_torso_link_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_12" />
+        <geom name="collision_arm_torso_link_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_13" />
+        <geom name="collision_arm_torso_link_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_14" />
+        <geom name="collision_arm_torso_link_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_15" />
+        <geom name="collision_arm_torso_link_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_16" />
+        <geom name="collision_arm_torso_link_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_17" />
+        <body name="left_link_1" pos="-0.0665 0.1925 0.365" quat="1 0 0 0">
+          <joint name="left_joint_1" type="hinge" axis="-1 -4.629642269e-16 -3.350228314e-16" range="-3.1415926500000002 3.1415926500000002" />
+          <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+          <geom name="left_link_1_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.20 0.25 0.31 1" type="mesh" mesh="robot_mesh_18" />
+          <geom name="collision_arm_left_link_1_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_19" />
+          <geom name="collision_arm_left_link_1_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_20" />
+          <geom name="collision_arm_left_link_1_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_21" />
+          <geom name="collision_arm_left_link_1_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_22" />
+          <geom name="collision_arm_left_link_1_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_23" />
+          <geom name="collision_arm_left_link_1_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_24" />
+          <geom name="collision_arm_left_link_1_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_25" />
+          <geom name="collision_arm_left_link_1_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_26" />
+          <body name="left_link_2" pos="-0.0435 0.02911759519 0.0006567157434" quat="1 0 0 0">
+            <joint name="left_joint_2" type="hinge" axis="5.367383351e-13 0.9997457575 0.02254818003" range="-3.1415926500000002 3.1415926500000002" />
+            <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+            <geom name="left_link_2_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.55 0.59 0.64 1" type="mesh" mesh="robot_mesh_27" />
+            <geom name="collision_arm_left_link_2_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_28" />
+            <geom name="collision_arm_left_link_2_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_29" />
+            <geom name="collision_arm_left_link_2_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_30" />
+            <geom name="collision_arm_left_link_2_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_31" />
+            <geom name="collision_arm_left_link_2_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_32" />
+            <geom name="collision_arm_left_link_2_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_33" />
+            <geom name="collision_arm_left_link_2_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_34" />
+            <geom name="collision_arm_left_link_2_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_35" />
+            <body name="left_link_3" pos="5.317968288e-13 -0.03019990783 0.04733108062" quat="1 0 0 0">
+              <joint name="left_joint_3" type="hinge" axis="1.484956043e-11 0.02254818003 -0.9997457575" range="-3.1415926500000002 3.1415926500000002" />
+              <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+              <geom name="left_link_3_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.18 0.23 0.29 1" type="mesh" mesh="robot_mesh_36" />
+              <geom name="collision_arm_left_link_3_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_37" />
+              <geom name="collision_arm_left_link_3_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_38" />
+              <geom name="collision_arm_left_link_3_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_39" />
+              <geom name="collision_arm_left_link_3_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_40" />
+              <geom name="collision_arm_left_link_3_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_41" />
+              <geom name="collision_arm_left_link_3_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_42" />
+              <geom name="collision_arm_left_link_3_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_43" />
+              <geom name="collision_arm_left_link_3_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_44" />
+              <body name="left_link_4" pos="-4.066191828e-13 0.02627611028 0.1111207301" quat="1 0 0 0">
+                <joint name="left_joint_4" type="hinge" axis="-2.250529373e-16 0.9997457575 0.02254818003" range="-3.1415926500000002 3.1415926500000002" />
+                <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+                <geom name="left_link_4_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.70 0.72 0.75 1" type="mesh" mesh="robot_mesh_45" />
+                <geom name="collision_arm_left_link_4_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_46" />
+                <geom name="collision_arm_left_link_4_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_47" />
+                <geom name="collision_arm_left_link_4_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_48" />
+                <geom name="collision_arm_left_link_4_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_49" />
+                <geom name="collision_arm_left_link_4_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_50" />
+                <geom name="collision_arm_left_link_4_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_51" />
+                <geom name="collision_arm_left_link_4_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_52" />
+                <geom name="collision_arm_left_link_4_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_53" />
+                <body name="left_link_5" pos="-0.06 -0.02764289661 -0.05051988176" quat="1 0 0 0">
+                  <joint name="left_joint_5" type="hinge" axis="1.037641333e-15 0.02254818003 -0.9997457575" range="-3.1415926500000002 3.1415926500000002" />
+                  <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+                  <geom name="left_link_5_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.32 0.39 0.48 1" type="mesh" mesh="robot_mesh_54" />
+                  <geom name="collision_arm_left_link_5_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_55" />
+                  <geom name="collision_arm_left_link_5_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_56" />
+                  <geom name="collision_arm_left_link_5_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_57" />
+                  <geom name="collision_arm_left_link_5_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_58" />
+                  <geom name="collision_arm_left_link_5_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_59" />
+                  <geom name="collision_arm_left_link_5_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_60" />
+                  <geom name="collision_arm_left_link_5_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_61" />
+                  <geom name="collision_arm_left_link_5_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_62" />
+                  <body name="left_link_6" pos="3.885780586e-15 0.0488620799 -0.1984487031" quat="1 0 0 0">
+                    <joint name="left_joint_6" type="hinge" axis="5.089914336e-16 -0.9997457575 -0.02254818003" range="-3.1415926500000002 3.1415926500000002" />
+                    <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+                    <geom name="left_link_6_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.18 0.21 0.25 1" type="mesh" mesh="robot_mesh_63" />
+                    <geom name="collision_arm_left_link_6_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_64" />
+                    <geom name="collision_arm_left_link_6_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_65" />
+                    <geom name="collision_arm_left_link_6_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_66" />
+                    <geom name="collision_arm_left_link_6_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_67" />
+                    <geom name="collision_arm_left_link_6_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_68" />
+                    <geom name="collision_arm_left_link_6_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_69" />
+                    <geom name="collision_arm_left_link_6_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_70" />
+                    <geom name="collision_arm_left_link_6_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_71" />
+                    <body name="left_link_7" pos="7.89535104e-13 -0.04538441266 0.0387115062" quat="1 0 0 0">
+                      <joint name="left_joint_7" type="hinge" axis="-1.973972162e-11 0.02254818003 -0.9997457575" range="-3.1415926500000002 3.1415926500000002" />
+                      <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+                      <geom name="left_link_7_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.22 0.25 0.29 1" type="mesh" mesh="robot_mesh_72" />
+                      <geom name="collision_arm_left_link_7_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_73" />
+                      <geom name="collision_arm_left_link_7_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_74" />
+                      <geom name="collision_arm_left_link_7_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_75" />
+                      <geom name="collision_arm_left_link_7_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_76" />
+                      <geom name="collision_arm_left_link_7_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_77" />
+                      <geom name="collision_arm_left_link_7_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_78" />
+                      <geom name="collision_arm_left_link_7_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_79" />
+                      <geom name="collision_arm_left_link_7_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_80" />
+                      <geom name="collision_arm_left_link_7_8" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_81" />
+                      <geom name="collision_arm_left_link_7_9" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_82" />
+                      <geom name="collision_arm_left_link_7_10" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_83" />
+                      <geom name="collision_arm_left_link_7_11" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_84" />
+                      <geom name="collision_arm_left_link_7_12" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_85" />
+                      <geom name="collision_arm_left_link_7_13" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_86" />
+                      <geom name="collision_arm_left_link_7_14" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_87" />
+                      <geom name="collision_arm_left_link_7_15" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_88" />
+                      <site name="arm_tool" size=".008" rgba="1 .35 .08 1" group="2" />
+                      <body name="left_jaw_outer" pos="-0.036472101941094397 0.002470621279999999 -0.12811673609999999" quat="1 0 0 0">
+                        <geom name="left_jaw_outer_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.66 0.70 0.75 1" type="mesh" mesh="robot_mesh_89" />
+                        <geom name="collision_arm_left_jaw_outer_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_90" />
+                        <geom name="collision_arm_left_jaw_outer_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_91" />
+                        <geom name="collision_arm_left_jaw_outer_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_92" />
+                        <geom name="collision_arm_left_jaw_outer_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_93" />
+                        <geom name="collision_arm_left_jaw_outer_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_94" />
+                        <geom name="collision_arm_left_jaw_outer_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_95" />
+                        <geom name="collision_arm_left_jaw_outer_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_96" />
+                        <geom name="collision_arm_left_jaw_outer_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_97" />
+                        <geom name="collision_arm_left_jaw_outer_8" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_98" />
+                        <geom name="collision_arm_left_jaw_outer_9" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_99" />
+                        <geom name="collision_arm_left_jaw_outer_10" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_100" />
+                        <geom name="collision_arm_left_jaw_outer_11" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_101" />
+                        <geom name="collision_arm_left_jaw_outer_12" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_102" />
+                        <geom name="collision_arm_left_jaw_outer_13" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_103" />
+                        <geom name="collision_arm_left_jaw_outer_14" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_104" />
+                        <geom name="collision_arm_left_jaw_outer_15" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_105" />
+                        <geom name="collision_arm_left_jaw_outer_16" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_106" />
+                        <geom name="collision_arm_left_jaw_outer_17" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_107" />
+                        <geom name="collision_arm_left_jaw_outer_18" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_108" />
+                        <geom name="collision_arm_left_jaw_outer_19" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_109" />
+                        <geom name="collision_arm_left_jaw_outer_20" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_110" />
+                        <geom name="collision_arm_left_jaw_outer_21" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_111" />
+                        <geom name="collision_arm_left_jaw_outer_22" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_112" />
+                        <geom name="collision_arm_left_jaw_outer_23" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_113" />
+                        <geom name="collision_arm_left_jaw_outer_24" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_114" />
+                        <geom name="collision_arm_left_jaw_outer_25" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_115" />
+                        <geom name="collision_arm_left_jaw_outer_26" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_116" />
+                        <geom name="collision_arm_left_jaw_outer_27" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_117" />
+                        <geom name="collision_arm_left_jaw_outer_28" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_118" />
+                        <geom name="collision_arm_left_jaw_outer_29" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_119" />
+                        <geom name="collision_arm_left_jaw_outer_30" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_120" />
+                        <geom name="collision_arm_left_jaw_outer_31" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_121" />
+                        <geom name="collision_arm_left_jaw_outer_32" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_122" />
+                        <geom name="collision_arm_left_jaw_outer_33" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_123" />
+                        <geom name="collision_arm_left_jaw_outer_34" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_124" />
+                        <geom name="collision_arm_left_jaw_outer_35" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_125" />
+                        <geom name="collision_arm_left_jaw_outer_36" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_126" />
+                        <geom name="collision_arm_left_jaw_outer_37" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_127" />
+                        <geom name="collision_arm_left_jaw_outer_38" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_128" />
+                        <geom name="collision_arm_left_jaw_outer_39" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_129" />
+                        <geom name="collision_arm_left_jaw_outer_40" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_130" />
+                        <geom name="collision_arm_left_jaw_outer_41" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_131" />
+                        <geom name="collision_arm_left_jaw_outer_42" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_132" />
+                        <geom name="collision_arm_left_jaw_outer_43" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_133" />
+                        <geom name="collision_arm_left_jaw_outer_44" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_134" />
+                        <geom name="collision_arm_left_jaw_outer_45" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_135" />
+                      </body>
+                      <body name="left_jaw_inner" pos="0.036474217731094397 0.0033103230920000009 -0.12809779760000001" quat="1 0 0 0">
+                        <geom name="left_jaw_inner_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.20 0.25 0.31 1" type="mesh" mesh="robot_mesh_136" />
+                        <geom name="collision_arm_left_jaw_inner_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_137" />
+                        <geom name="collision_arm_left_jaw_inner_1" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_138" />
+                        <geom name="collision_arm_left_jaw_inner_2" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_139" />
+                        <geom name="collision_arm_left_jaw_inner_3" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_140" />
+                        <geom name="collision_arm_left_jaw_inner_4" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_141" />
+                        <geom name="collision_arm_left_jaw_inner_5" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_142" />
+                        <geom name="collision_arm_left_jaw_inner_6" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_143" />
+                        <geom name="collision_arm_left_jaw_inner_7" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_144" />
+                        <geom name="collision_arm_left_jaw_inner_8" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_145" />
+                        <geom name="collision_arm_left_jaw_inner_9" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_146" />
+                        <geom name="collision_arm_left_jaw_inner_10" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_147" />
+                        <geom name="collision_arm_left_jaw_inner_11" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_148" />
+                        <geom name="collision_arm_left_jaw_inner_12" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_149" />
+                        <geom name="collision_arm_left_jaw_inner_13" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_150" />
+                        <geom name="collision_arm_left_jaw_inner_14" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_151" />
+                        <geom name="collision_arm_left_jaw_inner_15" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_152" />
+                        <geom name="collision_arm_left_jaw_inner_16" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_153" />
+                        <geom name="collision_arm_left_jaw_inner_17" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_154" />
+                        <geom name="collision_arm_left_jaw_inner_18" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_155" />
+                        <geom name="collision_arm_left_jaw_inner_19" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_156" />
+                        <geom name="collision_arm_left_jaw_inner_20" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_157" />
+                        <geom name="collision_arm_left_jaw_inner_21" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_158" />
+                        <geom name="collision_arm_left_jaw_inner_22" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_159" />
+                        <geom name="collision_arm_left_jaw_inner_23" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_160" />
+                        <geom name="collision_arm_left_jaw_inner_24" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_161" />
+                        <geom name="collision_arm_left_jaw_inner_25" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_162" />
+                        <geom name="collision_arm_left_jaw_inner_26" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_163" />
+                        <geom name="collision_arm_left_jaw_inner_27" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_164" />
+                        <geom name="collision_arm_left_jaw_inner_28" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_165" />
+                        <geom name="collision_arm_left_jaw_inner_29" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_166" />
+                        <geom name="collision_arm_left_jaw_inner_30" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_167" />
+                        <geom name="collision_arm_left_jaw_inner_31" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_168" />
+                        <geom name="collision_arm_left_jaw_inner_32" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_169" />
+                        <geom name="collision_arm_left_jaw_inner_33" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_170" />
+                        <geom name="collision_arm_left_jaw_inner_34" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_171" />
+                        <geom name="collision_arm_left_jaw_inner_35" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_172" />
+                        <geom name="collision_arm_left_jaw_inner_36" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_173" />
+                        <geom name="collision_arm_left_jaw_inner_37" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_174" />
+                        <geom name="collision_arm_left_jaw_inner_38" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_175" />
+                        <geom name="collision_arm_left_jaw_inner_39" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_176" />
+                        <geom name="collision_arm_left_jaw_inner_40" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_177" />
+                        <geom name="collision_arm_left_jaw_inner_41" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_178" />
+                        <geom name="collision_arm_left_jaw_inner_42" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_179" />
+                        <geom name="collision_arm_left_jaw_inner_43" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_180" />
+                        <geom name="collision_arm_left_jaw_inner_44" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_181" />
+                        <geom name="collision_arm_left_jaw_inner_45" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_182" />
+                        <geom name="collision_arm_left_jaw_inner_46" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_183" />
+                      </body>
+                      <body name="carried_unit" pos="-6.4860918216634101e-11 -0.069256026375570462 -0.14459836042561158" quat="-0.007972492260803276 0.70706183560361324 0.70706183560377112 0.0079724922468460777">
+                        <inertial pos="0.075 0 0" mass="0.4" diaginertia="0.00026 0.00085 0.00085" />
+                        <site name="carried_unit_grip" pos="0.0725 0 0" />
+                        <site name="carried_unit_opening" pos="0 0 0" />
+                        <geom name="carried_unit_visual_energy_gray_body_rule" type="mesh" mesh="energy_gray_body_rule" material="energy_gray_body_rule_material" group="2" />
+                        <geom name="carried_unit_visual_energy_white_panels" type="mesh" mesh="energy_white_panels" material="energy_white_panels_material" group="2" />
+                        <geom name="carried_unit_visual_energy_bore_internal_repairs" type="mesh" mesh="energy_bore_internal_repairs" material="energy_bore_internal_repairs_material" group="2" />
+                        <geom name="carried_unit_visual_energy_bore_liner" type="mesh" mesh="energy_bore_liner" material="energy_bore_liner_material" group="2" />
+                        <geom name="carried_unit_visual_energy_bore_stop" type="mesh" mesh="energy_bore_stop" material="energy_bore_stop_material" group="2" />
+                        <geom name="carried_unit_flange_0" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="0 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_0" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="0 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_1" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="0.1308996939 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_1" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="0.1308996939 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_2" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="0.261799387799 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_2" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="0.261799387799 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_3" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="0.392699081699 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_3" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="0.392699081699 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_4" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="0.523598775598 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_4" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="0.523598775598 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_5" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="0.654498469498 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_5" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="0.654498469498 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_6" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="0.785398163397 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_6" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="0.785398163397 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_7" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="0.916297857297 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_7" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="0.916297857297 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_8" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="1.0471975512 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_8" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="1.0471975512 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_9" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="1.1780972451 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_9" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="1.1780972451 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_10" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="1.308996939 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_10" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="1.308996939 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_11" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="1.4398966329 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_11" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="1.4398966329 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_12" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="1.57079632679 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_12" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="1.57079632679 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_13" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="1.70169602069 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_13" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="1.70169602069 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_14" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="1.83259571459 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_14" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="1.83259571459 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_15" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="1.96349540849 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_15" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="1.96349540849 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_16" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="2.09439510239 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_16" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="2.09439510239 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_17" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="2.22529479629 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_17" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="2.22529479629 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_18" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="2.35619449019 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_18" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="2.35619449019 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_19" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="2.48709418409 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_19" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="2.48709418409 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_20" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="2.61799387799 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_20" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="2.61799387799 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_21" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="2.74889357189 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_21" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="2.74889357189 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_22" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="2.87979326579 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_22" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="2.87979326579 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_23" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="3.01069295969 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_23" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="3.01069295969 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_24" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="3.14159265359 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_24" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="3.14159265359 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_25" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="3.27249234749 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_25" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="3.27249234749 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_26" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="3.40339204139 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_26" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="3.40339204139 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_27" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="3.53429173529 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_27" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="3.53429173529 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_28" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="3.66519142919 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_28" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="3.66519142919 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_29" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="3.79609112309 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_29" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="3.79609112309 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_30" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="3.92699081699 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_30" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="3.92699081699 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_31" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="4.05789051089 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_31" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="4.05789051089 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_32" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="4.18879020479 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_32" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="4.18879020479 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_33" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="4.31968989869 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_33" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="4.31968989869 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_34" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="4.45058959259 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_34" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="4.45058959259 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_35" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="4.58148928649 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_35" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="4.58148928649 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_36" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="4.71238898038 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_36" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="4.71238898038 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_37" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="4.84328867428 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_37" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="4.84328867428 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_38" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="4.97418836818 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_38" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="4.97418836818 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_39" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="5.10508806208 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_39" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="5.10508806208 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_40" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="5.23598775598 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_40" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="5.23598775598 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_41" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="5.36688744988 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_41" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="5.36688744988 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_42" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="5.49778714378 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_42" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="5.49778714378 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_43" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="5.62868683768 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_43" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="5.62868683768 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_44" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="5.75958653158 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_44" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="5.75958653158 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_45" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="5.89048622548 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_45" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="5.89048622548 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_46" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="6.02138591938 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_46" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="6.02138591938 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_flange_47" type="mesh" mesh="collision_unit_flange" pos="0 0 0" euler="6.15228561328 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_tube_47" type="mesh" mesh="collision_unit_tube" pos=".035 0 0" euler="6.15228561328 0 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_iron" type="cylinder" pos="0.105 0 0" size="0.0325 0.005" quat="0.707106781187 0 0.707106781187 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <geom name="carried_unit_cap" type="cylinder" pos="0.13 0 0" size="0.0475 0.02" quat="0.707106781187 0 0.707106781187 0" contype="2" conaffinity="1" rgba="0 0 0 0" group="3" />
+                        <site name="planning_tcp" pos="0 0 0" quat=".5 .5 .5 .5" size=".003" rgba="0 0 0 0" />
+                        <site name="carried_unit_closed_cap" pos=".15 0 0" size=".003" rgba="0 0 0 0" />
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <keyframe>
+    <key name="home" qpos="2.3742369872178526 -2.071530325981533 2.0782504601128631 1.1536176336261801 2.1866560942590922 0.68143253081875321 -0.22767510236282423" />
+  </keyframe>
+  <custom>
+    <text name="robot_id" data="zhuimeng_dual" />
+    <text name="robot_root" data="base_link" />
+    <text name="robot_tool" data="arm_tool" />
+    <text name="robot_joints" data="left_joint_1 left_joint_2 left_joint_3 left_joint_4 left_joint_5 left_joint_6 left_joint_7" />
+    <text name="robot_compound_joint_bodies" data="left_link_5 left_link_7 torso_link left_link_2" />
+    <numeric name="robot_velocity_limits" data="0.59999999999999998 0.59999999999999998 0.59999999999999998 0.59999999999999998 0.59999999999999998 0.59999999999999998 0.59999999999999998" />
+    <numeric name="robot_planning_home" data="2.3742369872178526 -2.071530325981533 2.0782504601128631 1.1536176336261801 2.1866560942590922 0.68143253081875321 -0.22767510236282423" />
+    <numeric name="robot_posture_joint" data="-1" />
+    <numeric name="robot_demo_start_at_preset" data="1" />
+    <numeric name="robot_demo_camera" data="135 -22" />
+    <numeric name="robot_core_pose" data="-0.38 0 0.34999999999999998 0 90 0" />
+    <numeric name="robot_assembly_translation" data="0 0 -0.25" />
+    <numeric name="robot_assembly_yaw" data="6.2831853071795862" />
+    <numeric name="robot_target_degrees" data="0" />
+    <numeric name="robot_enforce_core_pose_limits" data="0" />
+  </custom>
+</mujoco>

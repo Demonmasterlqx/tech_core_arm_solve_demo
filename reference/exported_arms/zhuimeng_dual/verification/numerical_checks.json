@@ -1,0 +1,241 @@
+{
+  "robot": "zhuimeng_dual",
+  "zero_definition": "Native SW arm saved pose, as confirmed by user",
+  "tree": "PASS",
+  "mesh_paths": "PASS",
+  "axis_normalization": "PASS",
+  "zero_reconstruction": {
+    "base_link": {
+      "triangles": 3090,
+      "max_coordinate_error_m": 1.8544532576214579e-09,
+      "status": "PASS"
+    },
+    "torso_link": {
+      "triangles": 208296,
+      "max_coordinate_error_m": 1.4901039790959913e-08,
+      "status": "PASS"
+    },
+    "left_link_1": {
+      "triangles": 65711,
+      "max_coordinate_error_m": 3.3676644806135414e-09,
+      "status": "PASS"
+    },
+    "left_link_2": {
+      "triangles": 70269,
+      "max_coordinate_error_m": 3.7267366415072445e-09,
+      "status": "PASS"
+    },
+    "left_link_3": {
+      "triangles": 66485,
+      "max_coordinate_error_m": 7.455791428689906e-09,
+      "status": "PASS"
+    },
+    "left_link_4": {
+      "triangles": 50287,
+      "max_coordinate_error_m": 7.379297090048809e-09,
+      "status": "PASS"
+    },
+    "left_link_5": {
+      "triangles": 75349,
+      "max_coordinate_error_m": 7.475547236790447e-09,
+      "status": "PASS"
+    },
+    "left_link_6": {
+      "triangles": 46129,
+      "max_coordinate_error_m": 3.777038348751205e-09,
+      "status": "PASS"
+    },
+    "left_link_7": {
+      "triangles": 45465,
+      "max_coordinate_error_m": 3.773175438759324e-09,
+      "status": "PASS"
+    },
+    "left_jaw_outer": {
+      "triangles": 16970,
+      "max_coordinate_error_m": 1.9257010708262357e-09,
+      "status": "PASS"
+    },
+    "left_jaw_inner": {
+      "triangles": 16970,
+      "max_coordinate_error_m": 1.8653241729005288e-09,
+      "status": "PASS"
+    },
+    "right_link_1": {
+      "triangles": 65711,
+      "max_coordinate_error_m": 3.6989232232720326e-09,
+      "status": "PASS"
+    },
+    "right_link_2": {
+      "triangles": 70269,
+      "max_coordinate_error_m": 3.7218816362205587e-09,
+      "status": "PASS"
+    },
+    "right_link_3": {
+      "triangles": 66485,
+      "max_coordinate_error_m": 3.773262369222152e-09,
+      "status": "PASS"
+    },
+    "right_link_4": {
+      "triangles": 50857,
+      "max_coordinate_error_m": 7.3751793006060495e-09,
+      "status": "PASS"
+    },
+    "right_link_5": {
+      "triangles": 75349,
+      "max_coordinate_error_m": 7.501419652111707e-09,
+      "status": "PASS"
+    },
+    "right_link_6": {
+      "triangles": 46129,
+      "max_coordinate_error_m": 3.81778902935892e-09,
+      "status": "PASS"
+    },
+    "right_link_7": {
+      "triangles": 45465,
+      "max_coordinate_error_m": 3.813845128597393e-09,
+      "status": "PASS"
+    },
+    "right_jaw_outer": {
+      "triangles": 16970,
+      "max_coordinate_error_m": 1.906071023238809e-09,
+      "status": "PASS"
+    },
+    "right_jaw_inner": {
+      "triangles": 16970,
+      "max_coordinate_error_m": 1.9664375405792356e-09,
+      "status": "PASS"
+    }
+  },
+  "mate_axes": [
+    {
+      "joint": "left_joint_1",
+      "cad_mate": "同心331",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 4.164690651983883e-15,
+      "status": "PASS"
+    },
+    {
+      "joint": "left_joint_2",
+      "cad_mate": "同心343",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 4.5673829306623343e-14,
+      "status": "PASS"
+    },
+    {
+      "joint": "left_joint_3",
+      "cad_mate": "同心19",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.4639434543898962e-17,
+      "status": "PASS"
+    },
+    {
+      "joint": "left_joint_4",
+      "cad_mate": "同心39",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 3.455105217156729e-15,
+      "status": "PASS"
+    },
+    {
+      "joint": "left_joint_5",
+      "cad_mate": "同心371",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 5.636266434400921e-17,
+      "status": "PASS"
+    },
+    {
+      "joint": "left_joint_6",
+      "cad_mate": "同心151",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 9.212224624973515e-15,
+      "status": "PASS"
+    },
+    {
+      "joint": "left_joint_7",
+      "cad_mate": "同心120",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 2.780027851649492e-17,
+      "status": "PASS"
+    },
+    {
+      "joint": "right_joint_1",
+      "cad_mate": "同心406",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 2.989536093640212e-15,
+      "status": "PASS"
+    },
+    {
+      "joint": "right_joint_2",
+      "cad_mate": "同心423",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.9449323076490142e-16,
+      "status": "PASS"
+    },
+    {
+      "joint": "right_joint_3",
+      "cad_mate": "同心427",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 6.030692496232754e-14,
+      "status": "PASS"
+    },
+    {
+      "joint": "right_joint_4",
+      "cad_mate": "同心438",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 4.3094600574819644e-17,
+      "status": "PASS"
+    },
+    {
+      "joint": "right_joint_5",
+      "cad_mate": "同心531",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 1.0533489035002753e-17,
+      "status": "PASS"
+    },
+    {
+      "joint": "right_joint_6",
+      "cad_mate": "同心496",
+      "parallel_error_rad": 1.4901161193847656e-08,
+      "coaxial_error_m": 2.001100176673449e-14,
+      "status": "PASS"
+    },
+    {
+      "joint": "right_joint_7",
+      "cad_mate": "同心473",
+      "parallel_error_rad": 0.0,
+      "coaxial_error_m": 6.759955174001155e-16,
+      "status": "PASS"
+    }
+  ],
+  "missing_source_geometry": [],
+  "sha256": {
+    "meshes\\base_link.stl": "a52dcaaaa8ff1c1ac57ada8e58d7e4fe07c198fba5ad916f0a87031707663dfa",
+    "meshes\\torso_link.stl": "115c54a62a72e2e010e7b7a1fef6b3774244db584ca14b08b04b610ece06cd41",
+    "meshes\\left_link_1.stl": "87eea12510f50547f20913ad4e3ff3f3f6a5d1e9aee67833545ee43ff86ac185",
+    "meshes\\left_link_2.stl": "4c24798826ceccf39847f76b548c29885bd5df56268484dd6601b9fa23aa4c57",
+    "meshes\\left_link_3.stl": "3b2cab55e1b1e72dbb0e710c9f4e4ec23de3ad6e85d2ab98e096c213449ccc8e",
+    "meshes\\left_link_4.stl": "9474195879571d54ba85c5f4541ca1ed25ecf691a02de9d3e101dc1530dfb821",
+    "meshes\\left_link_5.stl": "2d903693a38ad98cc47f49bf3a091d5ea79bb69ec1d124fbb0a70be0d26006bc",
+    "meshes\\left_link_6.stl": "16bc50a2e5dba044fc048aad85360838f51768ac824cc540caaaa453ee73a0a1",
+    "meshes\\left_link_7.stl": "8bdbab14541e9370d9f5179ff4ef4fa3c3c0d4c731888683a5b5eba365b1ee22",
+    "meshes\\left_jaw_outer.stl": "3f0862a21f099898a3f9ecd8a44c89f1431951b1e4873114ca5b7358a1f42a55",
+    "meshes\\left_jaw_inner.stl": "c6cec34bb95a0c13e1bf1d22bfb0323d36bc4004e7d0fc7d29c9c37063125254",
+    "meshes\\right_link_1.stl": "42b89c12f31ebaa4eb5930d45bf48390e877d7cac4f5bd99aebba34bd31c2321",
+    "meshes\\right_link_2.stl": "3d869659ccbd8067ae7f1fe9a3b4900c5272d1aadca914b0452d54f9f608606f",
+    "meshes\\right_link_3.stl": "9389aca241722c08aa28577cacc4254dd7140deb03cc419c53c2984bc7600e51",
+    "meshes\\right_link_4.stl": "955e9a747e54c1de6a9e34eebc7eda52cee6c969c71384ddb224c84ce08ee452",
+    "meshes\\right_link_5.stl": "a65addd3567913171caf49cf3a90a54adcb15a9a6323e9e892afc467955b8bb9",
+    "meshes\\right_link_6.stl": "fdb03bd178fc62fe6a7bbea9eb3376daaf162123bfc9d108298b507d528faf0d",
+    "meshes\\right_link_7.stl": "3ddca5565bb4746519a6c8d94f0e32f42cd7c7c11c4f0b1866f148358c1e351b",
+    "meshes\\right_jaw_outer.stl": "ab049534cb6e0a335706f43d6a998bcbff03e8e9c3c6520f78edeab43d510521",
+    "meshes\\right_jaw_inner.stl": "5ebcda7734e7bafabbe2a758b925f300c3282be8f9f964ae3d8f83829e66d003",
+    "zhuimeng_dual.urdf": "d3d05b90bf5038dbe5d7430ed9c6fbd3ea716fbad630f8c92d26c364242db917"
+  },
+  "dynamic_parameters": "Outside final user-requested scope; not exported or verified",
+  "viewer_ui": {
+    "url": "https://viewer.robotsfan.com/",
+    "joint_count": 19,
+    "reset": "PASS",
+    "evidence": "verification/ui_joint_checks.json",
+    "visual_review": "See verification/README.md"
+  }
+}

@@ -119,10 +119,17 @@ int main(int argc, char** argv) {
         sim.set_state(knots.front().q,knots.front().mechanism);
         tech_core::frame_model(model,sim.data(),wide);
         wide.azimuth=315;wide.elevation=-22;
+        const auto camera=tech_core::robot_numbers(model,"robot_demo_camera",false);
+        if(!camera.empty()) {
+            if(camera.size()!=2 || camera[1]<=-90 || camera[1]>=90)
+                throw std::invalid_argument("Robot demo camera requires azimuth/elevation degrees");
+            wide.azimuth=camera[0];wide.elevation=camera[1];
+        }
         const int tcp=mj_name2id(model,mjOBJ_SITE,"planning_tcp");
         const int tip=mj_name2id(model,mjOBJ_SITE,"core0_tip");
         for(int axis=0;axis<3;++axis) close.lookat[axis]=.5*(sim.data()->site_xpos[3*tcp+axis]+sim.data()->site_xpos[3*tip+axis]);
-        close.distance=.9;close.azimuth=310;close.elevation=-17;
+        close.distance=.9;close.azimuth=wide.azimuth-5;
+        close.elevation=std::clamp(wide.elevation+5.,-89.,89.);
         const int split = width * 55 / 100;
         const mjrRect full{0,0,width,height}, left{0,140,split-3,height-230}, right{split+3,140,width-split-3,height-230};
         const double duration = knots.back().time;

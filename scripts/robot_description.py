@@ -14,12 +14,17 @@ def metadata(scene, profile):
     text('robot_root', profile['root_body'])
     text('robot_tool', profile.get('tool_site', 'arm_tool'))
     text('robot_joints', profile['joint_names'])
+    text('robot_compound_joint_bodies', [body for pair in profile.get('compound_joint_bodies', []) for body in pair])
     for name, values in [('robot_velocity_limits', profile['velocity_limits']),
                          ('robot_planning_home', profile['planning_home']),
                          ('robot_posture_joint', [profile.get('posture_joint', -1)])]:
         ET.SubElement(custom, 'numeric', name=name, data=' '.join(format(x, '.17g') for x in values))
     if profile.get('recovery_joint_order'):
         ET.SubElement(custom, 'numeric', name='robot_recovery_joint_order', data=' '.join(str(x) for x in profile['recovery_joint_order']))
+    if 'demo_start_at_preset' in profile:
+        ET.SubElement(custom, 'numeric', name='robot_demo_start_at_preset', data=str(int(profile['demo_start_at_preset'])))
+    if 'demo_camera' in profile:
+        ET.SubElement(custom, 'numeric', name='robot_demo_camera', data=' '.join(format(x, '.17g') for x in profile['demo_camera']))
     scenario = profile.get('scenario', {})
     for field in ('core_pose', 'assembly_translation'):
         if field in scenario:
