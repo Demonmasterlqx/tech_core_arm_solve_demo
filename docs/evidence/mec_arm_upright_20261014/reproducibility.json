@@ -1,0 +1,8 @@
+{
+  "byte_identical": true,
+  "sha256": {
+    "models/mec_arm/scene.xml": "d56b26b1767361e4c242cab7fce6ceb8be3d921903bfed83429a84d0b999e936",
+    "models/mec_arm/planning.xml": "f7a3854bf908ad02fa93d9cce13871de0a333274d5cc4683ddc016e9fdca2e38",
+    "models/mec_arm/import_report.json": "a9f955e8b93c522b1b93496aa34bb9b3ec8fc15d6bdcd9c02a4f08bae616d574"
+  }
+}

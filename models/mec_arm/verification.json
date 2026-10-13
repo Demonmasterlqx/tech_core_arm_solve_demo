@@ -7,7 +7,7 @@
   "max_rotation_matrix_abs_error": 1.7763568394002505e-15,
   "max_jacobian_abs_error": 3.3441638347397884e-10,
   "source_urdf_sha256": "4b4db6c0938b14e0480a67cc4ac0fef3cf056526a5313c65fe6e227067941d39",
-  "scene_sha256": "b70338c692ecb2908d179a38d732dcfdca58d9fec5df60dd1802b483c9750d99",
+  "scene_sha256": "d56b26b1767361e4c242cab7fce6ceb8be3d921903bfed83429a84d0b999e936",
   "fk_fixtures": [
     {
       "qpos_rad": [

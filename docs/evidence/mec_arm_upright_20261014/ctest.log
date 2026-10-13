@@ -1,0 +1,36 @@
+Start testing: Oct 14 00:59 CST
+----------------------------------------------------------
+28/33 Testing: multi_arm_contract
+28/33 Test: multi_arm_contract
+Command: "/home/lqx/code/tech_core_arm_solve/build/multi_arm_test"
+Directory: /home/lqx/code/tech_core_arm_solve/build
+"multi_arm_contract" start time: Oct 14 00:59 CST
+Output:
+----------------------------------------------------------
+Multi-arm contracts passed (3/6/7/8 DOF, IK, control, collision, demo, invalid input)
+<end of output>
+Test time =   8.51 sec
+----------------------------------------------------------
+Test Passed.
+"multi_arm_contract" end time: Oct 14 01:00 CST
+"multi_arm_contract" time elapsed: 00:00:08
+----------------------------------------------------------
+
+33/33 Testing: mec_arm_assembly
+33/33 Test: mec_arm_assembly
+Command: "/home/lqx/code/tech_core_arm_solve/build/mec_arm_assembly_test"
+Directory: /home/lqx/code/tech_core_arm_solve/build
+"mec_arm_assembly" start time: Oct 14 01:00 CST
+Output:
+----------------------------------------------------------
+baseline knots=288 samples=2044 error_m=2.38804e-05
+rigid_cache knots=286 samples=2046 error_m=2.46472e-05
+<end of output>
+Test time =  25.72 sec
+----------------------------------------------------------
+Test Passed.
+"mec_arm_assembly" end time: Oct 14 01:00 CST
+"mec_arm_assembly" time elapsed: 00:00:25
+----------------------------------------------------------
+
+End testing: Oct 14 01:00 CST

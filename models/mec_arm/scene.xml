@@ -82,11 +82,11 @@
     <text name="robot_tool" data="arm_tool" />
     <text name="robot_joints" data="Joint1 Joint2 Joint3 Joint4 Joint5 Joint6" />
     <numeric name="robot_velocity_limits" data="1 1 1 1 1 1" />
-    <numeric name="robot_planning_home" data="2.6963087976035456 -0.73981592097917459 1.9777789355680881 0.32233610651482714 0.48119057328439691 0.1716035162067" />
+    <numeric name="robot_planning_home" data="-0.83277205781054375 -2.2788983009182404 0.8014014472738763 2.3075423782011781 0.048148792824240061 -1.5700000000000001" />
     <numeric name="robot_posture_joint" data="-1" />
-    <numeric name="robot_core_pose" data="-0.3795072695345405 -0.015053999181832887 1.14885090534451 54.905221982003468 18.099567680167866 -146.40445820760189" />
-    <numeric name="robot_assembly_translation" data="0 0 -0.5" />
-    <numeric name="robot_assembly_yaw" data="0" />
+    <numeric name="robot_core_pose" data="-0.55000000000000004 0.10000000000000001 0.13 0 90 0" />
+    <numeric name="robot_assembly_translation" data="0 0 -0.25" />
+    <numeric name="robot_assembly_yaw" data="3.1415926535897931" />
     <numeric name="robot_target_degrees" data="0" />
     <numeric name="robot_enforce_core_pose_limits" data="0" />
   </custom>

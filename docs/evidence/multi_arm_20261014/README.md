@@ -2,6 +2,8 @@
 
 对应[架构接入说明](../../multi_arm.md)与[MecArm 模型](../../mec_arm.md)。代码基于 `d4114ea`，实现提交及校验值记录在 `summary.json`。未使用 subagent；当前环境没有用户指定的 “6 astra” 模型。
 
+本目录保留首次接入时的倾斜工位结果；重放这里的历史轨迹应使用 `73d7c6c` 版本的模型。后续已将 MecArm 核心改为直立并调整挂载与起点，当前验证见[直立工位记录](../mec_arm_upright_20261014/README.md)。
+
 ## 构建与测试
 
 - 窗口 Release：`ctest-viewer.log`，33/33。

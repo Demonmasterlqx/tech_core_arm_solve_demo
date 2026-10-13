@@ -196,7 +196,7 @@
                         <geom name="collision_arm_Empty_Link6_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_6" contype="0" conaffinity="0" />
                         <body name="TCP_link" pos="0 0 0.20" quat="0.90636369699271069 0 0 -0.42249834174077611">
                           <site name="arm_tool" size=".008" rgba="1 .35 .08 1" group="2" />
-                          <body name="carried_unit" pos="-0.25 0 0.080000000000000002" quat="1 0 0 0">
+                          <body name="carried_unit" pos="-0.14000000000000001 0 0.059999999999999998" quat="0.70710678118654757 0 0.70710678118654746 0">
                             <inertial pos="0.075 0 0" mass="0.4" diaginertia="0.00026 0.00085 0.00085" />
                             <site name="carried_unit_grip" pos="0.0725 0 0" />
                             <site name="carried_unit_opening" pos="0 0 0" />
@@ -399,7 +399,7 @@
     <geom name="collision_block_fixture" type="box" pos="0 0 -10" size=".08 .08 .08" rgba=".8 .15 .1 .35" group="3" contype="0" conaffinity="0" />
   </worldbody>
   <keyframe>
-    <key name="home" qpos="2.6963087976035456 -0.73981592097917459 1.9777789355680881 0.32233610651482714 0.48119057328439691 0.1716035162067 0 0 0" />
+    <key name="home" qpos="-0.83277205781054375 -2.2788983009182404 0.8014014472738763 2.3075423782011781 0.048148792824240061 -1.5700000000000001 0 0 0" />
   </keyframe>
   <custom>
     <text name="robot_id" data="mec_arm" />
@@ -407,11 +407,11 @@
     <text name="robot_tool" data="arm_tool" />
     <text name="robot_joints" data="Joint1 Joint2 Joint3 Joint4 Joint5 Joint6" />
     <numeric name="robot_velocity_limits" data="1 1 1 1 1 1" />
-    <numeric name="robot_planning_home" data="2.6963087976035456 -0.73981592097917459 1.9777789355680881 0.32233610651482714 0.48119057328439691 0.1716035162067" />
+    <numeric name="robot_planning_home" data="-0.83277205781054375 -2.2788983009182404 0.8014014472738763 2.3075423782011781 0.048148792824240061 -1.5700000000000001" />
     <numeric name="robot_posture_joint" data="-1" />
-    <numeric name="robot_core_pose" data="-0.3795072695345405 -0.015053999181832887 1.14885090534451 54.905221982003468 18.099567680167866 -146.40445820760189" />
-    <numeric name="robot_assembly_translation" data="0 0 -0.5" />
-    <numeric name="robot_assembly_yaw" data="0" />
+    <numeric name="robot_core_pose" data="-0.55000000000000004 0.10000000000000001 0.13 0 90 0" />
+    <numeric name="robot_assembly_translation" data="0 0 -0.25" />
+    <numeric name="robot_assembly_yaw" data="3.1415926535897931" />
     <numeric name="robot_target_degrees" data="0" />
     <numeric name="robot_enforce_core_pose_limits" data="0" />
     <text name="robot_collision_geoms" data="collision_arm_base_link_0 collision_arm_Empty_Link1_0 collision_arm_Empty_Link2_0 collision_arm_Empty_Link3_0 collision_arm_Empty_Link4_0 collision_arm_Empty_Link5_0 collision_arm_Empty_Link6_0" />

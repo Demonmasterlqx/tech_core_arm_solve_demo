@@ -21,12 +21,12 @@
     0
   ],
   "planning_home": [
-    2.6963087976035456,
-    -0.7398159209791746,
-    1.9777789355680881,
-    0.32233610651482714,
-    0.4811905732843969,
-    0.1716035162067
+    -0.8327720578105438,
+    -2.2788983009182404,
+    0.8014014472738763,
+    2.307542378201178,
+    0.04814879282424006,
+    -1.57
   ],
   "velocity_limits": [
     1,
@@ -44,35 +44,35 @@
   "carried_unit": {
     "parent": "TCP_link",
     "pos": [
-      -0.25,
+      -0.14,
       0,
-      0.08
+      0.06
     ],
     "quat": [
-      1,
+      0.7071067811865476,
       0,
-      0,
+      0.7071067811865475,
       0
     ],
-    "contract": "Virtual rigid side-carry adapter for kinematic assembly, not an upstream gripper or validated physical grasp. Opening is TCP + (-250, 0, 80) mm; unit longitudinal +X is source TCP +X. No adapter solid, gripping dynamics or hardware calibration is claimed."
+    "contract": "Virtual rigid side-carry adapter for kinematic assembly, not an upstream gripper or validated physical grasp. Opening is TCP + (-140, 0, 60) mm; a +90 degree local-Y rotation maps unit longitudinal +X to source TCP -Z. No adapter solid, gripping dynamics or hardware calibration is claimed."
   },
   "scenario": {
     "core_pose": [
-      -0.3795072695345405,
-      -0.015053999181832887,
-      1.14885090534451,
-      54.90522198200347,
-      18.099567680167866,
-      -146.4044582076019
+      -0.55,
+      0.10,
+      0.13,
+      0,
+      90,
+      0
     ],
     "assembly_translation": [
       0,
       0,
-      -0.5
+      -0.25
     ],
-    "assembly_yaw": 0,
+    "assembly_yaw": 3.141592653589793,
     "target_degrees": 0,
     "enforce_core_pose_limits": false,
-    "description": "Reachable laboratory fixture at world z=.64885 m. Station pose limits disabled explicitly; full assembly motion, limits and collision validation remain mandatory."
+    "description": "Upright laboratory fixture facing the robot: world opening at (0.55, -0.10, -0.12) m, world RPY (0, 0, 180) degrees. Station pose limits disabled explicitly; full assembly motion, limits and collision validation remain mandatory."
   }
 }

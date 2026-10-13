@@ -1,0 +1,149 @@
+{
+  "audit_schema": 1,
+  "robot": "mec_arm",
+  "joint_names": [
+    "Joint1",
+    "Joint2",
+    "Joint3",
+    "Joint4",
+    "Joint5",
+    "Joint6"
+  ],
+  "valid": true,
+  "run_count": 1,
+  "expected_runs": 1,
+  "successful_runs": 1,
+  "successful_positive_runs": 1,
+  "scope": "Independent source-URDF kinematics, grasp, mechanism, timing and raw population audit; no independent mesh collision or physical grasp proof",
+  "sampling": {
+    "factor_of_online_segment_count": 2,
+    "online_joint_step": 0.008,
+    "online_min_substeps": 2
+  },
+  "thresholds": {
+    "position_m": 0.0005,
+    "axis_rad": 0.002,
+    "velocity_rad_s": 1.0,
+    "acceleration_rad_s2": 2.0
+  },
+  "inputs_sha256": {
+    "urdf": "4b4db6c0938b14e0480a67cc4ac0fef3cf056526a5313c65fe6e227067941d39",
+    "scene": "f7a3854bf908ad02fa93d9cce13871de0a333274d5cc4683ddc016e9fdca2e38",
+    "runs_csv": "d2c818593d850fe25d0d4c31e2ad5f36789fd461278b872e503d8fef464636ad",
+    "scenarios_csv": "90d050718fa572b18562262326bd132bc039778d8336de18985702a3d2d3ac10"
+  },
+  "T_ee_tcp": [
+    [
+      0.0,
+      1.0,
+      2.220446049250313e-16,
+      -0.14
+    ],
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      2.220446049250313e-16,
+      -1.0,
+      0.06
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "T_ee_opening": [
+    [
+      2.220446049250313e-16,
+      0.0,
+      1.0,
+      -0.14
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      -1.0,
+      0.0,
+      2.220446049250313e-16,
+      0.06
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "groups": [
+    {
+      "method": "rigid_cache",
+      "split": "development",
+      "runs": 1,
+      "successes": 1,
+      "rejections": 0,
+      "all_timing": {
+        "n": 1,
+        "p50": 4.595258989,
+        "p95": 4.595258989,
+        "max": 4.595258989
+      },
+      "successful_timing": {
+        "n": 1,
+        "p50": 4.595258989,
+        "p95": 4.595258989,
+        "max": 4.595258989
+      }
+    }
+  ],
+  "paired_positive_speedup": [
+    {
+      "method": "rigid_cache",
+      "both_successful_positive_speedup": {
+        "n": 0,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "success_regressions": [],
+      "success_gains": []
+    }
+  ],
+  "errors": [],
+  "trajectories": [
+    {
+      "method": "rigid_cache",
+      "case": "dev_nominal",
+      "split": "development",
+      "repeat": "0",
+      "success": "1",
+      "reason": "validated",
+      "knots": 286,
+      "samples": 2127,
+      "valid": true,
+      "errors": [],
+      "max_position_error_m": 2.4839057277553916e-05,
+      "max_axis_error_rad": 8.811535416654979e-05,
+      "max_exported_target_position_disagreement_m": 1.249000902703301e-16,
+      "max_exported_target_axis_disagreement_rad": 0.0,
+      "max_joint_speed_rad_s": 0.19264672005851358,
+      "max_joint_acceleration_rad_s2": 2.0000000000000715,
+      "fk_aligned_suffix_seconds": 0.5750000000000028,
+      "execution_seconds": 57.21972486562674,
+      "q_positive_degrees": 0.0,
+      "q_final_degrees": 0.0,
+      "full_q_sweep": false,
+      "q_best_effort": false,
+      "trajectory_sha256": "4fb798913bef0dec68dc1bd788154cef9b8ed84a2f0462e85c3d880d8703445f"
+    }
+  ]
+}

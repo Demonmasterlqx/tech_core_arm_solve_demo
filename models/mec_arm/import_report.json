@@ -23,20 +23,20 @@
   "payload": {
     "parent": "TCP_link",
     "pos": [
-      -0.25,
+      -0.14,
       0,
-      0.08
+      0.06
     ],
     "quat": [
-      1,
+      0.7071067811865476,
       0,
-      0,
+      0.7071067811865475,
       0
     ],
-    "contract": "Virtual rigid side-carry adapter for kinematic assembly, not an upstream gripper or validated physical grasp. Opening is TCP + (-250, 0, 80) mm; unit longitudinal +X is source TCP +X. No adapter solid, gripping dynamics or hardware calibration is claimed."
+    "contract": "Virtual rigid side-carry adapter for kinematic assembly, not an upstream gripper or validated physical grasp. Opening is TCP + (-140, 0, 60) mm; a +90 degree local-Y rotation maps unit longitudinal +X to source TCP -Z. No adapter solid, gripping dynamics or hardware calibration is claimed."
   },
   "files_sha256": {
-    "scene.xml": "b70338c692ecb2908d179a38d732dcfdca58d9fec5df60dd1802b483c9750d99",
-    "planning.xml": "9dc347cf1fc8e6584ef6fe812491b2744120799db4cb89820dcaea46b1c7f861"
+    "scene.xml": "d56b26b1767361e4c242cab7fce6ceb8be3d921903bfed83429a84d0b999e936",
+    "planning.xml": "f7a3854bf908ad02fa93d9cce13871de0a333274d5cc4683ddc016e9fdca2e38"
   }
 }
