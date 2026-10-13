@@ -72,7 +72,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--suite', type=Path, required=True)
     parser.add_argument('--runs', type=Path, nargs='+', required=True)
-    parser.add_argument('--original', type=Path, nargs='+', required=True)
+    parser.add_argument('--original', type=Path, nargs='+', default=[],
+                        help='Optional earlier runs for paired comparisons; omit for a fresh reproduction audit')
     parser.add_argument('--certificate-root', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()

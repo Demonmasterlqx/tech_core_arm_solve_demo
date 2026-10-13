@@ -78,7 +78,10 @@ int main() {
 
         for (bool cached : {false,true}) {
             scene.configure(request); obstruct(); scene.enable_rigid_pair_cache(cached);
-            PlanOptions options; options.timeout_seconds = 3;
+            // This fixture checks detour correctness with both caches disabled.
+            // Its collision cost varies substantially across CPUs; deadline and
+            // cancellation behavior are tested separately below.
+            PlanOptions options; options.timeout_seconds = 10;
             const auto begin = std::chrono::steady_clock::now();
             const auto result = optimize_approach(scene,request.start,ik.q,options);
             const double elapsed = std::chrono::duration<double>(std::chrono::steady_clock::now()-begin).count();

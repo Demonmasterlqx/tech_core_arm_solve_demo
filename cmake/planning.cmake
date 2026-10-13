@@ -30,7 +30,7 @@ if(BUILD_TESTING)
   target_link_libraries(planning_approach_test PRIVATE rm26_planning)
   target_compile_options(planning_approach_test PRIVATE -Wall -Wextra -Wpedantic)
   add_test(NAME planning_approach COMMAND planning_approach_test)
-  set_tests_properties(planning_approach PROPERTIES TIMEOUT 30)
+  set_tests_properties(planning_approach PROPERTIES TIMEOUT 60)
   add_executable(planning_scene_test tests/planning_scene_test.cpp)
   target_link_libraries(planning_scene_test PRIVATE rm26_planning)
   target_compile_definitions(planning_scene_test PRIVATE

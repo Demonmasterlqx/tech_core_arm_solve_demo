@@ -84,7 +84,7 @@ def ensure_renderers() -> dict[str, str]:
     latin_mono = run(['fc-match', '-f', '%{family}', 'DejaVu Sans Mono'])
     if 'DejaVu Sans Mono' not in latin_mono:
         raise RuntimeError(f'Required Latin monospace font unavailable: {latin_mono!r}')
-    for name in ('xeCJK.sty', 'fvextra.sty', 'xurl.sty', 'etoolbox.sty'):
+    for name in ('lmodern.sty', 'pzdr.tfm', 'xeCJK.sty', 'fvextra.sty', 'xurl.sty', 'etoolbox.sty'):
         package = run(['kpsewhich', name])
         if not package or not Path(package).is_file():
             raise RuntimeError(f'Required local XeLaTeX package unavailable: {name}')
@@ -411,7 +411,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, epilog=
         'Run from a clean Git worktree. Rendering requires pandoc, XeLaTeX, Fontconfig, '
         'Noto Serif CJK SC, Noto Sans Mono CJK SC, DejaVu Sans Mono, xeCJK, fvextra, '
-        'xurl and etoolbox. '
+        'xurl, etoolbox, lmodern and pzdr.tfm. '
         'No tools or fonts are downloaded. --no-render is diagnostic only.')
     parser.add_argument('--output', required=True, help='New output .zip path; parent must exist')
     parser.add_argument('--documents-dir', default='docs/handbook', help='Tracked handbook directory')
