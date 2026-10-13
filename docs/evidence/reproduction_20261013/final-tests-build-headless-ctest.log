@@ -1,0 +1,52 @@
+Internal ctest changing into directory: /home/lqx/code/tech_core_arm_solve/build-headless
+Test project /home/lqx/code/tech_core_arm_solve/build-headless
+      Start  1: rules
+ 1/23 Test  #1: rules ............................   Passed    0.00 sec
+      Start  2: physics
+ 2/23 Test  #2: physics ..........................   Passed    2.27 sec
+      Start  3: geometry_fidelity
+ 3/23 Test  #3: geometry_fidelity ................   Passed    0.75 sec
+      Start  4: demo_level_1
+ 4/23 Test  #4: demo_level_1 .....................   Passed    2.29 sec
+      Start  5: demo_level_2
+ 5/23 Test  #5: demo_level_2 .....................   Passed    2.38 sec
+      Start  6: demo_level_3
+ 6/23 Test  #6: demo_level_3 .....................   Passed    2.41 sec
+      Start  7: demo_level_4
+ 7/23 Test  #7: demo_level_4 .....................   Passed    3.86 sec
+      Start  8: demo_q_positive_limit
+ 8/23 Test  #8: demo_q_positive_limit ............   Passed    2.53 sec
+      Start  9: demo_q_negative_limit
+ 9/23 Test  #9: demo_q_negative_limit ............   Passed    2.41 sec
+      Start 10: demo_tilted_station
+10/23 Test #10: demo_tilted_station ..............   Passed    2.46 sec
+      Start 11: cli_invalid_level
+11/23 Test #11: cli_invalid_level ................   Passed    0.00 sec
+      Start 12: rm26_arm_control
+12/23 Test #12: rm26_arm_control .................   Passed    1.18 sec
+      Start 13: rm26_arm_idle
+13/23 Test #13: rm26_arm_idle ....................   Passed    0.95 sec
+      Start 14: rm26_arm_demo
+14/23 Test #14: rm26_arm_demo ....................   Passed    1.30 sec
+      Start 15: rm26_arm_cartesian
+15/23 Test #15: rm26_arm_cartesian ...............   Passed    1.19 sec
+      Start 16: rm26_arm_invalid_velocity
+16/23 Test #16: rm26_arm_invalid_velocity ........   Passed    0.01 sec
+      Start 17: rm26_arm_conflicting_commands
+17/23 Test #17: rm26_arm_conflicting_commands ....   Passed    0.00 sec
+      Start 18: planning_library_example
+18/23 Test #18: planning_library_example .........   Passed    5.40 sec
+      Start 19: planning_ik
+19/23 Test #19: planning_ik ......................   Passed    0.00 sec
+      Start 20: planning_contract
+20/23 Test #20: planning_contract ................   Passed   63.43 sec
+      Start 21: planning_approach
+21/23 Test #21: planning_approach ................   Passed   31.22 sec
+      Start 22: planning_scene
+22/23 Test #22: planning_scene ...................   Passed    1.49 sec
+      Start 23: planning_demo_contract
+23/23 Test #23: planning_demo_contract ...........   Passed   12.27 sec
+
+100% tests passed, 0 tests failed out of 23
+
+Total Test time (real) = 139.83 sec

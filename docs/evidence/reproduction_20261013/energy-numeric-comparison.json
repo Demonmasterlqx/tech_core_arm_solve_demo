@@ -1,0 +1,86 @@
+{
+  "energy_unit": {
+    "energy_auxiliary_surfaces.obj": {
+      "v": 5360,
+      "vn": 5360,
+      "f": 5336,
+      "faces_identical": true,
+      "v_shape_equal": true,
+      "v_max_abs_error": 0.0,
+      "vn_shape_equal": true,
+      "vn_max_abs_error": 0.0
+    },
+    "energy_white_panels.obj": {
+      "v": 444,
+      "vn": 444,
+      "f": 348,
+      "faces_identical": true,
+      "v_shape_equal": true,
+      "v_max_abs_error": 0.0,
+      "vn_shape_equal": true,
+      "vn_max_abs_error": 0.0
+    },
+    "energy_gray_body.obj": {
+      "v": 12046,
+      "vn": 12046,
+      "f": 15730,
+      "faces_identical": false,
+      "v_shape_equal": true,
+      "v_max_abs_error": 0.0,
+      "vn_shape_equal": true,
+      "vn_max_abs_error": 0.0
+    }
+  },
+  "energy_unit_rule": {
+    "energy_bore_internal_repairs.obj": {
+      "v": 489,
+      "vn": 489,
+      "f": 593,
+      "faces_identical": false,
+      "v_shape_equal": true,
+      "v_max_abs_error": 9.999999786569624e-11,
+      "vn_shape_equal": true,
+      "vn_max_abs_error": 0.0
+    },
+    "energy_bore_stop.obj": {
+      "v": 181,
+      "vn": 181,
+      "f": 180,
+      "faces_identical": true,
+      "v_shape_equal": true,
+      "v_max_abs_error": 0.0,
+      "vn_shape_equal": true,
+      "vn_max_abs_error": 0.0
+    },
+    "energy_white_panels.obj": {
+      "v": 444,
+      "vn": 444,
+      "f": 348,
+      "faces_identical": true,
+      "v_shape_equal": true,
+      "v_max_abs_error": 0.0,
+      "vn_shape_equal": true,
+      "vn_max_abs_error": 0.0
+    },
+    "energy_bore_liner.obj": {
+      "v": 360,
+      "vn": 360,
+      "f": 360,
+      "faces_identical": true,
+      "v_shape_equal": true,
+      "v_max_abs_error": 0.0,
+      "vn_shape_equal": true,
+      "vn_max_abs_error": 0.0
+    },
+    "energy_gray_body_rule.obj": {
+      "v": 12046,
+      "vn": 12046,
+      "f": 15158,
+      "faces_identical": false,
+      "v_shape_equal": true,
+      "v_max_abs_error": 0.0,
+      "vn_shape_equal": true,
+      "vn_max_abs_error": 0.0
+    }
+  }
+}

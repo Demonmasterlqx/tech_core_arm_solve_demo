@@ -1,0 +1,3329 @@
+{
+  "suite_sha256": "7e5ecf8443e10e66a11280fe49fb97b7ad54ffd8e05381ee50c6a02b6f8bbb0a",
+  "inputs": {
+    "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/runs.csv": "75afddd5bb4ead9d9cc4320169c0c5db73518556d9625ece02fd26cf177c0b0e",
+    "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/runs.csv": "8aef226a4c374dee36bc81c859844931d6eb1489aa71009ff493a65ee08a7b15"
+  },
+  "command": [
+    "scripts/summarize_planner_quality.py",
+    "--suite",
+    "docs/evidence/q_collision_recovery",
+    "--runs",
+    "artifacts/reproduction-20261013/q_collision_recovery/baseline",
+    "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache",
+    "--certificate-root",
+    "artifacts/reproduction-20261013/q_collision_recovery",
+    "--output",
+    "artifacts/reproduction-20261013/q_collision_recovery/audit"
+  ],
+  "scope": "Positive trajectory certificates are a lower bound on reachability. Unknown failures stay in raw totals; conditional rates are not whole-cube rates.",
+  "summaries": {
+    "baseline/development/all": {
+      "total": 65,
+      "successes": 20,
+      "raw_rate": 0.3076923076923077,
+      "certified_reachable": 20,
+      "certified_successes": 20,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_zero",
+        "development_001_preset",
+        "development_004_preset",
+        "development_005_zero",
+        "development_005_preset",
+        "development_007_zero",
+        "development_007_preset",
+        "development_008_zero",
+        "development_008_preset",
+        "development_010_zero",
+        "development_010_preset",
+        "development_011_zero",
+        "development_011_preset",
+        "development_012_zero",
+        "development_012_preset",
+        "development_015_zero",
+        "development_015_preset",
+        "development_016_preset",
+        "development_017_zero",
+        "development_017_preset",
+        "development_018_preset",
+        "development_019_zero",
+        "development_019_preset",
+        "development_020_zero",
+        "development_020_preset",
+        "development_021_zero",
+        "development_021_preset",
+        "development_022_zero",
+        "development_022_preset",
+        "development_023_preset",
+        "development_024_zero",
+        "development_024_preset",
+        "development_025_zero",
+        "development_025_preset",
+        "development_026_zero",
+        "development_026_preset",
+        "development_027_zero",
+        "development_027_preset",
+        "development_028_zero",
+        "development_028_preset",
+        "development_029_preset",
+        "development_030_zero",
+        "development_030_preset",
+        "development_031_zero",
+        "development_031_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 2,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.060684": 1,
+        "ik_flip_187_iteration limit": 3,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.003014": 1,
+        "collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.027256": 1,
+        "preinsert_goal_collision_j2_link_visual/collision_core_shell": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.029762": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 3,
+        "ik_flip_192_iteration limit": 3,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 3,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.059439": 1,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 2,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015531": 1,
+        "deadline_during_approach": 3,
+        "collision_coarse_approach_j2_link_visual/collision_core_shell": 3,
+        "ik_flip_133_iteration limit": 2,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025849": 1,
+        "ik_flip_207_iteration limit": 2,
+        "ik_flip_173_iteration limit": 2,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.005482": 1,
+        "start_collision_carried_unit_flange_13/collision_core_shell_d=-0.000017": 1,
+        "ik_flip_177_iteration limit": 2,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.038233": 1,
+        "start_collision_carried_unit_flange_0/collision_core_shell_d=-0.008059": 1
+      },
+      "seconds": {
+        "n": 65,
+        "mean": 1.8013137097076923,
+        "p50": 1.494026195,
+        "p95": 4.221582067199999,
+        "max": 4.869397315
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/development/preset": {
+      "total": 32,
+      "successes": 7,
+      "raw_rate": 0.21875,
+      "certified_reachable": 7,
+      "certified_successes": 7,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_preset",
+        "development_004_preset",
+        "development_005_preset",
+        "development_007_preset",
+        "development_008_preset",
+        "development_010_preset",
+        "development_011_preset",
+        "development_012_preset",
+        "development_015_preset",
+        "development_016_preset",
+        "development_017_preset",
+        "development_018_preset",
+        "development_019_preset",
+        "development_020_preset",
+        "development_021_preset",
+        "development_022_preset",
+        "development_023_preset",
+        "development_024_preset",
+        "development_025_preset",
+        "development_026_preset",
+        "development_027_preset",
+        "development_028_preset",
+        "development_029_preset",
+        "development_030_preset",
+        "development_031_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.060684": 1,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.003014": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.027256": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.029762": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 2,
+        "ik_flip_192_iteration limit": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 2,
+        "ik_flip_187_iteration limit": 1,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.059439": 1,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015531": 1,
+        "collision_coarse_approach_j2_link_visual/collision_core_shell": 3,
+        "ik_flip_133_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025849": 1,
+        "ik_flip_207_iteration limit": 1,
+        "ik_flip_173_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.005482": 1,
+        "start_collision_carried_unit_flange_13/collision_core_shell_d=-0.000017": 1,
+        "ik_flip_177_iteration limit": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.038233": 1,
+        "start_collision_carried_unit_flange_0/collision_core_shell_d=-0.008059": 1
+      },
+      "seconds": {
+        "n": 32,
+        "mean": 1.0553767919375,
+        "p50": 1.0862786834999998,
+        "p95": 3.16799827975,
+        "max": 4.280098725
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/development/zero": {
+      "total": 33,
+      "successes": 13,
+      "raw_rate": 0.3939393939393939,
+      "certified_reachable": 13,
+      "certified_successes": 13,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_zero",
+        "development_005_zero",
+        "development_007_zero",
+        "development_008_zero",
+        "development_010_zero",
+        "development_011_zero",
+        "development_012_zero",
+        "development_015_zero",
+        "development_017_zero",
+        "development_019_zero",
+        "development_020_zero",
+        "development_021_zero",
+        "development_022_zero",
+        "development_024_zero",
+        "development_025_zero",
+        "development_026_zero",
+        "development_027_zero",
+        "development_028_zero",
+        "development_030_zero",
+        "development_031_zero"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 1,
+        "ik_flip_187_iteration limit": 2,
+        "collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5": 1,
+        "preinsert_goal_collision_j2_link_visual/collision_core_shell": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 1,
+        "ik_flip_192_iteration limit": 2,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 1,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 2,
+        "deadline_during_approach": 3,
+        "ik_flip_133_iteration limit": 1,
+        "ik_flip_207_iteration limit": 1,
+        "ik_flip_173_iteration limit": 1,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 1,
+        "ik_flip_177_iteration limit": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 1
+      },
+      "seconds": {
+        "n": 33,
+        "mean": 2.5246464784545455,
+        "p50": 2.444663486,
+        "p95": 4.4085832921999994,
+        "max": 4.869397315
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/negative/all": {
+      "total": 4,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_zero",
+        "unreachable_zero",
+        "blocked_preset",
+        "unreachable_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "ik_preinsert_iteration limit": 2,
+        "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000": 1
+      },
+      "seconds": {
+        "n": 4,
+        "mean": 0.3245478635,
+        "p50": 0.4190869685,
+        "p95": 0.45419583645,
+        "max": 0.458235402
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/negative/preset": {
+      "total": 2,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_preset",
+        "unreachable_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000": 1,
+        "ik_preinsert_iteration limit": 1
+      },
+      "seconds": {
+        "n": 2,
+        "mean": 0.21654353999999998,
+        "p50": 0.21654353999999998,
+        "p95": 0.40982882249999997,
+        "max": 0.431304965
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/negative/zero": {
+      "total": 2,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_zero",
+        "unreachable_zero"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "ik_preinsert_iteration limit": 1
+      },
+      "seconds": {
+        "n": 2,
+        "mean": 0.432552187,
+        "p50": 0.432552187,
+        "p95": 0.4556670805,
+        "max": 0.458235402
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/regression/all": {
+      "total": 40,
+      "successes": 37,
+      "raw_rate": 0.925,
+      "certified_reachable": 37,
+      "certified_successes": 37,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "legacy_pose06",
+        "legacy_pose15",
+        "legacy_pose30"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_208_iteration limit": 2,
+        "ik_flip_209_iteration limit": 1
+      },
+      "seconds": {
+        "n": 40,
+        "mean": 1.359867742225,
+        "p50": 1.369473021,
+        "p95": 1.6836691312499996,
+        "max": 1.836263985
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/regression/legacy": {
+      "total": 40,
+      "successes": 37,
+      "raw_rate": 0.925,
+      "certified_reachable": 37,
+      "certified_successes": 37,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "legacy_pose06",
+        "legacy_pose15",
+        "legacy_pose30"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_208_iteration limit": 2,
+        "ik_flip_209_iteration limit": 1
+      },
+      "seconds": {
+        "n": 40,
+        "mean": 1.359867742225,
+        "p50": 1.369473021,
+        "p95": 1.6836691312499996,
+        "max": 1.836263985
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/development/all": {
+      "total": 65,
+      "successes": 20,
+      "raw_rate": 0.3076923076923077,
+      "certified_reachable": 20,
+      "certified_successes": 20,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_zero",
+        "development_001_preset",
+        "development_004_preset",
+        "development_005_zero",
+        "development_005_preset",
+        "development_007_zero",
+        "development_007_preset",
+        "development_008_zero",
+        "development_008_preset",
+        "development_010_zero",
+        "development_010_preset",
+        "development_011_zero",
+        "development_011_preset",
+        "development_012_zero",
+        "development_012_preset",
+        "development_015_zero",
+        "development_015_preset",
+        "development_016_preset",
+        "development_017_zero",
+        "development_017_preset",
+        "development_018_preset",
+        "development_019_zero",
+        "development_019_preset",
+        "development_020_zero",
+        "development_020_preset",
+        "development_021_zero",
+        "development_021_preset",
+        "development_022_zero",
+        "development_022_preset",
+        "development_023_preset",
+        "development_024_zero",
+        "development_024_preset",
+        "development_025_zero",
+        "development_025_preset",
+        "development_026_zero",
+        "development_026_preset",
+        "development_027_zero",
+        "development_027_preset",
+        "development_028_zero",
+        "development_028_preset",
+        "development_029_preset",
+        "development_030_zero",
+        "development_030_preset",
+        "development_031_zero",
+        "development_031_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 2,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.060684": 1,
+        "ik_flip_187_iteration limit": 3,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.003014": 1,
+        "deadline_during_approach": 5,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.027256": 1,
+        "preinsert_goal_collision_j2_link_visual/collision_core_shell": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.029762": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 4,
+        "ik_flip_192_iteration limit": 3,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 1,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.059439": 1,
+        "collision_coarse_lift_j2_link_visual/collision_core_shell": 1,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015531": 1,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 2,
+        "ik_flip_133_iteration limit": 2,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025849": 1,
+        "ik_flip_207_iteration limit": 2,
+        "ik_flip_173_iteration limit": 2,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.005482": 1,
+        "start_collision_carried_unit_flange_13/collision_core_shell_d=-0.000017": 1,
+        "ik_flip_177_iteration limit": 2,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.038233": 1,
+        "collision_coarse_lift_j5_link_visual/collision_core_shell": 1,
+        "collision_coarse_lift_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "start_collision_carried_unit_flange_0/collision_core_shell_d=-0.008059": 1
+      },
+      "seconds": {
+        "n": 65,
+        "mean": 1.740002760876923,
+        "p50": 1.472021769,
+        "p95": 4.2502912965999995,
+        "max": 4.738705746
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/development/preset": {
+      "total": 32,
+      "successes": 7,
+      "raw_rate": 0.21875,
+      "certified_reachable": 7,
+      "certified_successes": 7,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_preset",
+        "development_004_preset",
+        "development_005_preset",
+        "development_007_preset",
+        "development_008_preset",
+        "development_010_preset",
+        "development_011_preset",
+        "development_012_preset",
+        "development_015_preset",
+        "development_016_preset",
+        "development_017_preset",
+        "development_018_preset",
+        "development_019_preset",
+        "development_020_preset",
+        "development_021_preset",
+        "development_022_preset",
+        "development_023_preset",
+        "development_024_preset",
+        "development_025_preset",
+        "development_026_preset",
+        "development_027_preset",
+        "development_028_preset",
+        "development_029_preset",
+        "development_030_preset",
+        "development_031_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.060684": 1,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.003014": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.027256": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.029762": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 3,
+        "ik_flip_192_iteration limit": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 1,
+        "ik_flip_187_iteration limit": 1,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.059439": 1,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015531": 1,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 2,
+        "ik_flip_133_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025849": 1,
+        "ik_flip_207_iteration limit": 1,
+        "ik_flip_173_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.005482": 1,
+        "start_collision_carried_unit_flange_13/collision_core_shell_d=-0.000017": 1,
+        "ik_flip_177_iteration limit": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.038233": 1,
+        "collision_coarse_lift_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "start_collision_carried_unit_flange_0/collision_core_shell_d=-0.008059": 1
+      },
+      "seconds": {
+        "n": 32,
+        "mean": 1.0326563046875,
+        "p50": 0.9574871229999999,
+        "p95": 2.76444738295,
+        "max": 4.272229415
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/development/zero": {
+      "total": 33,
+      "successes": 13,
+      "raw_rate": 0.3939393939393939,
+      "certified_reachable": 13,
+      "certified_successes": 13,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_zero",
+        "development_005_zero",
+        "development_007_zero",
+        "development_008_zero",
+        "development_010_zero",
+        "development_011_zero",
+        "development_012_zero",
+        "development_015_zero",
+        "development_017_zero",
+        "development_019_zero",
+        "development_020_zero",
+        "development_021_zero",
+        "development_022_zero",
+        "development_024_zero",
+        "development_025_zero",
+        "development_026_zero",
+        "development_027_zero",
+        "development_028_zero",
+        "development_030_zero",
+        "development_031_zero"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 1,
+        "ik_flip_187_iteration limit": 2,
+        "deadline_during_approach": 5,
+        "preinsert_goal_collision_j2_link_visual/collision_core_shell": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 1,
+        "ik_flip_192_iteration limit": 2,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 1,
+        "collision_coarse_lift_j2_link_visual/collision_core_shell": 1,
+        "ik_flip_133_iteration limit": 1,
+        "ik_flip_207_iteration limit": 1,
+        "ik_flip_173_iteration limit": 1,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 1,
+        "ik_flip_177_iteration limit": 1,
+        "collision_coarse_lift_j5_link_visual/collision_core_shell": 1
+      },
+      "seconds": {
+        "n": 33,
+        "mean": 2.425914475969697,
+        "p50": 1.867558708,
+        "p95": 4.3324277694,
+        "max": 4.738705746
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/negative/all": {
+      "total": 4,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_zero",
+        "unreachable_zero",
+        "blocked_preset",
+        "unreachable_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "ik_preinsert_iteration limit": 2,
+        "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000": 1
+      },
+      "seconds": {
+        "n": 4,
+        "mean": 0.344621258,
+        "p50": 0.429364811,
+        "p95": 0.51395251975,
+        "max": 0.515322574
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/negative/preset": {
+      "total": 2,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_preset",
+        "unreachable_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000": 1,
+        "ik_preinsert_iteration limit": 1
+      },
+      "seconds": {
+        "n": 2,
+        "mean": 0.259877705,
+        "p50": 0.259877705,
+        "p95": 0.48977808710000004,
+        "max": 0.515322574
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/negative/zero": {
+      "total": 2,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_zero",
+        "unreachable_zero"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "ik_preinsert_iteration limit": 1
+      },
+      "seconds": {
+        "n": 2,
+        "mean": 0.429364811,
+        "p50": 0.429364811,
+        "p95": 0.4985064722,
+        "max": 0.506188879
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/regression/all": {
+      "total": 40,
+      "successes": 37,
+      "raw_rate": 0.925,
+      "certified_reachable": 37,
+      "certified_successes": 37,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "legacy_pose06",
+        "legacy_pose15",
+        "legacy_pose30"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_208_iteration limit": 2,
+        "ik_flip_209_iteration limit": 1
+      },
+      "seconds": {
+        "n": 40,
+        "mean": 1.3046333069,
+        "p50": 1.2744978615,
+        "p95": 1.68420163605,
+        "max": 1.783682137
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/regression/legacy": {
+      "total": 40,
+      "successes": 37,
+      "raw_rate": 0.925,
+      "certified_reachable": 37,
+      "certified_successes": 37,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "legacy_pose06",
+        "legacy_pose15",
+        "legacy_pose30"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_208_iteration limit": 2,
+        "ik_flip_209_iteration limit": 1
+      },
+      "seconds": {
+        "n": 40,
+        "mean": 1.3046333069,
+        "p50": 1.2744978615,
+        "p95": 1.68420163605,
+        "max": 1.783682137
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    }
+  },
+  "nominal": [
+    {
+      "current": {
+        "case": "development_000_zero",
+        "split": "development",
+        "group": "demo",
+        "start": "zero",
+        "method": "baseline",
+        "success": "1",
+        "plan_success": "1",
+        "reason": "validated_full_q",
+        "seconds": "1.329788819",
+        "ik_seconds": "0.36904551099999983",
+        "approach_seconds": "0.28904712300000002",
+        "validation_seconds": "0.54878768700000025",
+        "knots": "613",
+        "q_positive": "90",
+        "q_negative": "-90",
+        "q_travel": "270",
+        "full_q": "1",
+        "positive_stop": "travel_limit",
+        "negative_stop": "travel_limit",
+        "total_l1": "26.916335346202313",
+        "mandatory_l1": "15.704964709529531",
+        "approach_l1": "8.4547043412693572",
+        "approach_last_joint_l1": "0.56935038967420348",
+        "assembly_l1": "7.2502603682601681",
+        "max_joint_step": "0.024650992916182224",
+        "audit_valid": "1",
+        "audit_reason": "validated",
+        "audit_samples": "2136",
+        "posture_candidates": "2",
+        "planning_attempts": "1",
+        "preinsert_ik_attempts": "26",
+        "posture_search_seconds": "0.176594644",
+        "ik_iterations": "15877",
+        "fk_evals": "29863",
+        "collision_states": "6686",
+        "narrowphase_calls": "296967",
+        "trajectory": "trajectories/development_000_zero.csv",
+        "preinsert_l1": 7.950920865504819,
+        "preinsert_last_delta": 0.5,
+        "preinsert_travel": 7.950920865504818,
+        "preinsert_last_travel": 0.5
+      },
+      "original": null
+    },
+    {
+      "current": {
+        "case": "development_000_preset",
+        "split": "development",
+        "group": "demo",
+        "start": "preset",
+        "method": "baseline",
+        "success": "1",
+        "plan_success": "1",
+        "reason": "validated_full_q",
+        "seconds": "1.1482398709999999",
+        "ik_seconds": "0.69230999299999985",
+        "approach_seconds": "0.023750456999999999",
+        "validation_seconds": "0.28897846099999985",
+        "knots": "521",
+        "q_positive": "90",
+        "q_negative": "-90",
+        "q_travel": "270",
+        "full_q": "1",
+        "positive_stop": "travel_limit",
+        "negative_stop": "travel_limit",
+        "total_l1": "16.8644264940928",
+        "mandatory_l1": "9.2231875996113004",
+        "approach_l1": "0.85901550882342526",
+        "approach_last_joint_l1": "0.27191919454554014",
+        "assembly_l1": "8.364172090787882",
+        "max_joint_step": "0.024704868208656861",
+        "audit_valid": "1",
+        "audit_reason": "validated",
+        "audit_samples": "1356",
+        "posture_candidates": "2",
+        "planning_attempts": "1",
+        "preinsert_ik_attempts": "25",
+        "posture_search_seconds": "0.20004661600000001",
+        "ik_iterations": "11748",
+        "fk_evals": "30628",
+        "collision_states": "5226",
+        "narrowphase_calls": "257493",
+        "trajectory": "trajectories/development_000_preset.csv",
+        "preinsert_l1": 0.28290668142388464,
+        "preinsert_last_delta": 0.09005389329201874,
+        "preinsert_travel": 0.28290668142388464,
+        "preinsert_last_travel": 0.09005389329201874
+      },
+      "original": null
+    },
+    {
+      "current": {
+        "case": "development_000_zero",
+        "split": "development",
+        "group": "demo",
+        "start": "zero",
+        "method": "rigid_cache",
+        "success": "1",
+        "plan_success": "1",
+        "reason": "validated_full_q",
+        "seconds": "1.281618768",
+        "ik_seconds": "0.32731294000000005",
+        "approach_seconds": "0.29077472500000001",
+        "validation_seconds": "0.5323655909999998",
+        "knots": "613",
+        "q_positive": "90",
+        "q_negative": "-90",
+        "q_travel": "270",
+        "full_q": "1",
+        "positive_stop": "travel_limit",
+        "negative_stop": "travel_limit",
+        "total_l1": "26.889963797199652",
+        "mandatory_l1": "15.711348057968037",
+        "approach_l1": "8.4546339536601582",
+        "approach_last_joint_l1": "0.56935676488228082",
+        "assembly_l1": "7.2567141043078776",
+        "max_joint_step": "0.024766115771960751",
+        "audit_valid": "1",
+        "audit_reason": "validated",
+        "audit_samples": "2136",
+        "posture_candidates": "2",
+        "planning_attempts": "1",
+        "preinsert_ik_attempts": "26",
+        "posture_search_seconds": "0.143582024",
+        "ik_iterations": "3528",
+        "fk_evals": "19404",
+        "collision_states": "6686",
+        "narrowphase_calls": "297969",
+        "trajectory": "trajectories/development_000_zero.csv",
+        "preinsert_l1": 7.950920865504819,
+        "preinsert_last_delta": 0.5,
+        "preinsert_travel": 7.950920865504818,
+        "preinsert_last_travel": 0.5
+      },
+      "original": null
+    },
+    {
+      "current": {
+        "case": "development_000_preset",
+        "split": "development",
+        "group": "demo",
+        "start": "preset",
+        "method": "rigid_cache",
+        "success": "1",
+        "plan_success": "1",
+        "reason": "validated_full_q",
+        "seconds": "1.185324673",
+        "ik_seconds": "0.71104324500000005",
+        "approach_seconds": "0.028027667999999999",
+        "validation_seconds": "0.28410474399999991",
+        "knots": "521",
+        "q_positive": "90",
+        "q_negative": "-90",
+        "q_travel": "270",
+        "full_q": "1",
+        "positive_stop": "travel_limit",
+        "negative_stop": "travel_limit",
+        "total_l1": "16.869109081740415",
+        "mandatory_l1": "9.2259619895198561",
+        "approach_l1": "0.86042160720524907",
+        "approach_last_joint_l1": "0.27166180210882507",
+        "assembly_l1": "8.3655403823146059",
+        "max_joint_step": "0.02450866846699129",
+        "audit_valid": "1",
+        "audit_reason": "validated",
+        "audit_samples": "1356",
+        "posture_candidates": "2",
+        "planning_attempts": "1",
+        "preinsert_ik_attempts": "25",
+        "posture_search_seconds": "0.21459990300000001",
+        "ik_iterations": "4799",
+        "fk_evals": "24661",
+        "collision_states": "5226",
+        "narrowphase_calls": "257484",
+        "trajectory": "trajectories/development_000_preset.csv",
+        "preinsert_l1": 0.28390746043405235,
+        "preinsert_last_delta": 0.08936336015992774,
+        "preinsert_travel": 0.28390746043405235,
+        "preinsert_last_travel": 0.08936336015992774
+      },
+      "original": null
+    }
+  ],
+  "certificates": {
+    "development_000_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_000_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_000_zero.csv"
+    ],
+    "development_000_preset": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_000_preset.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_000_preset.csv"
+    ],
+    "development_002_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_002_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_002_zero.csv"
+    ],
+    "development_002_preset": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_002_preset.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_002_preset.csv"
+    ],
+    "development_003_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_003_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_003_zero.csv"
+    ],
+    "development_003_preset": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_003_preset.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_003_preset.csv"
+    ],
+    "development_004_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_004_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_004_zero.csv"
+    ],
+    "development_006_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_006_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_006_zero.csv"
+    ],
+    "development_006_preset": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_006_preset.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_006_preset.csv"
+    ],
+    "development_009_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_009_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_009_zero.csv"
+    ],
+    "development_009_preset": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_009_preset.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_009_preset.csv"
+    ],
+    "development_013_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_013_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_013_zero.csv"
+    ],
+    "development_013_preset": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_013_preset.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_013_preset.csv"
+    ],
+    "development_014_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_014_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_014_zero.csv"
+    ],
+    "development_014_preset": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_014_preset.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_014_preset.csv"
+    ],
+    "development_016_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_016_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_016_zero.csv"
+    ],
+    "development_018_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_018_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_018_zero.csv"
+    ],
+    "development_023_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_023_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_023_zero.csv"
+    ],
+    "development_029_zero": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/development_029_zero.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/development_029_zero.csv"
+    ],
+    "legacy_pose01": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose01.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose01.csv"
+    ],
+    "legacy_pose02": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose02.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose02.csv"
+    ],
+    "legacy_pose03": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose03.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose03.csv"
+    ],
+    "legacy_pose04": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose04.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose04.csv"
+    ],
+    "legacy_pose05": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose05.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose05.csv"
+    ],
+    "legacy_pose07": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose07.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose07.csv"
+    ],
+    "legacy_pose08": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose08.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose08.csv"
+    ],
+    "legacy_pose09": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose09.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose09.csv"
+    ],
+    "legacy_pose10": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose10.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose10.csv"
+    ],
+    "legacy_pose11": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose11.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose11.csv"
+    ],
+    "legacy_pose12": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose12.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose12.csv"
+    ],
+    "legacy_pose13": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose13.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose13.csv"
+    ],
+    "legacy_pose14": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose14.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose14.csv"
+    ],
+    "legacy_pose16": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose16.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose16.csv"
+    ],
+    "legacy_pose17": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose17.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose17.csv"
+    ],
+    "legacy_pose18": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose18.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose18.csv"
+    ],
+    "legacy_pose19": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose19.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose19.csv"
+    ],
+    "legacy_pose20": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose20.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose20.csv"
+    ],
+    "legacy_pose21": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose21.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose21.csv"
+    ],
+    "legacy_pose22": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose22.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose22.csv"
+    ],
+    "legacy_pose23": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose23.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose23.csv"
+    ],
+    "legacy_pose24": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose24.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose24.csv"
+    ],
+    "legacy_pose25": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose25.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose25.csv"
+    ],
+    "legacy_pose26": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose26.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose26.csv"
+    ],
+    "legacy_pose27": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose27.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose27.csv"
+    ],
+    "legacy_pose28": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose28.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose28.csv"
+    ],
+    "legacy_pose29": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose29.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose29.csv"
+    ],
+    "legacy_pose31": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose31.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose31.csv"
+    ],
+    "legacy_pose32": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose32.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose32.csv"
+    ],
+    "legacy_pose33": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose33.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose33.csv"
+    ],
+    "legacy_pose34": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose34.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose34.csv"
+    ],
+    "legacy_pose35": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose35.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose35.csv"
+    ],
+    "legacy_pose36": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose36.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose36.csv"
+    ],
+    "legacy_pose37": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose37.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose37.csv"
+    ],
+    "legacy_pose38": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose38.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose38.csv"
+    ],
+    "legacy_pose39": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose39.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose39.csv"
+    ],
+    "legacy_pose40": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/legacy_pose40.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/legacy_pose40.csv"
+    ],
+    "screenshot_179": [
+      "artifacts/reproduction-20261013/q_collision_recovery/baseline/results/trajectories/screenshot_179.csv",
+      "artifacts/reproduction-20261013/q_collision_recovery/rigid_cache/results/trajectories/screenshot_179.csv"
+    ]
+  },
+  "urdf_sha256": "e19f7e34345a5653b0261d85b04bf4b7a15bdddcc12f4e01119947440e4fa8f9",
+  "scene_sha256": "f0492a28ddf9eac6f0ba71aa7bc7754fcae698f4c6d655e9fbfdeeda6d07a903",
+  "independent_audit": {
+    "records": 218,
+    "failures": []
+  }
+}

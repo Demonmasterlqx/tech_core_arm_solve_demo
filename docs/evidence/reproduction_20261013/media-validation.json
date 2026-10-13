@@ -1,0 +1,93 @@
+{
+  "complete": true,
+  "videos": [
+    {
+      "file": "media/pose40_q_sweep.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 20,
+      "frames": 2654,
+      "duration_seconds": 132.7,
+      "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+      "sha256": "a751485535ee0450a570aab4abe5a129ce06ae280b4b9d19ea9773a0ed372651",
+      "preview": "media/pose40_q_sweep.preview.png"
+    },
+    {
+      "file": "media/pose40_q_sweep-detail.mp4",
+      "width": 1600,
+      "height": 900,
+      "fps": 24,
+      "frames": 619,
+      "duration_seconds": 25.791667,
+      "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+      "sha256": "3e16662e9ec2d42eb9e8f14a70c10e71b4028538d22653c031e456a8774251e9",
+      "preview": "media/pose40_q_sweep-detail.preview.png"
+    },
+    {
+      "file": "media/pose40_online.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 20,
+      "frames": 2763,
+      "duration_seconds": 138.15,
+      "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+      "sha256": "98e0395b860f69117c725766326dc428ee6fce697b1b7b9b9eb49c0e46377b37",
+      "preview": "media/pose40_online.preview.png"
+    },
+    {
+      "file": "media/pose40_online-detail.mp4",
+      "width": 1600,
+      "height": 900,
+      "fps": 24,
+      "frames": 619,
+      "duration_seconds": 25.791667,
+      "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+      "sha256": "ade9fd15d8dc6030918d388a0b4dc0e8b18dc3e80a473b9831a41e041cea534f",
+      "preview": "media/pose40_online-detail.preview.png"
+    },
+    {
+      "file": "media/pose40_q_range.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 20,
+      "frames": 2758,
+      "duration_seconds": 137.9,
+      "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+      "sha256": "4bdd7ba4e3b6d3fe9f35124d1cb86b94eb5f04879b5bf7c045bd34148d249bb1",
+      "preview": "media/pose40_q_range.preview.png"
+    },
+    {
+      "file": "media/pose40_q_range-detail.mp4",
+      "width": 1600,
+      "height": 900,
+      "fps": 24,
+      "frames": 594,
+      "duration_seconds": 24.75,
+      "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+      "sha256": "6916f5d7b7fb5b207d9784503d9245d1b60682a07c227d33a2bb5480fded9e97",
+      "preview": "media/pose40_q_range-detail.preview.png"
+    },
+    {
+      "file": "media/level3_video_closer.mp4",
+      "width": 1600,
+      "height": 900,
+      "fps": 24,
+      "frames": 1256,
+      "duration_seconds": 52.333333,
+      "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+      "sha256": "746ca17c603dfb12e1348649dbd226f1aeb7780b5973d641057adad3f354736c",
+      "preview": "media/level3_video_closer.preview.png"
+    },
+    {
+      "file": "media/level3_video_lowered_tilted_4x.mp4",
+      "width": 1600,
+      "height": 900,
+      "fps": 24,
+      "frames": 347,
+      "duration_seconds": 14.458333,
+      "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+      "sha256": "d79be731a08f573bc298355d61f11eea1c65fb6c390ece6d26a2cd69a87e813b",
+      "preview": "media/level3_video_lowered_tilted_4x.preview.png"
+    }
+  ]
+}

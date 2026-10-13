@@ -1,5 +1,7 @@
 # RM26 机械臂验证记录
 
+本页保留独立机械臂最初的验证记录。2026-10-13 当前环境的构建、FK 与 X11/XTest 复验见 [本机复现记录](reproduction_20261013.md)，当前操作见 [机械臂说明](rm26_arm.md)。
+
 验证日期：2026-10-11。C++17 / GCC 11.4、MuJoCo 3.3.7；软件渲染为 `llvmpipe (LLVM 15.0.7, 256 bits)`。以下结果来自实际编译、加载模型和运行，不是静态代码推断。结构化记录见 [runtime.json](evidence/rm26-arm-runtime.json)。
 
 | 项目 | 实际结果 |

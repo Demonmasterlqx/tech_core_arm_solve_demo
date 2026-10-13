@@ -1,0 +1,132 @@
+{
+  "old_pdf_url": "https://hz-rm-bbs-web-prod.oss-cn-hangzhou.aliyuncs.com/5fbd46b110e542faaea519a6dd3065761782460789174/RoboMaster%202026%20%E6%9C%BA%E7%94%B2%E5%A4%A7%E5%B8%88%E8%B6%85%E7%BA%A7%E5%AF%B9%E6%8A%97%E8%B5%9B%E6%AF%94%E8%B5%9B%E8%A7%84%E5%88%99%E6%89%8B%E5%86%8CV2.0.0%EF%BC%8820260626%EF%BC%89.pdf",
+  "old_pdf_sha256": "59d65aac5bac75fd6bbab157e224eb936b49cd2b9d60381fbe196fad635b473a",
+  "images": [
+    {
+      "image": "image-000.png",
+      "old_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+      "new_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-001.png",
+      "old_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+      "new_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-002.png",
+      "old_sha256": "697709bcad13096d793a8955afbade31f2917701539a16c8ebae8623a9abaf6c",
+      "new_sha256": "697709bcad13096d793a8955afbade31f2917701539a16c8ebae8623a9abaf6c",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-003.png",
+      "old_sha256": "22470e1430300fceef6860b92f40443e01c463a62287932bdf43ec2bf49289a1",
+      "new_sha256": "22470e1430300fceef6860b92f40443e01c463a62287932bdf43ec2bf49289a1",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-004.png",
+      "old_sha256": "1d7f9e9dab1b5204eda8ad73f9bf492b080dffffb9bad3367b942272826d9e22",
+      "new_sha256": "1d7f9e9dab1b5204eda8ad73f9bf492b080dffffb9bad3367b942272826d9e22",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-005.png",
+      "old_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+      "new_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-006.png",
+      "old_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+      "new_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-007.png",
+      "old_sha256": "66f58a46ed0651e9ce2354f1b71e51cfc57485c6f77a232cd5d3c6ce1eff4325",
+      "new_sha256": "66f58a46ed0651e9ce2354f1b71e51cfc57485c6f77a232cd5d3c6ce1eff4325",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-008.png",
+      "old_sha256": "7ba48b044449e032c93104f3137fc7ec83133c70c891ccc5f5bbb8868d9eb221",
+      "new_sha256": "7ba48b044449e032c93104f3137fc7ec83133c70c891ccc5f5bbb8868d9eb221",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-009.png",
+      "old_sha256": "b2f86be0a61de562573260d2e07fb21990f68d06f0ab47b4f83081af851f4618",
+      "new_sha256": "b2f86be0a61de562573260d2e07fb21990f68d06f0ab47b4f83081af851f4618",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-010.png",
+      "old_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+      "new_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-011.png",
+      "old_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+      "new_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-012.png",
+      "old_sha256": "054b782678553ee21201ddd4a89334663a577d510267fe6fc96717b5be544ae3",
+      "new_sha256": "054b782678553ee21201ddd4a89334663a577d510267fe6fc96717b5be544ae3",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-013.png",
+      "old_sha256": "5661d739c1a9ac8b07f03ce46ecab2205d4004ccc273e93d401460cf7053b0da",
+      "new_sha256": "5661d739c1a9ac8b07f03ce46ecab2205d4004ccc273e93d401460cf7053b0da",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-014.png",
+      "old_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+      "new_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-015.png",
+      "old_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+      "new_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-016.png",
+      "old_sha256": "1ff11718d94d7f0a5c31a6b4a653c1ae7b046f67dff676897d19dfd32e1117f9",
+      "new_sha256": "1ff11718d94d7f0a5c31a6b4a653c1ae7b046f67dff676897d19dfd32e1117f9",
+      "identical": true,
+      "matches_recorded_hash": true
+    },
+    {
+      "image": "image-017.png",
+      "old_sha256": "cc96b1b517475b1c964e28632cbe26f743ea2b82ecdc746273f01a983f6d1ba5",
+      "new_sha256": "cc96b1b517475b1c964e28632cbe26f743ea2b82ecdc746273f01a983f6d1ba5",
+      "identical": true,
+      "matches_recorded_hash": true
+    }
+  ]
+}

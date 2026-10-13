@@ -1,0 +1,29 @@
+[
+  {
+    "name": "pose40-q-range-current",
+    "command": [
+      "taskset",
+      "-c",
+      "8",
+      "python3",
+      "scripts/audit_planning_trajectories.py",
+      "artifacts/reproduction-20261013/pose40-q-range-current/trials",
+      "--expected-runs",
+      "106",
+      "--velocity-limit",
+      "4",
+      "--acceleration-limit",
+      "32",
+      "--online-joint-step",
+      ".004",
+      "--online-min-substeps",
+      "4"
+    ],
+    "timeout": 1800,
+    "started": "2026-10-13T07:01:41.530527+00:00",
+    "log": "logs/retry-audits-current-pose40-q-range-current.log",
+    "returncode": 0,
+    "passed": true,
+    "wall_seconds": 15.638137762000042
+  }
+]

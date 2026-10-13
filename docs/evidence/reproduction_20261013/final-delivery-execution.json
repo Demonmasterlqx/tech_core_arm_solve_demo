@@ -1,0 +1,88 @@
+[
+  {
+    "name": "package",
+    "command": [
+      "python3",
+      "scripts/package_delivery.py",
+      "--output",
+      "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/tech-core-reproduction-final.zip",
+      "--include-mujoco"
+    ],
+    "cwd": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/delivery-source",
+    "returncode": 0,
+    "wall_seconds": 15.025724542998432,
+    "log": "logs/final-delivery-package.log"
+  },
+  {
+    "name": "unpack",
+    "command": [
+      "unzip",
+      "-q",
+      "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/tech-core-reproduction-final.zip",
+      "-d",
+      "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/final-delivery-unpacked"
+    ],
+    "cwd": "/home/lqx/code/tech_core_arm_solve",
+    "returncode": 0,
+    "wall_seconds": 1.1233919940004853,
+    "log": "logs/final-delivery-unpack.log"
+  },
+  {
+    "name": "integrity",
+    "command": [
+      "git",
+      "fsck",
+      "--full"
+    ],
+    "cwd": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/final-delivery-unpacked/git_repository",
+    "returncode": 0,
+    "wall_seconds": 0.5672800189986447,
+    "log": "logs/final-delivery-integrity.log"
+  },
+  {
+    "name": "configure",
+    "command": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "cwd": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/final-delivery-unpacked/git_repository",
+    "returncode": 0,
+    "wall_seconds": 4.580907809000564,
+    "log": "logs/final-delivery-configure.log"
+  },
+  {
+    "name": "compile",
+    "command": [
+      "cmake",
+      "--build",
+      "build",
+      "-j4"
+    ],
+    "cwd": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/final-delivery-unpacked/git_repository",
+    "returncode": 0,
+    "wall_seconds": 23.476878024999678,
+    "log": "logs/final-delivery-compile.log"
+  },
+  {
+    "name": "ctest",
+    "command": [
+      "taskset",
+      "-c",
+      "14",
+      "ctest",
+      "--test-dir",
+      "build",
+      "--output-on-failure",
+      "--output-junit",
+      "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/final-delivery-ctest.xml"
+    ],
+    "cwd": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/final-delivery-unpacked/git_repository",
+    "returncode": 0,
+    "wall_seconds": 104.38059245899967,
+    "log": "logs/final-delivery-ctest.log"
+  }
+]

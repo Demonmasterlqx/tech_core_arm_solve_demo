@@ -1,0 +1,26 @@
+{
+  "output": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/tech-core-reproduction-final.zip",
+  "sha256": "6a72b2fda8297fa19e932e51a6bb13bc8b2f38a98882d935adff8f4960a7b939",
+  "bytes": 190703538,
+  "source_git_head": "1c90d7c8637fd4501bc2c615da1b71cdac5d0cfb",
+  "source_git_branch": "codex/keyboard-planning-demo",
+  "files_verified": 905,
+  "zip_crc_passed": true,
+  "manifest_verified": true,
+  "git_fsck_passed": true,
+  "independent_repository": true,
+  "rendered": true,
+  "include_mujoco": true,
+  "top_level_directories": [
+    "git_repository",
+    "documents"
+  ],
+  "fresh_unpack_verification": {
+    "passed": true,
+    "ctest_count": 25,
+    "source": "final-delivery-execution.json",
+    "path": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/final-delivery-unpacked/git_repository",
+    "git_clean": true,
+    "credential_file_excluded": true
+  }
+}

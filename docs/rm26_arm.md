@@ -1,5 +1,7 @@
 # RM26 七关节机械臂
 
+[文档索引](README.md) · [联合逆解与规划 Demo](planning_demo.md) · [最新复现记录](reproduction_20261013.md)
+
 `rm26_arm` 导入 HKUST RM26 version3 的真实机械臂网格和 URDF 关节链，固定底座、不包含底盘。它提供 C++ 关节位置/速度接口，以及基于 MuJoCo Jacobian 的键盘末端平移。驱动层使用运动学 mock；不计算电机力矩闭环或接触阻挡。与现有 `tech_core` 为两个独立入口。
 
 ![RM26 arm in MuJoCo](images/rm26-arm.png)

@@ -1,0 +1,306 @@
+[
+  {
+    "file": "energy_unit/energy_auxiliary_surfaces.obj",
+    "original": {
+      "vertices": 5360,
+      "faces": 5336,
+      "area_m2": 0.010370505725491159,
+      "bounds_m": [
+        [
+          0.025,
+          -0.0293124304,
+          -0.0324892838
+        ],
+        [
+          0.12792,
+          0.0293124304,
+          0.0324892838
+        ]
+      ]
+    },
+    "regenerated": {
+      "vertices": 5360,
+      "faces": 5336,
+      "area_m2": 0.010370505725491159,
+      "bounds_m": [
+        [
+          0.025,
+          -0.0293124304,
+          -0.0324892838
+        ],
+        [
+          0.12792,
+          0.0293124304,
+          0.0324892838
+        ]
+      ]
+    },
+    "surface_area_abs_difference_m2": 0.0
+  },
+  {
+    "file": "energy_unit/energy_white_panels.obj",
+    "original": {
+      "vertices": 444,
+      "faces": 348,
+      "area_m2": 0.024874466671192717,
+      "bounds_m": [
+        [
+          0.025,
+          -0.0299920221,
+          -0.0291731832
+        ],
+        [
+          0.12,
+          0.0299920221,
+          0.0291731832
+        ]
+      ]
+    },
+    "regenerated": {
+      "vertices": 444,
+      "faces": 348,
+      "area_m2": 0.024874466671192717,
+      "bounds_m": [
+        [
+          0.025,
+          -0.0299920221,
+          -0.0291731832
+        ],
+        [
+          0.12,
+          0.0299920221,
+          0.0291731832
+        ]
+      ]
+    },
+    "surface_area_abs_difference_m2": 0.0
+  },
+  {
+    "file": "energy_unit/energy_gray_body.obj",
+    "original": {
+      "vertices": 12046,
+      "faces": 15730,
+      "area_m2": 0.07005617251961811,
+      "bounds_m": [
+        [
+          -0.0,
+          -0.0475000007,
+          -0.0474774717
+        ],
+        [
+          0.15,
+          0.0474999961,
+          0.0474341763
+        ]
+      ]
+    },
+    "regenerated": {
+      "vertices": 12046,
+      "faces": 15730,
+      "area_m2": 0.07005617251961813,
+      "bounds_m": [
+        [
+          -0.0,
+          -0.0475000007,
+          -0.0474774717
+        ],
+        [
+          0.15,
+          0.0474999961,
+          0.0474341763
+        ]
+      ]
+    },
+    "surface_area_abs_difference_m2": 1.3877787807814457e-17
+  },
+  {
+    "file": "energy_unit_rule/energy_bore_internal_repairs.obj",
+    "original": {
+      "vertices": 489,
+      "faces": 593,
+      "area_m2": 0.004318919113602162,
+      "bounds_m": [
+        [
+          6.03e-08,
+          -0.035,
+          -0.0349786789
+        ],
+        [
+          0.01,
+          0.035,
+          0.0349786789
+        ]
+      ]
+    },
+    "regenerated": {
+      "vertices": 489,
+      "faces": 593,
+      "area_m2": 0.00431891911350711,
+      "bounds_m": [
+        [
+          6.03e-08,
+          -0.035,
+          -0.0349786789
+        ],
+        [
+          0.01,
+          0.035,
+          0.0349786789
+        ]
+      ]
+    },
+    "surface_area_abs_difference_m2": 9.505157078093518e-14
+  },
+  {
+    "file": "energy_unit_rule/energy_bore_stop.obj",
+    "original": {
+      "vertices": 181,
+      "faces": 180,
+      "area_m2": 0.0012563818818015163,
+      "bounds_m": [
+        [
+          0.1,
+          -0.02,
+          -0.02
+        ],
+        [
+          0.1,
+          0.02,
+          0.02
+        ]
+      ]
+    },
+    "regenerated": {
+      "vertices": 181,
+      "faces": 180,
+      "area_m2": 0.0012563818818015163,
+      "bounds_m": [
+        [
+          0.1,
+          -0.02,
+          -0.02
+        ],
+        [
+          0.1,
+          0.02,
+          0.02
+        ]
+      ]
+    },
+    "surface_area_abs_difference_m2": 0.0
+  },
+  {
+    "file": "energy_unit_rule/energy_white_panels.obj",
+    "original": {
+      "vertices": 444,
+      "faces": 348,
+      "area_m2": 0.024874466671192717,
+      "bounds_m": [
+        [
+          0.025,
+          -0.0299920221,
+          -0.0291731832
+        ],
+        [
+          0.12,
+          0.0299920221,
+          0.0291731832
+        ]
+      ]
+    },
+    "regenerated": {
+      "vertices": 444,
+      "faces": 348,
+      "area_m2": 0.024874466671192717,
+      "bounds_m": [
+        [
+          0.025,
+          -0.0299920221,
+          -0.0291731832
+        ],
+        [
+          0.12,
+          0.0299920221,
+          0.0291731832
+        ]
+      ]
+    },
+    "surface_area_abs_difference_m2": 0.0
+  },
+  {
+    "file": "energy_unit_rule/energy_bore_liner.obj",
+    "original": {
+      "vertices": 360,
+      "faces": 360,
+      "area_m2": 0.01194506840408117,
+      "bounds_m": [
+        [
+          0.0049393398,
+          -0.02,
+          -0.02
+        ],
+        [
+          0.1,
+          0.02,
+          0.02
+        ]
+      ]
+    },
+    "regenerated": {
+      "vertices": 360,
+      "faces": 360,
+      "area_m2": 0.01194506840408117,
+      "bounds_m": [
+        [
+          0.0049393398,
+          -0.02,
+          -0.02
+        ],
+        [
+          0.1,
+          0.02,
+          0.02
+        ]
+      ]
+    },
+    "surface_area_abs_difference_m2": 0.0
+  },
+  {
+    "file": "energy_unit_rule/energy_gray_body_rule.obj",
+    "original": {
+      "vertices": 12046,
+      "faces": 15158,
+      "area_m2": 0.06322403565230626,
+      "bounds_m": [
+        [
+          -0.0,
+          -0.0475000007,
+          -0.0474774717
+        ],
+        [
+          0.15,
+          0.0474999961,
+          0.0474341763
+        ]
+      ]
+    },
+    "regenerated": {
+      "vertices": 12046,
+      "faces": 15158,
+      "area_m2": 0.06322403565230626,
+      "bounds_m": [
+        [
+          -0.0,
+          -0.0475000007,
+          -0.0474774717
+        ],
+        [
+          0.15,
+          0.0474999961,
+          0.0474341763
+        ]
+      ]
+    },
+    "surface_area_abs_difference_m2": 0.0
+  }
+]

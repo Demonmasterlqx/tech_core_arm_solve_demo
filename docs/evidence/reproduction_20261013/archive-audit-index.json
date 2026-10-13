@@ -1,0 +1,84 @@
+{
+  "records": 1971,
+  "successes": 281,
+  "valid": true,
+  "batches": [
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_q_sweep",
+      "records": 40,
+      "successes": 21,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_q_sweep/trials",
+      "records": 533,
+      "successes": 21,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_online",
+      "records": 40,
+      "successes": 20,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_online/trials",
+      "records": 354,
+      "successes": 20,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_q_range",
+      "records": 40,
+      "successes": 35,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_q_range/trials",
+      "records": 310,
+      "successes": 35,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_q_range/controls/no_pre_q_screen",
+      "records": 40,
+      "successes": 32,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_q_range/controls/no_pre_q_screen/trials",
+      "records": 278,
+      "successes": 32,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_q_range/controls/no_state_cache",
+      "records": 40,
+      "successes": 30,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_q_range/controls/no_state_cache/trials",
+      "records": 256,
+      "successes": 30,
+      "valid": true,
+      "errors": []
+    },
+    {
+      "directory": "artifacts/reproduction-20261013/restored/pose40_online/direct_control",
+      "records": 40,
+      "successes": 5,
+      "valid": true,
+      "errors": []
+    }
+  ]
+}

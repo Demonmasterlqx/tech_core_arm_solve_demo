@@ -1,0 +1,7 @@
+{
+  "source_step_sha256": "8dfe9ebd761e44d91361b3e593bc05416329112217b58cb35800b3cde2ffae33",
+  "E_max_abs_difference_mm": 0.0,
+  "transform_max_abs_difference": 2.2737367544323206e-13,
+  "observed_components": 418,
+  "expected_components": 418
+}

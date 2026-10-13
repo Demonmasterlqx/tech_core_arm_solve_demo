@@ -1,0 +1,2162 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "source_commit": "0fbd7f7",
+  "artifacts": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013",
+  "versions": {
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "cmake": "cmake version 3.28.3",
+    "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+    "python": "Python 3.12.3",
+    "numpy": "1.26.4",
+    "blender": "Blender 4.5.0",
+    "pandoc": "pandoc 3.1.3",
+    "xelatex": "XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023/Debian)",
+    "python_offline_packages": [
+      "cadquery-ocp==7.8.1.1",
+      "scipy==1.16.2",
+      "shapely==2.1.1",
+      "trimesh==4.7.4",
+      "vtk==9.3.1"
+    ],
+    "cpu": {
+      "lscpu": [
+        {
+          "field": "Architecture:",
+          "data": "x86_64"
+        },
+        {
+          "field": "CPU op-mode(s):",
+          "data": "32-bit, 64-bit"
+        },
+        {
+          "field": "Address sizes:",
+          "data": "46 bits physical, 48 bits virtual"
+        },
+        {
+          "field": "Byte Order:",
+          "data": "Little Endian"
+        },
+        {
+          "field": "CPU(s):",
+          "data": "16"
+        },
+        {
+          "field": "On-line CPU(s) list:",
+          "data": "0-15"
+        },
+        {
+          "field": "Vendor ID:",
+          "data": "GenuineIntel"
+        },
+        {
+          "field": "Model name:",
+          "data": "Intel(R) Core(TM) Ultra 9 285H"
+        },
+        {
+          "field": "CPU family:",
+          "data": "6"
+        },
+        {
+          "field": "Model:",
+          "data": "197"
+        },
+        {
+          "field": "Thread(s) per core:",
+          "data": "1"
+        },
+        {
+          "field": "Core(s) per socket:",
+          "data": "16"
+        },
+        {
+          "field": "Socket(s):",
+          "data": "1"
+        },
+        {
+          "field": "Stepping:",
+          "data": "2"
+        },
+        {
+          "field": "BogoMIPS:",
+          "data": "7372.80"
+        },
+        {
+          "field": "Flags:",
+          "data": "fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni vnmi umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize ibt flush_l1d arch_capabilities"
+        },
+        {
+          "field": "Virtualization:",
+          "data": "VT-x"
+        },
+        {
+          "field": "Hypervisor vendor:",
+          "data": "Microsoft"
+        },
+        {
+          "field": "Virtualization type:",
+          "data": "full"
+        },
+        {
+          "field": "L1d cache:",
+          "data": "768 KiB (16 instances)"
+        },
+        {
+          "field": "L1i cache:",
+          "data": "1 MiB (16 instances)"
+        },
+        {
+          "field": "L2 cache:",
+          "data": "48 MiB (16 instances)"
+        },
+        {
+          "field": "L3 cache:",
+          "data": "24 MiB (1 instance)"
+        },
+        {
+          "field": "NUMA node(s):",
+          "data": "1"
+        },
+        {
+          "field": "NUMA node0 CPU(s):",
+          "data": "0-15"
+        },
+        {
+          "field": "Vulnerability Gather data sampling:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Ghostwrite:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Indirect target selection:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Itlb multihit:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability L1tf:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Mds:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Meltdown:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Mmio stale data:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Old microcode:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Reg file data sampling:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Retbleed:",
+          "data": "Mitigation; Enhanced IBRS"
+        },
+        {
+          "field": "Vulnerability Spec rstack overflow:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Spec store bypass:",
+          "data": "Mitigation; Speculative Store Bypass disabled via prctl"
+        },
+        {
+          "field": "Vulnerability Spectre v1:",
+          "data": "Mitigation; usercopy/swapgs barriers and __user pointer sanitization"
+        },
+        {
+          "field": "Vulnerability Spectre v2:",
+          "data": "Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S"
+        },
+        {
+          "field": "Vulnerability Srbds:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Tsa:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Tsx async abort:",
+          "data": "Not affected"
+        },
+        {
+          "field": "Vulnerability Vmscape:",
+          "data": "Not affected"
+        }
+      ]
+    }
+  },
+  "subagents": [],
+  "changes": [
+    "Restore seven script executable bits lost during extraction",
+    "Ignore local .env",
+    "Use 10 seconds for uncached detour correctness fixture and a 60-second CTest limit; planner budgets unchanged",
+    "Allow standalone quality audit without old run directories",
+    "Check Latin Modern and Zapf Dingbats before PDF generation"
+  ],
+  "current_quality": {
+    "planner_success100": {
+      "baseline": {
+        "requests": 100,
+        "valid_trajectories": 31,
+        "full_q": 14,
+        "groups": {
+          "confirmation": {
+            "requests": 100,
+            "valid_trajectories": 31,
+            "full_q": 14,
+            "mean_online_seconds": 1.8732302484799999,
+            "max_online_seconds": 4.689312068
+          }
+        },
+        "csv_sha256": "d4bfaa82593d048a09bf5d32f06b618b7b89e01b4b72ae079520b604defeb5d4"
+      },
+      "rigid_cache": {
+        "requests": 100,
+        "valid_trajectories": 31,
+        "full_q": 15,
+        "groups": {
+          "confirmation": {
+            "requests": 100,
+            "valid_trajectories": 31,
+            "full_q": 15,
+            "mean_online_seconds": 1.81571430016,
+            "max_online_seconds": 4.665080735
+          }
+        },
+        "csv_sha256": "7895c76e1120200ae51c8d9c0e084d5e0af8b0980031373489df9349152dba4d"
+      }
+    },
+    "planner_quality": {
+      "baseline": {
+        "requests": 308,
+        "valid_trajectories": 118,
+        "full_q": 77,
+        "groups": {
+          "confirmation": {
+            "requests": 200,
+            "valid_trajectories": 62,
+            "full_q": 30,
+            "mean_online_seconds": 1.75669033552,
+            "max_online_seconds": 4.762914612
+          },
+          "development": {
+            "requests": 64,
+            "valid_trajectories": 19,
+            "full_q": 11,
+            "mean_online_seconds": 1.744366772703125,
+            "max_online_seconds": 4.854637617
+          },
+          "negative": {
+            "requests": 4,
+            "valid_trajectories": 0,
+            "full_q": 0,
+            "mean_online_seconds": 0.32625778699999997,
+            "max_online_seconds": 0.483524882
+          },
+          "regression": {
+            "requests": 40,
+            "valid_trajectories": 37,
+            "full_q": 36,
+            "mean_online_seconds": 1.327811766375,
+            "max_online_seconds": 1.700374201
+          }
+        },
+        "csv_sha256": "e8c97bc88bbce69853a0b624b4aae719355dc5e42b23c42308ccae18b2d14df7"
+      },
+      "rigid_cache": {
+        "requests": 308,
+        "valid_trajectories": 118,
+        "full_q": 79,
+        "groups": {
+          "confirmation": {
+            "requests": 200,
+            "valid_trajectories": 62,
+            "full_q": 32,
+            "mean_online_seconds": 1.71334666664,
+            "max_online_seconds": 4.643862469
+          },
+          "development": {
+            "requests": 64,
+            "valid_trajectories": 19,
+            "full_q": 11,
+            "mean_online_seconds": 1.69391531021875,
+            "max_online_seconds": 4.78427762
+          },
+          "negative": {
+            "requests": 4,
+            "valid_trajectories": 0,
+            "full_q": 0,
+            "mean_online_seconds": 0.3536457315,
+            "max_online_seconds": 0.50396357
+          },
+          "regression": {
+            "requests": 40,
+            "valid_trajectories": 37,
+            "full_q": 36,
+            "mean_online_seconds": 1.2915419062,
+            "max_online_seconds": 1.706868959
+          }
+        },
+        "csv_sha256": "7d8b638c00dc9702915a26535a6e1cfc4208522519f2af7a5f2c9c797269bf30"
+      }
+    },
+    "q_collision_recovery": {
+      "baseline": {
+        "requests": 109,
+        "valid_trajectories": 57,
+        "full_q": 48,
+        "groups": {
+          "development": {
+            "requests": 65,
+            "valid_trajectories": 20,
+            "full_q": 12,
+            "mean_online_seconds": 1.8013137097076921,
+            "max_online_seconds": 4.869397315
+          },
+          "negative": {
+            "requests": 4,
+            "valid_trajectories": 0,
+            "full_q": 0,
+            "mean_online_seconds": 0.3245478635,
+            "max_online_seconds": 0.458235402
+          },
+          "regression": {
+            "requests": 40,
+            "valid_trajectories": 37,
+            "full_q": 36,
+            "mean_online_seconds": 1.359867742225,
+            "max_online_seconds": 1.836263985
+          }
+        },
+        "csv_sha256": "75afddd5bb4ead9d9cc4320169c0c5db73518556d9625ece02fd26cf177c0b0e"
+      },
+      "rigid_cache": {
+        "requests": 109,
+        "valid_trajectories": 57,
+        "full_q": 48,
+        "groups": {
+          "development": {
+            "requests": 65,
+            "valid_trajectories": 20,
+            "full_q": 12,
+            "mean_online_seconds": 1.740002760876923,
+            "max_online_seconds": 4.738705746
+          },
+          "negative": {
+            "requests": 4,
+            "valid_trajectories": 0,
+            "full_q": 0,
+            "mean_online_seconds": 0.344621258,
+            "max_online_seconds": 0.515322574
+          },
+          "regression": {
+            "requests": 40,
+            "valid_trajectories": 37,
+            "full_q": 36,
+            "mean_online_seconds": 1.3046333069,
+            "max_online_seconds": 1.783682137
+          }
+        },
+        "csv_sha256": "8aef226a4c374dee36bc81c859844931d6eb1489aa71009ff493a65ee08a7b15"
+      }
+    }
+  },
+  "historical": {
+    "planner_quality_historical": {
+      "baseline": {
+        "requests": 308,
+        "valid_trajectories": 118,
+        "full_q": 32,
+        "groups": {
+          "confirmation": {
+            "requests": 200,
+            "valid_trajectories": 62,
+            "full_q": 12,
+            "mean_online_seconds": 1.6649824525249999,
+            "max_online_seconds": 4.685209116
+          },
+          "development": {
+            "requests": 64,
+            "valid_trajectories": 19,
+            "full_q": 6,
+            "mean_online_seconds": 1.73443384015625,
+            "max_online_seconds": 4.862695138
+          },
+          "negative": {
+            "requests": 4,
+            "valid_trajectories": 0,
+            "full_q": 0,
+            "mean_online_seconds": 0.2411239285,
+            "max_online_seconds": 0.331632771
+          },
+          "regression": {
+            "requests": 40,
+            "valid_trajectories": 37,
+            "full_q": 14,
+            "mean_online_seconds": 1.2240859383,
+            "max_online_seconds": 1.570682475
+          }
+        },
+        "csv_sha256": "6412d481da905e9e2c35ae218a880d7655700d6d2c906054442b578506087fa1"
+      },
+      "rigid_cache": {
+        "requests": 308,
+        "valid_trajectories": 118,
+        "full_q": 31,
+        "groups": {
+          "confirmation": {
+            "requests": 200,
+            "valid_trajectories": 62,
+            "full_q": 11,
+            "mean_online_seconds": 1.6253065489549998,
+            "max_online_seconds": 4.68047854
+          },
+          "development": {
+            "requests": 64,
+            "valid_trajectories": 19,
+            "full_q": 6,
+            "mean_online_seconds": 1.660403702671875,
+            "max_online_seconds": 4.790502442
+          },
+          "negative": {
+            "requests": 4,
+            "valid_trajectories": 0,
+            "full_q": 0,
+            "mean_online_seconds": 0.28662458025,
+            "max_online_seconds": 0.395939397
+          },
+          "regression": {
+            "requests": 40,
+            "valid_trajectories": 37,
+            "full_q": 14,
+            "mean_online_seconds": 1.2024157628999999,
+            "max_online_seconds": 1.571252689
+          }
+        },
+        "csv_sha256": "16b08ecad2f7e69b1cac45a5cafe5762e53063448cfa92885c8143e654ac6f9c"
+      }
+    },
+    "methods-621-frozen": {
+      "requests_recorded": 621,
+      "successes": 270,
+      "audit_valid": true
+    },
+    "pose40-offline-historical": {
+      "requests_recorded": 40,
+      "successes": 21,
+      "audit_valid": true,
+      "exit_code": 0
+    },
+    "pose40-online-historical": {
+      "requests_recorded": 40,
+      "successes": 14,
+      "audit_valid": true,
+      "exit_code": 0
+    },
+    "pose40-q-range-historical": {
+      "requests_recorded": 36,
+      "successes": 30,
+      "audit_valid": null,
+      "exit_code": 1,
+      "failure": "Stopped at pose37: cached/uncached collision distance disagreement in the old code. The historical run is incomplete; current code completes all 40 and passes revalidation."
+    },
+    "pose40-q-range-current": {
+      "requests_recorded": 40,
+      "successes": 37,
+      "audit_valid": true,
+      "exit_code": 0
+    }
+  },
+  "media": {
+    "level3_video_closer.mp4": {
+      "bytes": 9266928,
+      "sha256": "746ca17c603dfb12e1348649dbd226f1aeb7780b5973d641057adad3f354736c",
+      "frames": 1256
+    },
+    "level3_video_lowered_tilted_4x.mp4": {
+      "bytes": 3227112,
+      "sha256": "d79be731a08f573bc298355d61f11eea1c65fb6c390ece6d26a2cd69a87e813b",
+      "frames": 347
+    },
+    "pose40_online-detail.mp4": {
+      "bytes": 6938272,
+      "sha256": "ade9fd15d8dc6030918d388a0b4dc0e8b18dc3e80a473b9831a41e041cea534f",
+      "frames": 619
+    },
+    "pose40_online.mp4": {
+      "bytes": 26511021,
+      "sha256": "98e0395b860f69117c725766326dc428ee6fce697b1b7b9b9eb49c0e46377b37",
+      "frames": 2763
+    },
+    "pose40_q_range-detail.mp4": {
+      "bytes": 6314230,
+      "sha256": "6916f5d7b7fb5b207d9784503d9245d1b60682a07c227d33a2bb5480fded9e97",
+      "frames": 594
+    },
+    "pose40_q_range.mp4": {
+      "bytes": 41868357,
+      "sha256": "4bdd7ba4e3b6d3fe9f35124d1cb86b94eb5f04879b5bf7c045bd34148d249bb1",
+      "frames": 2758
+    },
+    "pose40_q_sweep-detail.mp4": {
+      "bytes": 6925235,
+      "sha256": "3e16662e9ec2d42eb9e8f14a70c10e71b4028538d22653c031e456a8774251e9",
+      "frames": 619
+    },
+    "pose40_q_sweep.mp4": {
+      "bytes": 26611463,
+      "sha256": "a751485535ee0450a570aab4abe5a129ce06ae280b4b9d19ea9773a0ed372651",
+      "frames": 2654
+    }
+  },
+  "tests": {
+    "build-final-ctest.xml": {
+      "name": "Linux-c++",
+      "tests": "25",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "Demonmasterlqx",
+      "time": "135",
+      "timestamp": "2026-10-13T14:17:49"
+    },
+    "build-headless-final-ctest.xml": {
+      "name": "Linux-c++",
+      "tests": "23",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "Demonmasterlqx",
+      "time": "139",
+      "timestamp": "2026-10-13T14:20:08"
+    },
+    "delivery-ctest.xml": {
+      "name": "Linux-c++",
+      "tests": "25",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "Demonmasterlqx",
+      "time": "134",
+      "timestamp": "2026-10-13T14:18:38"
+    }
+  },
+  "pending": [],
+  "reference-checksums": {
+    "files": 61,
+    "valid": true,
+    "checks": [
+      {
+        "file": "reference/planning_upstream/README.md",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "3992d491522b942e76afd12ab6424e2ccd41358ce8fef59f3b970922d34c100d"
+      },
+      {
+        "file": "reference/planning_upstream/report/08_control_launch_data_flow.md",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "23dd9b851945e184c10219cf06d93c1fcd8f3197b05fad7653cc48852790080a"
+      },
+      {
+        "file": "reference/planning_upstream/report/09_arm_and_chassis_power_features.md",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "a385ddfc3523aac5d5d1c3862c8d441d969ac0d5e2c2f64c59209abaf3f5f893"
+      },
+      {
+        "file": "reference/planning_upstream/report/11_future_outlook_and_acknowledgements.md",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "d6576c335f90326f1159fa9ea2d55d0c0d5dbd3c4603235337cd0ed35d3e1dc9"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/CMakeLists.txt",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "977e17efb7c53bcec52bc7f7c14b951b4724376cdea5c86a9637ad81a1e69763"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/README.md",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "38d9ffea4b1a3dfe8e83f502f5c4bceadd40345d213f52ecf8ebed1b23d28a23"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/config/handle_arm_trajectory_loop.yaml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "e163da9bf85d8fe0c1493146a356cd44cc36f35931f8673650944b4a4da756e4"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/config/trajectory.yaml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "1437025fbb093564bf4fa4d8f06c72cd8f9de562852c5326601dd6d914a9bc03"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/include/handle_arm/trajectory_loop_node.hpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "8f453c3574fec484478fa87c89016767e3cee84ebb6fbf447255beb0ed5d1b1b"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/launch/handle_arm_trajectory_loop.launch.py",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "15072b155b1c2ad960c9cddae68e42a5c49573fb13eb36b28b594626b4ad52ec"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/package.xml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "1def9e442f5bfd3118f3f2df2abf5466aa0bc140d9e8af8bd180bcf092a069a0"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/src/main.cpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "1c76e2c61d898fd6d23b9a7d9bdfc351214396a089ca6918e21555e02f6b1b0d"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/src/trajectory_loop_node.cpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "c29159c7a7091db74d214317c3a6f7e4b1c39919a562f5851ab59d80a7efeeca"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/test/test_trajectory_loop_node.cpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "7a4f2ce6ae52f4e0c80f4cb67c529924c0c32ccbcaac025841c9e6b546838df3"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/rm26_energy_unit_pap/Readme.md",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "c37ff8265aecd9ef6a2923ac3c7c61fde650657f0532d6e1a72c1ee98d028009"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/rm26_energy_unit_pap/package.xml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "a656cc006264eeb61b7079cd70aa9250d09b35a3b06ac711585437c9a3102592"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/rm26_energy_unit_pap/src/rm26_energy_unit_pap.cpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "4062a8b098a57924e09238d73a123b1bf16d0c1a182c2dfb48b7cdd02024f719"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/application/rm26_energy_unit_pap/src/rm26_energy_unit_pap_parameters.yaml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "6498b5d3d54f706e5c9d682ffdc5e024cecbc87af8f4df4717f9c5dadcf6fbc0"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/Readme.md",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "7982cf717f6c20ace43ad27572d2d29140c7b6f5b9c3dfc7180778dfd230244c"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/include/rm_connecting_rod_gripper_controller/gripper_core.hpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "793bc0855fbab3f10f628b0eb7743c56b6b2da4d9c2e7bcf14e743e1e431d8eb"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/package.xml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "ba2629b086d8468f88808aefc334432bf4c51b365da7e3195b0930dedf356095"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/control_part.cpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "81bb29771a9c3620d9e403a969d981acba8e3571dacf183f81f8690a796d403c"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/rm_connecting_rod_gripper_controller.cpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "1c60cc3e141f6d58a71a1c84248f5cfd45bde61852a8192f3bb2b650f0787fab"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/rm_connecting_rod_gripper_controller.yaml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "507701ea799650842d509207d5c8bb4a795336d38e4b4045fda277b85686bcd1"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/auto_pap_energy_unit.yaml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "b37450b2d9ac2ef24ee2392e02376f22df60d4825f0e502c71c49a866cc1cbdb"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/custom_controller.yaml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "d54a97967967539b5ef67aa8660a4fa7cfc78f7a5447a8f52d0902d81134082a"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/joint_limits.yaml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "bc766eea23f209d87ca59540b8562c1020474c78fbf61f1be169f957a7ef3cf9"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/ros2_controllers.yaml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "823c690b4a4c76122c8f29a71017bb865b40d61911235984cd96d3d6e49dba10"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/launch/moveit.launch.py",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "988b6775685555597899b49f6573376df61ee1a7b3d07022ef121075fe7662ad"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/CMakeLists.txt",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "314b174f89ca678bf7f2aed382fdc75117dab43e4c0111899722fe6f1073c539"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/config/config.py",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/config/config.yaml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "704b2e5f8a0a2b8860e6653549eef7badb611d330e6514590fc598d814b5da3d"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/include/axis_free_rotate_ik/axis_free_rotate_ik.hpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "83fcfc4712cc0e6009658f9dafc9357acaa2aedc713cc836cac1a4e81736878b"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/include/axis_free_rotate_ik/axis_free_rotate_ik_ros.hpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "4846701ab0d4367bdfbd040f39889098b15531cfbaf7297507e97c6106ec53a5"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/launch/test.launch.py",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "3381152f63477b6007709b5e3798085b7d0fba0369094f9b43745f6b8b1ee88f"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/package.xml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "5bc832f00a3af24056cf90fb95f4328f7ec322eb5d5ac5afbff4633a9e0b37ef"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik.cpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "fbbcbeca3dd03c1069bc502220c3c8875588a7fabbf7a7a6c80f732c5841cf5c"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik_ros.cpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "8e4d46ef49f294ab6b5dad36cf16e454b19cc25d1a3c9fe5b7c0e50a8353fea7"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik_ros.yaml",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "31e5ec07679589c34d82611b59e6c31e714e4207065a4ba1207968a297ce1411"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/srv/SolveAxisFreeIK.srv",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "1835650c35fb3888fa75a9112f478bb6594438dbdb85bbf5ac762fc050db780a"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/srv/SolveFixedIK.srv",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "b19ae0876b0f1a1b4e453317454f5152666417c397264285c5eee758fe0b8721"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/test/test_axis_free_rotate_ik.cpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "515a943be2c8f2cfc7b7f012a90bd7058019664634a9b1ca5f4ec5ac4ccc100b"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/test/test_axis_free_rotate_ik_ros.cpp",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "33cfe704a706d4adfd3e554aab54e44ca9b40a9be5c907cce9e6c4fdc7c22d1b"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/theory/IK逆解.md",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "70f52d5c4599b6a5dc17eac17433ecbca18ef69d3d7c02e9bf816c8372f5b881"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/theory/image.png",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "fd2a6497aa5350505c74033b3ed479db387e9d1c08dc74fde0b0d6b53aa5a0fd"
+      },
+      {
+        "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/uncrustify_4_spaces.cfg",
+        "kind": "planning_reference",
+        "valid": true,
+        "sha256": "b099d5b89a15eea93c6a606b92d3743cf7f457305f6f07de714507058ff60944"
+      },
+      {
+        "file": "models/rm26_arm/meshes/end_left_link.STL",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "f82d78dd505db72b677de09ad766dea6ed8a79891b58be07ec06b73c0a15e209"
+      },
+      {
+        "file": "models/rm26_arm/meshes/end_right_link.STL",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "a5a98795f99da21d659abd8da18c23b0ece536ca8701dd8040b934aa07cf8083"
+      },
+      {
+        "file": "models/rm26_arm/meshes/j0_link.STL",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "8f4cb42a2b7dab1fbc1c81e234fbb7b901d28963200a14f9b13cbb597475911e"
+      },
+      {
+        "file": "models/rm26_arm/meshes/j1_link.STL",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "ab4745eaba01222b0883046cf7fc2e35b682185253a8242f9ab0cc6e4356a0e2"
+      },
+      {
+        "file": "models/rm26_arm/meshes/j2_link.STL",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "91bdf9c0baff49b0be3c8005c313da7538e9d06117302b8ed5467325691c70bd"
+      },
+      {
+        "file": "models/rm26_arm/meshes/j3_link.STL",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "ed9672a5e999486eee5d97a54d1c6f5bf61801711f711e92a7154da7750f54b2"
+      },
+      {
+        "file": "models/rm26_arm/meshes/j4_link.STL",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "d1739bb75617b76406723b37f39f3f1a53333683c40ea2fc6e96aac4e68e1d56"
+      },
+      {
+        "file": "models/rm26_arm/meshes/j5_link.STL",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "b6acc90990784e8924262f77b35379bbbe4d521376e4d44908ffc98b1808439f"
+      },
+      {
+        "file": "models/rm26_arm/meshes/j6_link.STL",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "afec46b1394372a9d918c41e8751e6392e06f31c3cbb5d511c6f36d569222b12"
+      },
+      {
+        "file": "models/rm26_arm/meshes/realsense_d415_link.STL",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "e78abd9cd93a5f51166da5bba7abff449142c1f4aa2fd0aa95723fe623e56f1d"
+      },
+      {
+        "file": "reference/rm26_arm/package.xml",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "865f109f8bd3d864d26c9d469b11023b95d10b3768ec61d536d6c777279e3736"
+      },
+      {
+        "file": "reference/rm26_arm/source.urdf",
+        "kind": "arm_reference",
+        "valid": true,
+        "sha256": "e19f7e34345a5653b0261d85b04bf4b7a15bdddcc12f4e01119947440e4fa8f9"
+      },
+      {
+        "file": "reference/hkust/exchange.blend",
+        "kind": "core_reference",
+        "valid": true,
+        "sha256": "9490131f84030944de45f14fc5dd682fe1ae2cac779d211ac421b9a412093e9a"
+      },
+      {
+        "file": "reference/hkust/LICENSE",
+        "kind": "core_license",
+        "valid": true,
+        "sha256": "692546eebb4bb3a8d3427c357b8e36eb9f82d0362c93353d1afd58587dee6479"
+      },
+      {
+        "file": "reference/RoboMaster_2026_机甲大师超级对抗赛比赛规则手册V2.2.0（20260807）.pdf",
+        "kind": "rulebook",
+        "valid": true,
+        "sha256": "88ae3c7d0bbd7312c8095eff2603910437e292a0b53f46c9378f26144c09a6f5"
+      }
+    ]
+  },
+  "archive-audit-index": {
+    "records": 1971,
+    "successes": 281,
+    "valid": true,
+    "batches": [
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_q_sweep",
+        "records": 40,
+        "successes": 21,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_q_sweep/trials",
+        "records": 533,
+        "successes": 21,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_online",
+        "records": 40,
+        "successes": 20,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_online/trials",
+        "records": 354,
+        "successes": 20,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_q_range",
+        "records": 40,
+        "successes": 35,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_q_range/trials",
+        "records": 310,
+        "successes": 35,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_q_range/controls/no_pre_q_screen",
+        "records": 40,
+        "successes": 32,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_q_range/controls/no_pre_q_screen/trials",
+        "records": 278,
+        "successes": 32,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_q_range/controls/no_state_cache",
+        "records": 40,
+        "successes": 30,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_q_range/controls/no_state_cache/trials",
+        "records": 256,
+        "successes": 30,
+        "valid": true,
+        "errors": []
+      },
+      {
+        "directory": "artifacts/reproduction-20261013/restored/pose40_online/direct_control",
+        "records": 40,
+        "successes": 5,
+        "valid": true,
+        "errors": []
+      }
+    ]
+  },
+  "documents-validation": [
+    {
+      "file": "artifacts/reproduction-20261013/delivery-unpacked/documents/01_inverse_kinematics.pdf",
+      "pdfinfo": "Creator:         LaTeX via pandoc\nProducer:        xdvipdfmx (20220710)\nCreationDate:    Tue Oct 13 14:15:55 2026 CST\nCustom Metadata: no\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           7\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       207075 bytes\nOptimized:       no\nPDF version:     1.5\n",
+      "extracted_characters": 5896,
+      "has_chinese": true,
+      "has_replacement_character": false,
+      "preview": "artifacts/reproduction-20261013/media/01_inverse_kinematics-first-page.png"
+    },
+    {
+      "file": "artifacts/reproduction-20261013/delivery-unpacked/documents/02_trajectory_planning.pdf",
+      "pdfinfo": "Creator:         LaTeX via pandoc\nProducer:        xdvipdfmx (20220710)\nCreationDate:    Tue Oct 13 14:15:59 2026 CST\nCustom Metadata: no\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           8\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       237213 bytes\nOptimized:       no\nPDF version:     1.5\n",
+      "extracted_characters": 8229,
+      "has_chinese": true,
+      "has_replacement_character": false,
+      "preview": "artifacts/reproduction-20261013/media/02_trajectory_planning-first-page.png"
+    },
+    {
+      "file": "artifacts/reproduction-20261013/delivery-unpacked/documents/03_code_guide.pdf",
+      "pdfinfo": "Creator:         LaTeX via pandoc\nProducer:        xdvipdfmx (20220710)\nCreationDate:    Tue Oct 13 14:16:03 2026 CST\nCustom Metadata: no\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           11\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       317836 bytes\nOptimized:       no\nPDF version:     1.5\n",
+      "extracted_characters": 15929,
+      "has_chinese": true,
+      "has_replacement_character": false,
+      "preview": "artifacts/reproduction-20261013/media/03_code_guide-first-page.png"
+    }
+  ],
+  "core-comparison": {
+    "blender_version": "4.5.0",
+    "meshes": 60,
+    "identical": 60,
+    "checks": [
+      {
+        "file": "back_light_bar_1.obj",
+        "identical": true,
+        "expected": "f7d1d1eaa951b572a3c155bb3e137874abcab516837fec8b99848afeeb860473",
+        "actual": "f7d1d1eaa951b572a3c155bb3e137874abcab516837fec8b99848afeeb860473"
+      },
+      {
+        "file": "back_light_bar_10.obj",
+        "identical": true,
+        "expected": "42681f1a2356bfd58e6980c30ed636fd79a6ff0d5ea10689a83695618b26870b",
+        "actual": "42681f1a2356bfd58e6980c30ed636fd79a6ff0d5ea10689a83695618b26870b"
+      },
+      {
+        "file": "back_light_bar_11.obj",
+        "identical": true,
+        "expected": "bf10d495d59ffa7d0b458efa7c3fb47a8c864c777622a32a815ebb8efcfcc66a",
+        "actual": "bf10d495d59ffa7d0b458efa7c3fb47a8c864c777622a32a815ebb8efcfcc66a"
+      },
+      {
+        "file": "back_light_bar_12.obj",
+        "identical": true,
+        "expected": "392f2b5c02345e9e703db0460317901a4f8d40e245614fea9b58822cab1e4b47",
+        "actual": "392f2b5c02345e9e703db0460317901a4f8d40e245614fea9b58822cab1e4b47"
+      },
+      {
+        "file": "back_light_bar_13.obj",
+        "identical": true,
+        "expected": "dfa60a6ff47331f0576a08587e935d323e4419d2260152a55a6fed01ea015cc0",
+        "actual": "dfa60a6ff47331f0576a08587e935d323e4419d2260152a55a6fed01ea015cc0"
+      },
+      {
+        "file": "back_light_bar_14.obj",
+        "identical": true,
+        "expected": "6adeff6848c754f1c9c002c1dc7002f3b1b50c5b8426980a2062034ed14a3888",
+        "actual": "6adeff6848c754f1c9c002c1dc7002f3b1b50c5b8426980a2062034ed14a3888"
+      },
+      {
+        "file": "back_light_bar_15.obj",
+        "identical": true,
+        "expected": "d8c99eb789d5d97e6b9edae2fca3fd079a681926ab3690470ba558110023612b",
+        "actual": "d8c99eb789d5d97e6b9edae2fca3fd079a681926ab3690470ba558110023612b"
+      },
+      {
+        "file": "back_light_bar_16.obj",
+        "identical": true,
+        "expected": "bd2a4f9025e59799213492e4c5e98c6f8df79ace491d5baa662dd547becba6f7",
+        "actual": "bd2a4f9025e59799213492e4c5e98c6f8df79ace491d5baa662dd547becba6f7"
+      },
+      {
+        "file": "back_light_bar_17.obj",
+        "identical": true,
+        "expected": "2e2c1ad9ed97ae0718b94d184550ec87031ff08c02f77953d5eac9982a6ea1d4",
+        "actual": "2e2c1ad9ed97ae0718b94d184550ec87031ff08c02f77953d5eac9982a6ea1d4"
+      },
+      {
+        "file": "back_light_bar_18.obj",
+        "identical": true,
+        "expected": "a5430aa86b567148c2257b1bc2818ea25104d14271ffeace4551e5bfd749194b",
+        "actual": "a5430aa86b567148c2257b1bc2818ea25104d14271ffeace4551e5bfd749194b"
+      },
+      {
+        "file": "back_light_bar_19.obj",
+        "identical": true,
+        "expected": "9dde7f793815fe95283afe0d157f1f2bfbd3593524bb238fa0afee9ae36085bb",
+        "actual": "9dde7f793815fe95283afe0d157f1f2bfbd3593524bb238fa0afee9ae36085bb"
+      },
+      {
+        "file": "back_light_bar_2.obj",
+        "identical": true,
+        "expected": "fbb8324e7ec20902a2bdfe053ebaa3fad713adc9458efee4834486ea1e6ce01f",
+        "actual": "fbb8324e7ec20902a2bdfe053ebaa3fad713adc9458efee4834486ea1e6ce01f"
+      },
+      {
+        "file": "back_light_bar_20.obj",
+        "identical": true,
+        "expected": "7259db6f9af58b5b4c660b3ea6004541a8df404103531044855c654619e41d34",
+        "actual": "7259db6f9af58b5b4c660b3ea6004541a8df404103531044855c654619e41d34"
+      },
+      {
+        "file": "back_light_bar_21.obj",
+        "identical": true,
+        "expected": "aa58940a83e0f95bb1229981ab05fdfba192dc23166a73238f466d7476b651ff",
+        "actual": "aa58940a83e0f95bb1229981ab05fdfba192dc23166a73238f466d7476b651ff"
+      },
+      {
+        "file": "back_light_bar_22.obj",
+        "identical": true,
+        "expected": "696b129b3b61fd8515b46ef1496f9e4989cf50e8d4ddb71d12fa3ef009e2c487",
+        "actual": "696b129b3b61fd8515b46ef1496f9e4989cf50e8d4ddb71d12fa3ef009e2c487"
+      },
+      {
+        "file": "back_light_bar_23.obj",
+        "identical": true,
+        "expected": "dd2deefd16223b828b7a71472b32f90d45c31c31c3cff61843ddfb6de3243f22",
+        "actual": "dd2deefd16223b828b7a71472b32f90d45c31c31c3cff61843ddfb6de3243f22"
+      },
+      {
+        "file": "back_light_bar_24.obj",
+        "identical": true,
+        "expected": "af69b8fc0a87015c82c0fe0ea05bdd98d484001ad07242bc2dd3fe9d498a1133",
+        "actual": "af69b8fc0a87015c82c0fe0ea05bdd98d484001ad07242bc2dd3fe9d498a1133"
+      },
+      {
+        "file": "back_light_bar_25.obj",
+        "identical": true,
+        "expected": "500114d63bbf62f01d6f3ec1ae82576a848c9395930e1aff2f85fed1a5fb7b16",
+        "actual": "500114d63bbf62f01d6f3ec1ae82576a848c9395930e1aff2f85fed1a5fb7b16"
+      },
+      {
+        "file": "back_light_bar_26.obj",
+        "identical": true,
+        "expected": "9a06e6752f13a0e17ae50c09fce46844b5237d47f732121ed70c110fdea0562c",
+        "actual": "9a06e6752f13a0e17ae50c09fce46844b5237d47f732121ed70c110fdea0562c"
+      },
+      {
+        "file": "back_light_bar_27.obj",
+        "identical": true,
+        "expected": "2d7d5274fac2e2f897283eda26b3e14b2e797470b97d541332f89e07afdbc449",
+        "actual": "2d7d5274fac2e2f897283eda26b3e14b2e797470b97d541332f89e07afdbc449"
+      },
+      {
+        "file": "back_light_bar_28.obj",
+        "identical": true,
+        "expected": "1f3e92487d5b907597d58606e3a656bf5da6bd4b71ba4520c4e5fdf225d679d5",
+        "actual": "1f3e92487d5b907597d58606e3a656bf5da6bd4b71ba4520c4e5fdf225d679d5"
+      },
+      {
+        "file": "back_light_bar_29.obj",
+        "identical": true,
+        "expected": "f15054f8b2c6ef906a7e11648383d4e5f1c16be781f3d418eebff7f9e1b7eedb",
+        "actual": "f15054f8b2c6ef906a7e11648383d4e5f1c16be781f3d418eebff7f9e1b7eedb"
+      },
+      {
+        "file": "back_light_bar_3.obj",
+        "identical": true,
+        "expected": "d66f0422dd85bc3056226f405517c4a2c095b61f5dadb7fb3cd3d561fc015a93",
+        "actual": "d66f0422dd85bc3056226f405517c4a2c095b61f5dadb7fb3cd3d561fc015a93"
+      },
+      {
+        "file": "back_light_bar_30.obj",
+        "identical": true,
+        "expected": "117ce9595d820ce4bec4449277870d2add37efc9f962ed80425235296492cab7",
+        "actual": "117ce9595d820ce4bec4449277870d2add37efc9f962ed80425235296492cab7"
+      },
+      {
+        "file": "back_light_bar_31.obj",
+        "identical": true,
+        "expected": "7b5666f33b825f9523876cb7f167b0ef45a6a2ed61f422a276547470af407ae4",
+        "actual": "7b5666f33b825f9523876cb7f167b0ef45a6a2ed61f422a276547470af407ae4"
+      },
+      {
+        "file": "back_light_bar_32.obj",
+        "identical": true,
+        "expected": "0bac4d0a4c51437d27d60447285306d2cb5c70015097cae276a0d1ebed4d2822",
+        "actual": "0bac4d0a4c51437d27d60447285306d2cb5c70015097cae276a0d1ebed4d2822"
+      },
+      {
+        "file": "back_light_bar_33.obj",
+        "identical": true,
+        "expected": "fc1a4d269a21d4eeb860cd9b49111b79960b8630c8a1ad0e889cf576b0d06600",
+        "actual": "fc1a4d269a21d4eeb860cd9b49111b79960b8630c8a1ad0e889cf576b0d06600"
+      },
+      {
+        "file": "back_light_bar_34.obj",
+        "identical": true,
+        "expected": "356ad9f49e57119a325e3b58001d7f041990d63bbfd528e212135bb1ebb5541f",
+        "actual": "356ad9f49e57119a325e3b58001d7f041990d63bbfd528e212135bb1ebb5541f"
+      },
+      {
+        "file": "back_light_bar_35.obj",
+        "identical": true,
+        "expected": "875821122166f07fa2ef47d899a068120e2d5f367c1f1676a12a76cf1387e90a",
+        "actual": "875821122166f07fa2ef47d899a068120e2d5f367c1f1676a12a76cf1387e90a"
+      },
+      {
+        "file": "back_light_bar_36.obj",
+        "identical": true,
+        "expected": "69d67d1afb623fd47b985d5e80f40cd670888fe20a19dd9cc7d9779af10db84d",
+        "actual": "69d67d1afb623fd47b985d5e80f40cd670888fe20a19dd9cc7d9779af10db84d"
+      },
+      {
+        "file": "back_light_bar_4.obj",
+        "identical": true,
+        "expected": "7ca30af3999555ffc22d88d9024a62732cd18f88b664d9dadf73658479387d41",
+        "actual": "7ca30af3999555ffc22d88d9024a62732cd18f88b664d9dadf73658479387d41"
+      },
+      {
+        "file": "back_light_bar_5.obj",
+        "identical": true,
+        "expected": "5338038c845dd1d60ea24d0718b526ee72d9c700dce170536c1f9adc71b7dcbc",
+        "actual": "5338038c845dd1d60ea24d0718b526ee72d9c700dce170536c1f9adc71b7dcbc"
+      },
+      {
+        "file": "back_light_bar_6.obj",
+        "identical": true,
+        "expected": "815f0bcf71c1a5d08b93c20f4f7df841536d391d7831fdddf24bd1f4894c2895",
+        "actual": "815f0bcf71c1a5d08b93c20f4f7df841536d391d7831fdddf24bd1f4894c2895"
+      },
+      {
+        "file": "back_light_bar_7.obj",
+        "identical": true,
+        "expected": "613aaef203503dacf34c1f6168d2b22e7cba6190e70178721cd0bc5b842e9b8b",
+        "actual": "613aaef203503dacf34c1f6168d2b22e7cba6190e70178721cd0bc5b842e9b8b"
+      },
+      {
+        "file": "back_light_bar_8.obj",
+        "identical": true,
+        "expected": "dc51a50f2987cb17f05d1283e3fe05ed67b5a4cc4996f8201373f14afadd5004",
+        "actual": "dc51a50f2987cb17f05d1283e3fe05ed67b5a4cc4996f8201373f14afadd5004"
+      },
+      {
+        "file": "back_light_bar_9.obj",
+        "identical": true,
+        "expected": "d54f60dca49e8684fc4c3c2fd3578d8b2c91e091f2a34c19a3f914798ee9410a",
+        "actual": "d54f60dca49e8684fc4c3c2fd3578d8b2c91e091f2a34c19a3f914798ee9410a"
+      },
+      {
+        "file": "back_main_light_1.obj",
+        "identical": true,
+        "expected": "9616e012625ef6d5c4c2fae8c7ea7518755e1677be37c4aabaf58b18c8dd70ae",
+        "actual": "9616e012625ef6d5c4c2fae8c7ea7518755e1677be37c4aabaf58b18c8dd70ae"
+      },
+      {
+        "file": "back_main_light_2.obj",
+        "identical": true,
+        "expected": "5540a3e4b6c62e3710aa2070b09c55eb478b56671570d305cbc23444c479b77d",
+        "actual": "5540a3e4b6c62e3710aa2070b09c55eb478b56671570d305cbc23444c479b77d"
+      },
+      {
+        "file": "pillar_L_light_1.obj",
+        "identical": true,
+        "expected": "4965701c46b3de823c8ef747e6cd401417f89f34f8f26d6395d639695b43b37f",
+        "actual": "4965701c46b3de823c8ef747e6cd401417f89f34f8f26d6395d639695b43b37f"
+      },
+      {
+        "file": "pillar_L_light_2.obj",
+        "identical": true,
+        "expected": "ac1c6531f74aa97a5d247a95753a734afbb3d221064856b4c4f71487ad63cb4f",
+        "actual": "ac1c6531f74aa97a5d247a95753a734afbb3d221064856b4c4f71487ad63cb4f"
+      },
+      {
+        "file": "pillar_L_light_3.obj",
+        "identical": true,
+        "expected": "48a64dd67a21fe1960022999dc8cbdf530f37d8a6abe1a180ed5d42c9c83ba08",
+        "actual": "48a64dd67a21fe1960022999dc8cbdf530f37d8a6abe1a180ed5d42c9c83ba08"
+      },
+      {
+        "file": "pillar_L_light_4.obj",
+        "identical": true,
+        "expected": "bb6a13b7e04f692f93cba85c247ef49fd41630d7c42fcc06fae77882764ccdb8",
+        "actual": "bb6a13b7e04f692f93cba85c247ef49fd41630d7c42fcc06fae77882764ccdb8"
+      },
+      {
+        "file": "pillar_L_light_5.obj",
+        "identical": true,
+        "expected": "ddd1a1113ce5500212d23431795f8da39ace62657c7c594f47a386c1992bd992",
+        "actual": "ddd1a1113ce5500212d23431795f8da39ace62657c7c594f47a386c1992bd992"
+      },
+      {
+        "file": "pillar_L_light_6.obj",
+        "identical": true,
+        "expected": "e97d5badbf1ae3dca300625cd87be0ac09df806a9918fc5d5aa4cf85eaefaab9",
+        "actual": "e97d5badbf1ae3dca300625cd87be0ac09df806a9918fc5d5aa4cf85eaefaab9"
+      },
+      {
+        "file": "pillar_base_inner.obj",
+        "identical": true,
+        "expected": "6a0aa5658c7b4b3e9466136ef1f55480881413abb51ee9ba782491613fd4e4cf",
+        "actual": "6a0aa5658c7b4b3e9466136ef1f55480881413abb51ee9ba782491613fd4e4cf"
+      },
+      {
+        "file": "pillar_base_outer.obj",
+        "identical": true,
+        "expected": "63c896e1af5bb16e92ae0e321f877aaa916106a7dfdc0b21a7c75808417d0089",
+        "actual": "63c896e1af5bb16e92ae0e321f877aaa916106a7dfdc0b21a7c75808417d0089"
+      },
+      {
+        "file": "pillar_base_screw_1.obj",
+        "identical": true,
+        "expected": "00d74d80060b798a4b57556dba3b67984cad4649dd3938684cb060ad4e6a5c37",
+        "actual": "00d74d80060b798a4b57556dba3b67984cad4649dd3938684cb060ad4e6a5c37"
+      },
+      {
+        "file": "pillar_base_screw_2.obj",
+        "identical": true,
+        "expected": "1a778d93d5b59aa6ea9c22c85a58a728fac6def7d5a05d985b42795643120f66",
+        "actual": "1a778d93d5b59aa6ea9c22c85a58a728fac6def7d5a05d985b42795643120f66"
+      },
+      {
+        "file": "pillar_base_screw_3.obj",
+        "identical": true,
+        "expected": "ae679a75586cc1e21129e238ccb5e8ff4c8fa20aff77aaae5049a220c645ce9e",
+        "actual": "ae679a75586cc1e21129e238ccb5e8ff4c8fa20aff77aaae5049a220c645ce9e"
+      },
+      {
+        "file": "pillar_base_screw_4.obj",
+        "identical": true,
+        "expected": "5b39758ac1b5f522bf417364bb82f60e4268af4b98c4abd22943825bde383948",
+        "actual": "5b39758ac1b5f522bf417364bb82f60e4268af4b98c4abd22943825bde383948"
+      },
+      {
+        "file": "pillar_inner_ring_1.obj",
+        "identical": true,
+        "expected": "d2e886f144315c9fe6db86684b1d5e2d7ae17bff172f089d9ce7fffce8912dd2",
+        "actual": "d2e886f144315c9fe6db86684b1d5e2d7ae17bff172f089d9ce7fffce8912dd2"
+      },
+      {
+        "file": "pillar_inner_ring_2.obj",
+        "identical": true,
+        "expected": "27ae790aa8b42d949544a329e8bdb6d3bdb43c8ef626b98bc2d649aee23f5cf9",
+        "actual": "27ae790aa8b42d949544a329e8bdb6d3bdb43c8ef626b98bc2d649aee23f5cf9"
+      },
+      {
+        "file": "pillar_side_inner__electromagnet_base.obj",
+        "identical": true,
+        "expected": "505ca6957468e8cbe8798aad04fb525d5d0417173d44f192bd5b544b453cfd3d",
+        "actual": "505ca6957468e8cbe8798aad04fb525d5d0417173d44f192bd5b544b453cfd3d"
+      },
+      {
+        "file": "pillar_side_inner__electromagnet_ring.obj",
+        "identical": true,
+        "expected": "4b6a157e9956d63ab5d05ea394ddae0e3deb8e071fe1a705920eec9c444efa4b",
+        "actual": "4b6a157e9956d63ab5d05ea394ddae0e3deb8e071fe1a705920eec9c444efa4b"
+      },
+      {
+        "file": "pillar_side_light_1.obj",
+        "identical": true,
+        "expected": "15b351cdb06a775bf60c813a5b33f958cde32331203c861ef513e25234923157",
+        "actual": "15b351cdb06a775bf60c813a5b33f958cde32331203c861ef513e25234923157"
+      },
+      {
+        "file": "pillar_side_light_2.obj",
+        "identical": true,
+        "expected": "78ae8e19402e3cba59ca1bab91d487ff9a7c90aeb2567880e7f65692526961c6",
+        "actual": "78ae8e19402e3cba59ca1bab91d487ff9a7c90aeb2567880e7f65692526961c6"
+      },
+      {
+        "file": "pillar_side_light_3.obj",
+        "identical": true,
+        "expected": "8a13b56b06becaaa5d7df5f69675d2bd5038fc92b9937ed506c5fbe031b6e90f",
+        "actual": "8a13b56b06becaaa5d7df5f69675d2bd5038fc92b9937ed506c5fbe031b6e90f"
+      },
+      {
+        "file": "pillar_side_outer.obj",
+        "identical": true,
+        "expected": "2db33a359f3429a184a165c04c19c51198e9e46889a07225ba9c638e25763f79",
+        "actual": "2db33a359f3429a184a165c04c19c51198e9e46889a07225ba9c638e25763f79"
+      },
+      {
+        "file": "pillar_slide.obj",
+        "identical": true,
+        "expected": "143c91d80055bea4c0bd6cb40b6c978939172eda2e65550b986f67b395a975a3",
+        "actual": "143c91d80055bea4c0bd6cb40b6c978939172eda2e65550b986f67b395a975a3"
+      },
+      {
+        "file": "shell.obj",
+        "identical": true,
+        "expected": "fc2c0b8abb64bf5503f398ab7091e96c11003af156fc606b68cb8485e924b404",
+        "actual": "fc2c0b8abb64bf5503f398ab7091e96c11003af156fc606b68cb8485e924b404"
+      }
+    ]
+  },
+  "core-cad-comparison": {
+    "source_step_sha256": "8dfe9ebd761e44d91361b3e593bc05416329112217b58cb35800b3cde2ffae33",
+    "E_max_abs_difference_mm": 0.0,
+    "transform_max_abs_difference": 2.2737367544323206e-13,
+    "observed_components": 418,
+    "expected_components": 418
+  },
+  "energy-comparison": {
+    "energy_unit": {
+      "files": 3,
+      "identical": 2,
+      "checks": {
+        "energy_auxiliary_surfaces.obj": true,
+        "energy_white_panels.obj": true,
+        "energy_gray_body.obj": false
+      }
+    },
+    "energy_unit_rule": {
+      "files": 5,
+      "identical": 3,
+      "checks": {
+        "energy_bore_internal_repairs.obj": false,
+        "energy_bore_stop.obj": true,
+        "energy_white_panels.obj": true,
+        "energy_bore_liner.obj": true,
+        "energy_gray_body_rule.obj": false
+      }
+    }
+  },
+  "energy-numeric-comparison": {
+    "energy_unit": {
+      "energy_auxiliary_surfaces.obj": {
+        "v": 5360,
+        "vn": 5360,
+        "f": 5336,
+        "faces_identical": true,
+        "v_shape_equal": true,
+        "v_max_abs_error": 0.0,
+        "vn_shape_equal": true,
+        "vn_max_abs_error": 0.0
+      },
+      "energy_white_panels.obj": {
+        "v": 444,
+        "vn": 444,
+        "f": 348,
+        "faces_identical": true,
+        "v_shape_equal": true,
+        "v_max_abs_error": 0.0,
+        "vn_shape_equal": true,
+        "vn_max_abs_error": 0.0
+      },
+      "energy_gray_body.obj": {
+        "v": 12046,
+        "vn": 12046,
+        "f": 15730,
+        "faces_identical": false,
+        "v_shape_equal": true,
+        "v_max_abs_error": 0.0,
+        "vn_shape_equal": true,
+        "vn_max_abs_error": 0.0
+      }
+    },
+    "energy_unit_rule": {
+      "energy_bore_internal_repairs.obj": {
+        "v": 489,
+        "vn": 489,
+        "f": 593,
+        "faces_identical": false,
+        "v_shape_equal": true,
+        "v_max_abs_error": 9.999999786569624e-11,
+        "vn_shape_equal": true,
+        "vn_max_abs_error": 0.0
+      },
+      "energy_bore_stop.obj": {
+        "v": 181,
+        "vn": 181,
+        "f": 180,
+        "faces_identical": true,
+        "v_shape_equal": true,
+        "v_max_abs_error": 0.0,
+        "vn_shape_equal": true,
+        "vn_max_abs_error": 0.0
+      },
+      "energy_white_panels.obj": {
+        "v": 444,
+        "vn": 444,
+        "f": 348,
+        "faces_identical": true,
+        "v_shape_equal": true,
+        "v_max_abs_error": 0.0,
+        "vn_shape_equal": true,
+        "vn_max_abs_error": 0.0
+      },
+      "energy_bore_liner.obj": {
+        "v": 360,
+        "vn": 360,
+        "f": 360,
+        "faces_identical": true,
+        "v_shape_equal": true,
+        "v_max_abs_error": 0.0,
+        "vn_shape_equal": true,
+        "vn_max_abs_error": 0.0
+      },
+      "energy_gray_body_rule.obj": {
+        "v": 12046,
+        "vn": 12046,
+        "f": 15158,
+        "faces_identical": false,
+        "v_shape_equal": true,
+        "v_max_abs_error": 0.0,
+        "vn_shape_equal": true,
+        "vn_max_abs_error": 0.0
+      }
+    }
+  },
+  "energy-face-comparison": [
+    {
+      "file": "energy_unit/energy_gray_body.obj",
+      "oriented_face_set_identical": false,
+      "changed_faces": 31
+    },
+    {
+      "file": "energy_unit_rule/energy_gray_body_rule.obj",
+      "oriented_face_set_identical": false,
+      "changed_faces": 4
+    },
+    {
+      "file": "energy_unit_rule/energy_bore_internal_repairs.obj",
+      "oriented_face_set_identical": true,
+      "changed_faces": 0
+    }
+  ],
+  "energy-surface-comparison": [
+    {
+      "file": "energy_unit/energy_auxiliary_surfaces.obj",
+      "original": {
+        "vertices": 5360,
+        "faces": 5336,
+        "area_m2": 0.010370505725491159,
+        "bounds_m": [
+          [
+            0.025,
+            -0.0293124304,
+            -0.0324892838
+          ],
+          [
+            0.12792,
+            0.0293124304,
+            0.0324892838
+          ]
+        ]
+      },
+      "regenerated": {
+        "vertices": 5360,
+        "faces": 5336,
+        "area_m2": 0.010370505725491159,
+        "bounds_m": [
+          [
+            0.025,
+            -0.0293124304,
+            -0.0324892838
+          ],
+          [
+            0.12792,
+            0.0293124304,
+            0.0324892838
+          ]
+        ]
+      },
+      "surface_area_abs_difference_m2": 0.0
+    },
+    {
+      "file": "energy_unit/energy_white_panels.obj",
+      "original": {
+        "vertices": 444,
+        "faces": 348,
+        "area_m2": 0.024874466671192717,
+        "bounds_m": [
+          [
+            0.025,
+            -0.0299920221,
+            -0.0291731832
+          ],
+          [
+            0.12,
+            0.0299920221,
+            0.0291731832
+          ]
+        ]
+      },
+      "regenerated": {
+        "vertices": 444,
+        "faces": 348,
+        "area_m2": 0.024874466671192717,
+        "bounds_m": [
+          [
+            0.025,
+            -0.0299920221,
+            -0.0291731832
+          ],
+          [
+            0.12,
+            0.0299920221,
+            0.0291731832
+          ]
+        ]
+      },
+      "surface_area_abs_difference_m2": 0.0
+    },
+    {
+      "file": "energy_unit/energy_gray_body.obj",
+      "original": {
+        "vertices": 12046,
+        "faces": 15730,
+        "area_m2": 0.07005617251961811,
+        "bounds_m": [
+          [
+            -0.0,
+            -0.0475000007,
+            -0.0474774717
+          ],
+          [
+            0.15,
+            0.0474999961,
+            0.0474341763
+          ]
+        ]
+      },
+      "regenerated": {
+        "vertices": 12046,
+        "faces": 15730,
+        "area_m2": 0.07005617251961813,
+        "bounds_m": [
+          [
+            -0.0,
+            -0.0475000007,
+            -0.0474774717
+          ],
+          [
+            0.15,
+            0.0474999961,
+            0.0474341763
+          ]
+        ]
+      },
+      "surface_area_abs_difference_m2": 1.3877787807814457e-17
+    },
+    {
+      "file": "energy_unit_rule/energy_bore_internal_repairs.obj",
+      "original": {
+        "vertices": 489,
+        "faces": 593,
+        "area_m2": 0.004318919113602162,
+        "bounds_m": [
+          [
+            6.03e-08,
+            -0.035,
+            -0.0349786789
+          ],
+          [
+            0.01,
+            0.035,
+            0.0349786789
+          ]
+        ]
+      },
+      "regenerated": {
+        "vertices": 489,
+        "faces": 593,
+        "area_m2": 0.00431891911350711,
+        "bounds_m": [
+          [
+            6.03e-08,
+            -0.035,
+            -0.0349786789
+          ],
+          [
+            0.01,
+            0.035,
+            0.0349786789
+          ]
+        ]
+      },
+      "surface_area_abs_difference_m2": 9.505157078093518e-14
+    },
+    {
+      "file": "energy_unit_rule/energy_bore_stop.obj",
+      "original": {
+        "vertices": 181,
+        "faces": 180,
+        "area_m2": 0.0012563818818015163,
+        "bounds_m": [
+          [
+            0.1,
+            -0.02,
+            -0.02
+          ],
+          [
+            0.1,
+            0.02,
+            0.02
+          ]
+        ]
+      },
+      "regenerated": {
+        "vertices": 181,
+        "faces": 180,
+        "area_m2": 0.0012563818818015163,
+        "bounds_m": [
+          [
+            0.1,
+            -0.02,
+            -0.02
+          ],
+          [
+            0.1,
+            0.02,
+            0.02
+          ]
+        ]
+      },
+      "surface_area_abs_difference_m2": 0.0
+    },
+    {
+      "file": "energy_unit_rule/energy_white_panels.obj",
+      "original": {
+        "vertices": 444,
+        "faces": 348,
+        "area_m2": 0.024874466671192717,
+        "bounds_m": [
+          [
+            0.025,
+            -0.0299920221,
+            -0.0291731832
+          ],
+          [
+            0.12,
+            0.0299920221,
+            0.0291731832
+          ]
+        ]
+      },
+      "regenerated": {
+        "vertices": 444,
+        "faces": 348,
+        "area_m2": 0.024874466671192717,
+        "bounds_m": [
+          [
+            0.025,
+            -0.0299920221,
+            -0.0291731832
+          ],
+          [
+            0.12,
+            0.0299920221,
+            0.0291731832
+          ]
+        ]
+      },
+      "surface_area_abs_difference_m2": 0.0
+    },
+    {
+      "file": "energy_unit_rule/energy_bore_liner.obj",
+      "original": {
+        "vertices": 360,
+        "faces": 360,
+        "area_m2": 0.01194506840408117,
+        "bounds_m": [
+          [
+            0.0049393398,
+            -0.02,
+            -0.02
+          ],
+          [
+            0.1,
+            0.02,
+            0.02
+          ]
+        ]
+      },
+      "regenerated": {
+        "vertices": 360,
+        "faces": 360,
+        "area_m2": 0.01194506840408117,
+        "bounds_m": [
+          [
+            0.0049393398,
+            -0.02,
+            -0.02
+          ],
+          [
+            0.1,
+            0.02,
+            0.02
+          ]
+        ]
+      },
+      "surface_area_abs_difference_m2": 0.0
+    },
+    {
+      "file": "energy_unit_rule/energy_gray_body_rule.obj",
+      "original": {
+        "vertices": 12046,
+        "faces": 15158,
+        "area_m2": 0.06322403565230626,
+        "bounds_m": [
+          [
+            -0.0,
+            -0.0475000007,
+            -0.0474774717
+          ],
+          [
+            0.15,
+            0.0474999961,
+            0.0474341763
+          ]
+        ]
+      },
+      "regenerated": {
+        "vertices": 12046,
+        "faces": 15158,
+        "area_m2": 0.06322403565230626,
+        "bounds_m": [
+          [
+            -0.0,
+            -0.0475000007,
+            -0.0474774717
+          ],
+          [
+            0.15,
+            0.0474999961,
+            0.0474341763
+          ]
+        ]
+      },
+      "surface_area_abs_difference_m2": 0.0
+    }
+  ],
+  "rule-image-comparison": {
+    "old_pdf_url": "https://hz-rm-bbs-web-prod.oss-cn-hangzhou.aliyuncs.com/5fbd46b110e542faaea519a6dd3065761782460789174/RoboMaster%202026%20%E6%9C%BA%E7%94%B2%E5%A4%A7%E5%B8%88%E8%B6%85%E7%BA%A7%E5%AF%B9%E6%8A%97%E8%B5%9B%E6%AF%94%E8%B5%9B%E8%A7%84%E5%88%99%E6%89%8B%E5%86%8CV2.0.0%EF%BC%8820260626%EF%BC%89.pdf",
+    "old_pdf_sha256": "59d65aac5bac75fd6bbab157e224eb936b49cd2b9d60381fbe196fad635b473a",
+    "images": [
+      {
+        "image": "image-000.png",
+        "old_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+        "new_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-001.png",
+        "old_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+        "new_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-002.png",
+        "old_sha256": "697709bcad13096d793a8955afbade31f2917701539a16c8ebae8623a9abaf6c",
+        "new_sha256": "697709bcad13096d793a8955afbade31f2917701539a16c8ebae8623a9abaf6c",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-003.png",
+        "old_sha256": "22470e1430300fceef6860b92f40443e01c463a62287932bdf43ec2bf49289a1",
+        "new_sha256": "22470e1430300fceef6860b92f40443e01c463a62287932bdf43ec2bf49289a1",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-004.png",
+        "old_sha256": "1d7f9e9dab1b5204eda8ad73f9bf492b080dffffb9bad3367b942272826d9e22",
+        "new_sha256": "1d7f9e9dab1b5204eda8ad73f9bf492b080dffffb9bad3367b942272826d9e22",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-005.png",
+        "old_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+        "new_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-006.png",
+        "old_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+        "new_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-007.png",
+        "old_sha256": "66f58a46ed0651e9ce2354f1b71e51cfc57485c6f77a232cd5d3c6ce1eff4325",
+        "new_sha256": "66f58a46ed0651e9ce2354f1b71e51cfc57485c6f77a232cd5d3c6ce1eff4325",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-008.png",
+        "old_sha256": "7ba48b044449e032c93104f3137fc7ec83133c70c891ccc5f5bbb8868d9eb221",
+        "new_sha256": "7ba48b044449e032c93104f3137fc7ec83133c70c891ccc5f5bbb8868d9eb221",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-009.png",
+        "old_sha256": "b2f86be0a61de562573260d2e07fb21990f68d06f0ab47b4f83081af851f4618",
+        "new_sha256": "b2f86be0a61de562573260d2e07fb21990f68d06f0ab47b4f83081af851f4618",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-010.png",
+        "old_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+        "new_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-011.png",
+        "old_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+        "new_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-012.png",
+        "old_sha256": "054b782678553ee21201ddd4a89334663a577d510267fe6fc96717b5be544ae3",
+        "new_sha256": "054b782678553ee21201ddd4a89334663a577d510267fe6fc96717b5be544ae3",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-013.png",
+        "old_sha256": "5661d739c1a9ac8b07f03ce46ecab2205d4004ccc273e93d401460cf7053b0da",
+        "new_sha256": "5661d739c1a9ac8b07f03ce46ecab2205d4004ccc273e93d401460cf7053b0da",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-014.png",
+        "old_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+        "new_sha256": "8eb93fa57eab03fd9f149603381472d8159f8b153bac8d1822d0099661989d99",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-015.png",
+        "old_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+        "new_sha256": "bb8441f1cecef4d4da5ba9c35cd1ac7a156f06bd7a8b79acab2fc4222e55509f",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-016.png",
+        "old_sha256": "1ff11718d94d7f0a5c31a6b4a653c1ae7b046f67dff676897d19dfd32e1117f9",
+        "new_sha256": "1ff11718d94d7f0a5c31a6b4a653c1ae7b046f67dff676897d19dfd32e1117f9",
+        "identical": true,
+        "matches_recorded_hash": true
+      },
+      {
+        "image": "image-017.png",
+        "old_sha256": "cc96b1b517475b1c964e28632cbe26f743ea2b82ecdc746273f01a983f6d1ba5",
+        "new_sha256": "cc96b1b517475b1c964e28632cbe26f743ea2b82ecdc746273f01a983f6d1ba5",
+        "identical": true,
+        "matches_recorded_hash": true
+      }
+    ]
+  },
+  "media_validation": {
+    "complete": true,
+    "videos": [
+      {
+        "file": "media/pose40_q_sweep.mp4",
+        "width": 1920,
+        "height": 1080,
+        "fps": 20,
+        "frames": 2654,
+        "duration_seconds": 132.7,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "sha256": "a751485535ee0450a570aab4abe5a129ce06ae280b4b9d19ea9773a0ed372651",
+        "preview": "media/pose40_q_sweep.preview.png"
+      },
+      {
+        "file": "media/pose40_q_sweep-detail.mp4",
+        "width": 1600,
+        "height": 900,
+        "fps": 24,
+        "frames": 619,
+        "duration_seconds": 25.791667,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "sha256": "3e16662e9ec2d42eb9e8f14a70c10e71b4028538d22653c031e456a8774251e9",
+        "preview": "media/pose40_q_sweep-detail.preview.png"
+      },
+      {
+        "file": "media/pose40_online.mp4",
+        "width": 1920,
+        "height": 1080,
+        "fps": 20,
+        "frames": 2763,
+        "duration_seconds": 138.15,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "sha256": "98e0395b860f69117c725766326dc428ee6fce697b1b7b9b9eb49c0e46377b37",
+        "preview": "media/pose40_online.preview.png"
+      },
+      {
+        "file": "media/pose40_online-detail.mp4",
+        "width": 1600,
+        "height": 900,
+        "fps": 24,
+        "frames": 619,
+        "duration_seconds": 25.791667,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "sha256": "ade9fd15d8dc6030918d388a0b4dc0e8b18dc3e80a473b9831a41e041cea534f",
+        "preview": "media/pose40_online-detail.preview.png"
+      },
+      {
+        "file": "media/pose40_q_range.mp4",
+        "width": 1920,
+        "height": 1080,
+        "fps": 20,
+        "frames": 2758,
+        "duration_seconds": 137.9,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "sha256": "4bdd7ba4e3b6d3fe9f35124d1cb86b94eb5f04879b5bf7c045bd34148d249bb1",
+        "preview": "media/pose40_q_range.preview.png"
+      },
+      {
+        "file": "media/pose40_q_range-detail.mp4",
+        "width": 1600,
+        "height": 900,
+        "fps": 24,
+        "frames": 594,
+        "duration_seconds": 24.75,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "sha256": "6916f5d7b7fb5b207d9784503d9245d1b60682a07c227d33a2bb5480fded9e97",
+        "preview": "media/pose40_q_range-detail.preview.png"
+      },
+      {
+        "file": "media/level3_video_closer.mp4",
+        "width": 1600,
+        "height": 900,
+        "fps": 24,
+        "frames": 1256,
+        "duration_seconds": 52.333333,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "sha256": "746ca17c603dfb12e1348649dbd226f1aeb7780b5973d641057adad3f354736c",
+        "preview": "media/level3_video_closer.preview.png"
+      },
+      {
+        "file": "media/level3_video_lowered_tilted_4x.mp4",
+        "width": 1600,
+        "height": 900,
+        "fps": 24,
+        "frames": 347,
+        "duration_seconds": 14.458333,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "sha256": "d79be731a08f573bc298355d61f11eea1c65fb6c390ece6d26a2cd69a87e813b",
+        "preview": "media/level3_video_lowered_tilted_4x.preview.png"
+      }
+    ]
+  },
+  "expected_video_count": 8,
+  "delivery": {
+    "output": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/tech-core-reproduced.zip",
+    "sha256": "098170564a5932f788da21ddfbe0cb2ea45d33c34ff9226c3adef6760bd7e00b",
+    "bytes": 190291703,
+    "source_git_head": "fdc2fb1d102fb08500cf74ebab443fb15f04e959",
+    "source_git_branch": "codex/keyboard-planning-demo",
+    "files_verified": 877,
+    "zip_crc_passed": true,
+    "manifest_verified": true,
+    "git_fsck_passed": true,
+    "independent_repository": true,
+    "rendered": true,
+    "include_mujoco": true,
+    "top_level_directories": [
+      "git_repository",
+      "documents"
+    ],
+    "fresh_unpack_verification": {
+      "passed": true,
+      "source": "delivery-verify-execution.json",
+      "ctest_count": 25,
+      "used_packaged_mujoco": true,
+      "path": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/delivery-unpacked/git_repository"
+    }
+  },
+  "tracked_diff": " .gitignore                           | 1 +\n README.md                            | 6 ++++--\n cmake/planning.cmake                 | 2 +-\n scripts/package_delivery.py          | 2 +-\n scripts/summarize_planner_quality.py | 3 ++-\n tests/planning_approach_test.cpp     | 5 ++++-\n 6 files changed, 13 insertions(+), 6 deletions(-)\n",
+  "final_delivery": {
+    "output": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/tech-core-reproduction-final.zip",
+    "sha256": "6a72b2fda8297fa19e932e51a6bb13bc8b2f38a98882d935adff8f4960a7b939",
+    "bytes": 190703538,
+    "source_git_head": "1c90d7c8637fd4501bc2c615da1b71cdac5d0cfb",
+    "source_git_branch": "codex/keyboard-planning-demo",
+    "files_verified": 905,
+    "zip_crc_passed": true,
+    "manifest_verified": true,
+    "git_fsck_passed": true,
+    "independent_repository": true,
+    "rendered": true,
+    "include_mujoco": true,
+    "top_level_directories": [
+      "git_repository",
+      "documents"
+    ],
+    "fresh_unpack_verification": {
+      "passed": true,
+      "ctest_count": 25,
+      "source": "final-delivery-execution.json",
+      "path": "/home/lqx/code/tech_core_arm_solve/artifacts/reproduction-20261013/final-delivery-unpacked/git_repository",
+      "git_clean": true,
+      "credential_file_excluded": true
+    },
+    "tests": {
+      "name": "Linux-c++",
+      "tests": "25",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "Demonmasterlqx",
+      "time": "104",
+      "timestamp": "2026-10-13T15:11:10"
+    }
+  },
+  "retry_audits": [
+    {
+      "experiment": "pose40-offline-historical",
+      "records": 533,
+      "successes": 21,
+      "valid": true
+    },
+    {
+      "experiment": "pose40-online-historical",
+      "records": 274,
+      "successes": 14,
+      "valid": true
+    },
+    {
+      "experiment": "pose40-q-range-current",
+      "records": 106,
+      "successes": 37,
+      "valid": true
+    }
+  ],
+  "reproduction_audit_completed": true,
+  "historical_exact_reproduction_exceptions": [
+    "Strict online Q: 14/40 instead of 20/40, all six differences are deadline failures",
+    "Historical b4472ed Q-range aborts at pose37 due cached/uncached disagreement; current version completes 40 and validates 37",
+    "Energy tessellation has small platform-dependent changes, with unchanged vertex coordinates and surface measures",
+    "Under the unchanged five-second budget success100 full-Q count is 14/15 instead of 19/18; valid request sets are unchanged"
+  ]
+}

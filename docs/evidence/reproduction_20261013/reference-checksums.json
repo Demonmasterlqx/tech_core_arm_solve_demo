@@ -1,0 +1,372 @@
+{
+  "files": 61,
+  "valid": true,
+  "checks": [
+    {
+      "file": "reference/planning_upstream/README.md",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "3992d491522b942e76afd12ab6424e2ccd41358ce8fef59f3b970922d34c100d"
+    },
+    {
+      "file": "reference/planning_upstream/report/08_control_launch_data_flow.md",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "23dd9b851945e184c10219cf06d93c1fcd8f3197b05fad7653cc48852790080a"
+    },
+    {
+      "file": "reference/planning_upstream/report/09_arm_and_chassis_power_features.md",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "a385ddfc3523aac5d5d1c3862c8d441d969ac0d5e2c2f64c59209abaf3f5f893"
+    },
+    {
+      "file": "reference/planning_upstream/report/11_future_outlook_and_acknowledgements.md",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "d6576c335f90326f1159fa9ea2d55d0c0d5dbd3c4603235337cd0ed35d3e1dc9"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/CMakeLists.txt",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "977e17efb7c53bcec52bc7f7c14b951b4724376cdea5c86a9637ad81a1e69763"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/README.md",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "38d9ffea4b1a3dfe8e83f502f5c4bceadd40345d213f52ecf8ebed1b23d28a23"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/config/handle_arm_trajectory_loop.yaml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "e163da9bf85d8fe0c1493146a356cd44cc36f35931f8673650944b4a4da756e4"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/config/trajectory.yaml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "1437025fbb093564bf4fa4d8f06c72cd8f9de562852c5326601dd6d914a9bc03"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/include/handle_arm/trajectory_loop_node.hpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "8f453c3574fec484478fa87c89016767e3cee84ebb6fbf447255beb0ed5d1b1b"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/launch/handle_arm_trajectory_loop.launch.py",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "15072b155b1c2ad960c9cddae68e42a5c49573fb13eb36b28b594626b4ad52ec"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/package.xml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "1def9e442f5bfd3118f3f2df2abf5466aa0bc140d9e8af8bd180bcf092a069a0"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/src/main.cpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "1c76e2c61d898fd6d23b9a7d9bdfc351214396a089ca6918e21555e02f6b1b0d"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/src/trajectory_loop_node.cpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "c29159c7a7091db74d214317c3a6f7e4b1c39919a562f5851ab59d80a7efeeca"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/handle_arm/test/test_trajectory_loop_node.cpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "7a4f2ce6ae52f4e0c80f4cb67c529924c0c32ccbcaac025841c9e6b546838df3"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/rm26_energy_unit_pap/Readme.md",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "c37ff8265aecd9ef6a2923ac3c7c61fde650657f0532d6e1a72c1ee98d028009"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/rm26_energy_unit_pap/package.xml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "a656cc006264eeb61b7079cd70aa9250d09b35a3b06ac711585437c9a3102592"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/rm26_energy_unit_pap/src/rm26_energy_unit_pap.cpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "4062a8b098a57924e09238d73a123b1bf16d0c1a182c2dfb48b7cdd02024f719"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/application/rm26_energy_unit_pap/src/rm26_energy_unit_pap_parameters.yaml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "6498b5d3d54f706e5c9d682ffdc5e024cecbc87af8f4df4717f9c5dadcf6fbc0"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/Readme.md",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "7982cf717f6c20ace43ad27572d2d29140c7b6f5b9c3dfc7180778dfd230244c"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/include/rm_connecting_rod_gripper_controller/gripper_core.hpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "793bc0855fbab3f10f628b0eb7743c56b6b2da4d9c2e7bcf14e743e1e431d8eb"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/package.xml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "ba2629b086d8468f88808aefc334432bf4c51b365da7e3195b0930dedf356095"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/control_part.cpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "81bb29771a9c3620d9e403a969d981acba8e3571dacf183f81f8690a796d403c"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/rm_connecting_rod_gripper_controller.cpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "1c60cc3e141f6d58a71a1c84248f5cfd45bde61852a8192f3bb2b650f0787fab"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/rm_connecting_rod_gripper_controller/src/rm_connecting_rod_gripper_controller.yaml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "507701ea799650842d509207d5c8bb4a795336d38e4b4045fda277b85686bcd1"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/auto_pap_energy_unit.yaml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "b37450b2d9ac2ef24ee2392e02376f22df60d4825f0e502c71c49a866cc1cbdb"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/custom_controller.yaml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "d54a97967967539b5ef67aa8660a4fa7cfc78f7a5447a8f52d0902d81134082a"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/joint_limits.yaml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "bc766eea23f209d87ca59540b8562c1020474c78fbf61f1be169f957a7ef3cf9"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/config/ros2_controllers.yaml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "823c690b4a4c76122c8f29a71017bb865b40d61911235984cd96d3d6e49dba10"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/core/test/rm26_version3_engineering_model_moveit/launch/moveit.launch.py",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "988b6775685555597899b49f6573376df61ee1a7b3d07022ef121075fe7662ad"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/CMakeLists.txt",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "314b174f89ca678bf7f2aed382fdc75117dab43e4c0111899722fe6f1073c539"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/config/config.py",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/config/config.yaml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "704b2e5f8a0a2b8860e6653549eef7badb611d330e6514590fc598d814b5da3d"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/include/axis_free_rotate_ik/axis_free_rotate_ik.hpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "83fcfc4712cc0e6009658f9dafc9357acaa2aedc713cc836cac1a4e81736878b"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/include/axis_free_rotate_ik/axis_free_rotate_ik_ros.hpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "4846701ab0d4367bdfbd040f39889098b15531cfbaf7297507e97c6106ec53a5"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/launch/test.launch.py",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "3381152f63477b6007709b5e3798085b7d0fba0369094f9b43745f6b8b1ee88f"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/package.xml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "5bc832f00a3af24056cf90fb95f4328f7ec322eb5d5ac5afbff4633a9e0b37ef"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik.cpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "fbbcbeca3dd03c1069bc502220c3c8875588a7fabbf7a7a6c80f732c5841cf5c"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik_ros.cpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "8e4d46ef49f294ab6b5dad36cf16e454b19cc25d1a3c9fe5b7c0e50a8353fea7"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/src/axis_free_rotate_ik_ros.yaml",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "31e5ec07679589c34d82611b59e6c31e714e4207065a4ba1207968a297ce1411"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/srv/SolveAxisFreeIK.srv",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "1835650c35fb3888fa75a9112f478bb6594438dbdb85bbf5ac762fc050db780a"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/srv/SolveFixedIK.srv",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "b19ae0876b0f1a1b4e453317454f5152666417c397264285c5eee758fe0b8721"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/test/test_axis_free_rotate_ik.cpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "515a943be2c8f2cfc7b7f012a90bd7058019664634a9b1ca5f4ec5ac4ccc100b"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/test/test_axis_free_rotate_ik_ros.cpp",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "33cfe704a706d4adfd3e554aab54e44ca9b40a9be5c907cce9e6c4fdc7c22d1b"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/theory/IK\u9006\u89e3.md",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "70f52d5c4599b6a5dc17eac17433ecbca18ef69d3d7c02e9bf816c8372f5b881"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/theory/image.png",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "fd2a6497aa5350505c74033b3ed479db387e9d1c08dc74fde0b0d6b53aa5a0fd"
+    },
+    {
+      "file": "reference/planning_upstream/src/RM/RMController/submodule_lib/axis_free_rotate_ik/uncrustify_4_spaces.cfg",
+      "kind": "planning_reference",
+      "valid": true,
+      "sha256": "b099d5b89a15eea93c6a606b92d3743cf7f457305f6f07de714507058ff60944"
+    },
+    {
+      "file": "models/rm26_arm/meshes/end_left_link.STL",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "f82d78dd505db72b677de09ad766dea6ed8a79891b58be07ec06b73c0a15e209"
+    },
+    {
+      "file": "models/rm26_arm/meshes/end_right_link.STL",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "a5a98795f99da21d659abd8da18c23b0ece536ca8701dd8040b934aa07cf8083"
+    },
+    {
+      "file": "models/rm26_arm/meshes/j0_link.STL",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "8f4cb42a2b7dab1fbc1c81e234fbb7b901d28963200a14f9b13cbb597475911e"
+    },
+    {
+      "file": "models/rm26_arm/meshes/j1_link.STL",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "ab4745eaba01222b0883046cf7fc2e35b682185253a8242f9ab0cc6e4356a0e2"
+    },
+    {
+      "file": "models/rm26_arm/meshes/j2_link.STL",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "91bdf9c0baff49b0be3c8005c313da7538e9d06117302b8ed5467325691c70bd"
+    },
+    {
+      "file": "models/rm26_arm/meshes/j3_link.STL",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "ed9672a5e999486eee5d97a54d1c6f5bf61801711f711e92a7154da7750f54b2"
+    },
+    {
+      "file": "models/rm26_arm/meshes/j4_link.STL",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "d1739bb75617b76406723b37f39f3f1a53333683c40ea2fc6e96aac4e68e1d56"
+    },
+    {
+      "file": "models/rm26_arm/meshes/j5_link.STL",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "b6acc90990784e8924262f77b35379bbbe4d521376e4d44908ffc98b1808439f"
+    },
+    {
+      "file": "models/rm26_arm/meshes/j6_link.STL",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "afec46b1394372a9d918c41e8751e6392e06f31c3cbb5d511c6f36d569222b12"
+    },
+    {
+      "file": "models/rm26_arm/meshes/realsense_d415_link.STL",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "e78abd9cd93a5f51166da5bba7abff449142c1f4aa2fd0aa95723fe623e56f1d"
+    },
+    {
+      "file": "reference/rm26_arm/package.xml",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "865f109f8bd3d864d26c9d469b11023b95d10b3768ec61d536d6c777279e3736"
+    },
+    {
+      "file": "reference/rm26_arm/source.urdf",
+      "kind": "arm_reference",
+      "valid": true,
+      "sha256": "e19f7e34345a5653b0261d85b04bf4b7a15bdddcc12f4e01119947440e4fa8f9"
+    },
+    {
+      "file": "reference/hkust/exchange.blend",
+      "kind": "core_reference",
+      "valid": true,
+      "sha256": "9490131f84030944de45f14fc5dd682fe1ae2cac779d211ac421b9a412093e9a"
+    },
+    {
+      "file": "reference/hkust/LICENSE",
+      "kind": "core_license",
+      "valid": true,
+      "sha256": "692546eebb4bb3a8d3427c357b8e36eb9f82d0362c93353d1afd58587dee6479"
+    },
+    {
+      "file": "reference/RoboMaster_2026_\u673a\u7532\u5927\u5e08\u8d85\u7ea7\u5bf9\u6297\u8d5b\u6bd4\u8d5b\u89c4\u5219\u624b\u518cV2.2.0\uff0820260807\uff09.pdf",
+      "kind": "rulebook",
+      "valid": true,
+      "sha256": "88ae3c7d0bbd7312c8095eff2603910437e292a0b53f46c9378f26144c09a6f5"
+    }
+  ]
+}

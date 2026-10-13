@@ -1,0 +1,39 @@
+{
+  "strict_online": {
+    "lost_successes": [
+      {
+        "case": "pose02",
+        "reason": "online_deadline"
+      },
+      {
+        "case": "pose03",
+        "reason": "online_deadline"
+      },
+      {
+        "case": "pose09",
+        "reason": "online_deadline"
+      },
+      {
+        "case": "pose28",
+        "reason": "online_deadline"
+      },
+      {
+        "case": "pose29",
+        "reason": "online_deadline"
+      },
+      {
+        "case": "pose37",
+        "reason": "online_deadline"
+      }
+    ],
+    "gained_successes": []
+  },
+  "success100_baseline": {
+    "lost_successes": [],
+    "gained_successes": []
+  },
+  "success100_rigid_cache": {
+    "lost_successes": [],
+    "gained_successes": []
+  }
+}

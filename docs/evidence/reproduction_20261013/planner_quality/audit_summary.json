@@ -1,0 +1,5418 @@
+{
+  "suite_sha256": "93a563d4cb6756b1d578df8b2890208c9e766306b3a176b812e703e5f7e96e89",
+  "inputs": {
+    "artifacts/reproduction-20261013/planner_quality/baseline/results/runs.csv": "e8c97bc88bbce69853a0b624b4aae719355dc5e42b23c42308ccae18b2d14df7",
+    "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/runs.csv": "7d8b638c00dc9702915a26535a6e1cfc4208522519f2af7a5f2c9c797269bf30"
+  },
+  "command": [
+    "scripts/summarize_planner_quality.py",
+    "--suite",
+    "docs/evidence/planner_quality",
+    "--runs",
+    "artifacts/reproduction-20261013/planner_quality/baseline",
+    "artifacts/reproduction-20261013/planner_quality/rigid_cache",
+    "--certificate-root",
+    "artifacts/reproduction-20261013/planner_quality",
+    "--output",
+    "artifacts/reproduction-20261013/planner_quality/audit"
+  ],
+  "scope": "Positive trajectory certificates are a lower bound on reachability. Unknown failures stay in raw totals; conditional rates are not whole-cube rates.",
+  "summaries": {
+    "baseline/confirmation/all": {
+      "total": 200,
+      "successes": 62,
+      "raw_rate": 0.31,
+      "certified_reachable": 63,
+      "certified_successes": 62,
+      "certified_rate": 0.9841269841269841,
+      "unresolved": [
+        "confirmation_001_preset",
+        "confirmation_002_zero",
+        "confirmation_002_preset",
+        "confirmation_003_zero",
+        "confirmation_003_preset",
+        "confirmation_004_zero",
+        "confirmation_004_preset",
+        "confirmation_005_preset",
+        "confirmation_006_zero",
+        "confirmation_006_preset",
+        "confirmation_007_zero",
+        "confirmation_007_preset",
+        "confirmation_008_zero",
+        "confirmation_008_preset",
+        "confirmation_009_zero",
+        "confirmation_009_preset",
+        "confirmation_010_zero",
+        "confirmation_010_preset",
+        "confirmation_011_zero",
+        "confirmation_011_preset",
+        "confirmation_012_zero",
+        "confirmation_012_preset",
+        "confirmation_013_zero",
+        "confirmation_013_preset",
+        "confirmation_014_zero",
+        "confirmation_014_preset",
+        "confirmation_015_zero",
+        "confirmation_015_preset",
+        "confirmation_016_zero",
+        "confirmation_016_preset",
+        "confirmation_018_zero",
+        "confirmation_018_preset",
+        "confirmation_019_zero",
+        "confirmation_019_preset",
+        "confirmation_021_zero",
+        "confirmation_021_preset",
+        "confirmation_022_zero",
+        "confirmation_022_preset",
+        "confirmation_024_preset",
+        "confirmation_025_zero",
+        "confirmation_025_preset",
+        "confirmation_027_preset",
+        "confirmation_028_zero",
+        "confirmation_028_preset",
+        "confirmation_030_zero",
+        "confirmation_030_preset",
+        "confirmation_031_zero",
+        "confirmation_031_preset",
+        "confirmation_032_zero",
+        "confirmation_032_preset",
+        "confirmation_033_zero",
+        "confirmation_033_preset",
+        "confirmation_035_zero",
+        "confirmation_035_preset",
+        "confirmation_036_zero",
+        "confirmation_036_preset",
+        "confirmation_038_preset",
+        "confirmation_039_zero",
+        "confirmation_041_zero",
+        "confirmation_041_preset",
+        "confirmation_042_zero",
+        "confirmation_042_preset",
+        "confirmation_043_zero",
+        "confirmation_043_preset",
+        "confirmation_044_zero",
+        "confirmation_044_preset",
+        "confirmation_045_zero",
+        "confirmation_045_preset",
+        "confirmation_046_zero",
+        "confirmation_046_preset",
+        "confirmation_048_zero",
+        "confirmation_048_preset",
+        "confirmation_051_zero",
+        "confirmation_051_preset",
+        "confirmation_052_zero",
+        "confirmation_052_preset",
+        "confirmation_053_zero",
+        "confirmation_053_preset",
+        "confirmation_054_preset",
+        "confirmation_055_preset",
+        "confirmation_056_zero",
+        "confirmation_056_preset",
+        "confirmation_057_zero",
+        "confirmation_057_preset",
+        "confirmation_059_zero",
+        "confirmation_059_preset",
+        "confirmation_060_zero",
+        "confirmation_060_preset",
+        "confirmation_061_zero",
+        "confirmation_061_preset",
+        "confirmation_062_zero",
+        "confirmation_062_preset",
+        "confirmation_064_zero",
+        "confirmation_064_preset",
+        "confirmation_065_zero",
+        "confirmation_065_preset",
+        "confirmation_066_preset",
+        "confirmation_067_zero",
+        "confirmation_067_preset",
+        "confirmation_068_zero",
+        "confirmation_068_preset",
+        "confirmation_070_zero",
+        "confirmation_070_preset",
+        "confirmation_071_zero",
+        "confirmation_071_preset",
+        "confirmation_073_zero",
+        "confirmation_073_preset",
+        "confirmation_074_preset",
+        "confirmation_075_zero",
+        "confirmation_075_preset",
+        "confirmation_076_zero",
+        "confirmation_076_preset",
+        "confirmation_077_preset",
+        "confirmation_079_zero",
+        "confirmation_079_preset",
+        "confirmation_080_zero",
+        "confirmation_080_preset",
+        "confirmation_081_zero",
+        "confirmation_081_preset",
+        "confirmation_085_zero",
+        "confirmation_085_preset",
+        "confirmation_086_zero",
+        "confirmation_086_preset",
+        "confirmation_088_zero",
+        "confirmation_088_preset",
+        "confirmation_090_zero",
+        "confirmation_090_preset",
+        "confirmation_092_zero",
+        "confirmation_092_preset",
+        "confirmation_093_zero",
+        "confirmation_093_preset",
+        "confirmation_096_zero",
+        "confirmation_096_preset",
+        "confirmation_098_zero",
+        "confirmation_098_preset",
+        "confirmation_099_zero",
+        "confirmation_099_preset"
+      ],
+      "missed_certified": [
+        "confirmation_074_zero"
+      ],
+      "failure_reasons": {
+        "start_collision_collision_arm_end_left_link_part_0/collision_core_shell_d=-0.016512": 1,
+        "ik_flip_130_iteration limit": 2,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 14,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 3,
+        "deadline_during_approach": 9,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.012804": 1,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.005781": 1,
+        "ik_flip_204_iteration limit": 2,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.000946": 1,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015300": 1,
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.079072": 1,
+        "ik_flip_166_iteration limit": 6,
+        "ik_flip_208_iteration limit": 2,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.140259": 1,
+        "ik_flip_202_no descending feasible step": 1,
+        "start_collision_collision_arm_j4_link_part_2/collision_core_shell_d=-0.002254": 1,
+        "ik_flip_185_iteration limit": 1,
+        "start_collision_collision_arm_end_left_link_part_1/collision_core_shell_d=-0.000960": 1,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 3,
+        "ik_flip_187_iteration limit": 2,
+        "ik_flip_198_iteration limit": 2,
+        "ik_flip_196_iteration limit": 2,
+        "ik_flip_177_iteration limit": 5,
+        "start_collision_collision_arm_end_right_link_part_2_grip/collision_core_shell_d=-0.000014": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.052479": 1,
+        "start_collision_j2_link_visual/core0_peg_d=-0.010629": 1,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 2,
+        "ik_flip_150_iteration limit": 3,
+        "start_collision_carried_unit_flange_10/collision_core_shell_d=-0.000017": 1,
+        "start_collision_collision_arm_end_left_link_part_13/collision_core_shell_d=-0.019942": 1,
+        "start_collision_carried_unit_flange_14/core0_peg_d=-0.000035": 1,
+        "start_collision_collision_arm_end_left_link_part_0/collision_core_shell_d=-0.014239": 1,
+        "collision_coarse_insert_j1_link_visual/collision_core_shell": 3,
+        "collision_coarse_lift_camera_link_visual/collision_core_shell": 1,
+        "ik_flip_206_iteration limit": 1,
+        "start_collision_j5_link_visual/collision_core_shell_d=-0.011938": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.020647": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 4,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.079357": 1,
+        "ik_flip_194_iteration limit": 6,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025211": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.036105": 1,
+        "ik_flip_163_iteration limit": 2,
+        "ik_flip_183_iteration limit": 2,
+        "collision_coarse_approach_j2_link_visual/collision_core_shell": 2,
+        "start_collision_collision_arm_j6_link_part_0/collision_core_shell_d=-0.012263": 1,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.007396": 1,
+        "ik_flip_210_iteration limit": 1,
+        "ik_flip_202_iteration limit": 1,
+        "start_collision_carried_unit_flange_22/core0_pillar_L_light_1/assembly_axial_overlap_d=-0.000779_d=-0.000779": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.008048": 1,
+        "start_collision_collision_arm_j4_link_part_2/core0_peg_d=-0.015564": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.110523": 1,
+        "ik_flip_175_iteration limit": 2,
+        "ik_lift_113_iteration limit": 2,
+        "ik_flip_165_iteration limit": 2,
+        "ik_flip_201_iteration limit": 2,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.020070": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.010204": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.006955": 1,
+        "ik_insert_64_iteration limit": 2,
+        "start_collision_j2_link_visual/core0_peg_d=-0.023899": 1,
+        "ik_lift_119_iteration limit": 1,
+        "ik_lift_120_iteration limit": 1,
+        "collision_coarse_lift_j5_link_visual/collision_core_shell": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.014080": 1,
+        "ik_flip_148_iteration limit": 2,
+        "ik_flip_180_iteration limit": 2,
+        "start_collision_collision_arm_j6_link_part_0/collision_core_shell_d=-0.029309": 1,
+        "ik_flip_176_iteration limit": 2,
+        "start_collision_j0_link_visual/collision_core_shell_d=-0.034271": 1,
+        "start_collision_j0_link_visual/collision_core_shell_d=-0.029433": 1,
+        "start_collision_collision_arm_end_right_link_part_0/collision_core_shell_d=-0.013470": 1
+      },
+      "seconds": {
+        "n": 200,
+        "mean": 1.75669033552,
+        "p50": 1.567403347,
+        "p95": 3.9185156253999995,
+        "max": 4.762914612
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/confirmation/preset": {
+      "total": 100,
+      "successes": 27,
+      "raw_rate": 0.27,
+      "certified_reachable": 27,
+      "certified_successes": 27,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "confirmation_001_preset",
+        "confirmation_002_preset",
+        "confirmation_003_preset",
+        "confirmation_004_preset",
+        "confirmation_005_preset",
+        "confirmation_006_preset",
+        "confirmation_007_preset",
+        "confirmation_008_preset",
+        "confirmation_009_preset",
+        "confirmation_010_preset",
+        "confirmation_011_preset",
+        "confirmation_012_preset",
+        "confirmation_013_preset",
+        "confirmation_014_preset",
+        "confirmation_015_preset",
+        "confirmation_016_preset",
+        "confirmation_018_preset",
+        "confirmation_019_preset",
+        "confirmation_021_preset",
+        "confirmation_022_preset",
+        "confirmation_024_preset",
+        "confirmation_025_preset",
+        "confirmation_027_preset",
+        "confirmation_028_preset",
+        "confirmation_030_preset",
+        "confirmation_031_preset",
+        "confirmation_032_preset",
+        "confirmation_033_preset",
+        "confirmation_035_preset",
+        "confirmation_036_preset",
+        "confirmation_038_preset",
+        "confirmation_041_preset",
+        "confirmation_042_preset",
+        "confirmation_043_preset",
+        "confirmation_044_preset",
+        "confirmation_045_preset",
+        "confirmation_046_preset",
+        "confirmation_048_preset",
+        "confirmation_051_preset",
+        "confirmation_052_preset",
+        "confirmation_053_preset",
+        "confirmation_054_preset",
+        "confirmation_055_preset",
+        "confirmation_056_preset",
+        "confirmation_057_preset",
+        "confirmation_059_preset",
+        "confirmation_060_preset",
+        "confirmation_061_preset",
+        "confirmation_062_preset",
+        "confirmation_064_preset",
+        "confirmation_065_preset",
+        "confirmation_066_preset",
+        "confirmation_067_preset",
+        "confirmation_068_preset",
+        "confirmation_070_preset",
+        "confirmation_071_preset",
+        "confirmation_073_preset",
+        "confirmation_074_preset",
+        "confirmation_075_preset",
+        "confirmation_076_preset",
+        "confirmation_077_preset",
+        "confirmation_079_preset",
+        "confirmation_080_preset",
+        "confirmation_081_preset",
+        "confirmation_085_preset",
+        "confirmation_086_preset",
+        "confirmation_088_preset",
+        "confirmation_090_preset",
+        "confirmation_092_preset",
+        "confirmation_093_preset",
+        "confirmation_096_preset",
+        "confirmation_098_preset",
+        "confirmation_099_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "start_collision_collision_arm_end_left_link_part_0/collision_core_shell_d=-0.016512": 1,
+        "ik_flip_130_iteration limit": 1,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 3,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.012804": 1,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.005781": 1,
+        "ik_flip_204_iteration limit": 1,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015300": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.079072": 1,
+        "ik_flip_166_iteration limit": 3,
+        "ik_flip_208_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.140259": 1,
+        "start_collision_collision_arm_j4_link_part_2/collision_core_shell_d=-0.002254": 1,
+        "start_collision_collision_arm_end_left_link_part_1/collision_core_shell_d=-0.000960": 1,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 1,
+        "ik_flip_187_iteration limit": 1,
+        "ik_flip_198_iteration limit": 1,
+        "ik_flip_196_iteration limit": 1,
+        "start_collision_collision_arm_end_right_link_part_2_grip/collision_core_shell_d=-0.000014": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.052479": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 5,
+        "start_collision_j2_link_visual/core0_peg_d=-0.010629": 1,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 1,
+        "start_collision_carried_unit_flange_10/collision_core_shell_d=-0.000017": 1,
+        "start_collision_carried_unit_flange_14/core0_peg_d=-0.000035": 1,
+        "start_collision_collision_arm_end_left_link_part_0/collision_core_shell_d=-0.014239": 1,
+        "ik_flip_177_iteration limit": 2,
+        "collision_coarse_insert_j1_link_visual/collision_core_shell": 1,
+        "collision_coarse_lift_camera_link_visual/collision_core_shell": 1,
+        "start_collision_j5_link_visual/collision_core_shell_d=-0.011938": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.020647": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.079357": 1,
+        "ik_flip_194_iteration limit": 3,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025211": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.036105": 1,
+        "ik_flip_163_iteration limit": 1,
+        "ik_flip_183_iteration limit": 1,
+        "collision_coarse_approach_j2_link_visual/collision_core_shell": 2,
+        "start_collision_collision_arm_j6_link_part_0/collision_core_shell_d=-0.012263": 1,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.007396": 1,
+        "deadline_during_approach": 1,
+        "start_collision_carried_unit_flange_22/core0_pillar_L_light_1/assembly_axial_overlap_d=-0.000779_d=-0.000779": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.008048": 1,
+        "start_collision_collision_arm_j4_link_part_2/core0_peg_d=-0.015564": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.110523": 1,
+        "ik_flip_175_iteration limit": 1,
+        "ik_lift_113_iteration limit": 1,
+        "ik_flip_165_iteration limit": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.020070": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.010204": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.006955": 1,
+        "ik_insert_64_iteration limit": 1,
+        "start_collision_j2_link_visual/core0_peg_d=-0.023899": 1,
+        "ik_lift_120_iteration limit": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.014080": 1,
+        "ik_flip_148_iteration limit": 1,
+        "ik_flip_180_iteration limit": 1,
+        "start_collision_collision_arm_j6_link_part_0/collision_core_shell_d=-0.029309": 1,
+        "ik_flip_176_iteration limit": 1,
+        "start_collision_j0_link_visual/collision_core_shell_d=-0.029433": 1,
+        "ik_flip_150_iteration limit": 1
+      },
+      "seconds": {
+        "n": 100,
+        "mean": 1.41630690372,
+        "p50": 1.313057337,
+        "p95": 3.9185156254,
+        "max": 4.642519064
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/confirmation/zero": {
+      "total": 100,
+      "successes": 35,
+      "raw_rate": 0.35,
+      "certified_reachable": 36,
+      "certified_successes": 35,
+      "certified_rate": 0.9722222222222222,
+      "unresolved": [
+        "confirmation_002_zero",
+        "confirmation_003_zero",
+        "confirmation_004_zero",
+        "confirmation_006_zero",
+        "confirmation_007_zero",
+        "confirmation_008_zero",
+        "confirmation_009_zero",
+        "confirmation_010_zero",
+        "confirmation_011_zero",
+        "confirmation_012_zero",
+        "confirmation_013_zero",
+        "confirmation_014_zero",
+        "confirmation_015_zero",
+        "confirmation_016_zero",
+        "confirmation_018_zero",
+        "confirmation_019_zero",
+        "confirmation_021_zero",
+        "confirmation_022_zero",
+        "confirmation_025_zero",
+        "confirmation_028_zero",
+        "confirmation_030_zero",
+        "confirmation_031_zero",
+        "confirmation_032_zero",
+        "confirmation_033_zero",
+        "confirmation_035_zero",
+        "confirmation_036_zero",
+        "confirmation_039_zero",
+        "confirmation_041_zero",
+        "confirmation_042_zero",
+        "confirmation_043_zero",
+        "confirmation_044_zero",
+        "confirmation_045_zero",
+        "confirmation_046_zero",
+        "confirmation_048_zero",
+        "confirmation_051_zero",
+        "confirmation_052_zero",
+        "confirmation_053_zero",
+        "confirmation_056_zero",
+        "confirmation_057_zero",
+        "confirmation_059_zero",
+        "confirmation_060_zero",
+        "confirmation_061_zero",
+        "confirmation_062_zero",
+        "confirmation_064_zero",
+        "confirmation_065_zero",
+        "confirmation_067_zero",
+        "confirmation_068_zero",
+        "confirmation_070_zero",
+        "confirmation_071_zero",
+        "confirmation_073_zero",
+        "confirmation_075_zero",
+        "confirmation_076_zero",
+        "confirmation_079_zero",
+        "confirmation_080_zero",
+        "confirmation_081_zero",
+        "confirmation_085_zero",
+        "confirmation_086_zero",
+        "confirmation_088_zero",
+        "confirmation_090_zero",
+        "confirmation_092_zero",
+        "confirmation_093_zero",
+        "confirmation_096_zero",
+        "confirmation_098_zero",
+        "confirmation_099_zero"
+      ],
+      "missed_certified": [
+        "confirmation_074_zero"
+      ],
+      "failure_reasons": {
+        "ik_flip_130_iteration limit": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 9,
+        "deadline_during_approach": 8,
+        "ik_flip_204_iteration limit": 1,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.000946": 1,
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "ik_flip_166_iteration limit": 3,
+        "ik_flip_208_iteration limit": 1,
+        "ik_flip_202_no descending feasible step": 1,
+        "ik_flip_185_iteration limit": 1,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 2,
+        "ik_flip_187_iteration limit": 1,
+        "ik_flip_198_iteration limit": 1,
+        "ik_flip_196_iteration limit": 1,
+        "ik_flip_177_iteration limit": 3,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 1,
+        "ik_flip_150_iteration limit": 2,
+        "start_collision_collision_arm_end_left_link_part_13/collision_core_shell_d=-0.019942": 1,
+        "collision_coarse_insert_j1_link_visual/collision_core_shell": 2,
+        "ik_flip_206_iteration limit": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 3,
+        "ik_flip_194_iteration limit": 3,
+        "ik_flip_163_iteration limit": 1,
+        "ik_flip_183_iteration limit": 1,
+        "ik_flip_210_iteration limit": 1,
+        "ik_flip_202_iteration limit": 1,
+        "ik_flip_175_iteration limit": 1,
+        "ik_lift_113_iteration limit": 1,
+        "ik_flip_165_iteration limit": 1,
+        "ik_flip_201_iteration limit": 2,
+        "ik_insert_64_iteration limit": 1,
+        "ik_lift_119_iteration limit": 1,
+        "collision_coarse_lift_j5_link_visual/collision_core_shell": 1,
+        "ik_flip_148_iteration limit": 1,
+        "ik_flip_180_iteration limit": 1,
+        "ik_flip_176_iteration limit": 1,
+        "start_collision_j0_link_visual/collision_core_shell_d=-0.034271": 1,
+        "start_collision_collision_arm_end_right_link_part_0/collision_core_shell_d=-0.013470": 1
+      },
+      "seconds": {
+        "n": 100,
+        "mean": 2.09707376732,
+        "p50": 1.8938372335,
+        "p95": 3.8198462674499996,
+        "max": 4.762914612
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/development/all": {
+      "total": 64,
+      "successes": 19,
+      "raw_rate": 0.296875,
+      "certified_reachable": 19,
+      "certified_successes": 19,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_zero",
+        "development_001_preset",
+        "development_004_preset",
+        "development_005_zero",
+        "development_005_preset",
+        "development_007_zero",
+        "development_007_preset",
+        "development_008_zero",
+        "development_008_preset",
+        "development_010_zero",
+        "development_010_preset",
+        "development_011_zero",
+        "development_011_preset",
+        "development_012_zero",
+        "development_012_preset",
+        "development_015_zero",
+        "development_015_preset",
+        "development_016_preset",
+        "development_017_zero",
+        "development_017_preset",
+        "development_018_preset",
+        "development_019_zero",
+        "development_019_preset",
+        "development_020_zero",
+        "development_020_preset",
+        "development_021_zero",
+        "development_021_preset",
+        "development_022_zero",
+        "development_022_preset",
+        "development_023_preset",
+        "development_024_zero",
+        "development_024_preset",
+        "development_025_zero",
+        "development_025_preset",
+        "development_026_zero",
+        "development_026_preset",
+        "development_027_zero",
+        "development_027_preset",
+        "development_028_zero",
+        "development_028_preset",
+        "development_029_preset",
+        "development_030_zero",
+        "development_030_preset",
+        "development_031_zero",
+        "development_031_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 2,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.060684": 1,
+        "ik_flip_187_iteration limit": 3,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.003014": 1,
+        "collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.027256": 1,
+        "preinsert_goal_collision_j2_link_visual/collision_core_shell": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.029762": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 3,
+        "ik_flip_192_iteration limit": 3,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 3,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.059439": 1,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 2,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015531": 1,
+        "deadline_during_approach": 3,
+        "collision_coarse_approach_j2_link_visual/collision_core_shell": 3,
+        "ik_flip_133_iteration limit": 2,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025849": 1,
+        "ik_flip_207_iteration limit": 2,
+        "ik_flip_173_iteration limit": 2,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.005482": 1,
+        "start_collision_carried_unit_flange_13/collision_core_shell_d=-0.000017": 1,
+        "ik_flip_177_iteration limit": 2,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.038233": 1,
+        "start_collision_carried_unit_flange_0/collision_core_shell_d=-0.008059": 1
+      },
+      "seconds": {
+        "n": 64,
+        "mean": 1.744366772703125,
+        "p50": 1.4431588215,
+        "p95": 4.274923511599999,
+        "max": 4.854637617
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/development/preset": {
+      "total": 32,
+      "successes": 7,
+      "raw_rate": 0.21875,
+      "certified_reachable": 7,
+      "certified_successes": 7,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_preset",
+        "development_004_preset",
+        "development_005_preset",
+        "development_007_preset",
+        "development_008_preset",
+        "development_010_preset",
+        "development_011_preset",
+        "development_012_preset",
+        "development_015_preset",
+        "development_016_preset",
+        "development_017_preset",
+        "development_018_preset",
+        "development_019_preset",
+        "development_020_preset",
+        "development_021_preset",
+        "development_022_preset",
+        "development_023_preset",
+        "development_024_preset",
+        "development_025_preset",
+        "development_026_preset",
+        "development_027_preset",
+        "development_028_preset",
+        "development_029_preset",
+        "development_030_preset",
+        "development_031_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.060684": 1,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.003014": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.027256": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.029762": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 2,
+        "ik_flip_192_iteration limit": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 2,
+        "ik_flip_187_iteration limit": 1,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.059439": 1,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015531": 1,
+        "collision_coarse_approach_j2_link_visual/collision_core_shell": 3,
+        "ik_flip_133_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025849": 1,
+        "ik_flip_207_iteration limit": 1,
+        "ik_flip_173_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.005482": 1,
+        "start_collision_carried_unit_flange_13/collision_core_shell_d=-0.000017": 1,
+        "ik_flip_177_iteration limit": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.038233": 1,
+        "start_collision_carried_unit_flange_0/collision_core_shell_d=-0.008059": 1
+      },
+      "seconds": {
+        "n": 32,
+        "mean": 1.0260994830625,
+        "p50": 1.019406523,
+        "p95": 3.16744406,
+        "max": 4.307012113
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/development/zero": {
+      "total": 32,
+      "successes": 12,
+      "raw_rate": 0.375,
+      "certified_reachable": 12,
+      "certified_successes": 12,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_zero",
+        "development_005_zero",
+        "development_007_zero",
+        "development_008_zero",
+        "development_010_zero",
+        "development_011_zero",
+        "development_012_zero",
+        "development_015_zero",
+        "development_017_zero",
+        "development_019_zero",
+        "development_020_zero",
+        "development_021_zero",
+        "development_022_zero",
+        "development_024_zero",
+        "development_025_zero",
+        "development_026_zero",
+        "development_027_zero",
+        "development_028_zero",
+        "development_030_zero",
+        "development_031_zero"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 1,
+        "ik_flip_187_iteration limit": 2,
+        "collision_coarse_approach_j2_link_visual/collision_arm_j4_link_part_5": 1,
+        "preinsert_goal_collision_j2_link_visual/collision_core_shell": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 1,
+        "ik_flip_192_iteration limit": 2,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 1,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 2,
+        "deadline_during_approach": 3,
+        "ik_flip_133_iteration limit": 1,
+        "ik_flip_207_iteration limit": 1,
+        "ik_flip_173_iteration limit": 1,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 1,
+        "ik_flip_177_iteration limit": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 1
+      },
+      "seconds": {
+        "n": 32,
+        "mean": 2.46263406234375,
+        "p50": 2.382844985,
+        "p95": 4.4166241911499995,
+        "max": 4.854637617
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/negative/all": {
+      "total": 4,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_zero",
+        "unreachable_zero",
+        "blocked_preset",
+        "unreachable_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "ik_preinsert_iteration limit": 2,
+        "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000": 1
+      },
+      "seconds": {
+        "n": 4,
+        "mean": 0.32625778699999997,
+        "p50": 0.4098481895,
+        "p95": 0.48091481615,
+        "max": 0.483524882
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/negative/preset": {
+      "total": 2,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_preset",
+        "unreachable_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000": 1,
+        "ik_preinsert_iteration limit": 1
+      },
+      "seconds": {
+        "n": 2,
+        "mean": 0.233967165,
+        "p50": 0.233967165,
+        "p95": 0.44290871519999997,
+        "max": 0.466124443
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/negative/zero": {
+      "total": 2,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_zero",
+        "unreachable_zero"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "ik_preinsert_iteration limit": 1
+      },
+      "seconds": {
+        "n": 2,
+        "mean": 0.418548409,
+        "p50": 0.418548409,
+        "p95": 0.47702723469999997,
+        "max": 0.483524882
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/regression/all": {
+      "total": 40,
+      "successes": 37,
+      "raw_rate": 0.925,
+      "certified_reachable": 37,
+      "certified_successes": 37,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "legacy_pose06",
+        "legacy_pose15",
+        "legacy_pose30"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_208_iteration limit": 2,
+        "ik_flip_209_iteration limit": 1
+      },
+      "seconds": {
+        "n": 40,
+        "mean": 1.327811766375,
+        "p50": 1.2950670400000002,
+        "p95": 1.64635103555,
+        "max": 1.700374201
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "baseline/regression/legacy": {
+      "total": 40,
+      "successes": 37,
+      "raw_rate": 0.925,
+      "certified_reachable": 37,
+      "certified_successes": 37,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "legacy_pose06",
+        "legacy_pose15",
+        "legacy_pose30"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_208_iteration limit": 2,
+        "ik_flip_209_iteration limit": 1
+      },
+      "seconds": {
+        "n": 40,
+        "mean": 1.327811766375,
+        "p50": 1.2950670400000002,
+        "p95": 1.64635103555,
+        "max": 1.700374201
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/confirmation/all": {
+      "total": 200,
+      "successes": 62,
+      "raw_rate": 0.31,
+      "certified_reachable": 63,
+      "certified_successes": 62,
+      "certified_rate": 0.9841269841269841,
+      "unresolved": [
+        "confirmation_001_preset",
+        "confirmation_002_zero",
+        "confirmation_002_preset",
+        "confirmation_003_zero",
+        "confirmation_003_preset",
+        "confirmation_004_zero",
+        "confirmation_004_preset",
+        "confirmation_005_preset",
+        "confirmation_006_zero",
+        "confirmation_006_preset",
+        "confirmation_007_zero",
+        "confirmation_007_preset",
+        "confirmation_008_zero",
+        "confirmation_008_preset",
+        "confirmation_009_zero",
+        "confirmation_009_preset",
+        "confirmation_010_zero",
+        "confirmation_010_preset",
+        "confirmation_011_zero",
+        "confirmation_011_preset",
+        "confirmation_012_zero",
+        "confirmation_012_preset",
+        "confirmation_013_zero",
+        "confirmation_013_preset",
+        "confirmation_014_zero",
+        "confirmation_014_preset",
+        "confirmation_015_zero",
+        "confirmation_015_preset",
+        "confirmation_016_zero",
+        "confirmation_016_preset",
+        "confirmation_018_zero",
+        "confirmation_018_preset",
+        "confirmation_019_zero",
+        "confirmation_019_preset",
+        "confirmation_021_zero",
+        "confirmation_021_preset",
+        "confirmation_022_zero",
+        "confirmation_022_preset",
+        "confirmation_024_preset",
+        "confirmation_025_zero",
+        "confirmation_025_preset",
+        "confirmation_027_preset",
+        "confirmation_028_zero",
+        "confirmation_028_preset",
+        "confirmation_030_zero",
+        "confirmation_030_preset",
+        "confirmation_031_zero",
+        "confirmation_031_preset",
+        "confirmation_032_zero",
+        "confirmation_032_preset",
+        "confirmation_033_zero",
+        "confirmation_033_preset",
+        "confirmation_035_zero",
+        "confirmation_035_preset",
+        "confirmation_036_zero",
+        "confirmation_036_preset",
+        "confirmation_038_preset",
+        "confirmation_039_zero",
+        "confirmation_041_zero",
+        "confirmation_041_preset",
+        "confirmation_042_zero",
+        "confirmation_042_preset",
+        "confirmation_043_zero",
+        "confirmation_043_preset",
+        "confirmation_044_zero",
+        "confirmation_044_preset",
+        "confirmation_045_zero",
+        "confirmation_045_preset",
+        "confirmation_046_zero",
+        "confirmation_046_preset",
+        "confirmation_048_zero",
+        "confirmation_048_preset",
+        "confirmation_051_zero",
+        "confirmation_051_preset",
+        "confirmation_052_zero",
+        "confirmation_052_preset",
+        "confirmation_053_zero",
+        "confirmation_053_preset",
+        "confirmation_054_preset",
+        "confirmation_055_preset",
+        "confirmation_056_zero",
+        "confirmation_056_preset",
+        "confirmation_057_zero",
+        "confirmation_057_preset",
+        "confirmation_059_zero",
+        "confirmation_059_preset",
+        "confirmation_060_zero",
+        "confirmation_060_preset",
+        "confirmation_061_zero",
+        "confirmation_061_preset",
+        "confirmation_062_zero",
+        "confirmation_062_preset",
+        "confirmation_064_zero",
+        "confirmation_064_preset",
+        "confirmation_065_zero",
+        "confirmation_065_preset",
+        "confirmation_066_preset",
+        "confirmation_067_zero",
+        "confirmation_067_preset",
+        "confirmation_068_zero",
+        "confirmation_068_preset",
+        "confirmation_070_zero",
+        "confirmation_070_preset",
+        "confirmation_071_zero",
+        "confirmation_071_preset",
+        "confirmation_073_zero",
+        "confirmation_073_preset",
+        "confirmation_074_preset",
+        "confirmation_075_zero",
+        "confirmation_075_preset",
+        "confirmation_076_zero",
+        "confirmation_076_preset",
+        "confirmation_077_preset",
+        "confirmation_079_zero",
+        "confirmation_079_preset",
+        "confirmation_080_zero",
+        "confirmation_080_preset",
+        "confirmation_081_zero",
+        "confirmation_081_preset",
+        "confirmation_085_zero",
+        "confirmation_085_preset",
+        "confirmation_086_zero",
+        "confirmation_086_preset",
+        "confirmation_088_zero",
+        "confirmation_088_preset",
+        "confirmation_090_zero",
+        "confirmation_090_preset",
+        "confirmation_092_zero",
+        "confirmation_092_preset",
+        "confirmation_093_zero",
+        "confirmation_093_preset",
+        "confirmation_096_zero",
+        "confirmation_096_preset",
+        "confirmation_098_zero",
+        "confirmation_098_preset",
+        "confirmation_099_zero",
+        "confirmation_099_preset"
+      ],
+      "missed_certified": [
+        "confirmation_039_preset"
+      ],
+      "failure_reasons": {
+        "start_collision_collision_arm_end_left_link_part_0/collision_core_shell_d=-0.016512": 1,
+        "ik_flip_130_iteration limit": 2,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 14,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 4,
+        "deadline_during_approach": 13,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.012804": 1,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.005781": 1,
+        "ik_flip_204_iteration limit": 2,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.000946": 1,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015300": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.079072": 1,
+        "ik_flip_166_iteration limit": 6,
+        "ik_flip_208_iteration limit": 2,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.140259": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 5,
+        "start_collision_collision_arm_j4_link_part_2/collision_core_shell_d=-0.002254": 1,
+        "ik_flip_185_iteration limit": 1,
+        "start_collision_collision_arm_end_left_link_part_1/collision_core_shell_d=-0.000960": 1,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 3,
+        "ik_flip_187_iteration limit": 2,
+        "ik_flip_198_iteration limit": 1,
+        "ik_flip_196_iteration limit": 2,
+        "ik_flip_177_iteration limit": 5,
+        "start_collision_collision_arm_end_right_link_part_2_grip/collision_core_shell_d=-0.000014": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.052479": 1,
+        "start_collision_j2_link_visual/core0_peg_d=-0.010629": 1,
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 2,
+        "ik_flip_150_iteration limit": 3,
+        "start_collision_carried_unit_flange_10/collision_core_shell_d=-0.000017": 1,
+        "start_collision_collision_arm_end_left_link_part_13/collision_core_shell_d=-0.019942": 1,
+        "start_collision_carried_unit_flange_14/core0_peg_d=-0.000035": 1,
+        "start_collision_collision_arm_end_left_link_part_0/collision_core_shell_d=-0.014239": 1,
+        "collision_coarse_lift_camera_link_visual/collision_core_shell": 1,
+        "collision_coarse_flip_j2_link_visual/collision_arm_j4_link_part_5": 2,
+        "ik_flip_206_iteration limit": 1,
+        "start_collision_j5_link_visual/collision_core_shell_d=-0.011938": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.020647": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.079357": 1,
+        "ik_flip_194_iteration limit": 6,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025211": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.036105": 1,
+        "ik_flip_163_iteration limit": 2,
+        "ik_flip_183_iteration limit": 2,
+        "collision_coarse_lift_j5_link_visual/collision_core_shell": 1,
+        "preinsert_goal_collision_j2_link_visual/collision_core_shell": 1,
+        "start_collision_collision_arm_j6_link_part_0/collision_core_shell_d=-0.012263": 1,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.007396": 1,
+        "ik_flip_210_iteration limit": 1,
+        "start_collision_carried_unit_flange_22/core0_pillar_L_light_1/assembly_axial_overlap_d=-0.000779_d=-0.000779": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.008048": 1,
+        "start_collision_collision_arm_j4_link_part_2/core0_peg_d=-0.015564": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.110523": 1,
+        "ik_flip_175_iteration limit": 2,
+        "ik_lift_113_iteration limit": 2,
+        "ik_flip_165_iteration limit": 2,
+        "ik_flip_201_iteration limit": 2,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.020070": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.010204": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.006955": 1,
+        "ik_insert_64_iteration limit": 2,
+        "start_collision_j2_link_visual/core0_peg_d=-0.023899": 1,
+        "ik_lift_119_iteration limit": 1,
+        "ik_lift_120_iteration limit": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.014080": 1,
+        "ik_flip_148_iteration limit": 2,
+        "ik_flip_180_iteration limit": 2,
+        "start_collision_collision_arm_j6_link_part_0/collision_core_shell_d=-0.029309": 1,
+        "ik_flip_176_iteration limit": 2,
+        "start_collision_j0_link_visual/collision_core_shell_d=-0.034271": 1,
+        "start_collision_j0_link_visual/collision_core_shell_d=-0.029433": 1,
+        "start_collision_collision_arm_end_right_link_part_0/collision_core_shell_d=-0.013470": 1
+      },
+      "seconds": {
+        "n": 200,
+        "mean": 1.71334666664,
+        "p50": 1.5342309905,
+        "p95": 3.6895475147999997,
+        "max": 4.643862469
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/confirmation/preset": {
+      "total": 100,
+      "successes": 26,
+      "raw_rate": 0.26,
+      "certified_reachable": 27,
+      "certified_successes": 26,
+      "certified_rate": 0.9629629629629629,
+      "unresolved": [
+        "confirmation_001_preset",
+        "confirmation_002_preset",
+        "confirmation_003_preset",
+        "confirmation_004_preset",
+        "confirmation_005_preset",
+        "confirmation_006_preset",
+        "confirmation_007_preset",
+        "confirmation_008_preset",
+        "confirmation_009_preset",
+        "confirmation_010_preset",
+        "confirmation_011_preset",
+        "confirmation_012_preset",
+        "confirmation_013_preset",
+        "confirmation_014_preset",
+        "confirmation_015_preset",
+        "confirmation_016_preset",
+        "confirmation_018_preset",
+        "confirmation_019_preset",
+        "confirmation_021_preset",
+        "confirmation_022_preset",
+        "confirmation_024_preset",
+        "confirmation_025_preset",
+        "confirmation_027_preset",
+        "confirmation_028_preset",
+        "confirmation_030_preset",
+        "confirmation_031_preset",
+        "confirmation_032_preset",
+        "confirmation_033_preset",
+        "confirmation_035_preset",
+        "confirmation_036_preset",
+        "confirmation_038_preset",
+        "confirmation_041_preset",
+        "confirmation_042_preset",
+        "confirmation_043_preset",
+        "confirmation_044_preset",
+        "confirmation_045_preset",
+        "confirmation_046_preset",
+        "confirmation_048_preset",
+        "confirmation_051_preset",
+        "confirmation_052_preset",
+        "confirmation_053_preset",
+        "confirmation_054_preset",
+        "confirmation_055_preset",
+        "confirmation_056_preset",
+        "confirmation_057_preset",
+        "confirmation_059_preset",
+        "confirmation_060_preset",
+        "confirmation_061_preset",
+        "confirmation_062_preset",
+        "confirmation_064_preset",
+        "confirmation_065_preset",
+        "confirmation_066_preset",
+        "confirmation_067_preset",
+        "confirmation_068_preset",
+        "confirmation_070_preset",
+        "confirmation_071_preset",
+        "confirmation_073_preset",
+        "confirmation_074_preset",
+        "confirmation_075_preset",
+        "confirmation_076_preset",
+        "confirmation_077_preset",
+        "confirmation_079_preset",
+        "confirmation_080_preset",
+        "confirmation_081_preset",
+        "confirmation_085_preset",
+        "confirmation_086_preset",
+        "confirmation_088_preset",
+        "confirmation_090_preset",
+        "confirmation_092_preset",
+        "confirmation_093_preset",
+        "confirmation_096_preset",
+        "confirmation_098_preset",
+        "confirmation_099_preset"
+      ],
+      "missed_certified": [
+        "confirmation_039_preset"
+      ],
+      "failure_reasons": {
+        "start_collision_collision_arm_end_left_link_part_0/collision_core_shell_d=-0.016512": 1,
+        "ik_flip_130_iteration limit": 1,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 4,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.012804": 1,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.005781": 1,
+        "ik_flip_204_iteration limit": 1,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015300": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.079072": 1,
+        "ik_flip_166_iteration limit": 3,
+        "ik_flip_208_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.140259": 1,
+        "start_collision_collision_arm_j4_link_part_2/collision_core_shell_d=-0.002254": 1,
+        "start_collision_collision_arm_end_left_link_part_1/collision_core_shell_d=-0.000960": 1,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 1,
+        "ik_flip_187_iteration limit": 1,
+        "deadline_during_approach": 2,
+        "ik_flip_196_iteration limit": 1,
+        "start_collision_collision_arm_end_right_link_part_2_grip/collision_core_shell_d=-0.000014": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.052479": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 6,
+        "start_collision_j2_link_visual/core0_peg_d=-0.010629": 1,
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "start_collision_carried_unit_flange_10/collision_core_shell_d=-0.000017": 1,
+        "start_collision_carried_unit_flange_14/core0_peg_d=-0.000035": 1,
+        "start_collision_collision_arm_end_left_link_part_0/collision_core_shell_d=-0.014239": 1,
+        "ik_flip_177_iteration limit": 2,
+        "collision_coarse_lift_camera_link_visual/collision_core_shell": 1,
+        "collision_coarse_flip_j2_link_visual/collision_arm_j4_link_part_5": 1,
+        "start_collision_j5_link_visual/collision_core_shell_d=-0.011938": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.020647": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.079357": 1,
+        "ik_flip_194_iteration limit": 3,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025211": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.036105": 1,
+        "ik_flip_163_iteration limit": 1,
+        "ik_flip_183_iteration limit": 1,
+        "preinsert_goal_collision_j2_link_visual/collision_core_shell": 1,
+        "start_collision_collision_arm_j6_link_part_0/collision_core_shell_d=-0.012263": 1,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.007396": 1,
+        "start_collision_carried_unit_flange_22/core0_pillar_L_light_1/assembly_axial_overlap_d=-0.000779_d=-0.000779": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.008048": 1,
+        "start_collision_collision_arm_j4_link_part_2/core0_peg_d=-0.015564": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.110523": 1,
+        "ik_flip_175_iteration limit": 1,
+        "ik_lift_113_iteration limit": 1,
+        "ik_flip_165_iteration limit": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.020070": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.010204": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.006955": 1,
+        "ik_insert_64_iteration limit": 1,
+        "start_collision_j2_link_visual/core0_peg_d=-0.023899": 1,
+        "ik_lift_120_iteration limit": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.014080": 1,
+        "ik_flip_148_iteration limit": 1,
+        "ik_flip_180_iteration limit": 1,
+        "start_collision_collision_arm_j6_link_part_0/collision_core_shell_d=-0.029309": 1,
+        "ik_flip_176_iteration limit": 1,
+        "start_collision_j0_link_visual/collision_core_shell_d=-0.029433": 1,
+        "ik_flip_150_iteration limit": 1
+      },
+      "seconds": {
+        "n": 100,
+        "mean": 1.31838224666,
+        "p50": 1.134604747,
+        "p95": 3.6834624980999995,
+        "max": 4.643862469
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/confirmation/zero": {
+      "total": 100,
+      "successes": 36,
+      "raw_rate": 0.36,
+      "certified_reachable": 36,
+      "certified_successes": 36,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "confirmation_002_zero",
+        "confirmation_003_zero",
+        "confirmation_004_zero",
+        "confirmation_006_zero",
+        "confirmation_007_zero",
+        "confirmation_008_zero",
+        "confirmation_009_zero",
+        "confirmation_010_zero",
+        "confirmation_011_zero",
+        "confirmation_012_zero",
+        "confirmation_013_zero",
+        "confirmation_014_zero",
+        "confirmation_015_zero",
+        "confirmation_016_zero",
+        "confirmation_018_zero",
+        "confirmation_019_zero",
+        "confirmation_021_zero",
+        "confirmation_022_zero",
+        "confirmation_025_zero",
+        "confirmation_028_zero",
+        "confirmation_030_zero",
+        "confirmation_031_zero",
+        "confirmation_032_zero",
+        "confirmation_033_zero",
+        "confirmation_035_zero",
+        "confirmation_036_zero",
+        "confirmation_039_zero",
+        "confirmation_041_zero",
+        "confirmation_042_zero",
+        "confirmation_043_zero",
+        "confirmation_044_zero",
+        "confirmation_045_zero",
+        "confirmation_046_zero",
+        "confirmation_048_zero",
+        "confirmation_051_zero",
+        "confirmation_052_zero",
+        "confirmation_053_zero",
+        "confirmation_056_zero",
+        "confirmation_057_zero",
+        "confirmation_059_zero",
+        "confirmation_060_zero",
+        "confirmation_061_zero",
+        "confirmation_062_zero",
+        "confirmation_064_zero",
+        "confirmation_065_zero",
+        "confirmation_067_zero",
+        "confirmation_068_zero",
+        "confirmation_070_zero",
+        "confirmation_071_zero",
+        "confirmation_073_zero",
+        "confirmation_075_zero",
+        "confirmation_076_zero",
+        "confirmation_079_zero",
+        "confirmation_080_zero",
+        "confirmation_081_zero",
+        "confirmation_085_zero",
+        "confirmation_086_zero",
+        "confirmation_088_zero",
+        "confirmation_090_zero",
+        "confirmation_092_zero",
+        "confirmation_093_zero",
+        "confirmation_096_zero",
+        "confirmation_098_zero",
+        "confirmation_099_zero"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_130_iteration limit": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 8,
+        "deadline_during_approach": 11,
+        "ik_flip_204_iteration limit": 1,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.000946": 1,
+        "ik_flip_166_iteration limit": 3,
+        "ik_flip_208_iteration limit": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 4,
+        "ik_flip_185_iteration limit": 1,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 2,
+        "ik_flip_187_iteration limit": 1,
+        "ik_flip_198_iteration limit": 1,
+        "ik_flip_196_iteration limit": 1,
+        "ik_flip_177_iteration limit": 3,
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "ik_flip_150_iteration limit": 2,
+        "start_collision_collision_arm_end_left_link_part_13/collision_core_shell_d=-0.019942": 1,
+        "collision_coarse_flip_j2_link_visual/collision_arm_j4_link_part_5": 1,
+        "ik_flip_206_iteration limit": 1,
+        "ik_flip_194_iteration limit": 3,
+        "ik_flip_163_iteration limit": 1,
+        "ik_flip_183_iteration limit": 1,
+        "collision_coarse_lift_j5_link_visual/collision_core_shell": 1,
+        "ik_flip_210_iteration limit": 1,
+        "ik_flip_175_iteration limit": 1,
+        "ik_lift_113_iteration limit": 1,
+        "ik_flip_165_iteration limit": 1,
+        "ik_flip_201_iteration limit": 2,
+        "ik_insert_64_iteration limit": 1,
+        "ik_lift_119_iteration limit": 1,
+        "ik_flip_148_iteration limit": 1,
+        "ik_flip_180_iteration limit": 1,
+        "ik_flip_176_iteration limit": 1,
+        "start_collision_j0_link_visual/collision_core_shell_d=-0.034271": 1,
+        "start_collision_collision_arm_end_right_link_part_0/collision_core_shell_d=-0.013470": 1
+      },
+      "seconds": {
+        "n": 100,
+        "mean": 2.10831108662,
+        "p50": 1.900980251,
+        "p95": 3.6895475148,
+        "max": 4.599283315
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/development/all": {
+      "total": 64,
+      "successes": 19,
+      "raw_rate": 0.296875,
+      "certified_reachable": 19,
+      "certified_successes": 19,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_zero",
+        "development_001_preset",
+        "development_004_preset",
+        "development_005_zero",
+        "development_005_preset",
+        "development_007_zero",
+        "development_007_preset",
+        "development_008_zero",
+        "development_008_preset",
+        "development_010_zero",
+        "development_010_preset",
+        "development_011_zero",
+        "development_011_preset",
+        "development_012_zero",
+        "development_012_preset",
+        "development_015_zero",
+        "development_015_preset",
+        "development_016_preset",
+        "development_017_zero",
+        "development_017_preset",
+        "development_018_preset",
+        "development_019_zero",
+        "development_019_preset",
+        "development_020_zero",
+        "development_020_preset",
+        "development_021_zero",
+        "development_021_preset",
+        "development_022_zero",
+        "development_022_preset",
+        "development_023_preset",
+        "development_024_zero",
+        "development_024_preset",
+        "development_025_zero",
+        "development_025_preset",
+        "development_026_zero",
+        "development_026_preset",
+        "development_027_zero",
+        "development_027_preset",
+        "development_028_zero",
+        "development_028_preset",
+        "development_029_preset",
+        "development_030_zero",
+        "development_030_preset",
+        "development_031_zero",
+        "development_031_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 2,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.060684": 1,
+        "ik_flip_187_iteration limit": 3,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.003014": 1,
+        "deadline_during_approach": 5,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.027256": 1,
+        "preinsert_goal_collision_j2_link_visual/collision_core_shell": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.029762": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 4,
+        "ik_flip_192_iteration limit": 3,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 1,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.059439": 1,
+        "collision_coarse_lift_j2_link_visual/collision_core_shell": 1,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015531": 1,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 2,
+        "ik_flip_133_iteration limit": 2,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025849": 1,
+        "ik_flip_207_iteration limit": 2,
+        "ik_flip_173_iteration limit": 2,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.005482": 1,
+        "start_collision_carried_unit_flange_13/collision_core_shell_d=-0.000017": 1,
+        "ik_flip_177_iteration limit": 2,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.038233": 1,
+        "collision_coarse_lift_j5_link_visual/collision_core_shell": 1,
+        "collision_coarse_lift_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "start_collision_carried_unit_flange_0/collision_core_shell_d=-0.008059": 1
+      },
+      "seconds": {
+        "n": 64,
+        "mean": 1.69391531021875,
+        "p50": 1.45616023,
+        "p95": 4.262749642899999,
+        "max": 4.78427762
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/development/preset": {
+      "total": 32,
+      "successes": 7,
+      "raw_rate": 0.21875,
+      "certified_reachable": 7,
+      "certified_successes": 7,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_preset",
+        "development_004_preset",
+        "development_005_preset",
+        "development_007_preset",
+        "development_008_preset",
+        "development_010_preset",
+        "development_011_preset",
+        "development_012_preset",
+        "development_015_preset",
+        "development_016_preset",
+        "development_017_preset",
+        "development_018_preset",
+        "development_019_preset",
+        "development_020_preset",
+        "development_021_preset",
+        "development_022_preset",
+        "development_023_preset",
+        "development_024_preset",
+        "development_025_preset",
+        "development_026_preset",
+        "development_027_preset",
+        "development_028_preset",
+        "development_029_preset",
+        "development_030_preset",
+        "development_031_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.060684": 1,
+        "start_collision_collision_arm_j4_link_part_3/collision_core_shell_d=-0.003014": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.027256": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.029762": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 3,
+        "ik_flip_192_iteration limit": 1,
+        "collision_coarse_flip_j5_link_visual/collision_core_shell": 1,
+        "ik_flip_187_iteration limit": 1,
+        "start_collision_j3_link_visual/collision_core_shell_d=-0.059439": 1,
+        "start_collision_collision_arm_j6_link_part_1/collision_core_shell_d=-0.015531": 1,
+        "collision_coarse_insert_j2_link_visual/collision_core_shell": 2,
+        "ik_flip_133_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.025849": 1,
+        "ik_flip_207_iteration limit": 1,
+        "ik_flip_173_iteration limit": 1,
+        "start_collision_j1_link_visual/collision_core_shell_d=-0.005482": 1,
+        "start_collision_carried_unit_flange_13/collision_core_shell_d=-0.000017": 1,
+        "ik_flip_177_iteration limit": 1,
+        "start_collision_j2_link_visual/collision_core_shell_d=-0.038233": 1,
+        "collision_coarse_lift_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "start_collision_carried_unit_flange_0/collision_core_shell_d=-0.008059": 1
+      },
+      "seconds": {
+        "n": 32,
+        "mean": 1.0037812710625,
+        "p50": 0.9770118775000001,
+        "p95": 2.7169333565499993,
+        "max": 4.315284556
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/development/zero": {
+      "total": 32,
+      "successes": 12,
+      "raw_rate": 0.375,
+      "certified_reachable": 12,
+      "certified_successes": 12,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "development_001_zero",
+        "development_005_zero",
+        "development_007_zero",
+        "development_008_zero",
+        "development_010_zero",
+        "development_011_zero",
+        "development_012_zero",
+        "development_015_zero",
+        "development_017_zero",
+        "development_019_zero",
+        "development_020_zero",
+        "development_021_zero",
+        "development_022_zero",
+        "development_024_zero",
+        "development_025_zero",
+        "development_026_zero",
+        "development_027_zero",
+        "development_028_zero",
+        "development_030_zero",
+        "development_031_zero"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_200_iteration limit": 1,
+        "ik_flip_187_iteration limit": 2,
+        "deadline_during_approach": 5,
+        "preinsert_goal_collision_j2_link_visual/collision_core_shell": 1,
+        "collision_coarse_insert_j5_link_visual/collision_core_shell": 1,
+        "ik_flip_192_iteration limit": 2,
+        "collision_coarse_flip_collision_arm_j4_link_part_4/collision_arm_j6_link_part_0": 1,
+        "collision_coarse_lift_j2_link_visual/collision_core_shell": 1,
+        "ik_flip_133_iteration limit": 1,
+        "ik_flip_207_iteration limit": 1,
+        "ik_flip_173_iteration limit": 1,
+        "preinsert_goal_collision_j1_link_visual/collision_core_shell": 1,
+        "ik_flip_177_iteration limit": 1,
+        "collision_coarse_lift_j5_link_visual/collision_core_shell": 1
+      },
+      "seconds": {
+        "n": 32,
+        "mean": 2.384049349375,
+        "p50": 1.8370839405,
+        "p95": 4.34181571,
+        "max": 4.78427762
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/negative/all": {
+      "total": 4,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_zero",
+        "unreachable_zero",
+        "blocked_preset",
+        "unreachable_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "ik_preinsert_iteration limit": 2,
+        "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000": 1
+      },
+      "seconds": {
+        "n": 4,
+        "mean": 0.3536457315,
+        "p50": 0.454488899,
+        "p95": 0.50239748915,
+        "max": 0.50396357
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/negative/preset": {
+      "total": 2,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_preset",
+        "unreachable_preset"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.020000": 1,
+        "ik_preinsert_iteration limit": 1
+      },
+      "seconds": {
+        "n": 2,
+        "mean": 0.252802564,
+        "p50": 0.252802564,
+        "p95": 0.4788474694,
+        "max": 0.50396357
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/negative/zero": {
+      "total": 2,
+      "successes": 0,
+      "raw_rate": 0.0,
+      "certified_reachable": 0,
+      "certified_successes": 0,
+      "certified_rate": null,
+      "unresolved": [
+        "blocked_zero",
+        "unreachable_zero"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "preinsert_goal_collision_collision_arm_j4_link_part_5/collision_arm_j6_link_part_0": 1,
+        "ik_preinsert_iteration limit": 1
+      },
+      "seconds": {
+        "n": 2,
+        "mean": 0.454488899,
+        "p50": 0.454488899,
+        "p95": 0.4896196178,
+        "max": 0.493523031
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/regression/all": {
+      "total": 40,
+      "successes": 37,
+      "raw_rate": 0.925,
+      "certified_reachable": 37,
+      "certified_successes": 37,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "legacy_pose06",
+        "legacy_pose15",
+        "legacy_pose30"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_208_iteration limit": 2,
+        "ik_flip_209_iteration limit": 1
+      },
+      "seconds": {
+        "n": 40,
+        "mean": 1.2915419062,
+        "p50": 1.2827712245,
+        "p95": 1.5962571263499998,
+        "max": 1.706868959
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    },
+    "rigid_cache/regression/legacy": {
+      "total": 40,
+      "successes": 37,
+      "raw_rate": 0.925,
+      "certified_reachable": 37,
+      "certified_successes": 37,
+      "certified_rate": 1.0,
+      "unresolved": [
+        "legacy_pose06",
+        "legacy_pose15",
+        "legacy_pose30"
+      ],
+      "missed_certified": [],
+      "failure_reasons": {
+        "ik_flip_208_iteration limit": 2,
+        "ik_flip_209_iteration limit": 1
+      },
+      "seconds": {
+        "n": 40,
+        "mean": 1.2915419062,
+        "p50": 1.2827712245,
+        "p95": 1.5962571263499998,
+        "max": 1.706868959
+      },
+      "paired_motion": {
+        "approach_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "approach_last_joint_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "mandatory_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "assembly_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_l1": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "preinsert_last_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "q_travel": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        },
+        "seconds": {
+          "original": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "current": {
+            "n": 0,
+            "mean": null,
+            "p50": null,
+            "p95": null,
+            "max": null
+          },
+          "reduction_percent": null
+        }
+      }
+    }
+  },
+  "nominal": [
+    {
+      "current": {
+        "case": "development_000_zero",
+        "split": "development",
+        "group": "demo",
+        "start": "zero",
+        "method": "baseline",
+        "success": "1",
+        "plan_success": "1",
+        "reason": "validated_full_q",
+        "seconds": "1.4795718410000001",
+        "ik_seconds": "0.43623460300000033",
+        "approach_seconds": "0.30852296699999998",
+        "validation_seconds": "0.60233470700000002",
+        "knots": "613",
+        "q_positive": "90",
+        "q_negative": "-90",
+        "q_travel": "270",
+        "full_q": "1",
+        "positive_stop": "travel_limit",
+        "negative_stop": "travel_limit",
+        "total_l1": "26.916335346202313",
+        "mandatory_l1": "15.704964709529531",
+        "approach_l1": "8.4547043412693572",
+        "approach_last_joint_l1": "0.56935038967420348",
+        "assembly_l1": "7.2502603682601681",
+        "max_joint_step": "0.024650992916182224",
+        "audit_valid": "1",
+        "audit_reason": "validated",
+        "audit_samples": "2136",
+        "posture_candidates": "2",
+        "planning_attempts": "1",
+        "preinsert_ik_attempts": "26",
+        "posture_search_seconds": "0.19193128000000001",
+        "ik_iterations": "15877",
+        "fk_evals": "29863",
+        "collision_states": "6686",
+        "narrowphase_calls": "296967",
+        "trajectory": "trajectories/development_000_zero.csv",
+        "preinsert_l1": 7.950920865504819,
+        "preinsert_last_delta": 0.5,
+        "preinsert_travel": 7.950920865504818,
+        "preinsert_last_travel": 0.5
+      },
+      "original": null
+    },
+    {
+      "current": {
+        "case": "development_000_preset",
+        "split": "development",
+        "group": "demo",
+        "start": "preset",
+        "method": "baseline",
+        "success": "1",
+        "plan_success": "1",
+        "reason": "validated_full_q",
+        "seconds": "1.154529852",
+        "ik_seconds": "0.6974315649999997",
+        "approach_seconds": "0.023472052",
+        "validation_seconds": "0.28297553199999992",
+        "knots": "521",
+        "q_positive": "90",
+        "q_negative": "-90",
+        "q_travel": "270",
+        "full_q": "1",
+        "positive_stop": "travel_limit",
+        "negative_stop": "travel_limit",
+        "total_l1": "16.8644264940928",
+        "mandatory_l1": "9.2231875996113004",
+        "approach_l1": "0.85901550882342526",
+        "approach_last_joint_l1": "0.27191919454554014",
+        "assembly_l1": "8.364172090787882",
+        "max_joint_step": "0.024704868208656861",
+        "audit_valid": "1",
+        "audit_reason": "validated",
+        "audit_samples": "1356",
+        "posture_candidates": "2",
+        "planning_attempts": "1",
+        "preinsert_ik_attempts": "25",
+        "posture_search_seconds": "0.198306276",
+        "ik_iterations": "11748",
+        "fk_evals": "30628",
+        "collision_states": "5226",
+        "narrowphase_calls": "257493",
+        "trajectory": "trajectories/development_000_preset.csv",
+        "preinsert_l1": 0.28290668142388464,
+        "preinsert_last_delta": 0.09005389329201874,
+        "preinsert_travel": 0.28290668142388464,
+        "preinsert_last_travel": 0.09005389329201874
+      },
+      "original": null
+    },
+    {
+      "current": {
+        "case": "development_000_zero",
+        "split": "development",
+        "group": "demo",
+        "start": "zero",
+        "method": "rigid_cache",
+        "success": "1",
+        "plan_success": "1",
+        "reason": "validated_full_q",
+        "seconds": "1.4070061140000001",
+        "ik_seconds": "0.3709360430000001",
+        "approach_seconds": "0.314926708",
+        "validation_seconds": "0.58623495400000003",
+        "knots": "613",
+        "q_positive": "90",
+        "q_negative": "-90",
+        "q_travel": "270",
+        "full_q": "1",
+        "positive_stop": "travel_limit",
+        "negative_stop": "travel_limit",
+        "total_l1": "26.889963797199652",
+        "mandatory_l1": "15.711348057968037",
+        "approach_l1": "8.4546339536601582",
+        "approach_last_joint_l1": "0.56935676488228082",
+        "assembly_l1": "7.2567141043078776",
+        "max_joint_step": "0.024766115771960751",
+        "audit_valid": "1",
+        "audit_reason": "validated",
+        "audit_samples": "2136",
+        "posture_candidates": "2",
+        "planning_attempts": "1",
+        "preinsert_ik_attempts": "26",
+        "posture_search_seconds": "0.144673151",
+        "ik_iterations": "3528",
+        "fk_evals": "19404",
+        "collision_states": "6686",
+        "narrowphase_calls": "297969",
+        "trajectory": "trajectories/development_000_zero.csv",
+        "preinsert_l1": 7.950920865504819,
+        "preinsert_last_delta": 0.5,
+        "preinsert_travel": 7.950920865504818,
+        "preinsert_last_travel": 0.5
+      },
+      "original": null
+    },
+    {
+      "current": {
+        "case": "development_000_preset",
+        "split": "development",
+        "group": "demo",
+        "start": "preset",
+        "method": "rigid_cache",
+        "success": "1",
+        "plan_success": "1",
+        "reason": "validated_full_q",
+        "seconds": "1.1604519280000001",
+        "ik_seconds": "0.7067139949999991",
+        "approach_seconds": "0.024272451",
+        "validation_seconds": "0.28498494200000007",
+        "knots": "521",
+        "q_positive": "90",
+        "q_negative": "-90",
+        "q_travel": "270",
+        "full_q": "1",
+        "positive_stop": "travel_limit",
+        "negative_stop": "travel_limit",
+        "total_l1": "16.869109081740415",
+        "mandatory_l1": "9.2259619895198561",
+        "approach_l1": "0.86042160720524907",
+        "approach_last_joint_l1": "0.27166180210882507",
+        "assembly_l1": "8.3655403823146059",
+        "max_joint_step": "0.02450866846699129",
+        "audit_valid": "1",
+        "audit_reason": "validated",
+        "audit_samples": "1356",
+        "posture_candidates": "2",
+        "planning_attempts": "1",
+        "preinsert_ik_attempts": "25",
+        "posture_search_seconds": "0.18296802000000001",
+        "ik_iterations": "4799",
+        "fk_evals": "24661",
+        "collision_states": "5226",
+        "narrowphase_calls": "257484",
+        "trajectory": "trajectories/development_000_preset.csv",
+        "preinsert_l1": 0.28390746043405235,
+        "preinsert_last_delta": 0.08936336015992774,
+        "preinsert_travel": 0.28390746043405235,
+        "preinsert_last_travel": 0.08936336015992774
+      },
+      "original": null
+    }
+  ],
+  "certificates": {
+    "development_000_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_000_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_000_zero.csv"
+    ],
+    "development_000_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_000_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_000_preset.csv"
+    ],
+    "development_002_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_002_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_002_zero.csv"
+    ],
+    "development_002_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_002_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_002_preset.csv"
+    ],
+    "development_003_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_003_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_003_zero.csv"
+    ],
+    "development_003_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_003_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_003_preset.csv"
+    ],
+    "development_004_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_004_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_004_zero.csv"
+    ],
+    "development_006_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_006_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_006_zero.csv"
+    ],
+    "development_006_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_006_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_006_preset.csv"
+    ],
+    "development_009_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_009_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_009_zero.csv"
+    ],
+    "development_009_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_009_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_009_preset.csv"
+    ],
+    "development_013_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_013_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_013_zero.csv"
+    ],
+    "development_013_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_013_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_013_preset.csv"
+    ],
+    "development_014_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_014_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_014_zero.csv"
+    ],
+    "development_014_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_014_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_014_preset.csv"
+    ],
+    "development_016_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_016_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_016_zero.csv"
+    ],
+    "development_018_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_018_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_018_zero.csv"
+    ],
+    "development_023_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_023_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_023_zero.csv"
+    ],
+    "development_029_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/development_029_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/development_029_zero.csv"
+    ],
+    "confirmation_000_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_000_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_000_zero.csv"
+    ],
+    "confirmation_000_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_000_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_000_preset.csv"
+    ],
+    "confirmation_001_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_001_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_001_zero.csv"
+    ],
+    "confirmation_005_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_005_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_005_zero.csv"
+    ],
+    "confirmation_017_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_017_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_017_zero.csv"
+    ],
+    "confirmation_017_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_017_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_017_preset.csv"
+    ],
+    "confirmation_020_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_020_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_020_zero.csv"
+    ],
+    "confirmation_020_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_020_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_020_preset.csv"
+    ],
+    "confirmation_023_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_023_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_023_zero.csv"
+    ],
+    "confirmation_023_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_023_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_023_preset.csv"
+    ],
+    "confirmation_024_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_024_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_024_zero.csv"
+    ],
+    "confirmation_026_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_026_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_026_zero.csv"
+    ],
+    "confirmation_026_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_026_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_026_preset.csv"
+    ],
+    "confirmation_027_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_027_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_027_zero.csv"
+    ],
+    "confirmation_029_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_029_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_029_zero.csv"
+    ],
+    "confirmation_029_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_029_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_029_preset.csv"
+    ],
+    "confirmation_034_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_034_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_034_zero.csv"
+    ],
+    "confirmation_034_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_034_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_034_preset.csv"
+    ],
+    "confirmation_037_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_037_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_037_zero.csv"
+    ],
+    "confirmation_037_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_037_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_037_preset.csv"
+    ],
+    "confirmation_038_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_038_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_038_zero.csv"
+    ],
+    "confirmation_039_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_039_preset.csv"
+    ],
+    "confirmation_040_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_040_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_040_zero.csv"
+    ],
+    "confirmation_040_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_040_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_040_preset.csv"
+    ],
+    "confirmation_047_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_047_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_047_zero.csv"
+    ],
+    "confirmation_047_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_047_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_047_preset.csv"
+    ],
+    "confirmation_049_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_049_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_049_zero.csv"
+    ],
+    "confirmation_049_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_049_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_049_preset.csv"
+    ],
+    "confirmation_050_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_050_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_050_zero.csv"
+    ],
+    "confirmation_050_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_050_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_050_preset.csv"
+    ],
+    "confirmation_054_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_054_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_054_zero.csv"
+    ],
+    "confirmation_055_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_055_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_055_zero.csv"
+    ],
+    "confirmation_058_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_058_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_058_zero.csv"
+    ],
+    "confirmation_058_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_058_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_058_preset.csv"
+    ],
+    "confirmation_063_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_063_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_063_zero.csv"
+    ],
+    "confirmation_063_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_063_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_063_preset.csv"
+    ],
+    "confirmation_066_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_066_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_066_zero.csv"
+    ],
+    "confirmation_069_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_069_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_069_zero.csv"
+    ],
+    "confirmation_069_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_069_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_069_preset.csv"
+    ],
+    "confirmation_072_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_072_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_072_zero.csv"
+    ],
+    "confirmation_072_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_072_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_072_preset.csv"
+    ],
+    "confirmation_077_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_077_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_077_zero.csv"
+    ],
+    "confirmation_078_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_078_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_078_zero.csv"
+    ],
+    "confirmation_078_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_078_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_078_preset.csv"
+    ],
+    "confirmation_082_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_082_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_082_zero.csv"
+    ],
+    "confirmation_082_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_082_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_082_preset.csv"
+    ],
+    "confirmation_083_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_083_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_083_zero.csv"
+    ],
+    "confirmation_083_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_083_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_083_preset.csv"
+    ],
+    "confirmation_084_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_084_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_084_zero.csv"
+    ],
+    "confirmation_084_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_084_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_084_preset.csv"
+    ],
+    "confirmation_087_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_087_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_087_zero.csv"
+    ],
+    "confirmation_087_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_087_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_087_preset.csv"
+    ],
+    "confirmation_089_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_089_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_089_zero.csv"
+    ],
+    "confirmation_089_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_089_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_089_preset.csv"
+    ],
+    "confirmation_091_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_091_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_091_zero.csv"
+    ],
+    "confirmation_091_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_091_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_091_preset.csv"
+    ],
+    "confirmation_094_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_094_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_094_zero.csv"
+    ],
+    "confirmation_094_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_094_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_094_preset.csv"
+    ],
+    "confirmation_095_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_095_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_095_zero.csv"
+    ],
+    "confirmation_095_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_095_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_095_preset.csv"
+    ],
+    "confirmation_097_zero": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_097_zero.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_097_zero.csv"
+    ],
+    "confirmation_097_preset": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/confirmation_097_preset.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_097_preset.csv"
+    ],
+    "legacy_pose01": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose01.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose01.csv"
+    ],
+    "legacy_pose02": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose02.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose02.csv"
+    ],
+    "legacy_pose03": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose03.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose03.csv"
+    ],
+    "legacy_pose04": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose04.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose04.csv"
+    ],
+    "legacy_pose05": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose05.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose05.csv"
+    ],
+    "legacy_pose07": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose07.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose07.csv"
+    ],
+    "legacy_pose08": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose08.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose08.csv"
+    ],
+    "legacy_pose09": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose09.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose09.csv"
+    ],
+    "legacy_pose10": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose10.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose10.csv"
+    ],
+    "legacy_pose11": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose11.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose11.csv"
+    ],
+    "legacy_pose12": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose12.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose12.csv"
+    ],
+    "legacy_pose13": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose13.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose13.csv"
+    ],
+    "legacy_pose14": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose14.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose14.csv"
+    ],
+    "legacy_pose16": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose16.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose16.csv"
+    ],
+    "legacy_pose17": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose17.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose17.csv"
+    ],
+    "legacy_pose18": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose18.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose18.csv"
+    ],
+    "legacy_pose19": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose19.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose19.csv"
+    ],
+    "legacy_pose20": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose20.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose20.csv"
+    ],
+    "legacy_pose21": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose21.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose21.csv"
+    ],
+    "legacy_pose22": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose22.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose22.csv"
+    ],
+    "legacy_pose23": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose23.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose23.csv"
+    ],
+    "legacy_pose24": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose24.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose24.csv"
+    ],
+    "legacy_pose25": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose25.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose25.csv"
+    ],
+    "legacy_pose26": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose26.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose26.csv"
+    ],
+    "legacy_pose27": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose27.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose27.csv"
+    ],
+    "legacy_pose28": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose28.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose28.csv"
+    ],
+    "legacy_pose29": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose29.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose29.csv"
+    ],
+    "legacy_pose31": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose31.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose31.csv"
+    ],
+    "legacy_pose32": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose32.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose32.csv"
+    ],
+    "legacy_pose33": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose33.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose33.csv"
+    ],
+    "legacy_pose34": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose34.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose34.csv"
+    ],
+    "legacy_pose35": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose35.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose35.csv"
+    ],
+    "legacy_pose36": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose36.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose36.csv"
+    ],
+    "legacy_pose37": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose37.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose37.csv"
+    ],
+    "legacy_pose38": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose38.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose38.csv"
+    ],
+    "legacy_pose39": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose39.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose39.csv"
+    ],
+    "legacy_pose40": [
+      "artifacts/reproduction-20261013/planner_quality/baseline/results/trajectories/legacy_pose40.csv",
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/legacy_pose40.csv"
+    ],
+    "confirmation_074_zero": [
+      "artifacts/reproduction-20261013/planner_quality/rigid_cache/results/trajectories/confirmation_074_zero.csv"
+    ]
+  },
+  "urdf_sha256": "e19f7e34345a5653b0261d85b04bf4b7a15bdddcc12f4e01119947440e4fa8f9",
+  "scene_sha256": "f0492a28ddf9eac6f0ba71aa7bc7754fcae698f4c6d655e9fbfdeeda6d07a903",
+  "independent_audit": {
+    "records": 616,
+    "failures": []
+  }
+}

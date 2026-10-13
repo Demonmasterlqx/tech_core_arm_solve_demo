@@ -1,6 +1,6 @@
 # 代码使用与框架说明
 
-整理日期：2026-10-13。本文的历史评测日期按对应报告标注，整理本身未重新执行 100 请求评测。
+更新日期：2026-10-13。最新完整实测见 [本机复现记录](../reproduction_20261013.md)；首次交付检查与此前历史评测按各自报告保留，所有文档入口见 [文档索引](../README.md)。
 
 本文对应当前采用的 RM26 七关节机械臂与科技核心联合规划方案，重点说明构建、操作、接口、模块关系和验证方法。逆解与轨迹规划的数学推导分别见同目录的 [逆解理论](01_inverse_kinematics.md) 和 [轨迹规划理论](02_trajectory_planning.md)。三份主文档在仓库中集中于 `docs/handbook/`。下文所有命令在交付包中的 Git 仓库根目录执行；路径均为仓库相对路径。
 
@@ -301,7 +301,7 @@ IKResult result = solve_ik(fk, target, request.start, scene.limits(), ik);
 CUDA_VISIBLE_DEVICES='' ctest --test-dir build --output-on-failure
 ```
 
-测试覆盖规则、模型几何、机械臂控制、IK、碰撞场景、接近绕行、完整规划与异步 Demo 状态。此前历史记录为完整窗口配置 24 项；本次整理新增 `planning_library_example`，完整窗口配置 25/25 项通过，见[交付复验记录](../delivery_validation.md)。测试数量随 `TECH_CORE_VIEWER` 配置不同，不能将无窗口构建缺少窗口 CLI 检查误判为遗漏。
+测试覆盖规则、模型几何、机械臂控制、IK、碰撞场景、接近绕行、完整规划与异步 Demo 状态。最新[本机复现](../reproduction_20261013.md)中完整窗口配置 25/25、无窗口配置 23/23 项通过；此前加入 `planning_library_example` 的检查见[首次交付验证](../delivery_validation.md)。测试数量随 `TECH_CORE_VIEWER` 配置不同，不能将无窗口构建缺少窗口 CLI 检查误判为遗漏。
 
 真实窗口键盘测试另行执行，使用新输出目录：
 
@@ -342,11 +342,22 @@ python3 scripts/run_planner_quality.py \
 
 CPU 编号应选择当前进程允许使用的 CPU，可先运行 `taskset -pc $$` 检查。先执行上面的 `cmake --build`，确保 `planner_quality_benchmark` 与当前源码一致。包装脚本只复制已构建的评测程序到本轮输出目录冻结，不自动构建，避免两个后端并行运行时竞争同一构建输出；缺少程序时会报错并提示先构建。脚本关闭 CUDA、限制数值库线程、固定 CPU 亲和性，保存可复现输入/程序哈希和轮转日志。这样统一使用工程声明的 MuJoCo、Eigen 与链接设置，避免脚本手工链接与主程序配置分叉。输出目录必须尚不存在。`--build-dir` 可指定已配置并完成构建的其他目录；`--binary` 可直接复用已有冻结评测程序。
 
-固定请求覆盖相对名义 XYZ 各 ±20 cm、RPY 各 ±90°，零位/装配预设各 50 次，两个后端使用完全相同的 100 个请求。失败保留在分母中；有效轨迹和完整 Q ±90° 分别计数。按 `docs/planner_success100.md` 记录，2026-10-11 对算法提交 `fd6e983` 的历史复测结果是两个后端均 31/100 有效，完整 Q 分别 19/100 与 18/100。该结果属于固定输入和给定预算，不能推广为任意位姿成功率，也不代表本次打包额外重测了 100 次。
+固定请求覆盖相对名义 XYZ 各 ±20 cm、RPY 各 ±90°，零位/装配预设各 50 次，两个后端使用完全相同的 100 个请求。失败保留在分母中；有效轨迹和完整 Q ±90° 分别计数。[2026-10-13 本机复现](../reproduction_20261013.md)中两后端均 31/100 有效，完整 Q 分别 14/100 与 15/100。[2026-10-11 原报告](../planner_success100.md)对应算法提交 `fd6e983`，有效数相同，完整 Q 分别为 19/100 与 18/100。固定墙钟预算下的 Q 行程受运行环境影响，这些结果不能推广为任意位姿成功率。
 
-完整协议和记录保存在 `docs/planner_success100.md` 与 `docs/evidence/planner_success100/`。原始大轨迹和冻结二进制位于运行机的 `artifacts`，是否包含于交付包以包清单为准。
+原协议和输入保存在 [历史 100 请求报告](../planner_success100.md)与 `docs/evidence/planner_success100/`，本机逐例结果在[复现证据](../evidence/reproduction_20261013/README.md)。原始大轨迹和冻结二进制位于运行机的 `artifacts/`，是否包含于交付包以包清单为准。
 
 ### 6.4 独立审计
+
+对上一节产生的固定请求集结果，可直接审计本轮两个后端，不要求先有历史对照结果：
+
+```bash
+OPENBLAS_NUM_THREADS=1 python3 scripts/summarize_planner_quality.py \
+  --suite docs/evidence/planner_success100 \
+  --runs artifacts/success100-baseline-new artifacts/success100-rigid-new \
+  --certificate-root artifacts --output artifacts/success100-audit-new
+```
+
+`--certificate-root` 扫描子目录中输入哈希匹配的成功证书，仅用于条件可达率；原始整体成功率仍以本轮全部请求为分母。需要配对比较旧结果时再加 `--original` 并提供旧运行目录。输出目录必须尚不存在。
 
 对 `rm26_plan` 标准导出，可运行：
 
@@ -376,7 +387,7 @@ OPENBLAS_NUM_THREADS=1 python3 scripts/audit_planning_trajectories.py \
 构建输出 `.deps/`、`build*/`、实验 `artifacts/` 和 Python 缓存默认由 Git 忽略。清理时先确认实验是否需保留；不要删除 `reference/`、`models/`、输入协议或已提交的结果证据。新增长期评测应继续使用限时、轮转日志与显式子进程回收。
 
 
-## 8. 本次实现与迭代经验
+## 8. 实现与迭代经验
 
 ### 8.1 先统一模型、坐标与零位
 
@@ -447,21 +458,17 @@ Q 的完整往返比例和整条任务有效率必须分开。近期 Q 恢复策
 
 文档、CMake 或包装脚本整理不等同于算法重评测。交付验证应分别记录“构建与测试通过”和“历史固定样本成功率”，避免将旧报告数字标注为新日期实测。
 
-## 10. 历史报告阅读分组
+## 10. 报告与证据入口
 
-仓库保留旧证据以便追溯，以下文件不是同一版算法、同一安装或同一分母的重复报告。
+完整分类由 [文档索引](../README.md)维护，逐批运行数据由 [证据索引](../evidence/README.md)导航。使用当前程序先读操作说明，比较指标先读相应日期的复现报告。
 
 | 分组 | 入口 | 解释 |
 | --- | --- | --- |
-| 当前联合 Demo 合同 | `docs/planning_demo.md` | 键盘、零位、预览/执行、当前两后端行为 |
-| 当前固定 100 请求 | `docs/planner_success100.md` | 最新已记录整体成功率；固定输入、分母、失败分类明确 |
-| Q 局部换解 | `docs/q_collision_recovery.md` | 用户问题位姿、局部替代解及完整 Q 复验 |
-| 大范围质量与预插入动作 | `docs/planner_quality.md` | XYZ ±20 cm/RPY ±90°、起点分组、末轴变化和条件成功率 |
-| 早期方法对照 | `docs/planning_results.md`、`docs/planning_reference.md` | 多方法冻结评测和基线来源，耗时不可视作当前版本普遍保证 |
-| 40 位姿迭代 | `docs/pose40_q_sweep.md`、`docs/pose40_online.md`、`docs/pose40_q_range.md` | 严格 Q、在线重跑、尽量旋转的不同阶段；安装/起点/预算需分别看协议 |
-| 机械臂来源与验证 | `docs/rm26_arm_model.md`、`docs/rm26_arm_validation.md`、`docs/rm26_arm.md` | 上游模型、独立 FK、mock 控制入口 |
-| 碰撞与抓持 | `docs/planning_scene_audit.md` | 携带物、抓持变换、碰撞代理和允许接触假设 |
-| 科技核心规则与几何 | `docs/rules.md`、`docs/fidelity_sources.md`、`docs/fidelity_geometry_audit.md`、`docs/energy_cad.md` | 规则出处、CAD 来源、保真范围和修订假设 |
-| 运行证据 | `docs/evidence/` | 与对应报告关联的输入、CSV、JSON、截图索引及校验信息 |
+| 当前操作 | [联合 Demo](../planning_demo.md)、[独立机械臂](../rm26_arm.md)、[核心仿真](../tech_core.md) | 三个入口的按键与仿真范围分别说明 |
+| 最新完整复现 | [2026-10-13 本机复现](../reproduction_20261013.md) | 当前固定输入重测、历史版本重跑、窗口、资产与交付检查 |
+| 原始 100 请求协议 | [2026-10-11 评测](../planner_success100.md) | 固定输入与原机器结果；完整 Q 数量与本机结果不同 |
+| 算法迭代 | [预插入质量](../planner_quality.md)、[Q 局部换解](../q_collision_recovery.md) | 对应修改及当时的逐例证据 |
+| 早期方法与 40 位姿 | [历史报告索引](../README.md#历史评测与视频) | 算法、安装、起点、预算和分母按各报告区分 |
+| 模型与规则 | [来源索引](../README.md#规则模型与几何来源) | 上游、规则页码、CAD、固定抓持与碰撞几何 |
 
-本次代码整理将质量评测 C++ 入口从脚本目录纳入正式源代码与 CMake 目标，提供可构建库调用示例，并集中整理文档入口；保留算法合同、模型/参考资产路径、已有测试和历史评测证据。后续修改优先维持这些可追溯接口，避免为了目录美观引入资产路径失效或使历史命令含义改变。
+历史报告保留原路径与原测量值。后续修改应维持模型、输入协议和证据的可追溯关系；新增实测以新日期记录，不覆盖旧结果，也不将文档整理标记为算法重评测。

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="25"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="Demonmasterlqx"
+	time="104"
+	timestamp="2026-10-13T15:11:10"
+	>
+	<testcase name="rules" classname="rules" time="0.00185964" status="run">
+		<properties/>
+		<system-out>13 rule test groups passed
+</system-out>
+	</testcase>
+	<testcase name="physics" classname="physics" time="1.29604" status="run">
+		<properties/>
+		<system-out>Physics contracts passed: orientation, geometry, contact, axes, input validation, torque/release
+</system-out>
+	</testcase>
+	<testcase name="geometry_fidelity" classname="geometry_fidelity" time="0.452167" status="run">
+		<properties/>
+		<system-out>All60 core assets /120 geoms: 17762 vertices, 34792 triangles, per-corner normals and actual world placement preserved
+MARK mask verified at16928 grid points /101568 mesh-ray queries;36 independent fan lights per core
+Five independent lift/P/Q poses preserve every pillar and shell vertex; P remains fixed
+Geometry fidelity contracts passed
+</system-out>
+	</testcase>
+	<testcase name="demo_level_1" classname="demo_level_1" time="1.52874" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 1 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+3.202s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_level_2" classname="demo_level_2" time="1.53129" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 2 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+5.001s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_level_3" classname="demo_level_3" time="1.56196" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.530s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_level_4" classname="demo_level_4" time="2.20704" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 4 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+1.000s core1 ready
+2.330s core0 inserted
+2.510s core1 inserted
+4.035s core0 lifted
+4.215s core1 lifted
+6.170s core0 flipped
+6.350s core1 flipped
+8.530s core0 aligned
+8.735s core1 aligned
+11.502s core0 confirmed
+11.502s core1 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_q_positive_limit" classname="demo_q_positive_limit" time="1.51456" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets 90, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.668s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_q_negative_limit" classname="demo_q_negative_limit" time="1.58851" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets -90, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.668s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_tilted_station" classname="demo_tilted_station" time="1.49215" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.530s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="cli_invalid_level" classname="cli_invalid_level" time="0.0028121" status="run">
+		<properties/>
+		<system-out>Error: Level must be 1..4
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_control" classname="rm26_arm_control" time="0.686208" status="run">
+		<properties/>
+		<system-out>Arm contracts passed: source FK, seven fixed-base joints, position/velocity control, stops, keyboard XYZ, orientation, invalid input
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_idle" classname="rm26_arm_idle" time="0.614946" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: j0 j1 j2 j3 j4 end_differential_controller/j5 end_differential_controller/j6
+State initial: {"time":0,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":0.2,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_demo" classname="rm26_arm_demo" time="0.628027" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: j0 j1 j2 j3 j4 end_differential_controller/j5 end_differential_controller/j6
+State initial: {"time":0,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":3,"tool":[0.151271640878,0.0627774449294,0.888273546658],"q":[0.000364327047469,1.00036738247,1.40171010629,0.000424544373255,0.699744686338,-0.0012811540491,-0.000679941163947],"qd":[-0.000198675657152,-0.154979521362,-0.61105791129,-0.000570548211118,0.174761841611,0.281086552541,0.000784977290343]}
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_cartesian" classname="rm26_arm_cartesian" time="0.643199" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: j0 j1 j2 j3 j4 end_differential_controller/j5 end_differential_controller/j6
+State initial: {"time":0,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":0.5,"tool":[0.166336639051,0.0627482088454,0.887982625738],"q":[-2.21892899918e-05,1.03482053251,1.43303268077,-2.91606798347e-05,0.699531869379,0.00226351968207,4.40866360852e-05],"qd":[-2.57486400596e-05,0.0703601831775,0.0692332967669,-3.04959592337e-05,-0.00218856355116,0.00332472216923,4.81027717061e-05]}
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_invalid_velocity" classname="rm26_arm_invalid_velocity" time="0.00244091" status="run">
+		<properties/>
+		<system-out>Error: Expected a finite number: nan
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_conflicting_commands" classname="rm26_arm_conflicting_commands" time="0.0040862" status="run">
+		<properties/>
+		<system-out>Error: Select only one motion command
+</system-out>
+	</testcase>
+	<testcase name="planning_library_example" classname="planning_library_example" time="3.6576" status="run">
+		<properties/>
+		<system-out>backend=rigid_cache success=1 reason=validated_full_q knots=613 planning_seconds=1.04737
+uncached_valid=1 reason=validated Q=0 -&gt; +90 -&gt; 0 -&gt; -90 deg
+</system-out>
+	</testcase>
+	<testcase name="planning_ik" classname="planning_ik" time="0.00214288" status="run">
+		<properties/>
+		<system-out>method=0 reachable=16/16 iterations=644 antiparallel_iterations=52
+method=1 reachable=16/16 iterations=39 antiparallel_iterations=1
+method=2 reachable=16/16 iterations=52 antiparallel_iterations=8
+method=3 reachable=16/16 iterations=52 antiparallel_iterations=8
+method=4 reachable=16/16 iterations=41 antiparallel_iterations=8
+bounded redundancy: clipped_error=0.0151603 QP_error=3e-09 QP_iterations=1
+planning IK tests passed
+</system-out>
+	</testcase>
+	<testcase name="planning_contract" classname="planning_contract" time="46.4861" status="run">
+		<properties/>
+		<system-out>contract structural/phase/position negative tests passed
+contract NaN preflight tests passed
+contract nonadjacent collision detected: j1_link_visual/j5_link_visual distance=-2.66903e-05 attempts=9
+complete baseline and obstacle revalidation passed
+Collision-aware pre-insertion IK and joint connection passed for both backends
+Q sweep endpoint and order contract tests passed
+Best-effort Q collision stop and strict-mode isolation passed; peak=63 final=-90
+Local Q collision recovery baseline Q=90/-90 preinsert wrist=0 time=2.96661 dense samples=3721
+Local Q collision recovery rigid_cache Q=90/-90 preinsert wrist=0 time=2.77481 dense samples=3714
+planning contract negative tests passed
+</system-out>
+	</testcase>
+	<testcase name="planning_approach" classname="planning_approach" time="27.7776" status="run">
+		<properties/>
+		<system-out>Original zero-seed IK goal valid=0 pair=j1_link_visual/collision_arm_end_right_link_part_0
+zero-start baseline success=1 reason=validated IK attempts=26 approach seconds=0.276081 total seconds=1.35558
+zero-start rigid_cache success=1 reason=validated IK attempts=26 approach seconds=0.26146 total seconds=1.34796
+approach cached=0 success=1 reason=collision_checked_shortcuts iterations=71 shortcuts=10 length=6.38388 -&gt; 4.21027 seconds=10.0009
+approach cached=1 success=1 reason=collision_checked_shortcuts iterations=71 shortcuts=10 length=6.38388 -&gt; 4.21027 seconds=7.18897
+PASS zero-start planning, obstacle detour, dense uncached recheck, endpoint and deadline contracts
+</system-out>
+	</testcase>
+	<testcase name="planning_scene" classname="planning_scene" time="0.896653" status="run">
+		<properties/>
+		<system-out>bore clearance=0.002 stop=7.87913e-34 offset penetration=-0.000999936
+assembly contact nominal=-1.73599e-05 intrusion=carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.001000
+rotated fixed grasp: 33 cached/uncached checks agree
+planning scene geometry tests passed
+</system-out>
+	</testcase>
+	<testcase name="planning_demo_contract" classname="planning_demo_contract" time="8.92367" status="run">
+		<properties/>
+		<system-out>PASS real baseline plan, 521 knots, Q 0 -&gt; 90 -&gt; -90, stops travel_limit / travel_limit
+PASS real rigid_cache plan, 521 knots, Q 0 -&gt; 90 -&gt; -90, stops travel_limit / travel_limit
+PASS preview hold, double Enter, interpolation, focus pause, completion, joint zero and scene reset
+PASS arm/core/backend invalidation and stale worker disposal
+PASS exact zero joints passed to planner, core pose preserved and zero-start ghost
+PASS six arm directions, release hold and core world XYZ/RPY mapping
+PASS unbounded core XYZ/RPY, strict defaults and preview beyond the front plane in both backends
+PASS collision/zero-knot/timeout visualization, failed ghost retiming and execution gates
+</system-out>
+	</testcase>
+	<testcase name="planning_demo_help" classname="planning_demo_help" time="0.00231905" status="run">
+		<properties/>
+		<system-out>RM26 arm + technology core | plan, preview, then execute
+  WASD: arm +X/-X/+Y/-Y; Q/E: arm +Z/-Z (world)
+  I/K, J/L, U/O: core +/-X, +/-Y, +/-Z (world)
+  Shift + I/K, J/L, U/O: core +/-roll, +/-pitch, +/-yaw
+  1: Baseline; 2: RigidCache (default)
+  Enter: plan and hold a preview; Enter again: execute a valid plan
+  Backspace: upstream URDF joint zero, preserving core pose
+  R: load assembly preset; Space: pause/resume ghost or execution; Esc: exit
+  [/]: scrub the ghost preview backward/forward (holds real robot)
+  Mouse: left orbit, right pan, wheel zoom; F: reset camera; F12: PNG
+Options:
+  --backend baseline|rigid_cache
+  --case ID               scenario_suite case (default dev_nominal)
+  --timeout SEC           planning deadline, (0,30], default 5
+  --motion-speed-scale S  demo retiming, (0,4], default 4
+  --speed M/S             arm jog, (0,0.1], default 0.06
+  --core-speed M/S        core translation, positive, default 0.20
+  --core-rotation-speed DEG/S  core rotation, positive, default 60
+  --duration ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="planning_demo_invalid_backend" classname="planning_demo_invalid_backend" time="0.816519" status="run">
+		<properties/>
+		<system-out>Error: Invalid demo planner options
+</system-out>
+	</testcase>
+</testsuite>

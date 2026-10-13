@@ -1,5 +1,7 @@
 # RM26 机械臂装配方案手册
 
+[文档索引](../README.md) · [联合 Demo 操作](../planning_demo.md) · [最新复现记录](../reproduction_20261013.md)
+
 这套文档总结本次机械臂与科技核心 Demo 的最终方案，以及从零位校正、预插入动作过大、首段碰撞到 Q 行程扩展的调试经验。两份理论文档只讨论数学、算法与验收条件；使用命令、程序接口和源文件关系集中在代码文档。
 
 ## 阅读顺序
@@ -31,11 +33,13 @@
 
 ## 当前证据与适用范围
 
-当前算法来源为提交 `fd6e983`，最近一次已记录的固定 100 请求复测见 [成功率报告](../planner_success100.md)：相对名义位置 XYZ 各 ±20 cm、RPY 各 ±90°，零位和装配预设各 50 次，两个后端每次预算 5 s。Baseline 与 RigidCache 都得到 31/100 条有效轨迹，完整 Q 双向 ±90° 分别为 19/100 和 18/100。失败保留在分母中。这是固定样本的历史测量，不是对整个连续工作空间的保证。
+当前规划算法来源为提交 `fd6e983`。最近一次完整验证见 [2026-10-13 本机复现](../reproduction_20261013.md)：窗口构建 25/25、无窗口构建 23/23 项 CTest 通过；两个后端各 100 请求均得到 31 条有效轨迹，完整 Q 双向 ±90° 分别为 14 条和 15 条。
+
+这批请求沿用 [2026-10-11 成功率报告](../planner_success100.md)的固定输入：相对名义位置 XYZ 各 ±20 cm、RPY 各 ±90°，零位和装配预设各 50 次，每次预算 5 s。原机器的完整 Q 为 19/100、18/100；本机受固定墙钟预算影响的行程差异单独记录。两次测量都将失败保留在分母中，不保证整个连续工作空间可达。
 
 [预插入质量报告](../planner_quality.md)保存起步动作改进及历史条件成功率；[Q 局部换解报告](../q_collision_recovery.md)保存用户问题位姿从提前停止到完整双侧转动的证据。各报告使用的安装、起点、预算和算法版本不同，应按原协议阅读。
 
-本次交付整理保留规划算法行为，集中统一评测构建入口、补充可调用示例与文档。构建和打包检查见[交付验证记录](../delivery_validation.md)。本次没有重新运行 100 请求评测，也不将历史统计标为本次新测量。
+首次交付整理（`0fbd7f7`）统一评测构建入口、补充可调用示例与文档，当时未重跑 100 请求，见[首次交付验证](../delivery_validation.md)。随后本机完整复现已经重跑该协议，并完成窗口交互、资产、媒体及交付包新路径构建检查，见[复现证据](../evidence/reproduction_20261013/README.md)。
 
 本方案基于既定运动学、碰撞代理与离散密采样，未验证实体机械臂的动力学、接触力控制和标定误差。失败仅表示当前方法在给定约束与预算下没有找到合格轨迹。
 
@@ -48,13 +52,21 @@ git_repository/   完整、独立的 Git 仓库，包含 .git 历史、源码、
 documents/        本索引、三份 Markdown、三份 PDF、三份离线 HTML，以及 manifest.json
 ```
 
-本次包附带 Linux x86_64 的 MuJoCo 3.3.7，位于仓库的 `.deps/`；系统编译器、Eigen、窗口依赖仍按代码文档安装。第三方来源及许可保留在仓库 `reference/` 和依赖目录。包中不包含构建目录、旧绝对路径二进制或本机大型实验输出，已提交的精简证据完整保留。
+使用下方 `--include-mujoco` 命令会附带 Linux x86_64 的 MuJoCo 3.3.7，位于仓库的 `.deps/`；省略该选项则需在解压后自行安装 MuJoCo。系统编译器、Eigen、窗口依赖仍按代码文档安装。第三方来源及许可保留在仓库 `reference/` 和依赖目录。包中不包含构建目录、旧绝对路径二进制或本机大型实验输出，已提交的精简证据完整保留。
 
 解压后先进入 `git_repository/`，按代码文档重新配置、构建和测试。直接阅读可打开三份 PDF 或离线 HTML；Markdown 源可继续编辑。HTML 数学采用 MathML，建议使用当前版本的 Firefox 或 Chromium。
 
 `documents/manifest.json` 记录来源提交、打包选项以及包中各文件的 SHA-256；清单自身由整个 ZIP 的校验值保护。压缩包旁的 `.sha256` 与 `.report.json` 提供整包校验和打包检查结果。最终解压构建报告另存为 `.verification.json`。
 
-需要从自己的干净 Git 提交重新打包时，使用 Python 3.10 以上，先安装 Pandoc、XeLaTeX、xeCJK、fvextra、xurl、etoolbox、Noto CJK 与 DejaVu 字体，然后在仓库根目录运行：
+需要从自己的干净 Git 提交重新打包时，使用 Python 3.10 以上，先安装文档渲染工具与字体。Ubuntu / Debian 示例：
+
+```bash
+sudo apt-get install python3 pandoc texlive-xetex texlive-latex-extra \
+  texlive-lang-chinese texlive-fonts-recommended lmodern \
+  fonts-noto-cjk fonts-dejavu-core fonts-urw-base35
+```
+
+脚本预检 Pandoc、XeLaTeX、Noto CJK 与 DejaVu 字体，以及 `lmodern.sty`、`pzdr.tfm`、`xeCJK.sty`、`fvextra.sty`、`xurl.sty`、`etoolbox.sty`。在仓库根目录运行：
 
 ```bash
 mkdir -p artifacts/delivery
