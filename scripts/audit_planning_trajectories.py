@@ -4,7 +4,7 @@
 Usage: python scripts/audit_planning_trajectories.py RESULTS_DIRECTORY
 Reads runs.csv, scenarios.csv, and every referenced trajectory. Successful paths
 are resampled at twice the online segment count, including every online sample.
-The seven-axis FK is rebuilt exclusively from source.urdf; only the fixed grasp
+The selected robot FK is rebuilt exclusively from source.urdf; only the fixed grasp
 and TCP transforms come from the generated MJCF. No MuJoCo or planner import.
 """
 import argparse
@@ -71,18 +71,20 @@ def xml_transform(element):
 
 
 class UrdfArm:
-    def __init__(self, path):
+    def __init__(self, path, joint_names=None, root_link="base_link", tool_link="ee_link"):
+        self.names = list(JOINTS if joint_names is None else joint_names)
+        self.tool_link = tool_link
         tree = ET.parse(path).getroot()
         by_child = {j.find('child').get('link'): j for j in tree.findall('joint')}
-        chain, link = [], 'ee_link'
-        while link != 'base_link':
+        chain, link = [], tool_link
+        while link != root_link:
             if link not in by_child:
-                raise ValueError('source URDF has no base_link -> ee_link chain')
+                raise ValueError('source URDF has no selected root -> tool chain')
             j = by_child[link]
             chain.append(j)
             link = j.find('parent').get('link')
         self.chain = []
-        self.lower, self.upper = np.zeros(7), np.zeros(7)
+        self.lower, self.upper = np.zeros(len(self.names)), np.zeros(len(self.names))
         seen = []
         for j in reversed(chain):
             origin = j.find('origin')
@@ -91,24 +93,24 @@ class UrdfArm:
             fixed = transform(xyz, rpy(angles))
             name, kind = j.get('name'), j.get('type')
             if kind == 'fixed':
-                self.chain.append((fixed, None, None))
+                self.chain.append((fixed, None, None, kind))
                 continue
-            if name not in JOINTS or kind != 'revolute':
+            if name not in self.names or kind not in ('revolute', 'prismatic'):
                 raise ValueError('unexpected moving joint on arm chain: ' + name)
-            index = JOINTS.index(name)
+            index = self.names.index(name)
             axis = numbers(j.find('axis').get('xyz'), '1 0 0')
             axis /= np.linalg.norm(axis)
-            self.chain.append((fixed, index, axis))
+            self.chain.append((fixed, index, axis, kind))
             limit = j.find('limit')
             self.lower[index], self.upper[index] = float(limit.get('lower')), float(limit.get('upper'))
             seen.append(name)
-        if seen != JOINTS:
+        if len(seen) != len(self.names) or set(seen) != set(self.names):
             raise ValueError('URDF chain joint order does not match benchmark CSV')
 
     def fk(self, q):
         q = np.atleast_2d(q)
         result = np.broadcast_to(np.eye(4), (len(q), 4, 4)).copy()
-        for fixed, index, axis in self.chain:
+        for fixed, index, axis, kind in self.chain:
             result = result @ fixed
             if index is None:
                 continue
@@ -116,17 +118,20 @@ class UrdfArm:
             cross = np.array([[0, -z, y], [z, 0, -x], [-y, x, 0]])
             angles = q[:, index]
             matrices = np.broadcast_to(np.eye(4), (len(q), 4, 4)).copy()
-            matrices[:, :3, :3] += (np.sin(angles)[:, None, None] * cross +
-                (1-np.cos(angles))[:, None, None] * (cross @ cross))
+            if kind == 'prismatic':
+                matrices[:, :3, 3] = angles[:, None]*axis
+            else:
+                matrices[:, :3, :3] += (np.sin(angles)[:, None, None] * cross +
+                    (1-np.cos(angles))[:, None, None] * (cross @ cross))
             result = result @ matrices
         return result
 
 
-def grasp_from_xml(path):
+def grasp_from_xml(path, tool_link="ee_link"):
     root = ET.parse(path).getroot()
-    ee = root.find('.//body[@name="ee_link"]')
+    ee = root.find(f'.//body[@name="{tool_link}"]')
     if ee is None:
-        raise ValueError('MJCF missing ee_link')
+        raise ValueError('MJCF missing tool link '+tool_link)
     sites = {}
 
     def visit(body, pose):
@@ -211,7 +216,9 @@ def trajectory_audit(path, scenario, arm, tcp, args, successful):
     rows = csv_rows(path)
     if not rows:
         return {'knots': 0, 'valid': not successful, 'errors': ['successful trajectory is empty'] if successful else []}
-    q = numeric_rows(rows, ['q'+str(i) for i in range(7)])
+    if {key for key in rows[0] if key.startswith('q') and key[1:].isdigit()} != {'q'+str(i) for i in range(len(arm.names))}:
+        raise ValueError('Trajectory joint columns do not match selected robot')
+    q = numeric_rows(rows, ['q'+str(i) for i in range(len(arm.names))])
     times = numeric_rows(rows, ['time'])[:, 0]
     state = numeric_rows(rows, ['insertion', 'lift', 'flip', 'twist'])
     target = numeric_rows(rows, ['target_x', 'target_y', 'target_z'])
@@ -236,7 +243,7 @@ def trajectory_audit(path, scenario, arm, tcp, args, successful):
     ranks = np.array([PHASES.index(p) for p in phase])
     if ranks[0] != 0 or ranks[-1] != 5 or np.any(np.diff(ranks) < 0) or np.any(np.diff(ranks) > 1):
         errors.append('invalid phase order')
-    start = numeric_rows([scenario], ['start_q'+str(i) for i in range(7)])[0]
+    start = numeric_rows([scenario], ['start_q'+str(i) for i in range(len(arm.names))])[0]
     if np.linalg.norm(q[0]-start) > 1e-10:
         errors.append('wrong starting configuration')
     if abs(times[0]) > 1e-12 or np.any(np.diff(times) <= 0):
@@ -280,7 +287,10 @@ def trajectory_audit(path, scenario, arm, tcp, args, successful):
     # u=1/2 (speed) and u=0,1 (acceleration); these are analytic, not samples.
     peak_v = float(np.max(1.5*dq/dt, initial=0))
     peak_a = float(np.max(6*dq/dt**2, initial=0))
-    if peak_v > args.velocity_limit+1e-8 or peak_a > args.acceleration_limit+1e-8:
+    joint_speeds = np.array(getattr(arm, 'velocity_limits', [1.]*len(arm.names)))
+    travel = np.abs(np.diff(q, axis=0))
+    if (np.any(1.5*travel/dt[:,None] > args.velocity_limit*joint_speeds+1e-8) or
+            np.any(6*travel/dt[:,None]**2 > args.acceleration_limit*joint_speeds+1e-8)):
         errors.append('analytic cubic velocity/acceleration violation')
     qs, sample_times, positions, directions, sample_phases = [q[0]], [times[0]], [target[0]], [axes[0]], [phase[0]]
     for i in range(1, len(rows)):
@@ -368,8 +378,9 @@ def sha(path):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory', nargs='?', type=Path)
-    parser.add_argument('--urdf', type=Path, default=ROOT/'reference/rm26_arm/source.urdf')
-    parser.add_argument('--scene', type=Path, default=ROOT/'models/planning/scene.xml')
+    parser.add_argument('--robot', default='rm26', help='built-in robot id or package directory')
+    parser.add_argument('--urdf', type=Path)
+    parser.add_argument('--scene', type=Path)
     parser.add_argument('--output', type=Path)
     parser.add_argument('--expected-runs', type=int)
     parser.add_argument('--online-joint-step', type=float, default=.008)
@@ -385,15 +396,32 @@ def main():
             parser.error(k + ' must be finite and positive')
     if args.online_min_substeps < 1:
         parser.error('online_min_substeps must be positive')
-    arm = UrdfArm(args.urdf)
+    profile = None
+    if args.robot != 'rm26':
+        directory = Path(args.robot) if Path(args.robot).is_dir() else ROOT/'models'/args.robot
+        profile = json.loads((directory/'robot.json').read_text())
+        args.urdf = args.urdf or directory/profile['urdf']
+        args.scene = args.scene or directory/'planning.xml'
+        arm = UrdfArm(args.urdf, profile['joint_names'], profile['root_body'], profile['tool_link'])
+        arm.velocity_limits = profile['velocity_limits']
+    else:
+        directory = ROOT/'models/rm26_arm'
+        args.urdf = args.urdf or ROOT/'reference/rm26_arm/source.urdf'
+        args.scene = args.scene or ROOT/'models/planning/scene.xml'
+        arm = UrdfArm(args.urdf)
     provenance = ROOT/'reference/rm26_arm/manifest.json'
     if args.urdf.resolve() == (ROOT/'reference/rm26_arm/source.urdf').resolve():
         source_files = json.loads(provenance.read_text())['files']
         source = next(f for f in source_files if f['local_path'] == 'reference/rm26_arm/source.urdf')
         if sha(args.urdf) != source['sha256']:
             raise ValueError('source URDF disagrees with pinned model manifest')
+    if args.robot == 'mec_arm':
+        pinned = json.loads((ROOT/'reference/mec_arm/manifest.json').read_text())
+        for entry in pinned['files']:
+            if sha(ROOT/entry['local_path']) != entry['sha256']:
+                raise ValueError('Pinned MecArm source changed: '+entry['local_path'])
     if args.self_test:
-        fixtures = json.loads((ROOT/'models/rm26_arm/verification.json').read_text())['fk_fixtures']
+        fixtures = json.loads((directory/'verification.json').read_text())['fk_fixtures']
         got = arm.fk(np.array([f['qpos_rad'] for f in fixtures]))
         error_p = max(float(np.max(np.abs(t[:3, 3]-f['tool_position_m']))) for t, f in zip(got, fixtures))
         error_r = max(float(np.max(np.abs(t[:3, :3]-f['tool_rotation_matrix']))) for t, f in zip(got, fixtures))
@@ -410,7 +438,7 @@ def main():
     if args.directory is None:
         parser.error('directory required unless --self-test')
     directory = args.directory.resolve()
-    tcp, opening = grasp_from_xml(args.scene)
+    tcp, opening = grasp_from_xml(args.scene, arm.tool_link)
     scenarios_list = csv_rows(directory/'scenarios.csv')
     scenarios = {r['case']: r for r in scenarios_list}
     runs = csv_rows(directory/'runs.csv')
@@ -418,8 +446,12 @@ def main():
     if len(scenarios) != len(scenarios_list):
         errors.append('duplicate scenario ids')
     for scenario in scenarios_list:
+        if scenario.get('robot', args.robot) != (profile['id'] if profile else 'rm26'):
+            errors.append('Scenario robot does not match selected URDF')
+        if {key for key in scenario if key.startswith('start_q') and key[7:].isdigit()} != {'start_q'+str(i) for i in range(len(arm.names))}:
+            errors.append('Scenario joint columns do not match selected robot')
         scene_pose(scenario)
-        numeric_rows([scenario], ['start_q'+str(i) for i in range(7)])
+        numeric_rows([scenario], ['start_q'+str(i) for i in range(len(arm.names))])
     environment_path = directory/'environment.json'
     environment = json.loads(environment_path.read_text()) if environment_path.exists() else {}
     expected = args.expected_runs if args.expected_runs is not None else environment.get('expected_runs')
@@ -514,7 +546,7 @@ def main():
                     ratios.append(b/t)
         paired.append({'method': method, 'both_successful_positive_speedup': distribution(ratios),
                        'success_regressions': regressions, 'success_gains': gains})
-    audit = {'audit_schema': 1, 'valid': not errors, 'run_count': len(runs), 'expected_runs': expected,
+    audit = {'audit_schema': 1, 'robot': args.robot, 'joint_names': arm.names, 'valid': not errors, 'run_count': len(runs), 'expected_runs': expected,
         'successful_runs': sum(r['success'] == '1' for r in runs),
         'successful_positive_runs': sum(r['success'] == '1' and r['split'] != 'negative' for r in runs),
         'scope': 'Independent source-URDF kinematics, grasp, mechanism, timing and raw population audit; no independent mesh collision or physical grasp proof',

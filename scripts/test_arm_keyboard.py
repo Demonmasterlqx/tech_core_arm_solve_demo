@@ -88,7 +88,7 @@ def main():
         if x11.XFetchName(display, parent, C.byref(name)) and name.value:
             title = name.value.decode(errors='replace')
             x11.XFree(C.cast(name, ptr))
-            if title.startswith('RM26 Arm |'):
+            if title.startswith(('RM26 Arm |', 'Arm ')):
                 return parent
         root, owner, children, count = window_type(), window_type(), C.POINTER(window_type)(), C.c_uint()
         if x11.XQueryTree(display, parent, C.byref(root), C.byref(owner), C.byref(children), C.byref(count)):

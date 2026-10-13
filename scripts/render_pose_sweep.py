@@ -75,7 +75,7 @@ def main():
     environment.update(CUDA_VISIBLE_DEVICES="", LIBGL_ALWAYS_SOFTWARE="1", GALLIUM_DRIVER="llvmpipe",
                        LP_NUM_THREADS="4", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1")
     libraries = [args.build_dir.resolve() / name for name in
-                 ("librm26_planning.a", "libtech_core_sim.a", "libtech_core_rules.a")]
+                 ("librm26_planning.a", "libtech_core_sim.a", "libtech_core_rules.a", "libtech_core_kinematics.a", "libtech_core_robot.a")]
     if not all(p.exists() for p in libraries):
         parser.error("Build the Release build-planning targets first; see docs/planning_results.md")
     mujoco = ROOT / ".deps/mujoco-3.3.7"

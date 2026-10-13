@@ -5,7 +5,6 @@ No source asset is copied or modified. The carried unit is a declared rigid
 two-jaw midsection grasp with explicit fixed auxiliary joint angles; no grasp dynamics.
 """
 from pathlib import Path
-from copy import deepcopy
 import json
 import struct
 import hashlib
@@ -13,11 +12,12 @@ import math
 import sys
 from collections import defaultdict
 import xml.etree.ElementTree as ET
+from robot_description import collision_metadata
+from assembly_scene import task_components
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'models/planning'
 ARM = ROOT / 'models/rm26_arm/scene.xml'
-CORE = ROOT / 'models/tech_core.xml'
 
 
 def component_meshes(name):
@@ -132,7 +132,6 @@ def regenerate_jaw_prisms():
 
 def generate():
     arm = ET.parse(ARM).getroot()
-    core = ET.parse(CORE).getroot()
     arm.set('model', 'rm26_level3_kinematic_planning')
     compiler = arm.find('compiler')
     compiler.attrib.pop('meshdir', None)
@@ -140,29 +139,11 @@ def generate():
     for mesh in arm.findall('./asset/mesh'):
         mesh.set('file', '../rm26_arm/meshes/' + mesh.get('file'))
     asset = arm.find('asset')
-    for child in core.find('asset'):
-        if child.get('name', '').startswith('core1_'):
-            continue
-        part = deepcopy(child)
-        if part.tag == 'mesh' and 'file' in part.attrib:
-            part.set('file', '../' + part.get('file'))
-        asset.append(part)
-    base = deepcopy(core.find('./worldbody/body[@name="core0_base"]'))
-    base.set('pos', '.39 0 .35')
-    base.set('quat', '0 0 0 1')
+    task_asset, base, carried, block, lo, hi = task_components(OUT)
+    asset.extend(list(task_asset))
     carriage = base.find('.//body[@name="core0_carriage"]')
-    carried = carriage.find('./body[@name="core0_energy_unit"]')
-    carriage.remove(carried)
-    for joint in list(carried.findall('joint')):
-        carried.remove(joint)
-    carried.set('name', 'carried_unit')
     carried.set('pos', '0 -.015 -.010')
     carried.set('quat', '.3535533905932738 -.6123724356957945 -.3535533905932738 -.6123724356957945')
-    for element in carried.iter():
-        if 'name' in element.attrib:
-            element.set('name', element.get('name').replace('core0_unit_', 'carried_unit_').replace('core0_grip', 'carried_unit_grip').replace('core0_opening', 'carried_unit_opening'))
-    ET.SubElement(carried, 'site', name='planning_tcp', pos='0 0 0', quat='.5 .5 .5 .5', size='.003', rgba='0 0 0 0')
-    ET.SubElement(carried, 'site', name='carried_unit_closed_cap', pos='.15 0 0', size='.003', rgba='0 0 0 0')
     # Fixed auxiliary jaw angles from source geometry, not simulated grasp.
     jaw_angle = 2.0504
     def qmul(a,b):
@@ -172,31 +153,10 @@ def generate():
         body=arm.find(f'.//body[@name="{name}"]')
         quat=qmul(list(map(float,body.get('quat').split())),[math.cos(jaw_angle/2),0,0,sign*math.sin(jaw_angle/2)])
         body.set('quat',' '.join(f'{x:.16g}' for x in quat))
-    # Capture the 25--35 mm source collar; circumscribed outer wall avoids
-    # inscribed-polygon undercoverage of the cylindrical exterior.
-    for name, old_length, new_length, outer in [('collision_unit_flange',.025,.035,.040),('collision_unit_tube',.075,.065,.0325)]:
-        mesh=asset.find(f'mesh[@name="{name}"]')
-        vs=list(map(float,mesh.get('vertex').split()))
-        for k in range(0,len(vs),3):
-            if abs(vs[k]-old_length)<1e-8:vs[k]=new_length
-            if abs(math.hypot(vs[k+1],vs[k+2])-outer)<1e-8:
-                vs[k+1]/=math.cos(math.pi/48);vs[k+2]/=math.cos(math.pi/48)
-        mesh.set('vertex',' '.join(f'{x:.14g}' for x in vs))
-    for geom in carried.findall('geom'):
-        if geom.get('name','').startswith('carried_unit_tube_'):geom.set('pos','.035 0 0')
     arm.find('.//body[@name="ee_link"]').append(carried)
     arm.find('worldbody').append(base)
     arm.find('./worldbody/geom[@name="ground_visual"]').set('pos','0 0 -.25')
-    ET.SubElement(arm.find('worldbody'), 'geom', name='collision_block_fixture', type='box', pos='0 0 -10', size='.08 .08 .08', rgba='.8 .15 .1 .35', group='3')
-    # Filled shell AABB is a conservative obstacle: it can reject routes through
-    # source cavities, but never deliberately removes shell material.
-    vertices = [tuple(map(float, line.split()[1:4])) for line in (ROOT / 'models/meshes/core/shell.obj').read_text().splitlines() if line.startswith('v ')]
-    lo = [min(v[k] for v in vertices) for k in range(3)]
-    hi = [max(v[k] for v in vertices) for k in range(3)]
-    ET.SubElement(base, 'geom', name='collision_core_shell', type='box',
-                  pos=' '.join(str((a+b)/2) for a,b in zip(lo,hi)),
-                  size=' '.join(str((b-a)/2) for a,b in zip(lo,hi)),
-                  rgba='0 0 0 0', group='3')
+    arm.find('worldbody').append(block)
     arm.find('keyframe/key[@name="home"]').set('qpos', '-.62770373654521094 2.3297993305507192 1.0289871622237392 1.2715734368717495 -1.747192543846495 -.81681197466957878 1.9772845777886507 0 0 0')
     # All narrow-phase queries are explicit and independent of these masks.
     for geom in arm.iter('geom'):
@@ -284,6 +244,8 @@ def generate():
         ]
     }
     OUT.mkdir(parents=True, exist_ok=True)
+    collision_metadata(arm, [g['geom'] for g in arm_geoms], ['j0_link','j1_link'],
+                       [g['jaw_geom'] for g in manifest['grasp_contact_candidates']])
     ET.indent(arm, space='  ')
     ET.ElementTree(arm).write(OUT/'scene.xml', encoding='utf-8', xml_declaration=True)
     (OUT/'collision_manifest.json').write_text(json.dumps(manifest, indent=2, ensure_ascii=False)+'\n')

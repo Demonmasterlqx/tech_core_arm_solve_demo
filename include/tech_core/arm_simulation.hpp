@@ -1,6 +1,7 @@
 #pragma once
 
 #include <mujoco/mujoco.h>
+#include "tech_core/robot_model.hpp"
 #include <array>
 #include <memory>
 #include <string>
@@ -11,7 +12,7 @@ enum class ArmControlMode { Position, Velocity, Cartesian };
 
 // Fixed-base kinematic mock: commands integrate qpos/qvel directly, followed
 // by MuJoCo FK. Neither motor torques nor collision reactions drive motion.
-// Angles/rates use radians; Cartesian velocities are world-frame metres/s.
+// Joint coordinates use rad or m by joint type; Cartesian velocity is world m/s.
 class ArmSimulation {
 public:
     static constexpr double maximum_joint_speed = 1.0; // Mock limit, not hardware data.
@@ -29,6 +30,7 @@ public:
     const std::vector<std::array<double, 2>>& joint_limits() const { return limits_; }
     const std::vector<double>& velocity_limits() const { return velocity_limits_; }
     std::array<double, 3> tool_position() const;
+    const RobotModel& robot() const { return robot_; }
     ArmControlMode mode() const { return mode_; }
     double time() const { return data_->time; }
     bool finite() const;
@@ -42,6 +44,7 @@ private:
     std::vector<double> cartesian_rates() const;
     std::unique_ptr<mjModel, decltype(&mj_deleteModel)> model_{nullptr, mj_deleteModel};
     std::unique_ptr<mjData, decltype(&mj_deleteData)> data_{nullptr, mj_deleteData};
+    RobotModel robot_;
     std::vector<int> joints_;
     std::vector<std::string> names_;
     std::vector<std::array<double, 2>> limits_;

@@ -21,7 +21,7 @@ void fk(const JointVector& q, Eigen::Vector3d& p, Eigen::Matrix3d& r, Jacobian* 
     p = q.head<3>() + q[6] * Eigen::Vector3d(0.1, -0.2, 0.15);
     r = rz * ry * rx;
     if (j) {
-        j->setZero();
+        j->setZero(6, q.size());
         j->topLeftCorner<3, 3>().setIdentity();
         j->block<3, 1>(0, 6) = Eigen::Vector3d(0.1, -0.2, 0.15);
         j->block<3, 1>(3, 3) = rz * ry * Eigen::Vector3d::UnitX();
@@ -39,11 +39,11 @@ TaskTarget target_at(const JointVector& q) {
 }
 
 void jacobian_test() {
-    JointVector q;
+    JointVector q(7);
     q << .2, -.1, .4, .6, -.4, .3, .2;
     Eigen::Vector3d position;
     Eigen::Matrix3d rotation;
-    Jacobian geometric;
+    Jacobian geometric(6, 7);
     fk(q, position, rotation, &geometric);
     const Eigen::Vector3d local = Eigen::Vector3d(.3, -.2, 1).normalized();
     const Eigen::Vector3d axis = rotation * local;
@@ -69,13 +69,13 @@ void jacobian_test() {
 }
 
 void baseline_step_test() {
-    JointVector q = JointVector::Zero();
-    JointVector goal;
+    JointVector q = JointVector::Zero(7);
+    JointVector goal(7);
     goal << .1, -.2, .15, .4, -.3, .2, .1;
     TaskTarget target = target_at(goal);
     Eigen::Vector3d p;
     Eigen::Matrix3d r;
-    Jacobian jacobian;
+    Jacobian jacobian(6, 7);
     fk(q, p, r, &jacobian);
     const Eigen::Vector3d a = r * target.local_axis;
     Jacobian projected = jacobian;
@@ -87,10 +87,10 @@ void baseline_step_test() {
     JointVector expected = .2 * projected.transpose() * normal.ldlt().solve(error);
     IKOptions options;
     options.max_iterations = 1;
-    options.max_joint_step = JointVector::Constant(.01);
+    options.max_joint_step = JointVector::Constant(7, .01);
     JointLimits limits;
-    limits.lower = JointVector::Constant(-.007);
-    limits.upper = JointVector::Constant(.008);
+    limits.lower = JointVector::Constant(7, -.007);
+    limits.upper = JointVector::Constant(7, .008);
     expected = expected.cwiseMax(-.01).cwiseMin(.01).cwiseMax(limits.lower).cwiseMin(limits.upper);
     const auto result = solve_ik(fk, target, q, limits, options);
     require((result.q - expected).norm() < 1e-13, "upstream baseline one-step parity");
@@ -99,18 +99,18 @@ void baseline_step_test() {
 
 void convergence_test() {
     JointLimits limits;
-    limits.lower = JointVector::Constant(-4);
-    limits.upper = JointVector::Constant(4);
+    limits.lower = JointVector::Constant(7, -4);
+    limits.upper = JointVector::Constant(7, 4);
     for (const auto method : {IKMethod::Baseline, IKMethod::FullStep,
                              IKMethod::Reduced5D, IKMethod::AdaptiveLM, IKMethod::BoundedQP}) {
         IKOptions options;
         options.method = method;
         int total_iterations = 0;
         for (int sample = 0; sample < 16; ++sample) {
-            JointVector goal;
+            JointVector goal(7);
             for (int k = 0; k < 7; ++k) goal[k] = .6 * std::sin(.3 + sample * .7 + k);
             const TaskTarget target = target_at(goal);
-            const auto result = solve_ik(fk, target, JointVector::Zero(), limits, options);
+            const auto result = solve_ik(fk, target, JointVector::Zero(7), limits, options);
             require(result.success, "reachable analytic chain target");
             require(result.position_error <= 1e-4 && result.axis_error <= 1e-4,
                     "task tolerances preserved");
@@ -120,7 +120,7 @@ void convergence_test() {
         }
         TaskTarget opposite;
         opposite.direction = -Eigen::Vector3d::UnitZ();
-        const auto result = solve_ik(fk, opposite, JointVector::Zero(), limits, options);
+        const auto result = solve_ik(fk, opposite, JointVector::Zero(7), limits, options);
         require(result.success && result.axis_error <= 1e-4, "antiparallel axis must escape");
         std::cout << "method=" << static_cast<int>(method)
                   << " reachable=16/16 iterations=" << total_iterations
@@ -129,7 +129,7 @@ void convergence_test() {
     limits.lower.setZero(); limits.upper.setZero();
     TaskTarget unreachable;
     unreachable.position.x() = 1;
-    const auto failure = solve_ik(fk, unreachable, JointVector::Zero(), limits);
+    const auto failure = solve_ik(fk, unreachable, JointVector::Zero(7), limits);
     require(!failure.success && failure.q.isZero() && failure.position_error == 1,
             "fixed joint limits cannot claim success");
 }
@@ -137,11 +137,11 @@ void convergence_test() {
 void fixed_coordinate_test() {
     const auto redundant = [](const JointVector& q,Eigen::Vector3d& p,Eigen::Matrix3d& r,Jacobian* j) {
         p=Eigen::Vector3d(10*q[0]+q[6],q[1],q[2]);r.setIdentity();
-        if(j) {j->setZero();(*j)(0,0)=10;(*j)(0,6)=1;(*j)(1,1)=1;(*j)(2,2)=1;}
+        if(j) {j->setZero(6, q.size());(*j)(0,0)=10;(*j)(0,6)=1;(*j)(1,1)=1;(*j)(2,2)=1;}
     };
     JointLimits limits;limits.lower.setConstant(-1);limits.upper.setConstant(1);
     limits.lower[0]=limits.upper[0]=.1;
-    JointVector start=JointVector::Zero();start[0]=.1;
+    JointVector start=JointVector::Zero(7);start[0]=.1;
     TaskTarget target;target.position.x()=1.3;
     for(auto method:{IKMethod::Baseline,IKMethod::Reduced5D}) {
         IKOptions options;options.method=method;
@@ -161,11 +161,11 @@ void bounded_qp_test() {
         p = Eigen::Vector3d(10 * q[0] + q[6], q[1], q[2]);
         r.setIdentity();
         if (j) {
-            j->setZero(); (*j)(0, 0) = 10; (*j)(0, 6) = 1;
+            j->setZero(6, q.size()); (*j)(0, 0) = 10; (*j)(0, 6) = 1;
             (*j)(1, 1) = 1; (*j)(2, 2) = 1;
         }
     };
-    JointVector initial = JointVector::Zero(); initial[0] = .1;
+    JointVector initial = JointVector::Zero(7); initial[0] = .1;
     JointLimits limits;
     limits.lower.setConstant(-1); limits.upper.setConstant(1); limits.upper[0] = .1;
     TaskTarget target; target.position.x() = 1.3;
@@ -206,8 +206,8 @@ void bounded_qp_test() {
         if (sample % 3 == 0) limits.lower[2] = limits.upper[2] = 0;
         options.max_iterations = 1;
         options.damping = sample % 2 == 0 ? .07 : 1e-4;
-        options.max_joint_step = JointVector::Constant(.08);
-        const auto solved = solve_ik(linear_fk, target, JointVector::Zero(), limits, options);
+        options.max_joint_step = JointVector::Constant(7, .08);
+        const auto solved = solve_ik(linear_fk, target, JointVector::Zero(7), limits, options);
         require(solved.reason != "bounded QP failed KKT or pivot limit", "box QP solves correlated task");
         const JointVector lower = limits.lower.cwiseMax(-.08);
         const JointVector upper = limits.upper.cwiseMin(.08);
@@ -229,20 +229,20 @@ void bounded_qp_test() {
             "bounded method respects termination");
     int stop_checks = 0;
     options.should_stop = [&] { return ++stop_checks > 1; };
-    const auto pivot_stop = solve_ik(redundant_fk, target, JointVector::Zero(), limits, options);
+    const auto pivot_stop = solve_ik(redundant_fk, target, JointVector::Zero(7), limits, options);
     require(pivot_stop.reason == "stopped" && pivot_stop.fk_evals == 1,
             "termination checked inside QP active-set loop");
     options.should_stop = {};
     limits.lower.setZero(); limits.upper.setZero();
     target.position = Eigen::Vector3d::UnitX();
-    const auto fixed = solve_ik(redundant_fk, target, JointVector::Zero(), limits, options);
+    const auto fixed = solve_ik(redundant_fk, target, JointVector::Zero(7), limits, options);
     require(!fixed.success && fixed.q.isZero() && fixed.reason == "no descending feasible step",
             "all-fixed QP terminates without false success");
 }
 
 void invalid_test() {
     TaskTarget target;
-    JointVector initial = JointVector::Zero();
+    JointVector initial = JointVector::Zero(7);
     JointLimits limits;
     target.direction.setZero();
     require(!solve_ik(fk, target, initial, limits).success, "zero direction rejected");
@@ -258,12 +258,12 @@ void invalid_test() {
     require(solve_ik(fk, target, initial, limits, invalid_options).fk_evals == 0,
             "alpha above one rejected before FK");
     invalid_options.alpha = .2;
-    invalid_options.max_joint_step = JointVector::Constant(-.1);
+    invalid_options.max_joint_step = JointVector::Constant(7, -.1);
     require(solve_ik(fk, target, initial, limits, invalid_options).fk_evals == 0,
             "negative maximum joint step rejected before FK");
     const auto bad_fk = [](const JointVector&, Eigen::Vector3d& p, Eigen::Matrix3d& r, Jacobian* j) {
         p.setConstant(std::numeric_limits<double>::infinity()); r.setIdentity();
-        if (j) j->setZero();
+        if (j) j->setZero(6, 7);
     };
     require(!solve_ik(bad_fk, target, initial, limits).success, "nonfinite FK rejected");
     IKOptions stop;

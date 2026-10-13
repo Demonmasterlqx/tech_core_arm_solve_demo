@@ -32,16 +32,18 @@ std::ofstream output_file(const std::filesystem::path& path) {
     stream << std::setprecision(17);
     return stream;
 }
-void write_scenarios(const std::filesystem::path& path, const std::vector<Scenario>& suite) {
+void write_scenarios(const std::filesystem::path& path, const std::vector<Scenario>& suite, const std::string& robot_id) {
     auto out = output_file(path);
-    out << "case,split,core_x,core_y,core_z,core_theta_degrees,core_phi_degrees,core_alpha_degrees,target_degrees,start_q0,start_q1,start_q2,start_q3,start_q4,start_q5,start_q6,assembly_translation_x,assembly_translation_y,assembly_translation_z,assembly_yaw_radians,blocking_obstacle,arm_base_z,q_sweep\n";
+    out << "case,split,core_x,core_y,core_z,core_theta_degrees,core_phi_degrees,core_alpha_degrees,target_degrees";
+    for(int j=0;j<suite.front().start.size();++j) out<<",start_q"<<j;
+    out<<",assembly_translation_x,assembly_translation_y,assembly_translation_z,assembly_yaw_radians,blocking_obstacle,arm_base_z,q_sweep,enforce_core_pose_limits,robot,model_path\n";
     for (const auto& scenario : suite) {
         const auto& p = scenario.core;
         out << csv(scenario.id) << ',' << csv(scenario.split) << ',' << p.x << ',' << p.y << ',' << p.z
             << ',' << p.theta << ',' << p.phi << ',' << p.alpha << ',' << scenario.target_degrees;
-        for (int k = 0; k < 7; ++k) out << ',' << scenario.start[k];
+        for (int k = 0; k < scenario.start.size(); ++k) out << ',' << scenario.start[k];
         for (int k = 0; k < 3; ++k) out << ',' << scenario.assembly_translation[k];
-        out << ',' << scenario.assembly_yaw << ',' << scenario.blocking_obstacle << ',' << scenario.arm_base_z << ',' << scenario.q_sweep << '\n';
+        out << ',' << scenario.assembly_yaw << ',' << scenario.blocking_obstacle << ',' << scenario.arm_base_z << ',' << scenario.q_sweep << ',' << scenario.enforce_core_pose_limits << ',' << csv(robot_id) << ',' << csv(scenario.model_path) << '\n';
     }
 }
 PlanResult safe_plan(PlanningScene& scene, const Scenario& scenario, const PlanOptions& options,
@@ -56,22 +58,24 @@ PlanResult safe_plan(PlanningScene& scene, const Scenario& scenario, const PlanO
         return result;
     }
 }
-void write_trajectory(const std::filesystem::path& path, const PlanResult& result) {
+void write_trajectory(const std::filesystem::path& path, const PlanResult& result, int dof) {
     auto out = output_file(path);
-    out << "knot,time,phase,insertion,lift,flip,twist,q0,q1,q2,q3,q4,q5,q6,target_x,target_y,target_z,direction_x,direction_y,direction_z\n";
+    out << "knot,time,phase,insertion,lift,flip,twist";
+    for(int j=0;j<dof;++j) out<<",q"<<j;
+    out<<",target_x,target_y,target_z,direction_x,direction_y,direction_z\n";
     for (std::size_t i = 0; i < result.knots.size(); ++i) {
         const auto& knot = result.knots[i];
         out << i << ',' << knot.time << ',' << phase_name(knot.phase) << ','
             << knot.mechanism.insertion << ',' << knot.mechanism.lift << ','
             << knot.mechanism.flip << ',' << knot.mechanism.twist;
-        for (int k = 0; k < 7; ++k) out << ',' << knot.q[k];
+        for (int k = 0; k < knot.q.size(); ++k) out << ',' << knot.q[k];
         for (int k = 0; k < 3; ++k) out << ',' << knot.target.position[k];
         for (int k = 0; k < 3; ++k) out << ',' << knot.target.direction[k];
         out << '\n';
     }
 }
 void usage() {
-    std::cout << "rm26_plan [--method NAME|all] [--case ID|all] [--repeat N]\n"
+    std::cout << "arm_plan [--robot ID|DIRECTORY] [--model PATH] [--list-robots] [--method NAME|all] [--case ID|all] [--repeat N]\n"
                  "          [--split development|confirmation|negative|all] [--timeout SECONDS]\n"
                  "          [--output DIRECTORY] [--dense-check] [--motion-speed-scale S] [--list]\n";
 }
@@ -79,6 +83,8 @@ void usage() {
 
 int main(int argc, char** argv) {
     try {
+        std::string robot="rm26", model;
+        bool robot_selected=false;
         std::string method_arg = "all", case_arg = "all", split = "all";
         std::filesystem::path output = "artifacts/level3_planning/manual";
         int repeats = 1;
@@ -91,7 +97,10 @@ int main(int argc, char** argv) {
                 if (++i >= argc) throw std::invalid_argument("Missing value for " + flag);
                 return argv[i];
             };
-            if (flag == "--method") method_arg = value();
+            if (flag == "--robot") {robot=value();robot_selected=true;}
+            else if (flag == "--model") model=value();
+            else if (flag == "--list-robots") {for(const auto& id:tech_core::available_robots()) std::cout<<id<<'\n';return 0;}
+            else if (flag == "--method") method_arg = value();
             else if (flag == "--case") case_arg = value();
             else if (flag == "--split") split = value();
             else if (flag == "--repeat") {
@@ -125,7 +134,12 @@ int main(int argc, char** argv) {
             throw std::invalid_argument("Invalid split");
         const std::vector<Method> all_methods{Method::Baseline, Method::FullStep, Method::Reduced5D,
             Method::AdaptiveLM, Method::Predictor, Method::SparseAdaptive, Method::Atlas, Method::BoundedQP, Method::RigidCache};
-        const auto suite = scenario_suite();
+        if(robot_selected && !model.empty()) throw std::invalid_argument("Use --robot or --model, not both");
+        if(model.empty()) model=tech_core::robot_model_path(robot,true);
+        const auto cold_start = Clock::now();
+        PlanningScene scene(model);
+        const double cold_seconds = elapsed(cold_start);
+        const auto suite = scenario_suite(scene);
         if (list) {
             std::cout << "kind,name,split\n";
             for (const auto method : all_methods) std::cout << "method," << method_name(method) << ",\n";
@@ -141,10 +155,14 @@ int main(int argc, char** argv) {
         if (std::filesystem::exists(output / "runs.csv"))
             throw std::invalid_argument("Output already contains runs.csv; choose a new directory");
         std::filesystem::create_directories(output / "trajectories");
-        write_scenarios(output / "scenarios.csv", suite);
-        const auto cold_start = Clock::now();
-        PlanningScene scene;
-        const double cold_seconds = elapsed(cold_start);
+        write_scenarios(output / "scenarios.csv", suite, scene.robot().id);
+        auto joints=output_file(output/"robot.csv");
+        joints<<"robot,model_path,index,joint,type,lower,upper,velocity_limit\n";
+        for(int i=0;i<scene.dof();++i)
+            joints<<csv(scene.robot().id)<<','<<csv(model)<<','<<i<<','<<csv(scene.robot().joint_names[i])<<','
+                <<(scene.model()->jnt_type[scene.robot().joints[i]]==mjJNT_SLIDE?"prismatic":"revolute")<<','
+                <<scene.limits().lower[i]<<','<<scene.limits().upper[i]<<','<<scene.robot().velocity_limits[i]<<'\n';
+        joints.close();
         std::cout << std::setprecision(8) << "cold_model_load_seconds=" << cold_seconds << '\n';
         auto metadata = output_file(output / "timing.csv");
         metadata << "cold_model_load_seconds,atlas_build_seconds,atlas_entries\n";
@@ -207,7 +225,7 @@ int main(int argc, char** argv) {
                         ? "dense recheck: " + recheck.reason : result.reason;
                     const std::string relative = "trajectories/" + filename(method_name(method)) + "_" +
                         filename(scenario.id) + "_r" + std::to_string(repeat) + ".csv";
-                    write_trajectory(output / relative, result);
+                    write_trajectory(output / relative, result, scene.dof());
                     const auto& c = result.counters;
                     const auto& v = result.validation;
                     runs << csv(method_name(method)) << ',' << csv(scenario.id) << ',' << csv(scenario.split)

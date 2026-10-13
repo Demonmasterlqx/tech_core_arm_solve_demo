@@ -1,3 +1,4 @@
+#include "tech_core/camera_framing.hpp"
 #include "tech_core/arm_viewer.hpp"
 #include "tech_core/arm_keyboard.hpp"
 #include <GLFW/glfw3.h>
@@ -26,7 +27,7 @@ public:
         if (!glfwInit()) throw std::runtime_error("GLFW initialization failed; use --headless or an Xvfb display");
         glfwWindowHint(GLFW_VISIBLE, visible ? GLFW_TRUE : GLFW_FALSE);
         glfwWindowHint(GLFW_SAMPLES, 4);
-        window = glfwCreateWindow(1440, 1000, "RM26 Arm | Fixed-base kinematic control", nullptr, nullptr);
+        window = glfwCreateWindow(1440, 1000, ("Arm " + sim.robot().id + " | Fixed-base kinematic control").c_str(), nullptr, nullptr);
         if (!window) {
             glfwTerminate();
             throw std::runtime_error("Could not create the arm OpenGL window");
@@ -94,18 +95,20 @@ public:
         const auto joints = sim.joint_positions();
         const auto names = sim.joint_names();
         std::ostringstream left, right;
-        left << "RM26 ARM / FIXED BASE\nMuJoCo " << mj_versionString()
+        left << sim.robot().id << " ARM / FIXED BASE\nMuJoCo " << mj_versionString()
              << " | CPU kinematics\nMock drive: direct position / velocity\n\n"
              << "Control: " << mode_name() << (paused ? " / PAUSED" : "")
              << "\nt = " << std::fixed << std::setprecision(2) << sim.time() << " s"
              << "\nTool XYZ (m): " << std::setprecision(3) << xyz[0] << "  " << xyz[1] << "  " << xyz[2]
              << "\nCartesian speed: " << options.speed << " m/s\n";
-        for (std::size_t i = 0; i < joints.size(); ++i)
+        for (std::size_t i = 0; i < joints.size(); ++i) {
+            const bool slide=sim.model()->jnt_type[sim.robot().joints[i]]==mjJNT_SLIDE;
             left << '\n' << (selected == i ? "> " : "  ") << i + 1 << ": " << names[i]
-                 << "  " << std::setprecision(1) << joints[i] * 180 / 3.14159265358979323846 << " deg";
+                 << "  " << std::setprecision(1) << joints[i] * (slide?1000:180/3.14159265358979323846) << (slide?" mm":" deg");
+        }
         right << "CARTESIAN / world axes\nW / Up: forward +X\nS / Down: backward -X\n"
               << "A / Left: left +Y\nD / Right: right -Y\nQ / E: up +Z / down -Z\nRelease keys: hold\n\n"
-              << "M: Cartesian / Position / Velocity\n1-7: select joint\n+ / -: joint jog (0.5 rad/s)\n\n"
+              << "M: Cartesian / Position / Velocity\n1-9 / [ ]: select joint\n+ / -: joint jog (bounded per joint)\n\n"
               << "Space: pause / resume\nR: reset home\nMouse left: orbit\nMouse right: pan\nWheel: zoom\nEsc: exit";
         const auto l = left.str(), r = right.str();
         mjr_overlay(mjFONT_NORMAL, mjGRID_TOPLEFT, rect, l.c_str(), nullptr, &context);
@@ -194,10 +197,7 @@ private:
     }
     void reset_camera() {
         camera.type = mjCAMERA_FREE;
-        camera.lookat[0] = .20;
-        camera.lookat[1] = 0;
-        camera.lookat[2] = .45;
-        camera.distance = 2.0;
+        frame_model(sim.model(),sim.data(),camera);
         camera.azimuth = 135;
         camera.elevation = -25;
     }
@@ -223,6 +223,14 @@ private:
                 v.sim.reset();
                 v.clear_motion("reset");
                 v.reset_camera();
+                break;
+            case GLFW_KEY_LEFT_BRACKET:
+                v.selected = (v.selected + v.sim.joint_names().size() - 1) % v.sim.joint_names().size();
+                v.clear_motion("select");
+                break;
+            case GLFW_KEY_RIGHT_BRACKET:
+                v.selected = (v.selected + 1) % v.sim.joint_names().size();
+                v.clear_motion("select");
                 break;
             case GLFW_KEY_M:
                 v.mode = v.mode == ArmControlMode::Cartesian ? ArmControlMode::Position

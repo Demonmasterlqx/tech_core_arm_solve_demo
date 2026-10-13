@@ -83,4 +83,14 @@
   <keyframe>
     <key name="home" qpos="0 1 1.3999999999999999 0 0.69999999999999996 0 0" />
   </keyframe>
+  <custom>
+    <text name="robot_id" data="rm26" />
+    <text name="robot_root" data="j0_link" />
+    <text name="robot_tool" data="arm_tool" />
+    <text name="robot_joints" data="j0 j1 j2 j3 j4 end_differential_controller/j5 end_differential_controller/j6" />
+    <numeric name="robot_velocity_limits" data="1 1 1 1 1 1 1" />
+    <numeric name="robot_planning_home" data="-0.62770373654521094 2.3297993305507192 1.0289871622237392 1.2715734368717495 -1.747192543846495 -0.81681197466957878 1.9772845777886507" />
+    <numeric name="robot_posture_joint" data="6" />
+    <numeric name="robot_recovery_joint_order" data="6 3 0 4 1 2 5" />
+  </custom>
 </mujoco>

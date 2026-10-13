@@ -1,0 +1,97 @@
+{
+  "repository": "https://github.com/yagami-light7/MecArm_Kinematics",
+  "commit": "5b00fbc32a32b79a89ff9520c4fe13f2eaf0a945",
+  "license": "package.xml declares BSD; no standalone model or repository root license at pinned commit; no BSD variant inferred",
+  "files": [
+    {
+      "upstream_path": "mec_arm_model/CMakeLists.txt",
+      "local_path": "reference/mec_arm/CMakeLists.txt",
+      "sha256": "06bc9bf91040e3f017459c373eb7460ee8e036eb7fcd70a7028048f02c6e55c8",
+      "bytes": 277
+    },
+    {
+      "upstream_path": "mec_arm_model/config/joint_names_\u9762\u5411\u8f7b\u5c0f\u7269\u4f53\u6293\u53d6\u7684\u516d\u81ea\u7531\u5ea6\u673a\u68b0\u81c2.SLDASM.yaml",
+      "local_path": "reference/mec_arm/config/joint_names_\u9762\u5411\u8f7b\u5c0f\u7269\u4f53\u6293\u53d6\u7684\u516d\u81ea\u7531\u5ea6\u673a\u68b0\u81c2.SLDASM.yaml",
+      "sha256": "ac81029aec0b12bc75d84680178ed1964cd5802ec351aedf6261d8ad2a7c806e",
+      "bytes": 91
+    },
+    {
+      "upstream_path": "mec_arm_model/export.log",
+      "local_path": "reference/mec_arm/export.log",
+      "sha256": "e66a22dbbb51fd170a5329dbb025a5955820c5389eb1f3445c200211ed44d9b0",
+      "bytes": 2070267
+    },
+    {
+      "upstream_path": "mec_arm_model/launch/display.launch",
+      "local_path": "reference/mec_arm/launch/display.launch",
+      "sha256": "45abe2bddc2a8a32b948cf658cd643b4eb860e83bce995d068c7bb5a0310257a",
+      "bytes": 517
+    },
+    {
+      "upstream_path": "mec_arm_model/launch/gazebo.launch",
+      "local_path": "reference/mec_arm/launch/gazebo.launch",
+      "sha256": "225365ffb7eaa01817165cb09fdefcfaa2d807798419005d7b3f569c078cd86f",
+      "bytes": 541
+    },
+    {
+      "upstream_path": "mec_arm_model/meshes/Empty_Link1.STL",
+      "local_path": "models/mec_arm/meshes/Empty_Link1.STL",
+      "sha256": "36aece06d9cd6c3d09f032ff475039fe172adb4b41ac04a5489e6b91077e8f61",
+      "bytes": 6362884
+    },
+    {
+      "upstream_path": "mec_arm_model/meshes/Empty_Link2.STL",
+      "local_path": "models/mec_arm/meshes/Empty_Link2.STL",
+      "sha256": "a2d5fe9e09a8aaf6b3cd96e5b410cc83bcb7cb18c832a0d38a8676d4da010b8c",
+      "bytes": 5882584
+    },
+    {
+      "upstream_path": "mec_arm_model/meshes/Empty_Link3.STL",
+      "local_path": "models/mec_arm/meshes/Empty_Link3.STL",
+      "sha256": "50ab19603ef50ca03abd0a7301abdf07ad353179de64bd79239302053c0a1f34",
+      "bytes": 824084
+    },
+    {
+      "upstream_path": "mec_arm_model/meshes/Empty_Link4.STL",
+      "local_path": "models/mec_arm/meshes/Empty_Link4.STL",
+      "sha256": "6a2920efefe09f8497639471789ca525250f9aaf209d8fe8ab35845b2a8c2bff",
+      "bytes": 4460384
+    },
+    {
+      "upstream_path": "mec_arm_model/meshes/Empty_Link5.STL",
+      "local_path": "models/mec_arm/meshes/Empty_Link5.STL",
+      "sha256": "fd673538262a09e899416ffcdb6293241f5d77228018726f17ddc9e2ab09b749",
+      "bytes": 1184984
+    },
+    {
+      "upstream_path": "mec_arm_model/meshes/Empty_Link6.STL",
+      "local_path": "models/mec_arm/meshes/Empty_Link6.STL",
+      "sha256": "100b920f597c6eaf474fad7f1f04ce887d42686fc8c5a6911a311956f6893428",
+      "bytes": 4888684
+    },
+    {
+      "upstream_path": "mec_arm_model/meshes/base_link.STL",
+      "local_path": "models/mec_arm/meshes/base_link.STL",
+      "sha256": "1cbc2b529bd368b98de4655965bb18cabb298ee3988bc60a6736fd90c6c331f3",
+      "bytes": 5378584
+    },
+    {
+      "upstream_path": "mec_arm_model/package.xml",
+      "local_path": "reference/mec_arm/package.xml",
+      "sha256": "e5bc9280639c66c392070d09437811b48583b1a836ddb4aa17cfa4cb970239d2",
+      "bytes": 718
+    },
+    {
+      "upstream_path": "mec_arm_model/urdf/mec_arm.csv",
+      "local_path": "reference/mec_arm/urdf/mec_arm.csv",
+      "sha256": "4e55569f28d10b87b987d1b308f701e049d055a6d8312646fd9afc229fb7725f",
+      "bytes": 5099
+    },
+    {
+      "upstream_path": "mec_arm_model/urdf/mec_arm.urdf",
+      "local_path": "reference/mec_arm/urdf/mec_arm.urdf",
+      "sha256": "4b4db6c0938b14e0480a67cc4ac0fef3cf056526a5313c65fe6e227067941d39",
+      "bytes": 10443
+    }
+  ]
+}

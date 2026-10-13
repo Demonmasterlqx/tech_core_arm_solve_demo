@@ -104,7 +104,7 @@ def main():
     logger.addHandler(handler)
     mujoco = ROOT/".deps/mujoco-3.3.7"
     libraries = [args.build_dir.resolve()/name for name in
-                 ("librm26_planning.a", "libtech_core_sim.a", "libtech_core_rules.a")]
+                 ("librm26_planning.a", "libtech_core_sim.a", "libtech_core_rules.a", "libtech_core_kinematics.a", "libtech_core_robot.a")]
     if not all(path.exists() for path in libraries):
         parser.error("Build build-planning first; see docs/pose40_q_sweep.md")
     try:

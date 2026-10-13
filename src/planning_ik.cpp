@@ -3,7 +3,7 @@
 #include <Eigen/Cholesky>
 #include <Eigen/Geometry>
 #include <algorithm>
-#include <array>
+#include <vector>
 #include <cmath>
 #include <stdexcept>
 
@@ -29,7 +29,7 @@ JointVector reduced_dls(const Jacobian& geometric, const Eigen::Vector3d& axis,
     Eigen::Matrix<double, 2, 3> basis;
     basis.row(0) = perpendicular(axis).transpose();
     basis.row(1) = axis.cross(basis.row(0).transpose()).transpose();
-    Eigen::Matrix<double, 5, 7> jacobian;
+    Eigen::Matrix<double, 5, Eigen::Dynamic> jacobian(5, geometric.cols());
     jacobian.topRows<3>() = geometric.topRows<3>();
     jacobian.bottomRows<2>().noalias() = basis * geometric.bottomRows<3>();
     Eigen::Matrix<double, 5, 1> reduced_error;
@@ -39,12 +39,12 @@ JointVector reduced_dls(const Jacobian& geometric, const Eigen::Vector3d& axis,
     normal.diagonal().array() += damping * damping;
     const Eigen::LLT<Eigen::Matrix<double, 5, 5>> factor(normal);
     if (factor.info() != Eigen::Success)
-        return JointVector::Constant(std::numeric_limits<double>::quiet_NaN());
+        return JointVector::Constant(geometric.cols(), std::numeric_limits<double>::quiet_NaN());
     return jacobian.transpose() * factor.solve(reduced_error);
 }
 
 struct BoxStep {
-    JointVector step = JointVector::Zero();
+    JointVector step;
     bool success = false;
     bool stopped = false;
 };
@@ -58,23 +58,24 @@ struct BoxStep {
 BoxStep bounded_step(const Jacobian& jacobian, const Error& error, double damping,
                      const JointVector& lower, const JointVector& upper,
                      const std::function<bool()>& should_stop) {
-    using Hessian = Eigen::Matrix<double, 7, 7>;
+    using Hessian = Eigen::MatrixXd;
+    const int n = jacobian.cols();
     Hessian hessian = jacobian.transpose() * jacobian;
     hessian.diagonal().array() += damping * damping;
     const JointVector linear = -jacobian.transpose() * error;
     BoxStep result;
-    std::array<int, 7> active{}; // -1 lower, +1 upper, 2 fixed, 0 free.
-    for (int i = 0; i < 7; ++i)
+    result.step = JointVector::Zero(n);
+    std::vector<int> active(n, 0); // -1 lower, +1 upper, 2 fixed, 0 free.
+    for (int i = 0; i < n; ++i)
         if (lower[i] == upper[i]) { active[i] = 2; result.step[i] = lower[i]; }
-    // Seven dimensions have only 3^7 bound/free patterns. In normal use a
-    // handful of pivots suffice; finite cap and callback bound degenerate cases.
-    for (int pivot = 0; pivot < 128; ++pivot) {
+    // A handful of pivots normally suffice; finite cap and callback bound degenerate cases.
+    for (int pivot = 0; pivot < std::max(128, 16*n); ++pivot) {
         if (should_stop && should_stop()) { result.stopped = true; return result; }
-        JointVector fixed = JointVector::Zero();
-        for (int i = 0; i < 7; ++i) if (active[i]) fixed[i] = result.step[i];
+        JointVector fixed = JointVector::Zero(n);
+        for (int i = 0; i < n; ++i) if (active[i]) fixed[i] = result.step[i];
         Hessian free_hessian = hessian;
         JointVector rhs = -linear - hessian * fixed;
-        for (int i = 0; i < 7; ++i) if (active[i]) {
+        for (int i = 0; i < n; ++i) if (active[i]) {
             free_hessian.row(i).setZero();
             free_hessian.col(i).setZero();
             free_hessian(i, i) = 1;
@@ -87,7 +88,7 @@ BoxStep bounded_step(const Jacobian& jacobian, const Error& error, double dampin
         const JointVector direction = minimum - result.step;
         double fraction = 1;
         int blocking = -1, blocking_side = 0;
-        for (int i = 0; i < 7; ++i) if (!active[i]) {
+        for (int i = 0; i < n; ++i) if (!active[i]) {
             double candidate = 1;
             int side = 0;
             if (minimum[i] < lower[i] && direction[i] < 0) {
@@ -110,7 +111,7 @@ BoxStep bounded_step(const Jacobian& jacobian, const Error& error, double dampin
             hessian.cwiseAbs().rowwise().sum().maxCoeff() * result.step.lpNorm<Eigen::Infinity>());
         int release = -1;
         double worst = tolerance;
-        for (int i = 0; i < 7; ++i) {
+        for (int i = 0; i < n; ++i) {
             const double violation = active[i] == -1 ? -gradient[i] : active[i] == 1 ? gradient[i] : 0;
             if (violation > worst) { worst = violation; release = i; }
         }
@@ -118,7 +119,7 @@ BoxStep bounded_step(const Jacobian& jacobian, const Error& error, double dampin
             // Roundoff alone can place a free solution just outside its box.
             // Reject significant infeasibility or stationarity loss rather than
             // returning a non-optimal clipped update as an optimized step.
-            for (int i = 0; i < 7; ++i)
+            for (int i = 0; i < n; ++i)
                 if (result.step[i] < lower[i] - 1e-12 || result.step[i] > upper[i] + 1e-12 ||
                     (!active[i] && std::abs(gradient[i]) > 10 * tolerance)) return result;
             result.success = true;
@@ -158,11 +159,11 @@ bool evaluate(const Eigen::Vector3d& position, const Eigen::Matrix3d& rotation,
 
 bool valid(const ForwardKinematics& fk, const TaskTarget& target,
            const JointVector& q, const JointLimits& limits, const IKOptions& options) {
-    if (!fk || !q.allFinite() || !target.position.allFinite() ||
+    if (!fk || q.size() == 0 || limits.lower.size() != q.size() || limits.upper.size() != q.size() || limits.angular.size() != static_cast<std::size_t>(q.size()) || !q.allFinite() || !target.position.allFinite() ||
         !target.direction.allFinite() || !target.local_axis.allFinite() ||
         !(target.direction.norm() > 0) || !std::isfinite(target.direction.norm()) ||
         !(target.local_axis.norm() > 0) || !std::isfinite(target.local_axis.norm())) return false;
-    for (int i = 0; i < 7; ++i)
+    for (int i = 0; i < q.size(); ++i)
         if (std::isnan(limits.lower[i]) || std::isnan(limits.upper[i]) ||
             limits.lower[i] > limits.upper[i] ||
             limits.lower[i] == std::numeric_limits<double>::infinity() ||
@@ -174,13 +175,13 @@ bool valid(const ForwardKinematics& fk, const TaskTarget& target,
     return known_method && options.max_iterations > 0 && options.max_backtracks >= 0 &&
         positive(options.position_tolerance) && positive(options.axis_tolerance) &&
         positive(options.damping) && positive(options.alpha) && options.alpha <= 1 && positive(options.trust_radius) &&
-        (!options.max_joint_step || (options.max_joint_step->allFinite() &&
+        (!options.max_joint_step || (options.max_joint_step->size() == q.size() && options.max_joint_step->allFinite() &&
                                     (options.max_joint_step->array() >= 0).all()));
 }
 
 void clip_step(JointVector& step, const IKOptions& options) {
     if (options.max_joint_step)
-        for (int i = 0; i < 7; ++i) {
+        for (int i = 0; i < step.size(); ++i) {
             const double limit = std::abs((*options.max_joint_step)[i]);
             step[i] = std::clamp(step[i], -limit, limit);
         }
@@ -192,11 +193,11 @@ JointVector clamp(const JointVector& q, const JointLimits& limits) {
 } // namespace
 
 Jacobian task_jacobian(const Jacobian& geometric, const Eigen::Vector3d& current_axis) {
-    if (!geometric.allFinite() || !current_axis.allFinite() || !(current_axis.norm() > 0) ||
+    if (geometric.cols()==0 || !geometric.allFinite() || !current_axis.allFinite() || !(current_axis.norm() > 0) ||
         !std::isfinite(current_axis.norm()))
         throw std::invalid_argument("task_jacobian requires finite inputs and nonzero axis");
     const Eigen::Vector3d axis = current_axis.normalized();
-    Jacobian result;
+    Jacobian result(6, geometric.cols());
     result.topRows<3>() = geometric.topRows<3>();
     result.bottomRows<3>().noalias() =
         (Eigen::Matrix3d::Identity() - axis * axis.transpose()) * geometric.bottomRows<3>();
@@ -242,12 +243,12 @@ IKResult solve_ik(const ForwardKinematics& fk, const TaskTarget& input_target,
     State state;
     Eigen::Vector3d position;
     Eigen::Matrix3d rotation;
-    Jacobian geometric;
+    Jacobian geometric(6, initial.size());
     for (int iteration = 0; iteration < options.max_iterations; ++iteration) {
         if (stopped()) { result.reason = "stopped"; return result; }
         fk(result.q, position, rotation, &geometric);
         ++result.fk_evals;
-        if (!geometric.allFinite() || !evaluate(position, rotation, target, state)) {
+        if (geometric.cols() != initial.size() || !geometric.allFinite() || !evaluate(position, rotation, target, state)) {
             result.reason = "non-finite kinematics"; return result;
         }
         report(state);
@@ -255,10 +256,10 @@ IKResult solve_ik(const ForwardKinematics& fk, const TaskTarget& input_target,
         // A fixed coordinate has no available velocity. Removing its column
         // lets the remaining joints share the task instead of repeatedly
         // allocating motion to a coordinate that will be clamped away.
-        for (int joint = 0; joint < 7; ++joint)
+        for (int joint = 0; joint < initial.size(); ++joint)
             if (limits.lower[joint] == limits.upper[joint]) geometric.col(joint).setZero();
         ++result.iterations;
-        Jacobian task;
+        Jacobian task(6, initial.size());
         if (options.method != IKMethod::Reduced5D) {
             task.topRows<3>() = geometric.topRows<3>();
             task.bottomRows<3>().noalias() =
@@ -277,7 +278,7 @@ IKResult solve_ik(const ForwardKinematics& fk, const TaskTarget& input_target,
         const double damping = adaptive ? adaptive_damping : options.damping;
         JointVector step;
         if (options.method == IKMethod::BoundedQP) {
-            JointVector radius = JointVector::Constant(options.trust_radius);
+            JointVector radius = JointVector::Constant(initial.size(), options.trust_radius);
             if (options.max_joint_step) radius = radius.cwiseMin(*options.max_joint_step);
             const JointVector lower = (limits.lower - result.q).cwiseMax(-radius);
             const JointVector upper = (limits.upper - result.q).cwiseMin(radius);

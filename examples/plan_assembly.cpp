@@ -10,14 +10,16 @@
 int main(int argc, char** argv) {
     using namespace tech_core::planning;
     try {
+        std::string robot="rm26";
         Method backend = Method::RigidCache;
         for (int i = 1; i < argc; ++i) {
             const std::string arg = argv[i];
             if (arg == "--help") {
-                std::cout << "rm26_plan_example [--backend baseline|rigid_cache]\n"
-                             "Plan from seven-joint zero to nominal assembly; no execution.\n";
+                std::cout << "arm_plan_example [--robot ID|DIRECTORY] [--backend baseline|rigid_cache]\n"
+                             "Plan and independently revalidate the selected robot; no execution.\n";
                 return 0;
             }
+            if(arg=="--robot" && i+1<argc) {robot=argv[++i];continue;}
             if (arg != "--backend" || ++i == argc)
                 throw std::invalid_argument("Use --backend baseline|rigid_cache or --help");
             backend = parse_method(argv[i]);
@@ -25,8 +27,9 @@ int main(int argc, char** argv) {
                 throw std::invalid_argument("This example uses baseline or rigid_cache");
         }
 
-        Scenario request = scenario_suite().front();
-        request.start.setZero();                 // Replace with actual measured joint angles.
+        PlanningScene scene(tech_core::robot_model_path(robot,true));
+        Scenario request = scenario_suite(scene).front();
+        if(robot=="rm26") request.start.setZero();                 // Replace with actual measured joint angles.
         request.target_degrees = -90;
         request.q_sweep = true;
         request.q_best_effort = true;
@@ -36,7 +39,6 @@ int main(int argc, char** argv) {
         options.method = backend;
         options.timeout_seconds = 5;
         options.motion_speed_scale = 4;
-        PlanningScene scene;                     // One independent workspace per worker.
         const PlanResult result = plan(scene, request, options);
         std::cout << "backend=" << method_name(backend)
                   << " success=" << result.success << " reason=" << result.reason

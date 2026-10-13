@@ -1,3 +1,4 @@
+#include "tech_core/camera_framing.hpp"
 #include "tech_core/planning_demo.hpp"
 
 #include <GLFW/glfw3.h>
@@ -34,7 +35,7 @@ double number(const std::string& text) {
 
 void usage() {
     std::cout <<
-        "RM26 arm + technology core | plan, preview, then execute\n"
+        "Robot arm + technology core | plan, preview, then execute\n"
         "  WASD: arm +X/-X/+Y/-Y; Q/E: arm +Z/-Z (world)\n"
         "  I/K, J/L, U/O: core +/-X, +/-Y, +/-Z (world)\n"
         "  Shift + I/K, J/L, U/O: core +/-roll, +/-pitch, +/-yaw\n"
@@ -45,6 +46,9 @@ void usage() {
         "  [/]: scrub the ghost preview backward/forward (holds real robot)\n"
         "  Mouse: left orbit, right pan, wheel zoom; F: reset camera; F12: PNG\n"
         "Options:\n"
+        "  --robot ID|DIRECTORY    robot package (default rm26)\n"
+        "  --model PATH            explicit planning MJCF\n"
+        "  --list-robots           available robot packages\n"
         "  --backend baseline|rigid_cache\n"
         "  --case ID               scenario_suite case (default dev_nominal)\n"
         "  --timeout SEC           planning deadline, (0,30], default 5\n"
@@ -55,7 +59,7 @@ void usage() {
         "  --duration SEC          bounded wall-time run (default until Esc)\n"
         "  --screenshot PATH.png   capture on F12 and at exit\n"
         "  --log PATH              event log, 1 MiB rotation + two backups\n"
-        "Starts at the upstream URDF zero: all seven joint angles are 0 rad.\n"
+        "Starts at the upstream URDF zero: joint zero is clamped to the selected robot limits.\n"
         "Final Q rotation tries both directions within +/-90 deg; keeps the validated range.\n"
         "Core XYZ/RPY controls have no pose limits. RPY = alpha, phi-90, theta\n"
         "relative to the assembly frame. Execution is the kinematic simulation.\n";
@@ -63,13 +67,17 @@ void usage() {
 
 Options arguments(int argc, char** argv) {
     Options out;
+    std::string robot="rm26", model, case_id;
+    bool robot_selected=false;
     for (int i = 1; i < argc; ++i) {
         const std::string arg = argv[i];
         auto value = [&]() -> std::string {
             if (++i == argc) throw std::invalid_argument("Missing value for " + arg);
             return argv[i];
         };
-        if (arg == "--backend") out.planning.method = parse_method(value());
+        if (arg == "--robot") {robot=value();robot_selected=true;}
+        else if (arg == "--model") model=value();
+        else if (arg == "--backend") out.planning.method = parse_method(value());
         else if (arg == "--timeout") out.planning.timeout_seconds = number(value());
         else if (arg == "--motion-speed-scale") out.planning.motion_speed_scale = number(value());
         else if (arg == "--speed") out.speed = number(value());
@@ -81,12 +89,18 @@ Options arguments(int argc, char** argv) {
         } else if (arg == "--screenshot") out.screenshot = value();
         else if (arg == "--log") out.log = value();
         else if (arg == "--case") {
-            const auto name = value();
-            const auto suite = scenario_suite();
-            const auto it = std::find_if(suite.begin(), suite.end(), [&](const auto& s) { return s.id == name; });
-            if (it == suite.end()) throw std::invalid_argument("Unknown scenario: " + name);
-            out.scenario = *it;
+            case_id = value();
         } else throw std::invalid_argument("Unknown option: " + arg);
+    }
+    if(robot_selected && !model.empty()) throw std::invalid_argument("Use --robot or --model, not both");
+    if(model.empty()) model=robot_model_path(robot,true);
+    PlanningScene selected(model);
+    auto suite=scenario_suite(selected);
+    if(case_id.empty()) out.scenario=suite.front();
+    else {
+        const auto it=std::find_if(suite.begin(),suite.end(),[&](const auto& s){return s.id==case_id;});
+        if(it==suite.end()) throw std::invalid_argument("Unknown scenario: "+case_id);
+        out.scenario=*it;
     }
     if (out.speed <= 0 || out.speed > .1) throw std::invalid_argument("Speed must be in (0,0.1]");
     if (out.core_speed <= 0 || out.rotation_speed <= 0)
@@ -143,7 +157,7 @@ private:
 class Viewer {
 public:
     explicit Viewer(Options options)
-        : options_(std::move(options)), demo_(options_.scenario, options_.planning), log_(options_.log) {
+        : options_(std::move(options)), demo_(options_.scenario, options_.planning), ghost_(options_.scenario.model_path), log_(options_.log) {
         mjv_defaultScene(&scene_);
         mjv_defaultScene(&ghost_scene_);
         mjr_defaultContext(&context_);
@@ -155,7 +169,7 @@ public:
             if (!glfwInit()) throw std::runtime_error("GLFW initialization failed; use a desktop or xvfb-run");
             glfw_ready_ = true;
             glfwWindowHint(GLFW_SAMPLES, 0);
-            window_ = glfwCreateWindow(1440, 1000, "RM26 Planning Demo | preview then execute", nullptr, nullptr);
+            window_ = glfwCreateWindow(1440, 1000, "Arm Planning Demo | preview then execute", nullptr, nullptr);
             if (!window_) throw std::runtime_error("Cannot create planning demo window");
             glfwMakeContextCurrent(window_);
             glfwSwapInterval(1);
@@ -171,7 +185,7 @@ public:
             scene_.flags[mjRND_SHADOW] = 0;
             scene_.flags[mjRND_REFLECTION] = 0;
             mjr_makeContext(demo_.scene().model(), &context_, mjFONTSCALE_150);
-            const int arm_root = mj_name2id(ghost_.model(), mjOBJ_BODY, "j0_link");
+            const int arm_root = mj_name2id(ghost_.model(), mjOBJ_BODY, ghost_.robot().root_body.c_str());
             const int core_root = mj_name2id(ghost_.model(), mjOBJ_BODY, "core0_q_bearing");
             if (arm_root < 0 || core_root < 0) throw std::runtime_error("Missing ghost arm/core bodies");
             ghost_geoms_.resize(ghost_.model()->ngeom, false);
@@ -266,10 +280,11 @@ private:
         std::ostringstream out;
         out << std::setprecision(12) << "{\"event\":" << json_string(event) << ",\"key\":" << key
             << ",\"state\":" << json_string(demo_state_name(demo_.state()))
+            << ",\"robot\":" << json_string(demo_.scene().robot().id)
             << ",\"backend\":" << json_string(method_name(demo_.options().method))
             << ",\"revision\":" << demo_.revision() << ",\"time\":" << demo_.execution_time()
             << ",\"tcp\":[" << tcp.x() << ',' << tcp.y() << ',' << tcp.z() << "],\"q\":[";
-        for (int i = 0; i < 7; ++i) out << (i ? "," : "") << demo_.joints()[i];
+        for (int i = 0; i < demo_.joints().size(); ++i) out << (i ? "," : "") << demo_.joints()[i];
         out << "],\"core_world\":[" << core.x() << ',' << core.y() << ',' << core.z()
             << "],\"core_rpy\":[" << p.alpha << ',' << p.phi - 90 << ',' << p.theta
             << "],\"mechanism\":[" << mechanism.insertion << ',' << mechanism.lift << ',' << mechanism.flip << ',' << mechanism.twist << ']'
@@ -296,13 +311,13 @@ private:
             if(r.preinsert_joints && !r.knots.empty()) {
                 const auto delta=(*r.preinsert_joints-r.knots.front().q).eval();
                 out << ",\"preinsert_joint_change_degrees\":" << delta.cwiseAbs().sum()*180/pi
-                    << ",\"preinsert_last_joint_change_degrees\":" << delta[6]*180/pi;
+                    << ",\"preinsert_last_joint_change_degrees\":" << delta[delta.size()-1]*180/pi;
             }
         }
         if (show_ghost()) {
             out << ",\"ghost_time\":" << ghost_sample_.time << ",\"ghost_geoms\":" << ghost_geom_count_
                 << ",\"ghost_paused\":" << (ghost_paused_ ? "true" : "false") << ",\"ghost_q\":[";
-            for (int i = 0; i < 7; ++i) out << (i ? "," : "") << ghost_sample_.q[i];
+            for (int i = 0; i < ghost_sample_.q.size(); ++i) out << (i ? "," : "") << ghost_sample_.q[i];
             out << ']';
         }
         out << '}';
@@ -310,8 +325,8 @@ private:
     }
     void reset_camera() {
         camera_.type = mjCAMERA_FREE;
-        camera_.lookat[0] = .22; camera_.lookat[1] = 0; camera_.lookat[2] = .32;
-        camera_.distance = 1.65; camera_.azimuth = 315; camera_.elevation = -22;
+        frame_model(demo_.scene().model(),demo_.scene().data(),camera_);
+        camera_.azimuth = 315; camera_.elevation = -22;
     }
     static void key_callback(GLFWwindow* w, int key, int, int action, int) {
         auto& v = get(w);
@@ -495,12 +510,12 @@ private:
         const auto tcp = demo_.tool_position(), core = demo_.core_position();
         const auto& p = demo_.scenario().core;
         std::ostringstream left, right, bottom;
-        left << "RM26 / TECHNOLOGY CORE\n" << demo_state_name(demo_.state())
+        left << demo_.scene().robot().id << " / TECHNOLOGY CORE\n" << demo_state_name(demo_.state())
              << "\nBackend [" << (demo_.options().method == Method::Baseline ? 1 : 2) << "]: " << method_name(demo_.options().method)
              << std::fixed << std::setprecision(3)
              << "\nArm TCP XYZ:  " << tcp.x() << "  " << tcp.y() << "  " << tcp.z() << " m"
              << "\nArm joints (rad):";
-        for (int i = 0; i < 7; ++i) left << ' ' << demo_.joints()[i];
+        for (int i = 0; i < demo_.joints().size(); ++i) left << ' ' << demo_.joints()[i];
         left << "\nCore XYZ:     " << core.x() << "  " << core.y() << "  " << core.z() << " m"
              << std::setprecision(1) << "\nCore RPY (assembly): " << p.alpha << "  " << p.phi - 90 << "  " << p.theta << " deg"
              << "\nFinal Q: both directions, up to +/-90 deg"
@@ -529,7 +544,7 @@ private:
             if(result.preinsert_joints && !result.knots.empty()) {
                 const auto delta=(*result.preinsert_joints-result.knots.front().q).eval();
                 bottom << "\nPre-insert change: sum " << std::setprecision(1) << delta.cwiseAbs().sum()*180/pi
-                       << " deg | last joint " << delta[6]*180/pi << " deg";
+                       << " deg | last joint " << delta[delta.size()-1]*180/pi << " deg";
             }
             if (!result.knots.empty() && result.success) {
                 bottom << " | execution " << std::setprecision(2) << demo_.execution_time() << " / " << result.knots.back().time << " s";
@@ -585,6 +600,10 @@ private:
 }
 
 int main(int argc, char** argv) {
+    for(int i=1;i<argc;++i) if(std::string(argv[i])=="--list-robots") {
+        for(const auto& id:tech_core::available_robots()) std::cout<<id<<'\n';
+        return 0;
+    }
     try {
         for (int i = 1; i < argc; ++i) if (std::string(argv[i]) == "--help" || std::string(argv[i]) == "-h") {
             usage(); return 0;

@@ -2,6 +2,7 @@
 #include <Eigen/Geometry>
 #include <algorithm>
 #include <cmath>
+#include <filesystem>
 #include <set>
 #include <stdexcept>
 
@@ -89,23 +90,25 @@ std::array<double,2> axial_support(const mjModel* m,const mjData* d,int geom,
 }
 }
 
-PlanningScene::PlanningScene(std::string path) {
+PlanningScene::PlanningScene(std::string path) : model_path_(std::move(path)) {
     char error[2048]{};
-    model_.reset(mj_loadXML(path.c_str(), nullptr, error, sizeof(error)));
+    model_.reset(mj_loadXML(model_path_.c_str(), nullptr, error, sizeof(error)));
     if (!model_) throw std::runtime_error(error);
     data_.reset(mj_makeData(model_.get()));
     rigid_reference_.reset(mj_makeData(model_.get()));
     if (!data_ || !rigid_reference_) throw std::runtime_error("Cannot allocate planning data");
-    const char* joints[] = {"j0", "j1", "j2", "j3", "j4",
-                           "end_differential_controller/j5", "end_differential_controller/j6"};
-    for (int i = 0; i < 7; ++i) {
-        arm_joints_[i] = named(model(), mjOBJ_JOINT, joints[i]);
+    robot_ = RobotModel::read(model());
+    arm_joints_ = robot_.joints;
+    qadr_.resize(dof()); dof_.resize(dof());
+    limits_ = JointLimits(dof());
+    for (int i = 0; i < dof(); ++i) {
         qadr_[i] = model_->jnt_qposadr[arm_joints_[i]];
         dof_[i] = model_->jnt_dofadr[arm_joints_[i]];
         limits_.lower[i] = model_->jnt_range[2*arm_joints_[i]];
         limits_.upper[i] = model_->jnt_range[2*arm_joints_[i]+1];
+        limits_.angular[i] = model_->jnt_type[arm_joints_[i]] == mjJNT_HINGE;
     }
-    arm_root_body_ = model_->jnt_bodyid[arm_joints_[0]];
+    arm_root_body_ = named(model(), mjOBJ_BODY, robot_.root_body.c_str());
     mount_geom_ = named(model(), mjOBJ_GEOM, "mount_visual");
     arm_root_original_z_ = model_->body_pos[3*arm_root_body_+2];
     mount_original_z_ = model_->geom_pos[3*mount_geom_+2];
@@ -121,21 +124,35 @@ PlanningScene::PlanningScene(std::string path) {
     axial_supports_.resize(model_->ngeom);axial_support_valid_.resize(model_->ngeom);
     std::vector<int> arm, unit, core, fixed;
     std::vector<int> group(model_->ngeom, -1);
+    auto ids = [&](const std::string& key, mjtObj kind, bool required) {
+        std::set<int> result;
+        for (const auto& name : robot_words(model(), key, required))
+            if (!result.insert(named(model(), kind, name.c_str())).second)
+                throw std::invalid_argument("Duplicate collision metadata: " + name);
+        return result;
+    };
+    const auto declared_arm = ids("robot_collision_geoms", mjOBJ_GEOM, true);
+    const auto mount_bodies = ids("robot_mount_bodies", mjOBJ_BODY, false);
+    const auto grasp_geoms = ids("robot_grasp_geoms", mjOBJ_GEOM, false);
+    auto arm_body = [&](int b) {
+        for(; b>0; b=model_->body_parentid[b]) if(b==arm_root_body_) return true;
+        return false;
+    };
+    for(int geom:declared_arm)
+        if(!arm_body(model_->geom_bodyid[geom])) throw std::invalid_argument("Robot collision geom outside robot subtree");
+    for(int body:mount_bodies)
+        if(!arm_body(body)) throw std::invalid_argument("Mount exemption outside robot subtree");
+    for(int geom:grasp_geoms)
+        if(!declared_arm.count(geom)) throw std::invalid_argument("Grasp geom must be declared collision geometry");
+    if(!arm_body(model_->site_bodyid[tool_])) throw std::invalid_argument("Planning TCP outside robot subtree");
+
     for (int g = 0; g < model_->ngeom; ++g) {
         const char* raw = mj_id2name(model(), mjOBJ_GEOM, g);
         if (!raw) continue;
         const std::string n = raw;
-        if (starts(n,"collision_arm_") ||
-            ((n.size() > 7 && n.substr(n.size()-7) == "_visual") &&
-            (starts(n,"j") || starts(n,"end_") || starts(n,"camera_")) &&
-            n!="j4_link_visual" && n!="j6_link_visual" &&
-            n!="end_left_link_visual" && n!="end_right_link_visual")) {
+        if (declared_arm.count(g)) {
             arm.push_back(g);
-            int b = model_->geom_bodyid[g];
-            while (b && model_->body_jntnum[b] == 0) b = model_->body_parentid[b];
-            for (int k = 0; k < 7; ++k)
-                if (b && model_->body_jntadr[b] == arm_joints_[k]) group[g] = k;
-            if (group[g] < 0) throw std::runtime_error("Unclassified arm collision body " + n);
+            group[g] = model_->body_weldid[model_->geom_bodyid[g]];
         } else if (starts(n,"carried_unit_flange_") || starts(n,"carried_unit_tube_") ||
                    n == "carried_unit_iron" || n == "carried_unit_cap") unit.push_back(g);
         else if (n == "core0_peg" || starts(n,"core0_pillar_L_light_") ||
@@ -144,7 +161,7 @@ PlanningScene::PlanningScene(std::string path) {
         else if (n == "ground_visual" || n == "mount_visual" || n == "collision_core_shell" || n=="collision_block_fixture")
             fixed.push_back(g);
     }
-    if (arm.size()<19 || unit.size()!=98 || core.size()!=16 || fixed.size()!=4)
+    if (arm.empty() || unit.size()!=98 || core.size()!=16 || fixed.size()!=4)
         throw std::runtime_error("Planning collision manifest does not match scene");
     auto add = [&](int a, int b, bool contact=false, bool grasp=false) {
         const bool rigid=model_->body_weldid[model_->geom_bodyid[a]]==model_->body_weldid[model_->geom_bodyid[b]];
@@ -152,19 +169,19 @@ PlanningScene::PlanningScene(std::string path) {
     };
     for (std::size_t i=0;i<arm.size();++i) {
         for(std::size_t j=i+1;j<arm.size();++j)
-            if (std::abs(group[arm[i]]-group[arm[j]])>1) add(arm[i],arm[j]);
+            if (group[arm[i]] != group[arm[j]] &&
+                model_->body_weldid[model_->body_parentid[group[arm[i]]]] != group[arm[j]] &&
+                model_->body_weldid[model_->body_parentid[group[arm[j]]]] != group[arm[i]]) add(arm[i],arm[j]);
         for(int g:fixed) {
-            // Base j0 is physically mounted in the fixed mount, and j1 adjoins it.
+            // Only the model-declared base/mount attachments are exempt.
             const std::string n=mj_id2name(model(),mjOBJ_GEOM,g);
-            if(n=="mount_visual" && group[arm[i]]<=1) continue;
+            if(n=="mount_visual" && mount_bodies.count(model_->geom_bodyid[arm[i]])) continue;
             add(arm[i],g);
         }
         for(int g:core) add(arm[i],g);
         for(int g:unit) {
-            const std::string arm_name=mj_id2name(model(),mjOBJ_GEOM,arm[i]);
             const std::string unit_name=mj_id2name(model(),mjOBJ_GEOM,g);
-            const bool jaw=(starts(arm_name,"collision_arm_end_left_link_") || starts(arm_name,"collision_arm_end_right_link_")) &&
-                arm_name.size()>=5 && arm_name.substr(arm_name.size()-5)=="_grip";
+            const bool jaw=grasp_geoms.count(arm[i]);
             add(arm[i],g,false,jaw && (starts(unit_name,"carried_unit_tube_") || unit_name=="carried_unit_iron"));
         }
     }
@@ -181,7 +198,7 @@ PlanningScene::PlanningScene(std::string path) {
     std::set<int> unique;
     for(const auto& p:pairs_) { unique.insert(p.a); unique.insert(p.b); }
     collision_geoms_.assign(unique.begin(),unique.end());
-    configure(Scenario{});
+    configure(default_scenario());
     std::set<int> checked_grasp_geoms;
     for(const auto& pair:pairs_) if(pair.grasp_contact && checked_grasp_geoms.insert(pair.a).second)
         if(!fixed_grasp_region(model(),data(),pair.a,pair.b))
@@ -189,7 +206,39 @@ PlanningScene::PlanningScene(std::string path) {
                 mj_id2name(model(),mjOBJ_GEOM,pair.a));
 }
 
+Scenario PlanningScene::default_scenario() const {
+    Scenario result;
+    result.model_path = model_path_;
+    result.start = Eigen::Map<const JointVector>(robot_.planning_home.data(), dof());
+    result.id = "dev_nominal";
+    const auto core=robot_numbers(model_.get(),"robot_core_pose",false);
+    if(!core.empty()) {
+        if(core.size()!=6) throw std::invalid_argument("robot_core_pose requires XYZ/theta/phi/alpha");
+        result.core={core[0],core[1],core[2],core[3],core[4],core[5]};
+    }
+    const auto translation=robot_numbers(model_.get(),"robot_assembly_translation",false);
+    if(!translation.empty()) {
+        if(translation.size()!=3) throw std::invalid_argument("robot_assembly_translation requires XYZ");
+        result.assembly_translation={translation[0],translation[1],translation[2]};
+    }
+    auto scalar=[&](const char* name,double fallback) {
+        const auto values=robot_numbers(model_.get(),name,false);
+        if(values.empty()) return fallback;
+        if(values.size()!=1) throw std::invalid_argument(std::string(name)+" requires one value");
+        return values[0];
+    };
+    result.assembly_yaw=scalar("robot_assembly_yaw",result.assembly_yaw);
+    result.target_degrees=scalar("robot_target_degrees",result.target_degrees);
+    const double enforce=scalar("robot_enforce_core_pose_limits",1);
+    if(enforce!=0 && enforce!=1) throw std::invalid_argument("Invalid pose-limits flag");
+    result.enforce_core_pose_limits=enforce!=0;
+    return result;
+}
+
 void PlanningScene::configure(const Scenario& scenario) {
+    if (scenario.start.size() != dof()) throw std::invalid_argument("Scenario joint dimension does not match robot");
+    if (!std::filesystem::equivalent(scenario.model_path, model_path_))
+        throw std::invalid_argument("Scenario model does not match planning scene");
     const auto& core=scenario.core;
     if(!std::isfinite(core.x) || !std::isfinite(core.y) || !std::isfinite(core.z) ||
        !std::isfinite(core.alpha) || !std::isfinite(core.phi) || !std::isfinite(core.theta))
@@ -222,22 +271,23 @@ void PlanningScene::configure(const Scenario& scenario) {
     const int obstacle=named(model(),mjOBJ_GEOM,"collision_block_fixture");
     Eigen::Map<Eigen::Vector3d>(model_->geom_pos+3*obstacle)=scenario.blocking_obstacle?
         mechanism_target({}).position:Eigen::Vector3d(0,0,-10);
-    set_state(JointVector::Zero(),{});
+    set_state(JointVector::Zero(dof()),{});
     mj_copyData(rigid_reference_.get(),model(),data());
     set_state(scenario.start,{});
     counters={};
 }
 
 void PlanningScene::forward(const JointVector& q, Eigen::Vector3d& p, Eigen::Matrix3d& r, Jacobian* j) {
-    if(!q.allFinite()) throw std::invalid_argument("Nonfinite planning configuration");
-    for(int i=0;i<7;++i) data_->qpos[qadr_[i]]=q[i];
+    if(q.size() != dof() || !q.allFinite()) throw std::invalid_argument("Nonfinite planning configuration");
+    for(int i=0;i<dof();++i) data_->qpos[qadr_[i]]=q[i];
     mj_kinematics(model(),data());
     p=Eigen::Map<const Eigen::Vector3d>(data_->site_xpos+3*tool_);
     r=Eigen::Map<const RowMatrix>(data_->site_xmat+9*tool_);
     if(j) {
+        j->resize(6, dof());
         mj_comPos(model(),data());
         mj_jacSite(model(),data(),jacp_.data(),jacr_.data(),tool_);
-        for(int row=0;row<3;++row) for(int k=0;k<7;++k) {
+        for(int row=0;row<3;++row) for(int k=0;k<dof();++k) {
             (*j)(row,k)=jacp_[row*model_->nv+dof_[k]];
             (*j)(row+3,k)=jacr_[row*model_->nv+dof_[k]];
         }
@@ -296,13 +346,12 @@ bool PlanningScene::core_within_front_plane() const {
 CollisionResult PlanningScene::collision(const JointVector& q,const MechanismState& s,double clearance) {
     ++counters.collision_states;
     if(!std::isfinite(clearance) || clearance<0) return {false,-1,"invalid_clearance"};
-    if(!q.allFinite() || (q.array()<limits_.lower.array()-1e-10).any() ||
+    if(q.size() != dof() || !q.allFinite() || (q.array()<limits_.lower.array()-1e-10).any() ||
        (q.array()>limits_.upper.array()+1e-10).any()) return {false,-1,"joint_limits"};
     if(!std::isfinite(s.insertion+s.lift+s.flip+s.twist)) return {false,-1,"nonfinite_mechanism"};
     if(exact_state_cache_enabled_) {
-        std::array<double,12> key{};
-        std::copy(q.data(),q.data()+7,key.begin());
-        key[7]=s.insertion;key[8]=s.lift;key[9]=s.flip;key[10]=s.twist;key[11]=clearance;
+        std::vector<double> key(q.data(), q.data()+q.size());
+        key.insert(key.end(), {s.insertion,s.lift,s.flip,s.twist,clearance});
         const auto found=exact_state_cache_.find(key);
         if(found!=exact_state_cache_.end()) {
             ++counters.exact_state_cache_hits;

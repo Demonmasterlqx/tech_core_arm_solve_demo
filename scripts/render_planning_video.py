@@ -70,10 +70,16 @@ def main():
     environment.update(CUDA_VISIBLE_DEVICES="", LIBGL_ALWAYS_SOFTWARE="1", GALLIUM_DRIVER="llvmpipe",
                        LP_NUM_THREADS="4", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1")
     libraries = [args.build_dir.resolve() / name for name in
-                 ("librm26_planning.a", "libtech_core_sim.a", "libtech_core_rules.a")]
+                 ("librm26_planning.a", "libtech_core_sim.a", "libtech_core_rules.a", "libtech_core_kinematics.a", "libtech_core_robot.a")]
     if not all(p.exists() for p in libraries):
         parser.error("Build the Release build-planning targets first; see docs/planning_results.md")
     mujoco = ROOT / ".deps/mujoco-3.3.7"
+    with (source/"scenarios.csv").open() as stream:
+        scenario = next(row for row in csv.DictReader(stream) if row["case"] == args.case)
+    robot = scenario.get("robot", "rm26")
+    model_path = (ROOT/"models/planning/scene.xml" if robot == "rm26" else ROOT/"models"/robot/"planning.xml")
+    if not model_path.exists():
+        model_path = Path(scenario["model_path"])
     metadata = dict(method=args.method, case=args.case, repeat=args.repeat,
                     planning_mode=run.get("planning_mode", "offline_ready_search"),
                     planning_seconds=float(run["planning_seconds"]), execution_seconds=execution_seconds,
@@ -82,7 +88,7 @@ def main():
                     playback_speed=args.speed, fps=args.fps, width=args.width, height=args.height,
                     source_trajectory=str(trajectory), source_trajectory_sha256=digest(trajectory),
                     scenario_csv_sha256=digest(source/"scenarios.csv"),
-                    model_sha256=digest(ROOT/"models/planning/scene.xml"),
+                    model_sha256=digest(model_path),
                     renderer_source_sha256=digest(ROOT/"scripts/render_planning_video.cpp"),
                     interpolation="q and mechanism: 3*u^2 - 2*u^3; no mj_step",
                     validation="Original C++ dense validator, cache disabled, rerun before rendering",

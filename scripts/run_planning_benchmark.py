@@ -163,6 +163,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--executable", type=Path, default=ROOT / "build" / "rm26_plan")
     parser.add_argument("--output", type=Path, default=ROOT / "artifacts" / "level3_planning" / "manual")
+    parser.add_argument("--robot", default="rm26", help="robot id or model directory")
     parser.add_argument("--method", default="all")
     parser.add_argument("--case", default="all")
     parser.add_argument("--split", choices=["development", "confirmation", "negative", "all"], default="all")
@@ -187,7 +188,7 @@ def main():
         parser.error("output already contains runs.csv; select a new directory or use --summarize-only")
     executable = args.executable.resolve()
     try:
-        listing = subprocess.run([str(executable), "--list"], check=True, text=True, capture_output=True, timeout=20)
+        listing = subprocess.run([str(executable), "--robot", args.robot, "--list"], check=True, text=True, capture_output=True, timeout=20)
     except (OSError, subprocess.SubprocessError) as error:
         parser.error(f"cannot enumerate benchmark executable: {error}")
     inventory = list(csv.DictReader(listing.stdout.splitlines()))
@@ -214,7 +215,7 @@ def main():
     chosen_cpu = allowed[0] if allowed else None
     if chosen_cpu is not None:
         os.sched_setaffinity(0, {chosen_cpu})
-    command = [str(executable), "--method", args.method, "--case", args.case, "--split", args.split,
+    command = [str(executable), "--robot", args.robot, "--method", args.method, "--case", args.case, "--split", args.split,
                "--repeat", str(args.repeat), "--timeout", str(args.timeout), "--output", str(output),
                "--motion-speed-scale", str(args.motion_speed_scale)]
     if args.dense_check:

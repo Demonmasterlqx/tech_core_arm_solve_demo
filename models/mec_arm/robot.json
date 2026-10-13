@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "mec_arm",
+  "urdf": "../../reference/mec_arm/urdf/mec_arm.urdf",
+  "root_body": "base_link",
+  "tool_link": "TCP_link",
+  "joint_names": [
+    "Joint1",
+    "Joint2",
+    "Joint3",
+    "Joint4",
+    "Joint5",
+    "Joint6"
+  ],
+  "home": [
+    0,
+    -1.3,
+    2.0,
+    0,
+    1.2,
+    0
+  ],
+  "planning_home": [
+    2.6963087976035456,
+    -0.7398159209791746,
+    1.9777789355680881,
+    0.32233610651482714,
+    0.4811905732843969,
+    0.1716035162067
+  ],
+  "velocity_limits": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "posture_joint": -1,
+  "mount_bodies": [
+    "base_link",
+    "Empty_Link1"
+  ],
+  "carried_unit": {
+    "parent": "TCP_link",
+    "pos": [
+      -0.25,
+      0,
+      0.08
+    ],
+    "quat": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "contract": "Virtual rigid side-carry adapter for kinematic assembly, not an upstream gripper or validated physical grasp. Opening is TCP + (-250, 0, 80) mm; unit longitudinal +X is source TCP +X. No adapter solid, gripping dynamics or hardware calibration is claimed."
+  },
+  "scenario": {
+    "core_pose": [
+      -0.3795072695345405,
+      -0.015053999181832887,
+      1.14885090534451,
+      54.90522198200347,
+      18.099567680167866,
+      -146.4044582076019
+    ],
+    "assembly_translation": [
+      0,
+      0,
+      -0.5
+    ],
+    "assembly_yaw": 0,
+    "target_degrees": 0,
+    "enforce_core_pose_limits": false,
+    "description": "Reachable laboratory fixture at world z=.64885 m. Station pose limits disabled explicitly; full assembly motion, limits and collision validation remain mandatory."
+  }
+}

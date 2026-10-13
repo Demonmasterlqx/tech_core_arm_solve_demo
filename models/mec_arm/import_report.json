@@ -1,0 +1,42 @@
+{
+  "robot": "mec_arm",
+  "joint_order": [
+    "Joint1",
+    "Joint2",
+    "Joint3",
+    "Joint4",
+    "Joint5",
+    "Joint6"
+  ],
+  "mujoco_joint_order": [
+    "Joint1",
+    "Joint2",
+    "Joint3",
+    "Joint4",
+    "Joint5",
+    "Joint6"
+  ],
+  "link_count": 11,
+  "source_urdf_sha256": "4b4db6c0938b14e0480a67cc4ac0fef3cf056526a5313c65fe6e227067941d39",
+  "dynamics": "Kinematic mock: placeholder inertias, no actuators or contact response.",
+  "collision": "Source collision geometry (visual fallback), convex hull per mesh; same welded/adjacent bodies excluded, all other pairs checked.",
+  "payload": {
+    "parent": "TCP_link",
+    "pos": [
+      -0.25,
+      0,
+      0.08
+    ],
+    "quat": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "contract": "Virtual rigid side-carry adapter for kinematic assembly, not an upstream gripper or validated physical grasp. Opening is TCP + (-250, 0, 80) mm; unit longitudinal +X is source TCP +X. No adapter solid, gripping dynamics or hardware calibration is claimed."
+  },
+  "files_sha256": {
+    "scene.xml": "b70338c692ecb2908d179a38d732dcfdca58d9fec5df60dd1802b483c9750d99",
+    "planning.xml": "9dc347cf1fc8e6584ef6fe812491b2744120799db4cb89820dcaea46b1c7f861"
+  }
+}

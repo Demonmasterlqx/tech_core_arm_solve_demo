@@ -5,13 +5,14 @@
 #include <limits>
 #include <optional>
 #include <string>
+#include <vector>
 
 namespace tech_core::planning {
 
-using JointVector = Eigen::Matrix<double, 7, 1>;
+using JointVector = Eigen::VectorXd;
 // Geometric point Jacobian expressed in the same frame as the target:
 // controlled-point linear velocity above angular velocity.
-using Jacobian = Eigen::Matrix<double, 6, 7>;
+using Jacobian = Eigen::Matrix<double, 6, Eigen::Dynamic>;
 using ForwardKinematics = std::function<void(
     const JointVector&, Eigen::Vector3d&, Eigen::Matrix3d&, Jacobian*)>;
 
@@ -24,8 +25,11 @@ struct TaskTarget {
 };
 
 struct JointLimits {
-    JointVector lower = JointVector::Constant(-std::numeric_limits<double>::infinity());
-    JointVector upper = JointVector::Constant(std::numeric_limits<double>::infinity());
+    explicit JointLimits(int dof = 7)
+        : lower(JointVector::Constant(dof, -std::numeric_limits<double>::infinity())),
+          upper(JointVector::Constant(dof, std::numeric_limits<double>::infinity())), angular(dof, true) {}
+    JointVector lower, upper;
+    std::vector<bool> angular;
 };
 
 struct IKOptions {
@@ -47,7 +51,7 @@ struct IKOptions {
 
 struct IKResult {
     bool success = false;
-    JointVector q = JointVector::Zero();
+    JointVector q;
     int iterations = 0;  // Number of attempted joint updates.
     int fk_evals = 0;    // Includes FK-only line searches and final evaluation.
     double position_error = std::numeric_limits<double>::infinity();

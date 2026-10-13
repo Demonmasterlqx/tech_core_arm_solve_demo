@@ -14,6 +14,7 @@ import subprocess
 import tempfile
 import urllib.request
 import xml.etree.ElementTree as ET
+from robot_description import metadata as add_robot_metadata, rm26_profile
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL = ROOT / 'models/rm26_arm'
@@ -143,6 +144,7 @@ def generate(fetch):
             ET.SubElement(body, 'site', name='arm_tool', size='.008', rgba='1 .35 .08 1', group='2')
     keyframe = ET.SubElement(scene, 'keyframe')
     ET.SubElement(keyframe, 'key', name='home', qpos=fmt(HOME))
+    add_robot_metadata(scene, rm26_profile())
     ET.indent(scene, space='  ')
     ET.ElementTree(scene).write(MODEL / 'scene.xml', encoding='utf-8', xml_declaration=True)
     metadata = {

@@ -3,7 +3,7 @@
 # xvfb-run owns and cleans its X server / authority directory on every exit.
 set -euo pipefail
 project_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
-demo_binary="${RM26_DEMO_BINARY:-$project_dir/build/rm26_demo}"
+demo_binary="${ARM_DEMO_BINARY:-${RM26_DEMO_BINARY:-$project_dir/build/arm_demo}}"
 if [[ ! -x "$demo_binary" ]]; then
   printf 'Build the demo first:\ncmake -S "%s" -B "%s/build" -DCMAKE_BUILD_TYPE=Release\ncmake --build "%s/build" -j4\n' "$project_dir" "$project_dir" "$project_dir" >&2
   exit 1

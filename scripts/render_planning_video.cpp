@@ -1,3 +1,4 @@
+#include "tech_core/camera_framing.hpp"
 #include "tech_core/planning.hpp"
 #include <GL/osmesa.h>
 #include <algorithm>
@@ -66,8 +67,13 @@ int main(int argc, char** argv) {
             found = true; scenario.id = case_id; scenario.split = r.at("split");
             scenario.core = {number(r,"core_x"),number(r,"core_y"),number(r,"core_z"),
                 number(r,"core_theta_degrees"),number(r,"core_phi_degrees"),number(r,"core_alpha_degrees")};
+            scenario.enforce_core_pose_limits = !r.count("enforce_core_pose_limits") || r.at("enforce_core_pose_limits") == "1";
             scenario.target_degrees = number(r,"target_degrees");
-            for (int j = 0; j < 7; ++j) scenario.start[j] = number(r,"start_q" + std::to_string(j));
+            if(r.count("model_path") && std::filesystem::is_regular_file(r.at("model_path"))) scenario.model_path=r.at("model_path");
+            else if(r.count("robot")) scenario.model_path=tech_core::robot_model_path(r.at("robot"),true);
+            int n=0;while(r.count("start_q"+std::to_string(n)))++n;
+            scenario.start.resize(n);
+            for (int j = 0; j < n; ++j) scenario.start[j] = number(r,"start_q" + std::to_string(j));
             scenario.assembly_translation = {number(r,"assembly_translation_x"),number(r,"assembly_translation_y"),number(r,"assembly_translation_z")};
             scenario.assembly_yaw = number(r,"assembly_yaw_radians");
             scenario.arm_base_z = r.count("arm_base_z") ? number(r,"arm_base_z") : 0;
@@ -80,12 +86,13 @@ int main(int argc, char** argv) {
         for (const auto& r : read_csv(directory / run.at("trajectory"))) {
             Knot k; k.time = number(r,"time"); k.phase = phase(r.at("phase"));
             k.mechanism = {number(r,"insertion"),number(r,"lift"),number(r,"flip"),number(r,"twist")};
-            for (int j = 0; j < 7; ++j) k.q[j] = number(r,"q" + std::to_string(j));
+            k.q.resize(scenario.start.size());
+            for (int j = 0; j < k.q.size(); ++j) k.q[j] = number(r,"q" + std::to_string(j));
             k.target.position = {number(r,"target_x"),number(r,"target_y"),number(r,"target_z")};
             k.target.direction = {number(r,"direction_x"),number(r,"direction_y"),number(r,"direction_z")};
             knots.push_back(k);
         }
-        PlanningScene sim; sim.configure(scenario);
+        PlanningScene sim(scenario.model_path); sim.configure(scenario);
         PlanOptions check; check.validation_joint_step /= 2; check.validation_min_substeps *= 2;
         check.motion_speed_scale = run.count("motion_speed_scale") ? number(run,"motion_speed_scale") : 1;
         const auto validation = validate_trajectory(sim, knots, check);
@@ -109,11 +116,13 @@ int main(int argc, char** argv) {
         mjrContext context; mjr_defaultContext(&context); mjr_makeContext(model, &context, mjFONTSCALE_150);
         mjr_setBuffer(mjFB_OFFSCREEN, &context);
         mjvCamera wide, close; mjv_defaultCamera(&wide); mjv_defaultCamera(&close);
-        const double mount_shift = scenario.assembly_translation.x() - .30;
-        wide.lookat[0] = .22 + .5 * mount_shift; wide.lookat[1] = 0; wide.lookat[2] = .32 + .5 * scenario.arm_base_z;
-        wide.distance = 1.45; wide.azimuth = 315; wide.elevation = -22;
-        close.lookat[0] = .43 + mount_shift; close.lookat[1] = .015; close.lookat[2] = .37;
-        close.distance = .82; close.azimuth = 310; close.elevation = -17;
+        sim.set_state(knots.front().q,knots.front().mechanism);
+        tech_core::frame_model(model,sim.data(),wide);
+        wide.azimuth=315;wide.elevation=-22;
+        const int tcp=mj_name2id(model,mjOBJ_SITE,"planning_tcp");
+        const int tip=mj_name2id(model,mjOBJ_SITE,"core0_tip");
+        for(int axis=0;axis<3;++axis) close.lookat[axis]=.5*(sim.data()->site_xpos[3*tcp+axis]+sim.data()->site_xpos[3*tip+axis]);
+        close.distance=.9;close.azimuth=310;close.elevation=-17;
         const int split = width * 55 / 100;
         const mjrRect full{0,0,width,height}, left{0,140,split-3,height-230}, right{split+3,140,width-split-3,height-230};
         const double duration = knots.back().time;
@@ -134,7 +143,7 @@ int main(int argc, char** argv) {
             mjv_updateScene(model,sim.data(),&option,nullptr,&wide,mjCAT_ALL,&scene); mjr_render(left,&scene,&context);
             mjv_updateScene(model,sim.data(),&option,nullptr,&close,mjCAT_ALL,&scene); mjr_render(right,&scene,&context);
             std::ostringstream title, metric, status, values;
-            title << "LEVEL 3 EXCHANGE  |  TRAJECTORY REPLAY\nBase Z "
+            title << sim.robot().id << " | LEVEL 3 EXCHANGE  |  TRAJECTORY REPLAY\nBase Z "
                   << std::fixed << std::setprecision(0) << scenario.arm_base_z * 1000
                   << " mm | Pitch " << scenario.core.phi-90 << " deg | Roll " << scenario.core.alpha << " deg";
             const bool online=run.count("planning_mode") && run.at("planning_mode")=="online_fixed_start";

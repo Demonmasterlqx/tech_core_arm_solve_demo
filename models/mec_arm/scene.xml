@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="mec_arm_kinematic">
+  <compiler angle="radian" autolimits="true" inertiafromgeom="false" />
+  <option timestep=".002" gravity="0 0 0" />
+  <visual>
+    <global offwidth="1280" offheight="960" />
+    <headlight diffuse=".75 .75 .75" ambient=".3 .3 .3" />
+  </visual>
+  <statistic center="0 0 .4" extent="1.5" />
+  <default>
+    <geom contype="0" conaffinity="0" group="1" />
+  </default>
+  <asset>
+    <mesh name="robot_mesh_0" file="meshes/base_link.STL" scale="1 1 1" />
+    <mesh name="robot_mesh_1" file="meshes/Empty_Link1.STL" scale="1 1 1" />
+    <mesh name="robot_mesh_2" file="meshes/Empty_Link2.STL" scale="1 1 1" />
+    <mesh name="robot_mesh_3" file="meshes/Empty_Link3.STL" scale="1 1 1" />
+    <mesh name="robot_mesh_4" file="meshes/Empty_Link4.STL" scale="1 1 1" />
+    <mesh name="robot_mesh_5" file="meshes/Empty_Link5.STL" scale="1 1 1" />
+    <mesh name="robot_mesh_6" file="meshes/Empty_Link6.STL" scale="1 1 1" />
+  </asset>
+  <worldbody>
+    <light pos="0 -1 2" dir="0 .3 -1" />
+    <geom name="ground_visual" type="plane" pos="0 0 -.25" size="2 2 .01" rgba=".16 .19 .24 1" group="0" />
+    <geom name="mount_visual" type="cylinder" pos="0 0 -.04" size=".085 .04" rgba=".26 .31 .37 1" />
+    <body name="base_link">
+      <geom name="base_link_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.080000 0.040000 0.180000 1" type="mesh" mesh="robot_mesh_0" />
+      <geom name="collision_arm_base_link_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_0" />
+      <body name="Empty_Link1" pos="0 0 0" quat="1 0 0 0">
+        <joint name="Joint1" type="hinge" axis="0 0 1" range="-3.1000000000000001 3.1000000000000001" />
+        <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+        <geom name="Empty_Link1_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.120000 0.080000 0.520000 1" type="mesh" mesh="robot_mesh_1" />
+        <geom name="collision_arm_Empty_Link1_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_1" />
+        <body name="Empty_Link2" pos="0 0.0324999999999998 0.193" quat="-0.16393515207994463 -0.16393525437409401 0.68784099352488293 -0.68784101790495777">
+          <joint name="Joint2" type="hinge" axis="0 0 1" range="-2.6000000000000001 0" />
+          <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+          <geom name="Empty_Link2_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.110000 0.120000 0.580000 1" type="mesh" mesh="robot_mesh_2" />
+          <geom name="collision_arm_Empty_Link2_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_2" />
+          <body name="Empty_Link3" pos="0.304 0 -0.0025" quat="0.23181814414468763 0 0 -0.97275914184617807">
+            <joint name="Joint3" type="hinge" axis="0 0 1" range="0 4" />
+            <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+            <geom name="Empty_Link3_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.090000 0.180000 0.650000 1" type="mesh" mesh="robot_mesh_3" />
+            <geom name="collision_arm_Empty_Link3_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_3" />
+            <body name="Joint4_zero_link" pos="0.32542 0.0070546 0.034" quat="0.70706395765102403 0.0076631056575707139 0.70706655484673175 -0.0076631338057812195">
+              <joint name="Joint4" type="hinge" axis="0 0 1" range="-3.1000000000000001 3.1000000000000001" />
+              <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+              <body name="Empty_Link4" pos="0 0 0" quat="0.98039304797298588 0 0 -0.19705195123682148">
+                <geom name="Empty_Link4_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.070000 0.300000 0.700000 1" type="mesh" mesh="robot_mesh_4" />
+                <geom name="collision_arm_Empty_Link4_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_4" />
+                <body name="Joint5_zero_link" pos="-0.038577 -0.016159 0.0995" quat="0.39166874777637323 0.3916701864586587 0.58872430019661259 0.58872213769548021">
+                  <joint name="Joint5" type="hinge" axis="0 0 -1" range="0 3.1000000000000001" />
+                  <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+                  <body name="Empty_Link5" pos="0 0 0" quat="0.7502078183557821 0 0 0.66120210925091416">
+                    <geom name="Empty_Link5_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.070000 0.420000 0.760000 1" type="mesh" mesh="robot_mesh_5" />
+                    <geom name="collision_arm_Empty_Link5_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_5" />
+                    <body name="Joint6_zero_link" pos="-0.0038378 0.030308 0.041825" quat="0.563287214628029 -0.61252500900162021 0.35329000270292171 0.42744216120351436">
+                      <joint name="Joint6" type="hinge" axis="0 0 1" range="-1.5700000000000001 1.5700000000000001" />
+                      <inertial pos="0 0 0" mass="1" diaginertia=".001 .001 .001" />
+                      <body name="Empty_Link6" pos="0 0 0" quat="0.98877107793604224 0 0 -0.14943813247359922">
+                        <geom name="Empty_Link6_visual_0" pos="0 0 0" quat="1 0 0 0" group="1" rgba="0.090000 0.560000 0.820000 1" type="mesh" mesh="robot_mesh_6" />
+                        <geom name="collision_arm_Empty_Link6_0" pos="0 0 0" quat="1 0 0 0" group="3" rgba="0 0 0 0" type="mesh" mesh="robot_mesh_6" />
+                        <body name="TCP_link" pos="0 0 0.20" quat="0.90636369699271069 0 0 -0.42249834174077611">
+                          <site name="arm_tool" size=".008" rgba="1 .35 .08 1" group="2" />
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <keyframe>
+    <key name="home" qpos="0 -1.3 2 0 1.2 0" />
+  </keyframe>
+  <custom>
+    <text name="robot_id" data="mec_arm" />
+    <text name="robot_root" data="base_link" />
+    <text name="robot_tool" data="arm_tool" />
+    <text name="robot_joints" data="Joint1 Joint2 Joint3 Joint4 Joint5 Joint6" />
+    <numeric name="robot_velocity_limits" data="1 1 1 1 1 1" />
+    <numeric name="robot_planning_home" data="2.6963087976035456 -0.73981592097917459 1.9777789355680881 0.32233610651482714 0.48119057328439691 0.1716035162067" />
+    <numeric name="robot_posture_joint" data="-1" />
+    <numeric name="robot_core_pose" data="-0.3795072695345405 -0.015053999181832887 1.14885090534451 54.905221982003468 18.099567680167866 -146.40445820760189" />
+    <numeric name="robot_assembly_translation" data="0 0 -0.5" />
+    <numeric name="robot_assembly_yaw" data="0" />
+    <numeric name="robot_target_degrees" data="0" />
+    <numeric name="robot_enforce_core_pose_limits" data="0" />
+  </custom>
+</mujoco>

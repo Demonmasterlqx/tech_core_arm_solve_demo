@@ -35,20 +35,22 @@ void parent_directory(const std::string& path) {
     if(!parent.empty()) std::filesystem::create_directories(parent);
 }
 void usage() {
-    std::cout<<"RM26 arm | MuJoCo kinematics + ideal position/velocity drive\n"
+    std::cout<<"Robot arm | MuJoCo kinematics + ideal position/velocity drive\n"
       "  --headless              CPU simulation without a window\n"
       "  --duration SEC          finite run, (0,3600]; headless default 2\n"
-      "  --position Q0,...,Q6    joint position command (headless, radians)\n"
-      "  --velocity V0,...,V6    joint velocity command (headless, rad/s)\n"
+      "  --position Q0,...,QN    joint position (rad or m, per joint type)\n"
+      "  --velocity V0,...,VN    joint velocity (rad/s or m/s)\n"
       "  --cartesian VX,VY,VZ    world-frame tool velocity (headless, m/s)\n"
       "  --demo                  six-direction translation (headless)\n"
       "  --speed M/S             keyboard/demo speed, (0,0.1], default 0.10\n"
       "  --csv PATH              measured states at 50 Hz (headless)\n"
       "  --screenshot PATH.png   final image; needs OpenGL / software runner\n"
       "  --no-overlay            hide on-screen text\n"
+      "  --robot ID|DIRECTORY    select robot package (default rm26)\n"
+      "  --list-robots           list installed robots\n"
       "  --model PATH            override MJCF model\n"
       "Keys: W/Up +X, S/Down -X, A/Left +Y, D/Right -Y, Q +Z, E -Z.\n"
-      "M: Cartesian/position/velocity; 1-7: joint; +/-: jog joint.\n"
+      "M: Cartesian/position/velocity; 1-9 / [ ]: joint; +/-: jog joint.\n"
       "Space: pause; R: home; Esc: exit. Mouse: orbit/pan/zoom.\n"
       "Fixed base; torque layer mocked. No contact-force response or grasping.\n";
 }
@@ -80,7 +82,8 @@ int main(int argc,char** argv) {
         bool headless=false,demo=false;
         [[maybe_unused]] bool overlay=true;
         double duration=0,speed=.10;
-        std::string model=TECH_CORE_ARM_MODEL_PATH,csv_path,screenshot,command;
+        std::string model,robot="rm26",csv_path,screenshot,command;
+        bool robot_selected=false;
         std::vector<double> values;
         for(int i=1;i<argc;++i) {
             const std::string arg=argv[i];
@@ -96,7 +99,9 @@ int main(int argc,char** argv) {
             } else if(arg=="--speed") {
                 speed=number(value());
                 if(speed<=0 || speed>.1) throw std::invalid_argument("Speed must be in (0,0.1] m/s");
-            } else if(arg=="--model") model=value();
+            } else if(arg=="--robot") {robot=value();robot_selected=true;}
+            else if(arg=="--list-robots") {for(const auto& id:tech_core::available_robots()) std::cout<<id<<'\n';return 0;}
+            else if(arg=="--model") model=value();
             else if(arg=="--csv") csv_path=value();
             else if(arg=="--screenshot") screenshot=value();
             else if(arg=="--no-overlay") overlay=false;
@@ -113,6 +118,8 @@ int main(int argc,char** argv) {
         if(!headless || !screenshot.empty()) throw std::invalid_argument("This build requires --headless without --screenshot");
 #endif
         if(headless && duration==0) duration=2;
+        if(robot_selected && !model.empty()) throw std::invalid_argument("Use --robot or --model, not both");
+        if(model.empty()) model=tech_core::robot_model_path(robot);
         tech_core::ArmSimulation sim(model);
         if(command=="--position") sim.set_joint_positions(values);
         else if(command=="--velocity") sim.set_joint_velocities(values);
@@ -133,8 +140,10 @@ int main(int argc,char** argv) {
                 parent_directory(csv_path);csv.open(csv_path);
                 if(!csv) throw std::runtime_error("Cannot write CSV: "+csv_path);
                 csv<<std::setprecision(12)<<"time_s,mode,tool_x_m,tool_y_m,tool_z_m";
-                for(const auto& name:sim.joint_names()) csv<<','<<name<<"_rad";
-                for(const auto& name:sim.joint_names()) csv<<','<<name<<"_rad_s";
+                for(std::size_t i=0;i<sim.joint_names().size();++i)
+                    csv<<','<<sim.joint_names()[i]<<(sim.model()->jnt_type[sim.robot().joints[i]]==mjJNT_SLIDE?"_m":"_rad");
+                for(std::size_t i=0;i<sim.joint_names().size();++i)
+                    csv<<','<<sim.joint_names()[i]<<(sim.model()->jnt_type[sim.robot().joints[i]]==mjJNT_SLIDE?"_m_s":"_rad_s");
                 csv<<'\n';write_state(csv,sim);
             }
             double next_csv=.02,last_csv=0;

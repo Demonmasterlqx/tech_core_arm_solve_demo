@@ -111,7 +111,7 @@ void run_online(const std::filesystem::path& output,const std::vector<Scenario>&
     std::vector<Scenario> trial_scenarios;
     struct Attempt {
         int number=0;bool called=false;double ready_seconds=0;
-        JointVector seed=JointVector::Zero();IKResult ready;CollisionResult clearance;
+        JointVector seed=JointVector::Zero(7);IKResult ready;CollisionResult clearance;
         PlanResult result;
     };
     auto add_counters=[](Counters& a,const Counters& b) {

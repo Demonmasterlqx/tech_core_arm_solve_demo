@@ -1,3 +1,4 @@
+#include "tech_core/camera_framing.hpp"
 #include "tech_core/planning.hpp"
 #include <GL/osmesa.h>
 #include <algorithm>
@@ -68,15 +69,17 @@ int main(int argc,char** argv) {
     const auto scenarios=read_csv(directory/"scenarios.csv"),runs=read_csv(directory/"runs.csv");
     if(scenarios.size()!=40||runs.size()!=40)throw std::runtime_error("Montage requires all 40 requested cases");
     const bool online=runs.front().count("planning_mode") && runs.front().at("planning_mode")=="online_fixed_start";
-    std::vector<Case> cases;PlanningScene sim;int successes=0;std::size_t total_samples=0;
+    std::vector<Case> cases;PlanningScene sim(scenarios.front().count("robot")?tech_core::robot_model_path(scenarios.front().at("robot"),true):TECH_CORE_PLANNING_MODEL_PATH);int successes=0;std::size_t total_samples=0;
     for(const auto& r:scenarios) {
       Case c;auto& s=c.scenario;s.id=r.at("case");s.split=r.at("split");
       s.core={number(r,"core_x"),number(r,"core_y"),number(r,"core_z"),number(r,"core_theta_degrees"),number(r,"core_phi_degrees"),number(r,"core_alpha_degrees")};
+      s.enforce_core_pose_limits=!r.count("enforce_core_pose_limits") || r.at("enforce_core_pose_limits")=="1";
       s.target_degrees=number(r,"target_degrees");s.q_sweep=r.at("q_sweep")=="1";
       s.q_best_effort=r.count("q_best_effort") && r.at("q_best_effort")=="1";
       s.assembly_translation={number(r,"assembly_translation_x"),number(r,"assembly_translation_y"),number(r,"assembly_translation_z")};
       s.assembly_yaw=number(r,"assembly_yaw_radians");s.arm_base_z=number(r,"arm_base_z");
-      for(int j=0;j<7;++j)s.start[j]=number(r,"start_q"+std::to_string(j));
+      s.model_path=sim.default_scenario().model_path;s.start.resize(sim.dof());
+      for(int j=0;j<sim.dof();++j)s.start[j]=number(r,"start_q"+std::to_string(j));
       for(const auto& run:runs)if(run.at("case")==s.id)c.run=run;
       if(c.run.empty())throw std::runtime_error("Missing run "+s.id);
       c.success=c.run.at("success")=="1";
@@ -85,7 +88,8 @@ int main(int argc,char** argv) {
         for(const auto& row:read_csv(directory/c.run.at("trajectory"))) {
           Knot k;k.time=number(row,"time");k.phase=phase(row.at("phase"));
           k.mechanism={number(row,"insertion"),number(row,"lift"),number(row,"flip"),number(row,"twist")};
-          for(int j=0;j<7;++j)k.q[j]=number(row,"q"+std::to_string(j));
+          k.q.resize(sim.dof());
+          for(int j=0;j<sim.dof();++j)k.q[j]=number(row,"q"+std::to_string(j));
           k.target.position={number(row,"target_x"),number(row,"target_y"),number(row,"target_z")};
           k.target.direction={number(row,"direction_x"),number(row,"direction_y"),number(row,"direction_z")};
           c.knots.push_back(k);
@@ -144,6 +148,7 @@ int main(int argc,char** argv) {
           const int x=(local%4)*tile_width+4,y=42+(1-local/4)*tile_height+3;
           const mjrRect tile{x,y,tile_width-8,tile_height-6},view{x,y+51,tile.width,tile.height-111};
           mjr_rectangle(tile,c.success?(c.full_q?.045f:.16f):.16f,c.success?.09f:.045f,c.success?.10f:.055f,1);
+          tech_core::frame_model(model,sim.data(),camera);
           mjv_updateScene(model,sim.data(),&option,nullptr,&camera,mjCAT_ALL,&scene);mjr_render(view,&scene,&context);
           std::ostringstream pose,status;
           pose<<c.scenario.id<<"  "<<(c.success?(c.full_q?"FULL Q":c.peak-c.end>1e-9?"PARTIAL Q":"NO Q MOTION"):"REJECTED");

@@ -47,7 +47,7 @@ DemoPreview make_demo_preview(const Scenario& request, const PlanOptions& option
     preview.result.method = options.method;
     const auto begin = std::chrono::steady_clock::now();
     try {
-        PlanningScene workspace;
+        PlanningScene workspace(request.model_path);
         workspace.configure(request);
         // Build the intent before calling the planner, so even an early
         // rejection still has an honest, labelled visualization.
@@ -99,7 +99,7 @@ Knot sample_demo_trajectory(const std::vector<Knot>& knots, double seconds) {
 }
 
 PlanningDemo::PlanningDemo(Scenario initial_scenario, PlanOptions options, DemoPlanner planner)
-    : initial_(std::move(initial_scenario)), scenario_(initial_), options_(std::move(options)),
+    : scene_(initial_scenario.model_path), initial_(std::move(initial_scenario)), scenario_(initial_), options_(std::move(options)),
       planner_(std::move(planner)), q_(initial_.start) {
     if (!planner_ || (options_.method != Method::Baseline && options_.method != Method::RigidCache) ||
         !std::isfinite(options_.timeout_seconds) || options_.timeout_seconds <= 0 ||
@@ -163,7 +163,7 @@ void PlanningDemo::invalidate(const std::string& message) {
 
 void PlanningDemo::home() {
     invalidate("URDF joint zero; core pose preserved. R: assembly preset; Enter: plan");
-    q_.setZero();
+    q_ = JointVector::Zero(scene_.dof()).cwiseMax(scene_.limits().lower).cwiseMin(scene_.limits().upper);
     mechanism_ = {};
     stop_jog();
     display_state();
@@ -301,8 +301,9 @@ void PlanningDemo::jog_arm(const Eigen::Vector3d& velocity, double seconds) {
     const Eigen::Matrix<double, 6, 6> normal = j * j.transpose() +
         damping * damping * Eigen::Matrix<double, 6, 6>::Identity();
     JointVector dq = j.transpose() * normal.ldlt().solve(v);
-    const double largest = dq.cwiseAbs().maxCoeff();
-    if (largest > 1) dq /= largest;
+    double scale=1;
+    for(int i=0;i<dq.size();++i) scale=std::max(scale,std::abs(dq[i])/scene_.robot().velocity_limits[i]);
+    dq/=scale;
     q_ = (q_ + seconds * dq).cwiseMax(scene_.limits().lower).cwiseMin(scene_.limits().upper);
     invalidate("Arm moved. Enter: plan from current joints");
     display_state();

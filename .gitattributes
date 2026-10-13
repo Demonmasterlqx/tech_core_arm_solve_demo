@@ -3,3 +3,7 @@ reference/rm26_arm/source.urdf -text whitespace=-blank-at-eol
 
 # Preserve the pre-optimization corpus hash, including csv.writer's CRLF.
 docs/evidence/planner_quality/cases.csv -text whitespace=cr-at-eol
+
+# Pinned MecArm package is byte-preserved, including upstream CRLF/whitespace.
+reference/mec_arm/** -text whitespace=-blank-at-eol,cr-at-eol
+models/mec_arm/meshes/** -text -diff

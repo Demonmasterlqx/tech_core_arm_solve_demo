@@ -55,7 +55,7 @@ class Keyboard:
         if self.x11.XFetchName(self.display, parent, C.byref(name)) and name.value:
             title = name.value.decode(errors='replace')
             self.x11.XFree(C.cast(name, C.c_void_p))
-            if title.startswith('RM26 Planning Demo |'):
+            if title.startswith(('RM26 Planning Demo |', 'Arm Planning Demo |')):
                 return parent
         win = C.c_ulong
         root, owner, children, count = win(), win(), C.POINTER(win)(), C.c_uint()
@@ -79,14 +79,14 @@ class Keyboard:
 
 
 class Run:
-    def __init__(self, binary, output, keyboard, case='dev_nominal'):
+    def __init__(self, binary, output, keyboard, case='dev_nominal', robot='rm26'):
         self.output, self.keyboard = output, keyboard
         output.mkdir()
         self.events = output / 'events.jsonl'
         self.png = output / 'current.png'
         self.stdout = (output / 'stdout.log').open('w')
         self.process = subprocess.Popen([
-            str(binary), '--case', case, '--duration', '180', '--log', str(self.events),
+            str(binary), '--robot', robot, '--case', case, '--duration', '180', '--log', str(self.events),
             '--screenshot', str(self.png)], stdout=self.stdout, stderr=subprocess.STDOUT)
         try:
             self.initial = self.wait('ready')

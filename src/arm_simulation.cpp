@@ -40,20 +40,13 @@ ArmSimulation::ArmSimulation(std::string model_path) {
     char error[2048]{};
     model_.reset(mj_loadXML(model_path.c_str(), nullptr, error, sizeof(error)));
     if (!model_) throw std::runtime_error(std::string("MuJoCo arm model: ") + error);
-    // This API owns all moving joints. Reject a free base or extra mechanism
-    // rather than silently integrating only part of a different scene.
-    for (int j = 0; j < model_->njnt; ++j) {
-        const char* name = mj_id2name(model_.get(), mjOBJ_JOINT, j);
-        if (model_->jnt_type[j] != mjJNT_HINGE || !model_->jnt_limited[j] || !name)
-            throw std::runtime_error("Arm mock requires named, limited hinge joints and a fixed base");
-        const double low = model_->jnt_range[2*j], high = model_->jnt_range[2*j+1];
-        if (!std::isfinite(low) || !std::isfinite(high) || low >= high)
-            throw std::runtime_error("Invalid arm joint range");
-        joints_.push_back(j); names_.emplace_back(name); limits_.push_back({low, high});
-        velocity_limits_.push_back(maximum_joint_speed);
-    }
-    if (joints_.empty()) throw std::runtime_error("Arm model has no joints");
-    tool_ = mj_name2id(model_.get(), mjOBJ_SITE, "arm_tool");
+    robot_ = RobotModel::read(model_.get());
+    joints_ = robot_.joints; names_ = robot_.joint_names;
+    velocity_limits_ = robot_.velocity_limits;
+    if (static_cast<int>(joints_.size()) != model_->njnt)
+        throw std::runtime_error("Arm control requires an arm-only fixed-base model");
+    for (int j : joints_) limits_.push_back({model_->jnt_range[2*j], model_->jnt_range[2*j+1]});
+    tool_ = mj_name2id(model_.get(), mjOBJ_SITE, robot_.tool_site.c_str());
     home_ = mj_name2id(model_.get(), mjOBJ_KEY, "home");
     if (tool_ < 0 || home_ < 0) throw std::runtime_error("Arm model requires arm_tool site and home keyframe");
     data_.reset(mj_makeData(model_.get()));

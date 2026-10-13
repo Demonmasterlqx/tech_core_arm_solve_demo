@@ -1,6 +1,7 @@
 #pragma once
 
 #include "tech_core/planning_ik.hpp"
+#include "tech_core/robot_model.hpp"
 #include "tech_core/simulation.hpp"
 #include <chrono>
 #include <memory>
@@ -17,6 +18,7 @@ struct MechanismState {
 };
 struct Scenario {
     std::string id;
+    std::string model_path = TECH_CORE_PLANNING_MODEL_PATH;
     std::string split = "development";
     Pose core;
     double target_degrees = 35;
@@ -27,7 +29,7 @@ struct Scenario {
     // within the online budget. Still try positive first, then reverse.
     bool q_best_effort = false;
     // One fixed, development-selected carrying posture, 60 mm before nominal E.
-    JointVector start = (JointVector() << -.62770373654521094, 2.3297993305507192,
+    JointVector start = (JointVector(7) << -.62770373654521094, 2.3297993305507192,
         1.0289871622237392, 1.2715734368717495, -1.747192543846495,
         -.81681197466957878, 1.9772845777886507).finished();
     // Rule assembly O frame -> reference world (the original robot base frame).
@@ -49,7 +51,7 @@ struct TaskPoint {
     Phase phase = Phase::Approach;
 };
 struct Knot : TaskPoint {
-    JointVector q = JointVector::Zero();
+    JointVector q;
     double time = 0;
 };
 struct CollisionResult {
@@ -85,6 +87,9 @@ public:
                                      const Eigen::Matrix3d& rotation, Phase phase) const;
     bool core_within_front_plane() const;
     const JointLimits& limits() const { return limits_; }
+    int dof() const { return static_cast<int>(arm_joints_.size()); }
+    const RobotModel& robot() const { return robot_; }
+    Scenario default_scenario() const;
     const Scenario& scenario() const { return scenario_; }
     Counters counters;
     mjModel* model() { return model_.get(); }
@@ -99,7 +104,9 @@ private:
     // Same rigid-pair geometry in a fixed frame. Native mesh CCD is sensitive
     // to world rotation near coplanar grasp surfaces, although distance is not.
     std::unique_ptr<mjData, decltype(&mj_deleteData)> rigid_reference_{nullptr, mj_deleteData};
-    std::array<int, 7> arm_joints_{}, qadr_{}, dof_{};
+    RobotModel robot_;
+    std::string model_path_;
+    std::vector<int> arm_joints_, qadr_, dof_;
     std::array<int, 3> core_qadr_{};
     int tool_ = -1, core_mocap_ = -1;
     int arm_root_body_ = -1, mount_geom_ = -1;
@@ -111,7 +118,7 @@ private:
     std::vector<Pair> pairs_;
     bool rigid_pair_cache_enabled_ = false;
     bool exact_state_cache_enabled_ = false;
-    std::map<std::array<double,12>,CollisionResult> exact_state_cache_;
+    std::map<std::vector<double>,CollisionResult> exact_state_cache_;
     CollisionResult collision_uncached(const JointVector& q,const MechanismState& mechanism,double clearance);
     std::vector<int> collision_geoms_;
     std::vector<Eigen::Vector3d> centres_, extents_;
@@ -194,12 +201,14 @@ struct AtlasEntry { Scenario scenario; std::vector<Knot> knots; };
 // Starts at the pre-insertion pose, independent of the actual arm state.
 // plan() prepends the joint-space connection from scenario.start to its IK.
 std::vector<TaskPoint> make_task(PlanningScene& scene, const PlanOptions& options);
-void parameterize(std::vector<Knot>& knots, double motion_speed_scale = 1);
+void parameterize(std::vector<Knot>& knots, double motion_speed_scale = 1,
+                  const std::vector<double>& velocity_limits = {});
 ValidationResult validate_trajectory(PlanningScene& scene, const std::vector<Knot>& knots,
                                     const PlanOptions& options,
                                     const std::function<bool()>& should_stop = {});
 PlanResult plan(PlanningScene& scene, const Scenario& scenario, const PlanOptions& options,
                 const std::vector<AtlasEntry>* atlas = nullptr);
 std::vector<Scenario> scenario_suite();
+std::vector<Scenario> scenario_suite(const PlanningScene& scene);
 
 } // namespace tech_core::planning

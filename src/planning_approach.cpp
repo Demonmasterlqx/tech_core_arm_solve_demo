@@ -31,7 +31,7 @@ ApproachResult optimize_approach(PlanningScene& scene, const JointVector& start,
         return (should_stop && should_stop()) ||
             std::chrono::duration<double>(std::chrono::steady_clock::now()-begin).count() >= options.timeout_seconds;
     };
-    if (!start.allFinite() || !goal.allFinite() ||
+    if (start.size() != scene.dof() || goal.size() != scene.dof() || !start.allFinite() || !goal.allFinite() ||
         !std::isfinite(options.timeout_seconds) || options.timeout_seconds <= 0 ||
         !std::isfinite(options.validation_joint_step) || options.validation_joint_step <= 0 ||
         options.validation_min_substeps < 1) {
@@ -93,15 +93,15 @@ ApproachResult optimize_approach(PlanningScene& scene, const JointVector& start,
         const bool forward = iteration%2 == 0;
         Tree& a = forward ? from_start : from_goal;
         Tree& b = forward ? from_goal : from_start;
-        JointVector target;
+        JointVector target(scene.dof());
         const double kind = unit(random);
         if (kind < .15) target = b.front().q;
         else if (kind < .85) {
             target = start+unit(random)*(goal-start);
             const double radius = iteration < 200 ? .45 : .9;
-            for (int j = 0; j < 7; ++j) target[j] += radius*normal(random);
+            for (int j = 0; j < scene.dof(); ++j) target[j] += radius*normal(random);
             target = target.cwiseMax(scene.limits().lower).cwiseMin(scene.limits().upper);
-        } else for (int j = 0; j < 7; ++j)
+        } else for (int j = 0; j < scene.dof(); ++j)
             target[j] = scene.limits().lower[j]+unit(random)*(scene.limits().upper[j]-scene.limits().lower[j]);
         const int added = extend(a, target, nearest(a, target));
         if (added < 0) continue;

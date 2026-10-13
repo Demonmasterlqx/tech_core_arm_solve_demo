@@ -38,7 +38,7 @@ public:
 
     void enter();
     void tick(double seconds);
-    void home();                      // Seven zero joint angles + mechanism reset; preserve core pose/backend.
+    void home();                      // Joint zero clamped to limits + mechanism reset; preserve core pose/backend.
     void reset();                     // Load the scenario's assembly preset (arm + core); preserve backend.
     void toggle_pause();
     void focus_lost();

@@ -73,7 +73,7 @@ def freeze_binary(output, build):
                ROOT / 'src/planning_ik.cpp', ROOT / 'src/planning_approach.cpp', ROOT / 'src/planning_scene.cpp',
                ROOT / 'include/tech_core/planning.hpp', ROOT / 'include/tech_core/planning_ik.hpp',
                ROOT / 'models/planning/scene.xml', ROOT / 'CMakeLists.txt', ROOT / 'cmake/planning.cmake']
-    libraries = [build / name for name in ('librm26_planning.a', 'libtech_core_sim.a', 'libtech_core_rules.a')]
+    libraries = [build / name for name in ('librm26_planning.a', 'libtech_core_sim.a', 'libtech_core_rules.a', 'libtech_core_kinematics.a', 'libtech_core_robot.a')]
     # CMake owns compiler, Eigen/MuJoCo discovery and transitive linkage. Copy
     # the prebuilt evaluator so independent runs never race on build outputs.
     # The caller must rebuild after changing source, as for the interactive Demo.
