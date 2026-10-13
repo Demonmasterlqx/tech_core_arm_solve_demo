@@ -1,0 +1,419 @@
+{
+  "date": "2026-10-14",
+  "git_base": "eeeef31e237e01d9568b86a81a8c5484e4f3b5ea",
+  "implementation_commit": "8a83933417eca0303a1ddb9a3e9e1d179d29853a",
+  "branch": "codex/exported-arms-demo",
+  "subagents_used": false,
+  "source_export": {
+    "waited_for_finished_before_work": true,
+    "exporter_commit": "5296cd42557c14176487d39458fa6977bf12c4d9",
+    "original_files": 187,
+    "stl_files": 47,
+    "checksum_manifest_sha256": "a17d0c1a38701dd5e8ba07ea65202be1c2e115bc109a332a6ef433be8f240d94",
+    "finished_sha256": "960e714161a196b73ea5b430ab37dc0324db30bee5eeec8721d313d5a82b4e44"
+  },
+  "build_tests": {
+    "viewer": {
+      "total": 46,
+      "passed": 46,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 203.0,
+      "timestamp": "2026-10-14T02:57:42",
+      "junit_sha256": "b11a26f0c3ae1ba9a2f714fa19b110bb113631da9017104e6253bebf4edb9f23"
+    },
+    "headless": {
+      "total": 44,
+      "passed": 44,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 201.0,
+      "timestamp": "2026-10-14T03:01:06",
+      "junit_sha256": "7f54b6040ee045f4ff500e395252000ba27a5cdf5ff4976bd8273d738db9c8e5"
+    }
+  },
+  "robots": {
+    "hkust_eng": {
+      "dof": 6,
+      "selected_arm": "single",
+      "locked_joints": {
+        "gripper_open": 0.6906230269385979,
+        "gripper_mirror": -0.6906230269385979
+      },
+      "excluded_links": [],
+      "initial_core_world_m": [
+        6.98048675514e-17,
+        0.38,
+        0.2
+      ],
+      "initial_unit_opening_world_m": [
+        -7.00165201942e-07,
+        0.33999781759,
+        0.19999947694
+      ],
+      "default_camera_degrees": [
+        45.0,
+        -22
+      ],
+      "model_sha256": {
+        "robot.json": "a580c8e39234c874c3e2ed50dfe82500dae02e69b6133fa6da7c77f29cf84e38",
+        "adapted.urdf": "fc61ec5846022677f18cf10fb364c7544feecf694fe1d947eab9d0b587e5af55",
+        "scene.xml": "da04e27ded021d6312c7be301ccba716bd55f9f23187e633a900594609c8329e",
+        "planning.xml": "dda59712de78432865bd15360c884279d8f349914aee6ff179b2475d8500d86c",
+        "geometry_report.json": "ae17844870ec53d49c395700427d34afe53eae81736811ff9abb42aa0be6de34",
+        "import_report.json": "6b73ccc79ec2c6546bb46a30d2148767172388522595eac38b1d43329eb172bd"
+      },
+      "source_fk": {
+        "sample_count": 68,
+        "link_count": 9,
+        "joint_count": 6,
+        "max_position_abs_error_m": 4.440892098500626e-16,
+        "max_rotation_matrix_abs_error": 9.992007221626409e-16,
+        "max_jacobian_abs_error": 3.228339817695769e-10,
+        "source_urdf_sha256": "53407d3afc9557daf89c924e732242cac5cddcf5210a10ff1b017efcab3fd005",
+        "scene_sha256": "da04e27ded021d6312c7be301ccba716bd55f9f23187e633a900594609c8329e"
+      },
+      "planning": {
+        "runs": 9,
+        "successes": 9,
+        "dense_rechecks": 9,
+        "independent_audit_valid": true,
+        "methods": [
+          "baseline",
+          "full_step",
+          "reduced_5d",
+          "adaptive_lm",
+          "predictor",
+          "sparse_adaptive",
+          "atlas",
+          "bounded_qp",
+          "rigid_cache"
+        ],
+        "runs_csv_sha256": "2c6ab308aee5c051f353db7c45d0baeb447ca3398da1b766c03e1af1a68a669d",
+        "trajectory_archive_sha256": "86cd8b1fcb913924273149cedbe11bcba78fc0cc1bddbbc6ebd6c77bc8a9b752"
+      },
+      "control": {
+        "passed": true,
+        "direction_keys": 10,
+        "joint_modes": 2,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)"
+      },
+      "keyboard": {
+        "passed": true,
+        "preset_start_verified": true,
+        "execution_complete": true,
+        "q_positive_degrees": 90,
+        "q_final_degrees": -43,
+        "full_q_sweep": false,
+        "q_positive_stop": "travel_limit",
+        "q_negative_stop": "collision_twist_435_collision_arm_jaw_right_123/collision_core_shell_d=0.000000"
+      },
+      "replay": {
+        "frames": 1,
+        "dense_recheck": "DENSE_RECHECK passed samples=1353",
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "renderer_source_sha256": "fee86631501673d3a335b4073e15ab199518d7f4e3461299fe40ef0d0a134c18",
+        "output_sha256": "0abf74222ec5858e56b9a846667be8feb37deb444ab98df8d5c5f33639311141"
+      }
+    },
+    "pie_eng": {
+      "dof": 6,
+      "selected_arm": "single",
+      "locked_joints": {
+        "gripper_open": 0.18973053810526586,
+        "gripper_mirror": -0.18973053810526586
+      },
+      "excluded_links": [],
+      "initial_core_world_m": [
+        -2.32682891838e-17,
+        -0.38,
+        0.1
+      ],
+      "initial_unit_opening_world_m": [
+        -3.73017799982e-09,
+        -0.339999995215,
+        0.0999999980182
+      ],
+      "default_camera_degrees": [
+        225.0,
+        -22
+      ],
+      "model_sha256": {
+        "robot.json": "d7e84297e31c3adc3b5969ab20bc3bac1490f7771b4fe0e98286b9bc625e1ae6",
+        "adapted.urdf": "e6a9943d6a1fac11c58f8577ae1d2b29f75ba7d0a8e1c1cd8fa372da2e9b6f35",
+        "scene.xml": "8bf4f7bb0200bd7d40c0a0eaa8f9437480593aa9ac79ed5bd0d7815957b788fb",
+        "planning.xml": "273de24abe53beda0343a749e93a98122bb39f0c821414c5eb3ece5e1b784748",
+        "geometry_report.json": "50be1ce080364ace53e0b55574f2644a421be1a4ee788bc246dbb195cada34b4",
+        "import_report.json": "fd9ef6d00feef0486e55ba271682fec9a67d15c172afaea1f8a53afc4ff24a77"
+      },
+      "source_fk": {
+        "sample_count": 68,
+        "link_count": 9,
+        "joint_count": 6,
+        "max_position_abs_error_m": 3.3306690738754696e-16,
+        "max_rotation_matrix_abs_error": 9.992007221626409e-16,
+        "max_jacobian_abs_error": 2.9718905114606287e-10,
+        "source_urdf_sha256": "997930c7084369e3bd930a968a7bff33c392eee05f8ceadb6ba4efc010be57b2",
+        "scene_sha256": "8bf4f7bb0200bd7d40c0a0eaa8f9437480593aa9ac79ed5bd0d7815957b788fb"
+      },
+      "planning": {
+        "runs": 9,
+        "successes": 9,
+        "dense_rechecks": 9,
+        "independent_audit_valid": true,
+        "methods": [
+          "baseline",
+          "full_step",
+          "reduced_5d",
+          "adaptive_lm",
+          "predictor",
+          "sparse_adaptive",
+          "atlas",
+          "bounded_qp",
+          "rigid_cache"
+        ],
+        "runs_csv_sha256": "9a73575a751ca3265a3ceda9b19c99e5697ae7e447ba9b238e1add1b500241bf",
+        "trajectory_archive_sha256": "a01353b591b788ca73ff2f20e0ac413f28edcb150d8dc7d546abc22ded4c9263"
+      },
+      "control": {
+        "passed": true,
+        "direction_keys": 10,
+        "joint_modes": 2,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)"
+      },
+      "keyboard": {
+        "passed": true,
+        "preset_start_verified": true,
+        "execution_complete": true,
+        "q_positive_degrees": 26,
+        "q_final_degrees": -90,
+        "full_q_sweep": false,
+        "q_positive_stop": "collision_twist_238_collision_arm_tool_link_4/collision_core_shell_d=0.000995",
+        "q_negative_stop": "travel_limit"
+      },
+      "replay": {
+        "frames": 1,
+        "dense_recheck": "DENSE_RECHECK passed samples=1356",
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "renderer_source_sha256": "fee86631501673d3a335b4073e15ab199518d7f4e3461299fe40ef0d0a134c18",
+        "output_sha256": "8a3f08a5637b6584943c82d4fde8e2b4c57ac11384422009718ac33cc095f76c"
+      }
+    },
+    "zhuimeng_single": {
+      "dof": 6,
+      "selected_arm": "single",
+      "locked_joints": {
+        "gripper_open": -0.00040836360948111794,
+        "gripper_mirror": 0.00040836360948111794
+      },
+      "excluded_links": [],
+      "initial_core_world_m": [
+        6.98048675514e-17,
+        0.38,
+        0.2
+      ],
+      "initial_unit_opening_world_m": [
+        7.47398700984e-07,
+        0.339977371309,
+        0.199985216377
+      ],
+      "default_camera_degrees": [
+        45.0,
+        -22
+      ],
+      "model_sha256": {
+        "robot.json": "09160284139276fbecd43587f6b674304e11a3df969214549a0d984beca5e2d1",
+        "adapted.urdf": "50df3fda3dc022af2bb7b0f634bd4c9ec02886d576844b3034c8612919f3dfa0",
+        "scene.xml": "ce6467c4265cae1248c62864b6f0282cf8e803f423cc4bcc4e7c3e010d687448",
+        "planning.xml": "f18dd83cf1eaf12c768194134010ec143295628f945c48d7991b4b37a1e39f1f",
+        "geometry_report.json": "d7dfbc97645076220b1d583127118b42fe88eb6812124aadbe3d977ed2a902d8",
+        "import_report.json": "219dfcd658c93919ecf5c7f13c8abca4c6bff73818919f8817d236026535ead1"
+      },
+      "source_fk": {
+        "sample_count": 68,
+        "link_count": 9,
+        "joint_count": 6,
+        "max_position_abs_error_m": 3.3306690738754696e-16,
+        "max_rotation_matrix_abs_error": 1.3322676295501878e-15,
+        "max_jacobian_abs_error": 2.924205887824365e-10,
+        "source_urdf_sha256": "b30c141de3d4eee0d72b49aa0f0b795575f539b753af26cf5a9f71a52314891a",
+        "scene_sha256": "ce6467c4265cae1248c62864b6f0282cf8e803f423cc4bcc4e7c3e010d687448"
+      },
+      "planning": {
+        "runs": 9,
+        "successes": 9,
+        "dense_rechecks": 9,
+        "independent_audit_valid": true,
+        "methods": [
+          "baseline",
+          "full_step",
+          "reduced_5d",
+          "adaptive_lm",
+          "predictor",
+          "sparse_adaptive",
+          "atlas",
+          "bounded_qp",
+          "rigid_cache"
+        ],
+        "runs_csv_sha256": "e0c151f3793f95dca792388bfe06e1648ce8d3a08a6020dc78a9b658458e2430",
+        "trajectory_archive_sha256": "5ca472820b00740fadcde21a68ccd60f2b068a42c11343bd00daf924e29dac22"
+      },
+      "control": {
+        "passed": true,
+        "direction_keys": 10,
+        "joint_modes": 2,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)"
+      },
+      "keyboard": {
+        "passed": true,
+        "preset_start_verified": true,
+        "execution_complete": true,
+        "q_positive_degrees": 55,
+        "q_final_degrees": -90,
+        "full_q_sweep": false,
+        "q_positive_stop": "ik_iteration limit",
+        "q_negative_stop": "travel_limit"
+      },
+      "replay": {
+        "frames": 1,
+        "dense_recheck": "DENSE_RECHECK passed samples=1591",
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "renderer_source_sha256": "fee86631501673d3a335b4073e15ab199518d7f4e3461299fe40ef0d0a134c18",
+        "output_sha256": "f4374d922bb02e6efe1dd4a3da25b6839cc07634f4cf5d6f1b53dfcde2128977"
+      }
+    },
+    "zhuimeng_dual": {
+      "dof": 7,
+      "selected_arm": "left",
+      "locked_joints": {
+        "left_gripper_outer": 0.0015636979410944018,
+        "left_gripper_inner": 0.0015636979410944018,
+        "torso_pitch": 0
+      },
+      "excluded_links": [
+        "right_link_1",
+        "right_link_2",
+        "right_link_3",
+        "right_link_4",
+        "right_link_5",
+        "right_link_6",
+        "right_link_7",
+        "right_jaw_outer",
+        "right_jaw_inner"
+      ],
+      "initial_core_world_m": [
+        -0.38,
+        9.30731567352e-17,
+        0.1
+      ],
+      "initial_unit_opening_world_m": [
+        -0.340009566341,
+        2.37399490814e-05,
+        0.100002272693
+      ],
+      "default_camera_degrees": [
+        135.0,
+        -22
+      ],
+      "model_sha256": {
+        "robot.json": "050a1462b886825c5217982d83d55000350186de0342b843593fe8facef50f07",
+        "adapted.urdf": "01b3d68cd943798e4497880d8134b3de7152031bbf3141a365e653e3d5a08304",
+        "scene.xml": "ec7b1b415a5a2e299c045dc525da06921cfde78a38b1b68e5239621725a2541e",
+        "planning.xml": "43d51f3e526af21bda06dbf32d088123e54bb6a4072d16352f27461731fc2618",
+        "geometry_report.json": "b43975a4ecbaddacd6023694294f7619ab0fa123f5f67eb912d2258b6ebf5df1",
+        "import_report.json": "a599826fbd3efac54cdf89dc3caada50cb0f8aae71f0c1a9e3d8e6e24321461f"
+      },
+      "source_fk": {
+        "sample_count": 68,
+        "link_count": 11,
+        "joint_count": 7,
+        "max_position_abs_error_m": 3.3306690738754696e-16,
+        "max_rotation_matrix_abs_error": 1.3322676295501878e-15,
+        "max_jacobian_abs_error": 3.295910211420505e-10,
+        "source_urdf_sha256": "d3d05b90bf5038dbe5d7430ed9c6fbd3ea716fbad630f8c92d26c364242db917",
+        "scene_sha256": "ec7b1b415a5a2e299c045dc525da06921cfde78a38b1b68e5239621725a2541e"
+      },
+      "planning": {
+        "runs": 9,
+        "successes": 9,
+        "dense_rechecks": 9,
+        "independent_audit_valid": true,
+        "methods": [
+          "baseline",
+          "full_step",
+          "reduced_5d",
+          "adaptive_lm",
+          "predictor",
+          "sparse_adaptive",
+          "atlas",
+          "bounded_qp",
+          "rigid_cache"
+        ],
+        "runs_csv_sha256": "108da868189220a539115c8f517018faf9a522404ba01dfe3ef47db6baa768d0",
+        "trajectory_archive_sha256": "48c662328feebe4f8e54918d000f714ad56833f0ca9c400d404dbdd958c10b13"
+      },
+      "control": {
+        "passed": true,
+        "direction_keys": 10,
+        "joint_modes": 2,
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)"
+      },
+      "keyboard": {
+        "passed": true,
+        "preset_start_verified": true,
+        "execution_complete": true,
+        "q_positive_degrees": 19,
+        "q_final_degrees": -90,
+        "full_q_sweep": false,
+        "q_positive_stop": "ik_iteration limit",
+        "q_negative_stop": "travel_limit"
+      },
+      "replay": {
+        "frames": 1,
+        "dense_recheck": "DENSE_RECHECK passed samples=1450",
+        "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "renderer_source_sha256": "fee86631501673d3a335b4073e15ab199518d7f4e3461299fe40ef0d0a134c18",
+        "output_sha256": "a54624ce26d9042c0c755707f8d36aa37b3506bb75689962eec6e3aca0af256c"
+      }
+    }
+  },
+  "reproducibility": {
+    "runtime_files": 1652,
+    "changed": [],
+    "byte_identical": true
+  },
+  "source_sha256": {
+    ".gitattributes": "a0332c28252030a0c6c14a7d410a7afb8482ce73e7561744a9c8871d77472505",
+    "cmake/planning_demo.cmake": "2bbfc917e6f80052aba6c8abfcc89fcb877a3774f3b271be1a5102e507bad6cc",
+    "include/tech_core/robot_model.hpp": "a42744de15f75ce95b903f5ed8e6d634ad9890ae1e97e70e197b3c7808e9162f",
+    "scripts/audit_planning_trajectories.py": "2804cd156608f5a049b81e3d4694dc475aa9b9a302425bb8d432365e2968273f",
+    "scripts/import_exported_arms.py": "d312749a565ae7755f763c7f96e3c51bb7df2482258187395b9d8f8a18d522df",
+    "scripts/import_robot.py": "bcd9340592def7bf37825f8bfa87f77d772a9e41af9c7c861002c5575e138f24",
+    "scripts/render_planning_video.cpp": "fee86631501673d3a335b4073e15ab199518d7f4e3461299fe40ef0d0a134c18",
+    "scripts/render_planning_video.py": "c21edad3f6ba4040ae0439825f9fda38815f90625edb4ac0714b4b2bf55a400a",
+    "scripts/requirements_exported_arms.txt": "733a1b0e1d7de64c03c69fe04661daac21f9ac0c0d1b18313186ae7c4c469935",
+    "scripts/robot_description.py": "3a07fd3246d1ba412e30339dcb75c2c068750db65f9e31cdfcaac784243748a7",
+    "scripts/test_arm_keyboard.py": "73cd59cef2e7f410a760c21f780d0f19de3b4e2185caec00e45ddcc38fd7e3ae",
+    "scripts/test_robot_demo_keyboard.py": "8aadf1404945b7b2ab39c541de5fb624d9a18b01000fc464d960431e78836d59",
+    "scripts/verify_robot.py": "7a991a9af4730f315376c7561aed0399d2b90331f78b9636f60e2841b7c9969e",
+    "src/planning.cpp": "7645cc1fa843f7ce67391d7c4062d72bb0fb129a4b05d4a0fa6cc93b1ea29580",
+    "src/planning_demo_main.cpp": "6d49759899b1c8243c1f86bd8b7498222643a3faae81b3b6c58e085a0146f53f",
+    "src/planning_scene.cpp": "edb24331f0be8c18986a93e241a28e227d1467595eb18f711f2872eeb578c968",
+    "src/robot_model.cpp": "6d8b2ce7adae267ee8bc9283f717dc14485b4600db2598208c16a05f248172a0",
+    "tests/exported_arm_test.cpp": "4e66186227c7a995e7a6eada84ab18353c6cd7f3f54f8da1503b9c41f636b8bd",
+    "tests/exported_assets_test.py": "74739babbca03c748b79e36224c33e436b4aea8b721c682165180b34a05783b5"
+  },
+  "binary_sha256": {
+    "build/arm_demo": "c892cfcb2e82ecb8cf181c160ea4c872f733cf1acc06a95c9daa46f040264a36",
+    "build/arm_control": "271a866bc802ec13dd9be8fa21ab6d150f96e881720fbb930a20c8a487574f6a",
+    "build/arm_plan": "f00843d6d4bf86708305761b85a1a33a576e8f98c6f8eaa967a7414207cfbe66",
+    "build/exported_arm_test": "145d29a7b019ebbc1b714a90fb2b169bda92db844f086ff4527f17f490005fe1",
+    "build-headless/arm_plan": "f00843d6d4bf86708305761b85a1a33a576e8f98c6f8eaa967a7414207cfbe66"
+  },
+  "scope": [
+    "Four fixed assembly presets, nine methods per preset, one run each, 10 s budget, nominal Q target 0 degrees.",
+    "Interactive Q uses best effort in both directions with a 5 s online budget; no model reached a full +/-90 degree sweep in this check.",
+    "Kinematic fixed grasp, source viewer joint ranges and numerical dynamics placeholders; no physical calibration or force-control claim.",
+    "Source URDF audit checks kinematics and timing; collision checks use the C++ scene and conservative generated geometry."
+  ]
+}

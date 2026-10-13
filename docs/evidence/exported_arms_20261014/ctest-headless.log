@@ -1,0 +1,94 @@
+Internal ctest changing into directory: /home/lqx/code/tech_core_arm_solve/build-headless
+Test project /home/lqx/code/tech_core_arm_solve/build-headless
+      Start  1: rules
+ 1/44 Test  #1: rules ............................   Passed    0.00 sec
+      Start  2: physics
+ 2/44 Test  #2: physics ..........................   Passed    1.56 sec
+      Start  3: geometry_fidelity
+ 3/44 Test  #3: geometry_fidelity ................   Passed    0.52 sec
+      Start  4: demo_level_1
+ 4/44 Test  #4: demo_level_1 .....................   Passed    1.85 sec
+      Start  5: demo_level_2
+ 5/44 Test  #5: demo_level_2 .....................   Passed    1.93 sec
+      Start  6: demo_level_3
+ 6/44 Test  #6: demo_level_3 .....................   Passed    1.80 sec
+      Start  7: demo_level_4
+ 7/44 Test  #7: demo_level_4 .....................   Passed    2.79 sec
+      Start  8: demo_q_positive_limit
+ 8/44 Test  #8: demo_q_positive_limit ............   Passed    1.90 sec
+      Start  9: demo_q_negative_limit
+ 9/44 Test  #9: demo_q_negative_limit ............   Passed    2.02 sec
+      Start 10: demo_tilted_station
+10/44 Test #10: demo_tilted_station ..............   Passed    1.84 sec
+      Start 11: cli_invalid_level
+11/44 Test #11: cli_invalid_level ................   Passed    0.00 sec
+      Start 12: rm26_arm_control
+12/44 Test #12: rm26_arm_control .................   Passed    0.78 sec
+      Start 13: rm26_arm_idle
+13/44 Test #13: rm26_arm_idle ....................   Passed    0.70 sec
+      Start 14: rm26_arm_demo
+14/44 Test #14: rm26_arm_demo ....................   Passed    0.75 sec
+      Start 15: rm26_arm_cartesian
+15/44 Test #15: rm26_arm_cartesian ...............   Passed    0.75 sec
+      Start 16: rm26_arm_invalid_velocity
+16/44 Test #16: rm26_arm_invalid_velocity ........   Passed    0.00 sec
+      Start 17: rm26_arm_conflicting_commands
+17/44 Test #17: rm26_arm_conflicting_commands ....   Passed    0.00 sec
+      Start 18: mec_arm_kinematics_example
+18/44 Test #18: mec_arm_kinematics_example .......   Passed    2.15 sec
+      Start 19: rm26_kinematics_example
+19/44 Test #19: rm26_kinematics_example ..........   Passed    0.67 sec
+      Start 20: planning_library_example
+20/44 Test #20: planning_library_example .........   Passed    4.25 sec
+      Start 21: planning_ik
+21/44 Test #21: planning_ik ......................   Passed    0.00 sec
+      Start 22: planning_contract
+22/44 Test #22: planning_contract ................   Passed   52.76 sec
+      Start 23: planning_approach
+23/44 Test #23: planning_approach ................   Passed   30.08 sec
+      Start 24: planning_scene
+24/44 Test #24: planning_scene ...................   Passed    1.03 sec
+      Start 25: planning_demo_contract
+25/44 Test #25: planning_demo_contract ...........   Passed   10.20 sec
+      Start 26: multi_arm_contract
+26/44 Test #26: multi_arm_contract ...............   Passed    4.87 sec
+      Start 27: mec_arm_control
+27/44 Test #27: mec_arm_control ..................   Passed    2.24 sec
+      Start 28: mec_arm_invalid_dimension
+28/44 Test #28: mec_arm_invalid_dimension ........   Passed    2.16 sec
+      Start 29: robot_unknown
+29/44 Test #29: robot_unknown ....................   Passed    0.00 sec
+      Start 30: external_robot_import
+30/44 Test #30: external_robot_import ............   Passed    0.42 sec
+      Start 31: mec_arm_assembly
+31/44 Test #31: mec_arm_assembly .................   Passed   21.23 sec
+      Start 32: hkust_eng_assembly
+32/44 Test #32: hkust_eng_assembly ...............   Passed    5.40 sec
+      Start 33: hkust_eng_control
+33/44 Test #33: hkust_eng_control ................   Passed    1.58 sec
+      Start 34: pie_eng_assembly
+34/44 Test #34: pie_eng_assembly .................   Passed    6.60 sec
+      Start 35: pie_eng_control
+35/44 Test #35: pie_eng_control ..................   Passed    2.34 sec
+      Start 36: zhuimeng_single_assembly
+36/44 Test #36: zhuimeng_single_assembly .........   Passed   11.77 sec
+      Start 37: zhuimeng_single_control
+37/44 Test #37: zhuimeng_single_control ..........   Passed    2.26 sec
+      Start 38: zhuimeng_dual_assembly
+38/44 Test #38: zhuimeng_dual_assembly ...........   Passed    4.13 sec
+      Start 39: zhuimeng_dual_control
+39/44 Test #39: zhuimeng_dual_control ............   Passed    1.26 sec
+      Start 40: exported_robot_assets
+40/44 Test #40: exported_robot_assets ............   Passed    5.41 sec
+      Start 41: hkust_eng_source_fk
+41/44 Test #41: hkust_eng_source_fk ..............   Passed    1.98 sec
+      Start 42: pie_eng_source_fk
+42/44 Test #42: pie_eng_source_fk ................   Passed    2.81 sec
+      Start 43: zhuimeng_single_source_fk
+43/44 Test #43: zhuimeng_single_source_fk ........   Passed    2.70 sec
+      Start 44: zhuimeng_dual_source_fk
+44/44 Test #44: zhuimeng_dual_source_fk ..........   Passed    1.87 sec
+
+100% tests passed, 0 tests failed out of 44
+
+Total Test time (real) = 201.36 sec

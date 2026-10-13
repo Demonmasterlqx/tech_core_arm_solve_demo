@@ -1,6 +1,6 @@
 # 运行证据索引
 
-[文档索引](../README.md) · [最新本机复现](../reproduction_20261013.md)
+[文档索引](../README.md) · [最新模型接入](exported_arms_20261014/README.md) · [2026-10-13 本机复现](../reproduction_20261013.md)
 
 本目录保存可随 Git 分发的固定输入、逐例结果、审计摘要、模型校验和历史压缩轨迹。每组证据对应一次明确的实验或验证，阅读时先看报告中的版本、预算与成功定义。
 
@@ -8,6 +8,7 @@
 
 | 证据 | 对应报告与用途 |
 | --- | --- |
+| [exported_arms_20261014](exported_arms_20261014/README.md) | 四套 CAD 机械臂、单臂选择、固定抓持、初始位姿、完整测试和交互验证 |
 | [multi_arm_20261014](multi_arm_20261014/README.md) | 多机械臂架构、MecArm 源模型与轨迹审计、双构建测试和交互证据 |
 | [reproduction_20261013](reproduction_20261013/README.md) | [2026-10-13 本机复现](../reproduction_20261013.md)：当前评测、历史程序重跑、归档复验、CTest、资产与媒体校验 |
 | [delivery_20261013](delivery_20261013/) | [首次交付验证](../delivery_validation.md)：`0fbd7f7` 交付阶段的构建、测试与小样本 |

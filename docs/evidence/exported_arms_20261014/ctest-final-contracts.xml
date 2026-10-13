@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="13"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="Demonmasterlqx"
+	time="47"
+	timestamp="2026-10-14T02:35:52"
+	>
+	<testcase name="hkust_eng_assembly" classname="hkust_eng_assembly" time="5.01755" status="run">
+		<properties/>
+		<system-out>hkust_eng baseline samples=1353 error=1.00641e-05
+hkust_eng rigid_cache samples=1353 error=1.0046e-05
+</system-out>
+	</testcase>
+	<testcase name="hkust_eng_control" classname="hkust_eng_control" time="1.91063" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 6 arm joints | dt 0.002 s
+Joint order: joint_1_yaw joint_2_shoulder joint_3_elbow joint_4_roll joint_5_pitch joint_6_roll
+State initial: {"time":0,"tool":[0.00320399996,0.0741730268669,0.16639446091],"q":[0,0,0,0,0,0],"qd":[0,0,0,0,0,0]}
+State final: {"time":0.3,"tool":[0.00320399147367,0.0741660969463,0.166391453935],"q":[5.56879395585e-08,8.11926218561e-05,2.06340531055e-05,-4.11927430038e-07,6.25722885279e-05,1.36858328921e-06],"qd":[6.36161753279e-05,-0.117084831996,0.21003111403,7.41044492937e-06,-0.32670485893,-6.76419490366e-05]}
+</system-out>
+	</testcase>
+	<testcase name="pie_eng_assembly" classname="pie_eng_assembly" time="6.2441" status="run">
+		<properties/>
+		<system-out>pie_eng baseline samples=1357 error=1.26634e-05
+pie_eng rigid_cache samples=1356 error=1.28303e-05
+</system-out>
+	</testcase>
+	<testcase name="pie_eng_control" classname="pie_eng_control" time="2.6936" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 6 arm joints | dt 0.002 s
+Joint order: joint_1_yaw joint_2_shoulder joint_3_elbow joint_4_roll joint_5_pitch joint_6_roll
+State initial: {"time":0,"tool":[0.086329504852,-0.07278997186,0.12374923003],"q":[0,0,0,0,0,0],"qd":[0,0,0,0,0,0]}
+State final: {"time":0.3,"tool":[0.0863186952443,-0.0727888944319,0.123747153982],"q":[-0.00015247410212,0.000284678525482,2.01503196176e-05,0.000149708640053,-0.000264173916094,-0.000155187013064],"qd":[-0.000184332280792,0.0234987290483,0.252380914778,0.00694404356992,0.228576982683,-0.00694225917512]}
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_single_assembly" classname="zhuimeng_single_assembly" time="9.88676" status="run">
+		<properties/>
+		<system-out>zhuimeng_single baseline samples=1591 error=1.37299e-05
+zhuimeng_single rigid_cache samples=1591 error=1.36084e-05
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_single_control" classname="zhuimeng_single_control" time="2.41685" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 6 arm joints | dt 0.002 s
+Joint order: joint_1_yaw joint_2_shoulder joint_3_elbow joint_4_roll joint_5_pitch joint_6_roll
+State initial: {"time":0,"tool":[-0.0445031867392,0.0130336762165,0.170087727185],"q":[0,0,0,0,0,0],"qd":[0,0,0,0,0,0]}
+State final: {"time":0.3,"tool":[-0.044497119758,0.0130301061141,0.17008870816],"q":[4.07853330834e-05,-5.58016273531e-05,-2.51627167184e-06,-1.69229372758e-05,-4.15043089224e-05,3.33971199207e-05],"qd":[2.58442278869e-05,0.196861350432,-0.368723301063,-0.00028457998208,0.56489002705,0.000301848634364]}
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_dual_assembly" classname="zhuimeng_dual_assembly" time="3.49249" status="run">
+		<properties/>
+		<system-out>zhuimeng_dual baseline samples=1441 error=2.28917e-05
+zhuimeng_dual rigid_cache samples=1450 error=2.37666e-05
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_dual_control" classname="zhuimeng_dual_control" time="1.1719" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: left_joint_1 left_joint_2 left_joint_3 left_joint_4 left_joint_5 left_joint_6 left_joint_7
+State initial: {"time":0,"tool":[-0.169999999999,0.19352856827,0.313851447803],"q":[0,0,0,0,0,0,0],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":0.3,"tool":[-0.169976968536,0.193528658267,0.313845749451],"q":[8.70217829254e-07,-3.42778932834e-06,1.00234141318e-07,-9.15749851579e-05,2.38096296604e-07,-9.20422246835e-05,-1.16810033537e-06],"qd":[2.31438474845e-05,-0.6,-0.00873716612445,0.217976612883,0.00468415420389,-0.381371737971,0.00404907649554]}
+</system-out>
+	</testcase>
+	<testcase name="exported_robot_assets" classname="exported_robot_assets" time="5.42047" status="run">
+		<properties/>
+		<system-out>hkust_eng source and generated assets verified
+pie_eng source and generated assets verified
+zhuimeng_single source and generated assets verified
+zhuimeng_dual source and generated assets verified
+187 original export files are byte-identical
+Invalid compound-joint declarations and startup flags rejected
+</system-out>
+	</testcase>
+	<testcase name="hkust_eng_source_fk" classname="hkust_eng_source_fk" time="2.03247" status="run">
+		<properties/>
+		<system-out>{
+  "robot": "hkust_eng",
+  "sample_count": 68,
+  "link_count": 9,
+  "joint_count": 6,
+  "max_position_abs_error_m": 4.440892098500626e-16,
+  "max_rotation_matrix_abs_error": 9.992007221626409e-16,
+  "max_jacobian_abs_error": 3.228339817695769e-10,
+  "source_urdf_sha256": "53407d3afc9557daf89c924e732242cac5cddcf5210a10ff1b017efcab3fd005",
+  "scene_sha256": "73aa1ba900d625a4bafc0ddfa7c39e6d733ddb0c5207557ca083381222d08f24",
+  "fk_fixtures": [
+    {
+      "qpos_rad": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tool_position_m": [
+        0.003203999960000009,
+        0.0741730268668998,
+        0.16639446091
+      ],
+      "tool_rotation_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "qpos_rad": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tool_pos...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="pie_eng_source_fk" classname="pie_eng_source_fk" time="2.84037" status="run">
+		<properties/>
+		<system-out>{
+  "robot": "pie_eng",
+  "sample_count": 68,
+  "link_count": 9,
+  "joint_count": 6,
+  "max_position_abs_error_m": 3.3306690738754696e-16,
+  "max_rotation_matrix_abs_error": 9.992007221626409e-16,
+  "max_jacobian_abs_error": 2.9718905114606287e-10,
+  "source_urdf_sha256": "997930c7084369e3bd930a968a7bff33c392eee05f8ceadb6ba4efc010be57b2",
+  "scene_sha256": "fd09be5e18af6af3e35bb4cec5f4c8ad9728dfba0bbcbba648d3b8867fe27280",
+  "fk_fixtures": [
+    {
+      "qpos_rad": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tool_position_m": [
+        0.086329504852,
+        -0.07278997186000001,
+        0.12374923003004987
+      ],
+      "tool_rotation_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "qpos_rad": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tool_p...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_single_source_fk" classname="zhuimeng_single_source_fk" time="2.62772" status="run">
+		<properties/>
+		<system-out>{
+  "robot": "zhuimeng_single",
+  "sample_count": 68,
+  "link_count": 9,
+  "joint_count": 6,
+  "max_position_abs_error_m": 3.3306690738754696e-16,
+  "max_rotation_matrix_abs_error": 1.3322676295501878e-15,
+  "max_jacobian_abs_error": 2.924205887824365e-10,
+  "source_urdf_sha256": "b30c141de3d4eee0d72b49aa0f0b795575f539b753af26cf5a9f71a52314891a",
+  "scene_sha256": "d383ec40f4d515b9aeaf10a4e080c222f10855a25eeb1e49f834fc51e714a6c3",
+  "fk_fixtures": [
+    {
+      "qpos_rad": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tool_position_m": [
+        -0.0445031867391764,
+        0.013033676216461232,
+        0.170087727185
+      ],
+      "tool_rotation_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "qpos_rad": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+     ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_dual_source_fk" classname="zhuimeng_dual_source_fk" time="1.88354" status="run">
+		<properties/>
+		<system-out>{
+  "robot": "zhuimeng_dual",
+  "sample_count": 68,
+  "link_count": 11,
+  "joint_count": 7,
+  "max_position_abs_error_m": 3.3306690738754696e-16,
+  "max_rotation_matrix_abs_error": 1.3322676295501878e-15,
+  "max_jacobian_abs_error": 3.295910211420505e-10,
+  "source_urdf_sha256": "d3d05b90bf5038dbe5d7430ed9c6fbd3ea716fbad630f8c92d26c364242db917",
+  "scene_sha256": "c43ae0907aa1ffba7b045137aa548d09ae7cbe486b91d94170110a5de16a5364",
+  "fk_fixtures": [
+    {
+      "qpos_rad": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tool_position_m": [
+        -0.16999999999908139,
+        0.19352856827000003,
+        0.3138514478034
+      ],
+      "tool_rotation_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "qpos_rad": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

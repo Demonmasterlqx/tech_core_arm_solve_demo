@@ -1,8 +1,8 @@
 # RoboMaster 2026 科技核心与机械臂仿真
 
-C++17 + MuJoCo 3.3.7，统一支持 HKUST RM26 七轴机械臂、MecArm 六轴机械臂和外部 URDF 模型包。推荐入口 `arm_demo --robot mec_arm`（或 `--robot rm26`）完成场景编辑、逆运动学、碰撞检查、轨迹预览与装配仿真；原 RM26 命令保留。
+C++17 + MuJoCo 3.3.7，统一支持 HKUST RM26、MecArm，以及新导入的 HKUST ENG、PIE、追梦单臂和追梦双臂左臂。入口 `arm_demo --robot ID` 完成场景编辑、逆运动学、碰撞检查、轨迹预览与装配仿真；外部 URDF 模型包与原 RM26 命令保留。
 
-[文档索引](docs/README.md) · [方案手册](docs/handbook/README.md) · [多机械臂接入指南](docs/multi_arm.md) · [MecArm 模型与验证](docs/mec_arm.md)
+[文档索引](docs/README.md) · [方案手册](docs/handbook/README.md) · [四套新机械臂](docs/exported_arms.md) · [多机械臂接入指南](docs/multi_arm.md) · [MecArm 模型与验证](docs/mec_arm.md)
 
 ## 启动联合 Demo
 
@@ -10,10 +10,12 @@ C++17 + MuJoCo 3.3.7，统一支持 HKUST RM26 七轴机械臂、MecArm 六轴�
 
 ```bash
 ./scripts/run_planning_demo.sh --robot mec_arm
+# 新模型：hkust_eng / pie_eng / zhuimeng_single / zhuimeng_dual
+./scripts/run_planning_demo.sh --robot hkust_eng
 # 原 RM26：./scripts/run_planning_demo.sh --robot rm26
 ```
 
-启动于当前模型的关节零位（受关节边界约束）。按 **R** 载入装配预设，按 **Enter** 规划并预览，预览成功后再次 **Enter** 执行；也可以从零位直接规划。
+四套新 CAD 模型启动于已校准的装配预设，夹爪携带能量单元、科技核心直立并面向机械臂；RM26/MecArm 保留关节零位启动。按 **R** 载入装配预设，按 **Enter** 规划并预览，预览成功后再次 **Enter** 执行。**Backspace** 返回关节零位。
 
 | 操作 | 按键 |
 | --- | --- |
@@ -58,7 +60,9 @@ CUDA_VISIBLE_DEVICES='' ctest --test-dir build --output-on-failure
 
 ## 最近验证与范围
 
-[多机械臂验证](docs/evidence/multi_arm_20261014/README.md)覆盖动态维度求解器、RM26 回归、MecArm 源 URDF 对照、装配轨迹与独立审计、窗口交互，以及无需重新编译的外部机器人接入。MecArm 使用明确声明的虚拟转接夹具和实验室核心位姿，详见[模型说明](docs/mec_arm.md)。
+[四套 CAD 机械臂验证](docs/evidence/exported_arms_20261014/README.md)记录本次完整构建测试、各模型九种规划方法、源 URDF 对照、控制与联合窗口交互、轨迹回放，以及离线重建的字节一致性。每个模型使用自己的固定装配预设；联合窗口的 Q 末段仅执行通过验证的角度范围。
+
+[多机械臂架构验证](docs/evidence/multi_arm_20261014/README.md)覆盖动态维度求解器、RM26 回归、MecArm 源 URDF 对照，以及无需重新编译的外部机器人接入。MecArm 使用明确声明的虚拟转接夹具和实验室核心位姿，详见[模型说明](docs/mec_arm.md)。
 
 [2026-10-13 本机复现](docs/reproduction_20261013.md)记录窗口构建 **25/25**、无窗口构建 **23/23** 项 CTest 通过。沿用相同的固定 100 请求、每次 5 s 预算：
 

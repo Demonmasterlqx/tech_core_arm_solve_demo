@@ -1,0 +1,11 @@
+cold_model_load_seconds=1.225711
+atlas_build_seconds=0.39541665 atlas_entries=1
+baseline dev_nominal repeat=0 success=1 seconds=0.35570837 reason=validated
+full_step dev_nominal repeat=0 success=1 seconds=0.42747243 reason=validated
+reduced_5d dev_nominal repeat=0 success=1 seconds=0.42094279 reason=validated
+adaptive_lm dev_nominal repeat=0 success=1 seconds=0.42873843 reason=validated
+predictor dev_nominal repeat=0 success=1 seconds=0.41547311 reason=validated
+sparse_adaptive dev_nominal repeat=0 success=1 seconds=0.60968238 reason=validated
+atlas dev_nominal repeat=0 success=1 seconds=0.40323362 reason=validated
+bounded_qp dev_nominal repeat=0 success=1 seconds=0.44314707 reason=validated
+rigid_cache dev_nominal repeat=0 success=1 seconds=0.31481742 reason=validated

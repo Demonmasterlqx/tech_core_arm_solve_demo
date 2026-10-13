@@ -1,0 +1,11 @@
+{
+  "trajectories/adaptive_lm_dev_nominal_r0.csv": "1609a86f602263087c85912fb13d4beb1aba306ebde1e3305fa349d3d80be85c",
+  "trajectories/atlas_dev_nominal_r0.csv": "39844f9e8c7fcfd4f97243fe077057359fa485dc6832c79f65e423d1aa04e49e",
+  "trajectories/baseline_dev_nominal_r0.csv": "49f03dc194bb0f6eb405ce100a7bcab429b28fd52b2907f58b1eae9a0af24a48",
+  "trajectories/bounded_qp_dev_nominal_r0.csv": "d6a1273de67c3208b45fe21e363a91613b683f490ef90147f9cdb28ab1c0bd80",
+  "trajectories/full_step_dev_nominal_r0.csv": "de876420c4f394b97041f116759f3834555553f514dc9392816db9339933d6f1",
+  "trajectories/predictor_dev_nominal_r0.csv": "ff71c51566498fa5a2bddd0a450446c643a63ab28baef6b3b2c5ae298b61ea7b",
+  "trajectories/reduced_5d_dev_nominal_r0.csv": "4326c84c554add3e642c26338b89cf868249c4b3ce7c4108b4e4a95850b216d1",
+  "trajectories/rigid_cache_dev_nominal_r0.csv": "ff71c51566498fa5a2bddd0a450446c643a63ab28baef6b3b2c5ae298b61ea7b",
+  "trajectories/sparse_adaptive_dev_nominal_r0.csv": "4229c7f425ca1b4b7509b612cdbaa2948398cb636079d7948d16f49ff97335b8"
+}

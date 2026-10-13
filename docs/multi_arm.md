@@ -1,6 +1,6 @@
 # 多机械臂架构与接入
 
-项目现在使用同一套控制、运动学、规划和显示代码加载不同机械臂。内置 `rm26`（七轴）与 `mec_arm`（六轴）；其他固定基座机械臂通过模型包目录接入，无需增加 C++ 类型或重新编译。原 `rm26_arm`、`rm26_plan`、`rm26_demo` 命令和 CMake 链接名保留，默认仍为 RM26。
+项目现在使用同一套控制、运动学、规划和显示代码加载不同机械臂。内置 `rm26`、`mec_arm`、`hkust_eng`、`pie_eng`、`zhuimeng_single` 和只启用左臂的 `zhuimeng_dual`；新增四套 CAD 模型的来源、夹爪外参与使用方法见[模型说明](exported_arms.md)。其他固定基座机械臂通过模型包目录接入，无需增加 C++ 类型或重新编译。原 `rm26_arm`、`rm26_plan`、`rm26_demo` 命令和 CMake 链接名保留，默认仍为 RM26。
 
 ## 构建与使用
 
@@ -16,7 +16,7 @@ ctest --test-dir build --output-on-failure
 ./scripts/run_planning_demo.sh --robot mec_arm
 ```
 
-独立窗口支持末端 XYZ 平移、位置/速度模式、数字键选关节及 `[` / `]` 遍历关节。联合窗口支持编辑核心位姿、规划、虚影预览及验证后执行。联合窗口启动于受关节边界约束的零位，**R** 载入当前机器人的装配预设，**Enter** 规划，成功后再次 **Enter** 执行。MecArm 预设是实验室装配场景，几何外参与范围见[模型说明](mec_arm.md)。
+独立窗口支持末端 XYZ 平移、位置/速度模式、数字键选关节及 `[` / `]` 遍历关节。联合窗口支持编辑核心位姿、规划、虚影预览及验证后执行。四套新 CAD 模型默认启动于装配预设，RM26/MecArm 保留受边界约束的零位启动。**R** 载入当前机器人的装配预设，**Enter** 规划，成功后再次 **Enter** 执行。MecArm 预设是实验室装配场景，几何外参与范围见[模型说明](mec_arm.md)。
 
 无窗口构建：
 
@@ -79,7 +79,7 @@ const auto result = tech_core::planning::plan(scene, request, options);
 
 动态向量需显式指定长度，例如 `JointVector::Zero(scene.dof())`；原来依赖固定七维的 `JointVector q; q << ...` 要先分配大小。旧 RM26 `Scenario{}` 和 `JointLimits{}` 默认值保留用于现有调用；新接入代码使用 `scene.default_scenario()`、`scene.limits()`，独立合成求解器使用 `JointLimits(n)`。
 
-## 接入第三种机械臂
+## 接入其他机械臂
 
 创建目录，放入源 URDF、网格和 `robot.json`：
 
@@ -113,6 +113,9 @@ python3 scripts/import_robot.py --config /path/to/my_arm/robot.json
 - `mount_bodies`：和地基直接连接、允许与 `mount_visual` 重合的源连杆。
 - `scenario`：`core_pose`（x/y/z/theta/phi/alpha）、`assembly_translation`、`assembly_yaw`（弧度）、目标 Q 角（度）、是否检查官方位姿表；装配阶段与碰撞验收一直保留。
 - `planning_home`：当前任务的实际起点。新机器人需要重新验证可达工作空间和碰撞。
+- `carried_unit_in_control`：为 true 时，独立控制场景也加载固定载物。
+- `demo_start_at_preset`、`demo_camera`：选择预设启动及默认相机的方位角/俯仰角（度）。未声明时保留旧模型的零位启动与视角。
+- `compound_joint_bodies`：可选的复合关节壳体对，仅接受跨恰好两个相邻运动关节的祖先/后代关系；需要说明源机构连接依据。
 
 生成器会生成 `scene.xml` 与可选的 `planning.xml`，重用已审计的科技核心和空心单元任务几何。源码网格保留；每个 URDF collision 网格默认使用 MuJoCo 凸包，无 collision 时保守地使用 visual。相邻运动簇、同一焊接簇的自碰撞不检查；其余机器人自碰撞、机器人与单元/核心/固定物的碰撞均检查。凹结构可能需要像 RM26 那样另外分解，并在 `robot_collision_geoms` 中明确声明。
 

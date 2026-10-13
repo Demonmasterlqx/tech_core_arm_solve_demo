@@ -1,0 +1,114 @@
+{
+  "robot": "zhuimeng_single",
+  "renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+  "directions": [
+    {
+      "key": "w",
+      "delta_m": [
+        0.049975000000000006,
+        -1.8999999999991246e-05,
+        -9.000000000036756e-06
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "s",
+      "delta_m": [
+        -0.039971000000000007,
+        -1.6000000000016e-05,
+        1.999999999946489e-06
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "a",
+      "delta_m": [
+        -1.1999999999998123e-05,
+        0.04996600000000001,
+        -3.500000000000725e-05
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "d",
+      "delta_m": [
+        -1.6000000000002124e-05,
+        -0.049968999999999986,
+        -1.0000000000287557e-06
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "q",
+      "delta_m": [
+        -1.0999999999997123e-05,
+        -3.799999999998249e-05,
+        0.049958999999999976
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "e",
+      "delta_m": [
+        0.0,
+        -2.9999999999752447e-06,
+        -0.039973000000000036
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "Up",
+      "delta_m": [
+        0.03998,
+        -1.4999999999987246e-05,
+        -7.000000000034756e-06
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "Down",
+      "delta_m": [
+        -0.039971000000000007,
+        -1.6000000000016e-05,
+        1.999999999946489e-06
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "Left",
+      "delta_m": [
+        -9.000000000009e-06,
+        0.03997400000000001,
+        -2.6999999999999247e-05
+      ],
+      "release_holds": true
+    },
+    {
+      "key": "Right",
+      "delta_m": [
+        -1.1999999999998123e-05,
+        -0.03997499999999998,
+        -1.0000000000287557e-06
+      ],
+      "release_holds": true
+    }
+  ],
+  "joint_modes": [
+    {
+      "mode": "POSITION",
+      "joint_index": 6,
+      "delta_rad": 0.18959000000000004
+    },
+    {
+      "mode": "VELOCITY",
+      "joint_index": 6,
+      "delta_rad": 0.25
+    }
+  ],
+  "checks": [
+    "pause freezes simulation and resume has no latent motion",
+    "reset restores home"
+  ],
+  "dof": 6,
+  "result": "PASS"
+}

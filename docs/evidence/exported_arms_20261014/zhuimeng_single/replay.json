@@ -1,0 +1,130 @@
+{
+  "method": "rigid_cache",
+  "case": "dev_nominal",
+  "repeat": 0,
+  "planning_mode": "offline_ready_search",
+  "planning_seconds": 1.467683849,
+  "execution_seconds": 69.68006870364916,
+  "motion_speed_scale": 1.0,
+  "joint_rate_limits": [
+    {
+      "joint": "joint_1_yaw",
+      "type": "revolute",
+      "velocity": 0.6,
+      "acceleration": 1.2
+    },
+    {
+      "joint": "joint_2_shoulder",
+      "type": "revolute",
+      "velocity": 0.6,
+      "acceleration": 1.2
+    },
+    {
+      "joint": "joint_3_elbow",
+      "type": "revolute",
+      "velocity": 0.6,
+      "acceleration": 1.2
+    },
+    {
+      "joint": "joint_4_roll",
+      "type": "revolute",
+      "velocity": 0.6,
+      "acceleration": 1.2
+    },
+    {
+      "joint": "joint_5_pitch",
+      "type": "revolute",
+      "velocity": 0.6,
+      "acceleration": 1.2
+    },
+    {
+      "joint": "joint_6_roll",
+      "type": "revolute",
+      "velocity": 0.6,
+      "acceleration": 1.2
+    }
+  ],
+  "joint_rate_units": "rad/s and rad/s^2 for revolute; m/s and m/s^2 for prismatic",
+  "playback_speed": 1.0,
+  "fps": 24,
+  "width": 1600,
+  "height": 900,
+  "source_trajectory": "/home/lqx/code/tech_core_arm_solve/artifacts/exported_arms/verified_plans_zhuimeng_single/trajectories/rigid_cache_dev_nominal_r0.csv",
+  "source_trajectory_sha256": "ff71c51566498fa5a2bddd0a450446c643a63ab28baef6b3b2c5ae298b61ea7b",
+  "scenario_csv_sha256": "4f63ce8920fd74bdf87e55810c3e36f881f76d7d00a72648d96507fad38a258c",
+  "model_sha256": "f18dd83cf1eaf12c768194134010ec143295628f945c48d7991b4b37a1e39f1f",
+  "renderer_source_sha256": "fee86631501673d3a335b4073e15ab199518d7f4e3461299fe40ef0d0a134c18",
+  "interpolation": "q and mechanism: 3*u^2 - 2*u^3; no mj_step",
+  "validation": "Original C++ dense validator, cache disabled, rerun before rendering",
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "LIBGL_ALWAYS_SOFTWARE": "1",
+    "GALLIUM_DRIVER": "llvmpipe",
+    "LP_NUM_THREADS": "4"
+  },
+  "q_positive_degrees": 0.0,
+  "q_final_degrees": 0.0,
+  "full_q_sweep": "",
+  "current_model_recheck": "DENSE_RECHECK passed samples=1591",
+  "opengl_renderer": "llvmpipe (LLVM 20.1.2, 256 bits)",
+  "ffprobe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "png",
+        "codec_long_name": "PNG (Portable Network Graphics) image",
+        "codec_type": "video",
+        "codec_tag_string": "[0][0][0][0]",
+        "codec_tag": "0x0000",
+        "width": 1600,
+        "height": 900,
+        "coded_width": 1600,
+        "coded_height": 900,
+        "closed_captions": 0,
+        "film_grain": 0,
+        "has_b_frames": 0,
+        "pix_fmt": "rgb24",
+        "level": -99,
+        "color_range": "pc",
+        "color_space": "gbr",
+        "refs": 1,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "time_base": "1/25",
+        "nb_read_frames": "1",
+        "disposition": {
+          "default": 0,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0
+        }
+      }
+    ],
+    "format": {
+      "filename": "/home/lqx/code/tech_core_arm_solve/artifacts/exported_arms/.render-wdmb80uw/replay_final_zhuimeng_single.png",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "format_name": "png_pipe",
+      "format_long_name": "piped png sequence",
+      "size": "191384",
+      "probe_score": 99
+    }
+  },
+  "frames": 1,
+  "output_sha256": "f4374d922bb02e6efe1dd4a3da25b6839cc07634f4cf5d6f1b53dfcde2128977",
+  "output_bytes": 191384
+}

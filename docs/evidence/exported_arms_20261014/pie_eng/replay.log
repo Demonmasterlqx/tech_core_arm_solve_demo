@@ -1,0 +1,4 @@
+DENSE_RECHECK passed samples=1356
+OPENGL_RENDERER llvmpipe (LLVM 20.1.2, 256 bits)
+FRAME 1/1 trajectory_time=0
+COMPLETE /home/lqx/code/tech_core_arm_solve/artifacts/exported_arms/replay_final_pie_eng.png frames=1 bytes=201123

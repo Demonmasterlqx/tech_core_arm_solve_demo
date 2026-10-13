@@ -1,0 +1,8 @@
+robot,model_path,index,joint,type,lower,upper,velocity_limit
+"zhuimeng_dual","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_dual/planning.xml",0,"left_joint_1",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_dual","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_dual/planning.xml",1,"left_joint_2",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_dual","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_dual/planning.xml",2,"left_joint_3",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_dual","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_dual/planning.xml",3,"left_joint_4",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_dual","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_dual/planning.xml",4,"left_joint_5",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_dual","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_dual/planning.xml",5,"left_joint_6",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_dual","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_dual/planning.xml",6,"left_joint_7",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998

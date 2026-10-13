@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="46"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="Demonmasterlqx"
+	time="203"
+	timestamp="2026-10-14T02:57:42"
+	>
+	<testcase name="rules" classname="rules" time="0.00226663" status="run">
+		<properties/>
+		<system-out>13 rule test groups passed
+</system-out>
+	</testcase>
+	<testcase name="physics" classname="physics" time="1.61901" status="run">
+		<properties/>
+		<system-out>Physics contracts passed: orientation, geometry, contact, axes, input validation, torque/release
+</system-out>
+	</testcase>
+	<testcase name="geometry_fidelity" classname="geometry_fidelity" time="0.584901" status="run">
+		<properties/>
+		<system-out>All60 core assets /120 geoms: 17762 vertices, 34792 triangles, per-corner normals and actual world placement preserved
+MARK mask verified at16928 grid points /101568 mesh-ray queries;36 independent fan lights per core
+Five independent lift/P/Q poses preserve every pillar and shell vertex; P remains fixed
+Geometry fidelity contracts passed
+</system-out>
+	</testcase>
+	<testcase name="demo_level_1" classname="demo_level_1" time="1.85753" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 1 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+3.202s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_level_2" classname="demo_level_2" time="1.88204" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 2 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+5.001s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_level_3" classname="demo_level_3" time="1.94403" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.530s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_level_4" classname="demo_level_4" time="2.82814" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 4 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+1.000s core1 ready
+2.330s core0 inserted
+2.510s core1 inserted
+4.035s core0 lifted
+4.215s core1 lifted
+6.170s core0 flipped
+6.350s core1 flipped
+8.530s core0 aligned
+8.735s core1 aligned
+11.502s core0 confirmed
+11.502s core1 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_q_positive_limit" classname="demo_q_positive_limit" time="2.15227" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets 90, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.668s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_q_negative_limit" classname="demo_q_negative_limit" time="1.91778" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets -90, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.668s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="demo_tilted_station" classname="demo_tilted_station" time="1.93404" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU physics | level 3 | dt 0.001 s | Q targets 35, -40 deg
+1.000s core0 ready
+2.330s core0 inserted
+4.035s core0 lifted
+6.170s core0 flipped
+8.530s core0 aligned
+11.502s core0 confirmed
+Result: SUCCESS at 15.000 s
+</system-out>
+	</testcase>
+	<testcase name="cli_invalid_level" classname="cli_invalid_level" time="0.00372194" status="run">
+		<properties/>
+		<system-out>Error: Level must be 1..4
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_control" classname="rm26_arm_control" time="0.805626" status="run">
+		<properties/>
+		<system-out>Arm contracts passed: source FK, seven fixed-base joints, position/velocity control, stops, keyboard XYZ, orientation, invalid input
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_idle" classname="rm26_arm_idle" time="0.684003" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: j0 j1 j2 j3 j4 end_differential_controller/j5 end_differential_controller/j6
+State initial: {"time":0,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":0.2,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_demo" classname="rm26_arm_demo" time="0.760385" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: j0 j1 j2 j3 j4 end_differential_controller/j5 end_differential_controller/j6
+State initial: {"time":0,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":3,"tool":[0.151271640878,0.0627774449294,0.888273546658],"q":[0.000364327047469,1.00036738247,1.40171010629,0.000424544373255,0.699744686338,-0.0012811540491,-0.000679941163947],"qd":[-0.000198675657152,-0.154979521362,-0.61105791129,-0.000570548211118,0.174761841611,0.281086552541,0.000784977290343]}
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_cartesian" classname="rm26_arm_cartesian" time="0.681293" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: j0 j1 j2 j3 j4 end_differential_controller/j5 end_differential_controller/j6
+State initial: {"time":0,"tool":[0.151340464971,0.0627496562951,0.887989954893],"q":[0,1,1.4,0,0.7,0,0],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":0.5,"tool":[0.166336639051,0.0627482088454,0.887982625738],"q":[-2.21892899918e-05,1.03482053251,1.43303268077,-2.91606798347e-05,0.699531869379,0.00226351968207,4.40866360852e-05],"qd":[-2.57486400596e-05,0.0703601831775,0.0692332967669,-3.04959592337e-05,-0.00218856355116,0.00332472216923,4.81027717061e-05]}
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_invalid_velocity" classname="rm26_arm_invalid_velocity" time="0.00418354" status="run">
+		<properties/>
+		<system-out>Error: Expected a finite number: nan
+</system-out>
+	</testcase>
+	<testcase name="rm26_arm_conflicting_commands" classname="rm26_arm_conflicting_commands" time="0.0031657" status="run">
+		<properties/>
+		<system-out>Error: Select only one motion command
+</system-out>
+	</testcase>
+	<testcase name="mec_arm_kinematics_example" classname="mec_arm_kinematics_example" time="2.20889" status="run">
+		<properties/>
+		<system-out>mec_arm joints=6 TCP=  0.601115 0.00100244   0.838348
+converged q=9.06316e-05        -1.3     1.99999 1.17567e-07         1.2 1.21745e-18
+</system-out>
+	</testcase>
+	<testcase name="rm26_kinematics_example" classname="rm26_kinematics_example" time="0.714614" status="run">
+		<properties/>
+		<system-out>rm26 joints=7 TCP=  0.15134 0.0627497   0.88799
+converged q=  0.0036568     1.00052     1.40049  0.00587818    0.700018 2.89896e-05 -0.00767392
+</system-out>
+	</testcase>
+	<testcase name="planning_library_example" classname="planning_library_example" time="4.19358" status="run">
+		<properties/>
+		<system-out>backend=rigid_cache success=1 reason=validated_full_q knots=613 planning_seconds=1.16021
+uncached_valid=1 reason=validated Q=0 -&gt; +90 -&gt; 0 -&gt; -90 deg
+</system-out>
+	</testcase>
+	<testcase name="planning_ik" classname="planning_ik" time="0.00284857" status="run">
+		<properties/>
+		<system-out>method=0 reachable=16/16 iterations=644 antiparallel_iterations=52
+method=1 reachable=16/16 iterations=39 antiparallel_iterations=1
+method=2 reachable=16/16 iterations=52 antiparallel_iterations=8
+method=3 reachable=16/16 iterations=52 antiparallel_iterations=8
+method=4 reachable=16/16 iterations=41 antiparallel_iterations=8
+bounded redundancy: clipped_error=0.0151603 QP_error=3e-09 QP_iterations=1
+planning IK tests passed
+</system-out>
+	</testcase>
+	<testcase name="planning_contract" classname="planning_contract" time="53.2962" status="run">
+		<properties/>
+		<system-out>contract structural/phase/position negative tests passed
+contract NaN preflight tests passed
+contract nonadjacent collision detected: j1_link_visual/j5_link_visual distance=-2.66903e-05 attempts=9
+complete baseline and obstacle revalidation passed
+Collision-aware pre-insertion IK and joint connection passed for both backends
+Q sweep endpoint and order contract tests passed
+Best-effort Q collision stop and strict-mode isolation passed; peak=63 final=-90
+Local Q collision recovery baseline Q=90/-90 preinsert wrist=0 time=3.42869 dense samples=3721
+Local Q collision recovery rigid_cache Q=90/-90 preinsert wrist=0 time=3.18464 dense samples=3714
+planning contract negative tests passed
+</system-out>
+	</testcase>
+	<testcase name="planning_approach" classname="planning_approach" time="30.1021" status="run">
+		<properties/>
+		<system-out>Original zero-seed IK goal valid=0 pair=j1_link_visual/collision_arm_end_right_link_part_0
+zero-start baseline success=1 reason=validated IK attempts=26 approach seconds=0.316477 total seconds=1.61455
+zero-start rigid_cache success=1 reason=validated IK attempts=26 approach seconds=0.279494 total seconds=1.47436
+approach cached=0 success=1 reason=collision_checked_shortcuts iterations=71 shortcuts=10 length=6.38388 -&gt; 4.21027 seconds=10.0018
+approach cached=1 success=1 reason=collision_checked_shortcuts iterations=71 shortcuts=10 length=6.38388 -&gt; 4.21027 seconds=7.98541
+PASS zero-start planning, obstacle detour, dense uncached recheck, endpoint and deadline contracts
+</system-out>
+	</testcase>
+	<testcase name="planning_scene" classname="planning_scene" time="1.00047" status="run">
+		<properties/>
+		<system-out>bore clearance=0.002 stop=7.87913e-34 offset penetration=-0.000999936
+assembly contact nominal=-1.73599e-05 intrusion=carried_unit_flange_0/core0_pillar_L_light_2/assembly_axial_overlap_d=-0.001000
+rotated fixed grasp: 33 cached/uncached checks agree
+planning scene geometry tests passed
+</system-out>
+	</testcase>
+	<testcase name="planning_demo_contract" classname="planning_demo_contract" time="10.1333" status="run">
+		<properties/>
+		<system-out>PASS real baseline plan, 521 knots, Q 0 -&gt; 90 -&gt; -90, stops travel_limit / travel_limit
+PASS real rigid_cache plan, 521 knots, Q 0 -&gt; 90 -&gt; -90, stops travel_limit / travel_limit
+PASS preview hold, double Enter, interpolation, focus pause, completion, joint zero and scene reset
+PASS arm/core/backend invalidation and stale worker disposal
+PASS exact zero joints passed to planner, core pose preserved and zero-start ghost
+PASS six arm directions, release hold and core world XYZ/RPY mapping
+PASS unbounded core XYZ/RPY, strict defaults and preview beyond the front plane in both backends
+PASS collision/zero-knot/timeout visualization, failed ghost retiming and execution gates
+</system-out>
+	</testcase>
+	<testcase name="planning_demo_help" classname="planning_demo_help" time="0.00393208" status="run">
+		<properties/>
+		<system-out>Robot arm + technology core | plan, preview, then execute
+  WASD: arm +X/-X/+Y/-Y; Q/E: arm +Z/-Z (world)
+  I/K, J/L, U/O: core +/-X, +/-Y, +/-Z (world)
+  Shift + I/K, J/L, U/O: core +/-roll, +/-pitch, +/-yaw
+  1: Baseline; 2: RigidCache (default)
+  Enter: plan and hold a preview; Enter again: execute a valid plan
+  Backspace: upstream URDF joint zero, preserving core pose
+  R: load assembly preset; Space: pause/resume ghost or execution; Esc: exit
+  [/]: scrub the ghost preview backward/forward (holds real robot)
+  Mouse: left orbit, right pan, wheel zoom; F: reset camera; F12: PNG
+Options:
+  --robot ID|DIRECTORY    robot package (default rm26)
+  --model PATH            explicit planning MJCF
+  --list-robots           available robot packages
+  --backend baseline|rigid_cache
+  --case ID               scenario_suite case (default dev_nominal)
+  --timeout SEC           planning deadline, (0,30], default 5
+  --motion-speed-scale S  demo retiming, (0,4], default 4
+  --speed M/S             arm jog, (0,0.1], defa...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="planning_demo_invalid_backend" classname="planning_demo_invalid_backend" time="1.15091" status="run">
+		<properties/>
+		<system-out>Error: Invalid demo planner options
+</system-out>
+	</testcase>
+	<testcase name="multi_arm_contract" classname="multi_arm_contract" time="4.97011" status="run">
+		<properties/>
+		<system-out>Multi-arm contracts passed (3/6/7/8 DOF, IK, control, collision, demo, invalid input)
+</system-out>
+	</testcase>
+	<testcase name="mec_arm_control" classname="mec_arm_control" time="2.23802" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 6 arm joints | dt 0.002 s
+Joint order: Joint1 Joint2 Joint3 Joint4 Joint5 Joint6
+State initial: {"time":0,"tool":[0.601114867986,0.00100243589227,0.838348324424],"q":[0,-1.3,2,0,1.2,0],"qd":[0,0,0,0,0,0]}
+State final: {"time":0.3,"tool":[0.601104753098,0.0010023555177,0.838338140592],"q":[1.61416310765e-05,-1.29992750857,1.99988809248,-0.000117114867566,1.20003116033,0.000107161162271],"qd":[-4.49593553241e-05,0.34808897233,-0.72171742214,0.000216315200681,0.371710591732,-0.000183565207125]}
+</system-out>
+	</testcase>
+	<testcase name="mec_arm_invalid_dimension" classname="mec_arm_invalid_dimension" time="2.21203" status="run">
+		<properties/>
+		<system-out>Error: Arm command dimension must match joint_names()
+</system-out>
+	</testcase>
+	<testcase name="robot_unknown" classname="robot_unknown" time="0.00336704" status="run">
+		<properties/>
+		<system-out>Error: Robot model not found: /home/lqx/code/tech_core_arm_solve/models/missing_robot/scene.xml
+</system-out>
+	</testcase>
+	<testcase name="external_robot_import" classname="external_robot_import" time="0.446924" status="run">
+		<properties/>
+		<system-out>External package import, mixed joint types, reordered commands and rejection checks passed
+</system-out>
+	</testcase>
+	<testcase name="mec_arm_assembly" classname="mec_arm_assembly" time="21.0818" status="run">
+		<properties/>
+		<system-out>baseline knots=288 samples=2044 error_m=2.38804e-05
+rigid_cache knots=286 samples=2046 error_m=2.46472e-05
+</system-out>
+	</testcase>
+	<testcase name="hkust_eng_assembly" classname="hkust_eng_assembly" time="5.43811" status="run">
+		<properties/>
+		<system-out>hkust_eng baseline samples=1353 error=1.00641e-05
+hkust_eng rigid_cache samples=1353 error=1.0046e-05
+hkust_eng bounded_qp samples=1353 error=1.0046e-05
+</system-out>
+	</testcase>
+	<testcase name="hkust_eng_control" classname="hkust_eng_control" time="1.5884" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 6 arm joints | dt 0.002 s
+Joint order: joint_1_yaw joint_2_shoulder joint_3_elbow joint_4_roll joint_5_pitch joint_6_roll
+State initial: {"time":0,"tool":[-0.115119072582,0.265822706148,0.139602922338],"q":[0.448897803639,-1.26423159925,-0.518729497509,-1.59832821849,-2.45961908755,1.79161817233],"qd":[0,0,0,0,0,0]}
+State final: {"time":0.3,"tool":[-0.115116144395,0.265816498866,0.13960100398],"q":[0.448897853409,-1.26421951242,-0.51871035712,-1.59833340025,-2.45961279538,1.7916151283],"qd":[-5.23934531316e-05,-0.292528306885,0.048348362835,0.25635263708,0.00947425970721,0.42597039175]}
+</system-out>
+	</testcase>
+	<testcase name="pie_eng_assembly" classname="pie_eng_assembly" time="6.68753" status="run">
+		<properties/>
+		<system-out>pie_eng baseline samples=1357 error=1.26634e-05
+pie_eng rigid_cache samples=1356 error=1.28303e-05
+pie_eng bounded_qp samples=1356 error=1.28303e-05
+</system-out>
+	</testcase>
+	<testcase name="pie_eng_control" classname="pie_eng_control" time="2.26875" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 6 arm joints | dt 0.002 s
+Joint order: joint_1_yaw joint_2_shoulder joint_3_elbow joint_4_roll joint_5_pitch joint_6_roll
+State initial: {"time":0,"tool":[-0.135750931393,-0.292899994878,0.0657701046022],"q":[2.8517387927,-0.984061014989,1.0384899317,-1.72307784577,-1.87426294619,-1.1027769444],"qd":[0,0,0,0,0,0]}
+State final: {"time":0.3,"tool":[-0.135749763994,-0.292893276386,0.065770057241],"q":[2.85173644901,-0.984069998226,1.03847120499,-1.72308299151,-1.87426441046,-1.10278465008],"qd":[1.60514557201e-05,0.30198980037,0.0166763942714,-0.102086020605,0.0432640278706,-0.29960488381]}
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_single_assembly" classname="zhuimeng_single_assembly" time="11.5953" status="run">
+		<properties/>
+		<system-out>zhuimeng_single baseline samples=1591 error=1.37299e-05
+zhuimeng_single rigid_cache samples=1591 error=1.36084e-05
+zhuimeng_single bounded_qp samples=1591 error=1.36084e-05
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_single_control" classname="zhuimeng_single_control" time="2.30511" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 6 arm joints | dt 0.002 s
+Joint order: joint_1_yaw joint_2_shoulder joint_3_elbow joint_4_roll joint_5_pitch joint_6_roll
+State initial: {"time":0,"tool":[0.0777261926712,0.267231020515,0.334090719975],"q":[-1.61499396614,0.944265211682,1.17547448757,-2.64145983566,2.09695741191,-0.297285353696],"qd":[0,0,0,0,0,0]}
+State final: {"time":0.3,"tool":[0.0777238196828,0.267223854133,0.334087415305],"q":[-1.61499395725,0.944240676283,1.17543607295,-2.64146355112,2.09694983574,-0.29729207751],"qd":[2.6441532297e-06,0.00673271717755,-0.368609930089,-0.0263463404264,-0.328980596142,-0.181722366943]}
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_dual_assembly" classname="zhuimeng_dual_assembly" time="4.18882" status="run">
+		<properties/>
+		<system-out>zhuimeng_dual baseline samples=1441 error=2.28917e-05
+zhuimeng_dual rigid_cache samples=1450 error=2.37666e-05
+zhuimeng_dual bounded_qp samples=1450 error=2.37666e-05
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_dual_control" classname="zhuimeng_dual_control" time="1.21577" status="run">
+		<properties/>
+		<system-out>MuJoCo 3.3.7 | CPU kinematics | ideal drive (torque mocked) | 7 arm joints | dt 0.002 s
+Joint order: left_joint_1 left_joint_2 left_joint_3 left_joint_4 left_joint_5 left_joint_6 left_joint_7
+State initial: {"time":0,"tool":[-0.267499884502,0.104394438534,0.197747790972],"q":[2.37423698722,-2.07153032598,2.07825046011,1.15361763363,2.18665609426,0.681432530819,-0.227675102363],"qd":[0,0,0,0,0,0,0]}
+State final: {"time":0.3,"tool":[-0.267506678686,0.104407704409,0.197745920411],"q":[2.37430647085,-2.07148103109,2.07834856434,1.15362498793,2.18666975438,0.681450041581,-0.227702798629],"qd":[-0.5751641182,0.568102334964,-0.6,0.405742830888,-0.0125076699187,-0.125745082809,-0.359403415156]}
+</system-out>
+	</testcase>
+	<testcase name="exported_robot_assets" classname="exported_robot_assets" time="5.54072" status="run">
+		<properties/>
+		<system-out>hkust_eng source and generated assets verified
+pie_eng source and generated assets verified
+zhuimeng_single source and generated assets verified
+zhuimeng_dual source and generated assets verified
+187 original export files are byte-identical
+Invalid compound-joint declarations and startup flags rejected
+</system-out>
+	</testcase>
+	<testcase name="hkust_eng_source_fk" classname="hkust_eng_source_fk" time="2.01432" status="run">
+		<properties/>
+		<system-out>{
+  "robot": "hkust_eng",
+  "sample_count": 68,
+  "link_count": 9,
+  "joint_count": 6,
+  "max_position_abs_error_m": 4.440892098500626e-16,
+  "max_rotation_matrix_abs_error": 9.992007221626409e-16,
+  "max_jacobian_abs_error": 3.228339817695769e-10,
+  "source_urdf_sha256": "53407d3afc9557daf89c924e732242cac5cddcf5210a10ff1b017efcab3fd005",
+  "scene_sha256": "da04e27ded021d6312c7be301ccba716bd55f9f23187e633a900594609c8329e",
+  "fk_fixtures": [
+    {
+      "qpos_rad": [
+        0.4488978036391182,
+        -1.264231599248458,
+        -0.5187294975092186,
+        -1.5983282184929997,
+        -2.4596190875450454,
+        1.7916181723256488
+      ],
+      "tool_position_m": [
+        -0.11511907258246515,
+        0.2658227061476853,
+        0.13960292233762378
+      ],
+      "tool_rotation_matrix": [
+        [
+          -0.22305844975102923,
+          0.46196625050350315,
+          0.8583892540044997
+        ],
+        [
+          -0.8771937269380592,
+          -0.47920153757767886,
+          0.029950823088947864
+  ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="pie_eng_source_fk" classname="pie_eng_source_fk" time="2.83037" status="run">
+		<properties/>
+		<system-out>{
+  "robot": "pie_eng",
+  "sample_count": 68,
+  "link_count": 9,
+  "joint_count": 6,
+  "max_position_abs_error_m": 3.3306690738754696e-16,
+  "max_rotation_matrix_abs_error": 9.992007221626409e-16,
+  "max_jacobian_abs_error": 2.9718905114606287e-10,
+  "source_urdf_sha256": "997930c7084369e3bd930a968a7bff33c392eee05f8ceadb6ba4efc010be57b2",
+  "scene_sha256": "8bf4f7bb0200bd7d40c0a0eaa8f9437480593aa9ac79ed5bd0d7815957b788fb",
+  "fk_fixtures": [
+    {
+      "qpos_rad": [
+        2.8517387927045204,
+        -0.9840610149890132,
+        1.0384899316970022,
+        -1.723077845773101,
+        -1.8742629461859748,
+        -1.102776944401547
+      ],
+      "tool_position_m": [
+        -0.13575093139254363,
+        -0.2928999948784355,
+        0.06577010460224161
+      ],
+      "tool_rotation_matrix": [
+        [
+          -0.24448666234406713,
+          -0.9687674516046412,
+          -0.04142338285687136
+        ],
+        [
+          -0.006847222630345429,
+          0.04444362232960547,
+          -0.9989884283496349
+...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_single_source_fk" classname="zhuimeng_single_source_fk" time="2.55444" status="run">
+		<properties/>
+		<system-out>{
+  "robot": "zhuimeng_single",
+  "sample_count": 68,
+  "link_count": 9,
+  "joint_count": 6,
+  "max_position_abs_error_m": 3.3306690738754696e-16,
+  "max_rotation_matrix_abs_error": 1.3322676295501878e-15,
+  "max_jacobian_abs_error": 2.924205887824365e-10,
+  "source_urdf_sha256": "b30c141de3d4eee0d72b49aa0f0b795575f539b753af26cf5a9f71a52314891a",
+  "scene_sha256": "ce6467c4265cae1248c62864b6f0282cf8e803f423cc4bcc4e7c3e010d687448",
+  "fk_fixtures": [
+    {
+      "qpos_rad": [
+        -1.6149939661397972,
+        0.9442652116821048,
+        1.1754744875676235,
+        -2.6414598356601533,
+        2.0969574119132712,
+        -0.2972853536960573
+      ],
+      "tool_position_m": [
+        0.07772619267115018,
+        0.2672310205151198,
+        0.3340907199753226
+      ],
+      "tool_rotation_matrix": [
+        [
+          0.14478926621698351,
+          -0.9439387106870752,
+          0.29667453354605783
+        ],
+        [
+          0.5677644462471793,
+          -0.16630120766880968,
+          -0.806217986592665...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="zhuimeng_dual_source_fk" classname="zhuimeng_dual_source_fk" time="1.90386" status="run">
+		<properties/>
+		<system-out>{
+  "robot": "zhuimeng_dual",
+  "sample_count": 68,
+  "link_count": 11,
+  "joint_count": 7,
+  "max_position_abs_error_m": 3.3306690738754696e-16,
+  "max_rotation_matrix_abs_error": 1.3322676295501878e-15,
+  "max_jacobian_abs_error": 3.295910211420505e-10,
+  "source_urdf_sha256": "d3d05b90bf5038dbe5d7430ed9c6fbd3ea716fbad630f8c92d26c364242db917",
+  "scene_sha256": "ec7b1b415a5a2e299c045dc525da06921cfde78a38b1b68e5239621725a2541e",
+  "fk_fixtures": [
+    {
+      "qpos_rad": [
+        2.3742369872178526,
+        -2.071530325981533,
+        2.078250460112863,
+        1.15361763362618,
+        2.1866560942590922,
+        0.6814325308187532,
+        -0.22767510236282423
+      ],
+      "tool_position_m": [
+        -0.26749988450223994,
+        0.10439443853412,
+        0.19774779097176876
+      ],
+      "tool_rotation_matrix": [
+        [
+          -5.8260798572684624e-05,
+          0.9997440446406831,
+          0.02262392121559076
+        ],
+        [
+          -0.6835397846974636,
+          -0.01655331340468863,
+ ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

@@ -1,0 +1,32 @@
+Internal ctest changing into directory: /home/lqx/code/tech_core_arm_solve/build
+Test project /home/lqx/code/tech_core_arm_solve/build
+      Start 34: hkust_eng_assembly
+ 1/13 Test #34: hkust_eng_assembly ...............   Passed    5.02 sec
+      Start 35: hkust_eng_control
+ 2/13 Test #35: hkust_eng_control ................   Passed    1.91 sec
+      Start 36: pie_eng_assembly
+ 3/13 Test #36: pie_eng_assembly .................   Passed    6.24 sec
+      Start 37: pie_eng_control
+ 4/13 Test #37: pie_eng_control ..................   Passed    2.69 sec
+      Start 38: zhuimeng_single_assembly
+ 5/13 Test #38: zhuimeng_single_assembly .........   Passed    9.89 sec
+      Start 39: zhuimeng_single_control
+ 6/13 Test #39: zhuimeng_single_control ..........   Passed    2.42 sec
+      Start 40: zhuimeng_dual_assembly
+ 7/13 Test #40: zhuimeng_dual_assembly ...........   Passed    3.49 sec
+      Start 41: zhuimeng_dual_control
+ 8/13 Test #41: zhuimeng_dual_control ............   Passed    1.17 sec
+      Start 42: exported_robot_assets
+ 9/13 Test #42: exported_robot_assets ............   Passed    5.42 sec
+      Start 43: hkust_eng_source_fk
+10/13 Test #43: hkust_eng_source_fk ..............   Passed    2.03 sec
+      Start 44: pie_eng_source_fk
+11/13 Test #44: pie_eng_source_fk ................   Passed    2.84 sec
+      Start 45: zhuimeng_single_source_fk
+12/13 Test #45: zhuimeng_single_source_fk ........   Passed    2.63 sec
+      Start 46: zhuimeng_dual_source_fk
+13/13 Test #46: zhuimeng_dual_source_fk ..........   Passed    1.88 sec
+
+100% tests passed, 0 tests failed out of 13
+
+Total Test time (real) =  47.64 sec

@@ -1,0 +1,7 @@
+robot,model_path,index,joint,type,lower,upper,velocity_limit
+"zhuimeng_single","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_single/planning.xml",0,"joint_1_yaw",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_single","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_single/planning.xml",1,"joint_2_shoulder",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_single","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_single/planning.xml",2,"joint_3_elbow",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_single","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_single/planning.xml",3,"joint_4_roll",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_single","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_single/planning.xml",4,"joint_5_pitch",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"zhuimeng_single","/home/lqx/code/tech_core_arm_solve/models/zhuimeng_single/planning.xml",5,"joint_6_roll",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998

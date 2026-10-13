@@ -1,0 +1,210 @@
+{
+  "startup": {
+    "event": "ready",
+    "key": -1,
+    "state": "EDITING",
+    "robot": "zhuimeng_single",
+    "backend": "rigid_cache",
+    "revision": 0,
+    "time": 0,
+    "tcp": [
+      7.47398700984e-07,
+      0.339977371309,
+      0.199985216377
+    ],
+    "q": [
+      -1.61499396614,
+      0.944265211682,
+      1.17547448757,
+      -2.64145983566,
+      2.09695741191,
+      -0.297285353696
+    ],
+    "core_world": [
+      6.98048675514e-17,
+      0.38,
+      0.2
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Enter: plan and preview"
+  },
+  "preset": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "EDITING",
+    "robot": "zhuimeng_single",
+    "backend": "rigid_cache",
+    "revision": 1,
+    "time": 0,
+    "tcp": [
+      7.47398700984e-07,
+      0.339977371309,
+      0.199985216377
+    ],
+    "q": [
+      -1.61499396614,
+      0.944265211682,
+      1.17547448757,
+      -2.64145983566,
+      2.09695741191,
+      -0.297285353696
+    ],
+    "core_world": [
+      6.98048675514e-17,
+      0.38,
+      0.2
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Assembly preset loaded. Backspace: URDF zero; Enter: plan and preview"
+  },
+  "preview": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "PREVIEW_READY",
+    "robot": "zhuimeng_single",
+    "backend": "rigid_cache",
+    "revision": 1,
+    "time": 0,
+    "tcp": [
+      7.47398700984e-07,
+      0.339977371309,
+      0.199985216377
+    ],
+    "q": [
+      -1.61499396614,
+      0.944265211682,
+      1.17547448757,
+      -2.64145983566,
+      2.09695741191,
+      -0.297285353696
+    ],
+    "core_world": [
+      6.98048675514e-17,
+      0.38,
+      0.2
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "message": "Preview only - arm held. Enter: execute",
+    "success": true,
+    "reason": "validated_partial_q",
+    "knots": 463,
+    "requested_points": 482,
+    "candidate_points": 463,
+    "planning_seconds": 1.281160703,
+    "approach_seconds": 0.000513132,
+    "approach_iterations": 0,
+    "approach_shortcuts": 0,
+    "preinsert_ik_attempts": 13,
+    "posture_candidates": 7,
+    "planning_attempts": 1,
+    "posture_search_seconds": 0.187644185,
+    "q_positive_degrees": 55,
+    "q_final_degrees": -90,
+    "full_q_sweep": false,
+    "q_positive_stop": "ik_iteration limit",
+    "q_negative_stop": "travel_limit",
+    "preinsert_joint_change_degrees": 0.0174041428302,
+    "preinsert_last_joint_change_degrees": 0.00351780722729,
+    "ghost_time": 0.919441604302,
+    "ghost_geoms": 35,
+    "ghost_paused": false,
+    "ghost_q": [
+      -1.5890197207,
+      1.07026222433,
+      1.30869398526,
+      -2.61084170084,
+      2.09797242979,
+      -0.267010166794
+    ]
+  },
+  "complete": {
+    "event": "screenshot",
+    "key": -1,
+    "state": "COMPLETE",
+    "robot": "zhuimeng_single",
+    "backend": "rigid_cache",
+    "revision": 1,
+    "time": 31.1929289604,
+    "tcp": [
+      0.0690000001134,
+      0.440999999546,
+      0.407999999805
+    ],
+    "q": [
+      -1.78424648105,
+      0.994834937795,
+      1.33337395128,
+      -1.46222422222,
+      0.87843154534,
+      3.08759870166
+    ],
+    "core_world": [
+      6.98048675514e-17,
+      0.38,
+      0.2
+    ],
+    "core_rpy": [
+      0,
+      0,
+      0
+    ],
+    "mechanism": [
+      0.1,
+      0.1,
+      1.57079632679,
+      -1.57079632679
+    ],
+    "message": "Assembly trajectory complete. Backspace: zero joints; R: assembly preset",
+    "success": true,
+    "reason": "validated_partial_q",
+    "knots": 463,
+    "requested_points": 482,
+    "candidate_points": 463,
+    "planning_seconds": 1.281160703,
+    "approach_seconds": 0.000513132,
+    "approach_iterations": 0,
+    "approach_shortcuts": 0,
+    "preinsert_ik_attempts": 13,
+    "posture_candidates": 7,
+    "planning_attempts": 1,
+    "posture_search_seconds": 0.187644185,
+    "q_positive_degrees": 55,
+    "q_final_degrees": -90,
+    "full_q_sweep": false,
+    "q_positive_stop": "ik_iteration limit",
+    "q_negative_stop": "travel_limit",
+    "preinsert_joint_change_degrees": 0.0174041428302,
+    "preinsert_last_joint_change_degrees": 0.00351780722729
+  },
+  "passed": true
+}

@@ -1,0 +1,7 @@
+robot,model_path,index,joint,type,lower,upper,velocity_limit
+"pie_eng","/home/lqx/code/tech_core_arm_solve/models/pie_eng/planning.xml",0,"joint_1_yaw",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"pie_eng","/home/lqx/code/tech_core_arm_solve/models/pie_eng/planning.xml",1,"joint_2_shoulder",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"pie_eng","/home/lqx/code/tech_core_arm_solve/models/pie_eng/planning.xml",2,"joint_3_elbow",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"pie_eng","/home/lqx/code/tech_core_arm_solve/models/pie_eng/planning.xml",3,"joint_4_roll",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"pie_eng","/home/lqx/code/tech_core_arm_solve/models/pie_eng/planning.xml",4,"joint_5_pitch",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998
+"pie_eng","/home/lqx/code/tech_core_arm_solve/models/pie_eng/planning.xml",5,"joint_6_roll",revolute,-3.1415926500000002,3.1415926500000002,0.59999999999999998

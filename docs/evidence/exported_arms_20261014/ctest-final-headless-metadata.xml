@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="1"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="Demonmasterlqx"
+	time="6"
+	timestamp="2026-10-14T02:37:13"
+	>
+	<testcase name="exported_robot_assets" classname="exported_robot_assets" time="6.29343" status="run">
+		<properties/>
+		<system-out>hkust_eng source and generated assets verified
+pie_eng source and generated assets verified
+zhuimeng_single source and generated assets verified
+zhuimeng_dual source and generated assets verified
+187 original export files are byte-identical
+Invalid compound-joint declarations and startup flags rejected
+</system-out>
+	</testcase>
+</testsuite>
