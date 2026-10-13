@@ -1,18 +1,19 @@
 # RoboMaster 2026 科技核心与机械臂仿真
 
-C++17 + MuJoCo 3.3.7，使用 HKUST RM26 version3 七关节机械臂与科技核心网格。推荐入口 `rm26_demo` 在同一窗口中完成场景编辑、逆运动学与轨迹规划、虚影预览和装配仿真执行。
+C++17 + MuJoCo 3.3.7，统一支持 HKUST RM26 七轴机械臂、MecArm 六轴机械臂和外部 URDF 模型包。推荐入口 `arm_demo --robot mec_arm`（或 `--robot rm26`）完成场景编辑、逆运动学、碰撞检查、轨迹预览与装配仿真；原 RM26 命令保留。
 
-[文档索引](docs/README.md) · [方案手册](docs/handbook/README.md) · [最新复现记录](docs/reproduction_20261013.md)
+[文档索引](docs/README.md) · [方案手册](docs/handbook/README.md) · [多机械臂接入指南](docs/multi_arm.md) · [MecArm 模型与验证](docs/mec_arm.md)
 
 ## 启动联合 Demo
 
 已构建的环境直接运行：
 
 ```bash
-./scripts/run_planning_demo.sh
+./scripts/run_planning_demo.sh --robot mec_arm
+# 原 RM26：./scripts/run_planning_demo.sh --robot rm26
 ```
 
-启动时七个关节均为零。按 **R** 载入装配预设，按 **Enter** 规划并预览，预览成功后再次 **Enter** 执行；也可以从零位直接规划。
+启动于当前模型的关节零位（受关节边界约束）。按 **R** 载入装配预设，按 **Enter** 规划并预览，预览成功后再次 **Enter** 执行；也可以从零位直接规划。
 
 | 操作 | 按键 |
 | --- | --- |
@@ -41,20 +42,23 @@ CUDA_VISIBLE_DEVICES='' ctest --test-dir build --output-on-failure
 ./scripts/run_planning_demo.sh
 ```
 
-正常构建运行不需要 Python，模型与网格已入库。MuJoCo 自动安装至 `.deps/mujoco-3.3.7` 并校验下载包；来源见 [依赖说明](reference/mujoco/README.md)。自定义 MuJoCo 路径、无窗口构建、C++ 库调用和排错见 [代码手册](docs/handbook/03_code_guide.md)。
+正常 C++ 构建运行不需要 Python，模型与网格已入库；检测到 Python 时 CTest 还会运行外部机器人包导入测试。MuJoCo 自动安装至 `.deps/mujoco-3.3.7` 并校验下载包；来源见 [依赖说明](reference/mujoco/README.md)。自定义 MuJoCo 路径、无窗口构建、C++ 库调用和排错见 [代码手册](docs/handbook/03_code_guide.md)。
 
 ## 程序与阅读入口
 
 | 入口 | 用途 | 文档 |
 | --- | --- | --- |
-| `rm26_demo` | 联合逆解、碰撞检查、规划预览与执行 | [操作说明](docs/planning_demo.md) |
-| `rm26_plan` / `rm26_plan_example` | 命令行规划与最小库调用示例 | [代码手册](docs/handbook/03_code_guide.md) |
-| `rm26_arm` | 独立七关节机械臂控制与末端平移 | [机械臂说明](docs/rm26_arm.md) |
+| `arm_demo` / `rm26_demo` | 联合逆解、碰撞检查、规划预览与执行 | [操作说明](docs/planning_demo.md) |
+| `arm_plan` / `arm_plan_example` | 命令行规划与最小库调用示例 | [代码手册](docs/handbook/03_code_guide.md) |
+| `arm_control` / `rm26_arm` | 选定机械臂的关节控制与末端平移 | [机械臂说明](docs/rm26_arm.md) |
+| `arm_kinematics_example ROBOT` | 不依赖装配场景的 FK/IK 示例 | [接入指南](docs/multi_arm.md) |
 | `tech_core` | 已对准单元的导向机构与一至四级规则仿真 | [核心仿真说明](docs/tech_core.md) |
 
 理论分为 [逆运动学](docs/handbook/01_inverse_kinematics.md) 和 [轨迹规划](docs/handbook/02_trajectory_planning.md)。规则出处、模型来源、历史实验、证据和交付导出统一由 [文档索引](docs/README.md) 导航。
 
 ## 最近验证与范围
+
+[多机械臂验证](docs/evidence/multi_arm_20261014/README.md)覆盖动态维度求解器、RM26 回归、MecArm 源 URDF 对照、装配轨迹与独立审计、窗口交互，以及无需重新编译的外部机器人接入。MecArm 使用明确声明的虚拟转接夹具和实验室核心位姿，详见[模型说明](docs/mec_arm.md)。
 
 [2026-10-13 本机复现](docs/reproduction_20261013.md)记录窗口构建 **25/25**、无窗口构建 **23/23** 项 CTest 通过。沿用相同的固定 100 请求、每次 5 s 预算：
 

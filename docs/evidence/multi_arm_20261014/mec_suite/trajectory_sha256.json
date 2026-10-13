@@ -1,0 +1,6 @@
+{
+  "trajectories/rigid_cache_confirm_twist_r0.csv": "4d29f19f2705d3216e8e257e3b5eaf1d89b5e8b1a95a3d0350a836e1287dc194",
+  "trajectories/rigid_cache_dev_nominal_r0.csv": "4c22e3dac92d0bd28bec4205f7c8dc707bd472c890fce0911a0d475fa369763e",
+  "trajectories/rigid_cache_reject_blocked_r0.csv": "1fc76a990e25f6ef3e4ef252c6cc2cb2eaa01f81abab415972c729a97c930ace",
+  "trajectories/rigid_cache_reject_unreachable_r0.csv": "1fc76a990e25f6ef3e4ef252c6cc2cb2eaa01f81abab415972c729a97c930ace"
+}

@@ -8,6 +8,7 @@
 
 | 证据 | 对应报告与用途 |
 | --- | --- |
+| [multi_arm_20261014](multi_arm_20261014/README.md) | 多机械臂架构、MecArm 源模型与轨迹审计、双构建测试和交互证据 |
 | [reproduction_20261013](reproduction_20261013/README.md) | [2026-10-13 本机复现](../reproduction_20261013.md)：当前评测、历史程序重跑、归档复验、CTest、资产与媒体校验 |
 | [delivery_20261013](delivery_20261013/) | [首次交付验证](../delivery_validation.md)：`0fbd7f7` 交付阶段的构建、测试与小样本 |
 | [planner_success100](planner_success100/) | [2026-10-11 固定 100 请求](../planner_success100.md)：共享输入、两后端逐例结果及审计 |

@@ -1,0 +1,12 @@
+{
+  "byte_identical": true,
+  "files_sha256": {
+    "models/rm26_arm/scene.xml": "3ea58f60bdb8625ab2f52480696e8aaa6051848e319c528f3eccddf74c18e5c6",
+    "models/planning/scene.xml": "4de09ebacdead0f3ea434a2c82adfe3223a416dce398b855fc58ebd6a8bd3a5a",
+    "models/planning/collision_manifest.json": "2215e6cfdcbdc90125e87fa5a23092e49ced2c07cde8b41040b04e59ee8464ac",
+    "models/mec_arm/scene.xml": "b70338c692ecb2908d179a38d732dcfdca58d9fec5df60dd1802b483c9750d99",
+    "models/mec_arm/planning.xml": "9dc347cf1fc8e6584ef6fe812491b2744120799db4cb89820dcaea46b1c7f861",
+    "models/mec_arm/import_report.json": "ff105b8f47817fe7d1d689cd8a6a05fae58ba98ee794c49fb17a5a997f797453"
+  },
+  "mecarm_source_files": 15
+}

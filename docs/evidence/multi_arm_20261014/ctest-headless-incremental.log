@@ -1,0 +1,12 @@
+Internal ctest changing into directory: /home/lqx/code/tech_core_arm_solve/build-headless
+Test project /home/lqx/code/tech_core_arm_solve/build-headless
+    Start 21: planning_ik
+1/3 Test #21: planning_ik ......................   Passed    0.00 sec
+    Start 26: multi_arm_contract
+2/3 Test #26: multi_arm_contract ...............   Passed    5.21 sec
+    Start 30: external_robot_import
+3/3 Test #30: external_robot_import ............   Passed    0.46 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =   5.68 sec

@@ -1,0 +1,72 @@
+Internal ctest changing into directory: /home/lqx/code/tech_core_arm_solve/build
+Test project /home/lqx/code/tech_core_arm_solve/build
+      Start 22: planning_contract
+      Start 23: planning_approach
+ 1/33 Test #23: planning_approach ................   Passed   33.17 sec
+      Start 33: mec_arm_assembly
+ 2/33 Test #33: mec_arm_assembly .................   Passed   11.27 sec
+      Start 25: planning_demo_contract
+ 3/33 Test #25: planning_demo_contract ...........   Passed   11.62 sec
+      Start 28: multi_arm_contract
+ 4/33 Test #22: planning_contract ................   Passed   60.37 sec
+      Start 20: planning_library_example
+ 5/33 Test #28: multi_arm_contract ...............   Passed    4.76 sec
+      Start  7: demo_level_4
+ 6/33 Test  #7: demo_level_4 .....................   Passed    2.61 sec
+      Start 18: mec_arm_kinematics_example
+ 7/33 Test #20: planning_library_example .........   Passed    4.50 sec
+      Start 30: mec_arm_invalid_dimension
+ 8/33 Test #18: mec_arm_kinematics_example .......   Passed    2.52 sec
+      Start 29: mec_arm_control
+ 9/33 Test #30: mec_arm_invalid_dimension ........   Passed    2.49 sec
+      Start 10: demo_tilted_station
+10/33 Test #29: mec_arm_control ..................   Passed    2.53 sec
+      Start  4: demo_level_1
+11/33 Test #10: demo_tilted_station ..............   Passed    2.62 sec
+      Start  5: demo_level_2
+12/33 Test  #4: demo_level_1 .....................   Passed    2.88 sec
+      Start  8: demo_q_positive_limit
+13/33 Test  #5: demo_level_2 .....................   Passed    2.58 sec
+      Start  9: demo_q_negative_limit
+14/33 Test  #8: demo_q_positive_limit ............   Passed    2.32 sec
+      Start  6: demo_level_3
+15/33 Test  #9: demo_q_negative_limit ............   Passed    2.11 sec
+      Start  2: physics
+16/33 Test  #6: demo_level_3 .....................   Passed    1.97 sec
+      Start 27: planning_demo_invalid_backend
+17/33 Test  #2: physics ..........................   Passed    1.68 sec
+      Start 12: rm26_arm_control
+18/33 Test #27: planning_demo_invalid_backend ....   Passed    1.23 sec
+      Start 19: rm26_kinematics_example
+19/33 Test #12: rm26_arm_control .................   Passed    0.89 sec
+      Start 15: rm26_arm_cartesian
+20/33 Test #19: rm26_kinematics_example ..........   Passed    0.77 sec
+      Start 14: rm26_arm_demo
+21/33 Test #15: rm26_arm_cartesian ...............   Passed    0.75 sec
+      Start 13: rm26_arm_idle
+22/33 Test #14: rm26_arm_demo ....................   Passed    0.76 sec
+      Start 24: planning_scene
+23/33 Test #13: rm26_arm_idle ....................   Passed    0.74 sec
+      Start  3: geometry_fidelity
+24/33 Test  #3: geometry_fidelity ................   Passed    0.60 sec
+      Start 32: external_robot_import
+25/33 Test #24: planning_scene ...................   Passed    1.12 sec
+      Start 31: robot_unknown
+26/33 Test #31: robot_unknown ....................   Passed    0.00 sec
+      Start  1: rules
+27/33 Test  #1: rules ............................   Passed    0.00 sec
+      Start 26: planning_demo_help
+28/33 Test #26: planning_demo_help ...............   Passed    0.00 sec
+      Start 21: planning_ik
+29/33 Test #21: planning_ik ......................   Passed    0.00 sec
+      Start 11: cli_invalid_level
+30/33 Test #11: cli_invalid_level ................   Passed    0.00 sec
+      Start 16: rm26_arm_invalid_velocity
+31/33 Test #16: rm26_arm_invalid_velocity ........   Passed    0.00 sec
+      Start 17: rm26_arm_conflicting_commands
+32/33 Test #17: rm26_arm_conflicting_commands ....   Passed    0.00 sec
+33/33 Test #32: external_robot_import ............   Passed    0.45 sec
+
+100% tests passed, 0 tests failed out of 33
+
+Total Test time (real) =  79.78 sec

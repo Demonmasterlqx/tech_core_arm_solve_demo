@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-14",
+  "git_base": "d4114ea",
+  "implementation_commit": "21f804fd08f55f7d04d89ed158b0e797ae8bb4ac",
+  "branch": "feat/multi-arm-mecarm",
+  "build_tests": {
+    "viewer": {
+      "passed": 33,
+      "total": 33
+    },
+    "headless": {
+      "passed": 31,
+      "total": 31
+    },
+    "final_headless_incremental": {
+      "passed": 3,
+      "total": 3
+    }
+  },
+  "mecarm_source": {
+    "commit": "5b00fbc32a32b79a89ff9520c4fe13f2eaf0a945",
+    "files": 15,
+    "checksums_verified": true
+  },
+  "nominal_all_methods": {
+    "count": 9,
+    "successful": 9,
+    "dense_cpp_validated": 9,
+    "independent_urdf_audit": true
+  },
+  "mecarm_suite": [
+    {
+      "case": "dev_nominal",
+      "success": true,
+      "reason": "validated"
+    },
+    {
+      "case": "confirm_twist",
+      "success": false,
+      "reason": "ik_twist_234_iteration limit"
+    },
+    {
+      "case": "reject_unreachable",
+      "success": false,
+      "reason": "ik_preinsert_no descending feasible step"
+    },
+    {
+      "case": "reject_blocked",
+      "success": false,
+      "reason": "start_collision_carried_unit_flange_0/collision_block_fixture_d=-0.050944"
+    }
+  ],
+  "interactive": {
+    "passed": true,
+    "dof": 6,
+    "preview_kept_actual_state": true,
+    "execution_complete": true,
+    "q_positive_degrees": 22,
+    "q_final_degrees": -65,
+    "full_q_sweep": false
+  },
+  "limits": [
+    "MecArm uses a virtual rigid adapter without solid/collision geometry or hardware calibration.",
+    "Laboratory station preset explicitly disables rule-table/front-plane pose limits; assembly stages, joint limits and collision checks remain enforced.",
+    "35 degree fixed Q confirmation request fails IK and is not executable; the nominal task has Q=0.",
+    "Kinematic drive and replay do not implement hardware, motor torque or physical grasp control."
+  ],
+  "evidence_sha256": {
+    "all_methods/atlas_build.csv": "c33f34fe230ed7a0d660fa8fe1f59afaf42b711ebe72a7e71e92563ea57f5a75",
+    "all_methods/audit.json": "e36ca3b7c7714cab0346fd2e125491f79c0ab7b38e2dd6a5f946976e2b9e11a3",
+    "all_methods/robot.csv": "3faa57ea514f0c96bc9210d6e6e92a077a7a24171e76173bd5042a6eb7b9e34f",
+    "all_methods/runs.csv": "f1def9944a9df48c2243b68c638d9961c4c05ef119ceffd656bb598faedcadd1",
+    "all_methods/scenarios.csv": "1ab4b9c1ed620c635f00f17bce05875df3fc58b43f2271515231edf656945afa",
+    "all_methods/timing.csv": "19947b44f4fe156abb74874e38df59e7d42abbef6853e5a7f1c6d79febda2bcc",
+    "all_methods/trajectories.tar.xz": "6601139c437dec3330651ec095eef3221ca2dd63abe4307a2d986fa76aada6b1",
+    "all_methods/trajectory_sha256.json": "f56c60e1671ce19b879c1550b20a89b9dd903b95af32de47071d4205fd3c3ea4",
+    "ctest-headless-incremental.log": "e9fd952d2342d76f4a45ac9e16810e4fc5141bf7e8c6f305fee670f6365ee03d",
+    "ctest-headless.log": "cee01b853b2b208935fa3d76ed1227f61f4a3192684d632c079d751bab1cb95d",
+    "ctest-viewer.log": "5664850b406e33a4d2f50b431643edc4c5c9b6a7c6c462a10b30a3f3857f7bf0",
+    "keyboard_mec_arm.json": "1e51a4be7a1a5096f177fe4db30fc3e81d5d93b634ec851e96c8da149c903f24",
+    "keyboard_mec_arm.jsonl": "ed17bed512ff436be15329e772d3307ec060a92d463fe6322bc03f829c8144d6",
+    "mec_arm_fk.json": "2a733003278be80ea3539d73bb7fb53b93e957a27e31c4806be0dd418cae01b2",
+    "mec_suite/audit.json": "211a84f51fe614baf81de29b4ae7e673e3f5d2d775d62d1164c0be3a20ecd510",
+    "mec_suite/robot.csv": "3faa57ea514f0c96bc9210d6e6e92a077a7a24171e76173bd5042a6eb7b9e34f",
+    "mec_suite/runs.csv": "9319968001daa2c0bf687e2622a39db41fab2fe406806997eb0841f9fa5b4f0e",
+    "mec_suite/scenarios.csv": "1ab4b9c1ed620c635f00f17bce05875df3fc58b43f2271515231edf656945afa",
+    "mec_suite/timing.csv": "615b8985fcc2eb0026feb6bddc2d980d9d9cc9958f43cbb06b34b5cf83969680",
+    "mec_suite/trajectories.tar.xz": "2958f1e0a23189856b614d15363cbdba88743249b16e2456372356a96a826ddc",
+    "mec_suite/trajectory_sha256.json": "c1f84d282a5af3623c9f1415ad3ad6e418ad8a2a5c05a328c828db843f678ffe",
+    "replay.json": "214e90d3495aa832b899b07fc8da38e89814f4358e8dbe61ba50770b2971d496",
+    "replay.log": "7aa110391f51b4240116f622f6d4efae13de277915829f76774ff7ecb701be2d",
+    "reproducibility.json": "f91e2b9a24f39f7b9cd9947f2525157cc3b8657244e6780c5536c9c915ed077e"
+  }
+}

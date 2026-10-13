@@ -1,0 +1,7 @@
+robot,model_path,index,joint,type,lower,upper,velocity_limit
+"mec_arm","/home/lqx/code/tech_core_arm_solve/models/mec_arm/planning.xml",0,"Joint1",revolute,-3.1000000000000001,3.1000000000000001,1
+"mec_arm","/home/lqx/code/tech_core_arm_solve/models/mec_arm/planning.xml",1,"Joint2",revolute,-2.6000000000000001,0,1
+"mec_arm","/home/lqx/code/tech_core_arm_solve/models/mec_arm/planning.xml",2,"Joint3",revolute,0,4,1
+"mec_arm","/home/lqx/code/tech_core_arm_solve/models/mec_arm/planning.xml",3,"Joint4",revolute,-3.1000000000000001,3.1000000000000001,1
+"mec_arm","/home/lqx/code/tech_core_arm_solve/models/mec_arm/planning.xml",4,"Joint5",revolute,0,3.1000000000000001,1
+"mec_arm","/home/lqx/code/tech_core_arm_solve/models/mec_arm/planning.xml",5,"Joint6",revolute,-1.5700000000000001,1.5700000000000001,1
