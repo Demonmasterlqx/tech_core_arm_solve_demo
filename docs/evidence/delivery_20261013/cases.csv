@@ -1,0 +1,5 @@
+case,split,group,start,core_x,core_y,core_z,core_theta,core_phi,core_alpha
+nominal_zero,development,demo,zero,-0.09,0.2,0.5,0,90,0
+nominal_preset,development,demo,preset,-0.09,0.2,0.5,0,90,0
+q_recovery_zero,development,demo,zero,0.16,0.2,0.47,-66,39,6
+blocked_zero,negative,blocked,zero,-0.09,0.2,0.5,0,90,0

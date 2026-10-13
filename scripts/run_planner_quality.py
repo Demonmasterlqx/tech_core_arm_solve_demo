@@ -9,6 +9,7 @@ from logging.handlers import RotatingFileHandler
 import os
 from pathlib import Path
 import random
+import shutil
 import subprocess
 import time
 
@@ -62,21 +63,24 @@ def prepare(path):
     (path / 'protocol.json').write_text(json.dumps(protocol, indent=2) + '\n')
 
 
-def compile_binary(output, build):
-    mujoco = ROOT / '.deps/mujoco-3.3.7'
+def freeze_binary(output, build):
+    built_binary = build / 'planner_quality_benchmark'
+    if not built_binary.is_file():
+        raise FileNotFoundError(
+            f'Missing {built_binary}; configure and build the planner_quality_benchmark CMake target first')
     binary = output / 'planner'
-    sources = [ROOT / 'scripts/benchmark_planner_quality.cpp', ROOT / 'src/planning.cpp',
+    sources = [ROOT / 'src/planner_quality_main.cpp', ROOT / 'src/planning.cpp',
                ROOT / 'src/planning_ik.cpp', ROOT / 'src/planning_approach.cpp', ROOT / 'src/planning_scene.cpp',
                ROOT / 'include/tech_core/planning.hpp', ROOT / 'include/tech_core/planning_ik.hpp',
-               ROOT / 'models/planning/scene.xml']
+               ROOT / 'models/planning/scene.xml', ROOT / 'CMakeLists.txt', ROOT / 'cmake/planning.cmake']
     libraries = [build / name for name in ('librm26_planning.a', 'libtech_core_sim.a', 'libtech_core_rules.a')]
-    command = ['c++', '-std=c++17', '-O2', str(sources[0]), '-I' + str(ROOT/'include'),
-               '-I/usr/include/eigen3', '-I' + str(mujoco/'include'),
-               '-DTECH_CORE_PLANNING_MODEL_PATH="' + str(ROOT/'models/planning/scene.xml') + '"',
-               '-DTECH_CORE_MODEL_PATH="' + str(ROOT/'models/tech_core.xml') + '"', *map(str, libraries),
-               '-L' + str(mujoco/'lib'), '-Wl,-rpath,' + str(mujoco/'lib'), '-lmujoco', '-o', str(binary)]
-    subprocess.run(command, check=True, timeout=120)
-    return binary, {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources + libraries}
+    # CMake owns compiler, Eigen/MuJoCo discovery and transitive linkage. Copy
+    # the prebuilt evaluator so independent runs never race on build outputs.
+    # The caller must rebuild after changing source, as for the interactive Demo.
+    shutil.copy2(built_binary, binary)
+    files = sources + libraries + [build / 'CMakeCache.txt', built_binary]
+    return binary, {str(p.relative_to(ROOT) if p.is_relative_to(ROOT) else p):
+                    hashlib.sha256(p.read_bytes()).hexdigest() for p in files if p.is_file()}
 
 
 def main():
@@ -84,7 +88,8 @@ def main():
     parser.add_argument('--suite', type=Path, required=True)
     parser.add_argument('--prepare-only', action='store_true')
     parser.add_argument('--output', type=Path)
-    parser.add_argument('--build-dir', type=Path, default=ROOT/'build')
+    parser.add_argument('--build-dir', type=Path, default=ROOT/'build',
+                        help='Configured and built CMake directory containing planner_quality_benchmark')
     parser.add_argument('--binary', type=Path, help='Reuse a frozen evaluator (e.g. the original baseline binary)')
     parser.add_argument('--split', default='development', choices=['development', 'confirmation', 'regression', 'negative', 'all'])
     parser.add_argument('--method', default='rigid_cache', choices=['baseline', 'rigid_cache'])
@@ -99,7 +104,7 @@ def main():
     args.output.mkdir(parents=True, exist_ok=False)
     os.environ.update(CUDA_VISIBLE_DEVICES='', OMP_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1')
     os.sched_setaffinity(0, {args.cpu})
-    binary, sources = (args.binary.resolve(), {}) if args.binary else compile_binary(args.output, args.build_dir.resolve())
+    binary, sources = (args.binary.resolve(), {}) if args.binary else freeze_binary(args.output, args.build_dir.resolve())
     metadata = dict(method=args.method, split=args.split, cpu=args.cpu, CUDA_VISIBLE_DEVICES='',
                     git_head=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                     source_hashes=sources, binary=str(binary), binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),

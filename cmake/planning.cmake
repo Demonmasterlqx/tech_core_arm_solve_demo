@@ -8,7 +8,18 @@ target_compile_options(rm26_planning PRIVATE -Wall -Wextra -Wpedantic)
 add_executable(rm26_plan src/planning_main.cpp)
 target_link_libraries(rm26_plan PRIVATE rm26_planning)
 target_compile_options(rm26_plan PRIVATE -Wall -Wextra -Wpedantic)
+
+# User-facing library example and the fixed-corpus evaluator share the same
+# dependency graph, compiler configuration and model paths as the planner.
+add_executable(rm26_plan_example examples/plan_assembly.cpp)
+target_link_libraries(rm26_plan_example PRIVATE rm26_planning)
+target_compile_options(rm26_plan_example PRIVATE -Wall -Wextra -Wpedantic)
+add_executable(planner_quality_benchmark src/planner_quality_main.cpp)
+target_link_libraries(planner_quality_benchmark PRIVATE rm26_planning)
+target_compile_options(planner_quality_benchmark PRIVATE -Wall -Wextra -Wpedantic)
 if(BUILD_TESTING)
+  add_test(NAME planning_library_example COMMAND rm26_plan_example)
+  set_tests_properties(planning_library_example PROPERTIES TIMEOUT 20)
   add_executable(planning_ik_test tests/planning_ik_test.cpp)
   target_link_libraries(planning_ik_test PRIVATE rm26_planning)
   add_test(NAME planning_ik COMMAND planning_ik_test)

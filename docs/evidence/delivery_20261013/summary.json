@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-13",
+  "purpose": "Delivery infrastructure and documentation regression, not a new success-rate measurement",
+  "baseline_commit": "9fa49c6",
+  "core_algorithm_changed": false,
+  "ctest": {
+    "passed": 25,
+    "failed": 0,
+    "wall_seconds": 77.75
+  },
+  "smoke_per_backend": {
+    "requests": 4,
+    "expected_positive_passed": 3,
+    "expected_negative_rejected": 1,
+    "all_positive_full_q": true,
+    "all_positive_uncached_audit_passed": true
+  },
+  "frozen_binary_negative_check_passed": true,
+  "examples": {
+    "baseline": "passed with full Q and uncached validation",
+    "rigid_cache": "passed in CTest"
+  },
+  "source_hashes": {
+    "src/planning.cpp": "63e1dea9678841a2533daa445a28a77b8a65547eeb19577435c20b75b70ce42d",
+    "src/planning_ik.cpp": "eb2fab55f02e22869f3b3dd5eed35312ac944e7bbd06dace5d923a7b65c677aa",
+    "src/planning_approach.cpp": "45b9e0ee33f71938d952cd7f1b899ee5b0527ed343e688821713b72bafa5be9e",
+    "src/planning_scene.cpp": "289ac5a97c9a10e95a78a0ddd6f3d82015131f54b11c3ec51b70d280f7300c25",
+    "include/tech_core/planning.hpp": "f38a74c05435e425dcc721cb455ad51d6b7c1738c868e30e9ff2968d3eaaa410",
+    "include/tech_core/planning_ik.hpp": "e6c51e66d165db7018f67f76ff2f9d225408d28b28899945bbc00ff0e64e150f"
+  },
+  "files_sha256": {
+    "baseline.csv": "d64407b29d67b33f450e40dd4a59dc70f59310bd9588014ca1d2b9802719ce62",
+    "cases.csv": "5fc1cba5d78ce09104129cf5140037f38bc4903bedd422a8d668647e78a228b2",
+    "ctest.log": "eebcde901224b3ecbd2899d7d191b5077d58ffa6fd6a1f7762f602a0dea38286",
+    "rigid.csv": "bb0ed4dd40686fe5d5f5a8325ef21db92ecf950ae2ebc703067b6a564ebcaa58"
+  },
+  "gpu_context_created": false,
+  "post_archive_validation": "See delivery ZIP .verification.json sidecar",
+  "executed_suite_sha256": "d646f08b932212b5c1db620520d5588021a854aa22f44186578e4d29112a8acc",
+  "archived_suite_note": "CSV line endings normalized from CRLF to LF; field values unchanged"
+}
